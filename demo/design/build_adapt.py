@@ -20,7 +20,7 @@ SHORT = {"duoan/mega-data-factory": "mega-data-factory", "MigoXLab/dingo": "ding
 def build(src):
     a = src["adapted"]
     where = {r["title"]: r for r in src["ranking"]}
-    ref = lambda t: {"title": t, "short": SHORT[t], "kind": where[t]["kind"], "url": where[t]["url"]}
+    ref = lambda t: {"title": t, "short": SHORT.get(t) or t.strip('"').split("/")[-1][:40], "kind": where[t]["kind"], "url": where[t]["url"]}      # 새 공고: 이름 끝 부분
     return {
         "source": f"{SRC} (adapted)", "made": a["made"], "krw": a["checks"]["krw"],
         "base": ref(a["base"]), "complements": [ref(t) for t in a["complements"]],

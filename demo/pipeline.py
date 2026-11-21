@@ -244,9 +244,15 @@ def live(text, title="", url="", speed=1.0, extract=None):
     yield from stage("split", speed)
     sentences = [{"id": x["line_id"], "section": SECTION_NAMES.get(x["section"], x["section"]), "text": x["text"]}
                  for x in collect.lines(posting)]
+    got = []
+
     def comps():      # 근거 문장 찾기 단계가 화면에 뜬 뒤에 부른다 (몇십 초 걸린다)
-        return [{**c, "id": c.get("cid") or c.get("id")} for c in extract(posting)]
+        got.extend({**c, "id": c.get("cid") or c.get("id")} for c in extract(posting))
+        return got
     yield from paint(sentences, comps, {"title": posting["title"], "company": "", "url": url}, speed)
+    # 다음 단계(demo/live.py)가 쓸 공고 한 건 (m2_project.inputs.build_input 과 같은 꼴). 화면이 들고 있다가 단계 요청에 싣는다
+    yield {"type": "live_state", "key": "case", "value": {"case": posting["id"], "sentences": sentences, "competencies": got,
+                                                         "posting": {"title": posting["title"], "company": "", "url": url}}}
 
 
 def plain_sentences(text):
@@ -434,8 +440,9 @@ def adapt_fills(a, judged):
         by = next((lent[t] for t in src if t in lent), None) or ("base" if a["base"]["title"] in src else None) \
             or ("new" if any(cid in p["added"] for p in a["packages"]) else None) \
             or ("base" if WORTH[level] < WORTH[was] else None)
-        assert by is not None, f"{cid}: 응용 뒤 {level} 인데 출처도 AI가 더한 일도 없다"
-        assert WORTH[level] > WORTH[was] or by == "base", f"{cid}: 응용 뒤 {level} 이 판정 {was} 보다 낮은데 바탕의 일이 아니다"
+        by = by or "new"      # 출처가 없으면 AI가 더한 일로 본다 (새 공고는 저장본처럼 미리 확인하지 못한다)
+        if WORTH[level] < WORTH[was]:
+            by = "base"
         out.append({"cid": cid, "was": was, "level": level, "by": by, "package": names(pkg[k] for k in c["packages"]) or "교육자료에서 배움"})
     return out
 
@@ -571,21 +578,27 @@ def tidy(text):
     return re.sub(r"\n{3,}", "\n\n", t).strip()
 
 
-def project(case, speed=1.0):
-    """저장된 2단계 결과를 다시 튼다. 역량 표의 문장 번호(plan)를 그대로 달아, 화면이 줄 ↔ 원문 문장을 짝짓게 한다."""
+LIVE_BUDGETS = [{"key": "84", "hours": 84, "per_day": 1}, {"key": "168", "hours": 168, "per_day": 2}, {"key": "252", "hours": 252, "per_day": 3}]
+
+
+def project(case, speed=1.0, data=None, live=False):
+    """저장된 2단계 결과를 다시 튼다. 역량 표의 문장 번호(plan)를 그대로 달아, 화면이 줄 ↔ 원문 문장을 짝짓게 한다.
+    live: 새 공고 (demo/live.py 가 data 를 만들어 넘긴다). 단계·판정 사건은 live.py 가 실제 때에 내고, 여기서는 결과 사건만. 응용은 다음 요청(adapt_part)"""
     name_ = case["case"]
-    data = project_case(name_)
+    data = data or project_case(name_)
     counts, cov, sample = data["counts"], data["coverage"], data["sample"]
-    adapted = adapt_case(name_)
+    adapted = None if live else adapt_case(name_)
+    budgets = LIVE_BUDGETS if live else budget_list(name_)
     steps, scores = project_steps(counts) + (ADAPT_STEPS if adapted else []), data["scores"]
     tiers = [{"name": name, "total": sum(tier_of(c) == name for c in cov)} for name in TIERS]
     full = sum(x == tiers[0]["total"] for x in scores)      # 필수를 다 다룬 후보 수
     fit = {"label": f"{TIERS[0]}를 다 다룬 후보", "n": full} if full else {"label": f"{TIERS[0]}를 가장 많이 다룬 후보", "n": scores.count(max(scores))}
-    yield {"type": "steps", "items": steps, "db": {"papers": counts["papers"], "repos": counts["repos"], "total": counts["papers"] + counts["repos"]}, "pool": counts["pool"],
-           "shortlist": counts["shortlist"], "seconds": data["seconds"], "tier": tiers[0], "fit": fit, "adapted": bool(adapted),
-           "names": data.get("names")}      # 단계별 실제 후보 이름 (design/build_names.py)
+    if not live:
+        yield {"type": "steps", "items": steps, "db": {"papers": counts["papers"], "repos": counts["repos"], "total": counts["papers"] + counts["repos"]}, "pool": counts["pool"],
+               "shortlist": counts["shortlist"], "seconds": data["seconds"], "tier": tiers[0], "fit": fit, "adapted": bool(adapted),
+               "names": data.get("names")}      # 단계별 실제 후보 이름 (design/build_names.py)
     only = (f"{TIERS[0]} {tiers[0]['total']}개를 다 다룬 후보는 " + ("이것 하나예요" if full == 1 else f"{full}개예요")) if full else ""
-    for s in steps[:len(steps) - len(ADAPT_STEPS) if adapted else len(steps)]:
+    for s in ([] if live else steps[:len(steps) - len(ADAPT_STEPS) if adapted else len(steps)]):
         # pick 에는 최종 순위를 싣는다 (order[k] = k번째로 설 후보의 번호. 저장본의 차례가 곧 필수 → 우대 → 나머지 순위다). 화면은 순위를 셈하지 않는다
         yield {"type": "stage", "key": s["key"], "label": s["label"],
                **({"top": 0, "order": list(range(len(scores))), "full": full, "note": only} if s["key"] == "pick" else {})}
@@ -605,7 +618,7 @@ def project(case, speed=1.0):
     _, rows = plan(case["sentences"], case["competencies"])
     badges = {r["id"]: r["badges"] for r in rows}
     level = {c["cid"]: c for c in cov}
-    yield {"type": "project", "judged": counts["judged"], "tiers": tiers, "adapted": bool(adapted), "rule": ranking_rule(data["ranking"], tiers),
+    yield {"type": "project", "judged": counts["judged"], "tiers": tiers, "adapted": bool(adapted) or live, "rule": ranking_rule(data["ranking"], tiers),
            # 덮기 띠의 칸 자리 (역량 표와 같은 차례, 묶음은 필수 | 우대 | 나머지). 화면은 빈 칸을 먼저 깔고 cover 사건마다 그 칸만 칠한다
            "cells": [{"id": r["id"], "tier": tier_of(level[r["id"]])} for r in rows if r["id"] in level],
            "sample": {"title": sample["title"], "kind": KIND[sample["kind"]], "where": where(sample), "url": web(sample["url"]),
@@ -622,9 +635,22 @@ def project(case, speed=1.0):
             yield {"type": "cover", "row": {"id": r["id"], "name": r["name"], "section": c["section"], "tier": tier_of(c),
                                             "level": c["level"], "badges": badges[r["id"]]}}
             time.sleep(PACE["cover"] * speed)
-    if not adapted:
-        yield {"type": "done", "levels": levels, "budgets": budget_list(name_)}
+    if live:      # 응용은 다음 요청에서 (Vercel 300초 안에 들게 둘로 나눈다)
+        yield {"type": "pending_adapt", "levels": levels}
         return
+    if not adapted:
+        yield {"type": "done", "levels": levels, "budgets": budgets}
+        return
+    yield from adapt_part(case, data, adapted, speed, budgets)
+
+
+def adapt_part(case, data, adapted, speed=1.0, budgets=None):
+    """응용 프로젝트 사건들 (저장본은 project() 끝에서, 새 공고는 live.py 의 두 번째 요청에서)."""
+    cov, sample = data["coverage"], data["sample"]
+    body = sample.get("readme_shown") or (tidy(sample["readme"]) if sample.get("readme") else sample.get("text", ""))
+    _, rows = plan(case["sentences"], case["competencies"])
+    badges = {r["id"]: r["badges"] for r in rows}
+    levels = {k: sum(c["level"] == k for c in cov) for k in ("있음", "일부", "없음")}
     # 응용 프로젝트: m2_project/adapt.py 가 1위(바탕)에 보완 프로젝트에서 빌린 부분과 AI가 더한 일을 더한 한 건 (data/*.adapt.json).
     # 셈은 있음 1, 일부 0.5. 처음 수는 1위 판정 그대로 (대화 칸 덮기 띠), 끝 수는 저장본의 덮기 표(expect)에서 센 값
     borrow, merge = ADAPT_STEPS
@@ -665,7 +691,7 @@ def project(case, speed=1.0):
     if left:      # 같은 사실은 단계마다 같은 말로: "프로젝트로 다 못 배우는 역량"
         yield {"type": "facts", "items": [{"text": f"프로젝트로 다 못 배우는 역량은 {names(c['name'] for c in left)} {len(left)}개예요. 교육자료에서 습득해요.",
                                            "badges": sorted({n for c in left for n in badges[c["id"]]})}]}
-    yield {"type": "done", "levels": levels, "before": before, "after": after, "budgets": budget_list(name_)}
+    yield {"type": "done", "levels": levels, "before": before, "after": after, "budgets": budgets if budgets is not None else LIVE_BUDGETS}
 
 
 def project_offline(what="프로젝트 찾기"):
@@ -720,8 +746,8 @@ def budget_of(key, name):
 
 def tagged(fn):
     """사건마다 budget_key 를 단다 (화면이 늦게 온 옛 안의 응답을 버릴 수 있게)."""
-    def run(case, speed=1.0, budget="84"):
-        for ev in fn(case, speed, budget):
+    def run(case, speed=1.0, budget="84", **kw):
+        for ev in fn(case, speed, budget, **kw):
             yield {**ev, "budget_key": budget}
     run.__name__, run.__doc__ = fn.__name__, fn.__doc__
     return run
@@ -754,21 +780,23 @@ def best(a, b):
     return a if LEVELS_ORDER[a] >= LEVELS_ORDER[b] else b
 
 
-def materials(case, speed=1.0):
+def materials(case, speed=1.0, data=None, live=False):
     """3단계: m3_materials/pick.py 가 고른 교육자료(핵심 1~2개, 보조 3~4개)를 다시 튼다.
     target 은 대상 역량 하나(level 은 처음엔 없음), pick 은 고른 자료 하나와 그때까지 역량마다 덮인 정도(levels).
     끝(done)의 levels 는 저장본의 coverage 와 같다. 시간은 쓰지 않는다 (공부 시간은 ④ 에서 고른다)."""
-    data = m3_case(case["case"])
+    data = data or m3_case(case["case"])
     steps = m3_steps(data)
     names_ = {t["cid"]: t["name"] for t in data["targets"]}
     tiers_ = {t["cid"]: t["priority"] for t in data["targets"]}
     r = data["rules"]      # 숫자 흐름 (발표 27쪽과 같다): 은행 → BM25 → Cohere Rerank → AI 판정으로 고른 자료
     funnel = [{"n": r["bank_rows"], "label": "교육자료 은행"}, {"n": r["wide"], "label": "BM25"},
               {"n": r["shortlist"], "label": "Cohere Rerank"}, {"n": len(data["picks"]), "label": "AI 판정"}] if "bank_rows" in r else []
-    yield {"type": "steps", "items": steps, "funnel": funnel}
+    if not live:      # 새 공고는 live.py 가 단계를 실제 때에 낸다
+        yield {"type": "steps", "items": steps, "funnel": funnel}
     levels = {t["cid"]: "없음" for t in data["targets"]}
     for s in steps:
-        yield {"type": "stage", "key": s["key"], "label": s["label"]}
+        if not live:
+            yield {"type": "stage", "key": s["key"], "label": s["label"]}
         if s["key"] == "targets":
             for t in data["targets"]:
                 yield {"type": "target", "row": {"cid": t["cid"], "name": t["name"], "type": t["type"], "priority": t["priority"]}}
@@ -822,13 +850,13 @@ def curriculum_case(name, hours):
 
 
 @tagged
-def weeks(case, speed=1.0, budget="84"):
+def weeks(case, speed=1.0, budget="84", curriculum=None):
     """⑤ 12주 계획: 라운드랩 커리큘럼 생성기(github.com/gaori2952/Round_labcurriculum)의 결과를 보인다 (사용자 11/21).
     하루 1·2·3시간 = 주당 7·14·21시간 (한 사람). 주마다 교육자료 공부 → 프로젝트 작업 → 산출물. 12주를 사건 하나로 보내 화면이 한 번에 그린다."""
     name_ = case["case"]
-    per_day = materials_case(name_)["budgets"][budget]["per_day"]
+    per_day = {b["key"]: b["per_day"] for b in LIVE_BUDGETS}[budget] if curriculum is not None else materials_case(name_)["budgets"][budget]["per_day"]
     hours = 7 * per_day
-    d = curriculum_case(name_, hours)
+    d = curriculum if curriculum is not None else curriculum_case(name_, hours)
     if not d:
         yield {"type": "notice", "text": "이 공고의 12주 계획은 아직 준비 중이에요."}
         return

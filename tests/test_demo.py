@@ -142,7 +142,10 @@ def test_live_mode_wires_split_and_extract(tmp_path, monkeypatch):
     assert [s["name"] for s in posting["sections"]] == ["자격요건", "우대사항"] and not posting.get("replay")      # 실제로 돌린 결과
     rows = [e["row"] for e in events if e["type"] == "row"]
     assert [(r["id"], r["badges"]) for r in rows] == [("X-C01", [1]), ("X-C02", [2])]
-    assert events[-1] == {"type": "done", "rows": 2, "marks": 2, "required": 1, "preferred": 1}
+    assert events[-2] == {"type": "done", "rows": 2, "marks": 2, "required": 1, "preferred": 1}
+    handoff = events[-1]      # 다음 단계(demo/live.py)가 쓸 공고 한 건: 화면이 들고 있다가 단계 요청에 싣는다
+    assert handoff["type"] == "live_state" and handoff["key"] == "case"
+    assert [c["id"] for c in handoff["value"]["competencies"]] == ["X-C01", "X-C02"] and len(handoff["value"]["sentences"]) >= 2
 
 
 def test_fetch_stops_at_robots_disallow(monkeypatch):

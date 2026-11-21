@@ -68,13 +68,15 @@ function reset({ all = false, from = 'search' } = {}) {
   panel.reset({ all, from });
   CLEAR[from].forEach((art) => art.clear());
   panel.placeBudget();
-  if (all) { resetResult(); setBudget(null); } else FORGET[from]();
+  if (all) { resetResult(); setBudget(null); store.live = null; } else FORGET[from]();
   syncSwitch();
 }
 
 // 다시 해도 같은 결과가 나올 까닭(막힌 사이트, 로그인, 짧은 글 등)에는 다시 해 보기를 주지 않는다
 const TEMPORARY = new Set(['server', 'network', 'http']);
 const retry = () => { if (!store.controller && store.last) send(store.last); };
+// 새 공고 라이브 (demo/live.py): 서버는 상태를 두지 않는다. 단계마다 받은 결과(live_state)를 모아 다음 단계 요청에 싣는다
+const liveState = (ev) => { store.live = { ...(store.live || {}), [ev.key]: ev.value }; };
 
 // ── 1단계: 공고 읽기. ① 쪽에 원문과 형광펜, 오른쪽에 찾은 역량 칸 ──
 const handlers = {
@@ -98,6 +100,7 @@ const handlers = {
     panel.open();
   },
   highlight(ev) { panel.paint(ev.sid, ev.n); },
+  live_state: liveState,
   row(ev) {
     store.rows.set(ev.row.id, { ...ev.row });
     panel.addCell(ev.row);
@@ -215,6 +218,15 @@ const projectHandlers = {
     progress('search')(ev, ctx);
   },
   judged(ev) { search.judged(ev); },
+  live_state: liveState,
+  pending_adapt(ev, ctx) {      // 새 공고: 응용은 다음 요청. 이 요청이 닫히면 바로 이어서 부른다
+    ctx.ended = true;
+    store.lastProject = ctx.project;
+    store.lastDb = ctx.db;
+    const text = store.text;
+    const go = () => { if (store.text !== text) return; if (store.controller) { setTimeout(go, 50); return; } runStep('adapt'); };
+    setTimeout(go, 0);
+  },
   // ② 바닥 줄: "111,753개 중 1위 · genkit-ai/genkit" / "필수 8점 중 5.5점" (제목은 ':' 앞까지)
   project(ev, ctx) {
     const [tier] = ev.tiers, top = ev.ranking[0].scores[0];
@@ -259,6 +271,7 @@ const projectHandlers = {
 
 // ── 3단계: 교육자료 (m3_materials/pick.py 결과를 다시 튼다). ④ 쪽에 자료 × 역량 행렬 (study.js) ──
 const materialHandlers = {
+  live_state: liveState,
   steps(ev, ctx) {
     study.start(ev.funnel);
     openStep(ctx, 'materials', REPLAY);
@@ -284,6 +297,7 @@ const materialHandlers = {
 
 // ── 4단계: 12주 계획 (라운드랩 커리큘럼 생성기 결과). ⑤ 쪽에 12주 막대와 주마다 "배우기 → 적용 → 산출물" (weeks.js) ──
 const weekHandlers = {
+  live_state: liveState,
   steps(ev, ctx) {
     weeks.start(ev);
     openStep(ctx, 'weeks', HAND);
@@ -308,6 +322,7 @@ const weekHandlers = {
 
 // ── 5단계: 정리 리포트. ⑥ 쪽에 발표 자료 모양의 면접 대비 슬라이드 (report.js) ──
 const reportHandlers = {
+  live_state: liveState,
   steps(ev, ctx) {
     report.start();
     openStep(ctx, 'report', HAND);
@@ -334,6 +349,7 @@ const STEPS = {
   materials: { label: '교육자료 찾기', from: 'materials', handlers: materialHandlers, art: study },
   weeks: { label: '12주 계획 짜기', from: 'weeks', handlers: weekHandlers, art: weeks },
   report: { label: '정리 리포트 만들기', from: 'report', handlers: reportHandlers, art: report },
+  adapt: { from: 'materials', handlers: projectHandlers, art: search },      // 새 공고: ② 응용 (두 번째 요청, 같은 쪽에 그린다)
 };
 // 이 예시의 저장본이 아직 없는 단계는 단추 대신 그 글 (서버가 보낸 글, 예시 단추는 그 글의 쪽에서 다시 고른다)
 // 다음 단계는 바닥 줄 단추로 연다 (사용자 11/21: 읽고 나서 단추로 넘긴다). 12주 계획은 첫 안(하루 1시간)으로 짜고, 바꾸기는 ⑤ ⑥ 의 라디오 칸
@@ -359,8 +375,9 @@ async function runStep(key, pick = null) {
   // 같은 공고가 그대로일 때만 다시 하게 한다 (그사이 새 공고를 보냈으면 그 공고 것이 아니다)
   const again = () => { if (store.text === text && !store.controller) runStep(key, key === 'weeks' ? store.budget : null); };
   const budget = ['project', 'materials'].includes(key) ? null : store.budget;
-  const ctx = { ended: false, again, onStop: () => step.art.stopped(), budget, log: [], posted: true };
-  await stream({ step: key, text, ...(budget ? { budget } : {}) }, step.handlers, ctx, again);
+  const ctx = { ended: false, again, onStop: () => step.art.stopped(), budget, log: [], posted: true,
+    ...(key === 'adapt' ? { project: store.lastProject, db: store.lastDb } : {}) };
+  await stream({ step: key, text, ...(budget ? { budget } : {}), ...(store.live?.case ? { state: store.live } : {}) }, step.handlers, ctx, again);
 }
 
 // ── 공부 시간 바꾸기 (⑤ ⑥ 쪽의 라디오 칸). 다시 틀지 않는다: 그린 단계의 사건을 서버에서 기다림 없이(speed 0) 받아(받아 둔 것은 그대로)
@@ -368,7 +385,7 @@ async function runStep(key, pick = null) {
 const DOCS = { weeks: 'weeks-doc', report: 'report-doc' };      // 공부 시간을 쓰는 쪽 (④ 교육자료는 쓰지 않는다)
 async function fetchLog(step, key, signal) {
   const log = [];
-  await run({ step, text: store.text, budget: key, speed: 0 }, (ev) => log.push(ev), signal);
+  await run({ step, text: store.text, budget: key, speed: 0, ...(store.live?.case ? { state: store.live } : {}) }, (ev) => log.push(ev), signal);
   if (signal.aborted) throw new DOMException('', 'AbortError');
   if (log[0]?.type !== 'steps' || log.at(-1)?.type !== 'done' || log.some((e) => e.budget_key !== key)) throw new Error('budget');
   store.runs.set(`${step}:${key}`, log);

@@ -66,6 +66,17 @@ def events(req, live_mode, default_speed):
         return
     case = pipeline.which(text)      # 같은 예시 공고 (없으면 None)
     step = req.get("step")
+    state = req.get("state") if isinstance(req.get("state"), dict) else None
+    if live_mode and case is None and step and state and isinstance(state.get("case"), dict):      # 새 공고 라이브 (demo/live.py)
+        from demo import live
+        c, budget = state["case"], str(req.get("budget") or "84")
+        need = {"project": (), "adapt": ("project",), "materials": (), "weeks": ("project", "adapt", "materials"), "report": ("adapt", "materials")}
+        if step not in need or any(k not in state for k in need[step]):
+            yield {"type": "error", "reason": "state", "message": "앞 단계 결과가 없어요. 처음부터 다시 해 볼까요?"}
+            return
+        yield from {"project": lambda: live.project(c), "adapt": lambda: live.adapt(c, state), "materials": lambda: live.materials(c),
+                    "weeks": lambda: live.weeks(c, state, budget), "report": lambda: live.report(c, state, budget)}[step]()
+        return
     if step in pipeline.STEPS:      # 2~5단계: 예시만 다시 튼다. 새 공고는 --live 여도 검색하지 않는다
         what, _ = pipeline.STEPS[step]
         if case is None:

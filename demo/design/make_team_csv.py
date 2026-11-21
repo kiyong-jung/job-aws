@@ -21,12 +21,13 @@ def write(path, header, rows):
         w.writerows(rows)
 
 
-def build(case, out):
+def build(case, out, local=None, adapt=None, mat=None, comps=None):
+    """local·adapt·mat·comps 를 넘기면 그것을 쓴다 (새 공고: demo/live.py). 아니면 outputs/ 의 저장본과 예시 공고의 역량"""
     out.mkdir(parents=True, exist_ok=True)
-    local = json.loads((ROOT / f"outputs/project/{case}.local.json").read_text(encoding="utf-8"))
-    adapt = json.loads((ROOT / f"outputs/project/{case}.adapt.json").read_text(encoding="utf-8"))
-    mat = json.loads((ROOT / f"outputs/materials/{case}.json").read_text(encoding="utf-8"))
-    name = {c["id"]: c["name"] for c in inputs.build_input(case)["competencies"]}
+    local = local or json.loads((ROOT / f"outputs/project/{case}.local.json").read_text(encoding="utf-8"))
+    adapt = adapt or json.loads((ROOT / f"outputs/project/{case}.adapt.json").read_text(encoding="utf-8"))
+    mat = mat or json.loads((ROOT / f"outputs/materials/{case}.json").read_text(encoding="utf-8"))
+    name = {c["id"]: c["name"] for c in (comps or inputs.build_input(case)["competencies"])}
     rank = {r["title"]: (i, r) for i, r in enumerate(local["ranking"], 1)}
     gains = {g["title"]: g for g in adapt["complement_gains"]}
     packs = adapt["project"]["packages"]

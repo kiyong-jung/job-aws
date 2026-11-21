@@ -12,8 +12,24 @@ export function start() {
 }
 
 // done 사건: 쪽 그림을 차례로 (첫 장은 바로, 나머지는 보일 때 읽는다)
-export function done({ slides }) {
+export function done({ slides, rows }) {
   const root = $('report-doc');
+  if (rows && rows.length) {      // 새 공고 (demo/live.py): 역량마다 공고 문장 → 프로젝트 일 → 교육자료 → 면접 질문
+    const list = el('ol', { class: 'ev-list' });
+    rows.forEach((r) => {
+      const li = el('li', { class: 'ev' });
+      const head = el('div', { class: 'ev-head' });
+      head.append(el('span', { class: 'tag', 'data-pri': r.tier, text: r.tier }), el('b', { class: 'ev-name', text: r.name }));
+      const body = el('div', { class: 'rep-rows' });
+      [['공고', r.posting_ko || r.posting], ['프로젝트에서', r.job], ['교육자료', r.material || '-'], [`면접 질문${r.asked ? ` (${r.asked})` : ''}`, r.question || '-']]
+        .forEach(([k, v]) => { const p = el('p', { class: 'rep-row' }); p.append(el('b', { text: `${k} · ` }), v); body.append(p); });
+      li.append(head, body);
+      list.append(li);
+    });
+    root.replaceChildren(list);
+    root.removeAttribute('aria-busy');
+    return;
+  }
   const deck = el('div', { class: 'slides' });
   slides.forEach((src, i) => {
     const sheet = el('figure', { class: 'sheet' });
