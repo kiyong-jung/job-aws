@@ -1,0 +1,14 @@
+{
+ "schema_version": "jobaws.plan.blocked.v1",
+ "source": "curriculum_bedrock (1).md",
+ "status": "blocked",
+ "reason": "핵심 프로젝트와 1순위 학습이 시간 예산을 초과했습니다",
+ "weeks": 12,
+ "hours_per_week": 7,
+ "available_minutes": 5040,
+ "needed_minutes": 8340,
+ "needed_build_minutes": 7680,
+ "needed_learning_minutes": 660,
+ "short_minutes": 3300,
+ "min_per_week_minutes": 700
+}

@@ -309,6 +309,7 @@ weeks.picked((sum) => { if (store.drawn.has('weeks') && !store.controller) weeks
 const weekHandlers = {
   live_state: liveState,
   steps(ev, ctx) {
+    store.ownHours = ev.plans?.length > 1;      // 한 주 공부 시간을 ④ 안에서 고르는 예시: ④ 쪽에서는 하루 1·2·3시간 칸을 숨긴다 (panel.head)
     weeks.start(ev);
     openStep(ctx, 'weeks', HAND);
     if (!ctx.quiet) panel.walk('weeks', ev.items);

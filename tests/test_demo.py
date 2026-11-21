@@ -670,22 +670,39 @@ def test_weeks_step_shows_round_lab_curriculum_in_one_event(name, key):
     assert (done["learning"], done["project"]) == (saved["summary"]["learning_hours"], saved["summary"]["implementation_hours"])
 
 
-def test_weeks_step_shows_md_plans_with_middle_as_default():
-    """예시에 주차 계획 md(data/<예시>.plan.<상한>.json)가 있으면 크기마다 한 안을 보낸다. 기본은 중이고, 공부 시간과 상관없다 (사용자 11/21)"""
+def test_weeks_step_shows_md_plans_with_14_hours_as_default():
+    """예시에 주차 계획 md(data/<예시>.plan.<상한>.json)가 있으면 한 주 공부 시간마다 한 안을 보낸다 (주 14·15·28시간).
+    기본은 14시간이고, 하루 1·2·3시간 선택과 상관없다. 분량 한 줄은 계획·보류 파일의 숫자로 쓴다 (사용자 11/21)"""
     case = pipeline.example_case("aws_fde")
     saved = {d["constraints"]["hours_per_week"]: d for d in pipeline.plans_case("aws_fde")}
     runs = [[{k: v for k, v in e.items() if k != "budget_key"} for e in server.events(
         {"step": "weeks", "text": pipeline.posting_text(case), "budget": k}, live_mode=False, default_speed=0)] for k in KEYS]
     assert all(r == runs[0] for r in runs)
     steps, done = runs[0][0], runs[0][-1]
-    middle = next(d for d in saved.values() if d["size"] == "중")
-    assert steps["default"] == f"{middle['constraints']['hours_per_week']:g}" and steps["cap"] == middle["constraints"]["hours_per_week"]
-    assert [p["cap"] for p in steps["plans"]] == sorted(saved) and steps["held"] == middle["held"]
+    base = saved[pipeline.DEFAULT_WEEK_HOURS]
+    assert sorted(saved) == [14, 15, 28] and steps["default"] == "14" and steps["cap"] == 14 and steps["held"] == base["held"]
+    assert [(p["key"], p["label"]) for p in steps["plans"]] == [("14", "주 14시간"), ("15", "주 15시간"), ("28", "주 28시간")]
     for p in steps["plans"]:
         d = saved[p["cap"]]
         assert [round(w["learning"] + w["project"], 4) for w in p["plan"]] == [round(w["used_minutes"] / 60, 4) for w in d["weeks"]]
         assert all(w["learning"] + w["project"] <= w["cap"] + 1e-9 for w in p["plan"])
         assert {a["id"] for w in p["plan"] for a in w["activities"] if a["kind"] == "project"} == set(d["assigned"])
         assert p["summary"]["deliverables"] == len(d["assigned"]) and p["held"] == d["held"]
-    assert (done["cap"], done["project"], done["deliverables"]) == (middle["constraints"]["hours_per_week"], middle["summary"]["implementation_hours"], len(middle["assigned"]))
+        assert all(1 <= len(w["method_steps"]) <= 3 and 1 <= len(w["goal_steps"]) <= 3 for w in p["plan"])      # 토글은 개조식 세 줄까지
+    assert [h["id"] for h in saved[14]["held"]] == ["W9", "W10"] and [h["id"] for h in saved[15]["held"]] == ["W10"] and saved[28]["held"] == []
+    block = pipeline.blocked_case("aws_fde")
+    assert [(b["hours_per_week"], b["available_minutes"], b["needed_minutes"], b["min_per_week_minutes"]) for b in block] == [(7, 84 * 60, 139 * 60, 700)]
+    assert steps["scale"] == ("한 주 공부 시간은 정수로 정한다. 14시간이면 W9·W10을 미루고, 15시간이면 W10만 미루고, 28시간이면 모두 들어간다. "
+                              "7시간이면 12주 84시간으로 필요한 139시간에 못 미쳐 계획을 보류하고, 한 주 최소 11시간 40분이 필요하다고 알려 준다.")
+    assert (done["cap"], done["project"], done["deliverables"]) == (14, base["summary"]["implementation_hours"], len(base["assigned"]))
+
+
+def test_plan_steps_keep_md_words_and_split_at_clause_endings():
+    """개조식 줄은 md 문장을 연결 어미에서 나누고 끝 어미만 '~기' 로 바꾼다. 세 조각을 넘으면 이웃을 원문 그대로 붙인다"""
+    from demo.design.build_curriculum_md import ending, steps
+    assert ending("ADR 양식을 잡고") == "ADR 양식을 잡기" and ending("점검한 뒤") == "점검하기" and ending("대응시킨 뒤") == "대응시키기"
+    assert ending("양식을 잡은 다음") == "양식을 잡기" and ending("계획을 수립한다.") == "계획을 수립하기" and ending("방법을 적용하며") == "방법을 적용하기"
+    got = steps("가를 정하고, 나를 점검한 뒤, 다를 정리해 근거로 삼고, 라를 확인한 뒤 마를 등록한다.")
+    assert got == ["가를 정하고, 나를 점검하기", "다를 정리해 근거로 삼기", "라를 확인한 뒤 마를 등록하기"]      # 가장 짧게 붙는 이웃 둘을 쉼표째 붙인다
+    assert steps("A를 완성한다. 아울러 B를 시작한다.") == ["A를 완성하기", "B를 시작하기"]
 

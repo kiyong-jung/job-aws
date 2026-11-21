@@ -891,12 +891,37 @@ def plans_case(name):
     return sorted((_read(f) for f in DATA.glob(f"{name}.plan.*.json")), key=lambda d: d["constraints"]["hours_per_week"])
 
 
+def blocked_case(name):
+    """배정을 보류한 계획 md (data/<예시>.blocked.<한 주 시간>.json): 그 시간으로는 짜지 않고 주당 최소 시간을 알린다. 한 주 시간이 작은 차례"""
+    return sorted((_read(f) for f in DATA.glob(f"{name}.blocked.*.json")), key=lambda d: d["hours_per_week"])
+
+
+DEFAULT_WEEK_HOURS = 14      # 계획이 여럿인 예시의 처음 보이는 계획 (사용자 11/21: 기본 14시간)
+
+
+def scale_line(views, blocks):
+    """한 주 공부 시간에 따라 분량이 맞춰진다는 한 줄 (사용자 11/21). 숫자는 모두 계획 파일 값:
+    '한 주 공부 시간은 정수로 정한다. 14시간이면 W9·W10을 미루고, 15시간이면 W10만 미루고, 28시간이면 모두 들어간다. 7시간이면 …'"""
+    parts = [f"{v['cap']:g}시간이면 " + ("·".join(h["id"] for h in v["held"]) + ("만" if len(v["held"]) == 1 else "을") + " 미루고" if v["held"] else "모두 들어가고")
+             for v in views]
+    line = "한 주 공부 시간은 정수로 정한다. " + re.sub(r"(미루|들어가)고$", lambda m: {"미루": "미룬다", "들어가": "들어간다"}[m.group(1)], ", ".join(parts)) + "."
+    for b in blocks:
+        line += (f" {b['hours_per_week']}시간이면 12주 {b['available_minutes'] // 60}시간으로 필요한 {b['needed_minutes'] // 60}시간에 못 미쳐 계획을 보류하고, "
+                 f"한 주 최소 {span_text(b['min_per_week_minutes'])}이 필요하다고 알려 준다.")
+    return line
+
+
+def span_text(m):
+    """분 → '11시간 40분'"""
+    h, mm = divmod(int(m), 60)
+    return " ".join(x for x in (f"{h}시간" if h else "", f"{mm}분" if mm else "") if x)
+
+
 def plan_view(case, d, hours, source):
     """계획 하나 → 화면 값: 주마다 활동(배우기·만들기), 합, 보류 작업, 바닥 줄 숫자(summary)"""
     s = d["summary"]
-    size = d.get("size", "")
     plan_ = [{"week": w["week"], "learning": w["learning_minutes"] / 60, "project": w["implementation_minutes"] / 60, "cap": w["capacity_minutes"] / 60,
-              "goal": w.get("goal", ""), "method": w.get("method", ""),
+              "goal": w.get("goal", ""), "method": w.get("method", ""), "goal_steps": w.get("goal_steps", []), "method_steps": w.get("method_steps", []),
               "activities": [{"id": x["id"], "done": x.get("completed_in_this_chunk", True), "kind": x["kind"], "title": re.sub(r"\s*\(준비:.*\)$", "", x["title"]), "hours": x["hours"], "out": x.get("out", ""), "role": x.get("role", ""),
                               "url": web(x.get("url", "")), "skills": skill_names(case, x.get("competencies", [])), "ends": x.get("ends_week"),
                               "cids": skill_ids(case, x.get("competencies", [])), "check": x.get("completion_check", "")} for x in w["activities"]],
@@ -904,7 +929,7 @@ def plan_view(case, d, hours, source):
     summary = {"weeks": len(d["weeks"]), "cap": hours, "inside_weeks": sum(w["used_minutes"] <= w["capacity_minutes"] for w in d["weeks"]),
                "learning": s["learning_hours"], "project": s["implementation_hours"], "deliverables": sum(len(w["deliverables_completed"]) for w in d["weeks"]),
                "source": source}
-    return {"key": f"{hours:g}", "label": f"{size} · 주 {hours:g}시간" if size else f"주 {hours:g}시간", "source": source,
+    return {"key": f"{hours:g}", "label": f"주 {hours:g}시간", "source": source,
             "plan": plan_, "cap": hours, "learning": s["learning_hours"], "project": s["implementation_hours"],
             "total": s.get("scheduled_hours", s["learning_hours"] + s["implementation_hours"]),
             "assigned": d.get("assigned", []), "held": d.get("held", []), "summary": summary}
@@ -912,16 +937,16 @@ def plan_view(case, d, hours, source):
 
 @tagged
 def weeks(case, speed=1.0, budget="84", curriculum=None):
-    """⑤ 12주 계획. 예시 공고에 주차 계획 md(plans_case)가 있으면 그것들을 보인다: 화면이 크기(중·대)를 고르고, 기본은 중.
-    공부 시간(하루 1·2·3시간) 선택과 상관없다 (그 선택은 ⑥ 리포트가 쓴다).
+    """⑤ 12주 계획. 예시 공고에 주차 계획 md(plans_case)가 있으면 그것들을 보인다: 화면이 한 주 공부 시간(주 14·15·28시간)을 고르고, 기본은 14.
+    그 예시는 ④ 쪽에서 하루 1·2·3시간 칸을 숨기고 그 선택과 상관없다 (그 선택은 ⑥ 리포트가 쓴다). 보류 md(blocked_case)는 분량 한 줄(scale)에만.
     없거나 새 공고면 라운드랩 커리큘럼 생성기(github.com/gaori2952/Round_labcurriculum) 결과: 하루 1·2·3시간 = 주당 7·14·21시간 (한 사람).
     주마다 교육자료 공부 → 프로젝트 작업 → 산출물. 12주를 사건 하나로 보내 화면이 한 번에 그린다."""
     name_ = case["case"]
     mds = [] if curriculum is not None else plans_case(name_)
     if mds:
         views = [plan_view(case, d, d["constraints"]["hours_per_week"], "md") for d in mds]
-        first = next((v for v, d in zip(views, mds) if d.get("size") == "중"), views[0])
-        status, generator = mds[0]["status"], ""
+        first = next((v for v in views if v["cap"] == DEFAULT_WEEK_HOURS), views[0])
+        status, generator, scale = mds[0]["status"], "", scale_line(views, blocked_case(name_))
     else:
         per_day = {b["key"]: b["per_day"] for b in LIVE_BUDGETS}[budget] if curriculum is not None else materials_case(name_)["budgets"][budget]["per_day"]
         hours = 7 * per_day
@@ -930,7 +955,7 @@ def weeks(case, speed=1.0, budget="84", curriculum=None):
             yield {"type": "notice", "text": "이 공고의 12주 계획은 아직 준비 중이에요."}
             return
         views = [plan_view(case, d, hours, "generator")]
-        first, status, generator = views[0], d["status"], d.get("generator_commit", "")
+        first, status, generator, scale = views[0], d["status"], d.get("generator_commit", ""), ""
     learning_n = sum(a["kind"] == "learning" for w in first["plan"] for a in w["activities"])
     steps = [{"key": "order", "label": (f"응용 프로젝트 작업 {len(first['assigned'])}개와 교육자료 {learning_n}개의 순서를 정하는 중" if mds
                                        else "교육자료와 프로젝트 작업의 순서(선수 관계)를 정하는 중"), "done": "순서를 정했어요"},
@@ -938,7 +963,7 @@ def weeks(case, speed=1.0, budget="84", curriculum=None):
              {"key": "check", "label": "주마다 시간 한도와 산출물을 확인하는 중", "done": "한도와 산출물을 확인했어요"}]
     cids = list(dict.fromkeys(r["cid"] for v in views for w in v["plan"] for a in w["activities"] for r in a["cids"]))
     yield {"type": "steps", "items": steps, **{k: v for k, v in first.items() if k != "summary"},
-           "plans": views if len(views) > 1 else [], "default": first["key"], "generator": generator, "comps": comp_refs(case, cids)}
+           "plans": views if len(views) > 1 else [], "default": first["key"], "scale": scale, "generator": generator, "comps": comp_refs(case, cids)}
     for st in steps:
         yield {"type": "stage", "key": st["key"], "label": st["label"]}
         time.sleep(PACE["stage"] * speed)

@@ -13,6 +13,7 @@ export const store = {
   // 공부 시간 고르기. 값은 서버가 보낸 목록(budgets: [{key, hours, per_day}])의 열쇠만 쓴다
   budgets: [],           // 2단계 끝 사건이 싣는 안 목록. 새 공고가 오면 비운다
   budget: null,          // 고른 안의 열쇠 ("84"). 처음 고르기 단추를 누르면 정해진다 (setBudget 만 바꾼다)
+  ownHours: false,       // ④ 가 한 주 공부 시간(주 14·15·28시간)을 스스로 고르는 예시다. ④ 쪽에서는 하루 공부 시간 칸을 숨긴다 (12주 계획을 다시 하면 지운다)
   drawn: new Set(),      // 끝까지 그린 단계 ('materials' | 'weeks' | 'report')
   runs: new Map(),       // `${단계}:${안}` → 사건들. 끝까지 받은 것만 (안을 바꿔 돌아올 때 서버에 다시 묻지 않는다)
   switching: null,       // 안 바꾸기 요청의 AbortController (controller 와 따로)
@@ -28,6 +29,7 @@ export function resetReport() { forget('report'); }
 export function resetWeeks() {
   resetReport();
   forget('weeks');
+  store.ownHours = false;
 }
 export function resetStudy() {
   resetWeeks();

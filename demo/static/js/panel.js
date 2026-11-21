@@ -112,13 +112,15 @@ function head() {
   }));
   $('panel').dataset.stack = store.stack.join(' ');
   drawStatus(now);
-  budgetBox.hidden = !(store.budget && ['weeks', 'report'].includes(now));      // 공부 시간 고르기: 12주 계획·리포트 쪽에서만
+  // 하루 공부 시간 고르기: 12주 계획·리포트 쪽에서만. 12주 계획이 한 주 공부 시간을 스스로 고르는 예시면 ④ 쪽에서는 숨긴다 (⑤ 는 그대로)
+  budgetBox.hidden = !(store.budget && (now === 'report' || (now === 'weeks' && !store.ownHours)));
   placeBudget();
 }
-// 공부 시간 고르기 칸의 자리: ⑤ 쪽이면 주 그림 틀의 머리 줄 오른쪽, 그 밖(⑥)은 쪽 더미 바로 위
+// 공부 시간 고르기 칸의 자리: ⑤ 쪽이면 주 그림 틀의 머리 줄 오른쪽, 그 밖(⑥)은 쪽 더미 바로 위.
+// ⑤ 가 한 주 공부 시간을 스스로 고르는 예시(store.ownHours)면 ⑤ 틀에 넣지 않는다 (숨긴 칸이 ⑤ 안에 남지 않게)
 export function placeBudget() {
   const now = top();
-  place(now === 'weeks' ? page(now).querySelector('.chart-aside') : null);
+  place(now === 'weeks' && !store.ownHours ? page(now).querySelector('.chart-aside') : null);
 }
 // ③ 쪽의 이름이 정해졌다 (이 공고의 저장본에 응용 프로젝트가 있는지 알았다): 단계 길을 다시 그린다
 export const retitle = () => head();
