@@ -34,6 +34,8 @@ CASE, BASE, OUT, SCALE = ARGS.case, ARGS.base.rstrip("/") + "/", Path(ARGS.out),
 EXAMPLE = f'[data-example="{CASE}"]'
 DATA = Path(__file__).resolve().parent / "data"
 PROJECT = json.loads((DATA / f"{CASE}.project.json").read_text(encoding="utf-8"))
+PLANS = sorted((json.loads(f.read_text(encoding="utf-8")) for f in DATA.glob(f"{CASE}.plan.*.json")), key=lambda d: d["constraints"]["hours_per_week"])
+PLAN = next((d for d in PLANS if d.get("size") == "중"), PLANS[0] if PLANS else None)      # 주차 계획 md (기본 중): ⑤ 는 공부 시간과 상관없다
 
 # 화면에 보이는 글 줄 가운데 글자 크기 < 13px, 또는 --muted 색인 것 (짝 보기에서 다른 줄을 흐리게 하는 [data-focus] 안, 화면 읽기용 글은 뺀다)
 SMALL_TEXT = """(() => { const probe = document.createElement('i'); probe.style.color = 'var(--muted)'; document.body.append(probe);
@@ -248,7 +250,28 @@ async def flow(p):
     weeks_n = await p.js("document.querySelectorAll('#weeks-doc .wk').length")
     items_n = await p.js("document.querySelectorAll('#weeks-doc .wk-item').length")
     assert weeks_n == 12 and items_n >= 12, f"⑤ 주 칸 {weeks_n}개, 할 일 {items_n}개"
+    if PLAN:
+        outs = await p.js("document.querySelectorAll('#weeks-doc .wk-out').length")
+        n_out = sum(len(w["deliverables_completed"]) for w in PLAN["weeks"])
+        assert outs == n_out, f"⑤ 산출물 줄 {outs}개 ≠ 계획 {n_out}개"
+        goal = await p.js("document.querySelector('#weeks-doc .wk-body dd li')?.textContent")
+        assert goal == PLAN["weeks"][0]["goal"], f"⑤ 1주 목표 {goal!r}"
     await p.shot("08-weeks")
+    if len(PLANS) > 1:      # 계획 크기 고르기: 중(기본) → 대 → 중. 주 칸 머리의 상한, 보류 작업 줄, 바닥 줄이 고른 계획을 따른다
+        checked = await p.js("document.querySelector('#weeks-doc .plan-pick input:checked')?.value")
+        assert checked == f"{PLAN['constraints']['hours_per_week']:g}", f"⑤ 기본 계획 {checked}"
+        for d in [x for x in PLANS if x is not PLAN] + [PLAN]:
+            cap = f"{d['constraints']['hours_per_week']:g}"
+            await p.mouse(f"#weeks-doc .plan-pick input[value='{cap}']")
+            await p.until(f"document.querySelector('#weeks-doc .wk-used').textContent.endsWith('상한 {cap}시간')", timeout=5)
+            await p.until(f"/한 주 {cap}시간까지/.test(document.querySelector('#foot-weeks').textContent)", timeout=5)
+            held = await p.js("document.querySelector('#weeks-doc .wk-held').textContent")
+            want = "보류 작업 · " + (", ".join(f"{h['id']} {h['name']}" for h in d["held"]) or "없음")
+            assert held == want, f"⑤ 보류 줄 {held!r} ≠ {want!r}"
+            outs = await p.js("document.querySelectorAll('#weeks-doc .wk-out').length")
+            assert outs == sum(len(w["deliverables_completed"]) for w in d["weeks"]), f"⑤ {cap}시간 산출물 줄 {outs}개"
+            if d is not PLAN:
+                await p.shot(f"08c-weeks-{d.get('size') or cap}")
     await p.js("document.querySelector('#weeks-doc .wk-more').open = true, true")      # 토글: 목표·할 일·배우는 역량, 줄마다 세 줄까지
     lines = await p.js("[...document.querySelectorAll('#weeks-doc .wk-more[open] .wk-lines')].map((u) => u.children.length)")
     assert lines and all(1 <= n <= 3 for n in lines), f"⑤ 토글 줄 수 {lines}"
@@ -258,11 +281,14 @@ async def flow(p):
     await p.js("document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'})), true")
     assert await p.js("document.querySelector('.comp-pop').hidden"), "⑤ 원문 카드가 Esc 로 닫히지 않음"
     await p.js("document.querySelector('#weeks-doc .wk-more').open = false, true")
+    cap = {1: "7", 2: "14"} if not PLAN else {k: f"{PLAN['constraints']['hours_per_week']:g}" for k in (1, 2)}      # md 계획은 시간을 바꿔도 그대로
     await p.mouse("#budget label:nth-of-type(2) input")      # 리포트 전에 공부 시간을 바꿔도 단추가 남는다 (사용자 11/21: 리포트로 안 넘어감)
-    await p.until("/한 주 14시간까지/.test(document.querySelector('#foot-weeks').textContent)", timeout=10)
+    await asyncio.sleep(1.5 if PLAN else 0)
+    await p.until(f"/한 주 {cap[2]}시간까지/.test(document.querySelector('#foot-weeks').textContent)", timeout=10)
     await foot_ok(p, "⑤ 바꾼 뒤", ["정리 리포트 만들기 →"])
     await p.mouse("#budget label:nth-of-type(1) input")
-    await p.until("/한 주 7시간까지/.test(document.querySelector('#foot-weeks').textContent)", timeout=10)
+    await asyncio.sleep(1.5 if PLAN else 0)
+    await p.until(f"/한 주 {cap[1]}시간까지/.test(document.querySelector('#foot-weeks').textContent)", timeout=10)
     await press(p, "정리 리포트 만들기 →")
     await p.until("/정리 리포트를 만들었어요/.test(" + ANNOUNCE + ")", timeout=30)
     await p.until("document.querySelector('#report-doc img')?.complete && document.querySelector('#report-doc img').naturalWidth > 0")

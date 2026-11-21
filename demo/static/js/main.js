@@ -295,7 +295,17 @@ const materialHandlers = {
   error: stepError,
 };
 
-// ── 4단계: 12주 계획 (라운드랩 커리큘럼 생성기 결과). ⑤ 쪽에 12주 막대와 주마다 "배우기 → 적용 → 산출물" (weeks.js) ──
+function weeksFoot(ev) {
+  const inside = ev.inside_weeks < ev.weeks ? `${ev.weeks}주 중 ${ev.inside_weeks}주는 그 안에` : `${ev.weeks}주 모두 그 안에`;
+  const who = ev.source === 'md' ? '' : ' (한 사람)';      // md 계획은 한 사람 기준이라고 적혀 있지 않다
+  panel.foot('weeks', [`교육자료로 배우기 ${hoursText(ev.learning)} · 프로젝트에 적용 ${hoursText(ev.project)}${who}`,
+    `한 주 ${hoursText(ev.cap)}까지 · ${inside} · 산출물 ${ev.deliverables}개`],
+  store.drawn.has('report') ? [] : next('report'));      // 공부 시간을 바꿔 다시 그려도(quiet) 아직 리포트가 없으면 단추는 남는다
+  return inside;
+}
+weeks.picked((sum) => { if (store.drawn.has('weeks') && !store.controller) weeksFoot(sum); });      // 도는 중이면 done 이 고른 계획으로 쓴다
+
+// ── 4단계: 12주 계획 (예시는 주차 계획 md, 새 공고는 라운드랩 커리큘럼 생성기 결과). ⑤ 쪽에 12주 막대와 주마다 "배우기 → 적용 → 산출물" (weeks.js) ──
 const weekHandlers = {
   live_state: liveState,
   steps(ev, ctx) {
@@ -304,15 +314,13 @@ const weekHandlers = {
     if (!ctx.quiet) panel.walk('weeks', ev.items);
   },
   stage: progress('weeks'),
-  // ⑤ 바닥 줄: "교육자료로 배우기 7시간 30분 · 프로젝트에 적용 70시간" / "한 주 7시간까지 · 12주 모두 그 안에 · 산출물 9개" (수는 모두 서버 값)
+  // ⑤ 바닥 줄: "교육자료로 배우기 7시간 30분 · 프로젝트에 적용 70시간" / "한 주 7시간까지 · 12주 모두 그 안에 · 산출물 9개" (수는 모두 서버 값).
+  // 계획 크기(중·대)를 고르는 예시는 고른 계획의 수 (weeks.summary)
   done(ev, ctx) {
     ctx.ended = true;
     weeks.done(ev);
     settle(ctx, 'weeks');
-    const inside = ev.inside_weeks < ev.weeks ? `${ev.weeks}주 중 ${ev.inside_weeks}주는 그 안에` : `${ev.weeks}주 모두 그 안에`;
-    panel.foot('weeks', [`교육자료로 배우기 ${hoursText(ev.learning)} · 프로젝트에 적용 ${hoursText(ev.project)} (한 사람)`,
-      `한 주 ${hoursText(ev.cap)}까지 · ${inside} · 산출물 ${ev.deliverables}개`],
-    store.drawn.has('report') ? [] : next('report'));      // 공부 시간을 바꿔 다시 그려도(quiet) 아직 리포트가 없으면 단추는 남는다
+    const inside = weeksFoot(weeks.summary() ?? ev);
     if (!ctx.quiet) announce(`${ev.weeks}주 계획을 짰어요. ${inside}`);
     finishRun(ctx, 'weeks');
   },

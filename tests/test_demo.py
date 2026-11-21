@@ -651,10 +651,10 @@ def test_step_without_saved_file_says_pending_instead_of_breaking(tmp_path, monk
         assert run_step(step, "84") == [{"type": "notice", "text": wait[step]}]
 
 
-@pytest.mark.parametrize("name", [NAVER, "aws_fde"])
+@pytest.mark.parametrize("name", [NAVER])
 @pytest.mark.parametrize("key", KEYS)
 def test_weeks_step_shows_round_lab_curriculum_in_one_event(name, key):
-    """⑤ 는 라운드랩 커리큘럼 생성기 결과 (사용자 11/21). 하루 1·2·3시간 = 주당 7·14·21시간. 12주를 사건 하나로 보내 화면이 한 번에 그린다"""
+    """⑤ 는 주차 계획 md 가 없는 예시면 라운드랩 커리큘럼 생성기 결과 (사용자 11/21). 하루 1·2·3시간 = 주당 7·14·21시간. 12주를 사건 하나로 보내 화면이 한 번에 그린다"""
     case = pipeline.example_case(name)
     events = list(server.events({"step": "weeks", "text": pipeline.posting_text(case), "budget": key}, live_mode=False, default_speed=0))
     kinds = [e["type"] for e in events]
@@ -668,4 +668,24 @@ def test_weeks_step_shows_round_lab_curriculum_in_one_event(name, key):
     assert {a["kind"] for w in plan for a in w["activities"]} <= {"learning", "project"}
     done = events[-1]
     assert (done["learning"], done["project"]) == (saved["summary"]["learning_hours"], saved["summary"]["implementation_hours"])
+
+
+def test_weeks_step_shows_md_plans_with_middle_as_default():
+    """예시에 주차 계획 md(data/<예시>.plan.<상한>.json)가 있으면 크기마다 한 안을 보낸다. 기본은 중이고, 공부 시간과 상관없다 (사용자 11/21)"""
+    case = pipeline.example_case("aws_fde")
+    saved = {d["constraints"]["hours_per_week"]: d for d in pipeline.plans_case("aws_fde")}
+    runs = [[{k: v for k, v in e.items() if k != "budget_key"} for e in server.events(
+        {"step": "weeks", "text": pipeline.posting_text(case), "budget": k}, live_mode=False, default_speed=0)] for k in KEYS]
+    assert all(r == runs[0] for r in runs)
+    steps, done = runs[0][0], runs[0][-1]
+    middle = next(d for d in saved.values() if d["size"] == "중")
+    assert steps["default"] == f"{middle['constraints']['hours_per_week']:g}" and steps["cap"] == middle["constraints"]["hours_per_week"]
+    assert [p["cap"] for p in steps["plans"]] == sorted(saved) and steps["held"] == middle["held"]
+    for p in steps["plans"]:
+        d = saved[p["cap"]]
+        assert [round(w["learning"] + w["project"], 4) for w in p["plan"]] == [round(w["used_minutes"] / 60, 4) for w in d["weeks"]]
+        assert all(w["learning"] + w["project"] <= w["cap"] + 1e-9 for w in p["plan"])
+        assert {a["id"] for w in p["plan"] for a in w["activities"] if a["kind"] == "project"} == set(d["assigned"])
+        assert p["summary"]["deliverables"] == len(d["assigned"]) and p["held"] == d["held"]
+    assert (done["cap"], done["project"], done["deliverables"]) == (middle["constraints"]["hours_per_week"], middle["summary"]["implementation_hours"], len(middle["assigned"]))
 

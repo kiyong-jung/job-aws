@@ -1,0 +1,1903 @@
+{
+ "schema_version": "jobaws.plan.md.v2",
+ "source": "M-curriculum_bedrock.md",
+ "size": "중",
+ "status": "ok",
+ "project": {
+  "title": "엔터프라이즈 고객사 임베드형 AI 에이전트 플랫폼 구축"
+ },
+ "assigned": [
+  "W1",
+  "W2",
+  "W3",
+  "W4",
+  "W5",
+  "W6",
+  "W7",
+  "W8"
+ ],
+ "held": [
+  {
+   "id": "W9",
+   "name": "재사용 가능한 패턴 라이브러리 코드화"
+  },
+  {
+   "id": "W10",
+   "name": "Agile 프로세스 운영 및 협업 기록"
+  }
+ ],
+ "constraints": {
+  "weeks": 12,
+  "hours_per_week": 14.0,
+  "capacity_hours": 168.0
+ },
+ "summary": {
+  "scheduled_hours": 167.66666666666666,
+  "learning_hours": 11.666666666666666,
+  "implementation_hours": 156.0
+ },
+ "weeks": [
+  {
+   "week": 1,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 120,
+   "implementation_minutes": 720,
+   "goal": "가상 엔터프라이즈 고객사의 요구사항을 정의하고, RAG + 멀티 에이전트 아키텍처 설계 문서·ADR 3건·초기 백로그 및 스프린트 1 계획서를 완성한다.",
+   "method": "ADR 작성 절차를 익혀 문서 저장소·검색 경로·REST 게이트웨이 각 1건씩 ADR 양식을 잡고, Well-Architected 검토 틀로 데이터 흐름도·컴포넌트 다이어그램을 안정성·비용 기준으로 점검한 뒤, 타입·인터페이스 기준을 정리해 기술 트레이드오프 결정의 근거로 삼고, GitHub Projects Iteration 필드 사용법을 확인한 뒤 에픽 5개·스토리 20개 백로그를 등록하고 스프린트 1 계획을 수립한다.",
+   "reason": "ADR 절차를 먼저 읽어야 W1 산출물인 ADR 3건의 형식이 확정되고, Well-Architected 검토는 설계 문서 작성 전에 평가 기준을 세우기 위해 앞에 배치하며, 기술 스택 기준은 트레이드오프 결정의 근거가 되므로 설계 착수 전에 읽고, GitHub Projects 사용법은 백로그 등록 직전에 확인해 실습과 즉시 연결한다.",
+   "deliverables_completed": [
+    {
+     "task": "W1",
+     "out": "아키텍처 설계 문서(PDF), ADR 3건, 초기 백로그 및 스프린트 1 계획서, 비기술 청중용 요약 슬라이드"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 1,
+     "kind": "learning",
+     "id": "L0101",
+     "title": "AWS ADR 작성 절차",
+     "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
+     "minutes": 20,
+     "competencies": [
+      "C06"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C06",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · ADR 3건이 W1 산출물이다. 문서 저장소·검색 경로·REST 게이트웨이(FastAPI/Go)를 한 건씩 기록한다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 2,
+     "kind": "learning",
+     "id": "L0102",
+     "title": "당신의 아키텍처는 Well-Architected 한가요?",
+     "url": "https://www.youtube.com/watch?v=VpSNzSI0pk8",
+     "minutes": 40,
+     "competencies": [
+      "C06"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C06",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 데이터 흐름도·컴포넌트 그림을 안정성·비용 기준으로 검토하는 틀을 준다."
+     ],
+     "hours": 0.6667
+    },
+    {
+     "sequence": 3,
+     "kind": "learning",
+     "id": "L0103",
+     "title": "Recommended Technologies",
+     "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/UI-UX/recommended-technologies.md",
+     "minutes": 50,
+     "competencies": [
+      "C51",
+      "C52"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C51",
+       "level": "있음"
+      },
+      {
+       "cid": "C52",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · 기존 배정. 2주차 Genkit TypeScript 설정 직전에 타입·인터페이스 기준을 잡는다.",
+      "자료 근거 · C51: React - Quick note on create-react-app - Documentation & Using older React coding patterns - Best Practices to Organize; C52: TypeScript - Guidance on types and interfaces"
+     ],
+     "hours": 0.8333
+    },
+    {
+     "sequence": 4,
+     "kind": "learning",
+     "id": "L0104",
+     "title": "GitHub Projects Iteration 필드",
+     "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-iteration-fields",
+     "minutes": 10,
+     "competencies": [
+      "C39"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C39",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 에픽 5개·스토리 20개 백로그와 스프린트 1 계획을 GitHub Projects에 등록해야 한다. W10 자료지만 실제로 필요한 시점은 1주차다."
+     ],
+     "hours": 0.1667
+    },
+    {
+     "sequence": 5,
+     "kind": "project",
+     "id": "W1",
+     "title": "요구사항 분석 및 시스템 아키텍처 설계",
+     "minutes": 720,
+     "competencies": [
+      "C01",
+      "C06",
+      "C07",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C19",
+      "C21",
+      "C39",
+      "C40",
+      "C50",
+      "C55",
+      "C58"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "아키텍처 설계 문서(PDF), ADR 3건, 초기 백로그 및 스프린트 1 계획서, 비기술 청중용 요약 슬라이드",
+     "covers": [
+      {
+       "cid": "C01",
+       "level": "있음"
+      },
+      {
+       "cid": "C06",
+       "level": "있음"
+      },
+      {
+       "cid": "C07",
+       "level": "있음"
+      },
+      {
+       "cid": "C10",
+       "level": "있음"
+      },
+      {
+       "cid": "C11",
+       "level": "있음"
+      },
+      {
+       "cid": "C12",
+       "level": "있음"
+      },
+      {
+       "cid": "C13",
+       "level": "있음"
+      },
+      {
+       "cid": "C19",
+       "level": "있음"
+      },
+      {
+       "cid": "C21",
+       "level": "있음"
+      },
+      {
+       "cid": "C39",
+       "level": "있음"
+      },
+      {
+       "cid": "C40",
+       "level": "있음"
+      },
+      {
+       "cid": "C50",
+       "level": "있음"
+      },
+      {
+       "cid": "C55",
+       "level": "있음"
+      },
+      {
+       "cid": "C58",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C01, C21; FareedKhan-dev/production-grade-agentic-system → C06, C19, C58; open-hand/choerodon → C39"
+     ],
+     "hours": 12.0,
+     "ends_week": 1
+    }
+   ]
+  },
+  {
+   "week": 2,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 100,
+   "implementation_minutes": 740,
+   "goal": "Genkit TypeScript SDK로 법률 문서 대상 RAG 파이프라인을 구축하고, 프롬프트 템플릿 5종 작성 및 검색 정확도 측정 결과 표를 작성한다.",
+   "method": "PDF 수집 → 청킹·임베딩 → 검색 → 답변의 전체 흐름을 파악하고, 문서 ID·페이지·청크 ID 유지 방식을 정리해 출처 포함 답변 구조를 설계한 뒤, 청킹 설정 비교 방법을 확인하고 검색 정확도 측정표 양식을 미리 잡은 다음, Genkit Flow로 청킹·임베딩·벡터 DB 저장·검색·생성 단계를 순서대로 구현하고 Genkit Developer UI로 프롬프트 템플릿 5종을 비교 테스트한다.",
+   "reason": "전체 RAG 구조를 먼저 파악해야 각 단계 구현 순서가 명확해지고, 청크 메타데이터 설계는 출처 추적 로직 구현 전에 확정해야 하므로 구현 착수 전에 읽으며, 청킹 비교 실습 영상은 측정표 양식을 미리 잡기 위해 구현 직전에 배치한다.",
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 6,
+     "kind": "learning",
+     "id": "L0201",
+     "title": "RAG 개념부터 구현까지 · AWS Korea",
+     "url": "https://www.youtube.com/watch?v=21Ty3ea8yoo",
+     "minutes": 40,
+     "competencies": [
+      "C14",
+      "C45"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C14",
+       "level": "있음"
+      },
+      {
+       "cid": "C45",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · PDF 수집 → 청킹·임베딩 → 검색 → 답변의 전체 구조를 구현 착수 전에 잡는다."
+     ],
+     "hours": 0.6667
+    },
+    {
+     "sequence": 7,
+     "kind": "learning",
+     "id": "L0202",
+     "title": "RAG 동작 방식 · 청킹 방식",
+     "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/kb-how-it-works.html",
+     "minutes": 30,
+     "competencies": [
+      "C14",
+      "C45"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C14",
+       "level": "일부"
+      },
+      {
+       "cid": "C45",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 문서 ID·페이지·청크 ID를 어떻게 유지할지 정한다. 출처 포함 답변의 전제다. 함께 보는 자료 · 청킹 방식 https://docs.aws.amazon.com/bedrock/latest/userguide/kb-chunking.html"
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 8,
+     "kind": "learning",
+     "id": "L0203",
+     "title": "Knowledge Base 데이터 청킹전략 실습",
+     "url": "https://www.youtube.com/watch?v=XDop9HoWOBA",
+     "minutes": 30,
+     "competencies": [
+      "C14"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C14",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 같은 질문으로 청킹 설정을 비교하는 방법을 본다. 검색 정확도 측정표에 바로 쓴다."
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 9,
+     "kind": "project",
+     "id": "W2",
+     "title": "Genkit 기반 RAG 파이프라인 구축",
+     "minutes": 740,
+     "competencies": [
+      "C14",
+      "C20",
+      "C21",
+      "C45",
+      "C46",
+      "C52"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C14",
+       "level": "있음"
+      },
+      {
+       "cid": "C20",
+       "level": "있음"
+      },
+      {
+       "cid": "C21",
+       "level": "있음"
+      },
+      {
+       "cid": "C45",
+       "level": "있음"
+      },
+      {
+       "cid": "C46",
+       "level": "있음"
+      },
+      {
+       "cid": "C52",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C14, C45, C46; genkit-ai/genkit → C20, C21; genkit-ai/genkit → C52"
+     ],
+     "hours": 12.3333,
+     "ends_week": 3
+    }
+   ]
+  },
+  {
+   "week": 3,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 60,
+   "implementation_minutes": 780,
+   "goal": "RAG 파이프라인(W2)을 완료하고, 멀티 에이전트 워크플로우(W3)의 오케스트레이터·서브 에이전트 구조 구현을 시작한다.",
+   "method": "멀티 에이전트 모범 사례와 프로덕션 아키텍처 패턴을 확인하고, 모델 요청 → 앱이 도구 실행 → 결과 반환 흐름을 정리해 Genkit agentic tool calling 구조와 대응시킨 뒤, 도구 호출 왕복을 실행 화면으로 확인하고 에이전트 상태 다이어그램 초안을 잡은 다음, W2 구현을 마무리하고 W3에서 오케스트레이터 1개 + 서브 에이전트 3개 구조와 REST API 게이트웨이 초안을 작성한다.",
+   "reason": "멀티 에이전트 모범 사례와 도구 호출 구조를 먼저 읽어야 W3 에이전트 설계 방향이 확정되고, W2 잔여 구현을 W3 착수 전에 완료해 RAG 파이프라인이 에이전트의 문서 검색 도구로 바로 연결될 수 있게 하며, 학습 3건 → W2 완료 → W3 착수 순서로 진행하면 설계 근거와 선행 구현이 모두 갖춰진 상태에서 에이전트 코드를 작성할 수 있다.",
+   "deliverables_completed": [
+    {
+     "task": "W2",
+     "out": "RAG Flow 코드(TypeScript), 프롬프트 템플릿 파일 5종, 검색 정확도 측정 결과 표"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 10,
+     "kind": "learning",
+     "id": "L0301",
+     "title": "CrewAI Production Architecture",
+     "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
+     "minutes": 20,
+     "competencies": [
+      "C21",
+      "C44"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C21",
+       "level": "일부"
+      },
+      {
+       "cid": "C44",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · 기존 배정. 멀티 에이전트 모범 사례를 W3 착수 전에 본다.",
+      "자료 근거 · C21: Best practices for building production-ready AI applications with CrewAI; C44: Fast and Flexible Multi-Agent Automation Framework · concepts · Best practices for building production-ready AI applications with CrewAI"
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 11,
+     "kind": "learning",
+     "id": "L0302",
+     "title": "Bedrock 도구 사용 문서",
+     "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html",
+     "minutes": 20,
+     "competencies": [
+      "C44",
+      "C18"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C44",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · `모델 요청 → 앱이 도구 실행 → 결과 반환` 흐름이 Genkit agentic tool calling과 같은 구조다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 12,
+     "kind": "learning",
+     "id": "L0303",
+     "title": "AWS에서 AI 에이전트 만들기 · 3:40부터",
+     "url": "https://www.youtube.com/watch?v=igsklrIO3fo&t=220s",
+     "minutes": 20,
+     "competencies": [
+      "C44",
+      "C18"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C44",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 위 문서의 왕복을 실행 화면으로 확인한다. 영상은 Strands지만 구조는 그대로 옮길 수 있다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 13,
+     "kind": "project",
+     "id": "W2",
+     "title": "Genkit 기반 RAG 파이프라인 구축",
+     "minutes": 700,
+     "competencies": [
+      "C14",
+      "C20",
+      "C21",
+      "C45",
+      "C46",
+      "C52"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "RAG Flow 코드(TypeScript), 프롬프트 템플릿 파일 5종, 검색 정확도 측정 결과 표",
+     "covers": [
+      {
+       "cid": "C14",
+       "level": "있음"
+      },
+      {
+       "cid": "C20",
+       "level": "있음"
+      },
+      {
+       "cid": "C21",
+       "level": "있음"
+      },
+      {
+       "cid": "C45",
+       "level": "있음"
+      },
+      {
+       "cid": "C46",
+       "level": "있음"
+      },
+      {
+       "cid": "C52",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C14, C45, C46; genkit-ai/genkit → C20, C21; genkit-ai/genkit → C52"
+     ],
+     "hours": 11.6667,
+     "ends_week": 3
+    },
+    {
+     "sequence": 14,
+     "kind": "project",
+     "id": "W3",
+     "title": "멀티 에이전트 워크플로우 및 API 오케스트레이션 레이어 구현",
+     "minutes": 80,
+     "competencies": [
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C41",
+      "C42",
+      "C44",
+      "C53",
+      "C54"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C15",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C17",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "있음"
+      },
+      {
+       "cid": "C41",
+       "level": "있음"
+      },
+      {
+       "cid": "C42",
+       "level": "있음"
+      },
+      {
+       "cid": "C44",
+       "level": "있음"
+      },
+      {
+       "cid": "C53",
+       "level": "있음"
+      },
+      {
+       "cid": "C54",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C15, C18, C41; genkit-ai/genkit → C42, C44; genkit-ai/genkit → C16; FareedKhan-dev/production-grade-agentic-system → C53; genkit-ai/genkit → C54"
+     ],
+     "hours": 1.3333,
+     "ends_week": 6
+    }
+   ]
+  },
+  {
+   "week": 4,
+   "capacity_minutes": 840,
+   "used_minutes": 830,
+   "learning_minutes": 30,
+   "implementation_minutes": 800,
+   "goal": "장기 메모리 통합을 포함한 멀티 에이전트 워크플로우(W3) 구현을 집중적으로 진행한다.",
+   "method": "장기 메모리 저장 데이터와 세션 경계 기준을 정리한 뒤, W3 구현에서 장기 메모리 통합·에이전트 간 메시지 라우팅·외부 데이터 소스(CSV·REST API) 연결을 순서대로 작성하고 OpenAPI 스펙과 에이전트 상태 다이어그램을 보완한다.",
+   "reason": "장기 메모리 설계 기준을 먼저 확인해야 세션 경계와 저장 데이터 범위가 확정되고 이후 W3 메모리 통합 코드를 올바르게 작성할 수 있으며, 이번 주는 학습 1건 외 나머지 시간을 W3 구현에 집중 투입해 잔여 기능을 최대한 완성한다.",
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 15,
+     "kind": "learning",
+     "id": "L0401",
+     "title": "Amazon Bedrock AgentCore 알아보기",
+     "url": "https://www.youtube.com/watch?v=cFh5d_D1wyQ",
+     "minutes": 30,
+     "competencies": [
+      "C44",
+      "C18"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C44",
+       "level": "일부"
+      },
+      {
+       "cid": "C18",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 장기 메모리 통합 구현에 앞서 저장할 데이터와 세션 경계를 정하는 기준을 준다."
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 16,
+     "kind": "project",
+     "id": "W3",
+     "title": "멀티 에이전트 워크플로우 및 API 오케스트레이션 레이어 구현",
+     "minutes": 800,
+     "competencies": [
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C41",
+      "C42",
+      "C44",
+      "C53",
+      "C54"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C15",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C17",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "있음"
+      },
+      {
+       "cid": "C41",
+       "level": "있음"
+      },
+      {
+       "cid": "C42",
+       "level": "있음"
+      },
+      {
+       "cid": "C44",
+       "level": "있음"
+      },
+      {
+       "cid": "C53",
+       "level": "있음"
+      },
+      {
+       "cid": "C54",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C15, C18, C41; genkit-ai/genkit → C42, C44; genkit-ai/genkit → C16; FareedKhan-dev/production-grade-agentic-system → C53; genkit-ai/genkit → C54"
+     ],
+     "hours": 13.3333,
+     "ends_week": 6
+    }
+   ]
+  },
+  {
+   "week": 5,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 50,
+   "implementation_minutes": 790,
+   "goal": "Circuit breaker·fallback·가드레일 설계 기준을 확립하고, W3 멀티 에이전트 구현의 나머지 부분을 완성한다.",
+   "method": "Circuit breaker 상태·복구·재시도 기준과 지터 적용 방식을 정리해 W4 구현에 쓸 설계 메모를 작성하고, 입력·출력 검사 흐름을 확인하여 커스텀 룰 3개와 차단 시 응답 초안을 작성한 뒤, W3 구현에서 에이전트 상태 다이어그램·OpenAPI 스펙을 최종 완성하고 산출물을 정리한다.",
+   "reason": "Circuit breaker와 가드레일 학습을 이번 주에 배치한 것은 다음 주 W4 보안·안정성 레이어 구현 직전에 설계 기준을 확정하기 위해서이며, W3 구현 마무리를 병행해 산출물이 완성된 상태에서 W4로 전환할 수 있게 한다.",
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 17,
+     "kind": "learning",
+     "id": "L0501",
+     "title": "Circuit breaker 설계 · 재시도 간격과 지터",
+     "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/circuit-breaker.html",
+     "minutes": 30,
+     "competencies": [
+      "C23"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C23",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · W4의 circuit breaker와 LLM 불가용 시 fallback의 상태·복구·재시도 기준이다. 함께 보는 자료 · 재시도 간격과 지터 https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/"
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 18,
+     "kind": "learning",
+     "id": "L0502",
+     "title": "Amazon Bedrock Guardrails 데모",
+     "url": "https://www.youtube.com/watch?v=srQxO_o9KgM",
+     "minutes": 20,
+     "competencies": [
+      "C30"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C30",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · 입력·출력 검사 흐름을 보고 커스텀 룰 3개와 차단 시 응답을 설계한다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 19,
+     "kind": "project",
+     "id": "W3",
+     "title": "멀티 에이전트 워크플로우 및 API 오케스트레이션 레이어 구현",
+     "minutes": 790,
+     "competencies": [
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C41",
+      "C42",
+      "C44",
+      "C53",
+      "C54"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C15",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C17",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "있음"
+      },
+      {
+       "cid": "C41",
+       "level": "있음"
+      },
+      {
+       "cid": "C42",
+       "level": "있음"
+      },
+      {
+       "cid": "C44",
+       "level": "있음"
+      },
+      {
+       "cid": "C53",
+       "level": "있음"
+      },
+      {
+       "cid": "C54",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C15, C18, C41; genkit-ai/genkit → C42, C44; genkit-ai/genkit → C16; FareedKhan-dev/production-grade-agentic-system → C53; genkit-ai/genkit → C54"
+     ],
+     "hours": 13.1667,
+     "ends_week": 6
+    }
+   ]
+  },
+  {
+   "week": 6,
+   "capacity_minutes": 840,
+   "used_minutes": 830,
+   "learning_minutes": 20,
+   "implementation_minutes": 810,
+   "goal": "W3 멀티 에이전트 구현을 완료하고, 보안·가드레일·프로덕션 안정성 레이어(W4) 구현을 시작한다.",
+   "method": "Redis 응답 캐싱의 캐시 키·TTL 설계 기준을 정리해 사용자·권한별 응답 재사용 문제를 방지하는 설계를 확정하고, W3 구현의 잔여 항목을 마무리해 멀티 에이전트 코드·OpenAPI 스펙·에이전트 상태 다이어그램을 최종 완성한 뒤, W4 구현에서 rate limiting·입력 sanitization·프롬프트 인젝션 방어·circuit breaker 구현을 시작하고 응답 캐싱 설계를 적용한다.",
+   "reason": "캐싱 설계를 W4 구현 착수 직전에 읽어야 캐시 키·TTL 결정이 코드에 바로 반영되고, W3 잔여 구현을 먼저 완료해 산출물 공백 없이 W4로 전환하며, 이번 주 안에 W4 보안 레이어 구현을 시작해 다음 주 진행에 연속성을 확보한다.",
+   "deliverables_completed": [
+    {
+     "task": "W3",
+     "out": "멀티 에이전트 코드(TypeScript/Python), API 게이트웨이 OpenAPI 스펙, 에이전트 상태 다이어그램"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 20,
+     "kind": "learning",
+     "id": "L0601",
+     "title": "ElastiCache 생성형 AI 캐싱 설계",
+     "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/semantic-caching-best-practices.html",
+     "minutes": 20,
+     "competencies": [
+      "C22",
+      "C24"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C22",
+       "level": "일부"
+      },
+      {
+       "cid": "C24",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · Redis 응답 캐싱에서 사용자·권한이 다른 요청에 응답이 재사용되지 않게 캐시 키와 TTL을 정한다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 21,
+     "kind": "project",
+     "id": "W3",
+     "title": "멀티 에이전트 워크플로우 및 API 오케스트레이션 레이어 구현",
+     "minutes": 10,
+     "competencies": [
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C41",
+      "C42",
+      "C44",
+      "C53",
+      "C54"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "멀티 에이전트 코드(TypeScript/Python), API 게이트웨이 OpenAPI 스펙, 에이전트 상태 다이어그램",
+     "covers": [
+      {
+       "cid": "C15",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C17",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "있음"
+      },
+      {
+       "cid": "C41",
+       "level": "있음"
+      },
+      {
+       "cid": "C42",
+       "level": "있음"
+      },
+      {
+       "cid": "C44",
+       "level": "있음"
+      },
+      {
+       "cid": "C53",
+       "level": "있음"
+      },
+      {
+       "cid": "C54",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C15, C18, C41; genkit-ai/genkit → C42, C44; genkit-ai/genkit → C16; FareedKhan-dev/production-grade-agentic-system → C53; genkit-ai/genkit → C54"
+     ],
+     "hours": 0.1667,
+     "ends_week": 6
+    },
+    {
+     "sequence": 22,
+     "kind": "project",
+     "id": "W4",
+     "title": "보안·가드레일·프로덕션 안정성 레이어 구현",
+     "minutes": 800,
+     "competencies": [
+      "C22",
+      "C23",
+      "C24",
+      "C26",
+      "C27",
+      "C30"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C22",
+       "level": "있음"
+      },
+      {
+       "cid": "C23",
+       "level": "있음"
+      },
+      {
+       "cid": "C24",
+       "level": "있음"
+      },
+      {
+       "cid": "C26",
+       "level": "있음"
+      },
+      {
+       "cid": "C27",
+       "level": "있음"
+      },
+      {
+       "cid": "C30",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · FareedKhan-dev/production-grade-agentic-system → C30; FareedKhan-dev/production-grade-agentic-system → C22, C23, C24; FareedKhan-dev/production-grade-agentic-system → C26; FareedKhan-dev/production-grade-agentic-system → C27"
+     ],
+     "hours": 13.3333,
+     "ends_week": 7
+    }
+   ]
+  },
+  {
+   "week": 7,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 90,
+   "implementation_minutes": 750,
+   "goal": "프로덕션 보안·가드레일 레이어를 완성하고, ADK 에이전트 평가 실습을 통해 Eval 프레임워크 구축의 기반을 마련한다.",
+   "method": "Vertex AI Gen AI Evaluation 노트북을 실행하여 에이전트 평가 지표와 평가 파이프라인의 구조를 직접 확인하고, W4 구현에 집중하여 rate limiting·입력 sanitization·프롬프트 인젝션 방어·circuit breaker를 순서대로 완성한 뒤, W4가 완료되면 W5의 LLM-as-a-Judge 평가 파이프라인 설계와 초기 스크립트 작성을 시작한다.",
+   "reason": "평가 노트북을 먼저 보면 평가 지표 설계 방향이 잡혀 W5 착수 시 재작업이 줄어들고, W4는 이번 주 완료 기준이므로 학습 직후 바로 구현에 진입하며, W5는 남은 시간에 착수하여 다음 주로 이어지는 흐름을 만든다.",
+   "deliverables_completed": [
+    {
+     "task": "W4",
+     "out": "보안 레이어 코드, 가드레일 룰 명세서, 레이턴시 벤치마크 결과(before/after 비교표)"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 23,
+     "kind": "learning",
+     "id": "L0701",
+     "title": "Evaluate your ADK agent · Vertex AI Gen AI Evaluation",
+     "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
+     "minutes": 90,
+     "competencies": [
+      "C21",
+      "C43",
+      "C44"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C21",
+       "level": "일부"
+      },
+      {
+       "cid": "C43",
+       "level": "있음"
+      },
+      {
+       "cid": "C44",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 기존 배정. Gemini 스택에 가장 가까운 평가 실습이라 Bedrock 평가 영상 대신 이것을 남겼다.",
+      "자료 근거 · C21: Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents.; C43: using Vertex AI Gen AI Evaluation provides a toolkit of quality controlled and explainable methods and metrics to evaluate any generat; C44: Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents."
+     ],
+     "hours": 1.5
+    },
+    {
+     "sequence": 24,
+     "kind": "project",
+     "id": "W4",
+     "title": "보안·가드레일·프로덕션 안정성 레이어 구현",
+     "minutes": 400,
+     "competencies": [
+      "C22",
+      "C23",
+      "C24",
+      "C26",
+      "C27",
+      "C30"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "보안 레이어 코드, 가드레일 룰 명세서, 레이턴시 벤치마크 결과(before/after 비교표)",
+     "covers": [
+      {
+       "cid": "C22",
+       "level": "있음"
+      },
+      {
+       "cid": "C23",
+       "level": "있음"
+      },
+      {
+       "cid": "C24",
+       "level": "있음"
+      },
+      {
+       "cid": "C26",
+       "level": "있음"
+      },
+      {
+       "cid": "C27",
+       "level": "있음"
+      },
+      {
+       "cid": "C30",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · FareedKhan-dev/production-grade-agentic-system → C30; FareedKhan-dev/production-grade-agentic-system → C22, C23, C24; FareedKhan-dev/production-grade-agentic-system → C26; FareedKhan-dev/production-grade-agentic-system → C27"
+     ],
+     "hours": 6.6667,
+     "ends_week": 7
+    },
+    {
+     "sequence": 25,
+     "kind": "project",
+     "id": "W5",
+     "title": "Eval 프레임워크 및 모니터링 구현",
+     "minutes": 350,
+     "competencies": [
+      "C03",
+      "C05",
+      "C08",
+      "C09",
+      "C28",
+      "C29",
+      "C32",
+      "C33",
+      "C34",
+      "C35",
+      "C43",
+      "C48",
+      "C56"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C03",
+       "level": "있음"
+      },
+      {
+       "cid": "C05",
+       "level": "있음"
+      },
+      {
+       "cid": "C08",
+       "level": "있음"
+      },
+      {
+       "cid": "C09",
+       "level": "있음"
+      },
+      {
+       "cid": "C28",
+       "level": "있음"
+      },
+      {
+       "cid": "C29",
+       "level": "있음"
+      },
+      {
+       "cid": "C32",
+       "level": "있음"
+      },
+      {
+       "cid": "C33",
+       "level": "있음"
+      },
+      {
+       "cid": "C34",
+       "level": "있음"
+      },
+      {
+       "cid": "C35",
+       "level": "있음"
+      },
+      {
+       "cid": "C43",
+       "level": "있음"
+      },
+      {
+       "cid": "C48",
+       "level": "있음"
+      },
+      {
+       "cid": "C56",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C28; FareedKhan-dev/production-grade-agentic-system → C29, C43; FareedKhan-dev/production-grade-agentic-system → C32; FareedKhan-dev/production-grade-agentic-system → C03, C05, C56; genkit-ai/genkit → C48"
+     ],
+     "hours": 5.8333,
+     "ends_week": 9
+    }
+   ]
+  },
+  {
+   "week": 8,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 20,
+   "implementation_minutes": 820,
+   "goal": "RAG 평가 지표 체계를 정립하고, Eval 프레임워크·모니터링 대시보드·스트레스 테스트를 완성한다.",
+   "method": "AWS Bedrock 평가 지표 문서를 읽으며 검색 평가 지표와 답변 평가 지표를 구분하고 RAGAS 스타일 4종에 매핑하는 메모를 작성한 뒤, 이 매핑 결과를 W5 Eval 스크립트의 지표 정의에 즉시 반영하고, Prometheus + Grafana 대시보드 구성·동시 50 요청 스트레스 테스트 실행·코드 리뷰 체크리스트 및 온보딩 가이드 작성까지 완료한다.",
+   "reason": "평가 지표 문서는 분량이 짧아 주 초반에 빠르게 소화하면 W5 지표 설계에 바로 활용할 수 있고, W5는 이번 주 대부분의 시간을 차지하므로 학습 직후 끊김 없이 구현으로 전환하는 순서가 효율적이다.",
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 26,
+     "kind": "learning",
+     "id": "L0801",
+     "title": "RAG 평가 지표",
+     "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-evaluation-metrics.html",
+     "minutes": 20,
+     "competencies": [
+      "C29",
+      "C43"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C29",
+       "level": "일부"
+      },
+      {
+       "cid": "C43",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 검색 평가와 답변 평가 지표를 구분해 RAGAS 스타일 지표 4종에 매핑한다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 27,
+     "kind": "project",
+     "id": "W5",
+     "title": "Eval 프레임워크 및 모니터링 구현",
+     "minutes": 820,
+     "competencies": [
+      "C03",
+      "C05",
+      "C08",
+      "C09",
+      "C28",
+      "C29",
+      "C32",
+      "C33",
+      "C34",
+      "C35",
+      "C43",
+      "C48",
+      "C56"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C03",
+       "level": "있음"
+      },
+      {
+       "cid": "C05",
+       "level": "있음"
+      },
+      {
+       "cid": "C08",
+       "level": "있음"
+      },
+      {
+       "cid": "C09",
+       "level": "있음"
+      },
+      {
+       "cid": "C28",
+       "level": "있음"
+      },
+      {
+       "cid": "C29",
+       "level": "있음"
+      },
+      {
+       "cid": "C32",
+       "level": "있음"
+      },
+      {
+       "cid": "C33",
+       "level": "있음"
+      },
+      {
+       "cid": "C34",
+       "level": "있음"
+      },
+      {
+       "cid": "C35",
+       "level": "있음"
+      },
+      {
+       "cid": "C43",
+       "level": "있음"
+      },
+      {
+       "cid": "C48",
+       "level": "있음"
+      },
+      {
+       "cid": "C56",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C28; FareedKhan-dev/production-grade-agentic-system → C29, C43; FareedKhan-dev/production-grade-agentic-system → C32; FareedKhan-dev/production-grade-agentic-system → C03, C05, C56; genkit-ai/genkit → C48"
+     ],
+     "hours": 13.6667,
+     "ends_week": 9
+    }
+   ]
+  },
+  {
+   "week": 9,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 90,
+   "implementation_minutes": 750,
+   "goal": "W5 Eval 프레임워크를 마무리하고, ECS Fargate·CDK·GitHub Actions 인증 흐름을 학습하여 CI/CD 파이프라인(W6) 구현을 시작한다.",
+   "method": "ECS Fargate + CDK 영상으로 도커 이미지에서 Fargate까지의 전체 흐름을 파악한 뒤, 공식 Python CDK 실습으로 프로젝트에서 실제로 쓸 코드 패턴을 확인하고, IAM OIDC + ECR 푸시 자료로 CI 파이프라인 마지막 단계의 인증·푸시 설정을 정리한 다음, W5의 남은 산출물을 완료하고 W6 GitHub Actions 워크플로우 파일과 CDK 스택 초안 작성을 시작한다.",
+   "reason": "세 학습 자료가 모두 W6 구현의 직접 참조 자료이므로 W6 착수 직전에 몰아서 보는 것이 가장 효과적이고, W5 완료를 먼저 처리하여 미완 산출물 없이 W6로 전환한다.",
+   "deliverables_completed": [
+    {
+     "task": "W5",
+     "out": "Eval 스크립트(Python), Grafana 대시보드 JSON, 스트레스 테스트 결과 보고서, 코드 리뷰 가이드라인 문서, 온보딩 가이드"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 28,
+     "kind": "learning",
+     "id": "L0901",
+     "title": "Learn ECS Fargate with the AWS CDK",
+     "url": "https://www.youtube.com/watch?v=DCUZkhOMhac",
+     "minutes": 40,
+     "competencies": [
+      "C02",
+      "C57"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C02",
+       "level": "일부"
+      },
+      {
+       "cid": "C57",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · 도커 이미지에서 Fargate까지의 흐름을 본다. 영상은 TypeScript CDK다."
+     ],
+     "hours": 0.6667
+    },
+    {
+     "sequence": 29,
+     "kind": "learning",
+     "id": "L0902",
+     "title": "CDK로 Fargate 웹 서버 구축",
+     "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/tutorial-ecs-web-server-cdk.html",
+     "minutes": 30,
+     "competencies": [
+      "C02",
+      "C57"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C02",
+       "level": "일부"
+      },
+      {
+       "cid": "C57",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · 프로젝트는 Python CDK이므로 코드는 이 공식 실습 기준으로 쓴다."
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 30,
+     "kind": "learning",
+     "id": "L0903",
+     "title": "GitHub Actions와 IAM OIDC · ECR 이미지 푸시",
+     "url": "https://aws.amazon.com/blogs/security/use-iam-roles-to-connect-github-actions-to-actions-in-aws/",
+     "minutes": 20,
+     "competencies": [
+      "C31",
+      "C57"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C31",
+       "level": "있음"
+      },
+      {
+       "cid": "C57",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · CI 파이프라인 마지막 단계(Docker build → push)의 인증과 푸시 설정이다. 함께 보는 자료 · ECR 이미지 푸시 https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html"
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 31,
+     "kind": "project",
+     "id": "W5",
+     "title": "Eval 프레임워크 및 모니터링 구현",
+     "minutes": 270,
+     "competencies": [
+      "C03",
+      "C05",
+      "C08",
+      "C09",
+      "C28",
+      "C29",
+      "C32",
+      "C33",
+      "C34",
+      "C35",
+      "C43",
+      "C48",
+      "C56"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "Eval 스크립트(Python), Grafana 대시보드 JSON, 스트레스 테스트 결과 보고서, 코드 리뷰 가이드라인 문서, 온보딩 가이드",
+     "covers": [
+      {
+       "cid": "C03",
+       "level": "있음"
+      },
+      {
+       "cid": "C05",
+       "level": "있음"
+      },
+      {
+       "cid": "C08",
+       "level": "있음"
+      },
+      {
+       "cid": "C09",
+       "level": "있음"
+      },
+      {
+       "cid": "C28",
+       "level": "있음"
+      },
+      {
+       "cid": "C29",
+       "level": "있음"
+      },
+      {
+       "cid": "C32",
+       "level": "있음"
+      },
+      {
+       "cid": "C33",
+       "level": "있음"
+      },
+      {
+       "cid": "C34",
+       "level": "있음"
+      },
+      {
+       "cid": "C35",
+       "level": "있음"
+      },
+      {
+       "cid": "C43",
+       "level": "있음"
+      },
+      {
+       "cid": "C48",
+       "level": "있음"
+      },
+      {
+       "cid": "C56",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C28; FareedKhan-dev/production-grade-agentic-system → C29, C43; FareedKhan-dev/production-grade-agentic-system → C32; FareedKhan-dev/production-grade-agentic-system → C03, C05, C56; genkit-ai/genkit → C48"
+     ],
+     "hours": 4.5,
+     "ends_week": 9
+    },
+    {
+     "sequence": 32,
+     "kind": "project",
+     "id": "W6",
+     "title": "CI/CD 파이프라인 및 컨테이너 배포 구성",
+     "minutes": 480,
+     "competencies": [
+      "C02",
+      "C04",
+      "C25",
+      "C31",
+      "C36",
+      "C37",
+      "C38",
+      "C47",
+      "C49",
+      "C57"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C02",
+       "level": "있음"
+      },
+      {
+       "cid": "C04",
+       "level": "있음"
+      },
+      {
+       "cid": "C25",
+       "level": "있음"
+      },
+      {
+       "cid": "C31",
+       "level": "있음"
+      },
+      {
+       "cid": "C36",
+       "level": "있음"
+      },
+      {
+       "cid": "C37",
+       "level": "있음"
+      },
+      {
+       "cid": "C38",
+       "level": "있음"
+      },
+      {
+       "cid": "C47",
+       "level": "있음"
+      },
+      {
+       "cid": "C49",
+       "level": "있음"
+      },
+      {
+       "cid": "C57",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C02, C49; FareedKhan-dev/production-grade-agentic-system → C04, C25, C47; open-hand/choerodon → C31; cloudcomponents/cdk-constructs → C57"
+     ],
+     "hours": 8.0,
+     "ends_week": 10
+    }
+   ]
+  },
+  {
+   "week": 10,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 60,
+   "implementation_minutes": 780,
+   "goal": "CI/CD 파이프라인과 ECS Fargate 배포(W6)를 완성하고, Genkit 클라이언트 스트리밍 방식을 파악하여 프론트엔드(W7) 구현을 시작한다.",
+   "method": "빌드→ECR→ECS 전체 순서 영상으로 배포 흐름 전체를 한 번에 확인하고, ECS + Secrets Manager 자료로 스테이징·프로덕션 환경 분리와 환경 변수 관리 방법을 정리한 뒤, Genkit Frontend integration 문서로 `streamFlow` 사용법을 파악하고, W6 구현을 마무리하여 blue-green 배포·Slack 알림·배포 스크린샷까지 완성한 다음 남은 시간에 W7 React + TypeScript 챗 인터페이스 초안을 작성한다.",
+   "reason": "배포 흐름 영상과 Secrets Manager 자료는 W6 완료에 직결되므로 W6 구현 직전에 보고, Genkit Frontend integration은 W7 착수 전에 보아야 스트리밍 구조를 잘못 설계하는 재작업을 막을 수 있다.",
+   "deliverables_completed": [
+    {
+     "task": "W6",
+     "out": "GitHub Actions 워크플로우 파일, CDK 스택 코드, 배포 완료 스크린샷(스테이징+프로덕션)"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 33,
+     "kind": "learning",
+     "id": "L1001",
+     "title": "GitHub Actions, Docker and AWS ECS Fargate",
+     "url": "https://www.youtube.com/watch?v=IhyOMWAXcrI",
+     "minutes": 30,
+     "competencies": [
+      "C31",
+      "C02"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C31",
+       "level": "있음"
+      },
+      {
+       "cid": "C02",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 빌드 → ECR → ECS 배포 전체 순서를 한 번에 확인한다."
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 34,
+     "kind": "learning",
+     "id": "L1002",
+     "title": "ECS · Secrets Manager 비밀값 전달",
+     "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/secrets-envvar-secrets-manager.html",
+     "minutes": 10,
+     "competencies": [
+      "C57",
+      "C04"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C57",
+       "level": "있음"
+      },
+      {
+       "cid": "C04",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 스테이징·프로덕션 분리와 Secrets Manager 관리가 W6 완료 기준이다."
+     ],
+     "hours": 0.1667
+    },
+    {
+     "sequence": 35,
+     "kind": "learning",
+     "id": "L1003",
+     "title": "Genkit Frontend integration",
+     "url": "https://genkit.dev/docs/client/",
+     "minutes": 20,
+     "competencies": [
+      "C52",
+      "C16"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C52",
+       "level": "일부"
+      },
+      {
+       "cid": "C16",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W7의 핵심인 Genkit 클라이언트 `streamFlow` 사용법이다. 기존 두 자료 목록에 없어서 새로 넣었다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 36,
+     "kind": "project",
+     "id": "W6",
+     "title": "CI/CD 파이프라인 및 컨테이너 배포 구성",
+     "minutes": 720,
+     "competencies": [
+      "C02",
+      "C04",
+      "C25",
+      "C31",
+      "C36",
+      "C37",
+      "C38",
+      "C47",
+      "C49",
+      "C57"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "GitHub Actions 워크플로우 파일, CDK 스택 코드, 배포 완료 스크린샷(스테이징+프로덕션)",
+     "covers": [
+      {
+       "cid": "C02",
+       "level": "있음"
+      },
+      {
+       "cid": "C04",
+       "level": "있음"
+      },
+      {
+       "cid": "C25",
+       "level": "있음"
+      },
+      {
+       "cid": "C31",
+       "level": "있음"
+      },
+      {
+       "cid": "C36",
+       "level": "있음"
+      },
+      {
+       "cid": "C37",
+       "level": "있음"
+      },
+      {
+       "cid": "C38",
+       "level": "있음"
+      },
+      {
+       "cid": "C47",
+       "level": "있음"
+      },
+      {
+       "cid": "C49",
+       "level": "있음"
+      },
+      {
+       "cid": "C57",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C02, C49; FareedKhan-dev/production-grade-agentic-system → C04, C25, C47; open-hand/choerodon → C31; cloudcomponents/cdk-constructs → C57"
+     ],
+     "hours": 12.0,
+     "ends_week": 10
+    },
+    {
+     "sequence": 37,
+     "kind": "project",
+     "id": "W7",
+     "title": "React/TypeScript 프론트엔드 및 실시간 스트리밍 UI",
+     "minutes": 60,
+     "competencies": [
+      "C52"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C52",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C52"
+     ],
+     "hours": 1.0,
+     "ends_week": 12
+    }
+   ]
+  },
+  {
+   "week": 11,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 0,
+   "implementation_minutes": 840,
+   "goal": "React/TypeScript 챗 인터페이스와 실시간 스트리밍 UI를 완성한다.",
+   "method": "W7 구현에 집중하여 Genkit 클라이언트 SDK로 SSE 스트리밍 응답을 처리하는 챗 컴포넌트를 완성하고, 에이전트 실행 단계별 진행 표시 UI와 좋아요/싫어요 피드백 버튼을 추가한 뒤 완성된 앱을 실행하며 스트리밍 UI 데모 영상을 녹화한다.",
+   "reason": "이번 주는 W7 단일 프로젝트만 배정되어 있으므로 분산 없이 구현에 집중하여 완성도를 높인다.",
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 38,
+     "kind": "project",
+     "id": "W7",
+     "title": "React/TypeScript 프론트엔드 및 실시간 스트리밍 UI",
+     "minutes": 840,
+     "competencies": [
+      "C52"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C52",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C52"
+     ],
+     "hours": 14.0,
+     "ends_week": 12
+    }
+   ]
+  },
+  {
+   "week": 12,
+   "capacity_minutes": 840,
+   "used_minutes": 840,
+   "learning_minutes": 60,
+   "implementation_minutes": 780,
+   "goal": "W7 프론트엔드를 마무리하고, FIS 기반 장애 주입 개념과 RCA 형식을 학습하여 인시던트 트러블슈팅 실습(W8)을 완료한다.",
+   "method": "AWS FIS 장애 주입 영상으로 장애 주입 시 관측 포인트를 파악하고, Well-Architected 장애 실습·FIS 중단 조건 자료로 신호와 중단 조건을 먼저 정의한 뒤, RCA 프로세스 문서로 시간선·영향·원인·후속 조치 형식을 확인하고, W7의 남은 산출물을 완료한 다음 W8 구현으로 전환하여 LLM 타임아웃·벡터 DB 연결 실패·잘못된 프롬프트 3가지 장애 시나리오를 스테이징 환경에서 주입하고 각각 RCA 문서와 개선 PR을 작성한다.",
+   "reason": "세 학습 자료가 모두 W8 장애 주입 실습의 직접 참조 자료이므로 W8 착수 직전에 순서대로 보고, W7 잔여 작업을 먼저 닫아 미완 산출물 없이 W8에 집중할 수 있도록 한다.",
+   "deliverables_completed": [
+    {
+     "task": "W7",
+     "out": "React 앱 코드(TypeScript), 스트리밍 UI 데모 영상(2분 이내)"
+    },
+    {
+     "task": "W8",
+     "out": "인시던트 시나리오 3건의 RCA 문서, 개선 PR 3건"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 39,
+     "kind": "learning",
+     "id": "L1201",
+     "title": "Breaking Things Purposefully With AWS FIS",
+     "url": "https://www.youtube.com/watch?v=sa4NTbzQG0w",
+     "minutes": 20,
+     "competencies": [
+      "C26",
+      "C23"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C26",
+       "level": "일부"
+      },
+      {
+       "cid": "C23",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 장애 주입 시 무엇을 관측하는지 개념을 잡는다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 40,
+     "kind": "learning",
+     "id": "L1202",
+     "title": "Well-Architected 장애 실습 · FIS 중단 조건",
+     "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/rel12-bp02.html",
+     "minutes": 20,
+     "competencies": [
+      "C26",
+      "C23"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C26",
+       "level": "일부"
+      },
+      {
+       "cid": "C23",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 신호와 중단 조건을 먼저 정한다. 커리큘럼의 \"운영 환경 장애 주입\"은 스테이징에서만 진행한다. 함께 보는 자료 · FIS 중단 조건 https://docs.aws.amazon.com/fis/latest/userguide/stop-conditions.html"
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 41,
+     "kind": "learning",
+     "id": "L1203",
+     "title": "장애 이후 원인 분석",
+     "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/ops_evolve_ops_perform_rca_process.html",
+     "minutes": 20,
+     "competencies": [
+      "C27"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C27",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · RCA 3건(시간선·영향·원인·후속 조치)의 형식이다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 42,
+     "kind": "project",
+     "id": "W7",
+     "title": "React/TypeScript 프론트엔드 및 실시간 스트리밍 UI",
+     "minutes": 60,
+     "competencies": [
+      "C52"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "React 앱 코드(TypeScript), 스트리밍 UI 데모 영상(2분 이내)",
+     "covers": [
+      {
+       "cid": "C52",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · genkit-ai/genkit → C52"
+     ],
+     "hours": 1.0,
+     "ends_week": 12
+    },
+    {
+     "sequence": 43,
+     "kind": "project",
+     "id": "W8",
+     "title": "인시던트 트러블슈팅 및 운영 개선 실습",
+     "minutes": 720,
+     "competencies": [
+      "C26",
+      "C27",
+      "C32"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "인시던트 시나리오 3건의 RCA 문서, 개선 PR 3건",
+     "covers": [
+      {
+       "cid": "C26",
+       "level": "있음"
+      },
+      {
+       "cid": "C27",
+       "level": "있음"
+      },
+      {
+       "cid": "C32",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · FareedKhan-dev/production-grade-agentic-system → C26; FareedKhan-dev/production-grade-agentic-system → C27; FareedKhan-dev/production-grade-agentic-system → C32"
+     ],
+     "hours": 12.0,
+     "ends_week": 12
+    }
+   ]
+  }
+ ]
+}

@@ -760,7 +760,13 @@ ul.legend[hidden] { display: none; }
 .wk-items { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .wk-item { font-size: var(--fs-body); line-height: 1.5; }
 .wk-item a { color: var(--ink); font-weight: 600; text-underline-offset: 3px; }
-.wk-title, .wk-h { font-weight: 600; }
+.plan-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s3); }
+.plan-name { font-size: var(--fs-body); font-weight: 700; }
+.plan-pick { display: flex; gap: var(--s1); flex: 0 1 360px; min-width: 0; padding: var(--s1); background: var(--sunk); border-radius: var(--r-card); }
+.wk-held { margin: 0; font-size: var(--fs-body); line-height: 1.5; }
+.wk-held[hidden] { display: none; }
+.wk-title, .wk-h, .wk-ends { font-weight: 600; }
+.wk-out { display: block; margin: 4px 0 0; padding: 4px 8px; border-left: 3px solid var(--ink); background: var(--sunk); font-size: var(--fs-body); line-height: 1.5; }
 .wk-more { padding-top: var(--s2); border-top: 1px solid var(--line); }
 .wk-more summary { cursor: pointer; font-size: var(--fs-body); font-weight: 700; }
 .wk-body { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 10px 12px; margin: var(--s2) 0 0; }
