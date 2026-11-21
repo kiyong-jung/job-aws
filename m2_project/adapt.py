@@ -16,6 +16,7 @@
 import hashlib
 import json
 import re
+import time
 
 from shared import config, llm
 from shared.llm import STR, arr, obj
@@ -314,8 +315,9 @@ def tier_counts(got, case, base_cells):
     return {"core": count(lambda p: p["core"]), "with_extension": count(lambda p: True), "base_alone_by_judge": alone}
 
 
-def adapt(case, candidates, cells, order, team=TEAM):
+def adapt(case, candidates, cells, order, team=TEAM, deadline=None):
     """판정을 마친 후보들 → 응용 프로젝트 하나 (hand_naver.json 과 같은 꼴 + checks).
+    deadline(time.time() 시각)을 주면, 다시 쓰기는 앞 호출만큼 걸려도 그 안에 끝날 때만 한다 (라이브: Vercel 300초).
     candidates·cells 는 같은 차례, order 는 pick_best 의 순위(첫째가 바탕).
     <공고>.adapt.json 에 두고, 모델에 줄 글(지시문 + 요청)이 같으면 다시 쓴다 (돈 0)."""
     path = config.OUTPUTS / "project" / f'{case["case"]}.adapt.json'
@@ -336,21 +338,25 @@ def adapt(case, candidates, cells, order, team=TEAM):
         if saved.get("request") == key:
             return saved
     before = llm.USAGE.get("krw", 0.0)
+    t = time.time()
     got = llm.ask_json(user, SYSTEM, SCHEMA, model=MODEL, max_tokens=24000)
+    took = time.time() - t
     dropped = drop_unnamed_tools(got, case)
     first = issues = check(got, case, projects, team)
     # 11/18 실행 세 번 모두 첫 답이 빈 꼴(출력 35토큰)이었고, 다시 물어도 비었다. 앞 답과 걸린 것을 함께 준 다시 쓰기에서는 채웠다.
     # 그래서 빈 답이면 다시 쓰기를 한 번 더 준다 (빈 답 뒤 첫 다시 쓰기는 사실상 첫 답이다)
     blank = not got["packages"]
     rewrote, limit = 0, 2 if blank else 1
-    while rewrote < limit and any(x["level"] == "fix" for x in issues):
+    while rewrote < limit and any(x["level"] == "fix" for x in issues) and (deadline is None or time.time() + took < deadline):
         problems = "\n".join(f'- [{x["rule"]}]{" (선택)" if x["level"] == "warn" else ""} {x["detail"]}' for x in issues)
         again = (user + "\n<previous_answer>" + json.dumps(got, ensure_ascii=False) + "</previous_answer>\n"
                  f"<problems>\n{problems}\n</problems>\n"
                  "Code checks found the problems above in your previous answer. Return the full corrected JSON. "
                  "Fix every problem not marked (선택). Items marked (선택) are coverage targets or facts about the inputs: "
                  "act on them only where the project stays natural. Change only what is needed.")
+        t = time.time()
         got = llm.ask_json(again, SYSTEM, SCHEMA, model=MODEL, max_tokens=24000)
+        took = max(took, time.time() - t)
         dropped = drop_unnamed_tools(got, case)
         issues, rewrote = check(got, case, projects, team), rewrote + 1
     names = {c["id"]: c["name"] for c in case["competencies"]}

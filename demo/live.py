@@ -101,7 +101,7 @@ def adapt(case, state):
     from demo.design import build_adapt
     pr = state["project"]
     yield {"type": "stage", "key": P.ADAPT_STEPS[0]["key"], "label": P.ADAPT_STEPS[0]["label"]}
-    raw = m2a.adapt(case, pr["candidates"], pr["cells"], pr["order"])
+    raw = m2a.adapt(case, pr["candidates"], pr["cells"], pr["order"], deadline=time.time() + 270)      # Vercel 은 300초에 끊는다
     adapted = build_adapt.build({"adapted": raw, "ranking": pr["ranking"]})
     yield _state("adapt", {"raw": raw, "demo": adapted})
     yield from P.adapt_part(case, pr["data"], adapted, speed=0, budgets=P.LIVE_BUDGETS)
