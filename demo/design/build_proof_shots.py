@@ -7,6 +7,7 @@ robots.txt 가 허용하는 주소만, 호스트마다 한 번에 하나씩 연�
 import asyncio
 import base64
 import hashlib
+import re
 import io
 import json
 import subprocess
@@ -65,10 +66,17 @@ def allowed(url, cache={}):
     return cache[host].can_fetch(UA, url)
 
 
-def heads(quote):
-    """찾을 머리: 구절 앞부분 (…·* 로 끊긴 구절은 첫 조각)"""
-    first = quote.replace("…", "...").split("...")[0].split(" * ")[0].split(" - ")[0].strip()
-    return [first[:60], first[:30]] if len(first) >= 12 else [quote[:40]]
+def pieces(quote):
+    """찾을 조각: 구절을 …·*·-·· 로 끊은 조각마다 (긴 것부터). 조각마다 (머리 60자, 조각 길이)"""
+    parts = [p.strip() for p in re.split(r"\.\.\.|…| \* | - | · ", quote) if len(p.strip()) >= 12]
+    parts = sorted(parts or [quote], key=len, reverse=True)
+    return [(p[:60], len(p)) for p in parts] + [(p[:30], len(p)) for p in parts]
+
+
+def capture_url(url):
+    """GitHub 의 .ipynb 는 다른 도메인 틀 안에 그려져 찾을 수 없다: 같은 노트북을 그리는 nbviewer 로 연다 (robots 허용)"""
+    m = re.match(r"https://github\.com/(.+\.ipynb)$", url)
+    return f"https://nbviewer.org/github/{m.group(1)}" if m else url
 
 
 async def main(names):
@@ -107,15 +115,16 @@ async def main(names):
             await send("Emulation.setDeviceMetricsOverride", width=W, height=900, deviceScaleFactor=2, mobile=False)
             last = {}
             for url, quotes in todo.items():
-                if not allowed(url):
+                page_url = capture_url(url)
+                if not allowed(page_url):
                     print("robots 막힘:", url)
                     continue
-                host = urlparse(url).netloc
+                host = urlparse(page_url).netloc
                 wait = 1.0 - (time.time() - last.get(host, 0))
                 if wait > 0:
                     await asyncio.sleep(wait)
                 last[host] = time.time()
-                await send("Page.navigate", url=url)
+                await send("Page.navigate", url=page_url)
                 for _ in range(100):
                     if await js("document.readyState") == "complete":
                         break
@@ -123,9 +132,11 @@ async def main(names):
                 await asyncio.sleep(2.5)
                 for q in quotes:
                     key = f"{url}\t{q}"
+                    if key in index and (OUT / f"{index[key]}.png").exists():
+                        continue
                     found = None
-                    for h in heads(q):
-                        found = await js(FIND + "(" + json.dumps(h) + "," + str(len(q.split("...")[0].split(" * ")[0])) + ")")
+                    for h, n_ in pieces(q):
+                        found = await js(FIND + "(" + json.dumps(h) + "," + str(n_) + ")")
                         if found:
                             break
                     if not found:
