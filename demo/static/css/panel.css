@@ -776,3 +776,9 @@ ul.legend[hidden] { display: none; }
 .ev-link:hover { text-decoration: underline; }
 .ev-shot { display: block; margin-top: var(--s2); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
 .ev-shot img { display: block; width: 100%; height: auto; }
+
+/* 바닥 줄: 쪽 위에 떠 있고, 아래로 굴리면 숨고 위로 굴리면 다시 나온다 (사용자 11/21). 쪽 글은 바닥 줄 높이만큼 아래를 비운다 */
+.page { position: relative; }
+.foot { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; transition: transform var(--t-panel) var(--ease), opacity var(--t-panel) var(--ease); }
+.page[data-foot-away] .foot { transform: translateY(100%); opacity: 0; pointer-events: none; }
+.page > .doc { padding-bottom: 150px; }

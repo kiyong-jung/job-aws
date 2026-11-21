@@ -34,6 +34,15 @@ const walks = {};      // 쪽 → {items:[{key, label}], at: 지금 걸음 번�
 
 export function init() {
   for (const k of ORDER) page(k).prepend(el('h2', { class: 'page-title', id: `title-${k}` }, `<span class="hl-line">${TITLE[k]}</span>`));
+  // 바닥 줄: 사람이 굴린 방향만 본다 (휠·터치). 화면이 스스로 굴리는 것(형광펜 따라가기)에는 숨지 않는다
+  for (const k of ORDER) {
+    const p = page(k);
+    let touchY = null;
+    const move = (dy) => { if (Math.abs(dy) < 2) return; if (dy > 0) p.dataset.footAway = ''; else delete p.dataset.footAway; };
+    p.addEventListener('wheel', (e) => move(e.deltaY), { passive: true });
+    p.addEventListener('touchstart', (e) => { touchY = e.touches[0].clientY; }, { passive: true });
+    p.addEventListener('touchmove', (e) => { if (touchY !== null) { move(touchY - e.touches[0].clientY); touchY = e.touches[0].clientY; } }, { passive: true });
+  }
   $('panel-back').innerHTML = icon('back');
   $('panel-back').addEventListener('click', () => { reveal(store.stack.at(-2)); refocus(); });
   $('panel-path').addEventListener('click', (e) => {
@@ -157,6 +166,7 @@ export function foot(key, bullets, actions = []) {
 }
 function drawFoot(key) {
   const node = $(`foot-${key}`), { bullets, actions } = feet[key];
+  delete page(key).dataset.footAway;      // 바닥 줄이 새로 그려지면 (다음 단계 단추가 생기면) 다시 보인다
   const list = el('ul', { class: 'bullets' });
   bullets.forEach((t) => list.append(el('li', { text: t })));
   const row = el('div', { class: 'actions' });

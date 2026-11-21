@@ -187,7 +187,8 @@ async def evidence_ok(p, page, sel, at_least=1):
 
 
 async def press(p, label):
-    """지금 쪽 바닥 줄에서 그 이름의 단추를 진짜 마우스로 누른다"""
+    """지금 쪽 바닥 줄에서 그 이름의 단추를 진짜 마우스로 누른다 (아래로 굴려 숨었으면 위로 굴린 것처럼 다시 꺼낸다)"""
+    await p.js("document.querySelectorAll('.page[data-foot-away]').forEach((x) => delete x.dataset.footAway), true")
     await p.js(f"[...document.querySelectorAll('.page:not([hidden]):not([inert]) .go')].find((b) => b.textContent === {json.dumps(label)}).dataset.press = ''")
     await p.mouse(".go[data-press]")
 
