@@ -26,7 +26,7 @@ def record(req):
             waits[0] = 0.0
     finally:
         time.sleep = real
-    text = json.dumps(out, ensure_ascii=False).replace('"/posting/', '"posting/').replace('"/report/', '"report/')
+    text = json.dumps(out, ensure_ascii=False).replace('"/posting/', '"posting/').replace('"/report/', '"report/').replace('"/proof/', '"proof/')
     return text
 
 
@@ -46,6 +46,8 @@ def main(out):
     html = html.replace("<head>", '<head>\n  <meta name="demo-static" content="1">', 1)
     (out / "index.html").write_text(html, encoding="utf-8")
     (out / ".nojekyll").write_text("")
+    if (pipeline.DATA / "proof").is_dir():      # 근거 구절의 원문 캡처
+        shutil.copytree(pipeline.DATA / "proof", out / "proof", ignore=shutil.ignore_patterns("*.json"))
 
     examples = [server.example(name) for name in pipeline.examples()]
     for ex in examples:      # 2~5단계 요청은 원문 대신 ① 의 문장을 이은 글을 보낸다 (main.js store.text). 화면이 그 글로도 예시를 찾게 둔다

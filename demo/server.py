@@ -27,7 +27,8 @@ MAX_SPEED = 8.0
 TYPES = {".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8",
          ".css": "text/css; charset=utf-8", ".woff2": "font/woff2", ".webp": "image/webp", ".png": "image/png", ".txt": "text/plain; charset=utf-8",
          ".svg": "image/svg+xml", ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation"}
-POSTING = re.compile(r"/posting/([a-z0-9_]+)\.png")      # ① 실제 공고 사이트 화면 (data/<예시>.posting.png)
+POSTING = re.compile(r"/posting/([a-z0-9_]+)\.png")
+PROOF = re.compile(r"/proof/([0-9a-f]{12})\.png")      # 근거 구절의 원문 캡처 (data/proof/<id>.png)      # ① 실제 공고 사이트 화면 (data/<예시>.posting.png)
 REPORT = re.compile(r"/report/([a-z0-9_]+)\.(\d+)\.((?:\d+\.)?png|pptx)")      # ⑥ 리포트 쪽 그림과 pptx (data/<예시>.report.<시간>.<쪽>.png·.pptx). 이름 꼴이 맞을 때만
 
 
@@ -126,6 +127,8 @@ class Handler(BaseHTTPRequestHandler):
             f = STATIC / "index.html"
         elif m := POSTING.fullmatch(path):
             f = pipeline.DATA / f"{m[1]}.posting.png"
+        elif m := PROOF.fullmatch(path):
+            f = pipeline.DATA / "proof" / f"{m[1]}.png"
         elif m := REPORT.fullmatch(path):
             f = pipeline.DATA / f"{m[1]}.report.{m[2]}.{m[3]}"
         elif path.startswith("/static/"):

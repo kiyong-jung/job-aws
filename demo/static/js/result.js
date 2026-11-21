@@ -14,9 +14,19 @@ export function section(title, ...body) {
 }
 
 // 인용 한 칸: 누가 말했나(공고, 1위 README, 자료 이름) + 근거 문장. 영어 원문은 한국어 옮김(ko)을 보이고 원문은 마우스를 올리면 (사용자 11/21)
-function said(who, text, kind, ko = '') {
+function said(who, text, kind, ko = '', url = '', shot = '') {
   const q = el('figure', { class: 'ev-q', 'data-kind': kind });
-  q.append(el('figcaption', { class: 'ev-who', text: who }), el('blockquote', { text: ko || text || '근거 문장 없음', title: ko ? `원문: ${text}` : null }));
+  const cap = el('figcaption', { class: 'ev-who', text: who });
+  if (url) {      // 근거가 나온 곳 바로가기 (깃헙·논문·교육자료, 사용자 11/21)
+    const a = el('a', { class: 'ev-link', href: url, target: '_blank', rel: 'noopener noreferrer', text: '원문 보기 ↗' });
+    cap.append(a);
+  }
+  q.append(cap, el('blockquote', { text: ko || text || '근거 문장 없음', title: ko ? `원문: ${text}` : null }));
+  if (shot) {      // 원문 캡처 (구절에 형광펜). 누르면 원문 페이지로
+    const a = el('a', { class: 'ev-shot', href: url || shot, target: '_blank', rel: 'noopener noreferrer' });
+    a.append(el('img', { src: shot, alt: `원문 캡처: ${text}`, loading: 'lazy' }));
+    q.append(a);
+  }
   return q;
 }
 
@@ -26,7 +36,7 @@ export function evRow({ cid, tier, name, state, level, left, right }) {
   const head = el('div', { class: 'ev-head' });
   head.append(tag(tier), el('b', { class: 'ev-name', text: name }), el('span', { class: 'ev-state', 'data-level': level, text: state }));
   const pair = el('div', { class: 'ev-pair' });
-  pair.append(said(left.who, left.text, 'posting', left.ko), said(right.who, right.text, 'proof', right.ko));
+  pair.append(said(left.who, left.text, 'posting', left.ko, left.url), said(right.who, right.text, 'proof', right.ko, right.url, right.shot));
   li.append(head, pair);
   return li;
 }

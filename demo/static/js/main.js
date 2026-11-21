@@ -24,10 +24,10 @@ composer.setRunning(false);
 
 function announce(text) { $('announce').textContent = text; }
 // 쪽 머리 상태 줄의 말은 둘뿐이다: 저장해 둔 실행을 다시 트는 단계(① ② ④)와 사람이 손으로 만든 단계(⑤ ⑥). 도는 동안은 지금 하는 일
-const REPLAY = '미리 돌려 둔 결과를 다시 보여 드려요';
+const REPLAY = '';      // 상태 줄에 '미리 돌려 둔 결과' 같은 말을 두지 않는다 (사용자 11/21). 도는 동안의 '…하는 중' 만 보인다
 // ① 공고 읽기의 걸음 (서버 STAGES 와 같은 차례) · ② 사건 가운데 ③ 응용 쪽의 걸음
 const READ_STEPS = [{ key: 'read', label: '공고 읽기' }, { key: 'split', label: '문장 나누기' }, { key: 'find', label: '핵심 문장 찾기' }, { key: 'sort', label: '역량 정리' }];
-const HAND = '사람이 미리 만들어 둔 결과예요';
+const HAND = '';
 
 // 예시 공고 (서버가 보낸 차례: AWS 먼저). 시작 화면에 단추 하나씩, 누르면 그 공고 글을 파일 칩으로 붙인다.
 // 대시보드의 안내(준비 중, 예시가 아닌 공고)에 다는 예시 단추는 누르면 바로 그 공고로 처음부터 돈다
@@ -208,7 +208,7 @@ const projectHandlers = {
     search.start(ev);
     panel.walk('search', ev.items);      // 찾기와 응용이 한 쪽 (사용자 11/21)
     // 다시 틀기임을 숨기지 않는다. 실제로 걸린 시간은 저장본에 있을 때만 적는다 (없으면 지어내지 않는다)
-    openStep(ctx, 'search', ev.seconds ? `${REPLAY} · 실제로는 ${Math.round(ev.seconds)}초 걸렸어요` : REPLAY);
+    openStep(ctx, 'search', REPLAY);
   },
   stage(ev, ctx) {
     search.stage(ev);

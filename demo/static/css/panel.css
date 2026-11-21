@@ -771,3 +771,8 @@ ul.legend[hidden] { display: none; }
 .g-sum .g-label { font-size: var(--fs-body); font-weight: 700; }
 .g-sum .g-cell { padding: 10px 0; font-size: var(--fs-label); font-weight: 700; }
 .g-sum .g-cell[data-over="true"] { color: var(--danger); }
+.ev-who { display: flex; align-items: baseline; gap: var(--s2); }
+.ev-link { margin-left: auto; font-size: var(--fs-label); font-weight: 700; color: var(--pick); text-decoration: none; white-space: nowrap; }
+.ev-link:hover { text-decoration: underline; }
+.ev-shot { display: block; margin-top: var(--s2); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+.ev-shot img { display: block; width: 100%; height: auto; }

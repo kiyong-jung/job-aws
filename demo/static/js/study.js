@@ -52,7 +52,7 @@ export function pick(row) {
   a.append(el('span', { class: 'sr-only', text: ' (새 창)' }));
   head.append(el('span', { class: 'tag m3-role', 'data-role': row.role, text: row.role }), a, el('span', { class: 'mat-kind', text: row.kind }));
   const rows = row.covers.map((c) => evRow({ cid: c.cid, tier: c.tier, name: c.name, level: c.level, state: c.text,
-    left: { who: '공고', text: c.posting, ko: c.posting_ko }, right: { who: '자료', text: c.quote, ko: c.quote_ko } }));
+    left: { who: '공고', text: c.posting, ko: c.posting_ko }, right: { who: '자료', text: c.quote, ko: c.quote_ko, url: row.url, shot: c.shot } }));
   li.append(head, evList(rows));
   s.list.append(li);
   appear(li);

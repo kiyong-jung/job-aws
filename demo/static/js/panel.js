@@ -412,7 +412,7 @@ export function renderAdapted(a, { db = 0, top = null } = {}) {
   const list = evList(a.rows.map((r) => {
     const grow = filled.has(r.cid);
     const li = evRow({ cid: r.cid, tier: r.tier, name: r.name, level: grow ? r.was : r.level, state: grow ? `${LEVEL[r.was]} → ${LEVEL[r.level]}` : LEVEL[r.level],
-      left: { who: '공고', text: r.posting, ko: r.posting_ko }, right: { who: who(r), text: r.proof, ko: r.proof_ko } });
+      left: { who: '공고', text: r.posting, ko: r.posting_ko }, right: { who: who(r), text: r.proof, ko: r.proof_ko, url: r.url, shot: r.shot } });
     if (grow) { li.dataset.to = r.level; rows.set(r.cid, li); }
     return li;
   }));

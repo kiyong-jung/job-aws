@@ -216,7 +216,7 @@ export function found(ev) {
   hero.append(rivals);
   const who = `1위 ${sample.kind === '논문' ? '논문' : 'README'}`;
   const row = (r) => evRow({ cid: r.cid, tier: r.tier, name: r.name, level: r.level, state: LEVEL[r.level],
-    left: { who: '공고', text: r.posting, ko: r.posting_ko }, right: { who, text: r.quote, ko: r.quote_ko } });
+    left: { who: '공고', text: r.posting, ko: r.posting_ko }, right: { who, text: r.quote, ko: r.quote_ko, url: sample.url } });
   const has = fit.rows.filter((r) => r.level !== '없음'), none = fit.rows.filter((r) => r.level === '없음');
   const parts = [s.stops[0].li.parentElement, hero, section('왜 이 공고에 맞나: 공고 문장과 1위 글의 같은 뜻 구절', evList(has.map(row)))];
   if (none.length) {

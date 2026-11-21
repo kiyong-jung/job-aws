@@ -301,6 +301,18 @@ def _ko():
     return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
 
 
+@lru_cache(maxsize=1)
+def _proofs():
+    f = DATA / "proof" / "index.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+
+
+def proof_shot(url, quote):
+    """근거 구절의 원문 캡처 (design/build_proof_shots.py, 구절에 형광펜). 없으면 빈 글 (화면은 글과 원문 링크만)"""
+    pid = _proofs().get(f"{url}\t{quote}")
+    return f"/proof/{pid}.png" if pid and (DATA / "proof" / f"{pid}.png").is_file() else ""
+
+
 def ko(text):
     """영어 근거 문장의 한국어 옮김 (data/ko.json, 사람이 옮김). 없으면 빈 글 (화면은 원문을 그대로 쓴다)"""
     return _ko().get((text or "").strip(), "")
@@ -452,6 +464,7 @@ def fill_evidence(case, a, fills, cov):
     (빌린 프로젝트면 그 글의 구절, AI가 더한 일이면 더한 까닭, 바탕이면 1위 글의 구절), 출처 이름"""
     tier = {c["cid"]: tier_of(c) for c in cov}
     short = {c["title"]: c["short"] for c in a["complements"]} | {a["base"]["title"]: BASE}
+    link = {c["title"]: web(c["url"]) for c in a["complements"]} | {a["base"]["title"]: web(a["base"]["url"])}
     out = []
     for x in fills:      # 오른 칸만 (판정보다 낮아진 칸은 바탕의 일을 덜 쓰는 것이라 "채움"이 아니다, adapt_fills)
         if tier.get(x["cid"]) not in TIERS[:2] or WORTH[x["level"]] <= WORTH[x["was"]]:
@@ -468,7 +481,7 @@ def fill_evidence(case, a, fills, cov):
                 break
         name = next(c["name"] for c in a["coverage"] if c["id"] == cid)
         out.append({"cid": cid, "name": name, "tier": tier[cid], "was": x["was"], "level": x["level"], "posting": said(case, cid),
-                    "job": job["name"] if job else x["package"], "proof": proof, "from": src})
+                    "job": job["name"] if job else x["package"], "proof": proof, "from": src, "url": link.get(want, "") if want else ""})
     return sorted(out, key=lambda r: (TIERS.index(r["tier"]), LEVEL_RANK[r["level"]]))
 
 
@@ -492,8 +505,8 @@ def final_rows(case, a, judged, filled, cov, body):
         rows.append({"cid": cid, "name": c["name"], "tier": c["tier"], "was": judged.get(cid, "없음"), "level": c["expect"],
                      "posting": said(case, cid), "job": job if base else "교육자료에서 배워요",
                      "proof": quote[cid] if base else "프로젝트로는 다루지 않아요. 다음 단계에서 이 역량을 가르치는 교육자료를 골라요.",
-                     "from": BASE if base else ""})
-    rows = [{**r, "posting_ko": ko(r["posting"]), "proof_ko": ko(r["proof"])} for r in rows]
+                     "from": BASE if base else "", "url": web(a["base"]["url"]) if base else ""})
+    rows = [{**r, "posting_ko": ko(r["posting"]), "proof_ko": ko(r["proof"]), "shot": proof_shot(r.get("url", ""), r["proof"])} for r in rows]
     return sorted(rows, key=lambda r: (TIERS.index(r["tier"]), LEVEL_RANK[r["level"]]))
 
 
@@ -767,7 +780,8 @@ def materials(case, speed=1.0):
                 yield {"type": "pick", "row": {"n": i, "role": p["role"], "title": p["title"], "kind": p["type"], "url": web(p["url"]),
                                                "covers": [{"cid": c["cid"], "name": names_[c["cid"]], "level": c["level"], "text": LEVEL_TEXT[c["level"]],
                                                            "tier": tiers_[c["cid"]], "posting": said(case, c["cid"]), "quote": c.get("quote", ""),
-                                                           "posting_ko": ko(said(case, c["cid"])), "quote_ko": ko(c.get("quote", ""))} for c in p["covers"]]},
+                                                           "posting_ko": ko(said(case, c["cid"])), "quote_ko": ko(c.get("quote", "")),
+                                                           "shot": proof_shot(p["url"], c.get("quote", ""))} for c in p["covers"]]},
                        "levels": {k: {"level": v, "text": LEVEL_TEXT[v]} for k, v in levels.items()}}
                 time.sleep(PACE["item"] * 2 * speed)
         else:
