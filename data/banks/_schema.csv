@@ -1,0 +1,67 @@
+﻿table,column,type,required,search,choices,description
+postings,id,str,y,,,"공고 id. 스냅샷은 수집 때 붙인 id(J08, KK01), 붙여넣은 공고는 본문 해시(P…)"
+postings,company,str,,,,회사
+postings,title,str,y,,,공고 제목
+postings,url,str,,,,공개 공고 주소
+postings,source,str,y,,,"수집 경로 (Greenhouse 공개 API, 공식 채용 사이트, 붙여넣기)"
+postings,updated,str,,,,공고 갱신일
+postings,collected_at,str,y,,,수집 시각
+postings,text,str,y,,,공고 본문. 머리줄과 '- ' 목록 줄을 살린 평문
+posting_lines,id,str,y,,,줄 id = 공고 id-순번
+posting_lines,posting_id,str,y,,,postings.id
+posting_lines,n,int,y,,,공고 안 순번
+posting_lines,section,str,y,,소개 / 미션 / 필수 / 우대,원래 구역
+posting_lines,tier,str,y,,필수 / 우대 / 배경,정제 분류. 필수·우대 줄은 모두 질문이 되고 배경 줄은 맥락으로만 쓴다
+posting_lines,importance,str,,,상 / 중 / 자격,이 줄에서 나온 질문이 물려받는 중요도. 자격은 학위·실적·출장처럼 공부로 못 기르는 줄. 배경은 비움
+posting_lines,method,str,y,,규칙 / llm / 사람,"분류한 방법 (규칙: 머리줄, llm: 머리줄이 없어 Claude 가 가름, 사람: 손으로 고침)"
+posting_lines,text,str,y,,,줄 글
+resumes,id,str,y,,,이력서 id = 본문 해시(R…)
+resumes,label,str,,,,파일 이름이나 붙인 이름
+resumes,source,str,,,,"어디서 왔나 (파일 경로, 붙여넣기)"
+resumes,created_at,str,y,,,넣은 시각
+resumes,text,str,y,,,이력서 본문
+resume_lines,id,str,y,,,줄 id = 이력서 id-순번
+resume_lines,resume_id,str,y,,,resumes.id
+resume_lines,n,int,y,,,순번
+resume_lines,text,str,y,,,줄 글. 머리 기호를 떼고 6자 미만 줄은 뺐다
+questions,id,str,y,,,질문 id = 질문 문장(대소문자·문장부호 무시) 해시(Q…). 두 원천에 같은 문장은 하나만 둔다
+questions,text,str,y,y,,질문 원문 (영어)
+questions,topic,str,y,y,,원천의 주제 절
+questions,company,str,,,,원천의 회사 절. 공통 질문은 비움
+questions,asked_at,list,,,,질문했다고 적힌 회사들
+questions,answers,list,,,,"답 글 [{title, url}]. 본문은 옮기지 않는다"
+questions,source,str,y,,company / topic,"원천 (company: 회사별 은행, topic: 주제별 은행)"
+questions,source_url,str,y,,,원천 저장소 주소
+questions,license,str,y,,,원천 라이선스
+questions,intent,str,,,,질문 의도. 답에 들어가야 할 요점의 틀을 정한다 (가공 전에는 비움)
+questions,concepts,list,,,,질문이 묻는 개념 이름 (가공 전에는 비움)
+materials,id,str,y,,,자료 id = 주소 해시(M…). 튜토리얼·강의는 목록 주소를 같이 쓰기도 해서 주소+제목 해시
+materials,type,str,y,,대학 강의 / 학회 튜토리얼 / 기술 블로그 / 논문 / 저장소 / 글 / 영상,자료 종류
+materials,source,str,y,,,"원천 (awesome 목록 이름, blog:블로그, tutorial, course, interview-answers)"
+materials,title,str,y,y,,제목
+materials,url,str,y,,,주소
+materials,topic,str,,y,,"원천의 주제 절, 학회, 회사"
+materials,summary,str,,y,,원천이 준 설명. 본문은 옮기지 않는다. 질문 답 글은 그 글이 답하는 은행 질문들
+materials,code_url,str,,,,논문의 공식 코드 저장소 (목록 줄에 함께 적힌 GitHub 링크)
+materials,extra_url,str,,,,강의 영상 재생목록이나 튜토리얼 사이트
+materials,source_url,str,,,,원천 목록 저장소 주소
+materials,license,str,y,,,원천 라이선스나 저작권 표시
+materials,minutes,int,,,,"공부 시간 어림, 분 (가공 전에는 비움)"
+materials,concepts,list,,,,가르치는 개념 이름 (가공 전에는 비움)
+projects,id,str,y,,,프로젝트 id = 따라 만들 대상 주소 해시(PR…)
+projects,kind,str,y,,저장소 / 앱 프로젝트 / 논문 구현 / 블로그 구현,종류
+projects,source,str,y,,,"원천 (repo: 직접 고른 저장소, 앱 목록 이름, 논문이 나온 자료 목록 이름, blog:블로그)"
+projects,title,str,y,y,,제목
+projects,url,str,y,,,"따라 만들 대상 (저장소, 앱 폴더, 논문의 공식 코드, 블로그 글)"
+projects,paper_url,str,,,,논문 구현의 논문 주소. 공식 코드 하나를 논문 여럿이 쓰면 먼저 나온 논문
+projects,stars,int,,,,저장소 스타 수 (수집 때)
+projects,license,str,y,,,라이선스
+projects,topic,str,,y,,주제나 회사
+projects,summary,str,,y,,"무엇을 만드는지 (설명, README 앞부분, 블로그 구현 과제)"
+projects,concepts,list,,,,구현하며 익히는 개념 이름 (가공 전에는 비움)
+projects,gpu,str,,,,필요한 연산 자원 어림 (가공 전에는 비움)
+projects,hours,int,,,,따라 만드는 데 드는 시간 어림 (가공 전에는 비움)
+projects,data,str,,,,"쓰는 데이터와 구하는 곳 (보강 행만, README 를 읽고 씀)"
+projects,done,str,,,,다 됐다고 볼 기준. README 에 없어 하는 일로 짐작한 것은 끝에 (어림) (보강 행만)
+projects,scale_note,str,,,,"크기·하드웨어·범위 메모. 보관된 저장소, README 의 시간 표현도 여기 (보강 행만)"
+projects,checked,str,,,,확인한 주소와 날짜 (보강 행만)

@@ -1,0 +1,1313 @@
+[
+ {
+  "key": "naver",
+  "company": "NAVER 계열",
+  "batch": "portal",
+  "careers_url": "https://recruit.navercorp.com/rcrt/list.do",
+  "method": "api",
+  "ats": "naver"
+ },
+ {
+  "key": "kakao",
+  "company": "Kakao 계열",
+  "batch": "portal",
+  "careers_url": "https://careers.kakao.com/jobs",
+  "method": "api",
+  "ats": "kakao"
+ },
+ {
+  "key": "toss",
+  "company": "Toss (Viva Republica 계열)",
+  "batch": "portal",
+  "careers_url": "https://toss.im/career/jobs",
+  "method": "api",
+  "ats": "toss"
+ },
+ {
+  "key": "coupang",
+  "company": "Coupang",
+  "batch": "portal",
+  "careers_url": "https://job-boards.greenhouse.io/coupang",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "coupang"
+ },
+ {
+  "key": "karrot",
+  "company": "Karrot (당근)",
+  "batch": "portal",
+  "careers_url": "https://job-boards.greenhouse.io/daangn",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "daangn"
+ },
+ {
+  "key": "krafton",
+  "company": "KRAFTON",
+  "batch": "game",
+  "careers_url": "https://job-boards.greenhouse.io/krafton",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "krafton"
+ },
+ {
+  "key": "upstage",
+  "company": "Upstage",
+  "batch": "ai-startup",
+  "careers_url": "https://upstage.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "upstage"
+ },
+ {
+  "key": "wrtn",
+  "company": "Wrtn (뤼튼)",
+  "batch": "ai-startup",
+  "careers_url": "https://wrtn.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "wrtn"
+ },
+ {
+  "key": "scatterlab",
+  "company": "Scatter Lab",
+  "batch": "ai-startup",
+  "careers_url": "https://scatterlab.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "scatterlab"
+ },
+ {
+  "key": "rebellions",
+  "company": "Rebellions",
+  "batch": "ai-startup",
+  "careers_url": "https://rebellions.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "rebellions"
+ },
+ {
+  "key": "makinarocks",
+  "company": "MakinaRocks",
+  "batch": "ai-startup",
+  "careers_url": "https://makinarocks.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "makinarocks"
+ },
+ {
+  "key": "nota",
+  "company": "Nota",
+  "batch": "ai-startup",
+  "careers_url": "https://notaai.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "notaai"
+ },
+ {
+  "key": "allganize",
+  "company": "Allganize",
+  "batch": "ai-startup",
+  "careers_url": "https://allganize.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "allganize"
+ },
+ {
+  "key": "vuno",
+  "company": "VUNO",
+  "batch": "ai-startup",
+  "careers_url": "https://vunohire.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "vunohire"
+ },
+ {
+  "key": "flitto",
+  "company": "Flitto",
+  "batch": "ai-startup",
+  "careers_url": "https://flitto.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "flitto"
+ },
+ {
+  "key": "crowdworks",
+  "company": "Crowdworks",
+  "batch": "ai-startup",
+  "careers_url": "https://crowdworks.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "crowdworks"
+ },
+ {
+  "key": "furiosa",
+  "company": "FuriosaAI",
+  "batch": "ai-startup",
+  "careers_url": "https://job-boards.greenhouse.io/furiosaai",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "furiosaai"
+ },
+ {
+  "key": "moloco",
+  "company": "Moloco",
+  "batch": "ai-startup",
+  "careers_url": "https://job-boards.greenhouse.io/moloco",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "moloco"
+ },
+ {
+  "key": "sendbird",
+  "company": "Sendbird",
+  "batch": "ai-startup",
+  "careers_url": "https://job-boards.greenhouse.io/sendbird",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "sendbird"
+ },
+ {
+  "key": "twelvelabs",
+  "company": "Twelve Labs",
+  "batch": "ai-startup",
+  "careers_url": "https://jobs.ashbyhq.com/twelve-labs",
+  "method": "api",
+  "ats": "ashby",
+  "token": "twelve-labs"
+ },
+ {
+  "key": "42dot",
+  "company": "42dot",
+  "batch": "ai-startup",
+  "careers_url": "https://jobs.ashbyhq.com/42dot",
+  "method": "api",
+  "ats": "ashby",
+  "token": "42dot"
+ },
+ {
+  "key": "megazone",
+  "company": "MegazoneCloud",
+  "batch": "ai-startup",
+  "careers_url": "https://jobs.ashbyhq.com/megazone",
+  "method": "api",
+  "ats": "ashby",
+  "token": "megazone"
+ },
+ {
+  "key": "musinsa",
+  "company": "Musinsa",
+  "batch": "commerce",
+  "careers_url": "https://musinsa.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "musinsa"
+ },
+ {
+  "key": "kurly",
+  "company": "Kurly",
+  "batch": "commerce",
+  "careers_url": "https://kurly.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "kurly"
+ },
+ {
+  "key": "zigbang",
+  "company": "Zigbang",
+  "batch": "commerce",
+  "careers_url": "https://zigbang.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "zigbang"
+ },
+ {
+  "key": "kakaopay",
+  "company": "Kakao Pay",
+  "batch": "portal",
+  "careers_url": "https://kakaopay.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "kakaopay"
+ },
+ {
+  "key": "kakaoenterprise",
+  "company": "Kakao Enterprise",
+  "batch": "portal",
+  "careers_url": "https://kakaoenterprise.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "kakaoenterprise"
+ },
+ {
+  "key": "kakaomobility",
+  "company": "Kakao Mobility",
+  "batch": "portal",
+  "careers_url": "https://kakaomobility.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "kakaomobility"
+ },
+ {
+  "key": "hancom",
+  "company": "Hancom",
+  "batch": "ai-startup",
+  "careers_url": "https://hancom.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "hancom"
+ },
+ {
+  "key": "lbox",
+  "company": "LBox",
+  "batch": "ai-startup",
+  "careers_url": "https://lbox.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "lbox"
+ },
+ {
+  "key": "twinny",
+  "company": "Twinny",
+  "batch": "ai-startup",
+  "careers_url": "https://twinny.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "twinny"
+ },
+ {
+  "key": "deepx",
+  "company": "DEEPX",
+  "batch": "ai-startup",
+  "careers_url": "https://deepx.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "deepx"
+ },
+ {
+  "key": "hyperaccel",
+  "company": "HyperAccel",
+  "batch": "ai-startup",
+  "careers_url": "https://hyperaccel.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "hyperaccel"
+ },
+ {
+  "key": "bagelcode",
+  "company": "Bagelcode",
+  "batch": "game",
+  "careers_url": "https://bagelcode.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "bagelcode"
+ },
+ {
+  "key": "11st",
+  "company": "11st",
+  "batch": "commerce",
+  "careers_url": "https://11st.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "11st"
+ },
+ {
+  "key": "hybe",
+  "company": "HYBE",
+  "batch": "game",
+  "careers_url": "https://hybe.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "hybe"
+ },
+ {
+  "key": "neubility",
+  "company": "Neubility",
+  "batch": "ai-startup",
+  "careers_url": "https://neubility.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "neubility"
+ },
+ {
+  "key": "dable",
+  "company": "Dable",
+  "batch": "ai-startup",
+  "careers_url": "https://dable.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "dable"
+ },
+ {
+  "key": "line",
+  "company": "LINE Plus 계열",
+  "batch": "portal",
+  "careers_url": "https://careers.linecorp.com/ko/jobs",
+  "method": "api",
+  "ats": "line"
+ },
+ {
+  "key": "smilegate",
+  "company": "Smilegate 계열",
+  "batch": "game",
+  "careers_url": "https://careers.smilegate.com/apply",
+  "method": "api",
+  "ats": "smilegate"
+ },
+ {
+  "key": "lunit",
+  "company": "Lunit",
+  "batch": "ai-startup",
+  "careers_url": "https://apply.workable.com/lunit/",
+  "method": "api",
+  "ats": "workable",
+  "token": "lunit"
+ },
+ {
+  "key": "hyperconnect",
+  "company": "Hyperconnect",
+  "batch": "ai-startup",
+  "careers_url": "https://career.hyperconnect.com/sitemap/sitemap-0.xml",
+  "method": "list",
+  "link_re": "<loc>(https://career\\.hyperconnect\\.com/job/[^<]+)</loc>",
+  "title_re": "<title[^>]*>(.*?) \\|"
+ },
+ {
+  "key": "woowa",
+  "company": "Woowa Brothers (배달의민족)",
+  "batch": "commerce",
+  "careers_url": "https://career.woowahan.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 막음: career.woowahan.com 의 공고 API 경로 /w1/** 가 Disallow"
+ },
+ {
+  "key": "nexon",
+  "company": "Nexon",
+  "batch": "game",
+  "careers_url": "https://careers.nexon.com/recruit",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 막음: careers.nexon.com /recruit? 가 Disallow, 목록 페이지는 403"
+ },
+ {
+  "key": "moreh",
+  "company": "Moreh",
+  "batch": "ai-startup",
+  "careers_url": "https://moreh.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "moreh"
+ },
+ {
+  "key": "squeezebits",
+  "company": "SqueezeBits",
+  "batch": "ai-startup",
+  "careers_url": "https://squeezebits.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "squeezebits"
+ },
+ {
+  "key": "airsmed",
+  "company": "AirsMed",
+  "batch": "ai-startup",
+  "careers_url": "https://airsmed.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "airsmed"
+ },
+ {
+  "key": "modulabs",
+  "company": "Modulabs",
+  "batch": "ai-startup",
+  "careers_url": "https://modulabs.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "modulabs"
+ },
+ {
+  "key": "wadiz",
+  "company": "Wadiz",
+  "batch": "commerce",
+  "careers_url": "https://wadiz.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "wadiz"
+ },
+ {
+  "key": "myrealtrip",
+  "company": "MyRealTrip",
+  "batch": "commerce",
+  "careers_url": "https://myrealtrip.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "myrealtrip"
+ },
+ {
+  "key": "wconcept",
+  "company": "W Concept",
+  "batch": "commerce",
+  "careers_url": "https://wconcept.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "wconcept"
+ },
+ {
+  "key": "kmong",
+  "company": "Kmong",
+  "batch": "commerce",
+  "careers_url": "https://kmong.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "kmong"
+ },
+ {
+  "key": "soomgo",
+  "company": "Soomgo",
+  "batch": "commerce",
+  "careers_url": "https://soomgo.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "soomgo"
+ },
+ {
+  "key": "oliveyoung",
+  "company": "Olive Young",
+  "batch": "commerce",
+  "careers_url": "https://oliveyoung.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "oliveyoung"
+ },
+ {
+  "key": "gccompany",
+  "company": "GC Company",
+  "batch": "commerce",
+  "careers_url": "https://gccompany.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "gccompany"
+ },
+ {
+  "key": "lemonbase",
+  "company": "Lemonbase",
+  "batch": "commerce",
+  "careers_url": "https://lemonbase.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "lemonbase"
+ },
+ {
+  "key": "flex",
+  "company": "flex",
+  "batch": "commerce",
+  "careers_url": "https://jobs.ashbyhq.com/flex",
+  "method": "api",
+  "ats": "ashby",
+  "token": "flex"
+ },
+ {
+  "key": "deepnoid",
+  "company": "Deepnoid (딥노이드)",
+  "batch": "startup2",
+  "careers_url": "https://deepnoid.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "deepnoid"
+ },
+ {
+  "key": "stradvision",
+  "company": "StradVision (스트라드비젼)",
+  "batch": "startup2",
+  "careers_url": "https://stradvision.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "stradvision"
+ },
+ {
+  "key": "seoulrobotics",
+  "company": "Seoul Robotics",
+  "batch": "startup2",
+  "careers_url": "https://job-boards.greenhouse.io/seoulrobotics",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "seoulrobotics"
+ },
+ {
+  "key": "mangoboost",
+  "company": "MangoBoost",
+  "batch": "startup2",
+  "careers_url": "https://mangoboost.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "mangoboost"
+ },
+ {
+  "key": "friendliai",
+  "company": "FriendliAI",
+  "batch": "startup2",
+  "careers_url": "https://jobs.ashbyhq.com/friendliai",
+  "method": "api",
+  "ats": "ashby",
+  "token": "friendliai"
+ },
+ {
+  "key": "vessl",
+  "company": "VESSL AI",
+  "batch": "startup2",
+  "careers_url": "https://jobs.ashbyhq.com/vessl-ai",
+  "method": "api",
+  "ats": "ashby",
+  "token": "vessl-ai"
+ },
+ {
+  "key": "bitsensing",
+  "company": "bitsensing (비트센싱)",
+  "batch": "startup2",
+  "careers_url": "https://bitsensing.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "bitsensing"
+ },
+ {
+  "key": "hyundaiautoever",
+  "company": "Hyundai AutoEver",
+  "batch": "startup2",
+  "careers_url": "https://hyundai-autoever.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "hyundai-autoever"
+ },
+ {
+  "key": "sionic",
+  "company": "Sionic AI (사이오닉AI)",
+  "batch": "startup2",
+  "careers_url": "https://sionicai.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "sionicai"
+ },
+ {
+  "key": "socraai",
+  "company": "Socra AI (옛 Riiid)",
+  "batch": "startup2",
+  "careers_url": "https://socraai.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "socraai"
+ },
+ {
+  "key": "salesforce",
+  "company": "Salesforce",
+  "batch": "global",
+  "careers_url": "https://careers.salesforce.com/en/jobs/",
+  "method": "api",
+  "ats": "workday",
+  "host": "salesforce.wd12",
+  "site": "External_Career_Site"
+ },
+ {
+  "key": "amazon",
+  "company": "Amazon / AWS",
+  "batch": "global",
+  "careers_url": "https://www.amazon.jobs/en/locations/south-korea",
+  "method": "api",
+  "ats": "amazon"
+ },
+ {
+  "key": "databricks",
+  "company": "Databricks",
+  "batch": "global",
+  "careers_url": "https://www.databricks.com/company/careers",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "databricks"
+ },
+ {
+  "key": "anthropic",
+  "company": "Anthropic",
+  "batch": "global",
+  "careers_url": "https://www.anthropic.com/careers",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "anthropic"
+ },
+ {
+  "key": "datadog",
+  "company": "Datadog",
+  "batch": "global",
+  "careers_url": "https://careers.datadoghq.com/",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "datadog"
+ },
+ {
+  "key": "riotgames",
+  "company": "Riot Games",
+  "batch": "global",
+  "careers_url": "https://www.riotgames.com/en/work-with-us",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "riotgames"
+ },
+ {
+  "key": "gitlab",
+  "company": "GitLab",
+  "batch": "global",
+  "careers_url": "https://about.gitlab.com/jobs/",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "gitlab"
+ },
+ {
+  "key": "openai",
+  "company": "OpenAI",
+  "batch": "global",
+  "careers_url": "https://openai.com/careers/",
+  "method": "api",
+  "ats": "ashby",
+  "token": "openai"
+ },
+ {
+  "key": "cohere",
+  "company": "Cohere",
+  "batch": "global",
+  "careers_url": "https://cohere.com/careers",
+  "method": "api",
+  "ats": "ashby",
+  "token": "cohere"
+ },
+ {
+  "key": "snowflake",
+  "company": "Snowflake",
+  "batch": "global",
+  "careers_url": "https://careers.snowflake.com/",
+  "method": "api",
+  "ats": "ashby",
+  "token": "snowflake"
+ },
+ {
+  "key": "notion",
+  "company": "Notion",
+  "batch": "global",
+  "careers_url": "https://www.notion.com/careers",
+  "method": "api",
+  "ats": "ashby",
+  "token": "notion"
+ },
+ {
+  "key": "sierra",
+  "company": "Sierra",
+  "batch": "global",
+  "careers_url": "https://sierra.ai/careers",
+  "method": "api",
+  "ats": "ashby",
+  "token": "sierra"
+ },
+ {
+  "key": "palantir",
+  "company": "Palantir",
+  "batch": "global",
+  "careers_url": "https://www.palantir.com/careers/",
+  "method": "api",
+  "ats": "lever",
+  "token": "palantir"
+ },
+ {
+  "key": "netmarble",
+  "company": "Netmarble",
+  "batch": "platform",
+  "careers_url": "https://career.netmarble.com/announce",
+  "method": "api",
+  "ats": "netmarble"
+ },
+ {
+  "key": "dunamu",
+  "company": "Dunamu (두나무)",
+  "batch": "platform",
+  "careers_url": "https://careers.dunamu.com/",
+  "method": "list",
+  "link_re": "(/detail/\\d+)",
+  "title_re": "<title[^>]*>(.*?) \\|"
+ },
+ {
+  "key": "finda",
+  "company": "Finda (핀다)",
+  "batch": "platform",
+  "careers_url": "https://finda.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "finda"
+ },
+ {
+  "key": "goodoc",
+  "company": "Goodoc (굿닥)",
+  "batch": "platform",
+  "careers_url": "https://goodoc.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "goodoc"
+ },
+ {
+  "key": "teamsparta",
+  "company": "Spartacoding (팀스파르타)",
+  "batch": "platform",
+  "careers_url": "https://teamsparta.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "teamsparta"
+ },
+ {
+  "key": "buzzvil",
+  "company": "Buzzvil (버즈빌)",
+  "batch": "platform",
+  "careers_url": "https://buzzvil.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "buzzvil"
+ },
+ {
+  "key": "cardoc",
+  "company": "Cardoc (카닥)",
+  "batch": "platform",
+  "careers_url": "https://cardoc.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "cardoc"
+ },
+ {
+  "key": "daangnpay",
+  "company": "Daangn Pay (당근페이)",
+  "batch": "platform",
+  "careers_url": "https://job-boards.greenhouse.io/daangnpay",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "daangnpay"
+ },
+ {
+  "key": "gravity",
+  "company": "Gravity (그라비티)",
+  "batch": "platform",
+  "careers_url": "https://job-boards.greenhouse.io/gravity",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "gravity"
+ },
+ {
+  "key": "neowiz",
+  "company": "Neowiz (네오위즈)",
+  "batch": "platform",
+  "careers_url": "https://jobs.lever.co/neowiz",
+  "method": "api",
+  "ats": "lever",
+  "token": "neowiz"
+ },
+ {
+  "key": "spoon",
+  "company": "Spoon Radio (스푼라디오)",
+  "batch": "platform",
+  "careers_url": "https://spoonradio.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "spoonradio"
+ },
+ {
+  "key": "bithumb",
+  "company": "Bithumb (빗썸)",
+  "batch": "platform",
+  "careers_url": "https://bithumbcorp.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "bithumbcorp"
+ },
+ {
+  "key": "medistream",
+  "company": "Medistream",
+  "batch": "platform",
+  "careers_url": "https://medistream.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "medistream"
+ },
+ {
+  "key": "rsquare",
+  "company": "R Square (알스퀘어)",
+  "batch": "platform",
+  "careers_url": "https://rsquare.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "rsquare"
+ },
+ {
+  "key": "ncsoft",
+  "company": "NCSOFT",
+  "batch": "platform",
+  "careers_url": "https://careers.ncsoft.com/apply/list",
+  "method": "api",
+  "ats": "none",
+  "skip": "목록 JSON(/interface/apply/list)이 세션 없는 요청에 403 을 돌려주고 응답이 HTML 이라 공개 API 로 읽을 수 없음"
+ },
+ {
+  "key": "kakaoent",
+  "company": "Kakao Entertainment",
+  "batch": "platform",
+  "careers_url": "https://careers.kakaoent.com/job",
+  "method": "api",
+  "ats": "none",
+  "skip": "Greeting 새 사이트로 목록이 클라이언트에서만 불러와지고 공개 목록 주소를 찾지 못함 (sitemap 에 공고 없음)"
+ },
+ {
+  "key": "devsisters",
+  "company": "Devsisters",
+  "batch": "platform",
+  "careers_url": "https://careers.devsisters.com/position",
+  "method": "api",
+  "ats": "none",
+  "skip": "Greeting 새 사이트로 목록이 클라이언트에서만 불러와지고 공개 목록 주소를 찾지 못함 (sitemap 에 공고 없음)"
+ },
+ {
+  "key": "kakaobank",
+  "company": "Kakao Bank",
+  "batch": "group",
+  "careers_url": "https://recruit.kakaobank.com/jobs",
+  "method": "api",
+  "ats": "kakaobank"
+ },
+ {
+  "key": "lgcareers",
+  "company": "LG 그룹 (LG Careers)",
+  "batch": "group",
+  "careers_url": "https://careers.lg.com/apply",
+  "method": "api",
+  "ats": "lgcareers"
+ },
+ {
+  "key": "ktgroup",
+  "company": "KT 그룹",
+  "batch": "group",
+  "careers_url": "https://recruit.kt.com/careers",
+  "method": "api",
+  "ats": "ktgroup"
+ },
+ {
+  "key": "skcareers",
+  "company": "SK 그룹 (SK Careers)",
+  "batch": "group",
+  "careers_url": "https://www.skcareers.com/Recruit",
+  "method": "api",
+  "ats": "none",
+  "skip": "공고 목록이 POST /Recruit/GetRecruitList 인데 범용 User-Agent 로는 404 이고 robots.txt 는 목록 주소를 따로 허용하지 않아 읽지 않았다"
+ },
+ {
+  "key": "sktelecom",
+  "company": "SK Telecom",
+  "batch": "group",
+  "careers_url": "https://careers.sktelecom.com",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 Disallow: / 로 막음 (일부 홍보 경로만 허용)"
+ },
+ {
+  "key": "lotteinnovate",
+  "company": "Lotte Innovate",
+  "batch": "group",
+  "careers_url": "https://recruit.lotteinnovate.com",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 Disallow: / 로 막음"
+ },
+ {
+  "key": "hyundai",
+  "company": "Hyundai Motor",
+  "batch": "group",
+  "careers_url": "https://talent.hyundai.com",
+  "method": "api",
+  "ats": "none",
+  "skip": "접속 대기열(NetFunnel)이 앞에 있어 자동 수집하지 않음"
+ },
+ {
+  "key": "modoodoc",
+  "company": "Modoodoc (모두닥)",
+  "batch": "audit",
+  "careers_url": "https://modoodoc.career.greetinghr.com",
+  "method": "api",
+  "ats": "greeting",
+  "token": "modoodoc"
+ },
+ {
+  "key": "channel",
+  "company": "Channel Corporation (채널톡)",
+  "batch": "audit",
+  "careers_url": "https://jobs.lever.co/zoyi",
+  "method": "api",
+  "ats": "lever",
+  "token": "zoyi"
+ },
+ {
+  "key": "selectstar",
+  "company": "Selectstar (셀렉트스타)",
+  "batch": "audit",
+  "careers_url": "https://selectstar.ninehire.site/",
+  "method": "api",
+  "ats": "ninehire",
+  "token": "selectstar"
+ },
+ {
+  "key": "bespinglobal",
+  "company": "Bespin Global (베스핀글로벌)",
+  "batch": "audit",
+  "careers_url": "https://bespinglobalrecruit.ninehire.site",
+  "method": "api",
+  "ats": "ninehire",
+  "token": "bespinglobalrecruit"
+ },
+ {
+  "key": "aitrics",
+  "company": "AITRICS (에이아이트릭스)",
+  "batch": "audit",
+  "careers_url": "https://aitrics.ninehire.site/recruit",
+  "method": "api",
+  "ats": "ninehire",
+  "token": "aitrics"
+ },
+ {
+  "key": "doosanrobotics",
+  "company": "Doosan Robotics (두산로보틱스)",
+  "batch": "audit",
+  "careers_url": "https://doosanrobotics.ninehire.site",
+  "method": "api",
+  "ats": "ninehire",
+  "token": "doosanrobotics"
+ },
+ {
+  "key": "day1company",
+  "company": "Day1 Company (패스트캠퍼스)",
+  "batch": "audit",
+  "careers_url": "https://day1company.ninehire.site/job_posting",
+  "method": "api",
+  "ats": "ninehire",
+  "token": "day1company"
+ },
+ {
+  "key": "bucketplace",
+  "company": "Bucketplace (오늘의집)",
+  "batch": "audit",
+  "careers_url": "https://bucketplace.career.greetinghr.com",
+  "method": "api",
+  "ats": "none",
+  "skip": "오늘의집 공식 채용 페이지가 Greeting 새 사이트다. sitemap.xml 이 404 라 기존 greeting 어댑터로 목록을 읽지 못했다 (found 0)"
+ },
+ {
+  "key": "okestro",
+  "company": "Okestro (오케스트로)",
+  "batch": "audit",
+  "careers_url": "https://okestro.career.greetinghr.com",
+  "method": "api",
+  "ats": "none",
+  "skip": "공식 홈페이지가 Greeting 으로 연결되지만 sitemap 에 공고가 없어 found 0 (Greeting 새 사이트)"
+ },
+ {
+  "key": "socar",
+  "company": "SOCAR (쏘카)",
+  "batch": "audit",
+  "careers_url": "https://careers.socarcorp.kr",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 막음"
+ },
+ {
+  "key": "ridi",
+  "company": "Ridi (리디)",
+  "batch": "audit",
+  "careers_url": "https://www.ridicorp.com/career/",
+  "method": "api",
+  "ats": "none",
+  "skip": "페이지가 403 을 돌려줌. 우회하지 않음"
+ },
+ {
+  "key": "yanolja",
+  "company": "Yanolja (야놀자)",
+  "batch": "audit",
+  "careers_url": "https://www.yanolja.com",
+  "method": "api",
+  "ats": "none",
+  "skip": "홈페이지와 company.yanolja.com 이 모두 403. 채용 주소를 찾지 못함"
+ },
+ {
+  "key": "kakaobrain",
+  "company": "Kakao Brain (카카오브레인)",
+  "batch": "audit",
+  "careers_url": "https://www.kakaobrain.com",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 막음"
+ },
+ {
+  "key": "mindslab",
+  "company": "MAUM AI (마음AI)",
+  "batch": "audit",
+  "careers_url": "https://www.mindslab.ai",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 막음"
+ },
+ {
+  "key": "kakaostyle",
+  "company": "Kakao Style (지그재그)",
+  "batch": "audit",
+  "careers_url": "https://zigzag.kr",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 막음 (zigzag.kr, kakaostyle.com 둘 다)"
+ },
+ {
+  "key": "pozalabs",
+  "company": "Pozalabs (포자랩스)",
+  "batch": "audit",
+  "careers_url": "https://recruit.pozalabs.com",
+  "method": "api",
+  "ats": "none",
+  "skip": "채용 페이지가 Notion 문서라 공고 목록을 구조로 읽을 수 없음"
+ },
+ {
+  "key": "voyagerx",
+  "company": "VoyagerX (보이저엑스)",
+  "batch": "audit",
+  "careers_url": "https://career.voyagerx.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "채용 페이지가 Notion 문서라 공고 목록을 구조로 읽을 수 없음"
+ },
+ {
+  "key": "apple",
+  "company": "Apple",
+  "batch": "global2",
+  "careers_url": "https://www.apple.com/careers/kr/",
+  "method": "api",
+  "ats": "apple",
+  "location": "korea-republic-of-KOR"
+ },
+ {
+  "key": "hpe",
+  "company": "HPE (Hewlett Packard Enterprise)",
+  "batch": "global2",
+  "careers_url": "https://careers.hpe.com/",
+  "method": "api",
+  "ats": "phenom",
+  "host": "careers.hpe.com",
+  "path": "us/en",
+  "country": "Korea, Republic of"
+ },
+ {
+  "key": "cisco",
+  "company": "Cisco",
+  "batch": "global2",
+  "careers_url": "https://careers.cisco.com/global/en/search-results",
+  "method": "api",
+  "ats": "phenom",
+  "host": "careers.cisco.com",
+  "path": "global/en",
+  "country": "Korea, Republic of"
+ },
+ {
+  "key": "redhat",
+  "company": "Red Hat",
+  "batch": "global2",
+  "careers_url": "https://jobs.redhat.com/",
+  "method": "api",
+  "ats": "workday",
+  "host": "redhat.wd5",
+  "site": "Jobs"
+ },
+ {
+  "key": "cadence",
+  "company": "Cadence",
+  "batch": "global2",
+  "careers_url": "https://www.cadence.com/en_US/home/company/careers.html",
+  "method": "api",
+  "ats": "workday",
+  "host": "cadence.wd1",
+  "site": "External_Careers"
+ },
+ {
+  "key": "mongodb",
+  "company": "MongoDB",
+  "batch": "global2",
+  "careers_url": "https://www.mongodb.com/company/careers",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "mongodb"
+ },
+ {
+  "key": "elastic",
+  "company": "Elastic",
+  "batch": "global2",
+  "careers_url": "https://www.elastic.co/careers",
+  "method": "api",
+  "ats": "greenhouse",
+  "token": "elastic"
+ },
+ {
+  "key": "microsoft",
+  "company": "Microsoft",
+  "batch": "global2",
+  "careers_url": "https://careers.microsoft.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 공고 검색 API(gcsservices.careers.microsoft.com, apply.careers.microsoft.com/api/pcsx)를 막음"
+ },
+ {
+  "key": "nvidia",
+  "company": "NVIDIA",
+  "batch": "global2",
+  "careers_url": "https://www.nvidia.com/en-us/about-nvidia/careers/",
+  "method": "api",
+  "ats": "none",
+  "skip": "공식 채용 사이트 jobs.nvidia.com 의 robots.txt 가 막고, nvidia.wd5 Workday 공개 JSON 은 'Workday is currently unavailable' HTML 만 돌려줌"
+ },
+ {
+  "key": "google",
+  "company": "Google",
+  "batch": "global2",
+  "careers_url": "https://www.google.com/about/careers/applications/jobs/results/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 채용 검색 경로를 막음"
+ },
+ {
+  "key": "intel",
+  "company": "Intel",
+  "batch": "global2",
+  "careers_url": "https://jobs.intel.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 jobs.intel.com 을 막음"
+ },
+ {
+  "key": "qualcomm",
+  "company": "Qualcomm",
+  "batch": "global2",
+  "careers_url": "https://careers.qualcomm.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 careers.qualcomm.com 을 막음"
+ },
+ {
+  "key": "amd",
+  "company": "AMD",
+  "batch": "global2",
+  "careers_url": "https://careers.amd.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "공고 목록이 careers-amd.icims.com 이고 그 robots.txt 가 막음"
+ },
+ {
+  "key": "arm",
+  "company": "Arm",
+  "batch": "global2",
+  "careers_url": "https://careers.arm.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "공고 목록이 experienced-arm.icims.com 이고 그 robots.txt 가 막음"
+ },
+ {
+  "key": "dell",
+  "company": "Dell",
+  "batch": "global2",
+  "careers_url": "https://careers.dell.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 careers.dell.com 을 막음"
+ },
+ {
+  "key": "hp",
+  "company": "HP Inc.",
+  "batch": "global2",
+  "careers_url": "https://careers.hp.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 careers.hp.com 을 막음"
+ },
+ {
+  "key": "servicenow",
+  "company": "ServiceNow",
+  "batch": "global2",
+  "careers_url": "https://www.servicenow.com/careers.html",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 채용 페이지를 막음"
+ },
+ {
+  "key": "workday",
+  "company": "Workday",
+  "batch": "global2",
+  "careers_url": "https://careers.workday.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 careers.workday.com 을 막음"
+ },
+ {
+  "key": "appliedmaterials",
+  "company": "Applied Materials",
+  "batch": "global2",
+  "careers_url": "https://www.appliedmaterials.com/us/en/careers.html",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 채용 페이지를 막음"
+ },
+ {
+  "key": "siemens",
+  "company": "Siemens",
+  "batch": "global2",
+  "careers_url": "https://jobs.siemens.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 jobs.siemens.com 을 막음"
+ },
+ {
+  "key": "bosch",
+  "company": "Bosch",
+  "batch": "global2",
+  "careers_url": "https://jobs.bosch.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "robots.txt 가 jobs.bosch.com 의 검색 주소를 막음"
+ },
+ {
+  "key": "autodesk",
+  "company": "Autodesk",
+  "batch": "global2",
+  "careers_url": "https://www.autodesk.com/careers",
+  "method": "api",
+  "ats": "none",
+  "skip": "채용 페이지가 403 (브라우저 흉내가 있어야 열림)"
+ },
+ {
+  "key": "sap",
+  "company": "SAP",
+  "batch": "global2",
+  "careers_url": "https://jobs.sap.com/",
+  "method": "api",
+  "ats": "none",
+  "skip": "jobs.sap.com 검색 페이지가 403"
+ },
+ {
+  "key": "tesla",
+  "company": "Tesla",
+  "batch": "global2",
+  "careers_url": "https://www.tesla.com/careers/search",
+  "method": "api",
+  "ats": "none",
+  "skip": "채용 검색 페이지가 403"
+ },
+ {
+  "key": "epicgames",
+  "company": "Epic Games",
+  "batch": "global2",
+  "careers_url": "https://www.epicgames.com/site/en-US/careers",
+  "method": "api",
+  "ats": "none",
+  "skip": "공식 채용 페이지가 403. 참고로 greenhouse 목록(epicgames) 142건 중 한국 위치 0건"
+ }
+]

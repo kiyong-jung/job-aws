@@ -1,0 +1,88 @@
+/* 초기화, 글자, 공통 단추. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: -0.005em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+button, input, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+button:disabled { cursor: default; }
+svg { display: block; flex: none; }
+[hidden] { display: none !important; }
+
+/* 초점: 포인트 색 2px 고리, 2px 띄워서. 전환 없이 바로 */
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--r-chip); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip {
+  position: absolute; left: var(--s4); top: -100px; z-index: 50;
+  background: var(--surface); padding: var(--s2) var(--s3); border-radius: var(--r-chip);
+  border: 1px solid var(--line-strong);
+}
+.skip:focus { top: var(--s3); }
+
+/* 단추: 아이콘 단추와 글 단추 두 가지뿐. 높이 44px */
+.icon-btn, .text-btn {
+  transition: background-color var(--t-out) var(--ease), color var(--t-out) var(--ease), transform var(--t-out) var(--ease);
+}
+.icon-btn {
+  display: inline-grid; place-items: center;
+  width: var(--control); height: var(--control); border-radius: var(--r-chip);
+}
+.icon-btn:hover { background: var(--hover); color: var(--ink); transition-duration: var(--t-hover); }
+.text-btn {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  min-height: var(--control); padding: 0 var(--s4);
+  border: 1px solid var(--line-strong); border-radius: var(--r-chip);
+  background: var(--surface);
+  font-size: var(--fs-body); font-weight: 500; white-space: nowrap;
+}
+.text-btn:hover { background: var(--hover); transition-duration: var(--t-hover); }
+@media (hover: hover) and (pointer: fine) {
+  .text-btn:hover { transform: translateY(-1px); }
+}
+.text-btn:active, .icon-btn:active { transform: translateY(1px) scale(0.985); transition-duration: var(--t-press); }
+
+.num { font-variant-numeric: tabular-nums; }
+
+/* 문장 번호 배지: 원문의 형광펜과 대화의 역량 표가 같이 쓴다 */
+.badge {
+  display: inline-grid; place-items: center;
+  min-width: 20px; height: 20px; padding: 0 var(--s1); margin-right: var(--s2);
+  vertical-align: 1px;
+  border-radius: var(--r-chip);
+  background: var(--badge); 
+  font-size: var(--fs-label); font-weight: 600; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.spinner {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid var(--line-strong); border-top-color: var(--ink);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 움직임 줄이기: 토큰을 쓰지 않는 움직임까지 모두 멈춘다. 숨는 것은 없다.
+   전환은 0s (0.01ms 로 두면 전환이 없던 노드까지 모든 속성에 전환이 생겨, DB 점·후보 칸 1,100개가 한 프레임 늦게 칠해진다) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important; transition-duration: 0s !important; transition-delay: 0ms !important;
+  }
+}

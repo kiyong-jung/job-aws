@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JOB AWS · 공고 역량 찾기</title>
+  <link rel="icon" type="image/png" href="/static/img/mark.png">
+  <link rel="preload" href="/static/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/css/tokens.css">
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/composer.css">
+  <link rel="stylesheet" href="/static/css/panel.css">
+  <script type="module" src="/static/js/main.js"></script>
+</head>
+<body>
+  <div class="app" id="app" data-empty="true">
+    <header class="top">
+      <h1 class="sr-only">JOB AWS · 공고 역량 찾기</h1>
+      <div class="brand">
+        <button class="brand-btn" id="new-chat" type="button" aria-label="JOB AWS 새 공고" title="새 공고" disabled>
+          <img class="brand-mark" src="/static/img/mark.png" alt="" width="28" height="28"><span class="brand-name">JOB AWS</span><span class="brand-new" id="brand-new"></span>
+        </button>
+      </div>
+      <p class="top-title" id="top-title"></p>
+    </header>
+
+    <main class="board">
+      <!-- 시작 화면: 공고 넣기 (끌어다 놓기, 주소, 붙여넣기)와 예시 공고 단추. 공고를 보내면 대시보드(#panel)가 화면을 다 쓴다 -->
+      <section class="landing" id="landing" aria-label="공고 넣기">
+        <div class="hello">
+          <img class="hello-art" src="/static/img/hero.webp" alt="" width="1200" height="300">
+          <h2>어떤 공고를 살펴볼까요?</h2>
+        </div>
+        <form class="composer" id="composer" autocomplete="off">
+          <div class="attachments" id="attachments" aria-label="첨부한 공고"></div>
+          <label class="sr-only" for="composer-input">공고 주소나 내용</label>
+          <textarea id="composer-input" rows="1" placeholder="공고 주소를 넣거나 내용을 붙여넣어 보세요"></textarea>
+          <div class="composer-bar">
+            <button class="icon-btn" id="attach" type="button" aria-label="공고 파일 고르기"></button>
+            <input id="file-input" type="file" accept=".txt,.md,.html,.htm,.pdf,text/plain,text/markdown,text/html" hidden>
+            <span class="composer-hint"></span>
+            <button class="send" id="send" type="submit" aria-label="보내기" disabled></button>
+          </div>
+        </form>
+        <p class="composer-error" id="composer-error" role="alert" hidden></p>
+        <!-- 예시 공고 단추 (AWS 먼저). 서버가 보낸 목록으로 main.js 가 채운다 (data-example 은 예시 이름) -->
+        <div class="starters" id="starters"></div>
+      </section>
+
+      <!-- 대시보드: 쪽 더미 ① 공고 읽기 → ② 프로젝트(1위를 바탕으로 고친 최종 응용 하나) → ③ 교육자료 → ④ 12주 계획 → ⑤ 정리 리포트.
+           쪽마다 그림 하나(.doc)와 바닥 줄(.foot: 한 줄 불렛 둘 + 다음 단계 단추). 맨 위 쪽만 보인다 (panel.js) -->
+      <section class="panel" id="panel" aria-label="과정" data-stack="posting" hidden>
+        <div class="panel-head">
+          <button class="icon-btn" id="panel-back" type="button" aria-label="뒤로" hidden></button>
+          <div class="panel-titles">
+            <ol class="path" id="panel-path" aria-label="단계"></ol>
+            <p class="panel-status" id="panel-status"></p>
+          </div>
+        </div>
+        <!-- 공부 시간 고르기: ⑤ ⑥ 쪽에서만 보이는 라디오 칸 하나 (budget.js). ⑤ 에서는 주 그림 틀의 머리 줄 오른쪽으로 옮겨 간다 (panel.placeBudget) -->
+        <fieldset class="budget" id="budget" hidden></fieldset>
+        <div class="stack" id="stack">
+          <section class="page" id="page-posting" data-view="posting" aria-label="공고 읽기">
+            <div class="posting-board" id="posting-board">
+              <article class="doc posting-doc" id="doc" tabindex="-1"></article>
+              <aside class="posting-cells" id="posting-cells" aria-label="찾은 역량"></aside>
+            </div>
+            <footer class="foot" id="foot-posting" hidden></footer>
+          </section>
+          <section class="page" id="page-search" data-view="search" aria-label="프로젝트 찾기" hidden>
+            <div class="doc search" id="search-doc" tabindex="-1"></div>
+            <footer class="foot" id="foot-search" hidden></footer>
+          </section>
+          <section class="page" id="page-materials" data-view="materials" aria-label="교육자료" hidden>
+            <div class="doc art" id="materials-doc" tabindex="-1"></div>
+            <footer class="foot" id="foot-materials" hidden></footer>
+          </section>
+          <section class="page" id="page-weeks" data-view="weeks" aria-label="12주 계획" hidden>
+            <div class="doc art" id="weeks-doc" tabindex="-1"></div>
+            <footer class="foot" id="foot-weeks" hidden></footer>
+          </section>
+          <section class="page" id="page-report" data-view="report" aria-label="정리 리포트" hidden>
+            <div class="doc art" id="report-doc" tabindex="-1"></div>
+            <footer class="foot" id="foot-report" hidden></footer>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div class="drop" id="drop" aria-hidden="true" hidden>
+      <div class="drop-box">
+        <span class="drop-icon" id="drop-icon"></span>
+        <p class="drop-title">여기에 놓으면 공고 파일을 읽어요</p>
+      </div>
+    </div>
+    <p class="sr-only" id="announce" aria-live="polite"></p>
+  </div>
+</body>
+</html>

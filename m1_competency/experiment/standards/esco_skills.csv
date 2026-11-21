@@ -1,0 +1,4 @@
+# ESCO skill 목록. ESCO 포털(esco.ec.europa.eu) → Download → 'skills' CSV(영어)를 받아
+#    AI·데이터·소프트웨어 관련 항목만 골라(수백 개 이내) 아래 형식으로 저장. 전체 1만 3천여 개는 프롬프트에 다 안 들어감
+# code에는 ESCO concept URI 끝부분, name에는 preferredLabel
+code,name

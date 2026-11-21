@@ -1,0 +1,8 @@
+anthropic>=0.69
+boto3>=1.40
+rank_bm25>=0.2.2
+numpy>=1.26
+requests>=2.31
+websockets>=12
+python-pptx>=1.0
+pytest>=8.0

@@ -1,0 +1,141 @@
+{
+  "_example_only": "아래 작업·시간·근거는 엔진 시연용 가상 데이터이며 팀의 aws_fde.adapt.json 실제 레코드가 아닙니다.",
+  "title": "예시: 고객지원 AI 에이전트 플랫폼",
+  "goal": "고객 질의에 검색 근거를 포함해 답변하고 품질을 검증하는 응용 프로젝트",
+  "base": "example/original-project",
+  "complements": [
+    "example/helper-1",
+    "example/helper-2"
+  ],
+  "packages": [
+    {
+      "id": "W1",
+      "do": "개발 환경과 에이전트 기본 구조 만들기",
+      "out": "실행 가능한 서비스 골격",
+      "hours": 5,
+      "core": true,
+      "competencies": [
+        "C14",
+        "C20"
+      ],
+      "depends_on": [],
+      "sources": [
+        {
+          "project": "example/original-project",
+          "quote": "예시 자료",
+          "for": "기본 구조 참고"
+        }
+      ],
+      "added": [],
+      "completion_check": "서비스를 시작하고 상태 확인 요청의 성공 응답을 기록한다.",
+      "requires": [
+        "C14",
+        "C20"
+      ]
+    },
+    {
+      "id": "W2",
+      "do": "문서 검색을 연결해 RAG 응답 구현",
+      "out": "근거 문서를 표시하는 RAG API",
+      "hours": 8,
+      "core": true,
+      "competencies": [
+        "C21",
+        "C45"
+      ],
+      "depends_on": [
+        "W1"
+      ],
+      "sources": [
+        {
+          "project": "example/helper-1",
+          "quote": "예시 자료",
+          "for": "검색 흐름 참고"
+        }
+      ],
+      "added": [],
+      "completion_check": "검색 질문을 보내 응답에 원문 ID와 인용 구간이 포함되는지 확인한다.",
+      "requires": [
+        "C21",
+        "C45"
+      ]
+    },
+    {
+      "id": "W3",
+      "do": "질문별 응답 품질 검증 스크립트 작성",
+      "out": "평가 리포트",
+      "hours": 6,
+      "core": true,
+      "competencies": [
+        "C46"
+      ],
+      "depends_on": [
+        "W2"
+      ],
+      "sources": [
+        {
+          "project": "시연 과제 명세",
+          "quote": "질문별 응답 품질 검증 스크립트 작성"
+        }
+      ],
+      "added": [],
+      "completion_check": "준비한 질문 세트의 결과와 근거 일치 여부를 리포트에 남긴다.",
+      "requires": [
+        "C46"
+      ]
+    },
+    {
+      "id": "W4",
+      "do": "배포 자동화 및 운영 모니터링",
+      "out": "배포 파이프라인과 운영 대시보드",
+      "hours": 7,
+      "core": false,
+      "competencies": [
+        "C39"
+      ],
+      "depends_on": [
+        "W3"
+      ],
+      "sources": [
+        {
+          "project": "시연 과제 명세",
+          "quote": "배포 자동화 및 운영 모니터링"
+        }
+      ],
+      "added": [],
+      "completion_check": "배포 후 상태 점검 요청과 모니터링 화면에서 같은 요청을 확인한다.",
+      "requires": [
+        "C39"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "id": "C14",
+      "tier": "필수",
+      "packages": [
+        "W1"
+      ],
+      "expect": "예시",
+      "note": ""
+    }
+  ],
+  "hours": {
+    "core": 19,
+    "extension": 7,
+    "total": 26,
+    "budget": 30
+  },
+  "tier_counts": {},
+  "decisions": [],
+  "unverified": [],
+  "checks": {
+    "passed": true,
+    "issues": []
+  },
+  "learner": {
+    "known": [
+      "Python 기초"
+    ]
+  }
+}

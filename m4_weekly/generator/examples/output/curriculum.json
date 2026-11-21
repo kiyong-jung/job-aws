@@ -1,0 +1,969 @@
+{
+  "schema_version": "roundlab.curriculum.output.v1",
+  "status": "ready",
+  "project": {
+    "title": "예시: 고객지원 AI 에이전트 플랫폼",
+    "goal": "고객 질의에 검색 근거를 포함해 답변하고 품질을 검증하는 응용 프로젝트",
+    "base": "example/original-project",
+    "complements": [
+      "example/helper-1",
+      "example/helper-2"
+    ]
+  },
+  "policy": {
+    "source": "adapt.json packages[] + selected materials",
+    "order": "명시된 depends_on 우선, 그 외에는 입력 순서",
+    "learning": "작업·구간별 선수지식에서 보유 개념을 제외하고 필요한 구간을 순서대로 배치",
+    "core": "핵심 작업과 선행 작업 보호, 나머지는 시간 범위에서 포함",
+    "references": "선수조건을 충족할 수 있는 경로 중 핵심 자료 우선, 이후 경로 시간 우선",
+    "no_invention": "시간·역량·작업·근거는 입력에 없는 내용을 생성하지 않음",
+    "reference_selection": "prerequisites"
+  },
+  "inputs": {
+    "packages_total": 4,
+    "materials_total": 6,
+    "core_materials": 2,
+    "reference_materials": 4
+  },
+  "constraints": {
+    "weeks": 12,
+    "hours_per_week": 7.0,
+    "capacity_hours": 84.0,
+    "project_budget_hours": 30
+  },
+  "summary": {
+    "included_packages": [
+      "W1",
+      "W2",
+      "W3",
+      "W4"
+    ],
+    "core_packages": [
+      "W1",
+      "W2",
+      "W3"
+    ],
+    "promoted_dependencies": [],
+    "excluded_packages": [],
+    "selected_learning_units": [
+      "M01",
+      "M02/S1",
+      "M02/S2",
+      "M03",
+      "M04"
+    ],
+    "selected_material_ids": [
+      "M01",
+      "M02",
+      "M03",
+      "M04"
+    ],
+    "implementation_hours": 26.0,
+    "learning_hours": 15.0,
+    "scheduled_hours": 41.0,
+    "remaining_hours": 43.0,
+    "uncovered_competencies": []
+  },
+  "learning_matches": [
+    {
+      "unit_id": "M01",
+      "material_id": "M01",
+      "role": "core",
+      "title": "에이전트 서비스 기초",
+      "url": "https://example.org/learn/agent",
+      "section": null,
+      "competencies": [
+        "C14",
+        "C20"
+      ],
+      "duration_minutes": 240,
+      "evidence": "예시 목차: 시스템 구성과 개발 환경"
+    },
+    {
+      "unit_id": "M02/S1",
+      "material_id": "M02",
+      "role": "core",
+      "title": "RAG 튜토리얼 — 문서 수집과 검색",
+      "url": "https://example.org/learn/rag",
+      "section": "S1",
+      "competencies": [
+        "C21"
+      ],
+      "duration_minutes": 180,
+      "evidence": "예시 목차 1~3장"
+    },
+    {
+      "unit_id": "M02/S2",
+      "material_id": "M02",
+      "role": "core",
+      "title": "RAG 튜토리얼 — 검색 결과와 응답 연결",
+      "url": "https://example.org/learn/rag",
+      "section": "S2",
+      "competencies": [
+        "C45"
+      ],
+      "duration_minutes": 120,
+      "evidence": "예시 목차 4~5장"
+    },
+    {
+      "unit_id": "M03",
+      "material_id": "M03",
+      "role": "reference",
+      "title": "응답 평가 가이드",
+      "url": "https://example.org/learn/eval",
+      "section": null,
+      "competencies": [
+        "C46"
+      ],
+      "duration_minutes": 180,
+      "evidence": "예시 학습목표: 품질 평가"
+    },
+    {
+      "unit_id": "M04",
+      "material_id": "M04",
+      "role": "reference",
+      "title": "배포 튜토리얼",
+      "url": "https://example.org/learn/deploy",
+      "section": null,
+      "competencies": [
+        "C39"
+      ],
+      "duration_minutes": 180,
+      "evidence": "예시 학습목표: 배포 자동화"
+    }
+  ],
+  "competency_coverage": {
+    "target": [
+      "C14",
+      "C20",
+      "C21",
+      "C39",
+      "C45",
+      "C46"
+    ],
+    "covered_by_materials": [
+      "C14",
+      "C20",
+      "C21",
+      "C39",
+      "C45",
+      "C46"
+    ],
+    "missing_materials": []
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "capacity_minutes": 420,
+      "used_minutes": 210,
+      "activities": [
+        {
+          "sequence": 1,
+          "kind": "learning",
+          "id": "M01",
+          "title": "에이전트 서비스 기초",
+          "minutes": 210,
+          "hours": 3.5,
+          "completed_in_this_chunk": false,
+          "material_id": "M01",
+          "role": "core",
+          "url": "https://example.org/learn/agent",
+          "competencies": [
+            "C14",
+            "C20"
+          ],
+          "evidence": "예시 목차: 시스템 구성과 개발 환경",
+          "section": null,
+          "for_task": "W1",
+          "requires": [
+            "Python 기초"
+          ],
+          "reason": "W1 작업 전 선수학습",
+          "study_method": "에이전트 서비스 기초의 개념을 정리하고 예제를 실행한 뒤 개발 환경과 에이전트 기본 구조 만들기에 적용합니다."
+        }
+      ],
+      "deliverables_completed": [],
+      "learning_minutes": 210,
+      "implementation_minutes": 0,
+      "actual_learning_percent": 100.0,
+      "recommended_learning_percent": 60,
+      "goals": [
+        "에이전트 서비스 기초"
+      ],
+      "used_hours": 3.5,
+      "remaining_hours": 3.5
+    },
+    {
+      "week": 2,
+      "capacity_minutes": 420,
+      "used_minutes": 210,
+      "activities": [
+        {
+          "sequence": 2,
+          "kind": "learning",
+          "id": "M01",
+          "title": "에이전트 서비스 기초",
+          "minutes": 30,
+          "hours": 0.5,
+          "completed_in_this_chunk": true,
+          "material_id": "M01",
+          "role": "core",
+          "url": "https://example.org/learn/agent",
+          "competencies": [
+            "C14",
+            "C20"
+          ],
+          "evidence": "예시 목차: 시스템 구성과 개발 환경",
+          "section": null,
+          "for_task": "W1",
+          "requires": [
+            "Python 기초"
+          ],
+          "reason": "W1 작업 전 선수학습",
+          "study_method": "에이전트 서비스 기초의 개념을 정리하고 예제를 실행한 뒤 개발 환경과 에이전트 기본 구조 만들기에 적용합니다."
+        },
+        {
+          "sequence": 3,
+          "kind": "project",
+          "id": "W1",
+          "title": "개발 환경과 에이전트 기본 구조 만들기",
+          "minutes": 180,
+          "hours": 3.0,
+          "completed_in_this_chunk": false,
+          "out": "실행 가능한 서비스 골격",
+          "core": true,
+          "competencies": [
+            "C14",
+            "C20"
+          ],
+          "completion_check": "서비스를 시작하고 상태 확인 요청의 성공 응답을 기록한다.",
+          "prerequisites": [
+            "C14",
+            "C20"
+          ],
+          "depends_on": [],
+          "sources": [
+            {
+              "project": "example/original-project",
+              "quote": "예시 자료",
+              "for": "기본 구조 참고"
+            }
+          ],
+          "added": []
+        }
+      ],
+      "deliverables_completed": [],
+      "learning_minutes": 30,
+      "implementation_minutes": 180,
+      "actual_learning_percent": 14.3,
+      "recommended_learning_percent": 60,
+      "goals": [
+        "에이전트 서비스 기초",
+        "개발 환경과 에이전트 기본 구조 만들기"
+      ],
+      "used_hours": 3.5,
+      "remaining_hours": 3.5
+    },
+    {
+      "week": 3,
+      "capacity_minutes": 420,
+      "used_minutes": 210,
+      "activities": [
+        {
+          "sequence": 4,
+          "kind": "project",
+          "id": "W1",
+          "title": "개발 환경과 에이전트 기본 구조 만들기",
+          "minutes": 120,
+          "hours": 2.0,
+          "completed_in_this_chunk": true,
+          "out": "실행 가능한 서비스 골격",
+          "core": true,
+          "competencies": [
+            "C14",
+            "C20"
+          ],
+          "completion_check": "서비스를 시작하고 상태 확인 요청의 성공 응답을 기록한다.",
+          "prerequisites": [
+            "C14",
+            "C20"
+          ],
+          "depends_on": [],
+          "sources": [
+            {
+              "project": "example/original-project",
+              "quote": "예시 자료",
+              "for": "기본 구조 참고"
+            }
+          ],
+          "added": []
+        },
+        {
+          "sequence": 5,
+          "kind": "learning",
+          "id": "M02/S1",
+          "title": "RAG 튜토리얼 — 문서 수집과 검색",
+          "minutes": 90,
+          "hours": 1.5,
+          "completed_in_this_chunk": false,
+          "material_id": "M02",
+          "role": "core",
+          "url": "https://example.org/learn/rag",
+          "competencies": [
+            "C21"
+          ],
+          "evidence": "예시 목차 1~3장",
+          "section": "S1",
+          "for_task": "W2",
+          "requires": [
+            "C20"
+          ],
+          "reason": "W2 작업 전 선수학습",
+          "study_method": "RAG 튜토리얼 — 문서 수집과 검색의 개념을 정리하고 예제를 실행한 뒤 문서 검색을 연결해 RAG 응답 구현에 적용합니다."
+        }
+      ],
+      "deliverables_completed": [
+        "실행 가능한 서비스 골격"
+      ],
+      "learning_minutes": 90,
+      "implementation_minutes": 120,
+      "actual_learning_percent": 42.9,
+      "recommended_learning_percent": 60,
+      "goals": [
+        "개발 환경과 에이전트 기본 구조 만들기",
+        "RAG 튜토리얼 — 문서 수집과 검색"
+      ],
+      "used_hours": 3.5,
+      "remaining_hours": 3.5
+    },
+    {
+      "week": 4,
+      "capacity_minutes": 420,
+      "used_minutes": 210,
+      "activities": [
+        {
+          "sequence": 6,
+          "kind": "learning",
+          "id": "M02/S1",
+          "title": "RAG 튜토리얼 — 문서 수집과 검색",
+          "minutes": 90,
+          "hours": 1.5,
+          "completed_in_this_chunk": true,
+          "material_id": "M02",
+          "role": "core",
+          "url": "https://example.org/learn/rag",
+          "competencies": [
+            "C21"
+          ],
+          "evidence": "예시 목차 1~3장",
+          "section": "S1",
+          "for_task": "W2",
+          "requires": [
+            "C20"
+          ],
+          "reason": "W2 작업 전 선수학습",
+          "study_method": "RAG 튜토리얼 — 문서 수집과 검색의 개념을 정리하고 예제를 실행한 뒤 문서 검색을 연결해 RAG 응답 구현에 적용합니다."
+        },
+        {
+          "sequence": 7,
+          "kind": "learning",
+          "id": "M02/S2",
+          "title": "RAG 튜토리얼 — 검색 결과와 응답 연결",
+          "minutes": 120,
+          "hours": 2.0,
+          "completed_in_this_chunk": true,
+          "material_id": "M02",
+          "role": "core",
+          "url": "https://example.org/learn/rag",
+          "competencies": [
+            "C45"
+          ],
+          "evidence": "예시 목차 4~5장",
+          "section": "S2",
+          "for_task": "W2",
+          "requires": [
+            "C21"
+          ],
+          "reason": "W2 작업 전 선수학습",
+          "study_method": "예제 문서를 검색해 순위를 살펴보고, 응답의 인용 ID를 원문과 대조한 뒤 검색 API에 연결합니다."
+        }
+      ],
+      "deliverables_completed": [],
+      "learning_minutes": 210,
+      "implementation_minutes": 0,
+      "actual_learning_percent": 100.0,
+      "recommended_learning_percent": 40,
+      "goals": [
+        "RAG 튜토리얼 — 문서 수집과 검색",
+        "RAG 튜토리얼 — 검색 결과와 응답 연결"
+      ],
+      "used_hours": 3.5,
+      "remaining_hours": 3.5
+    },
+    {
+      "week": 5,
+      "capacity_minutes": 420,
+      "used_minutes": 210,
+      "activities": [
+        {
+          "sequence": 8,
+          "kind": "project",
+          "id": "W2",
+          "title": "문서 검색을 연결해 RAG 응답 구현",
+          "minutes": 210,
+          "hours": 3.5,
+          "completed_in_this_chunk": false,
+          "out": "근거 문서를 표시하는 RAG API",
+          "core": true,
+          "competencies": [
+            "C21",
+            "C45"
+          ],
+          "completion_check": "검색 질문을 보내 응답에 원문 ID와 인용 구간이 포함되는지 확인한다.",
+          "prerequisites": [
+            "C21",
+            "C45"
+          ],
+          "depends_on": [
+            "W1"
+          ],
+          "sources": [
+            {
+              "project": "example/helper-1",
+              "quote": "예시 자료",
+              "for": "검색 흐름 참고"
+            }
+          ],
+          "added": []
+        }
+      ],
+      "deliverables_completed": [],
+      "learning_minutes": 0,
+      "implementation_minutes": 210,
+      "actual_learning_percent": 0.0,
+      "recommended_learning_percent": 40,
+      "goals": [
+        "문서 검색을 연결해 RAG 응답 구현"
+      ],
+      "used_hours": 3.5,
+      "remaining_hours": 3.5
+    },
+    {
+      "week": 6,
+      "capacity_minutes": 420,
+      "used_minutes": 210,
+      "activities": [
+        {
+          "sequence": 9,
+          "kind": "project",
+          "id": "W2",
+          "title": "문서 검색을 연결해 RAG 응답 구현",
+          "minutes": 210,
+          "hours": 3.5,
+          "completed_in_this_chunk": false,
+          "out": "근거 문서를 표시하는 RAG API",
+          "core": true,
+          "competencies": [
+            "C21",
+            "C45"
+          ],
+          "completion_check": "검색 질문을 보내 응답에 원문 ID와 인용 구간이 포함되는지 확인한다.",
+          "prerequisites": [
+            "C21",
+            "C45"
+          ],
+          "depends_on": [
+            "W1"
+          ],
+          "sources": [
+            {
+              "project": "example/helper-1",
+              "quote": "예시 자료",
+              "for": "검색 흐름 참고"
+            }
+          ],
+          "added": []
+        }
+      ],
+      "deliverables_completed": [],
+      "learning_minutes": 0,
+      "implementation_minutes": 210,
+      "actual_learning_percent": 0.0,
+      "recommended_learning_percent": 40,
+      "goals": [
+        "문서 검색을 연결해 RAG 응답 구현"
+      ],
+      "used_hours": 3.5,
+      "remaining_hours": 3.5
+    },
+    {
+      "week": 7,
+      "capacity_minutes": 420,
+      "used_minutes": 200,
+      "activities": [
+        {
+          "sequence": 10,
+          "kind": "project",
+          "id": "W2",
+          "title": "문서 검색을 연결해 RAG 응답 구현",
+          "minutes": 60,
+          "hours": 1.0,
+          "completed_in_this_chunk": true,
+          "out": "근거 문서를 표시하는 RAG API",
+          "core": true,
+          "competencies": [
+            "C21",
+            "C45"
+          ],
+          "completion_check": "검색 질문을 보내 응답에 원문 ID와 인용 구간이 포함되는지 확인한다.",
+          "prerequisites": [
+            "C21",
+            "C45"
+          ],
+          "depends_on": [
+            "W1"
+          ],
+          "sources": [
+            {
+              "project": "example/helper-1",
+              "quote": "예시 자료",
+              "for": "검색 흐름 참고"
+            }
+          ],
+          "added": []
+        },
+        {
+          "sequence": 11,
+          "kind": "learning",
+          "id": "M03",
+          "title": "응답 평가 가이드",
+          "minutes": 140,
+          "hours": 2.3333,
+          "completed_in_this_chunk": false,
+          "material_id": "M03",
+          "role": "reference",
+          "url": "https://example.org/learn/eval",
+          "competencies": [
+            "C46"
+          ],
+          "evidence": "예시 학습목표: 품질 평가",
+          "section": null,
+          "for_task": "W3",
+          "requires": [],
+          "reason": "W3 작업 전 선수학습",
+          "study_method": "응답 평가 가이드의 개념을 정리하고 예제를 실행한 뒤 질문별 응답 품질 검증 스크립트 작성에 적용합니다."
+        }
+      ],
+      "deliverables_completed": [
+        "근거 문서를 표시하는 RAG API"
+      ],
+      "learning_minutes": 140,
+      "implementation_minutes": 60,
+      "actual_learning_percent": 70.0,
+      "recommended_learning_percent": 40,
+      "goals": [
+        "문서 검색을 연결해 RAG 응답 구현",
+        "응답 평가 가이드"
+      ],
+      "used_hours": 3.3333,
+      "remaining_hours": 3.6667
+    },
+    {
+      "week": 8,
+      "capacity_minutes": 420,
+      "used_minutes": 200,
+      "activities": [
+        {
+          "sequence": 12,
+          "kind": "learning",
+          "id": "M03",
+          "title": "응답 평가 가이드",
+          "minutes": 40,
+          "hours": 0.6667,
+          "completed_in_this_chunk": true,
+          "material_id": "M03",
+          "role": "reference",
+          "url": "https://example.org/learn/eval",
+          "competencies": [
+            "C46"
+          ],
+          "evidence": "예시 학습목표: 품질 평가",
+          "section": null,
+          "for_task": "W3",
+          "requires": [],
+          "reason": "W3 작업 전 선수학습",
+          "study_method": "응답 평가 가이드의 개념을 정리하고 예제를 실행한 뒤 질문별 응답 품질 검증 스크립트 작성에 적용합니다."
+        },
+        {
+          "sequence": 13,
+          "kind": "project",
+          "id": "W3",
+          "title": "질문별 응답 품질 검증 스크립트 작성",
+          "minutes": 160,
+          "hours": 2.6667,
+          "completed_in_this_chunk": false,
+          "out": "평가 리포트",
+          "core": true,
+          "competencies": [
+            "C46"
+          ],
+          "completion_check": "준비한 질문 세트의 결과와 근거 일치 여부를 리포트에 남긴다.",
+          "prerequisites": [
+            "C46"
+          ],
+          "depends_on": [
+            "W2"
+          ],
+          "sources": [
+            {
+              "project": "시연 과제 명세",
+              "quote": "질문별 응답 품질 검증 스크립트 작성"
+            }
+          ],
+          "added": []
+        }
+      ],
+      "deliverables_completed": [],
+      "learning_minutes": 40,
+      "implementation_minutes": 160,
+      "actual_learning_percent": 20.0,
+      "recommended_learning_percent": 40,
+      "goals": [
+        "응답 평가 가이드",
+        "질문별 응답 품질 검증 스크립트 작성"
+      ],
+      "used_hours": 3.3333,
+      "remaining_hours": 3.6667
+    },
+    {
+      "week": 9,
+      "capacity_minutes": 420,
+      "used_minutes": 200,
+      "activities": [
+        {
+          "sequence": 14,
+          "kind": "project",
+          "id": "W3",
+          "title": "질문별 응답 품질 검증 스크립트 작성",
+          "minutes": 200,
+          "hours": 3.3333,
+          "completed_in_this_chunk": true,
+          "out": "평가 리포트",
+          "core": true,
+          "competencies": [
+            "C46"
+          ],
+          "completion_check": "준비한 질문 세트의 결과와 근거 일치 여부를 리포트에 남긴다.",
+          "prerequisites": [
+            "C46"
+          ],
+          "depends_on": [
+            "W2"
+          ],
+          "sources": [
+            {
+              "project": "시연 과제 명세",
+              "quote": "질문별 응답 품질 검증 스크립트 작성"
+            }
+          ],
+          "added": []
+        }
+      ],
+      "deliverables_completed": [
+        "평가 리포트"
+      ],
+      "learning_minutes": 0,
+      "implementation_minutes": 200,
+      "actual_learning_percent": 0.0,
+      "recommended_learning_percent": 25,
+      "goals": [
+        "질문별 응답 품질 검증 스크립트 작성"
+      ],
+      "used_hours": 3.3333,
+      "remaining_hours": 3.6667
+    },
+    {
+      "week": 10,
+      "capacity_minutes": 420,
+      "used_minutes": 200,
+      "activities": [
+        {
+          "sequence": 15,
+          "kind": "learning",
+          "id": "M04",
+          "title": "배포 튜토리얼",
+          "minutes": 180,
+          "hours": 3.0,
+          "completed_in_this_chunk": true,
+          "material_id": "M04",
+          "role": "reference",
+          "url": "https://example.org/learn/deploy",
+          "competencies": [
+            "C39"
+          ],
+          "evidence": "예시 학습목표: 배포 자동화",
+          "section": null,
+          "for_task": "W4",
+          "requires": [],
+          "reason": "W4 작업 전 선수학습",
+          "study_method": "배포 튜토리얼의 개념을 정리하고 예제를 실행한 뒤 배포 자동화 및 운영 모니터링에 적용합니다."
+        },
+        {
+          "sequence": 16,
+          "kind": "project",
+          "id": "W4",
+          "title": "배포 자동화 및 운영 모니터링",
+          "minutes": 20,
+          "hours": 0.3333,
+          "completed_in_this_chunk": false,
+          "out": "배포 파이프라인과 운영 대시보드",
+          "core": false,
+          "competencies": [
+            "C39"
+          ],
+          "completion_check": "배포 후 상태 점검 요청과 모니터링 화면에서 같은 요청을 확인한다.",
+          "prerequisites": [
+            "C39"
+          ],
+          "depends_on": [
+            "W3"
+          ],
+          "sources": [
+            {
+              "project": "시연 과제 명세",
+              "quote": "배포 자동화 및 운영 모니터링"
+            }
+          ],
+          "added": []
+        }
+      ],
+      "deliverables_completed": [],
+      "learning_minutes": 180,
+      "implementation_minutes": 20,
+      "actual_learning_percent": 90.0,
+      "recommended_learning_percent": 25,
+      "goals": [
+        "배포 튜토리얼",
+        "배포 자동화 및 운영 모니터링"
+      ],
+      "used_hours": 3.3333,
+      "remaining_hours": 3.6667
+    },
+    {
+      "week": 11,
+      "capacity_minutes": 420,
+      "used_minutes": 200,
+      "activities": [
+        {
+          "sequence": 17,
+          "kind": "project",
+          "id": "W4",
+          "title": "배포 자동화 및 운영 모니터링",
+          "minutes": 200,
+          "hours": 3.3333,
+          "completed_in_this_chunk": false,
+          "out": "배포 파이프라인과 운영 대시보드",
+          "core": false,
+          "competencies": [
+            "C39"
+          ],
+          "completion_check": "배포 후 상태 점검 요청과 모니터링 화면에서 같은 요청을 확인한다.",
+          "prerequisites": [
+            "C39"
+          ],
+          "depends_on": [
+            "W3"
+          ],
+          "sources": [
+            {
+              "project": "시연 과제 명세",
+              "quote": "배포 자동화 및 운영 모니터링"
+            }
+          ],
+          "added": []
+        }
+      ],
+      "deliverables_completed": [],
+      "learning_minutes": 0,
+      "implementation_minutes": 200,
+      "actual_learning_percent": 0.0,
+      "recommended_learning_percent": 25,
+      "goals": [
+        "배포 자동화 및 운영 모니터링"
+      ],
+      "used_hours": 3.3333,
+      "remaining_hours": 3.6667
+    },
+    {
+      "week": 12,
+      "capacity_minutes": 420,
+      "used_minutes": 200,
+      "activities": [
+        {
+          "sequence": 18,
+          "kind": "project",
+          "id": "W4",
+          "title": "배포 자동화 및 운영 모니터링",
+          "minutes": 200,
+          "hours": 3.3333,
+          "completed_in_this_chunk": true,
+          "out": "배포 파이프라인과 운영 대시보드",
+          "core": false,
+          "competencies": [
+            "C39"
+          ],
+          "completion_check": "배포 후 상태 점검 요청과 모니터링 화면에서 같은 요청을 확인한다.",
+          "prerequisites": [
+            "C39"
+          ],
+          "depends_on": [
+            "W3"
+          ],
+          "sources": [
+            {
+              "project": "시연 과제 명세",
+              "quote": "배포 자동화 및 운영 모니터링"
+            }
+          ],
+          "added": []
+        }
+      ],
+      "deliverables_completed": [
+        "배포 파이프라인과 운영 대시보드"
+      ],
+      "learning_minutes": 0,
+      "implementation_minutes": 200,
+      "actual_learning_percent": 0.0,
+      "recommended_learning_percent": 25,
+      "goals": [
+        "배포 자동화 및 운영 모니터링"
+      ],
+      "used_hours": 3.3333,
+      "remaining_hours": 3.6667
+    }
+  ],
+  "learner_known": [
+    "Python 기초"
+  ],
+  "prerequisite_gaps": {},
+  "required_learning_topics": [
+    "C14",
+    "C20",
+    "C21",
+    "C39",
+    "C45",
+    "C46"
+  ],
+  "checks": {
+    "scheduled": true,
+    "core_not_dropped": true,
+    "within_total_capacity": true,
+    "material_durations_known": true,
+    "educational_coverage_complete": true,
+    "educational_evidence_complete": true,
+    "project_implementation_within_budget": true,
+    "added_claims_to_review": 0,
+    "unmatched_core_material_ids": [],
+    "upstream_project_passed": true,
+    "all_week_caps_ok": true,
+    "unverified_count": 0
+  },
+  "warnings": [],
+  "upstream_review": {
+    "unverified": [],
+    "decisions": [],
+    "checks": {
+      "passed": true,
+      "issues": []
+    }
+  },
+  "task_preparation": [
+    {
+      "task_id": "W1",
+      "required": [
+        "C14",
+        "C20"
+      ],
+      "already_known": [],
+      "depends_on": [],
+      "completion_check": "서비스를 시작하고 상태 확인 요청의 성공 응답을 기록한다.",
+      "sources": [
+        {
+          "project": "example/original-project",
+          "quote": "예시 자료",
+          "for": "기본 구조 참고"
+        }
+      ],
+      "study_before_task": [
+        "M01"
+      ],
+      "gaps": []
+    },
+    {
+      "task_id": "W2",
+      "required": [
+        "C21",
+        "C45"
+      ],
+      "already_known": [],
+      "depends_on": [
+        "W1"
+      ],
+      "completion_check": "검색 질문을 보내 응답에 원문 ID와 인용 구간이 포함되는지 확인한다.",
+      "sources": [
+        {
+          "project": "example/helper-1",
+          "quote": "예시 자료",
+          "for": "검색 흐름 참고"
+        }
+      ],
+      "study_before_task": [
+        "M02/S1",
+        "M02/S2"
+      ],
+      "gaps": []
+    },
+    {
+      "task_id": "W3",
+      "required": [
+        "C46"
+      ],
+      "already_known": [],
+      "depends_on": [
+        "W2"
+      ],
+      "completion_check": "준비한 질문 세트의 결과와 근거 일치 여부를 리포트에 남긴다.",
+      "sources": [
+        {
+          "project": "시연 과제 명세",
+          "quote": "질문별 응답 품질 검증 스크립트 작성"
+        }
+      ],
+      "study_before_task": [
+        "M03"
+      ],
+      "gaps": []
+    },
+    {
+      "task_id": "W4",
+      "required": [
+        "C39"
+      ],
+      "already_known": [],
+      "depends_on": [
+        "W3"
+      ],
+      "completion_check": "배포 후 상태 점검 요청과 모니터링 화면에서 같은 요청을 확인한다.",
+      "sources": [
+        {
+          "project": "시연 과제 명세",
+          "quote": "배포 자동화 및 운영 모니터링"
+        }
+      ],
+      "study_before_task": [
+        "M04"
+      ],
+      "gaps": []
+    }
+  ]
+}

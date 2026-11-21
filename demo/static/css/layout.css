@@ -1,0 +1,78 @@
+/* 화면 뼈대: 머리줄 + 판(board). 판에는 시작 화면(공고 넣기)과 대시보드(쪽 더미) 가운데 하나만 보인다 (사용자 11/19: 대화 칸 없음). */
+.app {
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: var(--header-h) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.top {
+  display: flex; align-items: center; gap: var(--s3);
+  padding: 0 var(--s3) 0 var(--s5);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  min-width: 0;
+}
+.app[data-empty="true"] .top { border-bottom-color: transparent; }
+/* 왼쪽 위 로고 = 새 공고 단추. 결과가 있을 때만 켜지고, 켜지면 옆에 + 가 붙는다 */
+.brand { display: flex; align-items: center; gap: var(--s2); font-size: var(--fs-body); font-weight: 600; line-height: 1.5; white-space: nowrap; }
+.brand-btn {
+  display: flex; align-items: center; gap: var(--s2);
+  height: var(--control); padding: 0 var(--s2); margin-left: calc(var(--s2) * -1);
+  border-radius: var(--r-chip); font-weight: 600;
+  transition: background-color var(--t-out) var(--ease);
+}
+.brand-btn:not(:disabled):hover { background: var(--hover); transition-duration: var(--t-hover); }
+.brand-btn:not(:disabled):active { background: var(--sunk); }
+.brand-name { font-family: var(--font-title); font-weight: 400; font-synthesis: none; }      /* 로고 글 "JOB AWS" 는 HALUNA (400 하나뿐, 굵기를 지어 칠하지 않는다) */
+.brand-mark { width: 28px; height: 28px; border-radius: var(--r-chip); }
+.brand-new { display: none; color: var(--faint); }
+.brand-btn:not(:disabled) .brand-new { display: grid; }
+.brand-btn:not(:disabled):hover .brand-new { color: var(--ink); }
+.top-title {
+  flex: 1; min-width: 0;
+  font-size: var(--fs-body);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.top-title:not(:empty)::before { content: "/"; margin-right: var(--s3); color: var(--line-strong); }
+.app[data-empty="true"] .top-title { visibility: hidden; }
+
+.board { display: flex; min-height: 0; min-width: 0; overflow-x: clip; }
+
+/* 시작 화면: 인사와 입력창, 예시 공고 단추를 가운데에 */
+.landing {
+  flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 0 var(--s5) var(--s7);
+}
+.landing > * { width: 100%; max-width: var(--chat-max); }
+.app[data-empty="false"] .landing { display: none; }
+.hello { margin-bottom: var(--s5); }
+.hello h2 { font-size: var(--fs-hello); font-weight: 600; line-height: 1.35; letter-spacing: -0.01em; }
+/* 빈 화면 그림: 책 → 클라우드 → 가방. 장식이라 alt 는 비움 */
+.hello-art {
+  display: block; width: 100%; height: auto; aspect-ratio: 4 / 1;
+  margin-bottom: var(--s5); border-radius: var(--r-card); object-fit: cover;
+}
+/* 예시 공고 단추 (main.js 가 채운다). 채우기 전에도 한 줄 높이를 잡아 둬 가운데 둔 인사·입력창이 밀리지 않는다 */
+.starters { display: flex; flex-wrap: wrap; gap: var(--s2); min-height: var(--control); margin-top: var(--s4); }
+
+/* 대시보드: 판을 다 쓴다 */
+.panel {
+  flex: 1 1 auto; min-width: 0;
+  margin: var(--s2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  display: flex; flex-direction: column; min-height: 0;
+  overflow: hidden;
+  animation: panel-in var(--t-panel) var(--ease-in);
+}
+@keyframes panel-in { from { opacity: 0; transform: translateY(8px); } }
+
+@media (max-width: 599.98px) {
+  .top { gap: var(--s2); padding: 0 var(--s2) 0 var(--s4); }
+  .top-title { display: none; }
+  .landing { padding: 0 var(--s4) var(--s6); }
+  .hello h2 { font-size: var(--fs-title); }
+  .panel { margin: 0; border: 0; border-radius: 0; }
+}

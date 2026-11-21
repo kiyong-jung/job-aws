@@ -1,0 +1,1567 @@
+{
+ "collected_at": "2026-11-08T13:54:16+00:00",
+ "note": "Free university course materials for AI engineering/research curricula. kind='official page': official course page with public notes, slides or videos; url returned HTTP 200 at collection time and is the latest public offering found. kind='youtube': a lecture playlist on an official university or lecturer YouTube channel (Stanford Online, Prof. Joonseok Lee of SNU); playlist ids were read once from each channel's public /playlists page (YouTube robots.txt disallows /feeds/videos.xml, so RSS was not used). Only the first page of the Stanford Online playlists listing could be read, so that channel is covered partially. term is null when not stated. videos is an official playlist or channel link, or null when none is linked. Summaries are paraphrased from the official page or playlist description. No aggregators or paid platforms.",
+ "courses": [
+  {
+   "id": "UC001",
+   "university": "Stanford",
+   "code": "CS224N",
+   "title": "Natural Language Processing with Deep Learning",
+   "term": "Winter 2026",
+   "url": "https://web.stanford.edu/class/cs224n/",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rOaMFbaqxPDoLWjDaRAdP9D",
+   "topics": [
+    "nlp",
+    "llm",
+    "deep-learning-foundations"
+   ],
+   "summary": "A thorough introduction to cutting-edge neural networks for NLP, from word vectors and recurrent models to Transformers and large language models, with programming assignments and a final project.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC002",
+   "university": "Stanford",
+   "code": "CS336",
+   "title": "Language Modeling from Scratch",
+   "term": "Spring 2026",
+   "url": "https://cs336.stanford.edu/",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV",
+   "topics": [
+    "llm",
+    "pretraining",
+    "post-training",
+    "distributed-training",
+    "ml-systems",
+    "evaluation"
+   ],
+   "summary": "Students build their own language model end to end: pre-training data collection and cleaning, Transformer construction, efficient model training, and evaluation before deployment.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC003",
+   "university": "Stanford",
+   "code": "CS231n",
+   "title": "Deep Learning for Computer Vision",
+   "term": "Spring 2026",
+   "url": "https://cs231n.stanford.edu/",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16",
+   "topics": [
+    "computer-vision",
+    "deep-learning-foundations"
+   ],
+   "summary": "A deep dive into deep learning architectures for visual recognition (classification, localization, detection), focusing on learning end-to-end models and implementing and training networks.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC004",
+   "university": "Stanford",
+   "code": "CS229",
+   "title": "Machine Learning",
+   "term": "Summer 2026",
+   "url": "https://cs229.stanford.edu/",
+   "videos": "https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw",
+   "topics": [
+    "ml-foundations",
+    "reinforcement-learning"
+   ],
+   "summary": "Broad introduction to machine learning and statistical pattern recognition: supervised learning, unsupervised learning, learning theory and bias/variance, and reinforcement learning and adaptive control.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC005",
+   "university": "Stanford",
+   "code": "CS25",
+   "title": "Transformers United (V6)",
+   "term": "Spring 2026",
+   "url": "https://web.stanford.edu/class/cs25/",
+   "videos": null,
+   "topics": [
+    "llm",
+    "multimodal",
+    "agents"
+   ],
+   "summary": "Weekly seminar of talks by researchers on Transformers and their applications across language, vision and other fields; open to auditors, with slides posted for each talk.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC006",
+   "university": "Stanford",
+   "code": "CS234",
+   "title": "Reinforcement Learning",
+   "term": "Winter 2026",
+   "url": "https://web.stanford.edu/class/cs234/",
+   "videos": null,
+   "topics": [
+    "reinforcement-learning",
+    "post-training"
+   ],
+   "summary": "Solid introduction to reinforcement learning, covering the core challenges and approaches including generalization and exploration, through lectures and written and coding assignments.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC007",
+   "university": "Stanford",
+   "code": "CS330",
+   "title": "Deep Multi-Task and Meta Learning",
+   "term": "Fall 2023",
+   "url": "https://cs330.stanford.edu/",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rMC6zfYmnD7UG3LVvwaITY5",
+   "topics": [
+    "deep-learning-foundations",
+    "transfer-learning"
+   ],
+   "summary": "Multi-task learning, meta-learning and few-shot learning, including self-supervised pre-training (contrastive learning, masked language modeling) and transfer learning such as domain adaptation.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC008",
+   "university": "Stanford",
+   "code": "CS329S",
+   "title": "Machine Learning Systems Design",
+   "term": "Winter 2022",
+   "url": "https://stanford-cs329s.github.io/",
+   "videos": null,
+   "topics": [
+    "ml-systems",
+    "mlops",
+    "serving"
+   ],
+   "summary": "An iterative framework for building real-world ML systems that are deployable, reliable and scalable: data management and engineering, feature engineering, model selection, training, deployment and monitoring.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC009",
+   "university": "Stanford",
+   "code": "CS229S",
+   "title": "Systems for Machine Learning",
+   "term": "Fall 2023",
+   "url": "https://cs229s.stanford.edu/fall2023/",
+   "videos": null,
+   "topics": [
+    "ml-systems",
+    "serving",
+    "distributed-training",
+    "efficient-inference"
+   ],
+   "summary": "How to reach high performance when training and serving deep learning models, addressing the infrastructure and lifecycle hurdles that limit performance at scale.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC010",
+   "university": "Stanford",
+   "code": "CS236",
+   "title": "Deep Generative Models",
+   "term": "Fall 2023",
+   "url": "https://deepgenerativemodels.github.io/",
+   "videos": null,
+   "topics": [
+    "diffusion-generative",
+    "deep-learning-foundations"
+   ],
+   "summary": "Probabilistic foundations and learning algorithms for deep generative models: VAEs, GANs, autoregressive models, normalizing flows, energy-based models and score-based (diffusion) models.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC011",
+   "university": "Stanford",
+   "code": "CS224W",
+   "title": "Machine Learning with Graphs",
+   "term": "Fall 2026",
+   "url": "https://web.stanford.edu/class/cs224w/",
+   "videos": null,
+   "topics": [
+    "graph-ml",
+    "recsys"
+   ],
+   "summary": "Computational and modeling challenges of massive graphs: representation learning and graph neural networks, knowledge graph reasoning, web algorithms and social network analysis; slides are public.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC012",
+   "university": "Stanford",
+   "code": "CS324",
+   "title": "Large Language Models",
+   "term": "Winter 2022",
+   "url": "https://stanford-cs324.github.io/winter2022/",
+   "videos": null,
+   "topics": [
+    "llm",
+    "pretraining",
+    "distributed-training"
+   ],
+   "summary": "Fundamentals of the modeling, theory, ethics and systems aspects of large language models, with online lecture notes on capabilities, data, training, parallelism, scaling laws and adaptation.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC013",
+   "university": "Stanford",
+   "code": "CS224S",
+   "title": "Spoken Language Processing",
+   "term": "Spring 2025",
+   "url": "https://web.stanford.edu/class/cs224s/",
+   "videos": null,
+   "topics": [
+    "speech"
+   ],
+   "summary": "Introduction to spoken language technology with an emphasis on dialog systems: deep learning for speech recognition, speech synthesis, affect detection and dialogue management, with hands-on homework.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC014",
+   "university": "Stanford",
+   "code": "CS224U",
+   "title": "Natural Language Understanding",
+   "term": "Spring 2023",
+   "url": "https://web.stanford.edu/class/cs224u/",
+   "videos": null,
+   "topics": [
+    "nlp",
+    "llm",
+    "evaluation",
+    "rag"
+   ],
+   "summary": "Natural language understanding with contextual representations and modern language models; can be taken online, with slides, recorded videos and Python notebooks.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC015",
+   "university": "Stanford",
+   "code": "CS329H",
+   "title": "Machine Learning from Human Preferences",
+   "term": "Autumn 2026",
+   "url": "https://web.stanford.edu/class/cs329h/",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rNm525zyAObP4al43WAifZz",
+   "topics": [
+    "post-training",
+    "reinforcement-learning",
+    "evaluation"
+   ],
+   "summary": "Graduate course on learning from human preferences: choice modelling, learning to predict choice, RLHF and DPO, assistance games and bandits, with applications to fine-tuning and personalization.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC016",
+   "university": "Stanford",
+   "code": "CS329A",
+   "title": "Self-Improving AI Agents",
+   "term": "Autumn 2025",
+   "url": "https://cs329a.stanford.edu/",
+   "videos": "https://www.youtube.com/playlist?list=PLangBM27OtEA",
+   "topics": [
+    "agents",
+    "post-training",
+    "reinforcement-learning",
+    "llm"
+   ],
+   "summary": "Techniques for AI agents that improve through interaction: constitutional AI, verifiers, test-time compute scaling, search with LLMs, RL training, and LLMs augmented with tools, code and memory.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC017",
+   "university": "Stanford",
+   "code": "CS230",
+   "title": "Deep Learning",
+   "term": null,
+   "url": "https://cs230.stanford.edu/",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rNRRGdS0rBbXOUGA0wjdh1X",
+   "topics": [
+    "deep-learning-foundations"
+   ],
+   "summary": "Foundations of deep learning: how to build neural networks and lead successful ML projects, covering CNNs, RNNs, LSTMs, Adam, dropout, batch normalization and initialization.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC018",
+   "university": "Stanford",
+   "code": "CS246",
+   "title": "Mining Massive Data Sets",
+   "term": null,
+   "url": "https://web.stanford.edu/class/cs246/",
+   "videos": null,
+   "topics": [
+    "recsys",
+    "ml-systems"
+   ],
+   "summary": "Data mining and machine learning algorithms for very large data with MapReduce and Spark: locality-sensitive hashing, dimensionality reduction, recommendation systems, clustering and link analysis.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC019",
+   "university": "Stanford",
+   "code": "CS224R",
+   "title": "Deep Reinforcement Learning",
+   "term": "Spring 2026",
+   "url": "https://cs224r.stanford.edu/",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rPwxE0ONYRa_itZFdaKCylL",
+   "topics": [
+    "reinforcement-learning",
+    "vla-robotics",
+    "post-training"
+   ],
+   "summary": "Practical deep RL algorithms that learn behavior from high-dimensional observations: learning from demonstrations, model-based and model-free RL, offline RL, with applications in robotics and language models.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC020",
+   "university": "Stanford",
+   "code": "CS224V",
+   "title": "Agentic AI",
+   "term": "Fall 2026",
+   "url": "https://web.stanford.edu/class/cs224v/",
+   "videos": null,
+   "topics": [
+    "agents",
+    "llm",
+    "rag"
+   ],
+   "summary": "Project course with lectures on the principles and research behind LLM-powered agents; students build a quarter-long project in agent methodology research or an applied assistant.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC021",
+   "university": "Stanford",
+   "code": "CME295",
+   "title": "Transformers & Large Language Models",
+   "term": "Autumn 2026",
+   "url": "https://cme295.stanford.edu/",
+   "videos": "https://www.youtube.com/playlist?list=PLakGfbKCei80",
+   "topics": [
+    "llm",
+    "post-training",
+    "agents",
+    "rag"
+   ],
+   "summary": "The evolution of NLP methods, the core components of the Transformer and how they relate to LLMs, and techniques to improve model performance for real-world applications.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC022",
+   "university": "Stanford",
+   "code": "CS149",
+   "title": "Parallel Computing",
+   "term": "Fall 2025",
+   "url": "https://gfxcourses.stanford.edu/cs149/fall25",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rMp7MTFr4hQsDEcX7Bx6Odp",
+   "topics": [
+    "ml-systems",
+    "gpu-programming"
+   ],
+   "summary": "Principles and engineering trade-offs of modern parallel computing systems, from multi-core CPUs and GPUs to AI accelerators, and the parallel programming techniques needed to use them well.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC023",
+   "university": "CMU",
+   "code": "11-711",
+   "title": "Advanced Natural Language Processing",
+   "term": "Fall 2025",
+   "url": "https://cmu-l3.github.io/anlp-fall2025/",
+   "videos": null,
+   "topics": [
+    "nlp",
+    "llm"
+   ],
+   "summary": "Introductory graduate NLP course on modern neural methods, covering the modeling, learning and inference algorithms; culminates in reimplementing and improving on a research paper.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC024",
+   "university": "CMU",
+   "code": "10-714",
+   "title": "Deep Learning Systems: Algorithms and Implementation",
+   "term": "Fall 2026",
+   "url": "https://dlsyscourse.org/",
+   "videos": null,
+   "topics": [
+    "ml-systems",
+    "deep-learning-foundations"
+   ],
+   "summary": "The full stack of deep learning systems, from high-level model design to automatic differentiation to device-level efficient algorithms; students build a deep learning library from scratch.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC025",
+   "university": "CMU",
+   "code": "11-667",
+   "title": "Large Language Models: Methods and Applications",
+   "term": "Fall 2025",
+   "url": "https://2025.cmu-llms.org/",
+   "videos": null,
+   "topics": [
+    "llm",
+    "pretraining",
+    "post-training",
+    "evaluation"
+   ],
+   "summary": "Graduate course giving a holistic view of the current state of large language models, from how they are built and trained to how they are applied.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC026",
+   "university": "CMU",
+   "code": "11-766",
+   "title": "Large Language Model Applications",
+   "term": "Spring 2026",
+   "url": "https://cmu-llms.org/",
+   "videos": null,
+   "topics": [
+    "llm",
+    "agents",
+    "rag"
+   ],
+   "summary": "Graduate course on applying core LLM technology to a wide range of practical, academic and exploratory applications.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC027",
+   "university": "CMU",
+   "code": "10-423",
+   "title": "Generative AI",
+   "term": "Spring 2026",
+   "url": "https://www.cs.cmu.edu/~mgormley/courses/10423/",
+   "videos": null,
+   "topics": [
+    "diffusion-generative",
+    "llm",
+    "multimodal"
+   ],
+   "summary": "Machine learning techniques behind recent advances in generative modeling and foundation models; students understand, build and apply algorithms that generate text, images and other content.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC028",
+   "university": "CMU",
+   "code": "11-785",
+   "title": "Introduction to Deep Learning",
+   "term": "Fall 2026",
+   "url": "https://deeplearning.cs.cmu.edu/",
+   "videos": null,
+   "topics": [
+    "deep-learning-foundations",
+    "speech",
+    "computer-vision"
+   ],
+   "summary": "CMU's introductory deep learning course with lectures, recitations, bootcamps and homework, plus a class-notes book developed alongside the course.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC029",
+   "university": "CMU",
+   "code": "15-442/642",
+   "title": "Machine Learning Systems",
+   "term": null,
+   "url": "https://mlsyscourse.org/",
+   "videos": null,
+   "topics": [
+    "ml-systems",
+    "distributed-training",
+    "serving"
+   ],
+   "summary": "Design rationale of modern ML frameworks and system techniques to scale, reduce memory and offload to heterogeneous hardware, with case studies of LLM training and serving systems.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC030",
+   "university": "CMU",
+   "code": "11-777",
+   "title": "Multimodal Machine Learning",
+   "term": "Fall 2026",
+   "url": "https://multicomp.cs.cmu.edu/mmml-course/fall2026/",
+   "videos": "https://www.youtube.com/playlist?list=PLoZgVqqHOumTY2CAQHL45tQp6kmDnDcqn",
+   "topics": [
+    "multimodal",
+    "computer-vision",
+    "speech"
+   ],
+   "summary": "Integrating language, speech, vision and other signals: representation, alignment, reasoning, generation, transference and quantification in multimodal machine learning.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC031",
+   "university": "CMU",
+   "code": "11-868",
+   "title": "Large Language Model Systems",
+   "term": "Spring 2026",
+   "url": "https://llmsystem.github.io/llmsystem2026spring/",
+   "videos": null,
+   "topics": [
+    "ml-systems",
+    "distributed-training",
+    "serving",
+    "efficient-inference"
+   ],
+   "summary": "Engineering skills for training, serving, fine-tuning and evaluating LLMs on modern hardware and software stacks, so students can design and implement scalable LLM systems.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC032",
+   "university": "CMU",
+   "code": "16-831",
+   "title": "Introduction to Robot Learning",
+   "term": "Spring 2024",
+   "url": "https://16-831-s24.github.io/",
+   "videos": null,
+   "topics": [
+    "vla-robotics",
+    "reinforcement-learning"
+   ],
+   "summary": "How robots learn sequential decision-making: fundamentals of machine, deep, visual and reinforcement learning and how they apply to robot control.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC033",
+   "university": "CMU",
+   "code": "10-703",
+   "title": "Deep Reinforcement Learning and Control",
+   "term": "Fall 2025",
+   "url": "https://cmudeeprl.github.io/703website_f25/",
+   "videos": null,
+   "topics": [
+    "reinforcement-learning",
+    "vla-robotics"
+   ],
+   "summary": "Developing agents that learn to sense and act by imitation, sparse rewards or curiosity, combining computer vision, robot control, reinforcement learning and language understanding.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC034",
+   "university": "CMU",
+   "code": "15-849",
+   "title": "Machine Learning Systems",
+   "term": null,
+   "url": "https://www.cs.cmu.edu/~zhihaoj2/15-849/",
+   "videos": null,
+   "topics": [
+    "ml-systems",
+    "distributed-training"
+   ],
+   "summary": "How a model written in a high-level language is lowered to kernels and run on GPUs and TPUs in a distributed way: autodiff, accelerators, distributed training, graph and memory optimizations.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC035",
+   "university": "UC Berkeley",
+   "code": "CS294/194-196",
+   "title": "Large Language Model Agents",
+   "term": "Fall 2024",
+   "url": "https://rdi.berkeley.edu/llm-agents/f24",
+   "videos": null,
+   "topics": [
+    "agents",
+    "llm"
+   ],
+   "summary": "Fundamental concepts for LLM agents, including reasoning, planning and tool use, along with infrastructure and representative applications, taught with guest lecturers from industry and academia.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC036",
+   "university": "UC Berkeley",
+   "code": "CS294/194-280",
+   "title": "Advanced Large Language Model Agents",
+   "term": "Spring 2025",
+   "url": "https://rdi.berkeley.edu/adv-llm-agents/sp25",
+   "videos": null,
+   "topics": [
+    "agents",
+    "llm",
+    "post-training"
+   ],
+   "summary": "Advanced topics in LLM agents: reasoning and planning, inference-time and post-training techniques, AI for mathematics, code generation and program verification.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC037",
+   "university": "UC Berkeley",
+   "code": "CS294/194-196",
+   "title": "Agentic AI",
+   "term": "Fall 2025",
+   "url": "https://rdi.berkeley.edu/agentic-ai/f25",
+   "videos": "https://www.youtube.com/playlist?list=PLS01nW3RtgoqGkm4UeqNeZLccW-OGc1fJ",
+   "topics": [
+    "agents",
+    "llm",
+    "evaluation"
+   ],
+   "summary": "Foundations of agentic AI (LLMs, reasoning, planning, agent frameworks and infrastructure) and applications such as code generation, robotics, web automation and scientific discovery.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC038",
+   "university": "UC Berkeley",
+   "code": "CS285",
+   "title": "Deep Reinforcement Learning",
+   "term": null,
+   "url": "https://rail.eecs.berkeley.edu/deeprlcourse/",
+   "videos": "https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps",
+   "topics": [
+    "reinforcement-learning",
+    "vla-robotics"
+   ],
+   "summary": "Deep reinforcement learning: imitation learning, policy gradients, actor-critic, value-based and model-based RL, offline RL and exploration; lecture recordings from Fall 2023 are public.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC039",
+   "university": "UC Berkeley",
+   "code": "CS294-158",
+   "title": "Deep Unsupervised Learning",
+   "term": "Spring 2024",
+   "url": "https://sites.google.com/view/berkeley-cs294-158-sp24/home",
+   "videos": null,
+   "topics": [
+    "diffusion-generative",
+    "self-supervised-learning"
+   ],
+   "summary": "Two areas of deep learning that need no labels: deep generative models and self-supervised learning, covering theoretical foundations and new applications.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC040",
+   "university": "UC Berkeley",
+   "code": "CS189/289A",
+   "title": "Introduction to Machine Learning",
+   "term": "Fall 2026",
+   "url": "https://eecs189.org/",
+   "videos": null,
+   "topics": [
+    "ml-foundations",
+    "deep-learning-foundations"
+   ],
+   "summary": "Theoretical foundations, algorithms and applications of machine learning across the full pipeline, from problem formulation and data to neural networks and modern deep learning.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC041",
+   "university": "UC Berkeley",
+   "code": "CS294 AI-Sys",
+   "title": "Machine Learning Systems",
+   "term": "Spring 2022",
+   "url": "https://ucbrise.github.io/cs294-ai-sys-sp22/",
+   "videos": null,
+   "topics": [
+    "ml-systems",
+    "distributed-training",
+    "serving"
+   ],
+   "summary": "Research seminar on the hardware and software systems behind modern AI: ML frameworks, accelerators, distributed training and model serving, with paper presentations.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC042",
+   "university": "MIT",
+   "code": "6.S191",
+   "title": "Introduction to Deep Learning",
+   "term": "2026",
+   "url": "https://introtodeeplearning.com/",
+   "videos": "https://www.youtube.com/playlist?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI",
+   "topics": [
+    "deep-learning-foundations",
+    "llm",
+    "diffusion-generative"
+   ],
+   "summary": "Intensive bootcamp on deep learning fundamentals with applications in language, vision and biology, including large language models and generative AI, with hands-on labs.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC043",
+   "university": "MIT",
+   "code": "6.5940",
+   "title": "TinyML and Efficient Deep Learning Computing",
+   "term": "Fall 2026",
+   "url": "https://hanlab.mit.edu/courses/2026-fall-65940",
+   "videos": "https://www.youtube.com/c/MITHANLab",
+   "topics": [
+    "efficient-inference",
+    "ml-systems",
+    "distributed-training",
+    "llm"
+   ],
+   "summary": "Efficient machine learning and systems: model compression, pruning, quantization, efficient architectures, distributed training and efficient LLM and diffusion inference on resource-constrained hardware.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC044",
+   "university": "MIT",
+   "code": "6.S978",
+   "title": "Deep Generative Models",
+   "term": "Fall 2024",
+   "url": "https://mit-6s978.github.io/",
+   "videos": null,
+   "topics": [
+    "diffusion-generative",
+    "computer-vision"
+   ],
+   "summary": "Seminar on concepts and applications of deep generative models, mainly in vision: VAEs, autoregressive models, GANs and diffusion models, from foundations to research frontiers.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC045",
+   "university": "MIT",
+   "code": "6.8300",
+   "title": "Advances in Computer Vision",
+   "term": "Spring 2024",
+   "url": "https://advances-in-vision.github.io/",
+   "videos": null,
+   "topics": [
+    "computer-vision"
+   ],
+   "summary": "Fundamental and advanced computer vision, from early vision to mid- and high-level vision, including machine learning basics and convolutional neural networks for vision.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC046",
+   "university": "MIT",
+   "code": "6.S184",
+   "title": "Generative AI with Stochastic Differential Equations: Flow Matching and Diffusion Models",
+   "term": "2026",
+   "url": "https://diffusion.csail.mit.edu/",
+   "videos": null,
+   "topics": [
+    "diffusion-generative"
+   ],
+   "summary": "Mathematical introduction to diffusion and flow models (SDEs, Fokker-Planck) with notes and labs; students build a latent diffusion model from scratch.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC047",
+   "university": "MIT",
+   "code": "6.7960",
+   "title": "Deep Learning",
+   "term": "Fall 2026",
+   "url": "https://deeplearning6-7960.github.io/",
+   "videos": null,
+   "topics": [
+    "deep-learning-foundations"
+   ],
+   "summary": "Fundamentals of deep learning in theory and practice: MLPs, CNNs, RNNs and Transformers, invariances, backpropagation, generalization, and applications to vision, language and robotics.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC048",
+   "university": "MIT",
+   "code": "6.4212",
+   "title": "Robotic Manipulation: Perception, Planning, and Control",
+   "term": "Fall 2026",
+   "url": "https://manipulation.csail.mit.edu/",
+   "videos": "https://www.youtube.com/channel/UChfUOAhz7ynELF-s_1LPpWg",
+   "topics": [
+    "vla-robotics",
+    "computer-vision"
+   ],
+   "summary": "Open course notes and lecture videos on robotic manipulation, covering perception, planning, control and learning-based approaches.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC049",
+   "university": "Princeton",
+   "code": "COS 597G",
+   "title": "Understanding Large Language Models",
+   "term": "Fall 2022",
+   "url": "https://www.cs.princeton.edu/courses/archive/fall22/cos597G/",
+   "videos": null,
+   "topics": [
+    "llm",
+    "rag"
+   ],
+   "summary": "Research seminar on pre-trained language models: BERT/GPT/T5, mixture-of-experts and retrieval-based models, emergent capabilities, fine-tuning and adaptation, system design, security and ethics.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC050",
+   "university": "Princeton",
+   "code": "COS 597R",
+   "title": "Deep Dive into Large Language Models",
+   "term": "Fall 2024",
+   "url": "https://princeton-cos597r.github.io/",
+   "videos": null,
+   "topics": [
+    "llm",
+    "pretraining",
+    "post-training"
+   ],
+   "summary": "Rigorous survey of current LLM research: model architecture, data preparation, pre-training, post-training, alignment and deployment, focused on conceptual understanding.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC051",
+   "university": "Princeton",
+   "code": "COS 484",
+   "title": "Natural Language Processing",
+   "term": "Spring 2026",
+   "url": "https://princeton-nlp.github.io/cos484/",
+   "videos": null,
+   "topics": [
+    "nlp",
+    "llm"
+   ],
+   "summary": "Basics of NLP: language modeling, representation learning, text classification, sequence tagging, machine translation and Transformers, including recent deep learning approaches.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC052",
+   "university": "NYU",
+   "code": "DS-GA 1008",
+   "title": "Deep Learning",
+   "term": "Spring 2021",
+   "url": "https://atcold.github.io/NYU-DLSP21/",
+   "videos": null,
+   "topics": [
+    "deep-learning-foundations",
+    "self-supervised-learning",
+    "diffusion-generative"
+   ],
+   "summary": "Week-by-week lecture notes and videos on deep learning, including autoencoders, generative models, self-supervised learning, Transformers and energy-based models.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC053",
+   "university": "UCL",
+   "code": "COMPM050/COMPGI13",
+   "title": "Reinforcement Learning (Advanced Topics 2015)",
+   "term": "2015",
+   "url": "https://davidstarsilver.wordpress.com/teaching/",
+   "videos": "https://www.youtube.com/watch?v=2pWv7GOvuf0",
+   "topics": [
+    "reinforcement-learning"
+   ],
+   "summary": "David Silver's UCL reinforcement learning lectures: MDPs, dynamic programming, model-free prediction and control, function approximation, policy gradients, planning and exploration.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC054",
+   "university": "UMass Amherst",
+   "code": "CS 685",
+   "title": "Advanced Natural Language Processing",
+   "term": "Spring 2024",
+   "url": "https://people.cs.umass.edu/~miyyer/cs685/",
+   "videos": null,
+   "topics": [
+    "nlp",
+    "llm"
+   ],
+   "summary": "Advanced NLP course livestreamed on YouTube, with the schedule linking every lecture video, reading and assignment.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC055",
+   "university": "UC San Diego",
+   "code": "CSE 234",
+   "title": "Data Systems for Machine Learning",
+   "term": "Winter 2025",
+   "url": "https://haoailab.com/cse234-w25/",
+   "videos": null,
+   "topics": [
+    "ml-systems",
+    "distributed-training",
+    "serving"
+   ],
+   "summary": "Machine learning systems from basics to large-scale training and serving, with lecture slides and readings on ML frameworks, parallelism and LLM systems.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC056",
+   "university": "University of Edinburgh",
+   "code": "ASR",
+   "title": "Automatic Speech Recognition",
+   "term": "2025-26",
+   "url": "https://opencourse.inf.ed.ac.uk/asr",
+   "videos": null,
+   "topics": [
+    "speech"
+   ],
+   "summary": "Open course materials for automatic speech recognition: 18 lectures with public slides on signal analysis, acoustic modeling, and neural network approaches to speech recognition.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC057",
+   "university": "KAIST",
+   "code": "CS492(D)",
+   "title": "Diffusion Models and Their Applications",
+   "term": "Fall 2024",
+   "url": "https://mhsung.github.io/kaist-cs492d-fall-2024/",
+   "videos": null,
+   "topics": [
+    "diffusion-generative",
+    "computer-vision"
+   ],
+   "summary": "Diffusion models as the new standard for generative AI behind image and video generation: theory, conditional generation, personalization and applications, with programming assignments.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC058",
+   "university": "KAIST",
+   "code": "AIC313/CS378",
+   "title": "Introduction to Generative Models",
+   "term": "Fall 2026",
+   "url": "https://generative-models.kaist.ac.kr/",
+   "videos": null,
+   "topics": [
+    "diffusion-generative"
+   ],
+   "summary": "Fundamental principles and recent advances of generative models that learn complex data distributions and sample from them, for vision, graphics, language and science.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC059",
+   "university": "KAIST",
+   "code": "CS479",
+   "title": "Machine Learning for 3D Data",
+   "term": "Fall 2023",
+   "url": "https://mhsung.github.io/kaist-cs479-fall-2023/",
+   "videos": null,
+   "topics": [
+    "computer-vision",
+    "3d-vision"
+   ],
+   "summary": "Deep learning for 3D data such as scans and designed models, used in autonomous driving, 3D design, AR and robotics, with paper reviews and projects.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC060",
+   "university": "KAIST",
+   "code": "AI602",
+   "title": "Recent Advances in Deep Learning",
+   "term": "Fall 2026",
+   "url": "https://alinlab.kaist.ac.kr/ai602_2026_fall.html",
+   "videos": null,
+   "topics": [
+    "llm",
+    "post-training",
+    "agents",
+    "multimodal",
+    "world-models",
+    "vla-robotics"
+   ],
+   "summary": "Recent foundation models: LLM architectures, pre- and post-training recipes, inference and test-time compute, LLM agents, multimodal and video diffusion models, vision-language-action and world models.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC061",
+   "university": "KAIST",
+   "code": "iAI Deep Learning",
+   "title": "Deep Learning (iAI Lab teaching materials)",
+   "term": null,
+   "url": "https://iailab.kaist.ac.kr/teaching/deep-learning",
+   "videos": "https://www.youtube.com/playlist?list=PLGMtjo8jDX9BuhD15T0WOE-loUhAwgFpZ",
+   "topics": [
+    "deep-learning-foundations",
+    "computer-vision",
+    "diffusion-generative"
+   ],
+   "summary": "Openly available deep learning materials with slides, Colab notebooks and Korean/English videos: ML basics, ANN, CNN, autoencoders, self-supervised learning, detection, GANs and diffusion models.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC062",
+   "university": "Seoul National University",
+   "code": "4190.428",
+   "title": "Introduction to Machine Learning",
+   "term": "Fall 2026",
+   "url": "https://reality.snu.ac.kr/class/machine-learning/",
+   "videos": null,
+   "topics": [
+    "ml-foundations",
+    "deep-learning-foundations"
+   ],
+   "summary": "Fundamental concepts of machine learning, including supervised, unsupervised and reinforcement learning, with the underlying model architectures, algorithms and math; slides linked from the schedule.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC063",
+   "university": "Seoul National University",
+   "code": "M3294.001500",
+   "title": "Representation Learning",
+   "term": "Spring 2025",
+   "url": "https://drl.snu.ac.kr/lectures",
+   "videos": null,
+   "topics": [
+    "deep-learning-foundations",
+    "self-supervised-learning"
+   ],
+   "summary": "Fundamentals of deep learning focused on generalization, optimization, neural architectures, representation learning and unsupervised learning, and the open questions behind them.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC064",
+   "university": "Seoul National University",
+   "code": "M1399.000400",
+   "title": "Deep Learning: A Statistical Perspective",
+   "term": "Fall 2023",
+   "url": "https://won-j.github.io/M1399_000400-2023fall/",
+   "videos": null,
+   "topics": [
+    "deep-learning-foundations",
+    "ml-foundations"
+   ],
+   "summary": "Deep learning taught from a statistical perspective by the Department of Statistics, with the course schedule and assignments on the course website.",
+   "kind": "official page",
+   "lecturer": null
+  },
+  {
+   "id": "UC065",
+   "university": "Inha University",
+   "code": "ECE7115",
+   "title": "Large Language Models (official title: Multimodal VLM)",
+   "term": "Spring 2026",
+   "url": "https://gcl-inha.github.io/ece7115/",
+   "videos": "https://www.youtube.com/@namhyukahn/videos",
+   "topics": [
+    "llm",
+    "pretraining",
+    "post-training",
+    "reinforcement-learning",
+    "distributed-training",
+    "efficient-inference",
+    "evaluation"
+   ],
+   "summary": "Korean-language LLM course by Prof. Namhyuk Ahn: Transformer and modern LLM architectures, MoE, scaling laws, GPUs and FlashAttention, parallelism, inference, evaluation, SFT, RLHF, reasoning and post-training; 16 lectures on YouTube.",
+   "kind": "official page",
+   "lecturer": "Namhyuk Ahn"
+  },
+  {
+   "id": "UC066",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "머신러닝 및 딥러닝 1 (2026 봄)",
+   "term": "Spring 2026",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXCpyohL0_uMNaqr0QuXOMBi",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXCpyohL0_uMNaqr0QuXOMBi",
+   "topics": [
+    "ml-foundations",
+    "deep-learning-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Machine Learning and Deep Learning 1, Spring 2026 (24 videos).",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC067",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "컴퓨터비전 (2026 봄)",
+   "term": "Spring 2026",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXABu9ft6PTRKaIvydxHJ9_w",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXABu9ft6PTRKaIvydxHJ9_w",
+   "topics": [
+    "computer-vision",
+    "deep-learning-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Computer Vision, Spring 2026 (23 videos).",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC068",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "데이터사이언스의 원리와 응용 (2025 봄)",
+   "term": "Spring 2025",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXD3NsHhF3qUjts4Lkn6KBXR",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXD3NsHhF3qUjts4Lkn6KBXR",
+   "topics": [
+    "ml-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Principles and Applications of Data Science, Spring 2025 (25 videos).",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC069",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "컴퓨터비전 (2025 봄)",
+   "term": "Spring 2025",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXBhqjwBzFQ88YXWotXrKRG-",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXBhqjwBzFQ88YXWotXrKRG-",
+   "topics": [
+    "computer-vision",
+    "deep-learning-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Computer Vision, Spring 2025.",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC070",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "머신러닝 및 딥러닝 1 (2024 가을)",
+   "term": "Fall 2024",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXA5u65LBjzFCAVSZ4xuBWqj",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXA5u65LBjzFCAVSZ4xuBWqj",
+   "topics": [
+    "ml-foundations",
+    "deep-learning-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Machine Learning and Deep Learning 1, Fall 2024.",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC071",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "머신러닝 및 딥러닝 1 (2024 봄)",
+   "term": "Spring 2024",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXDyjINNwUwmi-TKKtLMggl5",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXDyjINNwUwmi-TKKtLMggl5",
+   "topics": [
+    "ml-foundations",
+    "deep-learning-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Machine Learning and Deep Learning 1, Spring 2024.",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC072",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "머신러닝 및 딥러닝 1 (2023 가을)",
+   "term": "Fall 2023",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXAc-tb9z2069eDeIOpcO8A2",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXAc-tb9z2069eDeIOpcO8A2",
+   "topics": [
+    "ml-foundations",
+    "deep-learning-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Machine Learning and Deep Learning 1, Fall 2023.",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC073",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "머신러닝 및 딥러닝 1 (2023 봄)",
+   "term": "Spring 2023",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXAv9ZWMkZtv_tsvaTz50nMe",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXAv9ZWMkZtv_tsvaTz50nMe",
+   "topics": [
+    "ml-foundations",
+    "deep-learning-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Machine Learning and Deep Learning 1, Spring 2023.",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC074",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "시각적 이해를 위한 머신러닝 (2023 봄)",
+   "term": "Spring 2023",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXDTwuxUzCl5AeEjXBfWxCwc",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXDTwuxUzCl5AeEjXBfWxCwc",
+   "topics": [
+    "computer-vision",
+    "deep-learning-foundations",
+    "multimodal"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Machine Learning for Visual Understanding, Spring 2023 (23 videos).",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC075",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "머신러닝 및 딥러닝 1 (2022 가을)",
+   "term": "Fall 2022",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXDlqJLNLK8IwzVV_EK3Kffj",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXDlqJLNLK8IwzVV_EK3Kffj",
+   "topics": [
+    "ml-foundations",
+    "deep-learning-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Machine Learning and Deep Learning 1, Fall 2022.",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC076",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "데이터사이언스의 원리와 응용 (2022 가을)",
+   "term": "Fall 2022",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXAv9iRV5vTVdXcjuFsmtF4X",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXAv9iRV5vTVdXcjuFsmtF4X",
+   "topics": [
+    "ml-foundations"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Principles and Applications of Data Science, Fall 2022.",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC077",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "Machine Learning for Visual Understanding (English)",
+   "term": "Fall 2021",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXDxBXdxTHZmRVIfzGpCnAbq",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXDxBXdxTHZmRVIfzGpCnAbq",
+   "topics": [
+    "computer-vision",
+    "deep-learning-foundations",
+    "multimodal"
+   ],
+   "summary": "Recorded lectures (36 videos) of the Machine Learning for Visual Understanding course at SNU Graduate School of Data Science, Fall 2021, taught in English; a Korean version is also available.",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC078",
+   "university": "Seoul National University",
+   "code": null,
+   "title": "시각적 이해를 위한 머신러닝 (2021 봄; 한국어)",
+   "term": "Spring 2021",
+   "url": "https://www.youtube.com/playlist?list=PL0E_1UqNACXD5trR4II4ltJ0dBBt0ztTV",
+   "videos": "https://www.youtube.com/playlist?list=PL0E_1UqNACXD5trR4II4ltJ0dBBt0ztTV",
+   "topics": [
+    "computer-vision",
+    "deep-learning-foundations",
+    "multimodal"
+   ],
+   "summary": "Recorded lectures in Korean by Prof. Joonseok Lee (SNU Graduate School of Data Science), from his official YouTube channel: Machine Learning for Visual Understanding, Spring 2021.",
+   "kind": "youtube",
+   "lecturer": "Joonseok Lee"
+  },
+  {
+   "id": "UC079",
+   "university": "Stanford",
+   "code": "CS229",
+   "title": "Stanford CS229 Machine Learning | Spring 2026",
+   "term": "Spring 2026",
+   "url": "https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw",
+   "videos": "https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw",
+   "topics": [
+    "ml-foundations",
+    "reinforcement-learning"
+   ],
+   "summary": "Lecture recordings of CS229 on the Stanford Online channel: supervised and unsupervised learning, learning theory and reinforcement learning.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC080",
+   "university": "Stanford",
+   "code": "CME295",
+   "title": "Stanford CME295: Transformers and Large Language Models | Autumn 2026",
+   "term": "Autumn 2026",
+   "url": "https://www.youtube.com/playlist?list=PLakGfbKCei80",
+   "videos": "https://www.youtube.com/playlist?list=PLakGfbKCei80",
+   "topics": [
+    "llm",
+    "post-training",
+    "agents",
+    "rag"
+   ],
+   "summary": "Lecture recordings of CME295 (Autumn 2026): the Transformer architecture, how it underlies LLMs, and techniques to improve LLM performance in real-world applications.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC081",
+   "university": "Stanford",
+   "code": "CME295",
+   "title": "Stanford CME295: Transformers and Large Language Models | Autumn 2025",
+   "term": "Autumn 2025",
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rOCXd21gf0CF4xr35yINeOy",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rOCXd21gf0CF4xr35yINeOy",
+   "topics": [
+    "llm",
+    "post-training",
+    "agents",
+    "rag"
+   ],
+   "summary": "Lecture recordings of the Autumn 2025 offering of CME295 on Transformers and large language models.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC082",
+   "university": "Stanford",
+   "code": "CME296",
+   "title": "Stanford CME296: Diffusion & Large Vision Models",
+   "term": null,
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rNdy8rt2rZ4T2xM0OjADnfu",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rNdy8rt2rZ4T2xM0OjADnfu",
+   "topics": [
+    "diffusion-generative",
+    "computer-vision",
+    "evaluation"
+   ],
+   "summary": "Diffusion-based generative models for vision: foundations of diffusion, score matching and flow matching, Diffusion Transformers, and controllable image generation and evaluation.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC083",
+   "university": "Stanford",
+   "code": "CS336",
+   "title": "Stanford CS336: Language Modeling from Scratch | Spring 2026",
+   "term": "Spring 2026",
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV",
+   "topics": [
+    "llm",
+    "pretraining",
+    "post-training",
+    "distributed-training",
+    "ml-systems",
+    "evaluation"
+   ],
+   "summary": "Lecture recordings of CS336 (Spring 2026): building a language model end to end, from data and architecture to training at scale and evaluation.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC084",
+   "university": "Stanford",
+   "code": "CS336",
+   "title": "Stanford CS336 Language Modeling from Scratch | 2025",
+   "term": "Spring 2025",
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_",
+   "topics": [
+    "llm",
+    "pretraining",
+    "post-training",
+    "distributed-training",
+    "ml-systems",
+    "evaluation"
+   ],
+   "summary": "Lecture recordings of the Spring 2025 offering of CS336, Language Modeling from Scratch.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC085",
+   "university": "Stanford",
+   "code": "CS329A",
+   "title": "CS329A Self-Improving AI Agents",
+   "term": "Autumn 2025",
+   "url": "https://www.youtube.com/playlist?list=PLangBM27OtEA",
+   "videos": "https://www.youtube.com/playlist?list=PLangBM27OtEA",
+   "topics": [
+    "agents",
+    "post-training",
+    "reinforcement-learning",
+    "llm"
+   ],
+   "summary": "Lecture recordings of CS329A: self-improvement techniques for LLMs (verifiers, test-time compute, search, RL) and agents augmented with tools, code and memory.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC086",
+   "university": "Stanford",
+   "code": "CS329H",
+   "title": "Stanford CS329H: Machine Learning from Human Preferences | Autumn 2024",
+   "term": "Autumn 2024",
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rNm525zyAObP4al43WAifZz",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rNm525zyAObP4al43WAifZz",
+   "topics": [
+    "post-training",
+    "reinforcement-learning",
+    "evaluation"
+   ],
+   "summary": "Lecture recordings of CS329H (Autumn 2024) on learning from human preferences, including choice models, RLHF and preference-based fine-tuning.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC087",
+   "university": "Stanford",
+   "code": "CS224R",
+   "title": "Stanford CS224R Deep Reinforcement Learning",
+   "term": null,
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rPwxE0ONYRa_itZFdaKCylL",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rPwxE0ONYRa_itZFdaKCylL",
+   "topics": [
+    "reinforcement-learning",
+    "vla-robotics",
+    "post-training"
+   ],
+   "summary": "Lecture recordings of CS224R: imitation learning, model-free and model-based deep RL, offline RL, and applications to robotics and language models.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC088",
+   "university": "Stanford",
+   "code": "CS230",
+   "title": "Stanford CS230: Deep Learning | Autumn 2025",
+   "term": "Autumn 2025",
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rNRRGdS0rBbXOUGA0wjdh1X",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rNRRGdS0rBbXOUGA0wjdh1X",
+   "topics": [
+    "deep-learning-foundations"
+   ],
+   "summary": "Lecture recordings of CS230 (Autumn 2025): foundations of deep learning and how to build neural networks and lead machine learning projects.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC089",
+   "university": "Stanford",
+   "code": "CS231N",
+   "title": "Stanford CS231N Deep Learning for Computer Vision | 2025",
+   "term": "Spring 2025",
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16",
+   "topics": [
+    "computer-vision",
+    "deep-learning-foundations"
+   ],
+   "summary": "Lecture recordings of CS231N (2025): deep learning architectures for visual recognition, trained end to end.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC090",
+   "university": "Stanford",
+   "code": "CS221",
+   "title": "Stanford CS221: Artificial Intelligence: Principles and Techniques | Autumn 2025",
+   "term": "Autumn 2025",
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rMeDqwS1yFl3j3sR_-MQNEN",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rMeDqwS1yFl3j3sR_-MQNEN",
+   "topics": [
+    "ml-foundations",
+    "reinforcement-learning"
+   ],
+   "summary": "Lecture recordings of CS221 (Autumn 2025), Stanford's broad introduction to the principles and techniques of artificial intelligence.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC091",
+   "university": "Stanford",
+   "code": "AA203",
+   "title": "AA203 Optimal and Learning-Based Control | Spring 2026",
+   "term": "Spring 2026",
+   "url": "https://www.youtube.com/playlist?list=PLa9dmHsLK9dg",
+   "videos": "https://www.youtube.com/playlist?list=PLa9dmHsLK9dg",
+   "topics": [
+    "reinforcement-learning",
+    "vla-robotics"
+   ],
+   "summary": "Graduate course on optimal control and dynamic optimization: dynamic programming, calculus of variations, model predictive control and learning-based control for robots and autonomous systems.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC092",
+   "university": "Stanford",
+   "code": "AA274A",
+   "title": "Stanford AA274A Principles of Robotic Autonomy | Autumn 2019",
+   "term": "Autumn 2019",
+   "url": "https://www.youtube.com/playlist?list=PLR9iNyexfIkk",
+   "videos": "https://www.youtube.com/playlist?list=PLR9iNyexfIkk",
+   "topics": [
+    "vla-robotics",
+    "computer-vision"
+   ],
+   "summary": "Lecture recordings of AA274A (Autumn 2019) on the principles of robotic autonomy.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC093",
+   "university": "Stanford",
+   "code": "AA228V",
+   "title": "Stanford AA228V Validation of Safety Critical Systems | 2025",
+   "term": "2025",
+   "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rOq1LMLI8U7djzDb8--xpaC",
+   "videos": "https://www.youtube.com/playlist?list=PLoROMvodv4rOq1LMLI8U7djzDb8--xpaC",
+   "topics": [
+    "evaluation"
+   ],
+   "summary": "Lecture recordings of AA228V (2025) on validating safety-critical systems.",
+   "kind": "youtube",
+   "lecturer": "Stanford Online"
+  },
+  {
+   "id": "UC094",
+   "university": "UC Berkeley",
+   "code": "CS294-158",
+   "title": "Deep Unsupervised Learning",
+   "term": "Spring 2024",
+   "url": "https://sites.google.com/view/berkeley-cs294-158-sp24/home",
+   "videos": null,
+   "topics": [
+    "generative models",
+    "diffusion",
+    "autoregressive models",
+    "self-supervised learning"
+   ],
+   "summary": "Deep generative models and self-supervised learning: autoregressive models, flows, VAEs, GANs, diffusion models, and representation learning.",
+   "kind": "official page",
+   "lecturer": null
+  }
+ ]
+}

@@ -1,0 +1,6098 @@
+{
+ "case": "aws_fde",
+ "source": [
+  "../기용/docs/aws_fde.교육자료.json",
+  "m3_materials.pick.bank() (m3 은행)",
+  "demo/data 의 1단계 번호 (pipeline.plan)"
+ ],
+ "made_by": "에이전트가 손으로 판단 (2026-11-19, 모델 호출 없음). naver_ml_intern.교육자료.json 과 같은 방법: 배울 것 역량(m3 대상인 도구·지식 9개) + 응용 프로젝트 묶음 글(do)에서 손으로 뽑은 선수 개념 22개 → 겹치는 것을 합쳐 공부 거리 26개. 깊이·크기·자료 등급은 판단값이고, 크기 규칙 검사와 시간·주 셈은 demo/design/study_plan.py 가 한다. 자료는 m3 은행(m3_materials.pick.bank(), 14,385줄) 안에서만 BM25 로 찾아 제목·요약을 읽고 골랐다. 열어 보지 않았다. m3 판정 칸이 있는 후보(outputs/materials/aws_fde.json 의 candidates 50)는 그 판정도 봤다",
+ "budget": {
+  "hours": 84,
+  "per": "한 사람, 12주",
+  "unit_hours": 3.0,
+  "unit_how": "자료 자리 하나에 3시간 가정 (네이버와 같은 84 ÷ 28 = 3.0)"
+ },
+ "counts": {
+  "bank": 14385,
+  "items": 26,
+  "big": 16,
+  "small": 10,
+  "from": "배울 것 역량 9 + 선수 개념 22 = 31 (겹치는 선수 개념 5개는 다른 거리에 합침)",
+  "with_material": 25,
+  "big_without_material": [
+   "L07"
+  ],
+  "small_without_material": [],
+  "main_fit": {
+   "맞음": 21,
+   "일부": 3,
+   "비슷함": 1
+  }
+ },
+ "plan": {
+  "edu_ids": [
+   "L01",
+   "L02",
+   "L03",
+   "L04",
+   "L06",
+   "L07",
+   "L08",
+   "L09",
+   "L10",
+   "L11",
+   "L12",
+   "L15",
+   "L16",
+   "L19",
+   "L20",
+   "L22"
+  ],
+  "inside_project_ids": [
+   "L05",
+   "L13",
+   "L14",
+   "L17",
+   "L18",
+   "L21",
+   "L23",
+   "L24",
+   "L25",
+   "L26"
+  ],
+  "hours_at_unit": 48.0,
+  "share_of_84": "57%",
+  "on_time_big": "16/16",
+  "side_by_side_on_time_big": "4/16",
+  "reasons": [
+   "큰 거리 16개만 교육자료로 공부해요. 주 자료 하나에 3시간씩 잡아 48시간이에요.",
+   "작은 거리 10개는 그 거리를 쓰는 작업 묶음 안에서 배워요.",
+   "84시간 중 36시간이 남아요.",
+   "맞는 자료가 없는 거리 1개도 주 자리 3시간을 잡아 두었어요."
+  ]
+ },
+ "week_fit": {
+  "front2": {
+   "caps": [
+    14.0,
+    14.0,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6
+   ],
+   "on_time": 16,
+   "of": 16,
+   "rows": [
+    {
+     "id": "L01",
+     "first_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L02",
+     "first_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L03",
+     "first_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L04",
+     "first_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L06",
+     "first_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L07",
+     "first_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L08",
+     "first_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L09",
+     "first_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L10",
+     "first_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L11",
+     "first_week": 5,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L12",
+     "first_week": 5,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L15",
+     "first_week": 7,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L16",
+     "first_week": 7,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L19",
+     "first_week": 8,
+     "done_week": 5,
+     "late_weeks": 0
+    },
+    {
+     "id": "L20",
+     "first_week": 8,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L22",
+     "first_week": 9,
+     "done_week": 6,
+     "late_weeks": 0
+    }
+   ]
+  },
+  "side_by_side": {
+   "caps": [
+    7.0,
+    7.0,
+    7.0,
+    7.0,
+    7.0,
+    7.0,
+    7.0,
+    7.0,
+    7.0,
+    7.0,
+    7.0,
+    7.0
+   ],
+   "shift": -2,
+   "on_time": 4,
+   "of": 16,
+   "rows": [
+    {
+     "id": "L01",
+     "first_week": 1,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L02",
+     "first_week": 1,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L03",
+     "first_week": 1,
+     "done_week": 2,
+     "late_weeks": 1
+    },
+    {
+     "id": "L04",
+     "first_week": 1,
+     "done_week": 2,
+     "late_weeks": 1
+    },
+    {
+     "id": "L06",
+     "first_week": 2,
+     "done_week": 3,
+     "late_weeks": 1
+    },
+    {
+     "id": "L07",
+     "first_week": 2,
+     "done_week": 3,
+     "late_weeks": 1
+    },
+    {
+     "id": "L08",
+     "first_week": 2,
+     "done_week": 3,
+     "late_weeks": 1
+    },
+    {
+     "id": "L09",
+     "first_week": 2,
+     "done_week": 4,
+     "late_weeks": 2
+    },
+    {
+     "id": "L10",
+     "first_week": 2,
+     "done_week": 4,
+     "late_weeks": 2
+    },
+    {
+     "id": "L11",
+     "first_week": 3,
+     "done_week": 5,
+     "late_weeks": 2
+    },
+    {
+     "id": "L12",
+     "first_week": 3,
+     "done_week": 5,
+     "late_weeks": 2
+    },
+    {
+     "id": "L15",
+     "first_week": 5,
+     "done_week": 6,
+     "late_weeks": 1
+    },
+    {
+     "id": "L16",
+     "first_week": 5,
+     "done_week": 6,
+     "late_weeks": 1
+    },
+    {
+     "id": "L19",
+     "first_week": 6,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L20",
+     "first_week": 6,
+     "done_week": 7,
+     "late_weeks": 1
+    },
+    {
+     "id": "L22",
+     "first_week": 7,
+     "done_week": 7,
+     "late_weeks": 0
+    }
+   ]
+  }
+ },
+ "unfilled": [
+  {
+   "item": "L05",
+   "roles": [
+    "실습"
+   ],
+   "why": "ADR 을 따라 써 보는 실습 자료가 없다. 같은 저장소의 다른 ADR(0002 로그 남기기)은 예시 글이다"
+  },
+  {
+   "item": "L07",
+   "roles": [
+    "주",
+    "보조",
+    "실습"
+   ],
+   "why": "은행에 Genkit 자료가 없다 ('genkit' 로 찾으면 0개). 바탕 저장소의 문서를 직접 본다"
+  },
+  {
+   "item": "L10",
+   "roles": [
+    "보조",
+    "실습"
+   ],
+   "why": "Python 자체를 가르치는 다른 자료는 데이터 과학용(pandas)뿐이다"
+  },
+  {
+   "item": "L12",
+   "roles": [
+    "보조"
+   ],
+   "why": "Go 를 가르치는 다른 자료가 없다 (Go 판 CDK 워크숍과 Docker 의 Go 안내는 Go 로 다른 것을 한다)"
+  },
+  {
+   "item": "L13",
+   "roles": [
+    "실습"
+   ],
+   "why": "주 자료가 이미 따라 하는 노트북이다"
+  },
+  {
+   "item": "L18",
+   "roles": [
+    "실습"
+   ],
+   "why": "주 자료가 이미 따라 하는 안내다. 다른 CI 랩은 Azure Bicep 이다"
+  },
+  {
+   "item": "L21",
+   "roles": [
+    "실습"
+   ],
+   "why": "LLM 응답 캐시를 따라 짜는 자료가 없다 (Redis 노트북은 벡터 DB·대화 메모리 쪽)"
+  },
+  {
+   "item": "L24",
+   "roles": [
+    "실습"
+   ],
+   "why": "SSE 를 화면에서 받는 실습이 없다 (스트리밍 노트북은 Python SDK 쪽)"
+  },
+  {
+   "item": "L25",
+   "roles": [
+    "실습"
+   ],
+   "why": "RCA 문서를 써 보는 자료가 없다"
+  },
+  {
+   "item": "L26",
+   "roles": [
+    "실습"
+   ],
+   "why": "주 자료가 이미 따라 하는 안내다"
+  }
+ ],
+ "items": [
+  {
+   "id": "L01",
+   "name": "파운데이션 모델(LLM) 기초",
+   "short": "파운데이션 모델 기초",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "공고 S16 'Integrate foundation models'. 역량 이름이 '개념 및 활용 이해'라 설명할 수 있어야 한다",
+   "competencies": [
+    {
+     "cid": "C21",
+     "row": 21,
+     "badges": [
+      13
+     ],
+     "name": "파운데이션 모델 개념 및 활용 이해"
+    }
+   ],
+   "concepts": [],
+   "packages": [
+    "W1",
+    "W2"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "materials": [
+    {
+     "id": "Ec8f58645a6",
+     "role": "주",
+     "title": "Lab: AI Fundamentals for Developers",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/docker/docs/blob/main/content/guides/lab-ai-fundamentals.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C21 있음)",
+     "note": "Docker 공식 문서의 개발자용 AI 기초 실습. 모델을 앱에 붙이는 개발자 눈높이다"
+    },
+    {
+     "id": "Ee6aa782e8d",
+     "role": "보조",
+     "title": "Foundation Models",
+     "kind": "영상",
+     "site": "youtube.com",
+     "url": "https://www.youtube.com/playlist?list=PL9t0xVFP90GD8hox0KipBkJcLX_C3ja67",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C21 있음)",
+     "note": "GPT-3·CLIP 같은 파운데이션 모델을 다루는 강의 영상 묶음"
+    },
+    {
+     "id": "E6dcba5a753",
+     "role": "실습",
+     "title": "Amazon Bedrock Workshop",
+     "kind": "실습 모음",
+     "site": "github.com",
+     "url": "https://github.com/aws-samples/amazon-bedrock-workshop",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C21·C57 있음)",
+     "note": "AWS 공식 Bedrock 워크숍. 파운데이션 모델을 AWS 에서 직접 불러 본다"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다 · 설명할 수 있어야 한다 · 작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 1,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L02",
+   "name": "Agile 스크럼: 백로그·스프린트·회고",
+   "short": "Agile 스프린트 운영",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W1 이 백로그와 스프린트 계획을 만들고 W10 이 스프린트 6회를 직접 돈다. 돌릴 줄 알면 된다",
+   "competencies": [],
+   "concepts": [
+    "K02"
+   ],
+   "packages": [
+    "W1",
+    "W10"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "materials": [
+    {
+     "id": "LRNc559ca88a4",
+     "role": "주",
+     "title": "Agile Ceremonies",
+     "kind": "글",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/agile-development/ceremonies.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Microsoft 엔지니어링 플레이북의 스프린트 계획·회고 같은 모임 안내"
+    },
+    {
+     "id": "LRN00b827bb01",
+     "role": "보조",
+     "title": "Backlog Management",
+     "kind": "글",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/agile-development/backlog-management.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "같은 플레이북의 백로그 다루기 (완료 조건, 설계 일도 백로그에)"
+    },
+    {
+     "id": "LRNad61b9aa3d",
+     "role": "실습",
+     "title": "Agile Planning and Management using GitHub",
+     "kind": "워크숍 랩",
+     "site": "github.com",
+     "url": "https://github.com/MicrosoftLearning/mslearn-devops/blob/main/Instructions/basic/01-agile-planning-management-using-github.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "GitHub 으로 Agile 계획을 꾸리는 랩. W1 이 GitHub Projects 로 백로그를 만든다"
+    }
+   ],
+   "why": "작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 1,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L03",
+   "name": "Git·GitHub 협업 (풀 리퀘스트, 코드 리뷰)",
+   "short": "풀 리퀘스트와 코드 리뷰",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W5 가 모든 PR 에 리뷰어 2명 규칙을 두고, W1·W6·W8 이 GitHub 위에서 일한다",
+   "competencies": [],
+   "concepts": [
+    "K16"
+   ],
+   "packages": [
+    "W1",
+    "W5",
+    "W6",
+    "W8"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "materials": [
+    {
+     "id": "LRN8cc7d7b8a8",
+     "role": "주",
+     "title": "Quickstart for reviewing pull requests",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/github/docs/blob/main/content/pull-requests/get-started/reviewing-pull-requests-quickstart.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "GitHub 공식 문서의 PR 리뷰 첫걸음"
+    },
+    {
+     "id": "LRN0d5ae970d4",
+     "role": "보조",
+     "title": "Git workflows",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/github/docs/blob/main/content/get-started/git-basics/git-workflows.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "GitHub 공식 문서의 Git 작업 흐름. 요약이 짧아 깊이는 모른다"
+    },
+    {
+     "id": "LRN806e6d11df",
+     "role": "실습",
+     "title": "Basics of GIT for web-dev beginners👶",
+     "kind": "강의 레슨",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/Web-Dev-For-Beginners/tree/main/Git-Basics",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Microsoft 웹 개발 입문 강좌의 Git 기초 (여럿이 고치고 되돌리기)"
+    }
+   ],
+   "why": "작업 묶음 4개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 1,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L04",
+   "name": "분산 시스템 기초와 안정성 패턴 (재시도, circuit breaker, 연결 풀)",
+   "short": "분산 시스템과 안정성 패턴",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "역량이 '개념 이해'. W4 가 circuit breaker·연결 풀·fallback 을 짜고 W8 이 장애를 넣어 본다. 왜 그 패턴인지 설명할 수 있어야 한다",
+   "competencies": [
+    {
+     "cid": "C58",
+     "row": 27,
+     "badges": [
+      16
+     ],
+     "name": "분산 시스템 개념 이해"
+    }
+   ],
+   "concepts": [
+    "K11"
+   ],
+   "packages": [
+    "W1",
+    "W4",
+    "W8"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "materials": [
+    {
+     "id": "LRN39e5a0528f",
+     "role": "주",
+     "title": "Distributed System Design Reference",
+     "kind": "글",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/design/design-patterns/distributed-system-design-reference.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C58 있음). 다른 에이전트가 연 기록: 본문은 바깥 링크 셋(Fowler 분산 시스템 패턴 등)뿐인 안내 쪽 (aws_switch/facts.md)",
+     "note": "분산 시스템을 가르치는 자료가 은행에 이것뿐이다. 링크한 글을 읽는다"
+    },
+    {
+     "id": "LRNcca0ab3579",
+     "role": "보조",
+     "title": "Availability",
+     "kind": "글",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/non-functional-requirements/availability.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "같은 플레이북의 가용성 (여분 두기, 장애 견디기)"
+    },
+    {
+     "id": "LRN25aa09da3f",
+     "role": "실습",
+     "title": "Retries",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/pydantic/pydantic-ai/blob/main/docs/retries.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Pydantic AI 공식 문서의 재시도 (rate limit·5xx 재시도). W4 의 LLM fallback 과 같은 자리"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다 · 설명할 수 있어야 한다 · 작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 1,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L05",
+   "name": "설계 문서와 결정 기록(ADR)",
+   "short": "설계 문서와 ADR",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W1 이 ADR 3건과 설계 문서를 쓴다. 쓰는 형식만 알면 된다",
+   "competencies": [],
+   "concepts": [
+    "K01"
+   ],
+   "packages": [
+    "W1"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "materials": [
+    {
+     "id": "LRN7638aa715a",
+     "role": "주",
+     "title": "1. Record architecture decisions",
+     "kind": "글",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/design/design-reviews/decision-log/doc/adr/0001-record-architecture-decisions.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "플레이북 저장소의 첫 ADR. ADR 을 왜, 어떻게 쓰는지 그 형식 그대로다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W1 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  },
+  {
+   "id": "L06",
+   "name": "RAG 구조: 문서 쪼개기·임베딩·벡터 검색·생성",
+   "short": "RAG 파이프라인 구조",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "공고 S37 'RAG pipelines'. W2 가 직접 만들고 W3 의 문서 검색 에이전트와 W5 의 RAG 평가가 그 위에 선다",
+   "competencies": [],
+   "concepts": [
+    "K03",
+    "K04"
+   ],
+   "packages": [
+    "W2",
+    "W3",
+    "W5"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 4,
+   "materials": [
+    {
+     "id": "E43b03d6465",
+     "role": "주",
+     "title": "research: Retrieval Augmented Generation (RAG) for LLMs",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/research/rag.kr.mdx",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "프롬프트 엔지니어링 가이드의 RAG 정리, 한국어판"
+    },
+    {
+     "id": "E93cf2ec8fc",
+     "role": "보조",
+     "title": "Retrieval Augmented Generation",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/anthropics/anthropic-cookbook/blob/main/capabilities/retrieval_augmented_generation/guide.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Anthropic 공식 노트북. RAG 를 만들고 재는 길을 차례로 보인다"
+    },
+    {
+     "id": "Ebf344bcf85",
+     "role": "실습",
+     "title": "Vector similarity search using Neon Postgres",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/openai/openai-cookbook/blob/main/examples/vector_databases/neon/neon-postgres-vector-search-pgvector.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "OpenAI 공식 노트북. Postgres pgvector 로 벡터 검색. W2 가 pgvector 를 쓴다"
+    }
+   ],
+   "why": "설명할 수 있어야 한다 · 작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L07",
+   "name": "Genkit Flow 와 Developer UI",
+   "short": "Genkit 다루기",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "바탕 저장소(genkit-ai/genkit)의 틀이다. W2·W3·W5 가 Flow 로 짜고 W7 이 클라이언트 SDK 를 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K05"
+   ],
+   "packages": [
+    "W2",
+    "W3",
+    "W5",
+    "W7"
+   ],
+   "origin": "프로젝트를 봐야 보임",
+   "needed_week": 4,
+   "materials": [],
+   "why": "작업 묶음 4개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L08",
+   "name": "프롬프트 설계와 템플릿",
+   "short": "프롬프트 설계",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "공고 S37 'prompt engineering'. W2 가 템플릿 5종을 만들어 견주고 W3 의 에이전트도 프롬프트로 움직인다",
+   "competencies": [],
+   "concepts": [
+    "K06"
+   ],
+   "packages": [
+    "W2",
+    "W3"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 4,
+   "materials": [
+    {
+     "id": "E2f46129dad",
+     "role": "주",
+     "title": "프롬프트의 기초",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/introduction/basics.kr.mdx",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "프롬프트 엔지니어링 가이드의 '프롬프트의 기초', 한국어판"
+    },
+    {
+     "id": "E11c7076bac",
+     "role": "보조",
+     "title": "프롬프트 설계에 관한 일반적인 팁",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/introduction/tips.kr.mdx",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "같은 가이드의 '프롬프트 설계에 관한 일반적인 팁', 한국어판"
+    },
+    {
+     "id": "E564ad08f67",
+     "role": "실습",
+     "title": "Evaluate and Optimize Prompt Template Design for Better Results",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaltask_approach/prompt_engineering_gen_ai_evaluation_service_sdk.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C43 있음)",
+     "note": "Google 공식 노트북. 프롬프트 템플릿 여럿을 평가로 견준다. W2 의 템플릿 비교와 같은 일 (④ 의 보조 자료)"
+    }
+   ],
+   "why": "작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L09",
+   "name": "TypeScript",
+   "short": "TypeScript 기초",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "Genkit TypeScript SDK 로 W2·W3 를 짜고 W7 프론트엔드도 TypeScript 다",
+   "competencies": [
+    {
+     "cid": "C52",
+     "row": 53,
+     "badges": [
+      34
+     ],
+     "name": "TypeScript"
+    }
+   ],
+   "concepts": [],
+   "packages": [
+    "W2",
+    "W3",
+    "W7"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 4,
+   "materials": [
+    {
+     "id": "LRN1448f9587c",
+     "role": "주",
+     "title": "TypeScript for JavaScript Programmers",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/TypeScript-Website/blob/v2/packages/documentation/copy/en/get-started/TS for JS Programmers.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C52 있음)",
+     "note": "TypeScript 공식 문서의 JavaScript 개발자용 입문"
+    },
+    {
+     "id": "LRN4a047de448",
+     "role": "보조",
+     "title": "Interfaces",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/TypeScript-Website/blob/v2/packages/documentation/copy/en/handbook-v1/Interfaces.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C52 있음)",
+     "note": "공식 핸드북의 인터페이스 (Flow 입출력 타입을 정할 때 쓴다)"
+    },
+    {
+     "id": "E442461a967",
+     "role": "실습",
+     "title": "TypeScript Workshop",
+     "kind": "워크숍 랩",
+     "site": "github.com",
+     "url": "https://github.com/aws-samples/aws-cdk-intro-workshop/blob/master/workshop/content/english/20-typescript/_index.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C52 일부)",
+     "note": "AWS CDK 입문 워크숍의 TypeScript 판. TypeScript 로 인프라 코드를 따라 짠다"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다 · 작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L10",
+   "name": "Python",
+   "short": "Python 기초",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W3 의 FastAPI 게이트웨이, W5 의 평가 스크립트, W6 의 CDK, W9 의 PyPI 패키지가 Python 이다",
+   "competencies": [
+    {
+     "cid": "C53",
+     "row": 54,
+     "badges": [
+      34
+     ],
+     "name": "Python"
+    }
+   ],
+   "concepts": [],
+   "packages": [
+    "W2",
+    "W3",
+    "W5",
+    "W6",
+    "W9"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 4,
+   "materials": [
+    {
+     "id": "E91dbe394bd",
+     "role": "주",
+     "title": "Python Crash Course",
+     "kind": "온라인 강의",
+     "site": "ehmatthes.github.io",
+     "url": "https://ehmatthes.github.io/pcc",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "입문서 Python Crash Course 의 공식 사이트 (연습 문제 포함)"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다 · 작업 묶음 5개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L11",
+   "name": "에이전트 도구 호출과 멀티 에이전트",
+   "short": "에이전트 도구 호출",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "공고 S36·S37 (필수). W3 가 오케스트레이터 1개와 서브 에이전트 3개를 도구 호출로 잇는다",
+   "competencies": [
+    {
+     "cid": "C44",
+     "row": 45,
+     "badges": [
+      29
+     ],
+     "name": "에이전트 툴링 활용"
+    }
+   ],
+   "concepts": [
+    "K07"
+   ],
+   "packages": [
+    "W3"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 5,
+   "materials": [
+    {
+     "id": "LRN624bcb0ae0",
+     "role": "주",
+     "title": "Production Architecture",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C44 있음)",
+     "note": "crewAI 공식 문서의 운영 구조 (④ 의 핵심 자료)"
+    },
+    {
+     "id": "E05346e0180",
+     "role": "보조",
+     "title": "Explore AI Agent Frameworks",
+     "kind": "강의 레슨",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/ai-agents-for-beginners/tree/main/02-explore-agentic-frameworks",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C44 있음)",
+     "note": "Microsoft 'AI Agents for Beginners' 2강, 에이전트 틀 견주기"
+    },
+    {
+     "id": "Ed0b429b25d",
+     "role": "실습",
+     "title": "Async Multi-Agent Orchestration with Claude",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/anthropics/anthropic-cookbook/blob/main/patterns/agents/async_multi_agent_orchestration.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Anthropic 공식 노트북. 오케스트레이터와 서브 에이전트를 비동기로 돌린다. W3 의 1 + 3 구조와 같다"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 3,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L12",
+   "name": "Go",
+   "short": "Go 기초",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W3 게이트웨이를 Genkit Go SDK 로 짤 수 있고(고를 수 있는 길), W9 패키지에도 쓴다",
+   "competencies": [
+    {
+     "cid": "C54",
+     "row": 55,
+     "badges": [
+      34
+     ],
+     "name": "Go"
+    }
+   ],
+   "concepts": [],
+   "packages": [
+    "W3",
+    "W9"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 5,
+   "materials": [
+    {
+     "id": "E2a4fa23ce7",
+     "role": "주",
+     "title": "Learn Go with Tests",
+     "kind": "글",
+     "site": "quii.gitbook.io",
+     "url": "https://quii.gitbook.io/learn-go-with-tests",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C54 있음)",
+     "note": "시험을 먼저 쓰며 Go 를 배우는 무료 책 (④ 의 보조 자료)"
+    },
+    {
+     "id": "Ebdf12db0d5",
+     "role": "실습",
+     "title": "Go Workshop",
+     "kind": "워크숍 랩",
+     "site": "github.com",
+     "url": "https://github.com/aws-samples/aws-cdk-intro-workshop/blob/master/workshop/content/english/60-go/_index.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C54 일부)",
+     "note": "AWS CDK 입문 워크숍의 Go 판. Go 로 인프라 코드를 따라 짠다"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다 · 작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 3,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L13",
+   "name": "REST API 게이트웨이 (FastAPI, OpenAPI 스펙)",
+   "short": "FastAPI 로 API 만들기",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W3 가 FastAPI 로 게이트웨이를 세우고 OpenAPI 스펙을 낸다. 한 묶음에서만 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K08"
+   ],
+   "packages": [
+    "W3"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 5,
+   "materials": [
+    {
+     "id": "LRN76f36f206b",
+     "role": "주",
+     "title": "FastAPI + LlamaIndex RAG Example (Ollama)",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/run-llama/llama_index/blob/main/docs/examples/usecases/fastapi_rag_ollama.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "LlamaIndex 공식 예제. FastAPI 로 RAG API 를 세운다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W3 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  },
+  {
+   "id": "L14",
+   "name": "상태 머신으로 짜는 에이전트 흐름과 장기 메모리",
+   "short": "에이전트 상태와 메모리",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W3 가 LangGraph 식 상태 머신과 장기 메모리를 붙인다. 한 묶음에서만 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K09"
+   ],
+   "packages": [
+    "W3"
+   ],
+   "origin": "프로젝트를 봐야 보임",
+   "needed_week": 5,
+   "materials": [
+    {
+     "id": "E60da5fb8b7",
+     "role": "주",
+     "title": "Understanding LangGraph",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/pinecone-io/examples/blob/main/learn/generation/langchain/langgraph/00-langgraph-intro.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Pinecone 노트북. LangGraph 를 '에이전트 상태 머신'으로 설명한다"
+    },
+    {
+     "id": "E279d4b4730",
+     "role": "실습",
+     "title": "Chatbot with message summarization & external DB memory",
+     "kind": "강의 레슨",
+     "site": "github.com",
+     "url": "https://github.com/langchain-ai/langchain-academy/blob/main/module-2/chatbot-external-memory.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "LangChain Academy 2강. 대화 요약과 바깥 DB 메모리를 붙인다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W3 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  },
+  {
+   "id": "L15",
+   "name": "React",
+   "short": "React 기초",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W7 이 React 챗 화면을 만들고, 응용의 덮기 표는 W6 배포 산출물에 React 통합을 넣었다",
+   "competencies": [
+    {
+     "cid": "C51",
+     "row": 52,
+     "badges": [
+      34
+     ],
+     "name": "React"
+    }
+   ],
+   "concepts": [],
+   "packages": [
+    "W6",
+    "W7"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 7,
+   "materials": [
+    {
+     "id": "LRNe05d50dea8",
+     "role": "주",
+     "title": "Quick Start",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/reactjs/react.dev/blob/main/src/content/learn/index.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C51 있음)",
+     "note": "React 공식 문서의 빠른 시작 (매일 쓰는 개념의 80%)"
+    },
+    {
+     "id": "LRN6a568bbf93",
+     "role": "보조",
+     "title": "Recommended Technologies",
+     "kind": "글",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/UI-UX/recommended-technologies.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C51·C52 있음). 다른 에이전트가 연 기록: 처음 배우는 강좌는 아니다 (aws_switch/facts.md)",
+     "note": "플레이북의 추천 기술 (React 폴더 구조, TypeScript, Vite). ④ 의 보조 자료"
+    },
+    {
+     "id": "LRNbc216074d7",
+     "role": "실습",
+     "title": "Tutorial: Tic-Tac-Toe",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/reactjs/react.dev/blob/main/src/content/learn/tutorial-tic-tac-toe.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "React 공식 자습서. 작은 게임을 처음부터 만든다"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다 · 작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 4,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L16",
+   "name": "AWS CDK 로 인프라 코드와 ECS Fargate 배포",
+   "short": "AWS CDK 배포",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "공고 S45. W6 이 CDK(Python)로 ECS Fargate·Secrets Manager 를 올린다",
+   "competencies": [
+    {
+     "cid": "C57",
+     "row": 58,
+     "badges": [
+      37
+     ],
+     "name": "AWS 서비스 활용"
+    }
+   ],
+   "concepts": [
+    "K19"
+   ],
+   "packages": [
+    "W6"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 7,
+   "materials": [
+    {
+     "id": "E4d86ca1e47",
+     "role": "주",
+     "title": "Python Workshop",
+     "kind": "워크숍 랩",
+     "site": "github.com",
+     "url": "https://github.com/aws-samples/aws-cdk-intro-workshop/blob/master/workshop/content/english/30-python/_index.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약). 같은 워크숍 저장소의 첫 쪽(E0b79574221)은 '더는 고치지 않는다'고 적혀 있다",
+     "note": "AWS 공식 CDK 입문 워크숍의 Python 판. W6 의 CDK 가 Python 이다"
+    },
+    {
+     "id": "E03732779fa",
+     "role": "보조",
+     "title": "Module: Build a Multi-Region Serverless Application for Resilience and High Availability",
+     "kind": "워크숍 랩",
+     "site": "github.com",
+     "url": "https://github.com/aws-samples/aws-serverless-workshops/tree/master/MultiRegion",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C57 있음·C58 일부)",
+     "note": "AWS 공식 워크숍의 여러 리전 서버리스 앱. ④ 의 보조 자료. ECS 가 아니라 서버리스라 일부"
+    },
+    {
+     "id": "LRN82fe7b8e0b",
+     "role": "실습",
+     "title": "Deploying to Amazon Elastic Container Service",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/github/docs/blob/main/content/actions/how-tos/deploy/deploy-to-third-party-platforms/amazon-elastic-container-service.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "GitHub 공식 문서. Actions 로 ECS 에 배포한다. W6 의 흐름 그대로다"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 4,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L17",
+   "name": "Docker 컨테이너",
+   "short": "Docker 컨테이너",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W6 의 CI 가 Docker 이미지를 만들어 올린다. 한 묶음에서만 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K17"
+   ],
+   "packages": [
+    "W6"
+   ],
+   "origin": "프로젝트를 봐야 보임",
+   "needed_week": 7,
+   "materials": [
+    {
+     "id": "E2cc436c86d",
+     "role": "주",
+     "title": "Python language-specific guide",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/docker/docs/blob/main/content/guides/python.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Docker 공식 문서의 Python 앱 컨테이너 안내"
+    },
+    {
+     "id": "E0735cc6ffc",
+     "role": "실습",
+     "title": "Introduction to Docker",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/GoogleCloudPlatform/mlops-on-gcp/blob/master/immersion/docker_and_kubernetes/labs/1_intro_docker.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Google 실습 노트북. 컨테이너를 만들고 돌려 본다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W6 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  },
+  {
+   "id": "L18",
+   "name": "GitHub Actions 로 CI",
+   "short": "GitHub Actions CI",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W6 이 lint → 시험 → 이미지 빌드 → 올리기 흐름을 짠다. 한 묶음에서만 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K18"
+   ],
+   "packages": [
+    "W6"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 7,
+   "materials": [
+    {
+     "id": "LRN2023f087ee",
+     "role": "주",
+     "title": "Building and testing Python",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/github/docs/blob/main/content/actions/tutorials/build-and-test-code/python.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "GitHub 공식 문서. Python 을 빌드·시험하는 CI 흐름"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W6 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  },
+  {
+   "id": "L19",
+   "name": "프롬프트 인젝션 막기와 가드레일",
+   "short": "프롬프트 인젝션과 가드레일",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "공고 S22 'guardrails'. W4 가 막는 규칙을 짜고 W5 가 통과율을 재고 W8 이 잘못된 프롬프트를 넣어 본다. 왜 막히는지 설명할 수 있어야 한다",
+   "competencies": [],
+   "concepts": [
+    "K10"
+   ],
+   "packages": [
+    "W4",
+    "W5",
+    "W8"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 8,
+   "materials": [
+    {
+     "id": "Ee6b0ae77b6",
+     "role": "주",
+     "title": "Prompt Injection in LLMs",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/prompts/adversarial-prompting/prompt-injection.en.mdx",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "프롬프트 엔지니어링 가이드의 프롬프트 인젝션 (한국어판은 은행에 없다)"
+    },
+    {
+     "id": "M9616fafa18",
+     "role": "보조",
+     "title": "Prompt Injection Prevention",
+     "kind": "글",
+     "site": "hiddenlayer.com",
+     "url": "https://hiddenlayer.com/innovation-hub/prompt-injection-attacks-on-llms/",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "보안 회사 HiddenLayer 의 인젝션 공격과 막기 안내"
+    },
+    {
+     "id": "LRN42b9d4cbc3",
+     "role": "실습",
+     "title": "Amazon Bedrock Guardrails for Agentic AI Applications",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/aws-samples/amazon-bedrock-samples/blob/main/responsible_ai/bedrock-guardrails/bedrock_guardrails_apply_guardrail_strands_agents.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "AWS 공식 노트북. Bedrock Guardrails 로 에이전트를 지킨다"
+    }
+   ],
+   "why": "설명할 수 있어야 한다 · 작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 5,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L20",
+   "name": "부하 시험과 지연 백분위 (P50·P95)",
+   "short": "부하 시험과 P95",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "공고 S17 'latency, reliability'. W4 가 레이턴시 전후 표를, W5 가 동시 50요청 시험을 낸다. 백분위가 무엇을 말하는지 설명할 수 있어야 한다",
+   "competencies": [],
+   "concepts": [
+    "K15"
+   ],
+   "packages": [
+    "W4",
+    "W5"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 8,
+   "materials": [
+    {
+     "id": "LRNf8bc38de2b",
+     "role": "주",
+     "title": "Load Testing",
+     "kind": "글",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/automated-testing/performance-testing/load-testing.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "플레이북의 부하 시험 (평소·최대 부하에서 무엇을 재나)"
+    },
+    {
+     "id": "E78255b68f9",
+     "role": "보조",
+     "title": "Analyzing Locust Load Testing Results",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/GoogleCloudPlatform/mlops-on-gcp/blob/master/model_serving/caip-load-testing/03-analyze-results.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Google 노트북. Locust 부하 시험 결과를 읽는다 (Google 서비스 위)"
+    },
+    {
+     "id": "LRNe5136647a2",
+     "role": "실습",
+     "title": "Quickstart: Create a load test with Locust",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/app-testing/load-testing/quickstart-create-run-load-test-with-locust.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "비슷함",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Locust 로 부하 시험 만들기. Azure 서비스 위라 Locust 스크립트 쓰는 법만 옮겨 쓴다"
+    }
+   ],
+   "why": "설명할 수 있어야 한다 · 작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 6,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L21",
+   "name": "응답 캐시(Redis)와 싼 모델 먼저 보내기",
+   "short": "캐시와 모델 고르기",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W4 가 Redis 캐시와 저비용 모델 우선 라우팅을 짠다. 한 묶음에서만 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K12"
+   ],
+   "packages": [
+    "W4"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 8,
+   "materials": [
+    {
+     "id": "M47d34d3fc2",
+     "role": "주",
+     "title": "How does Semantic Caching work?",
+     "kind": "글",
+     "site": "outcomeschool.com",
+     "url": "https://outcomeschool.com/blog/how-does-semantic-caching-work",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "LLM 게이트웨이의 라우팅·캐시를 묻고 답하는 글. 면접 답 글이라 짧다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W4 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  },
+  {
+   "id": "L22",
+   "name": "LLM 평가: Eval 프레임워크, LLM 채점자, RAG 지표",
+   "short": "LLM 평가 (Eval)",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "공고 S37 'eval frameworks' (필수). W5 가 LLM 채점자로 정확도와 가드레일 통과율을 잰다",
+   "competencies": [
+    {
+     "cid": "C43",
+     "row": 44,
+     "badges": [
+      29
+     ],
+     "name": "Eval 프레임워크 활용"
+    }
+   ],
+   "concepts": [
+    "K13"
+   ],
+   "packages": [
+    "W5"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 9,
+   "materials": [
+    {
+     "id": "E365c3dd16b",
+     "role": "주",
+     "title": "Evaluate your ADK agent using Vertex AI Gen AI Evaluation service",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C43 있음)",
+     "note": "Google 공식 노트북. ADK 에이전트를 평가 서비스로 잰다 (④ 의 핵심 자료)"
+    },
+    {
+     "id": "E1ec0e81596",
+     "role": "보조",
+     "title": "AI Agents in Production: Observability & Evaluation",
+     "kind": "강의 레슨",
+     "site": "github.com",
+     "url": "https://github.com/microsoft/ai-agents-for-beginners/tree/main/10-ai-agents-production",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약, m3 판정 C43 있음)",
+     "note": "Microsoft 'AI Agents for Beginners' 10강, 운영 중인 에이전트의 관찰과 평가"
+    },
+    {
+     "id": "Eaf2f5edafd",
+     "role": "실습",
+     "title": "RAGAS Evaluation for LangChain Agents",
+     "kind": "실습 노트북",
+     "site": "github.com",
+     "url": "https://github.com/pinecone-io/examples/blob/main/learn/generation/better-rag/03-ragas-evaluation.ipynb",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Pinecone 노트북. RAGAS 로 RAG 에이전트를 잰다. W5 의 RAGAS 식 정확도와 같다"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다. 그래서 교육자료로 먼저 공부한다",
+   "done_week": 6,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "거리마다 같은 3시간 가정 (84 ÷ 28)"
+  },
+  {
+   "id": "L23",
+   "name": "Prometheus·Grafana 대시보드",
+   "short": "Prometheus·Grafana",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W5 가 실시간 대시보드를 꾸민다. 한 묶음에서만 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K14"
+   ],
+   "packages": [
+    "W5"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 9,
+   "materials": [
+    {
+     "id": "Ef2773c23d3",
+     "role": "주",
+     "title": "Learn Prometheus",
+     "kind": "글",
+     "site": "prometheus.io",
+     "url": "https://prometheus.io/docs/tutorials/getting_started",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Prometheus 공식 첫걸음"
+    },
+    {
+     "id": "E3a566fb811",
+     "role": "실습",
+     "title": "Monitor a Golang application with Prometheus and Grafana",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/docker/docs/blob/main/content/guides/go-prometheus-monitoring.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "Docker 공식 문서. Go 앱을 Prometheus·Grafana 로 지켜본다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W5 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  },
+  {
+   "id": "L24",
+   "name": "서버가 흘려 보내는 응답 (SSE)",
+   "short": "SSE 흘려 보내기",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W7 이 스트리밍 응답을 화면에 받는다. 한 묶음에서만 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K20"
+   ],
+   "packages": [
+    "W7"
+   ],
+   "origin": "프로젝트를 봐야 보임",
+   "needed_week": null,
+   "materials": [
+    {
+     "id": "M5cb17eb19f",
+     "role": "주",
+     "title": "How does Token Streaming work?",
+     "kind": "글",
+     "site": "outcomeschool.com",
+     "url": "https://outcomeschool.com/blog/how-does-token-streaming-work",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "일부",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "토큰 흘려 보내기(SSE)를 묻고 답하는 글. 면접 답 글이라 짧다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W7 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  },
+  {
+   "id": "L25",
+   "name": "장애 주입과 근본 원인 분석 (RCA)",
+   "short": "장애 주입과 원인 찾기",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W8 이 장애를 넣고 RCA 문서를 쓴다. 한 묶음에서만 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K21"
+   ],
+   "packages": [
+    "W8"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "materials": [
+    {
+     "id": "E6b889721a6",
+     "role": "주",
+     "title": "Chaos Engineering with EKS",
+     "kind": "워크숍 랩",
+     "site": "github.com",
+     "url": "https://github.com/aws-samples/eks-workshop-v2/blob/main/website/docs/observability/high-availability/index.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "비슷함",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "AWS 공식 EKS 워크숍의 장애 실험. 프로젝트는 ECS 라 장애를 넣는 생각만 옮겨 쓴다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W8 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  },
+  {
+   "id": "L26",
+   "name": "npm·PyPI 패키지 만들기",
+   "short": "패키지 만들어 올리기",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "W9 가 패턴 라이브러리를 npm 또는 PyPI 에 올릴 수 있게 만든다. 한 묶음에서만 쓴다",
+   "competencies": [],
+   "concepts": [
+    "K22"
+   ],
+   "packages": [
+    "W9"
+   ],
+   "origin": "프로젝트를 봐야 보임",
+   "needed_week": null,
+   "materials": [
+    {
+     "id": "LRN212977e706",
+     "role": "주",
+     "title": "Publishing Node.js packages",
+     "kind": "공식 문서 튜토리얼",
+     "site": "github.com",
+     "url": "https://github.com/github/docs/blob/main/content/actions/tutorials/publish-packages/publish-nodejs-packages.md",
+     "hours": null,
+     "hours_how": "모름 (열어 보지 않음)",
+     "fit": "맞음",
+     "checked": "안 엶 (은행 제목·요약)",
+     "note": "GitHub 공식 문서. Actions 로 Node.js 패키지를 npm 에 올린다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W9 한 묶음에서만 쓴다. 그래서 그 묶음을 하면서 배운다",
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에서 (가정)"
+  }
+ ],
+ "competencies_not_in_items": [
+  {
+   "cid": "C01",
+   "row": 1,
+   "badges": [
+    1
+   ],
+   "name": "AI 기반 프로덕션 시스템 설계"
+  },
+  {
+   "cid": "C02",
+   "row": 2,
+   "badges": [
+    1
+   ],
+   "name": "AI 기반 프로덕션 시스템 구축 및 배포"
+  },
+  {
+   "cid": "C03",
+   "row": 3,
+   "badges": [
+    2
+   ],
+   "name": "요구사항 수집부터 프로덕션 배포까지 전체 AI 워크스트림 소유 및 딜리버리"
+  },
+  {
+   "cid": "C04",
+   "row": 4,
+   "badges": [
+    2
+   ],
+   "name": "프로덕션급 소프트웨어 작성"
+  },
+  {
+   "cid": "C05",
+   "row": 5,
+   "badges": [
+    3
+   ],
+   "name": "전체 소프트웨어 라이프사이클에 걸친 기능 딜리버리"
+  },
+  {
+   "cid": "C06",
+   "row": 6,
+   "badges": [
+    4
+   ],
+   "name": "모호한 문제에 대한 일관된 구현 설계 및 설계 트레이드오프 결정"
+  },
+  {
+   "cid": "C07",
+   "row": 7,
+   "badges": [
+    5
+   ],
+   "name": "비즈니스 제약 조건 균형 조정 및 단기 임시방편 최소화"
+  },
+  {
+   "cid": "C08",
+   "row": 8,
+   "badges": [
+    6
+   ],
+   "name": "고품질 코드 작성 코칭"
+  },
+  {
+   "cid": "C09",
+   "row": 9,
+   "badges": [
+    6
+   ],
+   "name": "신규 팀원 온보딩 및 트레이닝"
+  },
+  {
+   "cid": "C10",
+   "row": 10,
+   "badges": [
+    7
+   ],
+   "name": "고객 엔지니어링 팀 내 임베드 협업"
+  },
+  {
+   "cid": "C11",
+   "row": 11,
+   "badges": [
+    8
+   ],
+   "name": "고객·이해관계자와 소통하여 시스템의 비즈니스·고객 가치 이해"
+  },
+  {
+   "cid": "C12",
+   "row": 12,
+   "badges": [
+    9
+   ],
+   "name": "고객 비즈니스 프로세스, 기술 아키텍처, 운영 제약 파악"
+  },
+  {
+   "cid": "C13",
+   "row": 13,
+   "badges": [
+    10
+   ],
+   "name": "고객 요구사항을 AI 프로덕션 시스템 기술 설계로 변환"
+  },
+  {
+   "cid": "C14",
+   "row": 14,
+   "badges": [
+    11
+   ],
+   "name": "검색 파이프라인(RAG) 설계 및 개발"
+  },
+  {
+   "cid": "C15",
+   "row": 15,
+   "badges": [
+    11
+   ],
+   "name": "워크플로우 자동화 설계 및 개발"
+  },
+  {
+   "cid": "C16",
+   "row": 16,
+   "badges": [
+    11
+   ],
+   "name": "API 오케스트레이션 레이어 설계 및 개발"
+  },
+  {
+   "cid": "C17",
+   "row": 17,
+   "badges": [
+    11
+   ],
+   "name": "데이터 통합 설계 및 개발"
+  },
+  {
+   "cid": "C18",
+   "row": 18,
+   "badges": [
+    11
+   ],
+   "name": "에이전틱 워크플로우 설계 및 개발"
+  },
+  {
+   "cid": "C19",
+   "row": 19,
+   "badges": [
+    12
+   ],
+   "name": "리스크·장애물이 있는 어려운 문제 해결 및 단순 설계 도출"
+  },
+  {
+   "cid": "C20",
+   "row": 20,
+   "badges": [
+    13
+   ],
+   "name": "파운데이션 모델과 고객 데이터 소스·기존 애플리케이션 통합"
+  },
+  {
+   "cid": "C22",
+   "row": 22,
+   "badges": [
+    14
+   ],
+   "name": "AI 시스템 레이턴시 최적화"
+  },
+  {
+   "cid": "C23",
+   "row": 23,
+   "badges": [
+    14
+   ],
+   "name": "AI 시스템 신뢰성 최적화"
+  },
+  {
+   "cid": "C24",
+   "row": 24,
+   "badges": [
+    14
+   ],
+   "name": "AI 시스템 비용 최적화"
+  },
+  {
+   "cid": "C25",
+   "row": 25,
+   "badges": [
+    15
+   ],
+   "name": "스코핑, 설계, 코딩, 테스트, 배포, 운영, 유지보수 전 SDLC 기여"
+  },
+  {
+   "cid": "C26",
+   "row": 26,
+   "badges": [
+    16
+   ],
+   "name": "AI 모델·분산 시스템·애플리케이션 서비스의 프로덕션 인시던트 트러블슈팅"
+  },
+  {
+   "cid": "C27",
+   "row": 28,
+   "badges": [
+    17
+   ],
+   "name": "운영 이슈 근본 원인 분석 및 해결"
+  },
+  {
+   "cid": "C28",
+   "row": 29,
+   "badges": [
+    18
+   ],
+   "name": "AI 시스템 모니터링 구현"
+  },
+  {
+   "cid": "C29",
+   "row": 30,
+   "badges": [
+    18
+   ],
+   "name": "AI 시스템 평가(Evaluation) 구현"
+  },
+  {
+   "cid": "C30",
+   "row": 31,
+   "badges": [
+    18
+   ],
+   "name": "AI 시스템 가드레일 구현"
+  },
+  {
+   "cid": "C31",
+   "row": 32,
+   "badges": [
+    18
+   ],
+   "name": "CI/CD 파이프라인 구현 및 운영"
+  },
+  {
+   "cid": "C32",
+   "row": 33,
+   "badges": [
+    19
+   ],
+   "name": "운영 개선 기회 식별 및 실행"
+  },
+  {
+   "cid": "C33",
+   "row": 34,
+   "badges": [
+    20
+   ],
+   "name": "시스템 구조·운영·전체 그림을 신규 팀원에게 멘토링"
+  },
+  {
+   "cid": "C34",
+   "row": 35,
+   "badges": [
+    21
+   ],
+   "name": "코드 리뷰를 통한 고품질 코드 코칭"
+  },
+  {
+   "cid": "C35",
+   "row": 36,
+   "badges": [
+    22
+   ],
+   "name": "코드 리뷰 프로세스에서 의미 있는 피드백 제공"
+  },
+  {
+   "cid": "C36",
+   "row": 37,
+   "badges": [
+    23
+   ],
+   "name": "고객 참여 내 AI 도입 확대 기회 식별"
+  },
+  {
+   "cid": "C37",
+   "row": 38,
+   "badges": [
+    24
+   ],
+   "name": "재사용 가능한 패턴 및 액셀러레이터 코드화"
+  },
+  {
+   "cid": "C38",
+   "row": 39,
+   "badges": [
+    25
+   ],
+   "name": "팀 소프트웨어 및 프로세스 개선 사항 반영"
+  },
+  {
+   "cid": "C39",
+   "row": 40,
+   "badges": [
+    26
+   ],
+   "name": "Agile 또는 빠르게 스케일링하는 환경에서의 개발 경험"
+  },
+  {
+   "cid": "C40",
+   "row": 41,
+   "badges": [
+    27
+   ],
+   "name": "기술 개념을 기술·비기술 청중 모두에게 전달"
+  },
+  {
+   "cid": "C41",
+   "row": 42,
+   "badges": [
+    28
+   ],
+   "name": "에이전틱 개발 및 스펙 기반 개발"
+  },
+  {
+   "cid": "C42",
+   "row": 43,
+   "badges": [
+    28
+   ],
+   "name": "AI 에이전트 개발"
+  },
+  {
+   "cid": "C45",
+   "row": 46,
+   "badges": [
+    29
+   ],
+   "name": "RAG 파이프라인 구축 및 운영"
+  },
+  {
+   "cid": "C46",
+   "row": 47,
+   "badges": [
+    29
+   ],
+   "name": "프롬프트 엔지니어링"
+  },
+  {
+   "cid": "C47",
+   "row": 48,
+   "badges": [
+    30
+   ],
+   "name": "코딩 표준, 코드 리뷰, 소스 컨트롤 관리, 빌드 프로세스, 테스트, 운영을 포함한 전체 SDLC 경험"
+  },
+  {
+   "cid": "C48",
+   "row": 49,
+   "badges": [
+    31
+   ],
+   "name": "고객 프로덕션 환경에서의 작업 경험"
+  },
+  {
+   "cid": "C49",
+   "row": 50,
+   "badges": [
+    32
+   ],
+   "name": "프로덕션 환경에서 AI/ML 애플리케이션 구축 또는 배포"
+  },
+  {
+   "cid": "C50",
+   "row": 51,
+   "badges": [
+    33
+   ],
+   "name": "높은 오너십과 긴박감을 가진 리더십 경험(파운더·엔지니어링 리드·스타트업 빌더)"
+  },
+  {
+   "cid": "C55",
+   "row": 56,
+   "badges": [
+    35
+   ],
+   "name": "고객 인터페이싱 또는 외부 이해관계자와의 기술 프로젝트 리딩"
+  },
+  {
+   "cid": "C56",
+   "row": 57,
+   "badges": [
+    36
+   ],
+   "name": "엔드투엔드 프로덕션 시스템 구축 및 스케일링 팀 협업 경험"
+  }
+ ],
+ "budgets": {
+  "84": {
+   "hours": 84,
+   "per_day": 1,
+   "label": "하루 1시간 · 84시간",
+   "week_cap": 14.0,
+   "study_caps": [
+    14.0,
+    14.0,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6
+   ],
+   "rule": "자료 자리 하나에 3시간 가정 (84 ÷ 28). 주 자리는 자료가 없어도 세고, 보조·실습 자리는 고른 자료가 있을 때만 센다",
+   "items": [
+    {
+     "id": "L01",
+     "short": "파운데이션 모델 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Ec8f58645a6",
+       "role": "주",
+       "title": "Lab: AI Fundamentals for Developers",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/docker/docs/blob/main/content/guides/lab-ai-fundamentals.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C21 있음)",
+       "note": "Docker 공식 문서의 개발자용 AI 기초 실습. 모델을 앱에 붙이는 개발자 눈높이다"
+      }
+     ],
+     "total": 3.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L02",
+     "short": "Agile 스프린트 운영",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRNc559ca88a4",
+       "role": "주",
+       "title": "Agile Ceremonies",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/agile-development/ceremonies.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Microsoft 엔지니어링 플레이북의 스프린트 계획·회고 같은 모임 안내"
+      }
+     ],
+     "total": 6.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L03",
+     "short": "풀 리퀘스트와 코드 리뷰",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN8cc7d7b8a8",
+       "role": "주",
+       "title": "Quickstart for reviewing pull requests",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/pull-requests/get-started/reviewing-pull-requests-quickstart.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서의 PR 리뷰 첫걸음"
+      }
+     ],
+     "total": 9.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L04",
+     "short": "분산 시스템과 안정성 패턴",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN39e5a0528f",
+       "role": "주",
+       "title": "Distributed System Design Reference",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/design/design-patterns/distributed-system-design-reference.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C58 있음). 다른 에이전트가 연 기록: 본문은 바깥 링크 셋(Fowler 분산 시스템 패턴 등)뿐인 안내 쪽 (aws_switch/facts.md)",
+       "note": "분산 시스템을 가르치는 자료가 은행에 이것뿐이다. 링크한 글을 읽는다"
+      }
+     ],
+     "total": 12.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L06",
+     "short": "RAG 파이프라인 구조",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E43b03d6465",
+       "role": "주",
+       "title": "research: Retrieval Augmented Generation (RAG) for LLMs",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/research/rag.kr.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "프롬프트 엔지니어링 가이드의 RAG 정리, 한국어판"
+      }
+     ],
+     "total": 15.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L07",
+     "short": "Genkit 다루기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 18.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L08",
+     "short": "프롬프트 설계",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E2f46129dad",
+       "role": "주",
+       "title": "프롬프트의 기초",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/introduction/basics.kr.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "프롬프트 엔지니어링 가이드의 '프롬프트의 기초', 한국어판"
+      }
+     ],
+     "total": 21.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L09",
+     "short": "TypeScript 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN1448f9587c",
+       "role": "주",
+       "title": "TypeScript for JavaScript Programmers",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/TypeScript-Website/blob/v2/packages/documentation/copy/en/get-started/TS for JS Programmers.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C52 있음)",
+       "note": "TypeScript 공식 문서의 JavaScript 개발자용 입문"
+      }
+     ],
+     "total": 24.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L10",
+     "short": "Python 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E91dbe394bd",
+       "role": "주",
+       "title": "Python Crash Course",
+       "kind": "온라인 강의",
+       "site": "ehmatthes.github.io",
+       "url": "https://ehmatthes.github.io/pcc",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "입문서 Python Crash Course 의 공식 사이트 (연습 문제 포함)"
+      }
+     ],
+     "total": 27.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L11",
+     "short": "에이전트 도구 호출",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN624bcb0ae0",
+       "role": "주",
+       "title": "Production Architecture",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C44 있음)",
+       "note": "crewAI 공식 문서의 운영 구조 (④ 의 핵심 자료)"
+      }
+     ],
+     "total": 30.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L12",
+     "short": "Go 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E2a4fa23ce7",
+       "role": "주",
+       "title": "Learn Go with Tests",
+       "kind": "글",
+       "site": "quii.gitbook.io",
+       "url": "https://quii.gitbook.io/learn-go-with-tests",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C54 있음)",
+       "note": "시험을 먼저 쓰며 Go 를 배우는 무료 책 (④ 의 보조 자료)"
+      }
+     ],
+     "total": 33.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L15",
+     "short": "React 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRNe05d50dea8",
+       "role": "주",
+       "title": "Quick Start",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/reactjs/react.dev/blob/main/src/content/learn/index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C51 있음)",
+       "note": "React 공식 문서의 빠른 시작 (매일 쓰는 개념의 80%)"
+      }
+     ],
+     "total": 36.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L16",
+     "short": "AWS CDK 배포",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E4d86ca1e47",
+       "role": "주",
+       "title": "Python Workshop",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/aws-cdk-intro-workshop/blob/master/workshop/content/english/30-python/_index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약). 같은 워크숍 저장소의 첫 쪽(E0b79574221)은 '더는 고치지 않는다'고 적혀 있다",
+       "note": "AWS 공식 CDK 입문 워크숍의 Python 판. W6 의 CDK 가 Python 이다"
+      }
+     ],
+     "total": 39.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L19",
+     "short": "프롬프트 인젝션과 가드레일",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Ee6b0ae77b6",
+       "role": "주",
+       "title": "Prompt Injection in LLMs",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/prompts/adversarial-prompting/prompt-injection.en.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "프롬프트 엔지니어링 가이드의 프롬프트 인젝션 (한국어판은 은행에 없다)"
+      }
+     ],
+     "total": 42.0,
+     "known_total": 0.0,
+     "needed_week": 8,
+     "done_week": 5,
+     "late_weeks": 0
+    },
+    {
+     "id": "L20",
+     "short": "부하 시험과 P95",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRNf8bc38de2b",
+       "role": "주",
+       "title": "Load Testing",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/automated-testing/performance-testing/load-testing.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "플레이북의 부하 시험 (평소·최대 부하에서 무엇을 재나)"
+      }
+     ],
+     "total": 45.0,
+     "known_total": 0.0,
+     "needed_week": 8,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L22",
+     "short": "LLM 평가 (Eval)",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E365c3dd16b",
+       "role": "주",
+       "title": "Evaluate your ADK agent using Vertex AI Gen AI Evaluation service",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C43 있음)",
+       "note": "Google 공식 노트북. ADK 에이전트를 평가 서비스로 잰다 (④ 의 핵심 자료)"
+      }
+     ],
+     "total": 48.0,
+     "known_total": 0.0,
+     "needed_week": 9,
+     "done_week": 6,
+     "late_weeks": 0
+    }
+   ],
+   "inside_project_ids": [
+    "L05",
+    "L13",
+    "L14",
+    "L17",
+    "L18",
+    "L21",
+    "L23",
+    "L24",
+    "L25",
+    "L26"
+   ],
+   "order": [
+    "L01",
+    "L02",
+    "L03",
+    "L04",
+    "L06",
+    "L07",
+    "L08",
+    "L09",
+    "L10",
+    "L11",
+    "L12",
+    "L15",
+    "L16",
+    "L19",
+    "L20",
+    "L22"
+   ],
+   "total_hours": 48.0,
+   "spare_hours": 36.0,
+   "spare_parts": {
+    "no_slot": 36.0,
+    "empty_slots": 0.0,
+    "empty_slot_count": {
+     "보조": 0,
+     "실습": 0
+    }
+   },
+   "design_hours": 48.0,
+   "share": "57%",
+   "known_hours": 0.0,
+   "known_materials": 0,
+   "counts": {
+    "items": 16,
+    "big": 16,
+    "small": 0,
+    "inside_project": 10,
+    "slots": 16,
+    "materials": 15,
+    "unique_materials": 15,
+    "by_role": {
+     "주": 15,
+     "보조": 0,
+     "실습": 0
+    },
+    "new_materials": 0,
+    "fit": {
+     "맞음": 14,
+     "일부": 1
+    },
+    "no_main": [
+     "L07"
+    ],
+    "no_extra": {
+     "보조": [],
+     "실습": []
+    }
+   },
+   "late": [],
+   "last_study_week": 6,
+   "layout": {
+    "1": [
+     {
+      "id": "L01",
+      "short": "파운데이션 모델 기초",
+      "hours": 3.0
+     },
+     {
+      "id": "L02",
+      "short": "Agile 스프린트 운영",
+      "hours": 3.0
+     },
+     {
+      "id": "L03",
+      "short": "풀 리퀘스트와 코드 리뷰",
+      "hours": 3.0
+     },
+     {
+      "id": "L04",
+      "short": "분산 시스템과 안정성 패턴",
+      "hours": 3.0
+     },
+     {
+      "id": "L06",
+      "short": "RAG 파이프라인 구조",
+      "hours": 2.0
+     }
+    ],
+    "2": [
+     {
+      "id": "L06",
+      "short": "RAG 파이프라인 구조",
+      "hours": 1.0
+     },
+     {
+      "id": "L07",
+      "short": "Genkit 다루기",
+      "hours": 3.0
+     },
+     {
+      "id": "L08",
+      "short": "프롬프트 설계",
+      "hours": 3.0
+     },
+     {
+      "id": "L09",
+      "short": "TypeScript 기초",
+      "hours": 3.0
+     },
+     {
+      "id": "L10",
+      "short": "Python 기초",
+      "hours": 3.0
+     },
+     {
+      "id": "L11",
+      "short": "에이전트 도구 호출",
+      "hours": 1.0
+     }
+    ],
+    "3": [
+     {
+      "id": "L11",
+      "short": "에이전트 도구 호출",
+      "hours": 2.0
+     },
+     {
+      "id": "L12",
+      "short": "Go 기초",
+      "hours": 3.0
+     },
+     {
+      "id": "L15",
+      "short": "React 기초",
+      "hours": 0.6
+     }
+    ],
+    "4": [
+     {
+      "id": "L15",
+      "short": "React 기초",
+      "hours": 2.4
+     },
+     {
+      "id": "L16",
+      "short": "AWS CDK 배포",
+      "hours": 3.0
+     },
+     {
+      "id": "L19",
+      "short": "프롬프트 인젝션과 가드레일",
+      "hours": 0.2
+     }
+    ],
+    "5": [
+     {
+      "id": "L19",
+      "short": "프롬프트 인젝션과 가드레일",
+      "hours": 2.8
+     },
+     {
+      "id": "L20",
+      "short": "부하 시험과 P95",
+      "hours": 2.8
+     }
+    ],
+    "6": [
+     {
+      "id": "L20",
+      "short": "부하 시험과 P95",
+      "hours": 0.2
+     },
+     {
+      "id": "L22",
+      "short": "LLM 평가 (Eval)",
+      "hours": 3.0
+     }
+    ]
+   },
+   "reasons": [
+    "큰 거리 16개만 교육자료로 공부해요. 주 자료 하나에 3시간씩 잡아 48시간이에요.",
+    "작은 거리 10개는 그 거리를 쓰는 작업 묶음 안에서 배워요.",
+    "84시간 중 36시간이 남아요.",
+    "맞는 자료가 없는 거리 1개도 주 자리 3시간을 잡아 두었어요."
+   ]
+  },
+  "168": {
+   "hours": 168,
+   "per_day": 2,
+   "label": "하루 2시간 · 168시간",
+   "week_cap": 21.0,
+   "study_caps": [
+    21.0,
+    21.0,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6
+   ],
+   "rule": "자료 자리 하나에 3시간 가정 (84 ÷ 28). 주 자리는 자료가 없어도 세고, 보조·실습 자리는 고른 자료가 있을 때만 센다",
+   "items": [
+    {
+     "id": "L01",
+     "short": "파운데이션 모델 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Ec8f58645a6",
+       "role": "주",
+       "title": "Lab: AI Fundamentals for Developers",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/docker/docs/blob/main/content/guides/lab-ai-fundamentals.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C21 있음)",
+       "note": "Docker 공식 문서의 개발자용 AI 기초 실습. 모델을 앱에 붙이는 개발자 눈높이다"
+      },
+      {
+       "id": "Ee6aa782e8d",
+       "role": "보조",
+       "title": "Foundation Models",
+       "kind": "영상",
+       "site": "youtube.com",
+       "url": "https://www.youtube.com/playlist?list=PL9t0xVFP90GD8hox0KipBkJcLX_C3ja67",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C21 있음)",
+       "note": "GPT-3·CLIP 같은 파운데이션 모델을 다루는 강의 영상 묶음"
+      }
+     ],
+     "total": 6.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L02",
+     "short": "Agile 스프린트 운영",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRNc559ca88a4",
+       "role": "주",
+       "title": "Agile Ceremonies",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/agile-development/ceremonies.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Microsoft 엔지니어링 플레이북의 스프린트 계획·회고 같은 모임 안내"
+      },
+      {
+       "id": "LRN00b827bb01",
+       "role": "보조",
+       "title": "Backlog Management",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/agile-development/backlog-management.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "같은 플레이북의 백로그 다루기 (완료 조건, 설계 일도 백로그에)"
+      }
+     ],
+     "total": 12.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L03",
+     "short": "풀 리퀘스트와 코드 리뷰",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN8cc7d7b8a8",
+       "role": "주",
+       "title": "Quickstart for reviewing pull requests",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/pull-requests/get-started/reviewing-pull-requests-quickstart.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서의 PR 리뷰 첫걸음"
+      },
+      {
+       "id": "LRN0d5ae970d4",
+       "role": "보조",
+       "title": "Git workflows",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/get-started/git-basics/git-workflows.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서의 Git 작업 흐름. 요약이 짧아 깊이는 모른다"
+      }
+     ],
+     "total": 18.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L04",
+     "short": "분산 시스템과 안정성 패턴",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN39e5a0528f",
+       "role": "주",
+       "title": "Distributed System Design Reference",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/design/design-patterns/distributed-system-design-reference.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C58 있음). 다른 에이전트가 연 기록: 본문은 바깥 링크 셋(Fowler 분산 시스템 패턴 등)뿐인 안내 쪽 (aws_switch/facts.md)",
+       "note": "분산 시스템을 가르치는 자료가 은행에 이것뿐이다. 링크한 글을 읽는다"
+      },
+      {
+       "id": "LRNcca0ab3579",
+       "role": "보조",
+       "title": "Availability",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/non-functional-requirements/availability.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "같은 플레이북의 가용성 (여분 두기, 장애 견디기)"
+      }
+     ],
+     "total": 24.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L05",
+     "short": "설계 문서와 ADR",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN7638aa715a",
+       "role": "주",
+       "title": "1. Record architecture decisions",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/design/design-reviews/decision-log/doc/adr/0001-record-architecture-decisions.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "플레이북 저장소의 첫 ADR. ADR 을 왜, 어떻게 쓰는지 그 형식 그대로다"
+      }
+     ],
+     "total": 27.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L06",
+     "short": "RAG 파이프라인 구조",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E43b03d6465",
+       "role": "주",
+       "title": "research: Retrieval Augmented Generation (RAG) for LLMs",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/research/rag.kr.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "프롬프트 엔지니어링 가이드의 RAG 정리, 한국어판"
+      },
+      {
+       "id": "E93cf2ec8fc",
+       "role": "보조",
+       "title": "Retrieval Augmented Generation",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/anthropics/anthropic-cookbook/blob/main/capabilities/retrieval_augmented_generation/guide.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Anthropic 공식 노트북. RAG 를 만들고 재는 길을 차례로 보인다"
+      }
+     ],
+     "total": 33.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L07",
+     "short": "Genkit 다루기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주",
+      "보조"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 36.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L08",
+     "short": "프롬프트 설계",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E2f46129dad",
+       "role": "주",
+       "title": "프롬프트의 기초",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/introduction/basics.kr.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "프롬프트 엔지니어링 가이드의 '프롬프트의 기초', 한국어판"
+      },
+      {
+       "id": "E11c7076bac",
+       "role": "보조",
+       "title": "프롬프트 설계에 관한 일반적인 팁",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/introduction/tips.kr.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "같은 가이드의 '프롬프트 설계에 관한 일반적인 팁', 한국어판"
+      }
+     ],
+     "total": 42.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L09",
+     "short": "TypeScript 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN1448f9587c",
+       "role": "주",
+       "title": "TypeScript for JavaScript Programmers",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/TypeScript-Website/blob/v2/packages/documentation/copy/en/get-started/TS for JS Programmers.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C52 있음)",
+       "note": "TypeScript 공식 문서의 JavaScript 개발자용 입문"
+      },
+      {
+       "id": "LRN4a047de448",
+       "role": "보조",
+       "title": "Interfaces",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/TypeScript-Website/blob/v2/packages/documentation/copy/en/handbook-v1/Interfaces.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C52 있음)",
+       "note": "공식 핸드북의 인터페이스 (Flow 입출력 타입을 정할 때 쓴다)"
+      }
+     ],
+     "total": 48.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L10",
+     "short": "Python 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E91dbe394bd",
+       "role": "주",
+       "title": "Python Crash Course",
+       "kind": "온라인 강의",
+       "site": "ehmatthes.github.io",
+       "url": "https://ehmatthes.github.io/pcc",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "입문서 Python Crash Course 의 공식 사이트 (연습 문제 포함)"
+      }
+     ],
+     "total": 51.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L11",
+     "short": "에이전트 도구 호출",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN624bcb0ae0",
+       "role": "주",
+       "title": "Production Architecture",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C44 있음)",
+       "note": "crewAI 공식 문서의 운영 구조 (④ 의 핵심 자료)"
+      },
+      {
+       "id": "E05346e0180",
+       "role": "보조",
+       "title": "Explore AI Agent Frameworks",
+       "kind": "강의 레슨",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/ai-agents-for-beginners/tree/main/02-explore-agentic-frameworks",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C44 있음)",
+       "note": "Microsoft 'AI Agents for Beginners' 2강, 에이전트 틀 견주기"
+      }
+     ],
+     "total": 57.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L12",
+     "short": "Go 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E2a4fa23ce7",
+       "role": "주",
+       "title": "Learn Go with Tests",
+       "kind": "글",
+       "site": "quii.gitbook.io",
+       "url": "https://quii.gitbook.io/learn-go-with-tests",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C54 있음)",
+       "note": "시험을 먼저 쓰며 Go 를 배우는 무료 책 (④ 의 보조 자료)"
+      }
+     ],
+     "total": 60.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L13",
+     "short": "FastAPI 로 API 만들기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN76f36f206b",
+       "role": "주",
+       "title": "FastAPI + LlamaIndex RAG Example (Ollama)",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/run-llama/llama_index/blob/main/docs/examples/usecases/fastapi_rag_ollama.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "LlamaIndex 공식 예제. FastAPI 로 RAG API 를 세운다"
+      }
+     ],
+     "total": 63.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L14",
+     "short": "에이전트 상태와 메모리",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E60da5fb8b7",
+       "role": "주",
+       "title": "Understanding LangGraph",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/pinecone-io/examples/blob/main/learn/generation/langchain/langgraph/00-langgraph-intro.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Pinecone 노트북. LangGraph 를 '에이전트 상태 머신'으로 설명한다"
+      }
+     ],
+     "total": 66.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L15",
+     "short": "React 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRNe05d50dea8",
+       "role": "주",
+       "title": "Quick Start",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/reactjs/react.dev/blob/main/src/content/learn/index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C51 있음)",
+       "note": "React 공식 문서의 빠른 시작 (매일 쓰는 개념의 80%)"
+      },
+      {
+       "id": "LRN6a568bbf93",
+       "role": "보조",
+       "title": "Recommended Technologies",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/UI-UX/recommended-technologies.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C51·C52 있음). 다른 에이전트가 연 기록: 처음 배우는 강좌는 아니다 (aws_switch/facts.md)",
+       "note": "플레이북의 추천 기술 (React 폴더 구조, TypeScript, Vite). ④ 의 보조 자료"
+      }
+     ],
+     "total": 72.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 5,
+     "late_weeks": 0
+    },
+    {
+     "id": "L16",
+     "short": "AWS CDK 배포",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E4d86ca1e47",
+       "role": "주",
+       "title": "Python Workshop",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/aws-cdk-intro-workshop/blob/master/workshop/content/english/30-python/_index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약). 같은 워크숍 저장소의 첫 쪽(E0b79574221)은 '더는 고치지 않는다'고 적혀 있다",
+       "note": "AWS 공식 CDK 입문 워크숍의 Python 판. W6 의 CDK 가 Python 이다"
+      },
+      {
+       "id": "E03732779fa",
+       "role": "보조",
+       "title": "Module: Build a Multi-Region Serverless Application for Resilience and High Availability",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/aws-serverless-workshops/tree/master/MultiRegion",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C57 있음·C58 일부)",
+       "note": "AWS 공식 워크숍의 여러 리전 서버리스 앱. ④ 의 보조 자료. ECS 가 아니라 서버리스라 일부"
+      }
+     ],
+     "total": 78.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 5,
+     "late_weeks": 0
+    },
+    {
+     "id": "L17",
+     "short": "Docker 컨테이너",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E2cc436c86d",
+       "role": "주",
+       "title": "Python language-specific guide",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/docker/docs/blob/main/content/guides/python.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Docker 공식 문서의 Python 앱 컨테이너 안내"
+      }
+     ],
+     "total": 81.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L18",
+     "short": "GitHub Actions CI",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN2023f087ee",
+       "role": "주",
+       "title": "Building and testing Python",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/actions/tutorials/build-and-test-code/python.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서. Python 을 빌드·시험하는 CI 흐름"
+      }
+     ],
+     "total": 84.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L19",
+     "short": "프롬프트 인젝션과 가드레일",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Ee6b0ae77b6",
+       "role": "주",
+       "title": "Prompt Injection in LLMs",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/prompts/adversarial-prompting/prompt-injection.en.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "프롬프트 엔지니어링 가이드의 프롬프트 인젝션 (한국어판은 은행에 없다)"
+      },
+      {
+       "id": "M9616fafa18",
+       "role": "보조",
+       "title": "Prompt Injection Prevention",
+       "kind": "글",
+       "site": "hiddenlayer.com",
+       "url": "https://hiddenlayer.com/innovation-hub/prompt-injection-attacks-on-llms/",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "보안 회사 HiddenLayer 의 인젝션 공격과 막기 안내"
+      }
+     ],
+     "total": 90.0,
+     "known_total": 0.0,
+     "needed_week": 8,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L20",
+     "short": "부하 시험과 P95",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRNf8bc38de2b",
+       "role": "주",
+       "title": "Load Testing",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/automated-testing/performance-testing/load-testing.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "플레이북의 부하 시험 (평소·최대 부하에서 무엇을 재나)"
+      },
+      {
+       "id": "E78255b68f9",
+       "role": "보조",
+       "title": "Analyzing Locust Load Testing Results",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/GoogleCloudPlatform/mlops-on-gcp/blob/master/model_serving/caip-load-testing/03-analyze-results.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Google 노트북. Locust 부하 시험 결과를 읽는다 (Google 서비스 위)"
+      }
+     ],
+     "total": 96.0,
+     "known_total": 0.0,
+     "needed_week": 8,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L21",
+     "short": "캐시와 모델 고르기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M47d34d3fc2",
+       "role": "주",
+       "title": "How does Semantic Caching work?",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/how-does-semantic-caching-work",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "LLM 게이트웨이의 라우팅·캐시를 묻고 답하는 글. 면접 답 글이라 짧다"
+      }
+     ],
+     "total": 99.0,
+     "known_total": 0.0,
+     "needed_week": 8,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L22",
+     "short": "LLM 평가 (Eval)",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E365c3dd16b",
+       "role": "주",
+       "title": "Evaluate your ADK agent using Vertex AI Gen AI Evaluation service",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C43 있음)",
+       "note": "Google 공식 노트북. ADK 에이전트를 평가 서비스로 잰다 (④ 의 핵심 자료)"
+      },
+      {
+       "id": "E1ec0e81596",
+       "role": "보조",
+       "title": "AI Agents in Production: Observability & Evaluation",
+       "kind": "강의 레슨",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/ai-agents-for-beginners/tree/main/10-ai-agents-production",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C43 있음)",
+       "note": "Microsoft 'AI Agents for Beginners' 10강, 운영 중인 에이전트의 관찰과 평가"
+      }
+     ],
+     "total": 105.0,
+     "known_total": 0.0,
+     "needed_week": 9,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L23",
+     "short": "Prometheus·Grafana",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Ef2773c23d3",
+       "role": "주",
+       "title": "Learn Prometheus",
+       "kind": "글",
+       "site": "prometheus.io",
+       "url": "https://prometheus.io/docs/tutorials/getting_started",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Prometheus 공식 첫걸음"
+      }
+     ],
+     "total": 108.0,
+     "known_total": 0.0,
+     "needed_week": 9,
+     "done_week": 8,
+     "late_weeks": 0
+    },
+    {
+     "id": "L24",
+     "short": "SSE 흘려 보내기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M5cb17eb19f",
+       "role": "주",
+       "title": "How does Token Streaming work?",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/how-does-token-streaming-work",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "토큰 흘려 보내기(SSE)를 묻고 답하는 글. 면접 답 글이라 짧다"
+      }
+     ],
+     "total": 111.0,
+     "known_total": 0.0,
+     "needed_week": null,
+     "done_week": 8,
+     "late_weeks": null
+    },
+    {
+     "id": "L25",
+     "short": "장애 주입과 원인 찾기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E6b889721a6",
+       "role": "주",
+       "title": "Chaos Engineering with EKS",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/eks-workshop-v2/blob/main/website/docs/observability/high-availability/index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "비슷함",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "AWS 공식 EKS 워크숍의 장애 실험. 프로젝트는 ECS 라 장애를 넣는 생각만 옮겨 쓴다"
+      }
+     ],
+     "total": 114.0,
+     "known_total": 0.0,
+     "needed_week": null,
+     "done_week": 8,
+     "late_weeks": null
+    },
+    {
+     "id": "L26",
+     "short": "패키지 만들어 올리기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN212977e706",
+       "role": "주",
+       "title": "Publishing Node.js packages",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/actions/tutorials/publish-packages/publish-nodejs-packages.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서. Actions 로 Node.js 패키지를 npm 에 올린다"
+      }
+     ],
+     "total": 117.0,
+     "known_total": 0.0,
+     "needed_week": null,
+     "done_week": 8,
+     "late_weeks": null
+    }
+   ],
+   "inside_project_ids": [],
+   "order": [
+    "L01",
+    "L02",
+    "L03",
+    "L04",
+    "L05",
+    "L06",
+    "L07",
+    "L08",
+    "L09",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "L20",
+    "L21",
+    "L22",
+    "L23",
+    "L24",
+    "L25",
+    "L26"
+   ],
+   "total_hours": 117.0,
+   "spare_hours": 51.0,
+   "spare_parts": {
+    "no_slot": 42.0,
+    "empty_slots": 9.0,
+    "empty_slot_count": {
+     "보조": 3,
+     "실습": 0
+    }
+   },
+   "design_hours": 126.0,
+   "share": "70%",
+   "known_hours": 0.0,
+   "known_materials": 0,
+   "counts": {
+    "items": 26,
+    "big": 16,
+    "small": 10,
+    "inside_project": 0,
+    "slots": 39,
+    "materials": 38,
+    "unique_materials": 38,
+    "by_role": {
+     "주": 25,
+     "보조": 13,
+     "실습": 0
+    },
+    "new_materials": 0,
+    "fit": {
+     "맞음": 29,
+     "일부": 8,
+     "비슷함": 1
+    },
+    "no_main": [
+     "L07"
+    ],
+    "no_extra": {
+     "보조": [
+      "L07",
+      "L10",
+      "L12"
+     ],
+     "실습": []
+    }
+   },
+   "late": [],
+   "last_study_week": 8,
+   "layout": {
+    "1": [
+     {
+      "id": "L01",
+      "short": "파운데이션 모델 기초",
+      "hours": 6.0
+     },
+     {
+      "id": "L02",
+      "short": "Agile 스프린트 운영",
+      "hours": 6.0
+     },
+     {
+      "id": "L03",
+      "short": "풀 리퀘스트와 코드 리뷰",
+      "hours": 6.0
+     },
+     {
+      "id": "L04",
+      "short": "분산 시스템과 안정성 패턴",
+      "hours": 3.0
+     }
+    ],
+    "2": [
+     {
+      "id": "L04",
+      "short": "분산 시스템과 안정성 패턴",
+      "hours": 3.0
+     },
+     {
+      "id": "L05",
+      "short": "설계 문서와 ADR",
+      "hours": 3.0
+     },
+     {
+      "id": "L06",
+      "short": "RAG 파이프라인 구조",
+      "hours": 6.0
+     },
+     {
+      "id": "L07",
+      "short": "Genkit 다루기",
+      "hours": 3.0
+     },
+     {
+      "id": "L08",
+      "short": "프롬프트 설계",
+      "hours": 6.0
+     }
+    ],
+    "3": [
+     {
+      "id": "L09",
+      "short": "TypeScript 기초",
+      "hours": 6.0
+     },
+     {
+      "id": "L10",
+      "short": "Python 기초",
+      "hours": 3.0
+     },
+     {
+      "id": "L11",
+      "short": "에이전트 도구 호출",
+      "hours": 3.6
+     }
+    ],
+    "4": [
+     {
+      "id": "L11",
+      "short": "에이전트 도구 호출",
+      "hours": 2.4
+     },
+     {
+      "id": "L12",
+      "short": "Go 기초",
+      "hours": 3.0
+     },
+     {
+      "id": "L13",
+      "short": "FastAPI 로 API 만들기",
+      "hours": 3.0
+     },
+     {
+      "id": "L14",
+      "short": "에이전트 상태와 메모리",
+      "hours": 3.0
+     },
+     {
+      "id": "L15",
+      "short": "React 기초",
+      "hours": 1.2
+     }
+    ],
+    "5": [
+     {
+      "id": "L15",
+      "short": "React 기초",
+      "hours": 4.8
+     },
+     {
+      "id": "L16",
+      "short": "AWS CDK 배포",
+      "hours": 6.0
+     },
+     {
+      "id": "L17",
+      "short": "Docker 컨테이너",
+      "hours": 1.8
+     }
+    ],
+    "6": [
+     {
+      "id": "L17",
+      "short": "Docker 컨테이너",
+      "hours": 1.2
+     },
+     {
+      "id": "L18",
+      "short": "GitHub Actions CI",
+      "hours": 3.0
+     },
+     {
+      "id": "L19",
+      "short": "프롬프트 인젝션과 가드레일",
+      "hours": 6.0
+     },
+     {
+      "id": "L20",
+      "short": "부하 시험과 P95",
+      "hours": 2.4
+     }
+    ],
+    "7": [
+     {
+      "id": "L20",
+      "short": "부하 시험과 P95",
+      "hours": 3.6
+     },
+     {
+      "id": "L21",
+      "short": "캐시와 모델 고르기",
+      "hours": 3.0
+     },
+     {
+      "id": "L22",
+      "short": "LLM 평가 (Eval)",
+      "hours": 6.0
+     }
+    ],
+    "8": [
+     {
+      "id": "L23",
+      "short": "Prometheus·Grafana",
+      "hours": 3.0
+     },
+     {
+      "id": "L24",
+      "short": "SSE 흘려 보내기",
+      "hours": 3.0
+     },
+     {
+      "id": "L25",
+      "short": "장애 주입과 원인 찾기",
+      "hours": 3.0
+     },
+     {
+      "id": "L26",
+      "short": "패키지 만들어 올리기",
+      "hours": 3.0
+     }
+    ]
+   },
+   "reasons": [
+    "26개 거리를 모두 교육자료로 공부해요. 큰 거리는 주 자료와 보조 자료, 작은 거리는 주 자료만 봐요.",
+    "자료 하나에 3시간씩 잡아 117시간이에요.",
+    "남는 51시간은 작은 거리에 보조 자리를 두지 않은 42시간과, 보조 자료를 못 찾은 큰 거리 3개의 9시간이에요.",
+    "맞는 자료가 없는 거리 1개도 주 자리 3시간을 잡아 두었어요."
+   ]
+  },
+  "252": {
+   "hours": 252,
+   "per_day": 3,
+   "label": "하루 3시간 · 252시간",
+   "week_cap": 28.0,
+   "study_caps": [
+    28.0,
+    28.0,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6
+   ],
+   "rule": "자료 자리 하나에 3시간 가정 (84 ÷ 28). 주 자리는 자료가 없어도 세고, 보조·실습 자리는 고른 자료가 있을 때만 센다",
+   "items": [
+    {
+     "id": "L01",
+     "short": "파운데이션 모델 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Ec8f58645a6",
+       "role": "주",
+       "title": "Lab: AI Fundamentals for Developers",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/docker/docs/blob/main/content/guides/lab-ai-fundamentals.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C21 있음)",
+       "note": "Docker 공식 문서의 개발자용 AI 기초 실습. 모델을 앱에 붙이는 개발자 눈높이다"
+      },
+      {
+       "id": "Ee6aa782e8d",
+       "role": "보조",
+       "title": "Foundation Models",
+       "kind": "영상",
+       "site": "youtube.com",
+       "url": "https://www.youtube.com/playlist?list=PL9t0xVFP90GD8hox0KipBkJcLX_C3ja67",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C21 있음)",
+       "note": "GPT-3·CLIP 같은 파운데이션 모델을 다루는 강의 영상 묶음"
+      },
+      {
+       "id": "E6dcba5a753",
+       "role": "실습",
+       "title": "Amazon Bedrock Workshop",
+       "kind": "실습 모음",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/amazon-bedrock-workshop",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C21·C57 있음)",
+       "note": "AWS 공식 Bedrock 워크숍. 파운데이션 모델을 AWS 에서 직접 불러 본다"
+      }
+     ],
+     "total": 9.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L02",
+     "short": "Agile 스프린트 운영",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRNc559ca88a4",
+       "role": "주",
+       "title": "Agile Ceremonies",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/agile-development/ceremonies.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Microsoft 엔지니어링 플레이북의 스프린트 계획·회고 같은 모임 안내"
+      },
+      {
+       "id": "LRN00b827bb01",
+       "role": "보조",
+       "title": "Backlog Management",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/agile-development/backlog-management.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "같은 플레이북의 백로그 다루기 (완료 조건, 설계 일도 백로그에)"
+      },
+      {
+       "id": "LRNad61b9aa3d",
+       "role": "실습",
+       "title": "Agile Planning and Management using GitHub",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/MicrosoftLearning/mslearn-devops/blob/main/Instructions/basic/01-agile-planning-management-using-github.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 으로 Agile 계획을 꾸리는 랩. W1 이 GitHub Projects 로 백로그를 만든다"
+      }
+     ],
+     "total": 18.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L03",
+     "short": "풀 리퀘스트와 코드 리뷰",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN8cc7d7b8a8",
+       "role": "주",
+       "title": "Quickstart for reviewing pull requests",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/pull-requests/get-started/reviewing-pull-requests-quickstart.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서의 PR 리뷰 첫걸음"
+      },
+      {
+       "id": "LRN0d5ae970d4",
+       "role": "보조",
+       "title": "Git workflows",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/get-started/git-basics/git-workflows.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서의 Git 작업 흐름. 요약이 짧아 깊이는 모른다"
+      },
+      {
+       "id": "LRN806e6d11df",
+       "role": "실습",
+       "title": "Basics of GIT for web-dev beginners👶",
+       "kind": "강의 레슨",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/Web-Dev-For-Beginners/tree/main/Git-Basics",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Microsoft 웹 개발 입문 강좌의 Git 기초 (여럿이 고치고 되돌리기)"
+      }
+     ],
+     "total": 27.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L04",
+     "short": "분산 시스템과 안정성 패턴",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN39e5a0528f",
+       "role": "주",
+       "title": "Distributed System Design Reference",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/design/design-patterns/distributed-system-design-reference.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C58 있음). 다른 에이전트가 연 기록: 본문은 바깥 링크 셋(Fowler 분산 시스템 패턴 등)뿐인 안내 쪽 (aws_switch/facts.md)",
+       "note": "분산 시스템을 가르치는 자료가 은행에 이것뿐이다. 링크한 글을 읽는다"
+      },
+      {
+       "id": "LRNcca0ab3579",
+       "role": "보조",
+       "title": "Availability",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/non-functional-requirements/availability.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "같은 플레이북의 가용성 (여분 두기, 장애 견디기)"
+      },
+      {
+       "id": "LRN25aa09da3f",
+       "role": "실습",
+       "title": "Retries",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/pydantic/pydantic-ai/blob/main/docs/retries.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Pydantic AI 공식 문서의 재시도 (rate limit·5xx 재시도). W4 의 LLM fallback 과 같은 자리"
+      }
+     ],
+     "total": 36.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L05",
+     "short": "설계 문서와 ADR",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN7638aa715a",
+       "role": "주",
+       "title": "1. Record architecture decisions",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/design/design-reviews/decision-log/doc/adr/0001-record-architecture-decisions.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "플레이북 저장소의 첫 ADR. ADR 을 왜, 어떻게 쓰는지 그 형식 그대로다"
+      }
+     ],
+     "total": 39.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L06",
+     "short": "RAG 파이프라인 구조",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E43b03d6465",
+       "role": "주",
+       "title": "research: Retrieval Augmented Generation (RAG) for LLMs",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/research/rag.kr.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "프롬프트 엔지니어링 가이드의 RAG 정리, 한국어판"
+      },
+      {
+       "id": "E93cf2ec8fc",
+       "role": "보조",
+       "title": "Retrieval Augmented Generation",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/anthropics/anthropic-cookbook/blob/main/capabilities/retrieval_augmented_generation/guide.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Anthropic 공식 노트북. RAG 를 만들고 재는 길을 차례로 보인다"
+      },
+      {
+       "id": "Ebf344bcf85",
+       "role": "실습",
+       "title": "Vector similarity search using Neon Postgres",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/openai/openai-cookbook/blob/main/examples/vector_databases/neon/neon-postgres-vector-search-pgvector.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "OpenAI 공식 노트북. Postgres pgvector 로 벡터 검색. W2 가 pgvector 를 쓴다"
+      }
+     ],
+     "total": 48.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L07",
+     "short": "Genkit 다루기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 51.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L08",
+     "short": "프롬프트 설계",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E2f46129dad",
+       "role": "주",
+       "title": "프롬프트의 기초",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/introduction/basics.kr.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "프롬프트 엔지니어링 가이드의 '프롬프트의 기초', 한국어판"
+      },
+      {
+       "id": "E11c7076bac",
+       "role": "보조",
+       "title": "프롬프트 설계에 관한 일반적인 팁",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/introduction/tips.kr.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "같은 가이드의 '프롬프트 설계에 관한 일반적인 팁', 한국어판"
+      },
+      {
+       "id": "E564ad08f67",
+       "role": "실습",
+       "title": "Evaluate and Optimize Prompt Template Design for Better Results",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaltask_approach/prompt_engineering_gen_ai_evaluation_service_sdk.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C43 있음)",
+       "note": "Google 공식 노트북. 프롬프트 템플릿 여럿을 평가로 견준다. W2 의 템플릿 비교와 같은 일 (④ 의 보조 자료)"
+      }
+     ],
+     "total": 60.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L09",
+     "short": "TypeScript 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN1448f9587c",
+       "role": "주",
+       "title": "TypeScript for JavaScript Programmers",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/TypeScript-Website/blob/v2/packages/documentation/copy/en/get-started/TS for JS Programmers.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C52 있음)",
+       "note": "TypeScript 공식 문서의 JavaScript 개발자용 입문"
+      },
+      {
+       "id": "LRN4a047de448",
+       "role": "보조",
+       "title": "Interfaces",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/TypeScript-Website/blob/v2/packages/documentation/copy/en/handbook-v1/Interfaces.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C52 있음)",
+       "note": "공식 핸드북의 인터페이스 (Flow 입출력 타입을 정할 때 쓴다)"
+      },
+      {
+       "id": "E442461a967",
+       "role": "실습",
+       "title": "TypeScript Workshop",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/aws-cdk-intro-workshop/blob/master/workshop/content/english/20-typescript/_index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C52 일부)",
+       "note": "AWS CDK 입문 워크숍의 TypeScript 판. TypeScript 로 인프라 코드를 따라 짠다"
+      }
+     ],
+     "total": 69.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L10",
+     "short": "Python 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조",
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E91dbe394bd",
+       "role": "주",
+       "title": "Python Crash Course",
+       "kind": "온라인 강의",
+       "site": "ehmatthes.github.io",
+       "url": "https://ehmatthes.github.io/pcc",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "입문서 Python Crash Course 의 공식 사이트 (연습 문제 포함)"
+      }
+     ],
+     "total": 72.0,
+     "known_total": 0.0,
+     "needed_week": 4,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L11",
+     "short": "에이전트 도구 호출",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN624bcb0ae0",
+       "role": "주",
+       "title": "Production Architecture",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C44 있음)",
+       "note": "crewAI 공식 문서의 운영 구조 (④ 의 핵심 자료)"
+      },
+      {
+       "id": "E05346e0180",
+       "role": "보조",
+       "title": "Explore AI Agent Frameworks",
+       "kind": "강의 레슨",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/ai-agents-for-beginners/tree/main/02-explore-agentic-frameworks",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C44 있음)",
+       "note": "Microsoft 'AI Agents for Beginners' 2강, 에이전트 틀 견주기"
+      },
+      {
+       "id": "Ed0b429b25d",
+       "role": "실습",
+       "title": "Async Multi-Agent Orchestration with Claude",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/anthropics/anthropic-cookbook/blob/main/patterns/agents/async_multi_agent_orchestration.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Anthropic 공식 노트북. 오케스트레이터와 서브 에이전트를 비동기로 돌린다. W3 의 1 + 3 구조와 같다"
+      }
+     ],
+     "total": 81.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L12",
+     "short": "Go 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "실습"
+     ],
+     "empty": [
+      "보조"
+     ],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E2a4fa23ce7",
+       "role": "주",
+       "title": "Learn Go with Tests",
+       "kind": "글",
+       "site": "quii.gitbook.io",
+       "url": "https://quii.gitbook.io/learn-go-with-tests",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C54 있음)",
+       "note": "시험을 먼저 쓰며 Go 를 배우는 무료 책 (④ 의 보조 자료)"
+      },
+      {
+       "id": "Ebdf12db0d5",
+       "role": "실습",
+       "title": "Go Workshop",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/aws-cdk-intro-workshop/blob/master/workshop/content/english/60-go/_index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C54 일부)",
+       "note": "AWS CDK 입문 워크숍의 Go 판. Go 로 인프라 코드를 따라 짠다"
+      }
+     ],
+     "total": 87.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L13",
+     "short": "FastAPI 로 API 만들기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN76f36f206b",
+       "role": "주",
+       "title": "FastAPI + LlamaIndex RAG Example (Ollama)",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/run-llama/llama_index/blob/main/docs/examples/usecases/fastapi_rag_ollama.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "LlamaIndex 공식 예제. FastAPI 로 RAG API 를 세운다"
+      }
+     ],
+     "total": 90.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L14",
+     "short": "에이전트 상태와 메모리",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E60da5fb8b7",
+       "role": "주",
+       "title": "Understanding LangGraph",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/pinecone-io/examples/blob/main/learn/generation/langchain/langgraph/00-langgraph-intro.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Pinecone 노트북. LangGraph 를 '에이전트 상태 머신'으로 설명한다"
+      },
+      {
+       "id": "E279d4b4730",
+       "role": "실습",
+       "title": "Chatbot with message summarization & external DB memory",
+       "kind": "강의 레슨",
+       "site": "github.com",
+       "url": "https://github.com/langchain-ai/langchain-academy/blob/main/module-2/chatbot-external-memory.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "LangChain Academy 2강. 대화 요약과 바깥 DB 메모리를 붙인다"
+      }
+     ],
+     "total": 96.0,
+     "known_total": 0.0,
+     "needed_week": 5,
+     "done_week": 5,
+     "late_weeks": 0
+    },
+    {
+     "id": "L15",
+     "short": "React 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRNe05d50dea8",
+       "role": "주",
+       "title": "Quick Start",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/reactjs/react.dev/blob/main/src/content/learn/index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C51 있음)",
+       "note": "React 공식 문서의 빠른 시작 (매일 쓰는 개념의 80%)"
+      },
+      {
+       "id": "LRN6a568bbf93",
+       "role": "보조",
+       "title": "Recommended Technologies",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/UI-UX/recommended-technologies.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C51·C52 있음). 다른 에이전트가 연 기록: 처음 배우는 강좌는 아니다 (aws_switch/facts.md)",
+       "note": "플레이북의 추천 기술 (React 폴더 구조, TypeScript, Vite). ④ 의 보조 자료"
+      },
+      {
+       "id": "LRNbc216074d7",
+       "role": "실습",
+       "title": "Tutorial: Tic-Tac-Toe",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/reactjs/react.dev/blob/main/src/content/learn/tutorial-tic-tac-toe.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "React 공식 자습서. 작은 게임을 처음부터 만든다"
+      }
+     ],
+     "total": 105.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 5,
+     "late_weeks": 0
+    },
+    {
+     "id": "L16",
+     "short": "AWS CDK 배포",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E4d86ca1e47",
+       "role": "주",
+       "title": "Python Workshop",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/aws-cdk-intro-workshop/blob/master/workshop/content/english/30-python/_index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약). 같은 워크숍 저장소의 첫 쪽(E0b79574221)은 '더는 고치지 않는다'고 적혀 있다",
+       "note": "AWS 공식 CDK 입문 워크숍의 Python 판. W6 의 CDK 가 Python 이다"
+      },
+      {
+       "id": "E03732779fa",
+       "role": "보조",
+       "title": "Module: Build a Multi-Region Serverless Application for Resilience and High Availability",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/aws-serverless-workshops/tree/master/MultiRegion",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C57 있음·C58 일부)",
+       "note": "AWS 공식 워크숍의 여러 리전 서버리스 앱. ④ 의 보조 자료. ECS 가 아니라 서버리스라 일부"
+      },
+      {
+       "id": "LRN82fe7b8e0b",
+       "role": "실습",
+       "title": "Deploying to Amazon Elastic Container Service",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/actions/how-tos/deploy/deploy-to-third-party-platforms/amazon-elastic-container-service.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서. Actions 로 ECS 에 배포한다. W6 의 흐름 그대로다"
+      }
+     ],
+     "total": 114.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 5,
+     "late_weeks": 0
+    },
+    {
+     "id": "L17",
+     "short": "Docker 컨테이너",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E2cc436c86d",
+       "role": "주",
+       "title": "Python language-specific guide",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/docker/docs/blob/main/content/guides/python.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Docker 공식 문서의 Python 앱 컨테이너 안내"
+      },
+      {
+       "id": "E0735cc6ffc",
+       "role": "실습",
+       "title": "Introduction to Docker",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/GoogleCloudPlatform/mlops-on-gcp/blob/master/immersion/docker_and_kubernetes/labs/1_intro_docker.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Google 실습 노트북. 컨테이너를 만들고 돌려 본다"
+      }
+     ],
+     "total": 120.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L18",
+     "short": "GitHub Actions CI",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN2023f087ee",
+       "role": "주",
+       "title": "Building and testing Python",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/actions/tutorials/build-and-test-code/python.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서. Python 을 빌드·시험하는 CI 흐름"
+      }
+     ],
+     "total": 123.0,
+     "known_total": 0.0,
+     "needed_week": 7,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L19",
+     "short": "프롬프트 인젝션과 가드레일",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Ee6b0ae77b6",
+       "role": "주",
+       "title": "Prompt Injection in LLMs",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/pages/prompts/adversarial-prompting/prompt-injection.en.mdx",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "프롬프트 엔지니어링 가이드의 프롬프트 인젝션 (한국어판은 은행에 없다)"
+      },
+      {
+       "id": "M9616fafa18",
+       "role": "보조",
+       "title": "Prompt Injection Prevention",
+       "kind": "글",
+       "site": "hiddenlayer.com",
+       "url": "https://hiddenlayer.com/innovation-hub/prompt-injection-attacks-on-llms/",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "보안 회사 HiddenLayer 의 인젝션 공격과 막기 안내"
+      },
+      {
+       "id": "LRN42b9d4cbc3",
+       "role": "실습",
+       "title": "Amazon Bedrock Guardrails for Agentic AI Applications",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/amazon-bedrock-samples/blob/main/responsible_ai/bedrock-guardrails/bedrock_guardrails_apply_guardrail_strands_agents.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "AWS 공식 노트북. Bedrock Guardrails 로 에이전트를 지킨다"
+      }
+     ],
+     "total": 132.0,
+     "known_total": 0.0,
+     "needed_week": 8,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L20",
+     "short": "부하 시험과 P95",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRNf8bc38de2b",
+       "role": "주",
+       "title": "Load Testing",
+       "kind": "글",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/automated-testing/performance-testing/load-testing.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "플레이북의 부하 시험 (평소·최대 부하에서 무엇을 재나)"
+      },
+      {
+       "id": "E78255b68f9",
+       "role": "보조",
+       "title": "Analyzing Locust Load Testing Results",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/GoogleCloudPlatform/mlops-on-gcp/blob/master/model_serving/caip-load-testing/03-analyze-results.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Google 노트북. Locust 부하 시험 결과를 읽는다 (Google 서비스 위)"
+      },
+      {
+       "id": "LRNe5136647a2",
+       "role": "실습",
+       "title": "Quickstart: Create a load test with Locust",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/app-testing/load-testing/quickstart-create-run-load-test-with-locust.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "비슷함",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Locust 로 부하 시험 만들기. Azure 서비스 위라 Locust 스크립트 쓰는 법만 옮겨 쓴다"
+      }
+     ],
+     "total": 141.0,
+     "known_total": 0.0,
+     "needed_week": 8,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L21",
+     "short": "캐시와 모델 고르기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M47d34d3fc2",
+       "role": "주",
+       "title": "How does Semantic Caching work?",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/how-does-semantic-caching-work",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "LLM 게이트웨이의 라우팅·캐시를 묻고 답하는 글. 면접 답 글이라 짧다"
+      }
+     ],
+     "total": 144.0,
+     "known_total": 0.0,
+     "needed_week": 8,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L22",
+     "short": "LLM 평가 (Eval)",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E365c3dd16b",
+       "role": "주",
+       "title": "Evaluate your ADK agent using Vertex AI Gen AI Evaluation service",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C43 있음)",
+       "note": "Google 공식 노트북. ADK 에이전트를 평가 서비스로 잰다 (④ 의 핵심 자료)"
+      },
+      {
+       "id": "E1ec0e81596",
+       "role": "보조",
+       "title": "AI Agents in Production: Observability & Evaluation",
+       "kind": "강의 레슨",
+       "site": "github.com",
+       "url": "https://github.com/microsoft/ai-agents-for-beginners/tree/main/10-ai-agents-production",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약, m3 판정 C43 있음)",
+       "note": "Microsoft 'AI Agents for Beginners' 10강, 운영 중인 에이전트의 관찰과 평가"
+      },
+      {
+       "id": "Eaf2f5edafd",
+       "role": "실습",
+       "title": "RAGAS Evaluation for LangChain Agents",
+       "kind": "실습 노트북",
+       "site": "github.com",
+       "url": "https://github.com/pinecone-io/examples/blob/main/learn/generation/better-rag/03-ragas-evaluation.ipynb",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Pinecone 노트북. RAGAS 로 RAG 에이전트를 잰다. W5 의 RAGAS 식 정확도와 같다"
+      }
+     ],
+     "total": 153.0,
+     "known_total": 0.0,
+     "needed_week": 9,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L23",
+     "short": "Prometheus·Grafana",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Ef2773c23d3",
+       "role": "주",
+       "title": "Learn Prometheus",
+       "kind": "글",
+       "site": "prometheus.io",
+       "url": "https://prometheus.io/docs/tutorials/getting_started",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Prometheus 공식 첫걸음"
+      },
+      {
+       "id": "E3a566fb811",
+       "role": "실습",
+       "title": "Monitor a Golang application with Prometheus and Grafana",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/docker/docs/blob/main/content/guides/go-prometheus-monitoring.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "Docker 공식 문서. Go 앱을 Prometheus·Grafana 로 지켜본다"
+      }
+     ],
+     "total": 159.0,
+     "known_total": 0.0,
+     "needed_week": 9,
+     "done_week": 8,
+     "late_weeks": 0
+    },
+    {
+     "id": "L24",
+     "short": "SSE 흘려 보내기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M5cb17eb19f",
+       "role": "주",
+       "title": "How does Token Streaming work?",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/how-does-token-streaming-work",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "일부",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "토큰 흘려 보내기(SSE)를 묻고 답하는 글. 면접 답 글이라 짧다"
+      }
+     ],
+     "total": 162.0,
+     "known_total": 0.0,
+     "needed_week": null,
+     "done_week": 8,
+     "late_weeks": null
+    },
+    {
+     "id": "L25",
+     "short": "장애 주입과 원인 찾기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "E6b889721a6",
+       "role": "주",
+       "title": "Chaos Engineering with EKS",
+       "kind": "워크숍 랩",
+       "site": "github.com",
+       "url": "https://github.com/aws-samples/eks-workshop-v2/blob/main/website/docs/observability/high-availability/index.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "비슷함",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "AWS 공식 EKS 워크숍의 장애 실험. 프로젝트는 ECS 라 장애를 넣는 생각만 옮겨 쓴다"
+      }
+     ],
+     "total": 165.0,
+     "known_total": 0.0,
+     "needed_week": null,
+     "done_week": 8,
+     "late_weeks": null
+    },
+    {
+     "id": "L26",
+     "short": "패키지 만들어 올리기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "LRN212977e706",
+       "role": "주",
+       "title": "Publishing Node.js packages",
+       "kind": "공식 문서 튜토리얼",
+       "site": "github.com",
+       "url": "https://github.com/github/docs/blob/main/content/actions/tutorials/publish-packages/publish-nodejs-packages.md",
+       "hours": null,
+       "hours_how": "모름 (열어 보지 않음)",
+       "fit": "맞음",
+       "checked": "안 엶 (은행 제목·요약)",
+       "note": "GitHub 공식 문서. Actions 로 Node.js 패키지를 npm 에 올린다"
+      }
+     ],
+     "total": 168.0,
+     "known_total": 0.0,
+     "needed_week": null,
+     "done_week": 8,
+     "late_weeks": null
+    }
+   ],
+   "inside_project_ids": [],
+   "order": [
+    "L01",
+    "L02",
+    "L03",
+    "L04",
+    "L05",
+    "L06",
+    "L07",
+    "L08",
+    "L09",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "L20",
+    "L21",
+    "L22",
+    "L23",
+    "L24",
+    "L25",
+    "L26"
+   ],
+   "total_hours": 168.0,
+   "spare_hours": 84.0,
+   "spare_parts": {
+    "no_slot": 48.0,
+    "empty_slots": 36.0,
+    "empty_slot_count": {
+     "보조": 3,
+     "실습": 9
+    }
+   },
+   "design_hours": 204.0,
+   "share": "67%",
+   "known_hours": 0.0,
+   "known_materials": 0,
+   "counts": {
+    "items": 26,
+    "big": 16,
+    "small": 10,
+    "inside_project": 0,
+    "slots": 56,
+    "materials": 55,
+    "unique_materials": 55,
+    "by_role": {
+     "주": 25,
+     "보조": 13,
+     "실습": 17
+    },
+    "new_materials": 0,
+    "fit": {
+     "맞음": 43,
+     "일부": 10,
+     "비슷함": 2
+    },
+    "no_main": [
+     "L07"
+    ],
+    "no_extra": {
+     "보조": [
+      "L07",
+      "L10",
+      "L12"
+     ],
+     "실습": [
+      "L05",
+      "L07",
+      "L10",
+      "L13",
+      "L18",
+      "L21",
+      "L24",
+      "L25",
+      "L26"
+     ]
+    }
+   },
+   "late": [],
+   "last_study_week": 8,
+   "layout": {
+    "1": [
+     {
+      "id": "L01",
+      "short": "파운데이션 모델 기초",
+      "hours": 9.0
+     },
+     {
+      "id": "L02",
+      "short": "Agile 스프린트 운영",
+      "hours": 9.0
+     },
+     {
+      "id": "L03",
+      "short": "풀 리퀘스트와 코드 리뷰",
+      "hours": 9.0
+     },
+     {
+      "id": "L04",
+      "short": "분산 시스템과 안정성 패턴",
+      "hours": 1.0
+     }
+    ],
+    "2": [
+     {
+      "id": "L04",
+      "short": "분산 시스템과 안정성 패턴",
+      "hours": 8.0
+     },
+     {
+      "id": "L05",
+      "short": "설계 문서와 ADR",
+      "hours": 3.0
+     },
+     {
+      "id": "L06",
+      "short": "RAG 파이프라인 구조",
+      "hours": 9.0
+     },
+     {
+      "id": "L07",
+      "short": "Genkit 다루기",
+      "hours": 3.0
+     },
+     {
+      "id": "L08",
+      "short": "프롬프트 설계",
+      "hours": 5.0
+     }
+    ],
+    "3": [
+     {
+      "id": "L08",
+      "short": "프롬프트 설계",
+      "hours": 4.0
+     },
+     {
+      "id": "L09",
+      "short": "TypeScript 기초",
+      "hours": 9.0
+     },
+     {
+      "id": "L10",
+      "short": "Python 기초",
+      "hours": 3.0
+     },
+     {
+      "id": "L11",
+      "short": "에이전트 도구 호출",
+      "hours": 3.6
+     }
+    ],
+    "4": [
+     {
+      "id": "L11",
+      "short": "에이전트 도구 호출",
+      "hours": 5.4
+     },
+     {
+      "id": "L12",
+      "short": "Go 기초",
+      "hours": 6.0
+     },
+     {
+      "id": "L13",
+      "short": "FastAPI 로 API 만들기",
+      "hours": 3.0
+     },
+     {
+      "id": "L14",
+      "short": "에이전트 상태와 메모리",
+      "hours": 5.2
+     }
+    ],
+    "5": [
+     {
+      "id": "L14",
+      "short": "에이전트 상태와 메모리",
+      "hours": 0.8
+     },
+     {
+      "id": "L15",
+      "short": "React 기초",
+      "hours": 9.0
+     },
+     {
+      "id": "L16",
+      "short": "AWS CDK 배포",
+      "hours": 9.0
+     },
+     {
+      "id": "L17",
+      "short": "Docker 컨테이너",
+      "hours": 0.8
+     }
+    ],
+    "6": [
+     {
+      "id": "L17",
+      "short": "Docker 컨테이너",
+      "hours": 5.2
+     },
+     {
+      "id": "L18",
+      "short": "GitHub Actions CI",
+      "hours": 3.0
+     },
+     {
+      "id": "L19",
+      "short": "프롬프트 인젝션과 가드레일",
+      "hours": 9.0
+     },
+     {
+      "id": "L20",
+      "short": "부하 시험과 P95",
+      "hours": 2.4
+     }
+    ],
+    "7": [
+     {
+      "id": "L20",
+      "short": "부하 시험과 P95",
+      "hours": 6.6
+     },
+     {
+      "id": "L21",
+      "short": "캐시와 모델 고르기",
+      "hours": 3.0
+     },
+     {
+      "id": "L22",
+      "short": "LLM 평가 (Eval)",
+      "hours": 9.0
+     },
+     {
+      "id": "L23",
+      "short": "Prometheus·Grafana",
+      "hours": 1.0
+     }
+    ],
+    "8": [
+     {
+      "id": "L23",
+      "short": "Prometheus·Grafana",
+      "hours": 5.0
+     },
+     {
+      "id": "L24",
+      "short": "SSE 흘려 보내기",
+      "hours": 3.0
+     },
+     {
+      "id": "L25",
+      "short": "장애 주입과 원인 찾기",
+      "hours": 3.0
+     },
+     {
+      "id": "L26",
+      "short": "패키지 만들어 올리기",
+      "hours": 3.0
+     }
+    ]
+   },
+   "reasons": [
+    "하루 2시간 안에 더해, 거리마다 따라 해 볼 실습 자료 자리를 하나씩 두었어요.",
+    "자료 하나에 3시간씩 잡아 168시간이에요.",
+    "남는 84시간은 작은 거리에 보조 자리를 두지 않은 48시간과, 못 찾은 보조 3개·실습 9개의 36시간이에요.",
+    "맞는 자료가 없는 거리 1개도 주 자리 3시간을 잡아 두었어요."
+   ]
+  }
+ },
+ "budgets_source": [
+  "../기용/docs/aws_fde.교육자료.json",
+  "demo/design/study_plan.py"
+ ]
+}

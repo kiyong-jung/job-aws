@@ -1,0 +1,102 @@
+/* 디자인 토큰. 색·서체·간격·반경·움직임 값은 여기에만 둔다. 다른 css 는 var() 로만 쓴다.
+   글자 크기는 13 / 14 / 15 / 20 / 24 다섯 (입력창만 16, 아이폰이 확대하지 않게). 쓰임마다 하나:
+   13 표 칸·이름표·단계 목록·상태 줄·범례, 14 패널 원문, 15 대화 글, 20 큰 숫자·쪽 제목, 24 빈 화면 인사. 13 아래 글자는 없다 (DESIGN_RULES U4-1).
+   하나만 예외: 32 는 ② 프로젝트 찾기 쪽의 DB 크기 숫자에만 쓴다 (DB 가 크다는 것이 그 쪽의 요점이라, 다른 글은 키우지 않는다).
+   토스 TDS 의 이름(17 일반 본문, 15 작은 본문, 13 안 읽어도 됨)은 모바일 표라, 데스크톱에서 한 칸씩 내려 쓴 것은 우리 판단이다.
+   굵기는 400 / 500 / 600 셋, 반경은 6 / 12 / 20 셋(그림 칸만 2), 간격은 4·8·12·16·24·32·48 만 쓴다
+   (표 칸 위아래 6px 와 그림 점·칸 사이 2·3px 만 예외: 32px 줄과 촘촘한 점을 맞추려고). */
+@font-face {
+  font-family: "Pretendard Variable";
+  src: url("../fonts/PretendardVariable.woff2") format("woff2-variations");
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+/* 로고·큰 숫자 글꼴 HALUNA: 라틴 글자·숫자만 있다 (한글 없음). 받은 파일(저작권 "All rights reserved")이라 git 에 올리지 않는다.
+   파일이 없으면 이 글꼴은 그냥 빠지고 --font-title 의 다음 글꼴(Pretendard)로 나온다.
+   이 글꼴로 그리는 글자는 숫자·라틴 글자·쉼표·마침표뿐 (unicode-range). 띄어쓰기·물음표·괄호는 Pretendard 로 (한 줄 안에서 부호만 다른 글꼴이 되지 않게).
+   굵기는 파일에 있는 400 하나뿐이다: 쓰는 곳은 font-weight 400 + font-synthesis none (브라우저가 굵기를 지어 칠하지 않게) */
+@font-face {
+  font-family: "HALUNA";
+  src: url("../fonts/HALUNA-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+002C, U+002E, U+0030-0039, U+0041-005A, U+0061-007A;
+}
+
+:root {
+  /* 바탕 넷, 먹 하나, 포인트 하나. 노랑은 형광펜과 짝에만 */
+  --paper: #faf9f5;          /* 대화 바탕 */
+  --surface: #ffffff;        /* 패널, 입력창 */
+  --sunk: #f0eee6;           /* 내 말풍선, 눌린 칸, 꺼진 단추 */
+  --hover: #f4f2ec;
+  --ink: #2b2a27;            /* 글 (paper 위 14:1) */
+  --muted: #6b6963;          /* 짝 보기에서 다른 줄을 흐리게 할 때만 (글 줄이 아니라 강조 상태). 평소 글은 모두 --ink */
+  --faint: #74716a;          /* 아이콘, 자리 글 (흰 바탕 4.9:1, paper 4.6:1) */
+  --line: rgba(43, 42, 39, 0.12);
+  --line-strong: rgba(43, 42, 39, 0.2);
+  --accent: #c6613f;         /* 보내기 단추, 초점 고리 */
+  --accent-ink: #ffffff;
+  --accent-press: #b4532f;
+  --accent-ring: rgba(198, 97, 63, 0.18);   /* 입력창 초점의 옅은 고리 */
+  --focus: var(--accent);
+  --danger: #a2401f;         /* 입력창 아래 오류 글 (paper 위 6:1) */
+
+  --hl: #fde68a;             /* 형광펜 (글 대비 12:1) */
+  --hl-strong: #fbd24e;      /* 미리보기, 고른 짝 (글 대비 9.9:1) */
+  --hl-soft: #fef6d8;        /* 다른 짝을 볼 때 흐린 형광펜, 켜진 표 줄과 고른 표 줄 */
+  --badge: rgba(43, 42, 39, 0.1);           /* 쉬는 번호 배지 바탕 (글은 먹) */
+  /* ② 그림의 먹 짙기. 그림이라 범례 글과 함께 읽는다. DB 점과 후보 칸은 따로 쓴다 (한 짙기가 두 뜻이 되지 않게) */
+  --pick: #2f6fde;           /* ② 낱말로 모은 후보 1,000개의 점 (사용자 11/19: 고르기를 색으로). 흰 바탕 4.6:1 */
+  --dot-paper: rgba(43, 42, 39, 0.60);      /* DB 점(논문·저장소 둘 다, 덩어리와 이름표로 가른다), 공부 칠 */
+  /* 후보 칸의 점수 짙기 넷. 0점 칸(--tone-0)도 채운 칸이고, 아직 안 견준 칸은 --line 테두리만. 1위(5점)만 먹 */
+  --tone-0: rgba(43, 42, 39, 0.08);
+  --tone-1: rgba(43, 42, 39, 0.18);
+  --tone-2: rgba(43, 42, 39, 0.42);
+  --tone-3: var(--ink);
+
+  --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  /* 쓰는 곳은 셋뿐 (사용자 결정 11/18): 머리줄 로고 "JOB AWS", 답 맨 위 큰 숫자(statHead 의 숫자), ② DB 크기 숫자(111,753).
+     쪽 제목·빈 화면 인사·깔때기의 다른 숫자·표·범례에는 쓰지 않는다 (HALUNA 숫자는 폭이 고르지 않아 줄맞춤 칸에 못 쓴다) */
+  --font-title: "HALUNA", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  --fs-label: 13px;          /* 표 칸, 표 머리, 이름표, 단계 목록 */
+  --fs-doc: 14px;            /* 패널의 공고 원문과 샘플 요약 */
+  --fs-body: 15px;           /* 대화 글 */
+  --fs-title: 20px;          /* 큰 숫자, 쪽 제목 (굵기 600) */
+  --fs-hello: 24px;          /* 빈 화면 인사 */
+  --fs-display: 32px;        /* ② 쪽 DB 크기 숫자 하나에만 (굵기 600) */
+  --fs-input: 16px;          /* 입력창만 (16 아래면 아이폰이 확대한다) */
+  --lh-body: 1.6;
+  --lh-doc: 1.7;
+  --lh-table: 1.4;
+  --row-h: 32px;             /* 표 한 줄 (13px 글, 위아래 6px) */
+
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
+  --r-chip: 6px;             /* 칩·배지·단추 (바깥 틀은 12, 둥글기는 이 둘) */
+  --r-card: 12px;
+  --r-composer: 20px;
+  --r-mark: 2px;             /* 그림 칸(덮기 띠, 후보 칸)만 */
+
+  --header-h: 52px;
+  --control: 44px;           /* 단추 높이 */
+  --chat-max: 680px;
+  --panel-w: 50vw;
+  --chat-min: 360px;
+  --panel-min: 420px;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-hover: 150ms;
+  --t-out: 120ms;
+  --t-press: 90ms;
+  --t-panel: 240ms;
+  --t-view: 280ms;           /* 패널 쪽 넘기기 (밀어 넣기·되돌리기) */
+  --t-paint: 300ms;           /* 형광펜 칠하기 (몇 줄씩 함께, 다 칠하기까지 1.5초 안) */
+  --t-in: 520ms;
+  --stagger: 60ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --t-hover: 0ms; --t-out: 0ms; --t-press: 0ms; --t-panel: 0ms; --t-view: 0ms; --t-paint: 0ms; --t-in: 0ms; --stagger: 0ms; }
+}

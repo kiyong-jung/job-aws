@@ -1,0 +1,245 @@
+{
+ "about": "AWS 공고(K472e3ef0ae) 역량 48개를 다섯 물음으로 손으로 가른 것. 분류 규칙 코드를 만들기 전에, 유형과 어긋나더라도 근거 문장을 읽고 정했다 (2026-11-15)",
+ "labels": {
+  "K472e3ef0ae-C01": {
+   "route": "경험",
+   "how": "과정",
+   "note": ""
+  },
+  "K472e3ef0ae-C02": {
+   "route": "경험",
+   "how": "산출물",
+   "note": "유형은 지식이지만 특정 고객의 시스템을 파악하는 일이다. 낯선 시스템을 분석한 결과물이 있어야 믿는다"
+  },
+  "K472e3ef0ae-C03": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C04": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C05": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C06": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C07": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C08": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C09": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C10": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C11": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C12": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C13": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C14": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C15": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C16": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C17": {
+   "route": "학습",
+   "how": "설명",
+   "note": ""
+  },
+  "K472e3ef0ae-C18": {
+   "route": "학습",
+   "how": "설명",
+   "note": ""
+  },
+  "K472e3ef0ae-C19": {
+   "route": "학습",
+   "how": "설명",
+   "note": ""
+  },
+  "K472e3ef0ae-C20": {
+   "route": "경험",
+   "how": "과정",
+   "note": ""
+  },
+  "K472e3ef0ae-C21": {
+   "route": "경험",
+   "how": "과정",
+   "note": ""
+  },
+  "K472e3ef0ae-C22": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C23": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C24": {
+   "route": "경험",
+   "how": "과정",
+   "note": "실제 고객 환경은 못 채운다. 실제 사용자가 있는 배포로 일부만"
+  },
+  "K472e3ef0ae-C25": {
+   "route": "경험",
+   "how": "과정",
+   "note": ""
+  },
+  "K472e3ef0ae-C26": {
+   "route": "경험",
+   "how": "과정",
+   "note": ""
+  },
+  "K472e3ef0ae-C27": {
+   "route": "제외",
+   "how": "",
+   "note": "언어 능력. 이 커리큘럼의 교육 자료나 프로젝트로 채우는 것이 아니다"
+  },
+  "K472e3ef0ae-C28": {
+   "route": "제외",
+   "how": "",
+   "note": "언어 능력"
+  },
+  "K472e3ef0ae-C29": {
+   "route": "제외",
+   "how": "",
+   "note": "'1+ years' 근무 기간 조건"
+  },
+  "K472e3ef0ae-C30": {
+   "route": "제외",
+   "how": "",
+   "note": "'1+ years' 근무 기간 조건"
+  },
+  "K472e3ef0ae-C31": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C32": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C33": {
+   "route": "학습",
+   "how": "연습",
+   "note": "공고가 'Familiarity'를 묻는다. 도구에 가깝다"
+  },
+  "K472e3ef0ae-C34": {
+   "route": "학습",
+   "how": "연습",
+   "note": ""
+  },
+  "K472e3ef0ae-C35": {
+   "route": "학습",
+   "how": "설명",
+   "note": ""
+  },
+  "K472e3ef0ae-C36": {
+   "route": "학습",
+   "how": "연습",
+   "note": "유형은 수행이지만 공고가 'Familiarity'를 묻는다. 연습으로 익힌다"
+  },
+  "K472e3ef0ae-C37": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C38": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C39": {
+   "route": "학습",
+   "how": "연습",
+   "note": ""
+  },
+  "K472e3ef0ae-C40": {
+   "route": "학습",
+   "how": "연습",
+   "note": ""
+  },
+  "K472e3ef0ae-C41": {
+   "route": "학습",
+   "how": "연습",
+   "note": ""
+  },
+  "K472e3ef0ae-C42": {
+   "route": "학습",
+   "how": "연습",
+   "note": ""
+  },
+  "K472e3ef0ae-C43": {
+   "route": "경험",
+   "how": "과정",
+   "note": "만드는 것이 아니라 지키는 방식이다"
+  },
+  "K472e3ef0ae-C44": {
+   "route": "경험",
+   "how": "과정",
+   "note": ""
+  },
+  "K472e3ef0ae-C45": {
+   "route": "학습",
+   "how": "연습",
+   "note": ""
+  },
+  "K472e3ef0ae-C46": {
+   "route": "경험",
+   "how": "산출물",
+   "note": ""
+  },
+  "K472e3ef0ae-C47": {
+   "route": "경험",
+   "how": "과정",
+   "note": ""
+  },
+  "K472e3ef0ae-C48": {
+   "route": "경험",
+   "how": "과정",
+   "note": ""
+  }
+ }
+}

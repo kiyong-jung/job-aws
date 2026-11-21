@@ -1,0 +1,3520 @@
+{
+ "case": "aws_fde",
+ "posting": {
+  "company": "AWS (아마존)",
+  "title": "Forward Deployed Engineer II",
+  "url": "",
+  "source": "지원/aws 공고.xlsx",
+  "run": {
+   "method": "general",
+   "model": "claude-sonnet",
+   "run": 1
+  }
+ },
+ "counts": {
+  "papers": 90239,
+  "repos": 21514,
+  "pool": 1000,
+  "shortlist": 100,
+  "judged": 100,
+  "k": 1
+ },
+ "queries": {
+  "per_competency": {
+   "C10": {
+    "paper": "collaborative software development embedded team engineering practices paper",
+    "repo": "embedded team collaboration engineering workflow open source tools GitHub"
+   },
+   "C11": {
+    "paper": "requirements elicitation stakeholder communication AI system business value paper",
+    "repo": "stakeholder requirements gathering AI system open source framework GitHub"
+   },
+   "C12": {
+    "paper": "enterprise technical architecture assessment AI system integration constraints paper",
+    "repo": "technical architecture discovery documentation open source tool GitHub"
+   },
+   "C13": {
+    "paper": "translating business requirements into AI system technical design specification paper",
+    "repo": "AI system technical design from requirements open source template GitHub"
+   },
+   "C14": {
+    "paper": "retrieval augmented generation pipeline design production LLM application paper",
+    "repo": "RAG retrieval pipeline production open source implementation GitHub"
+   },
+   "C15": {
+    "paper": "LLM-based workflow automation orchestration production system paper",
+    "repo": "workflow automation LLM orchestration open source Python GitHub"
+   },
+   "C16": {
+    "paper": "API orchestration layer design for AI microservices production system paper",
+    "repo": "API orchestration layer AI services open source implementation GitHub"
+   },
+   "C17": {
+    "paper": "data integration pipeline for AI applications heterogeneous sources paper",
+    "repo": "data integration pipeline AI application open source Python GitHub"
+   },
+   "C18": {
+    "paper": "agentic workflow design multi-step LLM agent production system paper",
+    "repo": "agentic workflow LLM multi-step agent open source implementation GitHub"
+   },
+   "C19": {
+    "paper": "software design decision making under uncertainty risk mitigation production system paper",
+    "repo": "software architecture decision risk mitigation open source framework GitHub"
+   },
+   "C20": {
+    "paper": "integrating foundation models with enterprise data sources existing applications paper",
+    "repo": "foundation model enterprise data integration open source connector GitHub"
+   },
+   "C21": {
+    "paper": "survey of large language model foundation models capabilities and applications paper",
+    "repo": "foundation model LLM survey tutorial open source notebook GitHub"
+   },
+   "C22": {
+    "paper": "latency optimization techniques for LLM inference serving production paper",
+    "repo": "LLM inference latency optimization open source serving framework GitHub"
+   },
+   "C23": {
+    "paper": "reliability engineering for AI production systems fault tolerance paper",
+    "repo": "AI system reliability fault tolerance open source monitoring GitHub"
+   },
+   "C24": {
+    "paper": "cost optimization strategies for LLM inference production deployment paper",
+    "repo": "LLM inference cost optimization open source benchmarking GitHub"
+   },
+   "C25": {
+    "paper": "full software development lifecycle practices for AI ML systems paper",
+    "repo": "AI ML software development lifecycle CI CD open source template GitHub"
+   },
+   "C26": {
+    "paper": "troubleshooting and debugging distributed AI model serving production incidents paper",
+    "repo": "distributed AI system debugging incident response open source tool GitHub"
+   },
+   "C27": {
+    "paper": "root cause analysis methods for production AI system failures paper",
+    "repo": "root cause analysis AI production system open source tool GitHub"
+   },
+   "C28": {
+    "paper": "monitoring observability for LLM AI production systems metrics paper",
+    "repo": "LLM AI system monitoring observability open source implementation GitHub"
+   },
+   "C29": {
+    "paper": "evaluation framework for LLM AI application production quality assessment paper",
+    "repo": "LLM evaluation framework open source production assessment GitHub"
+   },
+   "C30": {
+    "paper": "guardrails safety mechanisms for LLM production AI systems paper",
+    "repo": "LLM guardrails safety content filtering open source implementation GitHub"
+   },
+   "C31": {
+    "paper": "CI CD pipeline design for machine learning AI model deployment paper",
+    "repo": "CI CD pipeline machine learning AI deployment open source GitHub"
+   },
+   "C32": {
+    "paper": "continuous improvement operational excellence AI production systems paper",
+    "repo": "operational improvement automation AI systems open source tooling GitHub"
+   },
+   "C33": {
+    "paper": "knowledge transfer mentoring practices in software engineering teams paper",
+    "repo": "software engineering onboarding mentoring documentation open source template GitHub"
+   },
+   "C34": {
+    "paper": "automated code review quality feedback machine learning software engineering paper",
+    "repo": "automated code review quality feedback open source tool GitHub"
+   },
+   "C35": {
+    "paper": "effective code review practices feedback software engineering teams paper",
+    "repo": "code review feedback tool open source software engineering GitHub"
+   },
+   "C36": {
+    "paper": "AI adoption opportunity identification enterprise customer engagement paper",
+    "repo": "AI adoption assessment enterprise open source framework GitHub"
+   },
+   "C37": {
+    "paper": "reusable software patterns accelerators for AI application deployment paper",
+    "repo": "reusable AI application patterns accelerators open source library GitHub"
+   },
+   "C38": {
+    "paper": "continuous process improvement software team engineering practices paper",
+    "repo": "software process improvement automation open source tooling GitHub"
+   },
+   "C39": {
+    "paper": "agile development practices for AI ML software teams scaling paper",
+    "repo": "agile AI ML software development open source project management GitHub"
+   },
+   "C40": {
+    "paper": "communicating AI technical concepts to non-technical stakeholders paper",
+    "repo": "AI explainability visualization non-technical audience open source tool GitHub"
+   },
+   "C41": {
+    "paper": "spec-driven agentic AI development workflow automation paper",
+    "repo": "spec-driven agentic AI development open source framework GitHub"
+   },
+   "C42": {
+    "paper": "building autonomous AI agents with LLMs tool use planning paper",
+    "repo": "autonomous LLM AI agent development open source framework GitHub"
+   },
+   "C43": {
+    "paper": "LLM evaluation framework benchmarking production AI application quality paper",
+    "repo": "LLM eval framework open source benchmarking production GitHub"
+   },
+   "C44": {
+    "paper": "agent tooling function calling tool use LLM production system paper",
+    "repo": "LLM agent tooling function calling open source implementation GitHub"
+   },
+   "C45": {
+    "paper": "retrieval augmented generation RAG pipeline production deployment optimization paper",
+    "repo": "RAG pipeline production deployment open source Python GitHub"
+   },
+   "C46": {
+    "paper": "prompt engineering techniques for large language model task performance paper",
+    "repo": "prompt engineering open source library techniques LLM GitHub"
+   },
+   "C47": {
+    "paper": "software engineering best practices code review testing CI CD lifecycle paper",
+    "repo": "software development lifecycle best practices open source template GitHub"
+   },
+   "C48": {
+    "paper": "deploying and operating AI systems in customer production environments paper",
+    "repo": "AI system production deployment operations open source runbook GitHub"
+   },
+   "C49": {
+    "paper": "deploying machine learning models in production environments best practices paper",
+    "repo": "ML model production deployment open source MLOps framework GitHub"
+   },
+   "C50": {
+    "paper": "engineering leadership ownership urgency startup software team practices paper",
+    "repo": "engineering leadership ownership startup open source project management GitHub"
+   },
+   "C51": {
+    "paper": "React frontend architecture for AI application user interface paper",
+    "repo": "React AI application frontend open source implementation GitHub"
+   },
+   "C52": {
+    "paper": "TypeScript type-safe backend API development for AI services paper",
+    "repo": "TypeScript AI service backend open source implementation GitHub"
+   },
+   "C53": {
+    "paper": "Python production AI application development best practices paper",
+    "repo": "Python production AI application open source framework GitHub"
+   },
+   "C54": {
+    "paper": "Go high-performance backend service for AI application production paper",
+    "repo": "Go backend service AI application open source implementation GitHub"
+   },
+   "C55": {
+    "paper": "technical project leadership external stakeholder communication AI systems paper",
+    "repo": "technical project management external stakeholder AI open source template GitHub"
+   },
+   "C56": {
+    "paper": "building and scaling end-to-end production AI systems team collaboration paper",
+    "repo": "end-to-end production AI system scaling open source architecture GitHub"
+   },
+   "C57": {
+    "paper": "AWS cloud services for deploying scalable AI ML production applications paper",
+    "repo": "AWS AI ML production deployment open source CDK example GitHub"
+   },
+   "C58": {
+    "paper": "distributed systems concepts consistency availability fault tolerance paper",
+    "repo": "distributed systems concepts open source implementation tutorial GitHub"
+   }
+  },
+  "paper_names": [
+   "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+   "ReAct: Synergizing Reasoning and Acting in Language Models",
+   "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+   "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+   "Constitutional AI: Harmlessness from AI Feedback",
+   "Toolformer: Language Models Can Teach Themselves to Use Tools",
+   "HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in HuggingFace",
+   "Towards the Systematic Reporting of the Energy and Carbon Footprints of Machine Learning"
+  ],
+  "repo_names": [
+   "langchain-ai/langchain",
+   "BerriAI/litellm",
+   "explodinggradients/ragas",
+   "guardrails-ai/guardrails",
+   "mlflow/mlflow"
+  ]
+ },
+ "sample": {
+  "key": "gh:genkit-ai/genkit",
+  "kind": "repo",
+  "title": "genkit-ai/genkit",
+  "year": "2026",
+  "venue": "GitHub ★6593",
+  "url": "https://github.com/genkit-ai/genkit",
+  "stars": 6593,
+  "text": "genkit-ai genkit Open-source framework for building agentic apps in JavaScript, Go, Dart, and Python, built and used in production by Google agents ai embedders genkit llm multimodal rag vector-database",
+  "search_score": 1.098
+ },
+ "must_all": false,
+ "must_missing": [
+  "Agile 또는 빠르게 스케일링하는 환경에서의 개발 경험",
+  "기술 개념을 기술·비기술 청중 모두에게 전달",
+  "Eval 프레임워크 활용"
+ ],
+ "runner_up": [
+  {
+   "key": "gh:comet-ml/opik",
+   "kind": "repo",
+   "title": "comet-ml/opik",
+   "year": "2026",
+   "venue": "GitHub ★23441",
+   "url": "https://github.com/comet-ml/opik",
+   "stars": 23441,
+   "text": "comet-ml opik Debug, evaluate, and monitor your LLM applications, RAG systems, and agentic workflows with comprehensive tracing, automated evaluations, and production-ready dashboards. evaluation hacktoberfest hacktoberfest2025 langchain llama-index llm llm-evaluation llm-observability llmops open-source openai playground prompt-engineering",
+   "search_score": 4.693
+  },
+  {
+   "key": "gh:i-am-bee/beeai-framework",
+   "kind": "repo",
+   "title": "i-am-bee/beeai-framework",
+   "year": "2026",
+   "venue": "GitHub ★3461",
+   "url": "https://github.com/i-am-bee/beeai-framework",
+   "stars": 3461,
+   "text": "i-am-bee beeai-framework Build production-ready AI agents in both Python and Typescript. agents ai ai-agent beeai framework llm multiagent python typescript",
+   "search_score": 1.316
+  }
+ ],
+ "ranking": [
+  {
+   "title": "genkit-ai/genkit",
+   "key": "gh:genkit-ai/genkit",
+   "kind": "repo",
+   "url": "https://github.com/genkit-ai/genkit",
+   "year": "2026",
+   "venue": "GitHub ★6593",
+   "stars": 6593,
+   "필수": 5.5,
+   "우대": 5.5,
+   "나머지": 12.0
+  },
+  {
+   "title": "comet-ml/opik",
+   "key": "gh:comet-ml/opik",
+   "kind": "repo",
+   "url": "https://github.com/comet-ml/opik",
+   "year": "2026",
+   "venue": "GitHub ★23441",
+   "stars": 23441,
+   "필수": 5,
+   "우대": 2,
+   "나머지": 15.5
+  },
+  {
+   "title": "i-am-bee/beeai-framework",
+   "key": "gh:i-am-bee/beeai-framework",
+   "kind": "repo",
+   "url": "https://github.com/i-am-bee/beeai-framework",
+   "year": "2026",
+   "venue": "GitHub ★3461",
+   "stars": 3461,
+   "필수": 4.5,
+   "우대": 2.5,
+   "나머지": 9.5
+  },
+  {
+   "title": "amitshekhariitbhu/ai-system-design",
+   "key": "gh:amitshekhariitbhu/ai-system-design",
+   "kind": "repo",
+   "url": "https://github.com/amitshekhariitbhu/ai-system-design",
+   "year": "2026",
+   "venue": "GitHub ★883",
+   "stars": 883,
+   "필수": 4.5,
+   "우대": 0.5,
+   "나머지": 10.5
+  },
+  {
+   "title": "FareedKhan-dev/production-grade-agentic-system",
+   "key": "gh:fareedkhan-dev/production-grade-agentic-system",
+   "kind": "repo",
+   "url": "https://github.com/FareedKhan-dev/production-grade-agentic-system",
+   "year": "2026",
+   "venue": "GitHub ★1023",
+   "stars": 1023,
+   "필수": 4,
+   "우대": 3.5,
+   "나머지": 19.5
+  },
+  {
+   "title": "AutoML-Agent: A Multi-Agent LLM Framework for Full-Pipeline AutoML",
+   "key": "url:https://proceedings.mlr.press/v267/trirat25a.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlr.press/v267/trirat25a.html",
+   "year": "2025",
+   "venue": "ICML",
+   "필수": 4.0,
+   "우대": 0,
+   "나머지": 6.0
+  },
+  {
+   "title": "deepset-ai/haystack",
+   "key": "gh:deepset-ai/haystack",
+   "kind": "repo",
+   "url": "https://github.com/deepset-ai/haystack",
+   "year": "2026",
+   "venue": "GitHub ★27016",
+   "stars": 27016,
+   "필수": 3.5,
+   "우대": 2.5,
+   "나머지": 11.5
+  },
+  {
+   "title": "paperclipai/paperclip",
+   "key": "gh:paperclipai/paperclip",
+   "kind": "repo",
+   "url": "https://github.com/paperclipai/paperclip",
+   "year": "2026",
+   "venue": "GitHub ★114248",
+   "stars": 114248,
+   "필수": 3.5,
+   "우대": 1,
+   "나머지": 7.5
+  },
+  {
+   "title": "KbWen/agentic-os",
+   "key": "gh:kbwen/agentic-os",
+   "kind": "repo",
+   "url": "https://github.com/KbWen/agentic-os",
+   "year": "2026",
+   "venue": "GitHub ★236",
+   "stars": 236,
+   "필수": 3.5,
+   "우대": 0.5,
+   "나머지": 2.5
+  },
+  {
+   "title": "strands-agents/harness-sdk",
+   "key": "gh:strands-agents/harness-sdk",
+   "kind": "repo",
+   "url": "https://github.com/strands-agents/harness-sdk",
+   "year": "2026",
+   "venue": "GitHub ★9223",
+   "stars": 9223,
+   "필수": 3.0,
+   "우대": 4,
+   "나머지": 10.0
+  },
+  {
+   "title": "ai-sdlc-framework/ai-sdlc",
+   "key": "gh:ai-sdlc-framework/ai-sdlc",
+   "kind": "repo",
+   "url": "https://github.com/ai-sdlc-framework/ai-sdlc",
+   "year": "2026",
+   "venue": "GitHub ★444",
+   "stars": 444,
+   "필수": 3,
+   "우대": 4.0,
+   "나머지": 9.0
+  },
+  {
+   "title": "martian56/redcell",
+   "key": "gh:martian56/redcell",
+   "kind": "repo",
+   "url": "https://github.com/martian56/redcell",
+   "year": "2026",
+   "venue": "GitHub ★411",
+   "stars": 411,
+   "필수": 3,
+   "우대": 3.5,
+   "나머지": 6.5
+  },
+  {
+   "title": "bytechefhq/bytechef",
+   "key": "gh:bytechefhq/bytechef",
+   "kind": "repo",
+   "url": "https://github.com/bytechefhq/bytechef",
+   "year": "2026",
+   "venue": "GitHub ★1063",
+   "stars": 1063,
+   "필수": 3,
+   "우대": 3,
+   "나머지": 10.5
+  },
+  {
+   "title": "dataelement/bisheng",
+   "key": "gh:dataelement/bisheng",
+   "kind": "repo",
+   "url": "https://github.com/dataelement/bisheng",
+   "year": "2026",
+   "venue": "GitHub ★12329",
+   "stars": 12329,
+   "필수": 3,
+   "우대": 2,
+   "나머지": 10.5
+  },
+  {
+   "title": "langchain-ai/langgraph",
+   "key": "gh:langchain-ai/langgraph",
+   "kind": "repo",
+   "url": "https://github.com/langchain-ai/langgraph",
+   "year": "2026",
+   "venue": "GitHub ★45023",
+   "stars": 45023,
+   "필수": 3.0,
+   "우대": 2,
+   "나머지": 9.0
+  },
+  {
+   "title": "kdlbs/kandev",
+   "key": "gh:kdlbs/kandev",
+   "kind": "repo",
+   "url": "https://github.com/kdlbs/kandev",
+   "year": "2026",
+   "venue": "GitHub ★1132",
+   "stars": 1132,
+   "필수": 3,
+   "우대": 1,
+   "나머지": 4.5
+  },
+  {
+   "title": "modu-ai/moai-adk",
+   "key": "gh:modu-ai/moai-adk",
+   "kind": "repo",
+   "url": "https://github.com/modu-ai/moai-adk",
+   "year": "2026",
+   "venue": "GitHub ★1254",
+   "stars": 1254,
+   "필수": 3,
+   "우대": 1,
+   "나머지": 3.5
+  },
+  {
+   "title": "google/adk-java",
+   "key": "gh:google/adk-java",
+   "kind": "repo",
+   "url": "https://github.com/google/adk-java",
+   "year": "2026",
+   "venue": "GitHub ★1770",
+   "stars": 1770,
+   "필수": 3.0,
+   "우대": 0.5,
+   "나머지": 8.0
+  },
+  {
+   "title": "zhu1090093659/spec_driven_develop",
+   "key": "gh:zhu1090093659/spec_driven_develop",
+   "kind": "repo",
+   "url": "https://github.com/zhu1090093659/spec_driven_develop",
+   "year": "2026",
+   "venue": "GitHub ★992",
+   "stars": 992,
+   "필수": 3.0,
+   "우대": 0.5,
+   "나머지": 3.0
+  },
+  {
+   "title": "clawplays/ospec",
+   "key": "gh:clawplays/ospec",
+   "kind": "repo",
+   "url": "https://github.com/clawplays/ospec",
+   "year": "2026",
+   "venue": "GitHub ★391",
+   "stars": 391,
+   "필수": 3.0,
+   "우대": 0,
+   "나머지": 4.5
+  },
+  {
+   "title": "mubaidr/gem-team",
+   "key": "gh:mubaidr/gem-team",
+   "kind": "repo",
+   "url": "https://github.com/mubaidr/gem-team",
+   "year": "2026",
+   "venue": "GitHub ★228",
+   "stars": 228,
+   "필수": 3,
+   "우대": 0,
+   "나머지": 4.5
+  },
+  {
+   "title": "levnikolaevich/claude-code-skills",
+   "key": "gh:levnikolaevich/claude-code-skills",
+   "kind": "repo",
+   "url": "https://github.com/levnikolaevich/claude-code-skills",
+   "year": "2026",
+   "venue": "GitHub ★596",
+   "stars": 596,
+   "필수": 3,
+   "우대": 0,
+   "나머지": 3.5
+  },
+  {
+   "title": "mlflow/mlflow",
+   "key": "gh:mlflow/mlflow",
+   "kind": "repo",
+   "url": "https://github.com/mlflow/mlflow",
+   "year": "2026",
+   "venue": "GitHub ★28832",
+   "stars": 28832,
+   "필수": 2.5,
+   "우대": 4.5,
+   "나머지": 12.5
+  },
+  {
+   "title": "ombharatiya/ai-system-design-guide",
+   "key": "gh:ombharatiya/ai-system-design-guide",
+   "kind": "repo",
+   "url": "https://github.com/ombharatiya/ai-system-design-guide",
+   "year": "2026",
+   "venue": "GitHub ★4363",
+   "stars": 4363,
+   "필수": 2.5,
+   "우대": 0.5,
+   "나머지": 4.0
+  },
+  {
+   "title": "superplanehq/superplane",
+   "key": "gh:superplanehq/superplane",
+   "kind": "repo",
+   "url": "https://github.com/superplanehq/superplane",
+   "year": "2026",
+   "venue": "GitHub ★10059",
+   "stars": 10059,
+   "필수": 2,
+   "우대": 2.5,
+   "나머지": 9.5
+  },
+  {
+   "title": "future-agi/future-agi",
+   "key": "gh:future-agi/future-agi",
+   "kind": "repo",
+   "url": "https://github.com/future-agi/future-agi",
+   "year": "2026",
+   "venue": "GitHub ★2280",
+   "stars": 2280,
+   "필수": 2,
+   "우대": 2,
+   "나머지": 11.5
+  },
+  {
+   "title": "superglue-ai/superglue",
+   "key": "gh:superglue-ai/superglue",
+   "kind": "repo",
+   "url": "https://github.com/superglue-ai/superglue",
+   "year": "2026",
+   "venue": "GitHub ★2069",
+   "stars": 2069,
+   "필수": 2.0,
+   "우대": 1.0,
+   "나머지": 3.5
+  },
+  {
+   "title": "danielvm-git/bigpowers",
+   "key": "gh:danielvm-git/bigpowers",
+   "kind": "repo",
+   "url": "https://github.com/danielvm-git/bigpowers",
+   "year": "2026",
+   "venue": "GitHub ★292",
+   "stars": 292,
+   "필수": 2.0,
+   "우대": 1.0,
+   "나머지": 2.5
+  },
+  {
+   "title": "iflytek/astron-agent",
+   "key": "gh:iflytek/astron-agent",
+   "kind": "repo",
+   "url": "https://github.com/iflytek/astron-agent",
+   "year": "2026",
+   "venue": "GitHub ★8935",
+   "stars": 8935,
+   "필수": 2,
+   "우대": 0.5,
+   "나머지": 5.5
+  },
+  {
+   "title": "Yigtwxx/awesome-rag-production",
+   "key": "gh:yigtwxx/awesome-rag-production",
+   "kind": "repo",
+   "url": "https://github.com/Yigtwxx/awesome-rag-production",
+   "year": "2026",
+   "venue": "GitHub ★296",
+   "stars": 296,
+   "필수": 2,
+   "우대": 0.5,
+   "나머지": 5.0
+  },
+  {
+   "title": "spec-kitty/spec-kitty",
+   "key": "gh:spec-kitty/spec-kitty",
+   "kind": "repo",
+   "url": "https://github.com/spec-kitty/spec-kitty",
+   "year": "2026",
+   "venue": "GitHub ★1723",
+   "stars": 1723,
+   "필수": 2.0,
+   "우대": 0.5,
+   "나머지": 3.0
+  },
+  {
+   "title": "mABC: Multi-Agent Blockchain-inspired Collaboration for Root Cause Analysis in Micro-Services Architecture",
+   "key": "doi:10.18653/v1/2024.findings-emnlp.232",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2024.findings-emnlp.232/",
+   "year": "2024",
+   "venue": "EMNLP-Findings",
+   "필수": 2.0,
+   "우대": 0,
+   "나머지": 7.0
+  },
+  {
+   "title": "Murakkab: Resource-Efficient Agentic Workflow Orchestration in Cloud Platforms",
+   "key": "url:https://www.usenix.org/conference/osdi26/presentation/chaudhry",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/osdi26/presentation/chaudhry",
+   "year": "2026",
+   "venue": "OSDI",
+   "필수": 2.0,
+   "우대": 0,
+   "나머지": 6.5
+  },
+  {
+   "title": "ProgRouter: Online Progress-Guided Orchestration for Multi-Agent LLM Workflows under Quality-Cost Tradeoffs",
+   "key": "doi:10.18653/2026.findings-emnlp.156",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2026.findings-emnlp.156/",
+   "year": "2026",
+   "venue": "EMNLP-Findings",
+   "필수": 2.0,
+   "우대": 0,
+   "나머지": 3.5
+  },
+  {
+   "title": "mlrun/mlrun",
+   "key": "gh:mlrun/mlrun",
+   "kind": "repo",
+   "url": "https://github.com/mlrun/mlrun",
+   "year": "2026",
+   "venue": "GitHub ★1705",
+   "stars": 1705,
+   "필수": 1.5,
+   "우대": 5,
+   "나머지": 15.5
+  },
+  {
+   "title": "SciPhi-AI/R2R",
+   "key": "gh:sciphi-ai/r2r",
+   "kind": "repo",
+   "url": "https://github.com/SciPhi-AI/R2R",
+   "year": "2025",
+   "venue": "GitHub ★8097",
+   "stars": 8097,
+   "필수": 1.5,
+   "우대": 2,
+   "나머지": 6.5
+  },
+  {
+   "title": "JudgmentLabs/judgeval",
+   "key": "gh:judgmentlabs/judgeval",
+   "kind": "repo",
+   "url": "https://github.com/JudgmentLabs/judgeval",
+   "year": "2026",
+   "venue": "GitHub ★1074",
+   "stars": 1074,
+   "필수": 1.5,
+   "우대": 1,
+   "나머지": 4.5
+  },
+  {
+   "title": "langfuse/langfuse",
+   "key": "gh:langfuse/langfuse",
+   "kind": "repo",
+   "url": "https://github.com/langfuse/langfuse",
+   "year": "2026",
+   "venue": "GitHub ★37486",
+   "stars": 37486,
+   "필수": 1.5,
+   "우대": 0.5,
+   "나머지": 6.5
+  },
+  {
+   "title": "PaulDuvall/ai-development-patterns",
+   "key": "gh:paulduvall/ai-development-patterns",
+   "kind": "repo",
+   "url": "https://github.com/PaulDuvall/ai-development-patterns",
+   "year": "2026",
+   "venue": "GitHub ★678",
+   "stars": 678,
+   "필수": 1.5,
+   "우대": 0.5,
+   "나머지": 3.0
+  },
+  {
+   "title": "cirolini/genai-code-review",
+   "key": "gh:cirolini/genai-code-review",
+   "kind": "repo",
+   "url": "https://github.com/cirolini/genai-code-review",
+   "year": "2026",
+   "venue": "GitHub ★372",
+   "stars": 372,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 5.5
+  },
+  {
+   "title": "Agenta-AI/agenta",
+   "key": "gh:agenta-ai/agenta",
+   "kind": "repo",
+   "url": "https://github.com/Agenta-AI/agenta",
+   "year": "2026",
+   "venue": "GitHub ★4912",
+   "stars": 4912,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 4.0
+  },
+  {
+   "title": "RoseRAG: Robust Retrieval-augmented Generation with Small-scale LLMs via Margin-aware Preference Optimization",
+   "key": "doi:10.18653/v1/2025.findings-acl.676",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2025.findings-acl.676/",
+   "year": "2025",
+   "venue": "ACL-Findings",
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 4.0
+  },
+  {
+   "title": "codervisor/leanspec",
+   "key": "gh:codervisor/leanspec",
+   "kind": "repo",
+   "url": "https://github.com/codervisor/leanspec",
+   "year": "2026",
+   "venue": "GitHub ★304",
+   "stars": 304,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "prod-forge/backend",
+   "key": "gh:prod-forge/backend",
+   "kind": "repo",
+   "url": "https://github.com/prod-forge/backend",
+   "year": "2026",
+   "venue": "GitHub ★498",
+   "stars": 498,
+   "필수": 1.0,
+   "우대": 4,
+   "나머지": 11.0
+  },
+  {
+   "title": "ossature/ossature",
+   "key": "gh:ossature/ossature",
+   "kind": "repo",
+   "url": "https://github.com/ossature/ossature",
+   "year": "2026",
+   "venue": "GitHub ★202",
+   "stars": 202,
+   "필수": 1,
+   "우대": 1.5,
+   "나머지": 5.5
+  },
+  {
+   "title": "OPEN-SWE-TRACES: Advancing Dual-Mode Multilingual Distillation for Software Engineering Agents",
+   "key": "doi:10.18653/2026.findings-emnlp.131",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2026.findings-emnlp.131/",
+   "year": "2026",
+   "venue": "EMNLP-Findings",
+   "필수": 1.0,
+   "우대": 1.0,
+   "나머지": 1.5
+  },
+  {
+   "title": "openqodex/openqodex",
+   "key": "gh:openqodex/openqodex",
+   "kind": "repo",
+   "url": "https://github.com/openqodex/openqodex",
+   "year": "2026",
+   "venue": "GitHub ★1198",
+   "stars": 1198,
+   "필수": 1.0,
+   "우대": 0.5,
+   "나머지": 5.0
+  },
+  {
+   "title": "golemcloud/golem",
+   "key": "gh:golemcloud/golem",
+   "kind": "repo",
+   "url": "https://github.com/golemcloud/golem",
+   "year": "2026",
+   "venue": "GitHub ★1521",
+   "stars": 1521,
+   "필수": 1.0,
+   "우대": 0.5,
+   "나머지": 4.0
+  },
+  {
+   "title": "amosjyng/langchain-visualizer",
+   "key": "gh:amosjyng/langchain-visualizer",
+   "kind": "repo",
+   "url": "https://github.com/amosjyng/langchain-visualizer",
+   "year": "2024",
+   "venue": "GitHub ★735",
+   "stars": 735,
+   "필수": 1.0,
+   "우대": 0.5,
+   "나머지": 1.0
+  },
+  {
+   "title": "PROMPTS: PeRformance Optimization via Multi-Agent Planning for LLM Training and Serving",
+   "key": "url:https://proceedings.mlsys.org/paper_files/paper/2026/hash/48253da5351effdfea994fd7bbff7005-Abstract-Conference.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlsys.org/paper_files/paper/2026/hash/48253da5351effdfea994fd7bbff7005-Abstract-Conference.html",
+   "year": "2026",
+   "venue": "MLSys",
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 5.0
+  },
+  {
+   "title": "study8677/awesome-architecture",
+   "key": "gh:study8677/awesome-architecture",
+   "kind": "repo",
+   "url": "https://github.com/study8677/awesome-architecture",
+   "year": "2026",
+   "venue": "GitHub ★2533",
+   "stars": 2533,
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 3.5
+  },
+  {
+   "title": "open-hand/choerodon",
+   "key": "gh:open-hand/choerodon",
+   "kind": "repo",
+   "url": "https://github.com/open-hand/choerodon",
+   "year": "2024",
+   "venue": "GitHub ★2395",
+   "stars": 2395,
+   "필수": 1,
+   "우대": 0,
+   "나머지": 2.5
+  },
+  {
+   "title": "mdpsec/bug-bounty-hunting-prompts",
+   "key": "gh:mdpsec/bug-bounty-hunting-prompts",
+   "kind": "repo",
+   "url": "https://github.com/mdpsec/bug-bounty-hunting-prompts",
+   "year": "2026",
+   "venue": "GitHub ★950",
+   "stars": 950,
+   "필수": 1,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "CodeAgent: Autonomous Communicative Agents for Code Review",
+   "key": "doi:10.18653/v1/2024.emnlp-main.632",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2024.emnlp-main.632/",
+   "year": "2024",
+   "venue": "EMNLP",
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "makeplane/plane",
+   "key": "gh:makeplane/plane",
+   "kind": "repo",
+   "url": "https://github.com/makeplane/plane",
+   "year": "2026",
+   "venue": "GitHub ★62514",
+   "stars": 62514,
+   "필수": 0.5,
+   "우대": 3,
+   "나머지": 1
+  },
+  {
+   "title": "Nayjest/Gito",
+   "key": "gh:nayjest/gito",
+   "kind": "repo",
+   "url": "https://github.com/Nayjest/Gito",
+   "year": "2026",
+   "venue": "GitHub ★473",
+   "stars": 473,
+   "필수": 0.5,
+   "우대": 1,
+   "나머지": 6.0
+  },
+  {
+   "title": "apache/camel",
+   "key": "gh:apache/camel",
+   "kind": "repo",
+   "url": "https://github.com/apache/camel",
+   "year": "2026",
+   "venue": "GitHub ★6412",
+   "stars": 6412,
+   "필수": 0.5,
+   "우대": 1.0,
+   "나머지": 5.0
+  },
+  {
+   "title": "agentcontrol/agent-control",
+   "key": "gh:agentcontrol/agent-control",
+   "kind": "repo",
+   "url": "https://github.com/agentcontrol/agent-control",
+   "year": "2026",
+   "venue": "GitHub ★337",
+   "stars": 337,
+   "필수": 0.5,
+   "우대": 1.0,
+   "나머지": 4.5
+  },
+  {
+   "title": "valqore/valqore",
+   "key": "gh:valqore/valqore",
+   "kind": "repo",
+   "url": "https://github.com/valqore/valqore",
+   "year": "2026",
+   "venue": "GitHub ★1822",
+   "stars": 1822,
+   "필수": 0.5,
+   "우대": 0.5,
+   "나머지": 5.0
+  },
+  {
+   "title": "AgenticCache: Cache-Driven Asynchronous Planning for Embodied AI Agents",
+   "key": "url:https://proceedings.mlsys.org/paper_files/paper/2026/hash/c66a9db149261435664284a20b6f1d42-Abstract-Conference.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlsys.org/paper_files/paper/2026/hash/c66a9db149261435664284a20b6f1d42-Abstract-Conference.html",
+   "year": "2026",
+   "venue": "MLSys",
+   "필수": 0.5,
+   "우대": 0,
+   "나머지": 3.0
+  },
+  {
+   "title": "Walle: An End-to-End, General-Purpose, and Large-Scale Production System for Device-Cloud Collaborative Machine Learning",
+   "key": "url:https://www.usenix.org/conference/osdi22/presentation/lv",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/osdi22/presentation/lv",
+   "year": "2022",
+   "venue": "OSDI",
+   "필수": 0,
+   "우대": 3,
+   "나머지": 6.5
+  },
+  {
+   "title": "tensorflow/tfx",
+   "key": "gh:tensorflow/tfx",
+   "kind": "repo",
+   "url": "https://github.com/tensorflow/tfx",
+   "year": "2026",
+   "venue": "GitHub ★2191",
+   "stars": 2191,
+   "필수": 0,
+   "우대": 2.5,
+   "나머지": 4.0
+  },
+  {
+   "title": "The-AI-Summer/Deep-Learning-In-Production",
+   "key": "gh:the-ai-summer/deep-learning-in-production",
+   "kind": "repo",
+   "url": "https://github.com/The-AI-Summer/Deep-Learning-In-Production",
+   "year": "2023",
+   "venue": "GitHub ★1270",
+   "stars": 1270,
+   "필수": 0,
+   "우대": 2.5,
+   "나머지": 4.0
+  },
+  {
+   "title": "Evolution of Aegis: Fault Diagnosis for AI Model Training Service in Production",
+   "key": "url:https://www.usenix.org/conference/nsdi25/presentation/dong",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/nsdi25/presentation/dong",
+   "year": "2025",
+   "venue": "NSDI",
+   "필수": 0,
+   "우대": 2,
+   "나머지": 7.0
+  },
+  {
+   "title": "Insights Gained from Delivering Two Generations of AI Supercomputers and Storage Solutions in IBM Cloud",
+   "key": "url:https://www.usenix.org/conference/fast25/presentation/seelam",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/fast25/presentation/seelam",
+   "year": "2025",
+   "venue": "FAST",
+   "필수": 0,
+   "우대": 2.0,
+   "나머지": 5.5
+  },
+  {
+   "title": "basetenlabs/truss",
+   "key": "gh:basetenlabs/truss",
+   "kind": "repo",
+   "url": "https://github.com/basetenlabs/truss",
+   "year": "2026",
+   "venue": "GitHub ★1236",
+   "stars": 1236,
+   "필수": 0,
+   "우대": 2,
+   "나머지": 5.5
+  },
+  {
+   "title": "gorse-io/gorse",
+   "key": "gh:gorse-io/gorse",
+   "kind": "repo",
+   "url": "https://github.com/gorse-io/gorse",
+   "year": "2026",
+   "venue": "GitHub ★9925",
+   "stars": 9925,
+   "필수": 0,
+   "우대": 2.0,
+   "나머지": 4.5
+  },
+  {
+   "title": "agola-io/agola",
+   "key": "gh:agola-io/agola",
+   "kind": "repo",
+   "url": "https://github.com/agola-io/agola",
+   "year": "2025",
+   "venue": "GitHub ★1631",
+   "stars": 1631,
+   "필수": 0,
+   "우대": 2.0,
+   "나머지": 3.0
+  },
+  {
+   "title": "ClickHouse/ClickStack",
+   "key": "gh:clickhouse/clickstack",
+   "kind": "repo",
+   "url": "https://github.com/ClickHouse/ClickStack",
+   "year": "2026",
+   "venue": "GitHub ★10043",
+   "stars": 10043,
+   "필수": 0,
+   "우대": 2,
+   "나머지": 3.0
+  },
+  {
+   "title": "karam-ajaj/atlas",
+   "key": "gh:karam-ajaj/atlas",
+   "kind": "repo",
+   "url": "https://github.com/karam-ajaj/atlas",
+   "year": "2026",
+   "venue": "GitHub ★1346",
+   "stars": 1346,
+   "필수": 0,
+   "우대": 2,
+   "나머지": 1.0
+  },
+  {
+   "title": "guardrails-ai/guardrails",
+   "key": "gh:guardrails-ai/guardrails",
+   "kind": "repo",
+   "url": "https://github.com/guardrails-ai/guardrails",
+   "year": "2026",
+   "venue": "GitHub ★7611",
+   "stars": 7611,
+   "필수": 0,
+   "우대": 1.5,
+   "나머지": 5.0
+  },
+  {
+   "title": "SuperBench: Improving Cloud AI Infrastructure Reliability with Proactive Validation",
+   "key": "url:https://www.usenix.org/conference/atc24/presentation/xiong",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/atc24/presentation/xiong",
+   "year": "2024",
+   "venue": "ATC",
+   "필수": 0,
+   "우대": 1.5,
+   "나머지": 4.0
+  },
+  {
+   "title": "tsuru/tsuru",
+   "key": "gh:tsuru/tsuru",
+   "kind": "repo",
+   "url": "https://github.com/tsuru/tsuru",
+   "year": "2026",
+   "venue": "GitHub ★5330",
+   "stars": 5330,
+   "필수": 0,
+   "우대": 1.5,
+   "나머지": 2.5
+  },
+  {
+   "title": "myelintek/primehub",
+   "key": "gh:myelintek/primehub",
+   "kind": "repo",
+   "url": "https://github.com/myelintek/primehub",
+   "year": "2026",
+   "venue": "GitHub ★412",
+   "stars": 412,
+   "필수": 0,
+   "우대": 1.5,
+   "나머지": 2.0
+  },
+  {
+   "title": "EROICA: Online Performance Troubleshooting for Large-scale Model Training",
+   "key": "url:https://www.usenix.org/conference/nsdi26/presentation/guan-yu",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/nsdi26/presentation/guan-yu",
+   "year": "2026",
+   "venue": "NSDI",
+   "필수": 0,
+   "우대": 1,
+   "나머지": 6.5
+  },
+  {
+   "title": "Sparing Strategies to Minimize Reliability Impact On Large Training Jobs",
+   "key": "url:https://proceedings.mlsys.org/paper_files/paper/2026/hash/437bc4ccafd3fc6d4289bd10940be42b-Abstract-Conference.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlsys.org/paper_files/paper/2026/hash/437bc4ccafd3fc6d4289bd10940be42b-Abstract-Conference.html",
+   "year": "2026",
+   "venue": "MLSys",
+   "필수": 0,
+   "우대": 1.0,
+   "나머지": 4.5
+  },
+  {
+   "title": "superagent-ai/superagent",
+   "key": "gh:superagent-ai/superagent",
+   "kind": "repo",
+   "url": "https://github.com/superagent-ai/superagent",
+   "year": "2026",
+   "venue": "GitHub ★6875",
+   "stars": 6875,
+   "필수": 0,
+   "우대": 1.0,
+   "나머지": 3.0
+  },
+  {
+   "title": "cloudcomponents/cdk-constructs",
+   "key": "gh:cloudcomponents/cdk-constructs",
+   "kind": "repo",
+   "url": "https://github.com/cloudcomponents/cdk-constructs",
+   "year": "2024",
+   "venue": "GitHub ★636",
+   "stars": 636,
+   "필수": 0,
+   "우대": 1,
+   "나머지": 2.0
+  },
+  {
+   "title": "High Fidelity Models for Large Scale Stateful Services (Operational Systems)",
+   "key": "url:https://www.usenix.org/conference/osdi26/presentation/jaber",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/osdi26/presentation/jaber",
+   "year": "2026",
+   "venue": "OSDI",
+   "필수": 0,
+   "우대": 1,
+   "나머지": 2.0
+  },
+  {
+   "title": "tang-vu/ContribAI",
+   "key": "gh:tang-vu/contribai",
+   "kind": "repo",
+   "url": "https://github.com/tang-vu/ContribAI",
+   "year": "2026",
+   "venue": "GitHub ★244",
+   "stars": 244,
+   "필수": 0,
+   "우대": 1,
+   "나머지": 1.5
+  },
+  {
+   "title": "datmo/datmo",
+   "key": "gh:datmo/datmo",
+   "kind": "repo",
+   "url": "https://github.com/datmo/datmo",
+   "year": "2025",
+   "venue": "GitHub ★343",
+   "stars": 343,
+   "필수": 0,
+   "우대": 1.0,
+   "나머지": 1.0
+  },
+  {
+   "title": "bob-cd/bob",
+   "key": "gh:bob-cd/bob",
+   "kind": "repo",
+   "url": "https://github.com/bob-cd/bob",
+   "year": "2026",
+   "venue": "GitHub ★235",
+   "stars": 235,
+   "필수": 0,
+   "우대": 0.5,
+   "나머지": 2.0
+  },
+  {
+   "title": "alirezadir/Production-Level-Deep-Learning",
+   "key": "gh:alirezadir/production-level-deep-learning",
+   "kind": "repo",
+   "url": "https://github.com/alirezadir/Production-Level-Deep-Learning",
+   "year": "2025",
+   "venue": "GitHub ★4666",
+   "stars": 4666,
+   "필수": 0,
+   "우대": 0.5,
+   "나머지": 2.0
+  },
+  {
+   "title": "junobuild/juno",
+   "key": "gh:junobuild/juno",
+   "kind": "repo",
+   "url": "https://github.com/junobuild/juno",
+   "year": "2026",
+   "venue": "GitHub ★426",
+   "stars": 426,
+   "필수": 0,
+   "우대": 0.5,
+   "나머지": 2.0
+  },
+  {
+   "title": "argoproj/argo-cd",
+   "key": "gh:argoproj/argo-cd",
+   "kind": "repo",
+   "url": "https://github.com/argoproj/argo-cd",
+   "year": "2026",
+   "venue": "GitHub ★24622",
+   "stars": 24622,
+   "필수": 0,
+   "우대": 0.5,
+   "나머지": 1.5
+  },
+  {
+   "title": "LambdaNet: Probabilistic Type Inference using Graph Neural Networks",
+   "key": "arxiv:2005.02161v1",
+   "kind": "paper",
+   "url": "https://openreview.net/forum?id=Hkx6hANtwH",
+   "year": "2020",
+   "venue": "ICLR",
+   "필수": 0,
+   "우대": 0.5,
+   "나머지": 1.0
+  },
+  {
+   "title": "kimtth/software-architect-mindmap",
+   "key": "gh:kimtth/software-architect-mindmap",
+   "kind": "repo",
+   "url": "https://github.com/kimtth/software-architect-mindmap",
+   "year": "2026",
+   "venue": "GitHub ★542",
+   "stars": 542,
+   "필수": 0,
+   "우대": 0.5,
+   "나머지": 1.0
+  },
+  {
+   "title": "apache/hertzbeat",
+   "key": "gh:apache/hertzbeat",
+   "kind": "repo",
+   "url": "https://github.com/apache/hertzbeat",
+   "year": "2026",
+   "venue": "GitHub ★7469",
+   "stars": 7469,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 5.5
+  },
+  {
+   "title": "An LLM Compiler for Parallel Function Calling",
+   "key": "url:https://proceedings.mlr.press/v235/kim24y.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlr.press/v235/kim24y.html",
+   "year": "2024",
+   "venue": "ICML",
+   "필수": 0,
+   "우대": 0,
+   "나머지": 5.0
+  },
+  {
+   "title": "Data-Parallel Actors: A Programming Model for Scalable Query Serving Systems",
+   "key": "url:https://www.usenix.org/conference/nsdi22/presentation/kraft",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/nsdi22/presentation/kraft",
+   "year": "2022",
+   "venue": "NSDI",
+   "필수": 0,
+   "우대": 0,
+   "나머지": 4.5
+  },
+  {
+   "title": "BOute: Cost-Efficient LLM Serving with Heterogeneous LLMs and GPUs via Multi-Objective Bayesian Optimization",
+   "key": "url:https://proceedings.mlsys.org/paper_files/paper/2026/hash/ed1d3d4c64dc1b95332a8cde3f2a0bdf-Abstract-Conference.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlsys.org/paper_files/paper/2026/hash/ed1d3d4c64dc1b95332a8cde3f2a0bdf-Abstract-Conference.html",
+   "year": "2026",
+   "venue": "MLSys",
+   "필수": 0,
+   "우대": 0,
+   "나머지": 3.0
+  },
+  {
+   "title": "convertigo/convertigo",
+   "key": "gh:convertigo/convertigo",
+   "kind": "repo",
+   "url": "https://github.com/convertigo/convertigo",
+   "year": "2026",
+   "venue": "GitHub ★389",
+   "stars": 389,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 3.0
+  },
+  {
+   "title": "apache/devlake",
+   "key": "gh:apache/devlake",
+   "kind": "repo",
+   "url": "https://github.com/apache/devlake",
+   "year": "2026",
+   "venue": "GitHub ★3200",
+   "stars": 3200,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 2.5
+  },
+  {
+   "title": "MoCE: A Mixture-of-Context Aware Experts Framework for Troubleshooting Internet-scale Services",
+   "key": "url:https://www.usenix.org/conference/nsdi26/presentation/harsh",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/nsdi26/presentation/harsh",
+   "year": "2026",
+   "venue": "NSDI",
+   "필수": 0,
+   "우대": 0,
+   "나머지": 2.0
+  },
+  {
+   "title": "middlewarehq/middleware",
+   "key": "gh:middlewarehq/middleware",
+   "kind": "repo",
+   "url": "https://github.com/middlewarehq/middleware",
+   "year": "2026",
+   "venue": "GitHub ★1633",
+   "stars": 1633,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 1.5
+  },
+  {
+   "title": "Position: Data Authenticity, Consent, & Provenance for AI are all broken: what will it take to fix them?",
+   "key": "url:https://proceedings.mlr.press/v235/longpre24b.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlr.press/v235/longpre24b.html",
+   "year": "2024",
+   "venue": "ICML",
+   "필수": 0,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "harvester/harvester",
+   "key": "gh:harvester/harvester",
+   "kind": "repo",
+   "url": "https://github.com/harvester/harvester",
+   "year": "2026",
+   "venue": "GitHub ★5245",
+   "stars": 5245,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "timothystewart6/techno-tim.github.io",
+   "key": "gh:timothystewart6/techno-tim.github.io",
+   "kind": "repo",
+   "url": "https://github.com/timothystewart6/techno-tim.github.io",
+   "year": "2026",
+   "venue": "GitHub ★1197",
+   "stars": 1197,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "leg100/otf",
+   "key": "gh:leg100/otf",
+   "kind": "repo",
+   "url": "https://github.com/leg100/otf",
+   "year": "2026",
+   "venue": "GitHub ★709",
+   "stars": 709,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "syntasso/kratix",
+   "key": "gh:syntasso/kratix",
+   "kind": "repo",
+   "url": "https://github.com/syntasso/kratix",
+   "year": "2026",
+   "venue": "GitHub ★792",
+   "stars": 792,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 0
+  }
+ ],
+ "coverage": [
+  {
+   "cid": "C01",
+   "name": "AI 기반 프로덕션 시스템 설계",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Genkit is an open-source framework for building full-stack AI-powered applications, built and used in production by Google's Firebase",
+   "downgraded": false
+  },
+  {
+   "cid": "C02",
+   "name": "AI 기반 프로덕션 시스템 구축 및 배포",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Rapidly build and deploy production-ready chatbots, automations, and recommendation systems using streamlined APIs",
+   "downgraded": false
+  },
+  {
+   "cid": "C03",
+   "name": "요구사항 수집부터 프로덕션 배포까지 전체 AI 워크스트림 소유 및 딜리버리",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C04",
+   "name": "프로덕션급 소프트웨어 작성",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Genkit is an open-source framework for building full-stack AI-powered applications, built and used in production by Google's Firebase",
+   "downgraded": false
+  },
+  {
+   "cid": "C05",
+   "name": "전체 소프트웨어 라이프사이클에 걸친 기능 딜리버리",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C06",
+   "name": "모호한 문제에 대한 일관된 구현 설계 및 설계 트레이드오프 결정",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C07",
+   "name": "비즈니스 제약 조건 균형 조정 및 단기 임시방편 최소화",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C08",
+   "name": "고품질 코드 작성 코칭",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C09",
+   "name": "신규 팀원 온보딩 및 트레이닝",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C10",
+   "name": "고객 엔지니어링 팀 내 임베드 협업",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C11",
+   "name": "고객·이해관계자와 소통하여 시스템의 비즈니스·고객 가치 이해",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C12",
+   "name": "고객 비즈니스 프로세스, 기술 아키텍처, 운영 제약 파악",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C13",
+   "name": "고객 요구사항을 AI 프로덕션 시스템 기술 설계로 변환",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C14",
+   "name": "검색 파이프라인(RAG) 설계 및 개발",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "AI-powered data retrieval (RAG)",
+   "downgraded": false
+  },
+  {
+   "cid": "C15",
+   "name": "워크플로우 자동화 설계 및 개발",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Rapidly build and deploy production-ready chatbots, automations, and recommendation systems using streamlined APIs for multimodal content, structured outputs, tool calling, and agentic workflows",
+   "downgraded": false
+  },
+  {
+   "cid": "C16",
+   "name": "API 오케스트레이션 레이어 설계 및 개발",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "It provides SDKs for multiple programming languages with varying levels of stability",
+   "downgraded": false
+  },
+  {
+   "cid": "C17",
+   "name": "데이터 통합 설계 및 개발",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C18",
+   "name": "에이전틱 워크플로우 설계 및 개발",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Rapidly build and deploy production-ready chatbots, automations, and recommendation systems using streamlined APIs for multimodal content, structured outputs, tool calling, and agentic workflows",
+   "downgraded": false
+  },
+  {
+   "cid": "C19",
+   "name": "리스크·장애물이 있는 어려운 문제 해결 및 단순 설계 도출",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C20",
+   "name": "파운데이션 모델과 고객 데이터 소스·기존 애플리케이션 통합",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "It offers a unified interface for integrating AI models from providers like Google, OpenAI, Anthropic, Ollama, and more",
+   "downgraded": false
+  },
+  {
+   "cid": "C21",
+   "name": "파운데이션 모델 개념 및 활용 이해",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "It offers a unified interface for integrating AI models from providers like Google, OpenAI, Anthropic, Ollama, and more",
+   "downgraded": false
+  },
+  {
+   "cid": "C22",
+   "name": "AI 시스템 레이턴시 최적화",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "Track model performance, and request volumes, latency, and error rates in a purpose-built dashboard",
+   "downgraded": false
+  },
+  {
+   "cid": "C23",
+   "name": "AI 시스템 신뢰성 최적화",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "Ship AI features with confidence using comprehensive production monitoring. Track model performance, and request volumes, latency, and error rates",
+   "downgraded": false
+  },
+  {
+   "cid": "C24",
+   "name": "AI 시스템 비용 최적화",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C25",
+   "name": "스코핑, 설계, 코딩, 테스트, 배포, 운영, 유지보수 전 SDLC 기여",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C26",
+   "name": "AI 모델·분산 시스템·애플리케이션 서비스의 프로덕션 인시던트 트러블슈팅",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C27",
+   "name": "운영 이슈 근본 원인 분석 및 해결",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "Identify issues quickly with detailed observability metrics, and ensure your AI features meet quality and performance targets in real-world usage",
+   "downgraded": false
+  },
+  {
+   "cid": "C28",
+   "name": "AI 시스템 모니터링 구현",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Ship AI features with confidence using comprehensive production monitoring. Track model performance, and request volumes, latency, and error rates in a purpose-built dashboard",
+   "downgraded": false
+  },
+  {
+   "cid": "C29",
+   "name": "AI 시스템 평가(Evaluation) 구현",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "Test prompts and flows against individual inputs or datasets, compare outputs from different models, debug with detailed execution traces",
+   "downgraded": false
+  },
+  {
+   "cid": "C30",
+   "name": "AI 시스템 가드레일 구현",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C31",
+   "name": "CI/CD 파이프라인 구현 및 운영",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C32",
+   "name": "운영 개선 기회 식별 및 실행",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C33",
+   "name": "시스템 구조·운영·전체 그림을 신규 팀원에게 멘토링",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C34",
+   "name": "코드 리뷰를 통한 고품질 코드 코칭",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C35",
+   "name": "코드 리뷰 프로세스에서 의미 있는 피드백 제공",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C36",
+   "name": "고객 참여 내 AI 도입 확대 기회 식별",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C37",
+   "name": "재사용 가능한 패턴 및 액셀러레이터 코드화",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C38",
+   "name": "팀 소프트웨어 및 프로세스 개선 사항 반영",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C39",
+   "name": "Agile 또는 빠르게 스케일링하는 환경에서의 개발 경험",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C40",
+   "name": "기술 개념을 기술·비기술 청중 모두에게 전달",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C41",
+   "name": "에이전틱 개발 및 스펙 기반 개발",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Open-source framework for building agentic apps in JavaScript, Go, Dart, and Python, built and used in production by Google",
+   "downgraded": false
+  },
+  {
+   "cid": "C42",
+   "name": "AI 에이전트 개발",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Open-source framework for building agentic apps in JavaScript, Go, Dart, and Python, built and used in production by Google",
+   "downgraded": false
+  },
+  {
+   "cid": "C43",
+   "name": "Eval 프레임워크 활용",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "일부",
+   "quote": "Test prompts and flows against individual inputs or datasets, compare outputs from different models, debug with detailed execution traces",
+   "downgraded": false
+  },
+  {
+   "cid": "C44",
+   "name": "에이전트 툴링 활용",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Simplified AI development - Use streamlined APIs to build AI features with structured output, agentic tool calling, context-aware generation",
+   "downgraded": false
+  },
+  {
+   "cid": "C45",
+   "name": "RAG 파이프라인 구축 및 운영",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "AI-powered data retrieval (RAG)",
+   "downgraded": false
+  },
+  {
+   "cid": "C46",
+   "name": "프롬프트 엔지니어링",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Prompt templating",
+   "downgraded": false
+  },
+  {
+   "cid": "C47",
+   "name": "코딩 표준, 코드 리뷰, 소스 컨트롤 관리, 빌드 프로세스, 테스트, 운영을 포함한 전체 SDLC 경험",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C48",
+   "name": "고객 프로덕션 환경에서의 작업 경험",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "있음",
+   "quote": "Genkit is an open-source framework for building full-stack AI-powered applications, built and used in production by Google's Firebase",
+   "downgraded": false
+  },
+  {
+   "cid": "C49",
+   "name": "프로덕션 환경에서 AI/ML 애플리케이션 구축 또는 배포",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "있음",
+   "quote": "Genkit is an open-source framework for building full-stack AI-powered applications, built and used in production by Google's Firebase",
+   "downgraded": false
+  },
+  {
+   "cid": "C50",
+   "name": "높은 오너십과 긴박감을 가진 리더십 경험(파운더·엔지니어링 리드·스타트업 빌더)",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C51",
+   "name": "React",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "일부",
+   "quote": "Integrate seamlessly with frameworks and platforms including Next.js, React, Angular, iOS, Android, using purpose-built client SDKs and helpers",
+   "downgraded": false
+  },
+  {
+   "cid": "C52",
+   "name": "TypeScript",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "있음",
+   "quote": "JavaScript/TypeScript: Production-ready with full feature support",
+   "downgraded": false
+  },
+  {
+   "cid": "C53",
+   "name": "Python",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "있음",
+   "quote": "Python (Beta): Wide feature support approaching production-readiness",
+   "downgraded": false
+  },
+  {
+   "cid": "C54",
+   "name": "Go",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "있음",
+   "quote": "Go: Production-ready with full feature support",
+   "downgraded": false
+  },
+  {
+   "cid": "C55",
+   "name": "고객 인터페이싱 또는 외부 이해관계자와의 기술 프로젝트 리딩",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C56",
+   "name": "엔드투엔드 프로덕션 시스템 구축 및 스케일링 팀 협업 경험",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C57",
+   "name": "AWS 서비스 활용",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C58",
+   "name": "분산 시스템 개념 이해",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  }
+ ],
+ "fit": [
+  {
+   "title": "genkit-ai/genkit",
+   "key": "gh:genkit-ai/genkit",
+   "kind": "repo",
+   "url": "https://github.com/genkit-ai/genkit",
+   "year": "2026",
+   "venue": "GitHub ★6593",
+   "stars": 6593,
+   "필수": 5.5,
+   "우대": 5.5,
+   "나머지": 12.0
+  }
+ ],
+ "adapted": {
+  "case": "aws_fde",
+  "request": "485cd809c243a36c",
+  "made": "global.anthropic.claude-sonnet-4-6, 응용 한 번 + 다시 쓰기 1번",
+  "team": {
+   "members": 4,
+   "weeks": 12,
+   "hours_per_week": 7,
+   "budget_hours": 336
+  },
+  "base": "genkit-ai/genkit",
+  "complements": [
+   "open-hand/choerodon",
+   "FareedKhan-dev/production-grade-agentic-system",
+   "cloudcomponents/cdk-constructs"
+  ],
+  "complement_gains": [
+   {
+    "title": "open-hand/choerodon",
+    "필수": 1,
+    "우대": 0,
+    "나머지": 1
+   },
+   {
+    "title": "FareedKhan-dev/production-grade-agentic-system",
+    "필수": 0.5,
+    "우대": 1.5,
+    "나머지": 8.5
+   },
+   {
+    "title": "cloudcomponents/cdk-constructs",
+    "필수": 0,
+    "우대": 1,
+    "나머지": 0.5
+   }
+  ],
+  "project": {
+   "title": "엔터프라이즈 고객사 임베드형 AI 에이전트 플랫폼 구축",
+   "goal": "Genkit 프레임워크를 척추로 삼아, 실제 고객사 시나리오(문서 기반 Q&A + 워크플로우 자동화)를 상정한 프로덕션급 멀티 에이전트 RAG 시스템을 설계·구축·배포·운영한다. 요구사항 수집부터 CI/CD, 모니터링, Eval 프레임워크까지 전체 SDLC를 팀이 직접 소유하며, Agile 스프린트로 진행한다.",
+   "packages": [
+    {
+     "id": "W1",
+     "name": "요구사항 분석 및 시스템 아키텍처 설계",
+     "do": "가상 엔터프라이즈 고객사(예: 법률 문서 검색 서비스)의 비즈니스 요구사항을 인터뷰 시나리오로 정의하고, RAG + 멀티 에이전트 아키텍처 설계 문서를 작성한다. 데이터 흐름도, 컴포넌트 다이어그램, 기술 트레이드오프 결정 기록(ADR) 3건 이상 포함. Agile 백로그(에픽 5개, 스토리 20개 이상)를 GitHub Projects로 구성하고 스프린트 계획을 수립한다. 비기술 청중용 요약 슬라이드(1페이지)와 기술 청중용 상세 설계 문서를 별도로 작성한다.",
+     "out": "아키텍처 설계 문서(PDF), ADR 3건, 초기 백로그 및 스프린트 1 계획서, 비기술 청중용 요약 슬라이드",
+     "hours": 24,
+     "core": true,
+     "order": 1,
+     "competencies": [
+      "C01",
+      "C06",
+      "C07",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C19",
+      "C21",
+      "C39",
+      "C40",
+      "C50",
+      "C55",
+      "C58"
+     ],
+     "sources": [
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "Genkit is an open-source framework for building full-stack AI-powered applications, built and used in production by Google's Firebase",
+       "for": [
+        "C01",
+        "C21"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "Each layer is responsible for a specific concern such as agent orchestration, memory management, security controls, scalability, and fault handling",
+       "for": [
+        "C06",
+        "C19",
+        "C58"
+       ]
+      },
+      {
+       "project": "open-hand/choerodon",
+       "quote": "Combine Lean-Agile to manage business requirements and tasks to create an efficient collaborative ecosystem. Provides collaboration tools such as worklist, story map, and knowledge management.",
+       "for": [
+        "C39"
+       ]
+      }
+     ],
+     "added": [
+      {
+       "competency": "C10",
+       "why": "가상 고객사 인터뷰 시나리오를 팀이 직접 작성하고 역할극으로 수행함으로써 고객 팀 임베드 협업 경험을 시뮬레이션한다."
+      },
+      {
+       "competency": "C11",
+       "why": "비즈니스 가치 분석 메모를 아키텍처 문서에 포함시켜 이해관계자 소통 역량을 실습한다."
+      },
+      {
+       "competency": "C12",
+       "why": "고객사 기술 아키텍처 및 운영 제약 파악 섹션을 설계 문서에 명시적으로 포함한다."
+      },
+      {
+       "competency": "C13",
+       "why": "요구사항을 기술 설계로 변환하는 과정을 ADR 형식으로 문서화한다."
+      },
+      {
+       "competency": "C40",
+       "why": "비기술 청중용 요약 슬라이드(1페이지)와 기술 청중용 상세 설계 문서를 별도로 작성하여 커뮤니케이션 역량을 실습한다. BASE와 모든 complement가 C40을 커버하지 않으므로 added로 추가했다."
+      },
+      {
+       "competency": "C50",
+       "why": "팀 리드 역할을 지정하고 오너십 기반 의사결정 기록을 남긴다."
+      },
+      {
+       "competency": "C55",
+       "why": "외부 이해관계자 역할극 세션을 진행하고 회의록을 작성한다."
+      },
+      {
+       "competency": "C07",
+       "why": "ADR에 비즈니스 제약 조건(비용, 일정, 기술 부채)과 단기 임시방편 회피 근거를 명시한다."
+      }
+     ]
+    },
+    {
+     "id": "W2",
+     "name": "Genkit 기반 RAG 파이프라인 구축",
+     "do": "Genkit TypeScript SDK를 사용하여 법률 문서(PDF 100건 이상, 공개 데이터셋 활용) 대상 RAG 파이프라인을 구축한다. 문서 청킹, 임베딩(Google Gemini 또는 Ollama), 벡터 DB(pgvector 또는 Chroma) 저장, 검색, 생성 단계를 Genkit Flow로 구현한다. 프롬프트 템플릿 5종 이상 작성 및 Genkit Developer UI로 비교 테스트를 수행한다.",
+     "out": "RAG Flow 코드(TypeScript), 프롬프트 템플릿 파일 5종, 검색 정확도 측정 결과 표",
+     "hours": 48,
+     "core": true,
+     "order": 1,
+     "competencies": [
+      "C14",
+      "C20",
+      "C21",
+      "C45",
+      "C46",
+      "C52"
+     ],
+     "sources": [
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "Text and image generation * Type-safe, structured data generation * Tool calling * Prompt templating * Persisted chat interfaces * AI workflows * AI-powered data retrieval (RAG)",
+       "for": [
+        "C14",
+        "C45",
+        "C46"
+       ]
+      },
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "It offers a unified interface for integrating AI models from providers like Google, OpenAI, Anthropic, Ollama, and more",
+       "for": [
+        "C20",
+        "C21"
+       ]
+      },
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "JavaScript/TypeScript: Production-ready with full feature support",
+       "for": [
+        "C52"
+       ]
+      }
+     ],
+     "added": []
+    },
+    {
+     "id": "W3",
+     "name": "멀티 에이전트 워크플로우 및 API 오케스트레이션 레이어 구현",
+     "do": "Genkit의 agentic tool calling을 활용하여 오케스트레이터 에이전트 1개 + 서브 에이전트 3개(문서 검색, 요약, 외부 API 호출) 구조를 구현한다. FastAPI(Python) 또는 Genkit Go SDK로 REST API 게이트웨이를 구성하고, 에이전트 간 메시지 라우팅 로직을 작성한다. LangGraph 스타일의 상태 머신 패턴을 참고하여 장기 메모리 통합을 구현한다. 외부 데이터 소스(CSV, REST API) 연결을 통해 데이터 통합 레이어를 구현한다.",
+     "out": "멀티 에이전트 코드(TypeScript/Python), API 게이트웨이 OpenAPI 스펙, 에이전트 상태 다이어그램",
+     "hours": 56,
+     "core": true,
+     "order": 1,
+     "competencies": [
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C41",
+      "C42",
+      "C44",
+      "C53",
+      "C54"
+     ],
+     "sources": [
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "Rapidly build and deploy production-ready chatbots, automations, and recommendation systems using streamlined APIs for multimodal content, structured outputs, tool calling, and agentic workflows",
+       "for": [
+        "C15",
+        "C18",
+        "C41"
+       ]
+      },
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "Simplified AI development - Use streamlined APIs to build AI features with structured output, agentic tool calling, context-aware generation",
+       "for": [
+        "C42",
+        "C44"
+       ]
+      },
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "It provides SDKs for multiple programming languages with varying levels of stability",
+       "for": [
+        "C16"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "Multi-Agentic Architecture * Long-Term Memory Integration * Tool Calling Feature",
+       "for": [
+        "C53"
+       ]
+      },
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "Go: Production-ready with full feature support",
+       "for": [
+        "C54"
+       ]
+      }
+     ],
+     "added": [
+      {
+       "competency": "C17",
+       "why": "어떤 입력 프로젝트도 C17(데이터 통합 설계 및 개발)을 있음 또는 일부로 커버하지 않는다. W3에서 외부 CSV 및 REST API를 에이전트 서브 도구로 연결하는 데이터 통합 레이어를 직접 구현하여 커버한다."
+      }
+     ]
+    },
+    {
+     "id": "W4",
+     "name": "보안·가드레일·프로덕션 안정성 레이어 구현",
+     "do": "Rate limiting, 입력 sanitization, 프롬프트 인젝션 방어, circuit breaker 패턴을 구현한다. LLM 응답 유해성 필터(Genkit 내장 safety settings + 커스텀 룰 3개 이상)를 추가한다. Connection pooling과 LLM 불가용 시 fallback 로직을 작성한다. 레이턴시·비용 최적화를 위해 응답 캐싱(Redis) 및 모델 선택 로직(저비용 모델 우선 라우팅)을 구현한다.",
+     "out": "보안 레이어 코드, 가드레일 룰 명세서, 레이턴시 벤치마크 결과(before/after 비교표)",
+     "hours": 40,
+     "core": true,
+     "order": 2,
+     "competencies": [
+      "C22",
+      "C23",
+      "C24",
+      "C26",
+      "C27",
+      "C30"
+     ],
+     "sources": [
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "Security & Safeguards Layer * Rate Limiting Feature * Sanitization Check Logic",
+       "for": [
+        "C30"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "latency, availability, throughput, cost efficiency, failure recovery, and dependency health across the entire architecture",
+       "for": [
+        "C22",
+        "C23",
+        "C24"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "Observability & Operational Testing * Creating Metrics to Evaluate * Middleware Based Testing",
+       "for": [
+        "C26"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "failure recovery, and dependency health across the entire architecture",
+       "for": [
+        "C27"
+       ]
+      }
+     ],
+     "added": []
+    },
+    {
+     "id": "W5",
+     "name": "Eval 프레임워크 및 모니터링 구현",
+     "do": "Genkit의 flow 테스트 기능과 FareedKhan 패턴을 결합하여 LLM-as-a-Judge 기반 자동 평가 파이프라인을 구축한다. 평가 지표: 답변 정확도(RAGAS 스타일), 레이턴시 P50/P95, 비용/요청, 가드레일 통과율. Prometheus + Grafana로 실시간 대시보드를 구성하고, Genkit 프로덕션 모니터링 대시보드와 연동한다. 스트레스 테스트(동시 50 요청)를 실행하고 결과를 분석한다. 코드 리뷰 체크리스트(10항목)를 작성하고 모든 PR에 리뷰어 2인 필수 규칙을 적용하며, 온보딩 가이드를 작성한다.",
+     "out": "Eval 스크립트(Python), Grafana 대시보드 JSON, 스트레스 테스트 결과 보고서, 코드 리뷰 가이드라인 문서, 온보딩 가이드",
+     "hours": 48,
+     "core": true,
+     "order": 2,
+     "competencies": [
+      "C03",
+      "C05",
+      "C08",
+      "C09",
+      "C28",
+      "C29",
+      "C32",
+      "C33",
+      "C34",
+      "C35",
+      "C43",
+      "C48",
+      "C56"
+     ],
+     "sources": [
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "Ship AI features with confidence using comprehensive production monitoring. Track model performance, and request volumes, latency, and error rates in a purpose-built dashboard",
+       "for": [
+        "C28"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "Evaluation Framework * LLM-as-a-Judge * Automated Grading",
+       "for": [
+        "C29",
+        "C43"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "Architecture Stress Testing * Simulating our Traffic * Performance Analysis",
+       "for": [
+        "C32"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "we will build all the core architectural layers needed to deploy a production-ready agentic system, so teams can confidently deploy AI agents in their own infrastructure or for their clients",
+       "for": [
+        "C03",
+        "C05",
+        "C56"
+       ]
+      },
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "Genkit is an open-source framework for building full-stack AI-powered applications, built and used in production by Google's Firebase",
+       "for": [
+        "C48"
+       ]
+      }
+     ],
+     "added": [
+      {
+       "competency": "C08",
+       "why": "코드 리뷰 가이드라인 작성 및 실제 PR 리뷰를 통해 고품질 코드 코칭 역량을 실습한다. 이 활동은 Eval 파이프라인 코드 품질 보증과 직접 연결된다."
+      },
+      {
+       "competency": "C09",
+       "why": "온보딩 가이드 작성 및 팀 내 역할 교체(role swap) 세션을 통해 신규 팀원 트레이닝 역량을 실습한다."
+      },
+      {
+       "competency": "C33",
+       "why": "시스템 전체 구조를 설명하는 온보딩 가이드와 역할 교체 핸드오버 노트를 작성한다."
+      },
+      {
+       "competency": "C34",
+       "why": "코드 리뷰 체크리스트를 기반으로 실제 PR에서 코칭 코멘트를 남긴다."
+      },
+      {
+       "competency": "C35",
+       "why": "모든 PR에 의미 있는 리뷰 코멘트(단순 승인 금지) 규칙을 적용하고 리뷰 로그를 보관한다."
+      }
+     ]
+    },
+    {
+     "id": "W6",
+     "name": "CI/CD 파이프라인 및 컨테이너 배포 구성",
+     "do": "GitHub Actions로 CI 파이프라인(lint → unit test → integration test → Docker build → push)을 구성한다. AWS CDK(Python)로 인프라를 코드화하여 ECS Fargate에 배포한다. cloudcomponents/cdk-constructs의 blue-green 배포 패턴과 CodePipeline Slack 알림 구성을 차용한다. 스테이징/프로덕션 환경 분리, 환경 변수 관리(AWS Secrets Manager)를 포함한다.",
+     "out": "GitHub Actions 워크플로우 파일, CDK 스택 코드, 배포 완료 스크린샷(스테이징+프로덕션)",
+     "hours": 40,
+     "core": true,
+     "order": 2,
+     "competencies": [
+      "C02",
+      "C04",
+      "C25",
+      "C31",
+      "C36",
+      "C37",
+      "C38",
+      "C47",
+      "C49",
+      "C57"
+     ],
+     "sources": [
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "Rapidly build and deploy production-ready chatbots, automations, and recommendation systems using streamlined APIs",
+       "for": [
+        "C02",
+        "C49"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "Creating Modular Codebase * Managing Dependencies * Setting Environment Configuration * Containerization Strategy * Building Data Persistence Layer",
+       "for": [
+        "C04",
+        "C25",
+        "C47"
+       ]
+      },
+      {
+       "project": "open-hand/choerodon",
+       "quote": "Pipelined multi-environment one-click deployment. Users can easily use the deployment function to manage various application services developed and deployed using Choerodon",
+       "for": [
+        "C31"
+       ]
+      },
+      {
+       "project": "cloudcomponents/cdk-constructs",
+       "quote": "A collection of higher-level reusable cdk constructs",
+       "for": [
+        "C57"
+       ]
+      }
+     ],
+     "added": [
+      {
+       "competency": "C36",
+       "why": "어떤 입력 프로젝트도 C36(고객 참여 내 AI 도입 확대 기회 식별)을 커버하지 않는다. W6에서 배포된 시스템을 기반으로 추가 AI 도입 시나리오(예: 문서 분류 자동화, 계약서 요약 에이전트)를 식별하고 확장 로드맵 문서를 작성하여 커버한다."
+      },
+      {
+       "competency": "C37",
+       "why": "CDK 스택 모듈과 GitHub Actions 워크플로우를 재사용 가능한 템플릿으로 추출하고 README를 작성한다."
+      },
+      {
+       "competency": "C38",
+       "why": "CI/CD 파이프라인 구성 과정에서 발견된 프로세스 개선 사항(예: 테스트 커버리지 임계값, 배포 알림 채널)을 코드와 문서에 반영한다."
+      }
+     ]
+    },
+    {
+     "id": "W7",
+     "name": "React/TypeScript 프론트엔드 및 실시간 스트리밍 UI",
+     "do": "React + TypeScript로 챗 인터페이스를 구현한다. Genkit 클라이언트 SDK를 사용하여 스트리밍 응답(SSE)을 처리하고, 에이전트 실행 추적 시각화(단계별 진행 표시)를 포함한다. 사용자 피드백 버튼(좋아요/싫어요)을 추가하여 Eval 데이터를 수집한다.",
+     "out": "React 앱 코드(TypeScript), 스트리밍 UI 데모 영상(2분 이내)",
+     "hours": 32,
+     "core": false,
+     "order": 2,
+     "competencies": [
+      "C52"
+     ],
+     "sources": [
+      {
+       "project": "genkit-ai/genkit",
+       "quote": "JavaScript/TypeScript: Production-ready with full feature support",
+       "for": [
+        "C52"
+       ]
+      }
+     ],
+     "added": []
+    },
+    {
+     "id": "W8",
+     "name": "인시던트 트러블슈팅 및 운영 개선 실습",
+     "do": "의도적으로 장애를 주입(chaos engineering 간이 버전: LLM 타임아웃, 벡터 DB 연결 실패, 잘못된 프롬프트)하고 트러블슈팅 과정을 기록한다. 각 인시던트에 대해 RCA(근본 원인 분석) 문서를 작성하고, 재발 방지 조치를 코드에 반영한다. 운영 개선 기회 3건 이상을 식별하고 구현한다.",
+     "out": "인시던트 시나리오 3건의 RCA 문서, 개선 PR 3건",
+     "hours": 24,
+     "core": false,
+     "order": 3,
+     "competencies": [
+      "C26",
+      "C27",
+      "C32"
+     ],
+     "sources": [
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "Observability & Operational Testing * Creating Metrics to Evaluate * Middleware Based Testing",
+       "for": [
+        "C26"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "failure recovery, and dependency health across the entire architecture",
+       "for": [
+        "C27"
+       ]
+      },
+      {
+       "project": "FareedKhan-dev/production-grade-agentic-system",
+       "quote": "Architecture Stress Testing * Simulating our Traffic * Performance Analysis",
+       "for": [
+        "C32"
+       ]
+      }
+     ],
+     "added": []
+    },
+    {
+     "id": "W9",
+     "name": "재사용 가능한 패턴 라이브러리 코드화",
+     "do": "프로젝트에서 도출된 재사용 패턴(RAG Flow 템플릿, 에이전트 팩토리, 가드레일 미들웨어, CDK 스택 모듈)을 별도 패키지로 추출하고 README와 사용 예제를 작성한다. 패키지를 npm 또는 PyPI 배포 준비 상태로 만든다.",
+     "out": "패턴 라이브러리 패키지(npm/PyPI 준비 상태), 패키지별 README 및 사용 예제",
+     "hours": 16,
+     "core": false,
+     "order": 3,
+     "competencies": [],
+     "sources": [],
+     "added": []
+    },
+    {
+     "id": "W10",
+     "name": "Agile 프로세스 운영 및 협업 기록",
+     "do": "12주 동안 2주 단위 스프린트 6회를 운영한다. 각 스프린트마다: 스프린트 계획 회의 기록, 주 2회 작업 로그(팀원별 진행 상황), 스프린트 회고 메모를 작성한다. 실험 후 해석 메모(다음 태스크 카드로 연결)를 매 실험마다 작성한다. 스프린트 3 종료 시 역할 교체(role swap)를 수행하고 핸드오버 노트를 작성한다.",
+     "out": "스프린트 계획·회고 문서 6세트, 작업 로그 24건(주 2회×12주), 역할 교체 핸드오버 노트 1건",
+     "hours": 16,
+     "core": false,
+     "order": 1,
+     "competencies": [
+      "C39",
+      "C50",
+      "C10"
+     ],
+     "sources": [
+      {
+       "project": "open-hand/choerodon",
+       "quote": "Combine Lean-Agile to manage business requirements and tasks to create an efficient collaborative ecosystem. Provides collaboration tools such as worklist, story map, and knowledge management.",
+       "for": [
+        "C39"
+       ]
+      }
+     ],
+     "added": [
+      {
+       "competency": "C10",
+       "why": "스프린트 회고와 역할 교체를 통해 팀 내 임베드 협업 경험을 구조화한다."
+      },
+      {
+       "competency": "C50",
+       "why": "스프린트 리드 역할을 순환 배정하고 오너십 기반 의사결정 기록을 남긴다."
+      }
+     ]
+    }
+   ]
+  },
+  "hours": {
+   "core": 256,
+   "extension": 88,
+   "total": 344,
+   "budget": 336
+  },
+  "coverage": [
+   {
+    "id": "C01",
+    "name": "AI 기반 프로덕션 시스템 설계",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1에서 아키텍처 설계, W3·W4에서 프로덕션 시스템 구현으로 완전 커버"
+   },
+   {
+    "id": "C02",
+    "name": "AI 기반 프로덕션 시스템 구축 및 배포",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6에서 ECS Fargate 배포까지 완료"
+   },
+   {
+    "id": "C03",
+    "name": "요구사항 수집부터 프로덕션 배포까지 전체 AI 워크스트림 소유 및 딜리버리",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5에서 전체 워크스트림 소유 및 Eval 파이프라인 딜리버리로 커버"
+   },
+   {
+    "id": "C04",
+    "name": "프로덕션급 소프트웨어 작성",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W2·W3·W6에서 TypeScript/Python 프로덕션급 코드 작성"
+   },
+   {
+    "id": "C05",
+    "name": "전체 소프트웨어 라이프사이클에 걸친 기능 딜리버리",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5·W6에서 전체 라이프사이클(스코핑→배포→운영) 커버"
+   },
+   {
+    "id": "C06",
+    "name": "모호한 문제에 대한 일관된 구현 설계 및 설계 트레이드오프 결정",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1 ADR 3건에서 트레이드오프 결정 문서화"
+   },
+   {
+    "id": "C07",
+    "name": "비즈니스 제약 조건 균형 조정 및 단기 임시방편 최소화",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1 ADR에 비즈니스 제약 조건 및 단기 임시방편 회피 근거 명시"
+   },
+   {
+    "id": "C08",
+    "name": "고품질 코드 작성 코칭",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5 코드 리뷰 가이드라인 + 실제 PR 코칭 코멘트"
+   },
+   {
+    "id": "C09",
+    "name": "신규 팀원 온보딩 및 트레이닝",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5 온보딩 가이드 + 역할 교체 세션"
+   },
+   {
+    "id": "C10",
+    "name": "고객 엔지니어링 팀 내 임베드 협업",
+    "tier": "나머지",
+    "packages": [
+     "W1",
+     "W10"
+    ],
+    "expect": "있음",
+    "note": "W1 인터뷰 시나리오 + W10 스프린트 협업으로 커버. 실제 고객사 임베드는 불가하므로 시뮬레이션으로 대체"
+   },
+   {
+    "id": "C11",
+    "name": "고객·이해관계자와 소통하여 시스템의 비즈니스·고객 가치 이해",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1 비즈니스 가치 분석 메모로 커버"
+   },
+   {
+    "id": "C12",
+    "name": "고객 비즈니스 프로세스, 기술 아키텍처, 운영 제약 파악",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1 설계 문서의 기술 아키텍처·운영 제약 섹션으로 커버"
+   },
+   {
+    "id": "C13",
+    "name": "고객 요구사항을 AI 프로덕션 시스템 기술 설계로 변환",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1 요구사항→기술 설계 변환 ADR로 커버"
+   },
+   {
+    "id": "C14",
+    "name": "검색 파이프라인(RAG) 설계 및 개발",
+    "tier": "나머지",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2에서 Genkit RAG Flow 완전 구현"
+   },
+   {
+    "id": "C15",
+    "name": "워크플로우 자동화 설계 및 개발",
+    "tier": "나머지",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3 에이전트 워크플로우 자동화로 커버"
+   },
+   {
+    "id": "C16",
+    "name": "API 오케스트레이션 레이어 설계 및 개발",
+    "tier": "나머지",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3 FastAPI/Genkit API 게이트웨이로 커버"
+   },
+   {
+    "id": "C17",
+    "name": "데이터 통합 설계 및 개발",
+    "tier": "나머지",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3 added 작업으로 외부 CSV·REST API 데이터 통합 레이어 직접 구현"
+   },
+   {
+    "id": "C18",
+    "name": "에이전틱 워크플로우 설계 및 개발",
+    "tier": "나머지",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3 멀티 에이전트 아키텍처로 완전 커버"
+   },
+   {
+    "id": "C19",
+    "name": "리스크·장애물이 있는 어려운 문제 해결 및 단순 설계 도출",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1 ADR + W4 circuit breaker 등 장애 해결 설계로 커버"
+   },
+   {
+    "id": "C20",
+    "name": "파운데이션 모델과 고객 데이터 소스·기존 애플리케이션 통합",
+    "tier": "나머지",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2 Genkit 통합 인터페이스 + W3 외부 데이터 소스 연결로 커버"
+   },
+   {
+    "id": "C21",
+    "name": "파운데이션 모델 개념 및 활용 이해",
+    "tier": "나머지",
+    "packages": [
+     "W1",
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W1·W2에서 파운데이션 모델 개념 학습 및 활용"
+   },
+   {
+    "id": "C22",
+    "name": "AI 시스템 레이턴시 최적화",
+    "tier": "나머지",
+    "packages": [
+     "W4"
+    ],
+    "expect": "있음",
+    "note": "W4 Redis 캐싱·모델 라우팅 + W5 P95 레이턴시 측정으로 커버"
+   },
+   {
+    "id": "C23",
+    "name": "AI 시스템 신뢰성 최적화",
+    "tier": "나머지",
+    "packages": [
+     "W4"
+    ],
+    "expect": "있음",
+    "note": "W4 circuit breaker·fallback + W5 가용성 모니터링으로 커버"
+   },
+   {
+    "id": "C24",
+    "name": "AI 시스템 비용 최적화",
+    "tier": "나머지",
+    "packages": [
+     "W4"
+    ],
+    "expect": "있음",
+    "note": "W4 저비용 모델 라우팅 + W5 비용/요청 지표로 커버"
+   },
+   {
+    "id": "C25",
+    "name": "스코핑, 설계, 코딩, 테스트, 배포, 운영, 유지보수 전 SDLC 기여",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6 전체 SDLC(스코핑→배포→운영)로 커버"
+   },
+   {
+    "id": "C26",
+    "name": "AI 모델·분산 시스템·애플리케이션 서비스의 프로덕션 인시던트 트러블슈팅",
+    "tier": "나머지",
+    "packages": [
+     "W4",
+     "W8"
+    ],
+    "expect": "있음",
+    "note": "W4·W8 장애 주입 + 트러블슈팅 실습으로 커버"
+   },
+   {
+    "id": "C27",
+    "name": "운영 이슈 근본 원인 분석 및 해결",
+    "tier": "나머지",
+    "packages": [
+     "W4",
+     "W8"
+    ],
+    "expect": "있음",
+    "note": "W8 RCA 문서 3건으로 커버"
+   },
+   {
+    "id": "C28",
+    "name": "AI 시스템 모니터링 구현",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5 Prometheus+Grafana 대시보드로 커버"
+   },
+   {
+    "id": "C29",
+    "name": "AI 시스템 평가(Evaluation) 구현",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5 LLM-as-a-Judge Eval 파이프라인으로 커버"
+   },
+   {
+    "id": "C30",
+    "name": "AI 시스템 가드레일 구현",
+    "tier": "나머지",
+    "packages": [
+     "W4"
+    ],
+    "expect": "있음",
+    "note": "W4 가드레일 룰 3개 이상 구현으로 커버"
+   },
+   {
+    "id": "C31",
+    "name": "CI/CD 파이프라인 구현 및 운영",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6 GitHub Actions CI/CD + CDK 배포로 커버"
+   },
+   {
+    "id": "C32",
+    "name": "운영 개선 기회 식별 및 실행",
+    "tier": "나머지",
+    "packages": [
+     "W5",
+     "W8"
+    ],
+    "expect": "있음",
+    "note": "W8 운영 개선 기회 3건 식별·구현으로 커버"
+   },
+   {
+    "id": "C33",
+    "name": "시스템 구조·운영·전체 그림을 신규 팀원에게 멘토링",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5 온보딩 가이드 + 역할 교체 핸드오버 노트로 커버"
+   },
+   {
+    "id": "C34",
+    "name": "코드 리뷰를 통한 고품질 코드 코칭",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5 코드 리뷰 체크리스트 + 실제 PR 코칭으로 커버"
+   },
+   {
+    "id": "C35",
+    "name": "코드 리뷰 프로세스에서 의미 있는 피드백 제공",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5 모든 PR 리뷰어 2인 필수 규칙 + 리뷰 로그로 커버"
+   },
+   {
+    "id": "C36",
+    "name": "고객 참여 내 AI 도입 확대 기회 식별",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6 added 작업으로 AI 도입 확대 시나리오 식별 및 확장 로드맵 문서 작성"
+   },
+   {
+    "id": "C37",
+    "name": "재사용 가능한 패턴 및 액셀러레이터 코드화",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6 added 작업으로 CDK 스택·GitHub Actions 템플릿 재사용 패키지 추출"
+   },
+   {
+    "id": "C38",
+    "name": "팀 소프트웨어 및 프로세스 개선 사항 반영",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6 added 작업으로 CI/CD 프로세스 개선 사항 코드·문서 반영"
+   },
+   {
+    "id": "C39",
+    "name": "Agile 또는 빠르게 스케일링하는 환경에서의 개발 경험",
+    "tier": "필수",
+    "packages": [
+     "W1",
+     "W10"
+    ],
+    "expect": "있음",
+    "note": "W1·W10에서 Agile 스프린트 6회 운영으로 커버. BASE는 없음이므로 Choerodon complement와 added로 커버"
+   },
+   {
+    "id": "C40",
+    "name": "기술 개념을 기술·비기술 청중 모두에게 전달",
+    "tier": "필수",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1 added 작업으로 비기술 청중용 요약 슬라이드 + 기술 설계 문서 이중 작성. BASE와 모든 complement가 커버하지 않아 added로 추가"
+   },
+   {
+    "id": "C41",
+    "name": "에이전틱 개발 및 스펙 기반 개발",
+    "tier": "필수",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3 Genkit agentic workflow + 스펙 기반 Flow 정의로 커버"
+   },
+   {
+    "id": "C42",
+    "name": "AI 에이전트 개발",
+    "tier": "필수",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3 멀티 에이전트 구현으로 완전 커버"
+   },
+   {
+    "id": "C43",
+    "name": "Eval 프레임워크 활용",
+    "tier": "필수",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5 LLM-as-a-Judge + Genkit flow 테스트로 커버. Genkit 셀은 일부였으나 W5에서 FareedKhan 패턴(있음)으로 보완"
+   },
+   {
+    "id": "C44",
+    "name": "에이전트 툴링 활용",
+    "tier": "필수",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3 Genkit tool calling으로 완전 커버"
+   },
+   {
+    "id": "C45",
+    "name": "RAG 파이프라인 구축 및 운영",
+    "tier": "필수",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2 RAG 파이프라인 완전 구현"
+   },
+   {
+    "id": "C46",
+    "name": "프롬프트 엔지니어링",
+    "tier": "필수",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2 프롬프트 템플릿 5종 작성으로 커버"
+   },
+   {
+    "id": "C47",
+    "name": "코딩 표준, 코드 리뷰, 소스 컨트롤 관리, 빌드 프로세스, 테스트, 운영을 포함한 전체 SDLC 경험",
+    "tier": "우대",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W5·W6에서 코딩 표준, 코드 리뷰, 소스 컨트롤, 빌드, 테스트, 운영 전체 커버"
+   },
+   {
+    "id": "C48",
+    "name": "고객 프로덕션 환경에서의 작업 경험",
+    "tier": "우대",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5에서 스테이징+프로덕션 환경 배포 실습으로 커버"
+   },
+   {
+    "id": "C49",
+    "name": "프로덕션 환경에서 AI/ML 애플리케이션 구축 또는 배포",
+    "tier": "우대",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6 ECS Fargate 프로덕션 배포로 커버"
+   },
+   {
+    "id": "C50",
+    "name": "높은 오너십과 긴박감을 가진 리더십 경험(파운더·엔지니어링 리드·스타트업 빌더)",
+    "tier": "우대",
+    "packages": [
+     "W1",
+     "W10"
+    ],
+    "expect": "있음",
+    "note": "W1·W10 스프린트 리드 순환 + 오너십 의사결정 기록으로 커버"
+   },
+   {
+    "id": "C51",
+    "name": "React",
+    "tier": "우대",
+    "packages": [],
+    "expect": "없음",
+    "note": "React 를 다루는 묶음이 없어 뺌 (교육자료에서 배움)"
+   },
+   {
+    "id": "C52",
+    "name": "TypeScript",
+    "tier": "우대",
+    "packages": [
+     "W2",
+     "W7"
+    ],
+    "expect": "있음",
+    "note": "W2·W3·W7에서 TypeScript 전반 사용"
+   },
+   {
+    "id": "C53",
+    "name": "Python",
+    "tier": "우대",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W2·W3·W5에서 Python 사용"
+   },
+   {
+    "id": "C54",
+    "name": "Go",
+    "tier": "우대",
+    "packages": [
+     "W3"
+    ],
+    "expect": "일부",
+    "note": "W3·W9에서 Genkit Go SDK 선택 옵션으로 제공. 팀이 TypeScript를 주 언어로 선택할 경우 Go는 부분 실습에 그침"
+   },
+   {
+    "id": "C55",
+    "name": "고객 인터페이싱 또는 외부 이해관계자와의 기술 프로젝트 리딩",
+    "tier": "우대",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1 외부 이해관계자 역할극 + 회의록으로 커버"
+   },
+   {
+    "id": "C56",
+    "name": "엔드투엔드 프로덕션 시스템 구축 및 스케일링 팀 협업 경험",
+    "tier": "우대",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5에서 엔드투엔드 시스템 전체를 팀이 함께 구축·운영"
+   },
+   {
+    "id": "C57",
+    "name": "AWS 서비스 활용",
+    "tier": "우대",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6 AWS CDK + ECS + Secrets Manager 사용으로 커버"
+   },
+   {
+    "id": "C58",
+    "name": "분산 시스템 개념 이해",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1 아키텍처 설계 + W4 분산 시스템 패턴(circuit breaker, connection pool)으로 커버"
+   }
+  ],
+  "tier_counts": {
+   "core": {
+    "필수": {
+     "있음": 8,
+     "일부": 0,
+     "없음": 0,
+     "of": 8
+    },
+    "우대": {
+     "있음": 9,
+     "일부": 1,
+     "없음": 1,
+     "of": 11
+    },
+    "나머지": {
+     "있음": 39,
+     "일부": 0,
+     "없음": 0,
+     "of": 39
+    }
+   },
+   "with_extension": {
+    "필수": {
+     "있음": 8,
+     "일부": 0,
+     "없음": 0,
+     "of": 8
+    },
+    "우대": {
+     "있음": 9,
+     "일부": 1,
+     "없음": 1,
+     "of": 11
+    },
+    "나머지": {
+     "있음": 39,
+     "일부": 0,
+     "없음": 0,
+     "of": 39
+    }
+   },
+   "base_alone_by_judge": {
+    "필수": {
+     "있음": 5,
+     "일부": 1
+    },
+    "우대": {
+     "있음": 5,
+     "일부": 1
+    },
+    "나머지": {
+     "있음": 10,
+     "일부": 4
+    }
+   }
+  },
+  "decisions": [
+   {
+    "about": "BASE 선택: Genkit을 척추로 유지",
+    "chose": "genkit-ai/genkit을 프레임워크 척추로 유지하고 모든 패키지가 Genkit Flow를 중심으로 연결되도록 설계했다.",
+    "why": "C41·C42·C44·C45·C46 등 필수 역량이 BASE에서 있음으로 판정되어 있고, TypeScript/Go/Python 멀티 언어 지원으로 C52·C53·C54를 자연스럽게 커버한다.",
+    "rejected": "BASE를 FareedKhan 시스템으로 교체하는 방안. FareedKhan은 LangChain/LangGraph 기반으로 Genkit과 아키텍처가 달라 척추 교체 시 일관성이 깨진다.",
+    "evidence": [
+     {
+      "project": "genkit-ai/genkit",
+      "quote": "Open-source framework for building agentic apps in JavaScript, Go, Dart, and Python, built and used in production by Google"
+     }
+    ]
+   },
+   {
+    "about": "FareedKhan complement 활용 범위",
+    "chose": "보안·가드레일(W4), Eval 프레임워크(W5), 인시던트 트러블슈팅(W8)에서 FareedKhan의 7-layer 아키텍처 패턴을 구체적으로 차용했다.",
+    "why": "C29·C30·C43 등 Genkit BASE가 일부 또는 없음인 역량을 FareedKhan이 있음으로 커버하며, 두 프로젝트의 데이터 흐름이 동일한 에이전트 파이프라인 위에서 연결된다.",
+    "rejected": "FareedKhan 전체 프로젝트를 그대로 복제하는 방안. 프로젝트 목표가 Genkit 기반이므로 LangGraph 의존성 전체를 가져오면 불필요한 복잡성이 생긴다.",
+    "evidence": [
+     {
+      "project": "FareedKhan-dev/production-grade-agentic-system",
+      "quote": "Security & Safeguards Layer * Rate Limiting Feature * Sanitization Check Logic"
+     },
+     {
+      "project": "FareedKhan-dev/production-grade-agentic-system",
+      "quote": "Evaluation Framework * LLM-as-a-Judge * Automated Grading"
+     }
+    ]
+   },
+   {
+    "about": "Choerodon complement 활용 범위",
+    "chose": "C31(CI/CD) 패턴 참고와 C39(Agile) 프로세스 구조화에만 활용했다. Kubernetes/Istio 전체 스택은 차용하지 않았다.",
+    "why": "대학생 팀이 K8s 클러스터를 운영하기 어렵고, GitHub Actions + AWS CDK로 동일한 CI/CD 역량을 더 가볍게 실습할 수 있다.",
+    "rejected": "Choerodon의 Kubernetes 기반 배포 파이프라인 전체 도입. 하드웨어·운영 비용이 과도하고 프로젝트 목표와 직접 연결되지 않는다.",
+    "evidence": [
+     {
+      "project": "open-hand/choerodon",
+      "quote": "Pipelined multi-environment one-click deployment. Users can easily use the deployment function to manage various application services developed and deployed using Choerodon"
+     }
+    ]
+   },
+   {
+    "about": "cloudcomponents/cdk-constructs 활용 범위",
+    "chose": "W6에서 AWS CDK 인프라 코드화(C57)와 blue-green 배포 패턴 참고에만 활용했다.",
+    "why": "C57(AWS 서비스 활용)을 자연스럽게 커버하며, CDK constructs 패턴이 W6 재사용 패턴(C37)과도 연결된다.",
+    "rejected": "cdk-constructs의 모든 construct를 프로젝트에 설치하는 방안. 대부분의 construct(Contentful, Stripe webhook 등)가 프로젝트 도메인과 무관하다.",
+    "evidence": [
+     {
+      "project": "cloudcomponents/cdk-constructs",
+      "quote": "A collection of higher-level reusable cdk constructs"
+     }
+    ]
+   },
+   {
+    "about": "C39(Agile 환경 개발) 커버 방법",
+    "chose": "W1과 W10에서 실제 Agile 스프린트 6회를 운영하고 Choerodon의 Lean-Agile 패턴을 참고했다. BASE(Genkit)는 C39에 대해 없음이므로 complement와 added로 커버했다.",
+    "why": "스프린트 계획·회고 문서가 검증 가능한 산출물이다. must=yes 수행 역량이므로 실제 프로젝트 프로세스에 통합해야 한다.",
+    "rejected": "Agile을 별도 스터디 자료로만 다루는 방안. must=yes 수행 역량이므로 실제 프로젝트 프로세스에 통합해야 한다.",
+    "evidence": [
+     {
+      "project": "open-hand/choerodon",
+      "quote": "Combine Lean-Agile to manage business requirements and tasks to create an efficient collaborative ecosystem. Provides collaboration tools such as worklist, story map, and knowledge management."
+     }
+    ]
+   },
+   {
+    "about": "C40(기술 개념 커뮤니케이션) 커버 방법",
+    "chose": "W1에서 비기술 청중용 요약 슬라이드와 기술 청중용 설계 문서를 별도로 작성하는 added 작업으로 커버했다. BASE는 없음이고 모든 complement도 커버하지 않는다.",
+    "why": "아키텍처 설계 패키지에 자연스럽게 통합된다. 별도 패키지를 추가하면 볼트온이 된다.",
+    "rejected": "별도 발표 패키지를 추가하는 방안. 볼트온 패키지가 되므로 W1 내부 작업으로 흡수했다.",
+    "evidence": []
+   },
+   {
+    "about": "C17(데이터 통합) 커버 방법",
+    "chose": "W3 added 작업으로 외부 CSV 및 REST API를 에이전트 서브 도구로 연결하는 데이터 통합 레이어를 직접 구현했다.",
+    "why": "어떤 입력 프로젝트도 C17을 있음 또는 일부로 커버하지 않는다. W3의 멀티 에이전트 구조에서 외부 데이터 소스 연결은 자연스러운 확장이다.",
+    "rejected": "FareedKhan의 Long-Term Memory Integration을 C17 출처로 사용하는 방안. 해당 셀이 없음이므로 규칙상 불가하다.",
+    "evidence": []
+   },
+   {
+    "about": "C36(AI 도입 확대 기회 식별) 커버 방법",
+    "chose": "W6 added 작업으로 배포된 시스템을 기반으로 추가 AI 도입 시나리오를 식별하고 확장 로드맵 문서를 작성했다.",
+    "why": "어떤 입력 프로젝트도 C36을 커버하지 않는다. CI/CD 배포 완료 후 시스템 역량을 평가하고 확장 기회를 문서화하는 것은 W6의 자연스러운 마무리 단계다.",
+    "rejected": "cloudcomponents/cdk-constructs를 C36 출처로 사용하는 방안. 해당 셀이 없음이므로 규칙상 불가하다.",
+    "evidence": []
+   },
+   {
+    "about": "C48(고객 프로덕션 환경 작업) 커버 방법",
+    "chose": "W5에서 Genkit BASE(있음 판정)를 출처로 사용하여 스테이징+프로덕션 환경 배포 실습으로 커버했다.",
+    "why": "FareedKhan의 C48 셀이 없음이므로 해당 프로젝트를 출처로 사용할 수 없다. Genkit BASE의 C48 셀은 있음으로 판정되어 있다.",
+    "rejected": "FareedKhan을 C48 출처로 유지하는 방안. 해당 셀이 없음이므로 규칙 위반이다.",
+    "evidence": [
+     {
+      "project": "genkit-ai/genkit",
+      "quote": "Genkit is an open-source framework for building full-stack AI-powered applications, built and used in production by Google's Firebase"
+     }
+    ]
+   },
+   {
+    "about": "Go 언어(C54) 커버 수준",
+    "chose": "W3·W9에서 Genkit Go SDK를 선택 옵션으로 제공하여 일부 커버로 설정했다.",
+    "why": "S42는 Python, TypeScript, Go, React를 함께 나열하므로 하나를 완전히 커버하면 나머지는 일부로 충분하다. 팀이 TypeScript를 주 언어로 선택할 가능성이 높아 Go는 일부로 남겼다.",
+    "rejected": "Go로 전체 백엔드를 재작성하는 방안. TypeScript가 이미 Genkit의 주 언어이고 팀 생산성이 더 높다.",
+    "evidence": [
+     {
+      "project": "genkit-ai/genkit",
+      "quote": "Go: Production-ready with full feature support"
+     }
+    ]
+   },
+   {
+    "about": "W7(React UI) 패키지의 필요성",
+    "chose": "W7을 비핵심(core=false) 패키지로 유지했다. C51은 W6에서 핵심 패키지로 커버하고, W7은 스트리밍 UI와 Eval 데이터 수집으로 파이프라인에 기여한다.",
+    "why": "C51(React)은 우대 도구 역량이고, W6에서 Genkit 클라이언트 SDK React 통합을 핵심 패키지로 커버하여 있음 수준을 달성했다. W7은 추가 실습 기회를 제공한다.",
+    "rejected": "React UI를 완전히 제거하는 방안. C52 추가 실습 기회가 줄어들고 엔드투엔드 시스템 경험이 감소한다.",
+    "evidence": [
+     {
+      "project": "genkit-ai/genkit",
+      "quote": "Integrate seamlessly with frameworks and platforms including Next.js, React, Angular, iOS, Android, using purpose-built client SDKs and helpers"
+     }
+    ]
+   }
+  ],
+  "unverified": [
+   "W10(Agile 프로세스 운영)은 다른 패키지와 병행 진행되는 메타 패키지 성격이 있어 볼트온처럼 보일 수 있다. 그러나 스프린트 계획·회고 문서가 검증 가능한 산출물이고 C39·C50·C10을 커버하는 유일한 경로이므로 유지했다.",
+   "Genkit C16 셀의 인용('It provides SDKs for multiple programming languages with varying levels of stability')은 API 오케스트레이션 레이어를 직접 언급하지 않는다. SDK 다양성을 API 레이어로 해석한 것이므로 W3에서 FastAPI 게이트웨이를 직접 구현하는 added 작업으로 보완했다.",
+   "Genkit C22·C23 셀은 '일부'로 판정되어 있으나 인용('Track model performance, and request volumes, latency, and error rates')은 모니터링 대시보드 기능을 설명할 뿐 실제 최적화 구현을 보장하지 않는다. W4에서 Redis 캐싱과 모델 라우팅을 직접 구현하여 보완했다.",
+   "FareedKhan C03 셀은 '일부'로 판정되어 있으나 인용이 전체 워크스트림 소유보다는 아키텍처 레이어 구축에 초점을 맞추고 있다. W5 패키지에서 전체 워크스트림 소유를 보완했다.",
+   "벡터 DB(pgvector 또는 Chroma) 운영에 필요한 서버 자원을 팀이 확보할 수 있는지 확인이 필요하다. 로컬 Docker Compose로 대체 가능하지만 프로덕션 배포 시 AWS RDS(pgvector) 비용이 발생한다.",
+   "법률 문서 공개 데이터셋(예: EUR-Lex, 한국 법령 공개 API)의 실제 접근 가능 여부를 사전에 확인해야 한다. 데이터셋을 구하지 못할 경우 Wikipedia 또는 arXiv 논문으로 대체할 수 있다.",
+   "Genkit C29 셀 인용('Test prompts and flows against individual inputs or datasets, compare outputs from different models, debug with detailed execution traces')은 Eval 프레임워크의 일부 기능만 설명한다. 완전한 LLM-as-a-Judge 파이프라인은 FareedKhan 패턴으로 보완했으므로 C43은 있음으로 판정했다.",
+   "C12(고객 비즈니스 프로세스·기술 아키텍처·운영 제약 파악)와 C13(요구사항→기술 설계 변환)은 실제 고객사 없이 시뮬레이션으로만 실습된다. 가상 시나리오의 현실성이 평가자에 따라 다르게 판단될 수 있다.",
+   "W5 패키지의 시간이 48시간으로 증가하여 핵심 패키지 총합이 256시간이다. 예산 336시간의 약 76%를 핵심 패키지가 차지하며, 비핵심 패키지(W7·W8·W9·W10)가 88시간을 차지한다. 핵심 패키지 비율이 높지만 W5에 코드 리뷰·온보딩 작업을 통합한 결과이다."
+  ],
+  "checks": {
+   "passed": true,
+   "issues": [
+    {
+     "rule": "R4",
+     "level": "warn",
+     "detail": "W6: C37 는 입력 프로젝트가 있음으로 덮는데 added 에 있다. 그 칸을 의심했다면 doubts 에 있어야 한다"
+    },
+    {
+     "rule": "R0",
+     "level": "warn",
+     "detail": "필수 C39 를 바탕 판정이 있음으로 덮지 않는다 (없음). 보완이나 AI 가 더한 일로 채운다"
+    },
+    {
+     "rule": "R0",
+     "level": "warn",
+     "detail": "필수 C40 를 바탕 판정이 있음으로 덮지 않는다 (없음). 보완이나 AI 가 더한 일로 채운다"
+    },
+    {
+     "rule": "R0",
+     "level": "warn",
+     "detail": "필수 C43 를 바탕 판정이 있음으로 덮지 않는다 (일부). 보완이나 AI 가 더한 일로 채운다"
+    }
+   ],
+   "first_issues": [
+    {
+     "rule": "R1",
+     "level": "fix",
+     "detail": "W2: 구절 'AI-powered data retrieval (RAG)' 는 글에 있지만 4낱말이라 짧다. 글에서 앞뒤 낱말(목록이면 이웃 항목)까지 이어 5낱말 이상 그대로 베껴라"
+    },
+    {
+     "rule": "R1",
+     "level": "fix",
+     "detail": "W2: 구절 'Prompt templating' 는 글에 있지만 2낱말이라 짧다. 글에서 앞뒤 낱말(목록이면 이웃 항목)까지 이어 5낱말 이상 그대로 베껴라"
+    },
+    {
+     "rule": "R1",
+     "level": "fix",
+     "detail": "W3: 구절 'Multi-Agentic Architecture' 는 글에 있지만 2낱말이라 짧다. 글에서 앞뒤 낱말(목록이면 이웃 항목)까지 이어 5낱말 이상 그대로 베껴라"
+    },
+    {
+     "rule": "R3",
+     "level": "fix",
+     "detail": "W3: C17 를 'FareedKhan-dev/production-grade-agentic-system' 에서 빌렸다는데 그 칸은 없음이다. 그 출처의 for 에서 C17 를 빼라. 다른 입력 프로젝트의 칸이 덮으면 그 프로젝트를 출처로, 아무도 덮지 않으면 added 에 까닭과 함께 둬라"
+    },
+    {
+     "rule": "R1",
+     "level": "fix",
+     "detail": "W6: 구절 'Pipelined multi-environment one-click deployment.' 는 글에 있지만 4낱말이라 짧다. 글에서 앞뒤 낱말(목록이면 이웃 항목)까지 이어 5낱말 이상 그대로 베껴라"
+    },
+    {
+     "rule": "R3",
+     "level": "fix",
+     "detail": "W9: C48 를 'FareedKhan-dev/production-grade-agentic-system' 에서 빌렸다는데 그 칸은 없음이다. 그 출처의 for 에서 C48 를 빼라. 다른 입력 프로젝트의 칸이 덮으면 그 프로젝트를 출처로, 아무도 덮지 않으면 added 에 까닭과 함께 둬라"
+    },
+    {
+     "rule": "R3",
+     "level": "fix",
+     "detail": "W9: C36 를 'cloudcomponents/cdk-constructs' 에서 빌렸다는데 그 칸은 없음이다. 그 출처의 for 에서 C36 를 빼라. 다른 입력 프로젝트의 칸이 덮으면 그 프로젝트를 출처로, 아무도 덮지 않으면 added 에 까닭과 함께 둬라"
+    },
+    {
+     "rule": "R1",
+     "level": "fix",
+     "detail": "결정 Choerodon complement 활용 범위: 구절 'Pipelined multi-environment one-click deployment.' 는 글에 있지만 4낱말이라 짧다. 글에서 앞뒤 낱말(목록이면 이웃 항목)까지 이어 5낱말 이상 그대로 베껴라"
+    },
+    {
+     "rule": "R0",
+     "level": "warn",
+     "detail": "필수 C39 를 바탕 판정이 있음으로 덮지 않는다 (없음). 보완이나 AI 가 더한 일로 채운다"
+    },
+    {
+     "rule": "R0",
+     "level": "warn",
+     "detail": "필수 C40 를 바탕 판정이 있음으로 덮지 않는다 (없음). 보완이나 AI 가 더한 일로 채운다"
+    },
+    {
+     "rule": "R0",
+     "level": "warn",
+     "detail": "필수 C43 를 바탕 판정이 있음으로 덮지 않는다 (일부). 보완이나 AI 가 더한 일로 채운다"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C03 를 핵심 묶음이 덮지 않는다 (까닭: W9에서 전체 워크스트림 소유 및 패턴 라이브러리 딜리버리로 커버)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C05 를 핵심 묶음이 덮지 않는다 (까닭: W6 CI/CD + W9 패턴 라이브러리로 전체 라이프사이클 커버)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C08 를 핵심 묶음이 덮지 않는다 (까닭: W9 코드 리뷰 가이드라인 + 실제 PR 코칭 코멘트)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C09 를 핵심 묶음이 덮지 않는다 (까닭: W9 온보딩 가이드 + 역할 교체 세션)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C33 를 핵심 묶음이 덮지 않는다 (까닭: W9 온보딩 가이드 + 역할 교체 핸드오버 노트로 커버)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C34 를 핵심 묶음이 덮지 않는다 (까닭: W9 코드 리뷰 체크리스트 + 실제 PR 코칭으로 커버)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C35 를 핵심 묶음이 덮지 않는다 (까닭: W9 모든 PR 리뷰어 2인 필수 규칙 + 리뷰 로그로 커버)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C36 를 핵심 묶음이 덮지 않는다 (까닭: W9 패턴 라이브러리를 AI 도입 확대 가속기로 포지셔닝)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C37 를 핵심 묶음이 덮지 않는다 (까닭: W9 재사용 패턴 라이브러리(npm/PyPI 준비)로 커버)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C38 를 핵심 묶음이 덮지 않는다 (까닭: W8 RCA→개선 PR 연결로 커버)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C48 를 핵심 묶음이 덮지 않는다 (까닭: W6 스테이징+프로덕션 환경 배포 실습으로 커버)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 도구 C51 를 핵심 묶음이 덮지 않는다 (까닭: W7에서 React 챗 UI 구현. Next.js 등 고급 React 패턴은 미포함)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C56 를 핵심 묶음이 덮지 않는다 (까닭: W9 엔드투엔드 시스템 전체를 팀이 함께 구축·운영)"
+    },
+    {
+     "rule": "R10",
+     "level": "warn",
+     "detail": "고를 거리로 묶은 도구 ['C51', 'C52', 'C53', 'C54']: 하나는 핵심에서 있음, 나머지는 일부 이상이 목표다 (지금 ['없음', '있음', '있음', '일부'])"
+    }
+   ],
+   "rewrote": 1,
+   "must_cover": "55/56",
+   "knowledge_touched": "2/2",
+   "tools": {
+    "C43": "있음",
+    "C44": "있음",
+    "C51": "없음",
+    "C52": "있음",
+    "C53": "있음",
+    "C54": "일부",
+    "C57": "있음"
+   },
+   "krw": 790.3,
+   "dropped_tool_claims": [
+    [
+     "W2",
+     "C53"
+    ],
+    [
+     "W6",
+     "C51"
+    ],
+    [
+     "W9",
+     "C53"
+    ],
+    [
+     "W9",
+     "C54"
+    ]
+   ]
+  }
+ },
+ "cost": {
+  "trial_krw": 0.0,
+  "projected_krw": 0.0,
+  "judged": 100,
+  "spent_krw": 3562.1,
+  "adapt_krw": 790.3
+ },
+ "seconds": 391.8
+}

@@ -1,0 +1,199 @@
+{
+ "case": "aws_fde",
+ "rules": {
+  "must": 1000,
+  "other": 1,
+  "core": [
+   1,
+   2
+  ],
+  "support": [
+   3,
+   4
+  ],
+  "types": [
+   "도구",
+   "지식"
+  ],
+  "bank_rows": 14385,
+  "wide": 1000,
+  "shortlist": 50
+ },
+ "candidates": 50,
+ "cost_krw": 0.0,
+ "targets": [
+  {
+   "cid": "C21",
+   "name": "파운데이션 모델 개념 및 활용 이해",
+   "type": "지식",
+   "priority": "나머지",
+   "level": "일부"
+  },
+  {
+   "cid": "C43",
+   "name": "Eval 프레임워크 활용",
+   "type": "도구",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C44",
+   "name": "에이전트 툴링 활용",
+   "type": "도구",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C51",
+   "name": "React",
+   "type": "도구",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C52",
+   "name": "TypeScript",
+   "type": "도구",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C53",
+   "name": "Python",
+   "type": "도구",
+   "priority": "우대",
+   "level": "일부"
+  },
+  {
+   "cid": "C54",
+   "name": "Go",
+   "type": "도구",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C57",
+   "name": "AWS 서비스 활용",
+   "type": "도구",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C58",
+   "name": "분산 시스템 개념 이해",
+   "type": "지식",
+   "priority": "나머지",
+   "level": "일부"
+  }
+ ],
+ "picks": [
+  {
+   "role": "핵심",
+   "title": "Evaluate your ADK agent using Vertex AI Gen AI Evaluation service",
+   "type": "실습 노트북",
+   "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
+   "covers": [
+    {
+     "cid": "C21",
+     "level": "일부",
+     "quote": "Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents."
+    },
+    {
+     "cid": "C43",
+     "level": "있음",
+     "quote": "using Vertex AI Gen AI Evaluation provides a toolkit of quality controlled and explainable methods and metrics to evaluate any generat"
+    },
+    {
+     "cid": "C44",
+     "level": "일부",
+     "quote": "Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents."
+    }
+   ]
+  },
+  {
+   "role": "핵심",
+   "title": "Production Architecture",
+   "type": "공식 문서 튜토리얼",
+   "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
+   "covers": [
+    {
+     "cid": "C21",
+     "level": "일부",
+     "quote": "Best practices for building production-ready AI applications with CrewAI"
+    },
+    {
+     "cid": "C44",
+     "level": "있음",
+     "quote": "Fast and Flexible Multi-Agent Automation Framework · concepts · Best practices for building production-ready AI applications with CrewAI"
+    }
+   ]
+  },
+  {
+   "role": "보조",
+   "title": "Recommended Technologies",
+   "type": "글",
+   "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/UI-UX/recommended-technologies.md",
+   "covers": [
+    {
+     "cid": "C51",
+     "level": "있음",
+     "quote": "React - Quick note on create-react-app - Documentation & Using older React coding patterns - Best Practices to Organize"
+    },
+    {
+     "cid": "C52",
+     "level": "있음",
+     "quote": "TypeScript - Guidance on types and interfaces"
+    }
+   ]
+  },
+  {
+   "role": "보조",
+   "title": "Module: Build a Multi-Region Serverless Application for Resilience and High Availability",
+   "type": "워크숍 랩",
+   "url": "https://github.com/aws-samples/aws-serverless-workshops/tree/master/MultiRegion",
+   "covers": [
+    {
+     "cid": "C57",
+     "level": "있음",
+     "quote": "you will use Amazon API Gateway, AWS Lambda, Amazon DynamoDB and a variety of other AWS services"
+    },
+    {
+     "cid": "C58",
+     "level": "일부",
+     "quote": "build a Multi-Region Serverless Application for Resilience and High Availability"
+    }
+   ]
+  },
+  {
+   "role": "보조",
+   "title": "Learn Go with Tests",
+   "type": "글",
+   "url": "https://quii.gitbook.io/learn-go-with-tests",
+   "covers": [
+    {
+     "cid": "C54",
+     "level": "있음",
+     "quote": "Learn Go with Tests"
+    }
+   ]
+  },
+  {
+   "role": "보조",
+   "title": "Evaluate and Optimize Prompt Template Design for Better Results",
+   "type": "실습 노트북",
+   "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaltask_approach/prompt_engineering_gen_ai_evaluation_service_sdk.ipynb",
+   "covers": [
+    {
+     "cid": "C43",
+     "level": "있음",
+     "quote": "use the Vertex AI Python SDK for Gen AI Evaluation Service for Prompt Engineering and Prompt Evaluation"
+    },
+    {
+     "cid": "C53",
+     "level": "일부",
+     "quote": "use the Vertex AI Python SDK for Gen AI Evaluation Service"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "questions": 5,
+ "bank": 5,
+ "companies": [
+  "Anthropic",
+  "OpenAI",
+  "xAI",
+  "Cohere"
+ ],
+ "uncovered": [
+  "React",
+  "Go"
+ ],
+ "slides": 7
+}

@@ -1,0 +1,216 @@
+{
+ "case": "naver_ml_intern",
+ "rules": {
+  "must": 1000,
+  "other": 1,
+  "core": [
+   1,
+   2
+  ],
+  "support": [
+   3,
+   4
+  ],
+  "types": [
+   "도구",
+   "지식"
+  ],
+  "bank_rows": 14385,
+  "wide": 1000,
+  "shortlist": 50
+ },
+ "candidates": 50,
+ "cost_krw": 555.6,
+ "targets": [
+  {
+   "cid": "C01",
+   "name": "이미지·비디오 생성 모델 동작 원리 이해",
+   "type": "지식",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C02",
+   "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
+   "type": "지식",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C04",
+   "name": "대규모 데이터 처리 시 연산 병목 이해",
+   "type": "지식",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C05",
+   "name": "대규모 데이터 처리 시 I/O 병목 이해",
+   "type": "지식",
+   "priority": "필수",
+   "level": "일부"
+  },
+  {
+   "cid": "C06",
+   "name": "Diffusion 기반 학습 방법론 이해",
+   "type": "지식",
+   "priority": "나머지",
+   "level": "일부"
+  },
+  {
+   "cid": "C19",
+   "name": "Isaac Sim",
+   "type": "도구",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C20",
+   "name": "Omniverse",
+   "type": "도구",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C21",
+   "name": "Blender",
+   "type": "도구",
+   "priority": "우대",
+   "level": "일부"
+  },
+  {
+   "cid": "C22",
+   "name": "Unreal Engine",
+   "type": "도구",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C23",
+   "name": "Hugging Face를 통한 모델·결과물 공개",
+   "type": "도구",
+   "priority": "나머지",
+   "level": "있음"
+  }
+ ],
+ "picks": [
+  {
+   "role": "핵심",
+   "title": "[ECCV 2026] Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+   "type": "학회 튜토리얼",
+   "url": "https://eccv.ecva.net/virtual/2026/3131",
+   "covers": [
+    {
+     "cid": "C01",
+     "level": "있음",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
+    },
+    {
+     "cid": "C02",
+     "level": "있음",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
+    },
+    {
+     "cid": "C04",
+     "level": "일부",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
+    },
+    {
+     "cid": "C05",
+     "level": "일부",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
+    },
+    {
+     "cid": "C06",
+     "level": "일부",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
+    }
+   ]
+  },
+  {
+   "role": "핵심",
+   "title": "Profiling Machine Learning and MLOps Code",
+   "type": "글",
+   "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/ml-and-ai-projects/profiling-ml-and-mlops-code.md",
+   "covers": [
+    {
+     "cid": "C02",
+     "level": "일부",
+     "quote": "Data Science projects, especially the ones that involve Deep Learning techniques, usually are resource intensive. One model training iteration might be multiple hours long."
+    },
+    {
+     "cid": "C04",
+     "level": "있음",
+     "quote": "minor bugs and suboptimal implementation of some functional pieces"
+    },
+    {
+     "cid": "C05",
+     "level": "일부",
+     "quote": "large data volumes processing genuinely takes time, minor bugs and suboptimal implementation of some functional pieces"
+    }
+   ]
+  },
+  {
+   "role": "보조",
+   "title": "isaac-sim/IsaacSim",
+   "type": "저장소",
+   "url": "https://github.com/isaac-sim/IsaacSim",
+   "covers": [
+    {
+     "cid": "C19",
+     "level": "있음",
+     "quote": "NVIDIA Isaac Sim is a simulation platform built on NVIDIA Omniverse, designed to develop, test, train, and deploy AI-powered robots in realistic virtual environments."
+    },
+    {
+     "cid": "C20",
+     "level": "있음",
+     "quote": "NVIDIA Isaac Sim is a simulation platform built on NVIDIA Omniverse, designed to develop, test, train, and deploy AI-powered robots in realistic virtual environments."
+    }
+   ]
+  },
+  {
+   "role": "보조",
+   "title": "An Introduction to Unreal Learning Agents",
+   "type": "강의 레슨",
+   "url": "https://github.com/huggingface/deep-rl-class/blob/main/units/en/unitbonus3/learning-agents.mdx",
+   "covers": [
+    {
+     "cid": "C02",
+     "level": "일부",
+     "quote": "train AI characters using machine learning (ML) in Unreal"
+    },
+    {
+     "cid": "C22",
+     "level": "있음",
+     "quote": "Learning Agents is an Unreal Engine (UE) plugin that allows you to train AI characters using machine learning (ML) in Unreal"
+    }
+   ]
+  },
+  {
+   "role": "보조",
+   "title": "Sharing",
+   "type": "공식 문서 튜토리얼",
+   "url": "https://github.com/huggingface/transformers/blob/main/docs/source/en/model_sharing.md",
+   "covers": [
+    {
+     "cid": "C23",
+     "level": "있음",
+     "quote": "The Hugging Face Hub is a platform for sharing, discovering, and consuming models of all different types and sizes."
+    }
+   ]
+  },
+  {
+   "role": "보조",
+   "title": "Using a 3D Renderer to Generate Synthetic Data",
+   "type": "강의 레슨",
+   "url": "https://github.com/huggingface/computer-vision-course/blob/main/chapters/en/unit10/blenderProc.mdx",
+   "covers": [
+    {
+     "cid": "C21",
+     "level": "일부",
+     "quote": "Physically Based Renderers (PBR) such as Blender Cycles or Unity help to create images that are super realistic"
+    }
+   ]
+  }
+ ]
+}

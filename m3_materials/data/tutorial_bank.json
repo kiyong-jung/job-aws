@@ -1,0 +1,3264 @@
+{
+ "collected_at": "2026-11-08T13:52:35+00:00",
+ "note": "Tutorial lists scraped from official conference sites only (2024-2026). url = official tutorial listing/detail page (with anchor when the page has one); site = the tutorial's own website/slides link when the official page gives one; summary = first ~300 chars of the official abstract (conference page, or the ACL Anthology tutorial-abstracts volume for *ACL venues when the page has none). Presenter names omitted. NAACL did not run in 2026; EACL 2026 is used as that year's *ACL chapter venue. Skipped: AAAI (aaai.org robots.txt Crawl-delay 43200s), ICLR (no tutorial track 2024-2026), ICCV 2024 / ECCV 2025 (not held; biennial).",
+ "tutorials": [
+  {
+   "id": "TU0001",
+   "conference": "EMNLP",
+   "year": 2026,
+   "title": "Failure Modes in Agentic AI: From Reproducible Triggers and Diagnostics to Reliable Fixes",
+   "url": "https://2026.emnlp.org/program/tutorials/#failure-modes-in-agentic-ai-from-reproducible-triggers-and-diagnostics-to-reliable-fixes",
+   "site": null,
+   "summary": "Foundation-model agents are being deployed faster than the community can characterize how they fail. In barely two years they have moved into browsing, software engineering, computer use, scientific discovery, and embodied control, where reliability is governed by long-horizon, closed-loop..."
+  },
+  {
+   "id": "TU0002",
+   "conference": "EMNLP",
+   "year": 2026,
+   "title": "Language Models as Windows into Human Language Processing: Neural Encoding, Decoding, and Brain Alignment with NLP",
+   "url": "https://2026.emnlp.org/program/tutorials/#language-models-as-windows-into-human-language-processing-neural-encoding-decoding-and-brain-alignment-with-nlp",
+   "site": null,
+   "summary": "Modern language models are not only tools for processing text; they are also becoming computational instruments for studying how humans understand, predict, and generate language. This tutorial introduces neural encoding and neural decoding to the NLP community through this broader perspective: how..."
+  },
+  {
+   "id": "TU0003",
+   "conference": "EMNLP",
+   "year": 2026,
+   "title": "Tokenization for Large Language Models",
+   "url": "https://2026.emnlp.org/program/tutorials/#tokenization-for-large-language-models",
+   "site": null,
+   "summary": "Tokenization defines how data is represented as input and output for machine learning systems, including large language models (LLMs). While tokenization has long been a foundational component of NLP systems, it has historically remained a niche research area, often considered solved. The recent..."
+  },
+  {
+   "id": "TU0004",
+   "conference": "EMNLP",
+   "year": 2026,
+   "title": "Autoformalization & Mathematical Reasoning",
+   "url": "https://2026.emnlp.org/program/tutorials/#autoformalization--mathematical-reasoning",
+   "site": null,
+   "summary": "Recent advances in large language models, formal reasoning, theorem proving, and agentic AI are rapidly changing what can be augmented and automated in mathematics. Yet mathematical reasoning is considerably richer than producing correct final answers: it involves understanding mathematical..."
+  },
+  {
+   "id": "TU0005",
+   "conference": "EMNLP",
+   "year": 2026,
+   "title": "Causal Foundations for Interpretability: What Your Methods Actually Identify",
+   "url": "https://2026.emnlp.org/program/tutorials/#causal-foundations-for-interpretability-what-your-methods-actually-identify",
+   "site": null,
+   "summary": "Interpretability findings on large language models often fail to generalise, and causal claims can outrun the evidence. A recurring source, we suggest, is a borrowed vocabulary: interpretability inherited the words of causality — \"mechanisms\", \"circuits\", \"features\" — without always inheriting the..."
+  },
+  {
+   "id": "TU0006",
+   "conference": "EMNLP",
+   "year": 2026,
+   "title": "Multilingual Multicultural LLMs",
+   "url": "https://2026.emnlp.org/program/tutorials/#multilingual-multicultural-llms",
+   "site": null,
+   "summary": "While large language models (LLMs) have substantially expanded support for non-English languages, their ability to generalize across typologically diverse languages and produce contextually appropriate, culturally grounded responses remains a significant challenge. This tutorial examines the..."
+  },
+  {
+   "id": "TU0007",
+   "conference": "EMNLP",
+   "year": 2025,
+   "title": "Efficient Inference for Large Language Models – Algorithm, Model, and System",
+   "url": "https://2025.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "The inference of LLMs incurs high computational costs, memory access overhead, and memory usage, leading to inefficiencies in terms of latency, throughput, power consumption, and storage. To this end, this tutorial focuses on the increasingly important topic of Efficient Inference for LLMs and aims..."
+  },
+  {
+   "id": "TU0008",
+   "conference": "EMNLP",
+   "year": 2025,
+   "title": "Advancing Language Models through Instruction Tuning: Recent Progress and Challenges",
+   "url": "https://2025.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "The capability of following instructions is a key dimension for AI systems. Therefore, in NLP, instruction tuning – the process of training language models to follow natural language instructions – has become a fundamental component of the model development pipeline. This tutorial addresses three..."
+  },
+  {
+   "id": "TU0009",
+   "conference": "EMNLP",
+   "year": 2025,
+   "title": "Spoken Conversational Agents with Large Language Models",
+   "url": "https://2025.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "Spoken conversational agents are converging toward voice-native LLMs. This tutorial distills the path from cascaded ASR/NLU to end-to-end, retrieval-and vision-grounded systems. We frame adaptation of text LLMs to audio, cross-modal alignment, and joint speech–text training; review datasets,..."
+  },
+  {
+   "id": "TU0010",
+   "conference": "EMNLP",
+   "year": 2025,
+   "title": "NLP+Code: Code Intelligence in Language Models",
+   "url": "https://2025.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "Language models (LMs) like GPT and Claude have shown impressive abilities in a range of natural language processing (NLP) tasks. Among these tasks, code understanding and generation have quickly become one of the most popular applications of LMs, given its nature of executable logic forms. However,..."
+  },
+  {
+   "id": "TU0011",
+   "conference": "EMNLP",
+   "year": 2025,
+   "title": "Data and Model Centric Approaches for Expansion of Large Language Models to New languages",
+   "url": "https://2025.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "Despite the increasing pace of Large Language Model (LLM) research, a vast majority of existing LLMs mainly support English alongside a handful of high resource languages, leaving a major gap for most low-resource languages. In this tutorial, we focus on approaches to expand the language coverage..."
+  },
+  {
+   "id": "TU0012",
+   "conference": "EMNLP",
+   "year": 2025,
+   "title": "Neuro-Symbolic Natural Language Processing",
+   "url": "https://2025.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "Despite the performance leaps delivered by Large Language Models (LLMs), NLP systems based only on deep learning architectures still have limiting capabilities in terms of delivering safe and controlled reasoning, interpretability, and adaptability within complex and specialised domains,..."
+  },
+  {
+   "id": "TU0013",
+   "conference": "EMNLP",
+   "year": 2025,
+   "title": "Continual Learning of Large Language Models",
+   "url": "https://2025.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "As large language models (LLMs) continue to expand in size and utility, keeping them current with evolving knowledge and shifting user preferences becomes an increasingly urgent yet challenging task. This tutorial offers a comprehensive exploration of continual learning (CL) in the context of LLMs,..."
+  },
+  {
+   "id": "TU0014",
+   "conference": "EMNLP",
+   "year": 2024,
+   "title": "Reasoning with Natural Language Explanations",
+   "url": "https://2024.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "Explanation constitutes an archetypal feature of human rationality, underpinning learning and generalisation, and representing one of the media supporting scientific discovery and communication. Due to the importance of explanations in human reasoning, an increasing amount of research in Natural..."
+  },
+  {
+   "id": "TU0015",
+   "conference": "EMNLP",
+   "year": 2024,
+   "title": "Countering Hateful and Offensive Speech Online - Open Challenges",
+   "url": "https://2024.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "In today’s digital age, hate speech and offensive speech online pose a significant challenge to maintaining respectful and inclusive online environments. This tutorial aims to provide attendees with a comprehensive understanding of the field by delving into essential dimensions such as..."
+  },
+  {
+   "id": "TU0016",
+   "conference": "EMNLP",
+   "year": 2024,
+   "title": "Human-Centered Evaluation of Language Technologies",
+   "url": "https://2024.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "Evaluation is a cornerstone topic in NLP. However, many criticisms have been raised about the community’s evaluation practices, including a lack of human-centered considerations about people’s needs for language technologies and their actual impact on people. This “evaluation crisis” is exacerbated..."
+  },
+  {
+   "id": "TU0017",
+   "conference": "EMNLP",
+   "year": 2024,
+   "title": "AI for Science in the Era of Large Language Models",
+   "url": "https://2024.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "The capabilities of AI in the realm of science span a wide spectrum, from the atomic level, where it solves partial differential equations for quantum systems, to the molecular level, predicting chemical or protein structures, and even extending to societal predictions like infectious disease..."
+  },
+  {
+   "id": "TU0018",
+   "conference": "EMNLP",
+   "year": 2024,
+   "title": "Language Agents: Foundations, Prospects, and Risks",
+   "url": "https://2024.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "Language agents are autonomous agents, usually powered by large language models, that can follow language instructions to carry out diverse and complex tasks in real-world or simulated environments. It is one of the most heated discussion threads in AI and NLP at present with many proof-of-concept..."
+  },
+  {
+   "id": "TU0019",
+   "conference": "EMNLP",
+   "year": 2024,
+   "title": "Enhancing LLM Capabilities Beyond Scaling Up",
+   "url": "https://2024.emnlp.org/program/tutorials/",
+   "site": null,
+   "summary": "General-purpose large language models (LLMs) are progressively expanding both in scale and access to unpublic training data. This has led to notable progress in a variety of AI problems. Nevertheless, two questions exist: i) Is scaling up the sole avenue of extending the capabilities of LLMs? ii)..."
+  },
+  {
+   "id": "TU0020",
+   "conference": "ACL",
+   "year": 2024,
+   "title": "Computational Linguistics for Brain Encoding and Decoding: Principles, Practices and Beyond",
+   "url": "https://2024.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "Computational linguistics (CL) has witnessed tremendous advancements in recent years, with models such as large language models demonstrating exceptional performance in various natural language processing tasks. These advancements highlight their potential to help understand brain language..."
+  },
+  {
+   "id": "TU0021",
+   "conference": "ACL",
+   "year": 2024,
+   "title": "Automatic and Human-AI Interactive Text Generation (with a focus on Text Simplification and Revision)",
+   "url": "https://2024.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "In this tutorial, we focus on text-to-text generation, a class of natural language generation (NLG) tasks, that takes a piece of text as input and then generates a revision that is improved according to some specific criteria (e.g., readability or linguistic styles), while largely retaining the..."
+  },
+  {
+   "id": "TU0022",
+   "conference": "ACL",
+   "year": 2024,
+   "title": "Computational Expressivity of Neural Language Models",
+   "url": "https://2024.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "Language models (LMs) are currently at the forefront of NLP research due to their remarkable versatility across diverse tasks. However, a large gap exists between their observed capabilities and the explanations proposed by established formal machinery. To motivate a better theoretical..."
+  },
+  {
+   "id": "TU0023",
+   "conference": "ACL",
+   "year": 2024,
+   "title": "Presentation Matters: How to Communicate Science in the NLP Venues and in the Wild?",
+   "url": "https://2024.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "Each year a large number of early career researchers join the NLP/Computational Linguistics community, with most starting by presenting their research in the *ACL conferences and workshops. While writing a paper that has made it to these venues is one important step, what comes with communicating..."
+  },
+  {
+   "id": "TU0024",
+   "conference": "ACL",
+   "year": 2024,
+   "title": "Vulnerabilities of Large Language Models to Adversarial Attacks",
+   "url": "https://2024.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "This tutorial serves as a comprehensive guide on the vulnerabilities of Large Language Models (LLMs) to adversarial attacks, an interdisciplinary field that blends perspectives from Natural Language Processing (NLP) and Cybersecurity. As LLMs become more complex and integrated into various systems,..."
+  },
+  {
+   "id": "TU0025",
+   "conference": "ACL",
+   "year": 2024,
+   "title": "Watermarking for Large Language Model",
+   "url": "https://2024.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "As AI-generated text increasingly resembles human-written content, the ability to detect machine-generated text becomes crucial in both the computational linguistics and machine learning communities. In this tutorial, we aim to provide an in-depth exploration of text watermarking, a subfield of..."
+  },
+  {
+   "id": "TU0026",
+   "conference": "ACL",
+   "year": 2025,
+   "title": "Navigating Ethical Challenges in NLP: Hands-on strategies for students and researchers",
+   "url": "https://2025.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "With NLP research being rapidly productionized into real-world applications, it is important to be aware of and think through the consequences of our research. Such ethical considerations are important in both authoring and reviewing (e.g. privacy, consent, fairness, etc). This tutorial will equip..."
+  },
+  {
+   "id": "TU0027",
+   "conference": "ACL",
+   "year": 2025,
+   "title": "Inverse Reinforcement Learning Meets Large Language Model Alignment",
+   "url": "https://2025.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "Large Language Models (LLMs) are characterized as universal samplers or generators in the literature, yet maximizing their capabilities in different roles with post-training is a complex challenge. Previous efforts in the NLP community have extensively explored the diverse applications of LLMs..."
+  },
+  {
+   "id": "TU0028",
+   "conference": "ACL",
+   "year": 2025,
+   "title": "Eyetracking and NLP",
+   "url": "https://2025.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "We propose a cutting-edge in CL/NLP tutorial on the growing research area that combines eyetracking during reading with NLP. The tutorial will outline how eye movements in reading can be leveraged for NLP, and, vice versa, how NLP methods can advance psycholinguistic modeling of eye movements in..."
+  },
+  {
+   "id": "TU0029",
+   "conference": "ACL",
+   "year": 2025,
+   "title": "Guardrails and Security for LLMs: Safe, Secure, and Controllable Steering of LLM Applications",
+   "url": "https://2025.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "Pretrained generative models, especially large language models, provide novel ways for users to interact with computers. While generative NLP research and applications had previously aimed at very domain-specific or task-specific solutions, current LLMs and applications (e.g. dialogue systems,..."
+  },
+  {
+   "id": "TU0030",
+   "conference": "ACL",
+   "year": 2025,
+   "title": "NLP for Counterspeech against Hate and Misinformation",
+   "url": "https://2025.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "This tutorial aims to bring together research from different fields such as computer science and the social sciences and policy to show how counterspeech is currently used to tackle abuse and misinformation by individuals, activists and organisations, how Natural Language Processing (NLP) and..."
+  },
+  {
+   "id": "TU0031",
+   "conference": "ACL",
+   "year": 2025,
+   "title": "Human-AI Collaboration: How AIs Augment Human Teammates",
+   "url": "https://2025.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "The continuous, rapid development of general- purpose models like LLMs suggests the theoretical possibility of AI performing any human task. Yet, despite the potential and promise, these models are far from perfect, excelling at certain tasks while struggling with others. The tension between what..."
+  },
+  {
+   "id": "TU0032",
+   "conference": "ACL",
+   "year": 2025,
+   "title": "Synthetic Data in the Era of Large Language Models",
+   "url": "https://2025.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "Progress in natural language processing has historically been driven by better data, and researchers today are increasingly using “synthetic data” - data generated with the assistance of large language models - to make dataset construction faster and cheaper. However, most synthetic data generation..."
+  },
+  {
+   "id": "TU0033",
+   "conference": "ACL",
+   "year": 2025,
+   "title": "Uncertainty Quantification for Large Language Models",
+   "url": "https://2025.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "Uncertainty quantification (UQ) has gained increasing importance in natural language processing (NLP), providing a framework to address critical issues such as hallucinations in answers of large language models (LLMs), detection of low-quality responses, out-of-distribution detection, and reducing..."
+  },
+  {
+   "id": "TU0034",
+   "conference": "ACL",
+   "year": 2026,
+   "title": "Towards Effective and Efficient Multi-Agent Language Model Systems: Foundations, Prospects, and Applications",
+   "url": "https://2026.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "Multi-agent systems powered by large language models (LLMs) offer a promising paradigm for tackling complex reasoning, decision-making, and problem-solving tasks. However, achieving both effectiveness and efficiency in such systems remains a critical challenge. This tutorial introduces recent..."
+  },
+  {
+   "id": "TU0035",
+   "conference": "ACL",
+   "year": 2026,
+   "title": "Future of Work in the Age of LLMs",
+   "url": "https://2026.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "The recent development of large language models (LLMs) has revolutionized the landscape of human work. These models possess the ability to follow complex human instructions and operate versatile computer software, enabling them to participate in, augment, or even automate realistic occupational..."
+  },
+  {
+   "id": "TU0036",
+   "conference": "ACL",
+   "year": 2026,
+   "title": "The Data Frontier for Large Language Models: Selection, Synthesis, and Tools",
+   "url": "https://2026.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "As the development of Large Language Models (LLMs) matures, the focus of the research community is undergoing a critical shift from a purely model-centric to a data-centric paradigm. It is now evident that the quality, diversity, and composition of training data—not merely its scale—are the primary..."
+  },
+  {
+   "id": "TU0037",
+   "conference": "ACL",
+   "year": 2026,
+   "title": "The Interplay between Metaphors and NLP",
+   "url": "https://2026.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "This tutorial will provide an overview of the field of metaphor processing in NLP. We will discuss the influence of various metaphor theories on the creation of annotated resources and on the research projects and algorithm designs. We will particularly focus on recent research made possible by the..."
+  },
+  {
+   "id": "TU0038",
+   "conference": "ACL",
+   "year": 2026,
+   "title": "Knowledge Control for Responsible Generative AI: Bridging Academia,Industry, and Society",
+   "url": "https://2026.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "This tutorial explores post-training knowledge control as a practical and responsible framework for shaping the behavior of large generative models. It brings together perspectives from academia, industry, and society to address the growing need for scalable, interpretable, and ethically grounded..."
+  },
+  {
+   "id": "TU0039",
+   "conference": "ACL",
+   "year": 2026,
+   "title": "Current Advances in LLM Reasoning",
+   "url": "https://2026.aclweb.org/program/tutorials/",
+   "site": null,
+   "summary": "As Large language models (LLMs) increasingly tackle reasoning-heavy tasks, from mathematics to commonsense to multilingual understanding, researchers face three pressing questions: How well do models reason? How can we make them reason better? What are the next frontiers in LLM reasoning? This..."
+  },
+  {
+   "id": "TU0040",
+   "conference": "NAACL",
+   "year": 2024,
+   "title": "Catch Me If You GPT: Tutorial on Deepfake Texts",
+   "url": "https://2024.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "In recent years, Natural Language Generation (NLG) techniques have greatly advanced, especially in the realm of Large Language Models (LLMs). With respect to the quality of generated texts, it is no longer trivial to tell the difference between human-written and LLMgenerated texts (i.e., deepfake..."
+  },
+  {
+   "id": "TU0041",
+   "conference": "NAACL",
+   "year": 2024,
+   "title": "Combating Security and Privacy Issues in the Era of Large Language Models",
+   "url": "https://2024.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "This tutorial seeks to provide a systematic summary of risks and vulnerabilities in security, privacy and copyright aspects of large language models (LLMs), and most recent solutions to address those issues. We will discuss a broad thread of studies that try to answer the following questions: (i)..."
+  },
+  {
+   "id": "TU0042",
+   "conference": "NAACL",
+   "year": 2024,
+   "title": "Explanation in the Era of Large Language Models",
+   "url": "https://2024.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "Explanation has long been a part of communications, where humans use language to elucidate each other and transmit information about the mechanisms of events. There have been numerous works that study the structures of the explanations and their utility to humans. At the same time, explanation..."
+  },
+  {
+   "id": "TU0043",
+   "conference": "NAACL",
+   "year": 2024,
+   "title": "From Text to Context: Contextualizing Language with Humans, Groups, and Communities for Socially Aware NLP",
+   "url": "https://2024.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "Aimed at the NLP researchers or practitioners who would like to integrate human - individual, group, or societal level factors into their analyses, this tutorial will cover recent techniques and libraries for doing so at each level of analysis. Starting with human-centered techniques that provide..."
+  },
+  {
+   "id": "TU0044",
+   "conference": "NAACL",
+   "year": 2024,
+   "title": "Human-AI Interaction in the Age of LLMs",
+   "url": "https://2024.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "Recently, the development of Large Language Models (LLMs) has revolutionized the capabilities of AI systems. These models possess the ability to comprehend and generate human-like text, enabling them to engage in sophisticated conversations, generate content, and even perform tasks that once seemed..."
+  },
+  {
+   "id": "TU0045",
+   "conference": "NAACL",
+   "year": 2024,
+   "title": "Spatial and Temporal Language Understanding: Representation, Reasoning, and Grounding",
+   "url": "https://2024.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "This tutorial provides an overview of the cutting edge research on spatial and temporal language understanding. We also cover some essential background material from various subdisciplines to this topic, which we believe will enrich the CL community’s appreciation of the complexity of..."
+  },
+  {
+   "id": "TU0046",
+   "conference": "NAACL",
+   "year": 2025,
+   "title": "Creative Planning with Language Models: Practice, Evaluation and Applications",
+   "url": "https://2025.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "The use of large language models (LLMs) in human-centered creative tasks — such as journalism, scientific writing, and storytelling — has showcased their potential for content generation but highlighted a critical gap: planning. Planning, used here to describe the “actions” humans perform before..."
+  },
+  {
+   "id": "TU0047",
+   "conference": "NAACL",
+   "year": 2025,
+   "title": "DAMAGeR: Deploying Automatic and Manual Approaches to GenAI Red-teaming",
+   "url": "https://2025.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "In this tutorial, we will review and apply current automatic and manual red-teaming techniques for GenAI models(including LLMs and multimodal models). In doing so, we aim to emphasize the importance of using a mixture of techniques and establishing a balance between automatic and manual approaches...."
+  },
+  {
+   "id": "TU0048",
+   "conference": "NAACL",
+   "year": 2025,
+   "title": "Foundation Models Meet Embodied Agents",
+   "url": "https://2025.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "This tutorial will present a systematic overview of recent advances in foundation models for embodied agents, covering three types of foundation models based on input and output: Large Language Models (LLMs), Vision-Language Models (VLMs), Vision-Language-Action Models (VLAs)"
+  },
+  {
+   "id": "TU0049",
+   "conference": "NAACL",
+   "year": 2025,
+   "title": "Knowledge Distillation for Language Models",
+   "url": "https://2025.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "Knowledge distillation (KD) aims to transfer the knowledge of a teacher (usually a large model) to a student (usually a small one). In this tutorial, our goal is to provide participants with a comprehensive understanding of the techniques and applications of KD for language models. After..."
+  },
+  {
+   "id": "TU0050",
+   "conference": "NAACL",
+   "year": 2025,
+   "title": "Adaptation of Large Language Models",
+   "url": "https://2025.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "This tutorial on adaptation of Large Language Models (LLMs) is designed to address the growing demand for models that go beyond the static capabilities of generic LLMs by providing an overview of dynamic, domain-specific, and task-adaptive LLM adaptation techniques. While general LLMs have..."
+  },
+  {
+   "id": "TU0051",
+   "conference": "NAACL",
+   "year": 2025,
+   "title": "Learning Language through Grounding",
+   "url": "https://2025.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "Grounding has been a long-standing concept in natural language processing (NLP) and computational linguistics (CL). This tutorial provides a historical overview and introduces recent advances in learning language through grounding, with a particular emphasis on the latter. We will begin by tracing..."
+  },
+  {
+   "id": "TU0052",
+   "conference": "NAACL",
+   "year": 2025,
+   "title": "LLMs and Copyright Risks: Benchmarks and Mitigation Approaches",
+   "url": "https://2025.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "Large Language Models (LLMs) have revolutionized natural language processing, but their widespread use has raised significant copyright concerns. This tutorial addresses the complex intersection of LLMs and copyright law, providing researchers and practitioners with essential knowledge and tools to..."
+  },
+  {
+   "id": "TU0053",
+   "conference": "NAACL",
+   "year": 2025,
+   "title": "Social Intelligence in the Age of LLMs",
+   "url": "https://2025.naacl.org/program/tutorials/",
+   "site": null,
+   "summary": "With the emergence of Large Language Models (LLMs), we now have unprecedented opportunities to incorporate human-like communication and context-aware interactions into artificial systems. But what is the current state of LLMs’ capability of social interaction? Can they truly understand social..."
+  },
+  {
+   "id": "TU0054",
+   "conference": "EACL",
+   "year": 2026,
+   "title": "AI-assisted Scientific Discovery, Experimentation, Content Generation, and Evaluation",
+   "url": "https://2026.eacl.org/program/tutorials/#t1-ai-assisted-scientific-discovery-experimentation-content-generation-and-evaluation",
+   "site": "https://ai4science-tutorial.github.io/",
+   "summary": "With the advent of large multimodal foundation models such as ChatGPT, Gemini, Claude, and DeepSeek, scientific research stands at the threshold of an AI-based technological transformation. Recent surveys indicate that the majority of researchers anticipate AI will become mainstream in scientific..."
+  },
+  {
+   "id": "TU0055",
+   "conference": "EACL",
+   "year": 2026,
+   "title": "Cognitive Effects and Biases in Large Language Models",
+   "url": "https://2026.eacl.org/program/tutorials/#t2-cognitive-effects-and-biases-in-large-language-models",
+   "site": "https://cpjku.github.io/cobis_llm_eacl2026/",
+   "summary": "Cognitive effects such as anchoring, positional effect, or confirmation bias are core aspects of human decision making and reasoning. As LLMs increasingly act as communicative partners, reasoning tools, and evaluators, understanding how these cognitive effects influence their behavior and vice..."
+  },
+  {
+   "id": "TU0056",
+   "conference": "EACL",
+   "year": 2026,
+   "title": "Encoding and Decoding Language in the Brain with Language Models",
+   "url": "https://2026.eacl.org/program/tutorials/#t3-encoding-and-decoding-language-in-the-brain-with-language-models",
+   "site": "https://denizenslab.github.io/tutorials/eacl26/",
+   "summary": "This EACL 2026 tutorial will cover the foundations of brain–language model alignment and will then explore recent advances on scaling laws of language models for brain alignment, multilingual brain encoding, recent developments in fine-tuning language models with brain data, and advances in brain..."
+  },
+  {
+   "id": "TU0057",
+   "conference": "EACL",
+   "year": 2026,
+   "title": "Multimodal Large Language Models for Human-AI Interaction: Foundations, Agents, and Inclusive Applications",
+   "url": "https://2026.eacl.org/program/tutorials/#t4-multimodal-large-language-models-for-human-ai-interaction-foundations-agents-and-inclusive-applications",
+   "site": "https://mllm4haii.github.io/",
+   "summary": "Multimodal large language models (MLLMs) are redefining how humans communicate and collaborate with machines. They extend the capabilities of text-based LLMs to perceive, reason, and act across text, images, charts, forms, and graphical user interfaces (GUIs). These models are now capable of..."
+  },
+  {
+   "id": "TU0058",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Evaluating Large Language Models - Principles, Approaches, and Applications",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99524",
+   "site": null,
+   "summary": "This tutorial delves into the critical and complex domain of evaluating large language models (LLMs), focusing on the unique challenges presented when assessing generative outputs. Despite the difficulty in assigning precise quality scores to such outputs, our tutorial emphasizes the necessity of..."
+  },
+  {
+   "id": "TU0059",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Causality for Large Language Models",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99520",
+   "site": null,
+   "summary": "In this tutorial, we will explore the intersection of causality and large language models (LLMs). Our goal is to provide a comprehensive understanding of how causal inference can enhance the performance, interpretability, and robustness of LLMs. The tutorial will cover foundational concepts in both..."
+  },
+  {
+   "id": "TU0060",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Watermarking for Large Language Models",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99521",
+   "site": null,
+   "summary": "Generative AI has significantly advanced, particularly in natural language processing, exemplified by models like ChatGPT, but these advancements have raised concerns about misuse, such as generating fake news or plagiarizing content. This tutorial explores text watermarking as a solution,..."
+  },
+  {
+   "id": "TU0061",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Opening the Language Model Pipeline: A Tutorial on Data Preparation, Model Training, and Adaptation",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99526",
+   "site": null,
+   "summary": "Language models (LMs) have become a critical technology for tackling a wide range of natural language processing tasks, making them ubiquitous in both AI research and commercial products. As their commercial importance has surged, the most powerful models have become more secretive, gated behind..."
+  },
+  {
+   "id": "TU0062",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Dynamic Sparsity in Machine Learning: Routing Information through Neural Pathways",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99527",
+   "site": null,
+   "summary": "Recent advancements in machine learning have caused a shift from traditional sparse modeling, which focuses on static feature selection in neural representations, to dynamic sparsity, where different neural pathways are activated depending on the input. This line of work is fueling, among other..."
+  },
+  {
+   "id": "TU0063",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Experimental Design and Analysis for AI Researchers",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99528",
+   "site": null,
+   "summary": "Simulation comparisons are often used in machine learning to argue for the superiority of one model or method over another. However, the conclusions that can be drawn from such studies are only as robust as the forethought that is put into their design and analysis. We discuss core techniques used..."
+  },
+  {
+   "id": "TU0064",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Flow Matching for Generative Modeling",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99531",
+   "site": null,
+   "summary": "Flow matching is a simple yet effective generative modeling paradigm that has found widespread adoption in diverse domains and large-scale applications. It is inspired by the efficient training of diffusion models, but offers a simpler perspective and enables easy implementation and generalization...."
+  },
+  {
+   "id": "TU0065",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "PrivacyML: Meaningful Privacy-Preserving Machine Learning and How To Evaluate AI Privacy",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99533",
+   "site": null,
+   "summary": "In the world of large model development, model details and training data are increasingly closed down, pushing privacy to the forefront of machine learning – how do we protect privacy of the data used to train the model, permitting more widespread data sharing collaborations? How will individuals..."
+  },
+  {
+   "id": "TU0066",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Generating Programmatic Solutions: Algorithms and Applications of Programmatic Reinforcement Learning and Code Generation",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99525",
+   "site": null,
+   "summary": "In this tutorial, we will present recent advances in program synthesis that enable the generation of programmatic policies for reinforcement learning and production software programs that satisfy user intent. The tutorial consists of two parts. In the first part of this tutorial, we consider the..."
+  },
+  {
+   "id": "TU0067",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Sandbox for the Blackbox: How LLMs Learn Structured Data?",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99532",
+   "site": null,
+   "summary": "In recent years, large language models (LLMs) have achieved unprecedented success across various disciplines, including natural language processing, computer vision, and reinforcement learning. This success has spurred a flourishing body of research aimed at understanding these models, from both..."
+  },
+  {
+   "id": "TU0068",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Cross-disciplinary insights into alignment in humans and machines",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99529",
+   "site": null,
+   "summary": "Aligning the behavior of AI systems and agents with human goals and values continues to be a major challenge. But the problem is not novel: many disciplines such as economics, political science, legal theory, and cultural evolutionary theory, have grappled for decades if not centuries with the..."
+  },
+  {
+   "id": "TU0069",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Beyond Decoding: Meta-Generation Algorithms for Large Language Models",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99522",
+   "site": null,
+   "summary": "One of the most striking findings in modern research on large language models (LLMs) is that, given a model and dataset of sufficient scale, scaling up compute at training time leads to better final results. However, there is also another lesser-mentioned scaling phenomenon, where adopting more..."
+  },
+  {
+   "id": "TU0070",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Out-of-Distribution Generalization: Shortcuts, Spuriousness, and Stability",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99523",
+   "site": null,
+   "summary": "Machine learning models often face challenges due to distribution shifts, leading to compromised performance during testing and limiting their use in high-stakes applications. For example, vision models have mistakenly relied on the height of shoulders in images to classify radiographs of COVID-19..."
+  },
+  {
+   "id": "TU0071",
+   "conference": "NeurIPS",
+   "year": 2024,
+   "title": "Advancing Data Selection for Foundation Models: From Heuristics to Principled Methods",
+   "url": "https://neurips.cc/virtual/2024/tutorial/99530",
+   "site": null,
+   "summary": "Data selection is a critical step in training and fine-tuning foundation models, significantly impacting model performance and training efficiency. Existing approaches deployed in foundation models' data curation pipelines have primarily relied on heuristic methods, which, while practical, often..."
+  },
+  {
+   "id": "TU0072",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Human-AI Alignment: Foundations, Methods, Practice, and Challenges",
+   "url": "https://neurips.cc/virtual/2025/109592",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0073",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Model Merging: Theory, Practice and Applications",
+   "url": "https://neurips.cc/virtual/2025/109593",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0074",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "New Frontiers of Hyperparameter Optimization: Recent advances and open challenges in theory and practice",
+   "url": "https://neurips.cc/virtual/2025/109594",
+   "site": null,
+   "summary": "Machine learning algorithms operate on data, and for any task the most effective method depends on the data at hand. Hyperparameter optimization and algorithm selection are therefore crucial to ensure the best performance in terms of accuracy, efficiency, reliability, interpretability, etc. We..."
+  },
+  {
+   "id": "TU0075",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Energy and Power as First-Class ML Design Metrics",
+   "url": "https://neurips.cc/virtual/2025/109589",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0076",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Planning in the Era of Language Models",
+   "url": "https://neurips.cc/virtual/2025/109596",
+   "site": null,
+   "summary": "For over six decades, the field of automated planning has been at the heart of AI, empowering intelligent systems to reason, act, and achieve goals in complex, dynamic environments. From robotics and logistics to space exploration, planning research has fueled autonomous decision-making in..."
+  },
+  {
+   "id": "TU0077",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Foundations of Tensor/Low-Rank Computations for AI",
+   "url": "https://neurips.cc/virtual/2025/109591",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0078",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Explain AI Models: Methods and Opportunities in Explainable AI, Data-Centric AI, and Mechanistic Interpretability",
+   "url": "https://neurips.cc/virtual/2025/109599",
+   "site": null,
+   "summary": "Understanding AI system behavior has become critical for safety, trust, and effective deployment across diverse applications. Three major research communities have emerged to address this challenge through interpretability methods: Explainable AI focuses on feature attribution to understand which..."
+  },
+  {
+   "id": "TU0079",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Theoretical Insights on Training Instability in Deep Learning",
+   "url": "https://neurips.cc/virtual/2025/109597",
+   "site": null,
+   "summary": "The advances in deep learning build on the dark arts of gradient-based optimization. In deep learning, the optimization process is oscillatory, spiky, and unstable. This makes little sense in classical optimization theory, which primarily operates in a well-behaved, stable regime. Yet, the best..."
+  },
+  {
+   "id": "TU0080",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Autoregressive Models Beyond Language",
+   "url": "https://neurips.cc/virtual/2025/109587",
+   "site": null,
+   "summary": "Autoregressive modeling is no longer confined to language. Recent work shows that the same next-element prediction principle can achieve state-of-the-art performance in generative modeling, representation learning, and multi-modal tasks across images, video, audio, robotics, and scientific data...."
+  },
+  {
+   "id": "TU0081",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Data Privacy, Memorization, & Legal Implications in Generative AI: A Practical Guide",
+   "url": "https://neurips.cc/virtual/2025/109588",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0082",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "The Science of Benchmarking: What’s Measured, What’s Missed, and What’s Next",
+   "url": "https://neurips.cc/virtual/2025/109598",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0083",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Foundations of Imitation Learning: From Language Modeling to Continuous Control",
+   "url": "https://neurips.cc/virtual/2025/109590",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0084",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Scale Test-Time Compute on Modern Hardware",
+   "url": "https://neurips.cc/virtual/2025/109595",
+   "site": null,
+   "summary": "Large language models have achieved significant breakthroughs in reasoning tasks, relying on the effective use of test-time compute. Techniques such as chain-of-thought and sampling-based strategies have shown that increasing test-time computation can dramatically enhance model performance. Our..."
+  },
+  {
+   "id": "TU0085",
+   "conference": "NeurIPS",
+   "year": 2025,
+   "title": "Recent Developments in Geometric Machine Learning: Foundations, Models, and More",
+   "url": "https://neurips.cc/virtual/2025/109600",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0086",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "From Scores to Evidence: Robust Evaluation of Foundation Models",
+   "url": "https://neurips.cc/virtual/2026/137733",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0087",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "The Principles of Diffusion Models: Toward Fast and Scalable Diffusion LLMs",
+   "url": "https://neurips.cc/virtual/2026/137696",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0088",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "Three Geometric Lenses on Graph Machine Learning",
+   "url": "https://neurips.cc/virtual/2026/137735",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0089",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "Empirical Design in Reinforcement Learning for Physical AI",
+   "url": "https://neurips.cc/virtual/2026/137736",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0090",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "Uncertainty Quantification: From Detecting LLM Hallucinations to Strengthening Reasoning and AI Agents",
+   "url": "https://neurips.cc/virtual/2026/137737",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0091",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "Multi-Objective Optimization for Modern Machine Learning: Foundations, Recent Advances, and Emerging Applications",
+   "url": "https://neurips.cc/virtual/2026/137734",
+   "site": null,
+   "summary": "Machine learning (ML) tasks are increasingly required to satisfy multiple, often competing, objectives simultaneously. Multi-objective optimization (MOO) provides a principled mathematical framework for modeling and solving such problems by systematically characterizing trade-offs among conflicting..."
+  },
+  {
+   "id": "TU0092",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "Neuro-Symbolic Learning in the Era of Large Language Models",
+   "url": "https://neurips.cc/virtual/2026/137739",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0093",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "Causal Representation Learning",
+   "url": "https://neurips.cc/virtual/2026/137742",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0094",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "Principles of Deep Representation Learning via Low-Dimensional Models",
+   "url": "https://neurips.cc/virtual/2026/137741",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0095",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "Distilling Reasoning: From Chain-of-Thought to Agentic Capabilities in Smaller Models",
+   "url": "https://neurips.cc/virtual/2026/137738",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0096",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "Formal Guarantees for Frontier AI Systems",
+   "url": "https://neurips.cc/virtual/2026/137740",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0097",
+   "conference": "NeurIPS",
+   "year": 2026,
+   "title": "From Heuristics to Guarantees: Bandit and RL Blueprint for Reliable Agentic-AI",
+   "url": "https://neurips.cc/virtual/2026/137743",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0098",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Strategic ML: How to Learn With Data That ‘Behaves’",
+   "url": "https://icml.cc/virtual/2024/tutorial/35230",
+   "site": null,
+   "summary": "Machine learning is increasingly being used for tasks that require making predictions about humans. But humans are not your conventional input: they have goals, beliefs, and aspirations, and take action to promote their own interests. Given that standard learning methods are not designed to handle..."
+  },
+  {
+   "id": "TU0099",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Neural Operator Learning",
+   "url": "https://icml.cc/virtual/2024/tutorial/35235",
+   "site": null,
+   "summary": "This tutorial will introduce neural operators, an extension of neural networks designed to learn mappings between infinite-dimensional function spaces. We'll cover the theoretical foundations, including their formulation and universal approximation capabilities. Emphasizing their..."
+  },
+  {
+   "id": "TU0100",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Data Attribution at Scale",
+   "url": "https://icml.cc/virtual/2024/tutorial/35228",
+   "site": null,
+   "summary": "Data attribution is the study of the relationship between data and ML predictions. In downstream applications, data attribution methods can help interpret and compare models; curate datasets; and assess learning algorithm stability. This tutorial surveys the field of data attribution, with a focus..."
+  },
+  {
+   "id": "TU0101",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Towards Efficient Generative Large Language Model Serving: A Tutorial from Algorithms to Systems",
+   "url": "https://icml.cc/virtual/2024/tutorial/35229",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0102",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Foundations of Data-efficient Machine Learning",
+   "url": "https://icml.cc/virtual/2024/tutorial/35234",
+   "site": null,
+   "summary": "Over the last decade, machine learning models have achieved remarkable success by learning from large amounts of data. This is best exemplified by the recent rise of foundation models that are trained on billions of examples. Training on massive data is, however, dependent on exceptionally large..."
+  },
+  {
+   "id": "TU0103",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Distribution-Free Predictive Uncertainty Quantification: Strengths and Limits of Conformal Prediction",
+   "url": "https://icml.cc/virtual/2024/tutorial/35231",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0104",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Understanding the Role of Large Language Models in Planning",
+   "url": "https://icml.cc/virtual/2024/tutorial/35226",
+   "site": null,
+   "summary": "\"Large Language Models (LLMs, or n-gram models on steroids) that have been trained originally to generate text by repeatedly predicting the next word in the context of a window of previous words, have captured the attention of the AI (and the world) community. Part of the reason for this is their..."
+  },
+  {
+   "id": "TU0105",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Physics of Language Models",
+   "url": "https://icml.cc/virtual/2024/tutorial/35223",
+   "site": null,
+   "summary": "We divide \"intelligence\" into multiple dimensions (like language structures, knowledge, reasoning, etc.). For each dimension, we create synthetic data for LLM pretraining to understand the theory and push the capabilities of LLMs to the extreme. Unlike benchmarking, by controlling the synthetic..."
+  },
+  {
+   "id": "TU0106",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Graph Learning: Principles, Challenges, and Open Directions",
+   "url": "https://icml.cc/virtual/2024/tutorial/35233",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0107",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Convex Analysis at Infinity: An Introduction to Astral Space",
+   "url": "https://icml.cc/virtual/2024/tutorial/35232",
+   "site": null,
+   "summary": "\"Optimization is centrally important to machine learning, including optimization of convex functions. A particular challenge arises, however, when the function being minimized, even if convex, has no finite minimizer, and so can only be minimized by a sequence as it heads to infinity, as can..."
+  },
+  {
+   "id": "TU0108",
+   "conference": "ICML",
+   "year": 2024,
+   "title": "Challenges in Language Model Evaluations",
+   "url": "https://icml.cc/virtual/2024/tutorial/35227",
+   "site": null,
+   "summary": "The field of machine learning relies on benchmarking and evaluation datasets to accurately track progress in the field and assess the efficacy of new models and methodologies. For this reason, good evaluation practices and accurate reporting are crucial. However, language models (LMs) not only..."
+  },
+  {
+   "id": "TU0109",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "Calibration and Bias in Algorithms, Data, and Models: a tutorial on metrics and plots for measuring calibration, bias, fairness, reliability, and robustness",
+   "url": "https://icml.cc/virtual/2025/40003",
+   "site": null,
+   "summary": "There are many different notions of bias and fairness. When comparing subpopulations, an especially important dichotomy is between (1) equal or equitable average outcomes and (2) equal or equitable treatment. In the particular context considered here, \"equal treatment\" and \"equal opportunity\" are..."
+  },
+  {
+   "id": "TU0110",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "Generative AI Meets Reinforcement Learning",
+   "url": "https://icml.cc/virtual/2025/40006",
+   "site": null,
+   "summary": "This tutorial explores the intersection of generative AI and reinforcement learning, demonstrating how generative models can be understood as RL agents and environments, and conversely, how RL can be viewed as generative modeling. It aims to bridge the gap between these fields, showing how insights..."
+  },
+  {
+   "id": "TU0111",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "Harnessing Low Dimensionality in Diffusion Models: From Theory to Practice",
+   "url": "https://icml.cc/virtual/2025/40008",
+   "site": null,
+   "summary": "Diffusion models have recently gained attention as a powerful class of deep generative models, achieving state-of-the-art results in data generation tasks. In a nutshell, they are designed to learn an unknown data distribution starting from Gaussian noise, mimicking the process of non-equilibrium..."
+  },
+  {
+   "id": "TU0112",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "Modern Methods in Associative Memory",
+   "url": "https://icml.cc/virtual/2025/40004",
+   "site": null,
+   "summary": "Associative Memories like the famous Hopfield Networks are elegant models for describing fully recurrent neural networks whose fundamental job is to store and retrieve information. In the past few years they experienced a surge of interest due to novel theoretical results pertaining to their..."
+  },
+  {
+   "id": "TU0113",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "DP-fy your DATA: How to (and why) synthesize Differentially Private Synthetic Data",
+   "url": "https://icml.cc/virtual/2025/40009",
+   "site": null,
+   "summary": "This tutorial focuses on the increasingly important area of differentially private (DP) synthetic data generation, addressing the need for robust anonymization in machine learning. Creating DP synthetic data allows for data sharing and analysis without compromising individuals' privacy, opening up..."
+  },
+  {
+   "id": "TU0114",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "The Underlying Logic of Language Models",
+   "url": "https://icml.cc/virtual/2025/40013",
+   "site": null,
+   "summary": "The formal basis of the theory of computation lies in the study of languages, subsets of Σ*, the set of all strings over an alphabet Σ. Models of computation can be taxonomized into the languages they can decide on, i.e., which languages a model can be used to determine membership of. For instance,..."
+  },
+  {
+   "id": "TU0115",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "Tutorial on Mechanistic Interpretability for Language Models",
+   "url": "https://icml.cc/virtual/2025/40007",
+   "site": null,
+   "summary": "Mechanistic interpretability (MI) is an emerging sub-field of interpretability that seeks to understand a neural network model by reverse-engineering its internal computations. Recently, MI has garnered significant attention for interpreting transformer-based language models (LMs), resulting in..."
+  },
+  {
+   "id": "TU0116",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "Flowing Through Continuous-Time Generative Models: A Clear and Systematic Tour",
+   "url": "https://icml.cc/virtual/2025/40011",
+   "site": null,
+   "summary": "Continuous-time generative models—particularly diffusion- and flow-based models—have emerged as a dominant paradigm in generative AI, with applications in image, video, molecular, and audio synthesis, as well as scientific modeling. Despite their success, the field’s rich mathematical structure,..."
+  },
+  {
+   "id": "TU0117",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "Game-theoretic Statistics and Sequential Anytime-Valid Inference",
+   "url": "https://icml.cc/virtual/2025/40002",
+   "site": null,
+   "summary": "Sequential anytime-valid inference (SAVI) provides measures of statistical evidence and uncertainty --- e-values and e-processes for testing and confidence sequences for estimation --- that remain valid at all stopping times. These allow for continuous monitoring and analysis of accumulating data..."
+  },
+  {
+   "id": "TU0118",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "Jailbreaking LLMs and Agentic Systems: Attacks, Defenses, and Evaluations",
+   "url": "https://icml.cc/virtual/2025/40010",
+   "site": null,
+   "summary": "Since the inception of language models (LLMs), considerable attention has been directed toward the field of AI safety. These efforts aim to identify a range of best practices—including evaluation protocols, defense algorithms, and content filters—that facilitate the ethical, trustworthy, and..."
+  },
+  {
+   "id": "TU0119",
+   "conference": "ICML",
+   "year": 2025,
+   "title": "Training Neural Networks at Any Scale",
+   "url": "https://icml.cc/virtual/2025/40012",
+   "site": null,
+   "summary": "At the heart of deep learning’s transformative impact lies the concept of scale--encompassing both data and computational resources, as well as their interaction with neural network architectures. Scale, however, presents critical challenges, such as increased instability during training and..."
+  },
+  {
+   "id": "TU0120",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "Unlearning Data at Scale",
+   "url": "https://icml.cc/virtual/2026/75372",
+   "site": null,
+   "summary": "As powerful generative models like large language models and diffusion models become widespread, they raise growing concerns about privacy, copyright, and safety, especially since they are trained on large amounts of web data that may include sensitive or harmful information. Machine unlearning,..."
+  },
+  {
+   "id": "TU0121",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "Proving Theorems with Lean and Machine Learning",
+   "url": "https://icml.cc/virtual/2026/75365",
+   "site": null,
+   "summary": "AI agents can now write mathematics, including proofs of theorems relevant to Machine Learning, but we can’t trust them yet. Subtle errors might be hidden deep in the reasoning steps, and checking the proofs manually takes a lot of time and expertise. The Lean theorem prover provides a way to write..."
+  },
+  {
+   "id": "TU0122",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "Unifying Attention and Diffusion with Kan Extension Transformers: Structured Deep Learning with Diagrammatic Backpropagation",
+   "url": "https://icml.cc/virtual/2026/75371",
+   "site": null,
+   "summary": "Modern foundation models are powerful, but their representations, training dynamics, and agentic workflows remain difficult to audit, compose, and trust. This tutorial presents a categorical and geometric framework for trustworthy foundation-model systems. The major scientific components of the..."
+  },
+  {
+   "id": "TU0123",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "Diffusion and Flow-Matching: From Memorization to Generalization & Beyond",
+   "url": "https://icml.cc/virtual/2026/75374",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0124",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "Probabilistic Numerics — Computation is Machine Learning",
+   "url": "https://icml.cc/virtual/2026/75368",
+   "site": null,
+   "summary": "Machine learning is the process of estimating latent representations or variables from *finite data*. If the data is insufficient, this inference process leaves a finite *estimation error*. Probabilistic (Bayesian) machine learning attempts to capture this empirical uncertainty in a probability..."
+  },
+  {
+   "id": "TU0125",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "Calibration, Decisions, and Collaboration in Learning",
+   "url": "https://icml.cc/virtual/2026/75369",
+   "site": null,
+   "summary": "In this tutorial we will learn about a powerful framework to make probabilistic predictions in ways that \"look like real probabilities\" in all of the ways that matter for downstream applications. We'll see how to do this efficiently even in difficult, adversarial environments, and then focus on two..."
+  },
+  {
+   "id": "TU0126",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "Evaluating and Training LLMs for Math Copilots and Theorem Proving",
+   "url": "https://icml.cc/virtual/2026/75367",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0127",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "Adaptive Reasoning in LLMs: From Post-Training to Test-Time Learning (partially remote)",
+   "url": "https://icml.cc/virtual/2026/75366",
+   "site": null,
+   "summary": "Large language models are increasingly deployed in settings that require extended, multi-step reasoning, where a single forward pass is often insufficient. In response, recent research has explored a range of mechanisms that adapt model behavior beyond pretraining, including post-training..."
+  },
+  {
+   "id": "TU0128",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "New Techniques for Sequence Prediction: Spectral Filtering and Preconditioning",
+   "url": "https://icml.cc/virtual/2026/75370",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0129",
+   "conference": "ICML",
+   "year": 2026,
+   "title": "Is numerical optimization theory irrelevant to machine learning practice in 2026?",
+   "url": "https://icml.cc/virtual/2026/75373",
+   "site": null,
+   "summary": "We are seeing more numerical optimization theory papers published than ever before. These papers often make unrealistic assumptions or propose algorithms that never get adopted. So is all this optimization theory largely useless? In this tutorial I show how some surprisingly simple optimization..."
+  },
+  {
+   "id": "TU0130",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Deep Stereo Matching in the Twenties",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23721",
+   "site": null,
+   "summary": "For decades, stereo matching has been approached by developing hand-crafted algorithms, focused on measuring the visual appearance between local patterns in the two images and propagating this information globally. Since 2015, deep learning led to a paradigm shift in this field, driving the..."
+  },
+  {
+   "id": "TU0131",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Machine Unlearning in Computer Vision: Foundations and Applications",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23724",
+   "site": null,
+   "summary": "This tutorial aims to offer a comprehensive understanding of emerging machine unlearning (MU) techniques. These techniques are designed to accurately assess the impact of specific data points, classes, or concepts (e.g., related to copyrighted information, biases and stereotypes, and personally..."
+  },
+  {
+   "id": "TU0132",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Disentanglement and Compositionality in Computer Vision",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23716",
+   "site": null,
+   "summary": "This tutorial aims to explore the concepts of disentanglement and compositionality in the field of computer vision. These concepts play a crucial role in enabling machines to understand and interpret visual information with more sophistication and human-like reasoning. Participants will learn about..."
+  },
+  {
+   "id": "TU0133",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "SCENIC: An Open-Source Probabilistic Programming System for Data Generation and Safety in AI-Based Autonomy",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23734",
+   "site": null,
+   "summary": "Autonomous systems, such as self-driving cars or intelligent robots, are increasingly operating in complex, stochastic environments where they dynamically interact with multiple entities (human and robot). There is a need to formally model and generate such environments in simulation, for use cases..."
+  },
+  {
+   "id": "TU0134",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Recent Advances in Vision Foundation Models",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23723",
+   "site": null,
+   "summary": "This tutorial covers the advanced topics in designing and training vision foundation models, including the state-of-the-art approaches and principles in (i) learning vision foundation models for multimodal understanding and generation, (ii) benchmarking and evaluating vision foundation models, and..."
+  },
+  {
+   "id": "TU0135",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Robustness at Inference: Towards Explainability, Uncertainty, and Intervenability",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23731",
+   "site": null,
+   "summary": "Neural networks provide generalizable and task independent representation spaces that have garnered widespread applicability in image understanding applications. The complicated semantics of feature interactions within image data has been broken down into a set of non-linear functions, convolution..."
+  },
+  {
+   "id": "TU0136",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Efficient Homotopy Continuation for Solving Polynomial Systems in Computer Vision Applications",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23735",
+   "site": null,
+   "summary": "Minimal problems and their solvers play an important role in RANSAC-based approaches to several estimation problems in vision. Minimal solvers solve systems of equations, depending on data, which obey a “conservation of number principle”: for sufficiently generic data, the number of solutions over..."
+  },
+  {
+   "id": "TU0137",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Object-centric Representations in Computer Vision",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23729",
+   "site": null,
+   "summary": "This tutorial discusses the evolution of object-centric representation in computer vision and deep learning. Initially inspired by decomposing visual scenes into surfaces and objects, recent developments focus on learning causal variables from high-dimensional observations like images or videos...."
+  },
+  {
+   "id": "TU0138",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Geospatial Computer Vision and Machine Learning for Large-Scale Earth Observation Data",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23727",
+   "site": null,
+   "summary": "The 5Vs of big data, volume, value, variety, velocity, and veracity pose immense opportunity and challenges on implementing local and planet-wide solution from Earth observation (EO) data. EO data, residing at the center of various multidisciplinary problems, primarily obtained through satellite..."
+  },
+  {
+   "id": "TU0139",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Edge AI in Action: Practical Approaches to Developing and Deploying Optimized Models",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23714",
+   "site": null,
+   "summary": "Edge AI refers to artificial intelligence applied to edge devices like smartphones, tablets, laptops, cameras, sensors, and drones. It enables these devices to handle AI tasks autonomously, without cloud or central server connections, offering higher speed, lower latency, greater privacy, and..."
+  },
+  {
+   "id": "TU0140",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Edge-Optimized Deep Learning: Harnessing Generative AI and Computer Vision with Open-Source Libraries",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23719",
+   "site": null,
+   "summary": "This tutorial aims to guide researchers and practitioners in navigating the complex deep learning (DL) landscape, focusing on data management, training methodologies, optimization strategies, and deployment techniques. It highlights open-source libraries like the OpenVINO toolkit, OpenVINO Training..."
+  },
+  {
+   "id": "TU0141",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Generalist Agent AI",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23732",
+   "site": null,
+   "summary": "Generalist Agent AI (GAA) is a family of systems that generate effective actions in an environment based on the understanding of multimodal sensory input. While these systems are expanding into various fields with the advent of large foundation models, they share common interests such as data..."
+  },
+  {
+   "id": "TU0142",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "3D/4D Generation and Modeling with Generative Priors",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23718",
+   "site": null,
+   "summary": "In today's metaverse, where the digital and physical worlds blend seamlessly, capturing, representing, and analyzing 3D structures is vital. Advances in 3D and 4D tech have revolutionized gaming, AR, and VR, offering immersive experiences. 3D modeling bridges reality and virtuality, enabling..."
+  },
+  {
+   "id": "TU0143",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "All You Need to Know about Self-Driving",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23720",
+   "site": null,
+   "summary": "A full day tutorial covering all aspects of autonomous driving. This tutorial will provide the necessary background for understanding the different tasks and associated challenges, the different sensors and data sources one can use and how to exploit them, as well as how to formulate the relevant..."
+  },
+  {
+   "id": "TU0144",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Towards Building AGI in Autonomy and Robotics",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23713",
+   "site": null,
+   "summary": "In this tutorial, we explore the intersection of AGI technologies and the advancement of autonomous systems, specifically in the field of robotics. We invite participants to embark on an investigative journey that covers essential concepts, frameworks, and challenges. Through discussion, we aim to..."
+  },
+  {
+   "id": "TU0145",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Contactless AI Healthcare using Cameras and Wireless Sensors",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23715",
+   "site": null,
+   "summary": "Understanding people and extracting health-related metrics is an emerging research topic in computer vision that has grown rapidly recently. Without the need of any physical contact of the human body, cameras have been used to measure vital signs remotely (e.g. heart rate, heart rate variability,..."
+  },
+  {
+   "id": "TU0146",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Learning Deep Low-dimensional Models from High-Dimensional Data: From Theory to Practice",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23728",
+   "site": null,
+   "summary": "Over the past decade, the advent of machine learning and large-scale computing has immeasurably changed the ways we process, interpret, and predict with data in imaging and computer vision. The “traditional” approach to algorithm design, based around parametric models for specific structures of..."
+  },
+  {
+   "id": "TU0147",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Computational Design of Diverse Morphologies and Sensors for Vision and Robotics",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23736",
+   "site": null,
+   "summary": "Animals exhibit a wide variety of morphologies and sensors, believed to have appeared through billions of years of evolution. Common examples relevant to vision include differences in pupil shapes, the positioning of eyes, various types of eyes, and a varying level of multimodality across animals...."
+  },
+  {
+   "id": "TU0148",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "All You Need To Know About Point Cloud Understanding",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23725",
+   "site": null,
+   "summary": "Unstructured point clouds serve as a sparse representation of the 3D world, playing pivotal roles in 3D perception, generation, autonomous driving, virtual/augmented reality, and robotics. Despite their significance, there lacks a comprehensive resource covering state-of-the-art approaches and..."
+  },
+  {
+   "id": "TU0149",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "From Multimodal LLM to Human-level AI: Modality, Instruction, Reasoning and Beyond",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23717",
+   "site": null,
+   "summary": "Artificial intelligence (AI) encompasses knowledge acquisition and real-world grounding across various modalities. As a multidisciplinary research field, multimodal large language models (MLLMs) have recently garnered growing interest in both academia and industry, showing an unprecedented trend to..."
+  },
+  {
+   "id": "TU0150",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "End-to-End Autonomy: A New Era of Self-Driving",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23722",
+   "site": null,
+   "summary": "A comprehensive half-day tutorial focused on End-to-End Autonomous Driving (E2EAD), reflecting the significant shift in focus towards this approach within both industry and academia. Traditional modular approaches in autonomous driving, while effective in specific contexts, often struggle with..."
+  },
+  {
+   "id": "TU0151",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Full-Stack, GPU-based Acceleration of Deep Learning",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23733",
+   "site": null,
+   "summary": "This tutorial focuses on describing techniques to allow deep learning practitioners to accelerate the training and inference of large deep networks while also reducing memory requirements across a spectrum of off-the-shelf hardware for important applications such as autonomous driving and large..."
+  },
+  {
+   "id": "TU0152",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Unifying Graph Neural Networks across Spatial and Spectral Domains",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23726",
+   "site": null,
+   "summary": "Over recent years, Graph Neural Networks (GNNs) have garnered significant attention. However, the proliferation of diverse GNN models, underpinned by various theoretical approaches, complicates the process of model selection, as they are not readily comprehensible within a uniform framework...."
+  },
+  {
+   "id": "TU0153",
+   "conference": "CVPR",
+   "year": 2024,
+   "title": "Diffusion-based Video Generative Models",
+   "url": "https://cvpr.thecvf.com/virtual/2024/tutorial/23730",
+   "site": null,
+   "summary": "In the past year, the landscape of video generation has transformed dramatically, achieving remarkable strides from rudimentary outputs to strikingly realistic videos. Central to this evolution are diffusion models, which have become a cornerstone technology in pushing the boundaries of what's..."
+  },
+  {
+   "id": "TU0154",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "The 2nd Point Cloud Tutorial: All You Need To Know About 3D Point Cloud",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35903",
+   "site": null,
+   "summary": "Point cloud is a data structure that is quite prevalent in 3D vision, which plays an important role in eras like 3D perception, 3D generation, autonomous driving, embodied AI, etc. However, there has not been a comprehensive resource that covers the state-of-the-art approaches and engineering..."
+  },
+  {
+   "id": "TU0155",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Volumetric Video in the Real World",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35906",
+   "site": null,
+   "summary": "Volumetric video, which encodes a time-varying 3D scene into a unified representation for novel-view synthesis of dynamic contents, has long been a grand challenge for achieving immersive experiences. High-quality volumetric video enables new and immersive applications, such as 3D video..."
+  },
+  {
+   "id": "TU0156",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Foundations of Interpretable AI",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35900",
+   "site": null,
+   "summary": "In recent years, interpretability has emerged as a significant barrier to the widespread adoption of deep learning techniques, particularly in domains where AI decisions can have consequential impacts on human lives, such as healthcare and finance. Recent attempts at interpreting the decisions made..."
+  },
+  {
+   "id": "TU0157",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "From Video Generation to World Model",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35905",
+   "site": null,
+   "summary": "In the past few years, the research community has witnessed remarkable advancements in generative models, especially in the realm of video generation. Generating compelling and temporal coherent videos is challenging but demanding. To overcome these challenges, early text-to-video (T2V) methods..."
+  },
+  {
+   "id": "TU0158",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Scalable Generative Models in Computer Vision",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35904",
+   "site": null,
+   "summary": "Generative models have emerged as a transformative force in computer vision, enabling breakthroughs in image, video, and 3D content synthesis. Recent advancements in model architectures and generative frameworks have driven unprecedented scalability, allowing models to handle larger datasets,..."
+  },
+  {
+   "id": "TU0159",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Cognitive AI for the Future: Agentic Multimodal Models and RAG for Vision Language Applications, from Training to Deployment",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35902",
+   "site": null,
+   "summary": "Cognitive AI represents a transformative leap in how machines understand and interact with the world. Despite its potential, practical challenges remain in making these systems accessible and applicable across diverse domains. This tutorial addresses how multimodal models, combined with..."
+  },
+  {
+   "id": "TU0160",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Tackling 3D Deep Learning, Gaussian Splats and Physics Simulation with NVIDIA Kaolin Library, a Hands-On Lab",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35901",
+   "site": null,
+   "summary": "3D Deep Learning often demands extensive boilerplate work such as managing data, camera conventions, and visualizing novel 3D representations. NVIDIA’s Kaolin Library, built on PyTorch, addresses these with tools like convenience APIs, reusable research modules, and GPU-optimized operations. The..."
+  },
+  {
+   "id": "TU0161",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Evaluations and Benchmarks in Context of Multimodal LLM",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35908",
+   "site": null,
+   "summary": "Despite existing various emerging benchmarks for evaluating Multimodal Large Language Models (MLLMs), the evaluation of MLLMs validity and effectiveness might remain open to further discussion. This tutorial addresses the need for comprehensive and scientifically valid benchmarks in MLLM..."
+  },
+  {
+   "id": "TU0162",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Evaluating Large Multi-modal Models: Challenges and Methods",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35907",
+   "site": null,
+   "summary": "The proliferation of large multi-modal models (LMMs) has raised increasing concerns about their security and risks, which are mainly due to a lack of understanding of their capabilities and limitations. In this tutorial, our aim is to fill this gap by presenting a holistic overview of LMM..."
+  },
+  {
+   "id": "TU0163",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Animal re-identification",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35911",
+   "site": null,
+   "summary": "This tutorial introduces the field of individual animal re-identification (ReID), crucial for ecological monitoring, conservation, and ethical wildlife research. Accurate animal ReID supports long-term monitoring of endangered species, combatting poaching, and understanding animal behavior. This..."
+  },
+  {
+   "id": "TU0164",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Edge AI in Action: Technologies and Applications",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35912",
+   "site": null,
+   "summary": "Edge AI in Action is a hands-on tutorial exploring practical tools to develop and deploy AI models on resource-constrained devices. Topics include model optimization, deployment of LLMs and CV models, and integration with cloud-edge architectures. Demonstrations include devices like Raspberry Pi,..."
+  },
+  {
+   "id": "TU0165",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Robotics 101: An Odyssey from A Vision Perspective",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35915",
+   "site": null,
+   "summary": "This full-day tutorial offers a vision-focused introduction to robotics. It covers foundational background, technical advancements, key challenges, and emerging directions. With diverse speakers from multiple domains, the tutorial is divided into two sessions: 'Perceive the World' and 'Interact..."
+  },
+  {
+   "id": "TU0166",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Multi-Modal Computer Vision and Foundation Models In Agriculture in conjunction with IEEE CVPR 2025",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35909",
+   "site": null,
+   "summary": "With the recent success of computer vision and deep learning in various applications, there has been significantly increasing attention paid to its use in agriculture. Agriculture-related vision problems are of great economic and social value. For example, robotics has recently been reinvigorated..."
+  },
+  {
+   "id": "TU0167",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "3D Shape Analysis: From Classical Optimization to Learning-based Matching",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35916",
+   "site": null,
+   "summary": "3D shape analysis deals with extracting information from geometric data, with applications in driving, biomedicine, and AR/VR. This tutorial covers classical shape matching methods (linear and quadratic assignment problems), product graph formalisms, learning-based correspondence, spectral methods,..."
+  },
+  {
+   "id": "TU0168",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Geospatial Computer Vision and Artificial Intelligence for Large-Scale Earth Observation Data",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35917",
+   "site": null,
+   "summary": "Earth observation (EO) data has applications in agriculture, disaster management, and security. This tutorial explores integrating CV and EO data using diverse sensing types. Attendees will learn about open-source tools, multimodal reasoning, geospatial foundation models, and hands-on analysis of..."
+  },
+  {
+   "id": "TU0169",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Efficient Text-to-Image/Video modeling",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35910",
+   "site": null,
+   "summary": "We are witnessing groundbreaking results in image-to-text and image-to-video models. However, the generation process with these models is iterative and computationally expensive. There is a growing need to make these algorithms faster for serving millions of users efficiently. This course focuses..."
+  },
+  {
+   "id": "TU0170",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Sense, Perceive, Interact & Render on Android XR",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35918",
+   "site": null,
+   "summary": "This tutorial details the perception stack built for Android XR, including head, hand, face, and eye tracking. It covers data capture, rendering, photorealistic avatars, and scene understanding. Use cases highlight the stack's application in immersive and interactive experiences."
+  },
+  {
+   "id": "TU0171",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Continuous Data Cycle via Foundation Models",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35914",
+   "site": null,
+   "summary": "Foundation models are being continuously integrated into applications like autonomous driving and diagnostics. This tutorial explores the data-model feedback loop: how foundation models affect data curation and vice versa. Talks cover leveraging foundation models to build efficient data engines,..."
+  },
+  {
+   "id": "TU0172",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Computer Vision over Homomorphically Encrypted Data",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35913",
+   "site": null,
+   "summary": "Over the past decade, computer vision (CV) systems have become integral to healthcare, surveillance, and personal devices. The sensitive nature of data and models raises privacy concerns. Fully homomorphic encryption (FHE) allows computations on encrypted data, ensuring privacy. This tutorial..."
+  },
+  {
+   "id": "TU0173",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Intelligent Healthcare based on Cameras and Wireless Sensors",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35923",
+   "site": null,
+   "summary": "This tutorial explores contactless health monitoring using cameras and RF sensors. Topics include measuring vital signs from skin or body imagery, emotion recognition, sleep staging, and activity recognition. It covers radar, WiFi, RFID, and acoustic-based RF sensing, highlighting multi-modal..."
+  },
+  {
+   "id": "TU0174",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Multimodal Mathematical Reasoning: Frontiers in Integrating Vision, Language, and Symbolic Representations",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35920",
+   "site": null,
+   "summary": "This tutorial surveys the growing field of multimodal mathematical reasoning, combining CV, NLP, and symbolic logic. It addresses diagram interpretation, symbolic notation, and multi-step logic. Attendees will explore datasets, models, and evaluation, and discuss applications in education and..."
+  },
+  {
+   "id": "TU0175",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Recent Advances in Vision Foundation Models",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35924",
+   "site": null,
+   "summary": "This tutorial covers cutting-edge developments in vision foundation models. Topics include multimodal understanding and generation, scaling test-time compute, and applications for physical and virtual agents. The session will provide insights into the design and future directions of vision-based..."
+  },
+  {
+   "id": "TU0176",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Power-efficient neural networks using low-precision data types and quantization",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35922",
+   "site": null,
+   "summary": "As neural networks grow, sustainability and cost become major challenges. This tutorial covers low-precision data types, quantization methods, and hands-on applications. Attendees will gain tools to maintain model performance while optimizing for efficiency on edge and large-scale deployments."
+  },
+  {
+   "id": "TU0177",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Identifying Structure in Data: All you need to know about Dimensionality Reduction, Clustering and more",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35919",
+   "site": null,
+   "summary": "This tutorial explores techniques for dataset curation, quality monitoring, dimensionality reduction (t-SNE, UMAP, h-NNE), and clustering (k-means, DBSCAN, FINCH). Attendees will learn how to use these methods to understand structure, reduce bias, detect outliers, and improve performance in AI and..."
+  },
+  {
+   "id": "TU0178",
+   "conference": "CVPR",
+   "year": 2025,
+   "title": "Full-Stack, GPU-based Acceleration of Deep Learning and Foundation Models",
+   "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35921",
+   "site": null,
+   "summary": "This tutorial offers insights across the hardware-software stack to accelerate deep neural networks, from convolutions to multimodal LLMs. Attendees will learn practical tools and trade-offs to optimize performance and inspire the next generation of scalable acceleration techniques."
+  },
+  {
+   "id": "TU0179",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "The Principles of Diffusion Models: Real-Time Continuous & Discrete Diffusion",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36147",
+   "site": null,
+   "summary": "In recent years, diffusion models have become a central paradigm in computer vision, powering advances in image synthesis, editing, and video generation. However, existing tutorials are often fragmented, focusing either on specific applications or isolated methodological perspectives without a..."
+  },
+  {
+   "id": "TU0180",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Tom Builds, Tom Breaks: Hands-On Attacks and Defenses for Vision-Language Systems",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36154",
+   "site": null,
+   "summary": "Vision-language models are increasingly deployed in real-world systems where images can directly influence decisions and actions, creating new security risks beyond traditional text-based attacks. This tutorial provides a hands-on introduction to attacks and defenses for vision-language systems,..."
+  },
+  {
+   "id": "TU0181",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Towards Safe Multi-Modal Learning: Evolving Threats and Safety Solutions",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36149",
+   "site": null,
+   "summary": "Multi-modal learning has enabled powerful systems that combine text, images, audio, and video for perception, reasoning, and decision-making. At the same time, it has introduced safety challenges that differ fundamentally from those in traditional uni-modal learning. This tutorial presents a..."
+  },
+  {
+   "id": "TU0182",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Edge AI in Action: Mastering On-Device Inference",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36150",
+   "site": null,
+   "summary": "Edge AI enables real-time, low-latency inference directly on devices, but achieving high performance and efficiency requires specialized optimization and deployment techniques tailored to heterogeneous hardware. This tutorial provides a hands-on guide to on-device inference, focusing on end-to-end..."
+  },
+  {
+   "id": "TU0183",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Accelerated Diffusion Models: From Theory to Interactive World Models",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36152",
+   "site": null,
+   "summary": "Diffusion models have become a cornerstone of modern generative modeling, but their practical deployment in interactive applications is often limited by slow and computationally expensive sampling. This tutorial focuses on recent advances in accelerating diffusion models, providing a comprehensive..."
+  },
+  {
+   "id": "TU0184",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Building GenAI based Simulation Environment for End-to-End Autonomous Driving",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36158",
+   "site": null,
+   "summary": "Generative AI is transforming simulation for autonomous driving, enabling data-driven and closed-loop environments that better capture the complexity of real-world scenarios. This tutorial presents an end-to-end framework for building generative simulation pipelines tailored to modern..."
+  },
+  {
+   "id": "TU0185",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Principled Interpretability in Vision Models: From Mechanistic Understanding to Interpretable Models by Design",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36148",
+   "site": null,
+   "summary": "As deep learning systems are increasingly deployed in high-stakes applications, understanding their internal behavior is essential for ensuring trust, safety, and reliability. However, the field of interpretability remains fragmented, spanning diverse methods without a unified framework or..."
+  },
+  {
+   "id": "TU0186",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "From Perception to Simulation: The Emergence of World Models in Multi-modal Reasoning",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36151",
+   "site": null,
+   "summary": "World models are emerging as a new paradigm in computer vision and multimodal learning, enabling systems to move beyond perception toward reasoning, simulation, and decision-making. This tutorial explores how world models have evolved from predictive frameworks into engines for multi-modal..."
+  },
+  {
+   "id": "TU0187",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Monte Carlo physical simulation",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36153",
+   "site": null,
+   "summary": "Partial differential equations (PDEs) play a central role in physics-based modeling across vision, graphics, and robotics, but conventional grid-based solvers often struggle with scalability and complex geometry. This tutorial introduces grid-free Monte Carlo methods for solving PDEs, focusing on..."
+  },
+  {
+   "id": "TU0188",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "3D Human Mesh Modeling and Recovery from RGB and LiDAR",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36157",
+   "site": null,
+   "summary": "Understanding human pose and shape through parametric body models is a key enabler of applications from AR/VR and sports analysis to human-robot interaction. This tutorial provides an in-depth overview of parametric body models and their role in Human Mesh Recovery. We cover fundamental principles..."
+  },
+  {
+   "id": "TU0189",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "The Full Stack of Physical AI: Simulation, Foundation Models, and Edge Deployment for Next-Generation Robotics Applications",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36160",
+   "site": null,
+   "summary": "Physical AI systems, including robotics and autonomous platforms, require tightly integrated pipelines spanning data collection, model training, and real-time deployment. This tutorial presents a full-stack perspective on building such systems, covering simulation-based data generation, foundation..."
+  },
+  {
+   "id": "TU0190",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Recent Advances in AI for Medical Imaging: Progress, Challenges, and Future Directions",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36163",
+   "site": null,
+   "summary": "Artificial intelligence has driven significant advances in medical imaging, improving tasks such as image reconstruction, diagnosis, and clinical decision support across modalities including MRI, CT, X-ray, and pathology. This tutorial provides an up-to-date overview of key paradigms in the field,..."
+  },
+  {
+   "id": "TU0191",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Computer Vision at Scale: Multi-Camera Tracking, Calibration, and Event Detection for Checkout-Free Retail",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36165",
+   "site": null,
+   "summary": "Large-scale multi-camera systems are central to real-world computer vision applications, yet their design is shaped as much by infrastructure constraints as by algorithmic advances. This tutorial presents a unified perspective on multi-camera vision through the lens of checkout-free retail,..."
+  },
+  {
+   "id": "TU0192",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Extending Computer Vision to Hidden Objects: A Tutorial on Millimeter-Wave Imaging and Reconstruction of Occluded Scenes",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36159",
+   "site": null,
+   "summary": "Millimeter-wave (mmWave) sensing is emerging as a new modality for computer vision, enabling perception of objects and scenes that are occluded or invisible to traditional cameras. This tutorial introduces the fundamentals of mmWave imaging, highlighting how its physical properties enable..."
+  },
+  {
+   "id": "TU0193",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Analytic understanding of diffusion models",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36155",
+   "site": null,
+   "summary": "Diffusion models achieve state-of-the-art performance in generative modeling, yet their theoretical foundations and generalization behavior remain poorly understood. This tutorial focuses on the analytical understanding of diffusion models, addressing the apparent paradox between closed-form..."
+  },
+  {
+   "id": "TU0194",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "All You Need To Know About Self-Driving",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36161",
+   "site": null,
+   "summary": "Autonomous driving has evolved into a complex, full-stack problem that integrates perception, prediction, planning, simulation, and safety within a unified system. This tutorial provides a comprehensive overview of modern self-driving pipelines, covering both traditional modular approaches and..."
+  },
+  {
+   "id": "TU0195",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "The Road to Convergence: Evolution of Unified Multimodal Models",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36164",
+   "site": null,
+   "summary": "Unified multimodal models are emerging as a new paradigm that integrates understanding and generation across modalities within a single foundation model. This tutorial provides a comprehensive overview of these models, addressing the currently fragmented landscape of architectures, representations,..."
+  },
+  {
+   "id": "TU0196",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "Foundations and Frontiers of Watermarking: Algorithms, Multimodal Extensions, Benchmarks, and Authenticity Frameworks",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36162",
+   "site": null,
+   "summary": "Watermarking has re-emerged as a critical component of trustworthy AI, driven by the rapid growth of generative models and the need for content attribution and authenticity. This tutorial provides a unified overview of watermarking, spanning classical signal-processing foundations and modern..."
+  },
+  {
+   "id": "TU0197",
+   "conference": "CVPR",
+   "year": 2026,
+   "title": "From Perception to Action: Building Efficient and Deployable Robot Intelligence Pipelines with Open-Source Edge AI Toolkits",
+   "url": "https://cvpr.thecvf.com/virtual/2026/tutorial/36156",
+   "site": null,
+   "summary": "Robotic manipulation has become a key application of embodied AI, but many research pipelines remain difficult to reproduce and deploy in real-world systems. This tutorial presents an end-to-end, open-source workflow for building efficient robot intelligence pipelines, covering data collection,..."
+  },
+  {
+   "id": "TU0198",
+   "conference": "ECCV",
+   "year": 2024,
+   "title": "Large Multimodal Foundation Models",
+   "url": "https://eccv2024.ecva.net/virtual/2024/77",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0199",
+   "conference": "ECCV",
+   "year": 2024,
+   "title": "Efficient Text-to-Image and Text-to-3D modeling",
+   "url": "https://eccv2024.ecva.net/virtual/2024/81",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0200",
+   "conference": "ECCV",
+   "year": 2024,
+   "title": "Third Hands-on Egocentric Research Tutorial with Project Aria, from Meta",
+   "url": "https://eccv2024.ecva.net/virtual/2024/79",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0201",
+   "conference": "ECCV",
+   "year": 2024,
+   "title": "Responsibly Building Generative Models",
+   "url": "https://eccv2024.ecva.net/virtual/2024/82",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0202",
+   "conference": "ECCV",
+   "year": 2024,
+   "title": "A Bayesian Odyssey in Uncertainty: from Theoretical Foundations to Real-World Applications",
+   "url": "https://eccv2024.ecva.net/virtual/2024/78",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0203",
+   "conference": "ECCV",
+   "year": 2024,
+   "title": "Emerging Trends in Disentanglement and Compositionality",
+   "url": "https://eccv2024.ecva.net/virtual/2024/80",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0204",
+   "conference": "ECCV",
+   "year": 2024,
+   "title": "Recent Advances in Video Content Understanding and Generation",
+   "url": "https://eccv2024.ecva.net/virtual/2024/83",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0205",
+   "conference": "ECCV",
+   "year": 2024,
+   "title": "Time is precious: Self-Supervised Learning Beyond Images",
+   "url": "https://eccv2024.ecva.net/virtual/2024/84",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0206",
+   "conference": "ECCV",
+   "year": 2024,
+   "title": "Inside Plato's door: a tour in Multi-view Geometry",
+   "url": "https://eccv2024.ecva.net/virtual/2024/85",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0207",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Towards Comprehensive Reasoning in Vision-Language Models",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2846",
+   "site": null,
+   "summary": "Vision-Language Models (VLMs) have achieved remarkable progress in image captioning and visual question answering, yet developing genuine reasoning capabilities remains an open challenge. Unlike recent breakthroughs in reasoning-focused LLMs, many VLMs still rely primarily on pattern recognition..."
+  },
+  {
+   "id": "TU0208",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Beyond Self-Driving: Exploring Three Levels of Driving Automation",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2847",
+   "site": null,
+   "summary": "Self-driving technologies have demonstrated significant potential to transform human mobility. However, single-agent systems face inherent limitations in perception and decision-making capabilities. Transitioning from self-driving vehicles to cooperative multi-vehicle systems and large-scale..."
+  },
+  {
+   "id": "TU0209",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Learning Deep Low-Dimensional Models from High-Dimensional Data: From Theory to Practice",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2852",
+   "site": null,
+   "summary": "Over the past decade, the advent of deep learning and large-scale computing has immeasurably changed the ways we process, interpret, and predict with data in imaging and computer vision. The ``traditional'' approach to algorithm design, based around parametric models for specific structures of..."
+  },
+  {
+   "id": "TU0210",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Foundation Models in Visual Anomaly Detection: Advances, Challenges, and Applications",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2845",
+   "site": null,
+   "summary": "In recent years, foundation models have emerged as transformative tools in computer vision, offering powerful zero-shot and few-shot learning capabilities across a wide range of tasks. Their integration into visual anomaly detection—a critical and high-stakes field spanning healthcare, industrial..."
+  },
+  {
+   "id": "TU0211",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "3D Human Motion Generation and Simulation",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2844",
+   "site": null,
+   "summary": "3D human motion generation and simulation is an important area of research with applications in virtual reality, gaming, animation, robotics, and AI-driven content creation. Recent advances in deep learning have made it possible to automate motion generation, reducing the need for expensive motion..."
+  },
+  {
+   "id": "TU0212",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "A Tour Through AI-powered Photography and Imaging",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2848",
+   "site": null,
+   "summary": "Computational Photography and low-level vision are pivotal research areas within Computer Vision, significantly impacting both academia and industry. Despite their importance, progress in these fields often lags behind areas like generative AI, primarily due to the scarcity of standardized..."
+  },
+  {
+   "id": "TU0213",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Foundation Models for 3D Asset Synthesis",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2850",
+   "site": null,
+   "summary": "In recent years, thanks to the continuous innovation and progress of diffusion technology, significant advancements have been made in image and video generation. By inputting textual descriptions or images, we can generate high-quality images or videos, which greatly enhance creative efficiency and..."
+  },
+  {
+   "id": "TU0214",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Benchmarking Egocentric Visual-Inertial SLAM at City Scale",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2851",
+   "site": null,
+   "summary": "Simultaneous localization and mapping (SLAM) is a fundamental technique with applications spanning robotics, spatial AI, and autonomous navigation. It addresses two tightly coupled challenges: localizing the device while incrementally building a coherent map of the surroundings. Localization, or..."
+  },
+  {
+   "id": "TU0215",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Responsible Vision-Language Generative Models",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2849",
+   "site": null,
+   "summary": "Vision-language generative models, such as text-to-image and image-to-text systems, have rapidly transitioned from research prototypes to widely deployed tools across domains like education, journalism, and design. However, their real-world adoption has introduced critical challenges surrounding..."
+  },
+  {
+   "id": "TU0216",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Foundations of Interpretable AI",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2853",
+   "site": null,
+   "summary": "In recent years, interpretability has emerged as a significant barrier to the widespread adoption of deep learning techniques, particularly in domains where AI decisions can have consequential impacts on human lives, such as healthcare and finance. Recent attempts at interpreting the decisions made..."
+  },
+  {
+   "id": "TU0217",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Fourth Hands-on Egocentric Research Tutorial with Project Aria, from Meta",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2855",
+   "site": null,
+   "summary": "Project Aria is a research device that is worn like a regular pair of glasses, for researchers to study the future of computer vision with always-on sensing. Sensors in Project Aria capture egocentric video and audio, in addition to eye-gaze, inertial, and location information. On-device compute..."
+  },
+  {
+   "id": "TU0218",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "CANCELED: From Segment Anything to Generalized Visual Grounding",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2854",
+   "site": null,
+   "summary": "In this tutorial, members of the AI team at Meta and its academic partners will overview the latest research on visual grounding. We will cover each building block necessary to move toward future general purpose visual grounding systems, including universal image and video encoding, multimodal..."
+  },
+  {
+   "id": "TU0219",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Foundation Models Meet Embodied Agents",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2856",
+   "site": null,
+   "summary": "An embodied agent is a generalist agent that can take natural language instructions from humans and perform a wide range of tasks in diverse environments. Recent years have witnessed the emergence of foundation models, which have shown remarkable success in supporting embodied agents for different..."
+  },
+  {
+   "id": "TU0220",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "Towards Safe Multi-Modal Learning: Unique Challenges and Future Directions",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2858",
+   "site": null,
+   "summary": "Modern multi-modal learning leverages large models, such as large language models (LLMs), to integrate diverse data sources (e.g., text, images, audio, and video) and enhance understanding and decision-making. However, the inherent complexities of multi-modal learning introduce unique safety..."
+  },
+  {
+   "id": "TU0221",
+   "conference": "ICCV",
+   "year": 2025,
+   "title": "RANSAC in 2025",
+   "url": "https://iccv.thecvf.com/virtual/2025/tutorial/2857",
+   "site": null,
+   "summary": "RANSAC (Random Sample Consensus) has been a cornerstone of robust estimation in computer vision since its introduction in 1981. It remains highly relevant in 2025, as many vision applications still rely on detecting and handling outliers in data. This tutorial, “RANSAC in 2025”, aims to provide a..."
+  },
+  {
+   "id": "TU0222",
+   "conference": "ECCV",
+   "year": 2026,
+   "title": "The Fifth Hands-on Egocentric Research Tutorial with Project Aria from Meta",
+   "url": "https://eccv.ecva.net/virtual/2026/3127",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0223",
+   "conference": "ECCV",
+   "year": 2026,
+   "title": "Efficient MLLM Inference via Approximated and Exact Computing",
+   "url": "https://eccv.ecva.net/virtual/2026/3128",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0224",
+   "conference": "ECCV",
+   "year": 2026,
+   "title": "Post-Training Diffusion Models: Enhancing Capabilities, Control, and Alignment",
+   "url": "https://eccv.ecva.net/virtual/2026/3130",
+   "site": null,
+   "summary": "Pre-trained generative models are built using massive, typically unlabeled corpora, enabling them to capture broad, generic knowledge across diverse domains. However, at inference time, we often aim to adjust and customize these models — to exert control, enhance specific capabilities, and align..."
+  },
+  {
+   "id": "TU0225",
+   "conference": "ECCV",
+   "year": 2026,
+   "title": "From Perception to Simulation: The Emergence of World Models in Multi-modal Reasoning",
+   "url": "https://eccv.ecva.net/virtual/2026/3129",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0226",
+   "conference": "ECCV",
+   "year": 2026,
+   "title": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+   "url": "https://eccv.ecva.net/virtual/2026/3131",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0227",
+   "conference": "ECCV",
+   "year": 2026,
+   "title": "From Hallucination Detection to Adversarial Defense: A Unified Framework for LVLM and LLM Safety",
+   "url": "https://eccv.ecva.net/virtual/2026/3132",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0228",
+   "conference": "ECCV",
+   "year": 2026,
+   "title": "X-Sense: Cooperative Perception and Distributed Foundation Models for Smart Mobility",
+   "url": "https://eccv.ecva.net/virtual/2026/3133",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0229",
+   "conference": "ECCV",
+   "year": 2026,
+   "title": "Evaluating Visual Foundation Models",
+   "url": "https://eccv.ecva.net/virtual/2026/3134",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0230",
+   "conference": "ECCV",
+   "year": 2026,
+   "title": "Aligning Diffusion Models with Human Preferences",
+   "url": "https://eccv.ecva.net/virtual/2026/3135",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0231",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Multi-modal Data Processing for Foundation Models: Practical Guidances and Use Cases",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0232",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "A Tutorial on Multi-Armed Bandit Applications for Large Language Models",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0233",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "A Review of Graph Neural Networks in Epidemic Modeling",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0234",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Advances in Human Event Modeling: From Graph Neural Networks to Language Models",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0235",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Automated Mining of Structured Knowledge from Text in the Era of Large Language Models",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0236",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Bias and Unfairness in Information Retrieval Systems: New Challenges in the LLM Era",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0237",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Decoding the AI Pen: Techniques and Challenges in Detecting AI-Generated Text",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0238",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Explainable Artificial Intelligence on Biosignals for Clinical Decision Support",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0239",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Graph Intelligence with Large Language Models and Prompt Learning",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0240",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Heterogeneous Contrastive Learning for Foundation Models and Beyond",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0241",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Modern Recommender Systems Leveraging Generative AI: Fundamentals, Challenges and Opportunities",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0242",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Multimodal Pretraining, Adaptation, and Generation for Recommendation: A Tutorial",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0243",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "RAG Meets LLMs: Towards Retrieval-Augmented Large Language Models",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0244",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Recent and Upcoming Developments in Randomized Numerical Linear Algebra for Machine Learning",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0245",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Symbolic Regression: A Pathway to Interpretability Towards Automated Scientific Discovery",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0246",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Domain-Driven LLM Development: Insights into RAG and Fine-Tuning Practices",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0247",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Tutorial on Graph Reasoning with LLMs (GReaL)",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0248",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "A Survey on Hypergraph Neural Networks: An In-Depth and Step-By-Step Guide",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0249",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Causal Inference with Latent Variables: Recent Advances and Future Prospectives",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0250",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Graph Machine Learning Meets Multi-Table Relational Data",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0251",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Inference Optimization of Foundation Models on AI Accelerators",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0252",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Large Language Models for Graphs: Progresses and Directions",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0253",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Reasoning and Planning with Large Language Models in Code Development",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0254",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Safe Multi-Modal Machine Learning",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0255",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Towards Urban General Intelligence Through Urban Foundation Models",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0256",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Practical Machine Learning for Streaming Data",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0257",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Breaking Barriers: A Hands-On Tutorial on AI-Enabled Accessibility to Social Media Content",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0258",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "A Hands-on Introduction to Time Series Classification and Regression",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0259",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "DARE to Diversify: DAta Driven and Diverse LLM REd Teaming",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0260",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Grounding and Evaluation for Large Language Models: Practical Challenges and Lessons Learned",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0261",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Privacy-Preserving Federated Learning using Flower Framework",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0262",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Foundation Models for Time Series Analysis: A Tutorial and Survey",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0263",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Sharing is Caring: A practical guide to FAIR(ER) open data release",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0264",
+   "conference": "KDD",
+   "year": 2024,
+   "title": "Systems for Scalable Graph Analytics and Machine Learning: Trends and Methods",
+   "url": "https://kdd2024.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0265",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "A Hands-on Tutorial on Time Series Imputation with ImputeGAP",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://imputegap-tutorials.github.io/KDD-2025/",
+   "summary": ""
+  },
+  {
+   "id": "TU0266",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "A Survey of WebAgents: Towards Next-Generation AI Agents for Web Automation with Large Foundation Models",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://biglemon-ning.github.io/WebAgents/",
+   "summary": ""
+  },
+  {
+   "id": "TU0267",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Model Extraction Attack and Defense for Large Language Models: Recent Advances, Challenges, and Future Perspectives",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://labrai.github.io/KDD2025_Tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0268",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "A Survey on Trustworthy LLM Agents: Threats and Countermeasures",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://ymm-cll.github.io/TrustAgent.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0269",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "A Tutorial on Small Language Models in the Era of Large Language Models: Architecture, Capabilities, and Trustworthiness",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://fairyfali.github.io/kdd2025-tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0270",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Advances in Time-Series Anomaly Detection",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://thedatumorg.github.io/TSAD-Tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0271",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Beyond Input Attribution: A Hands-On Tutorial to Concept-Based Explainable AI and Mechanistic Interpretability",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://cxai-mechint-htutorial-kdd2025.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0272",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Boost the Performance of Tabular Data Models with GPU-Accelerated Feature Engineering",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://github.com/NVIDIA-Merlin/publications/tree/main/tutorials/KDD2025tutorial",
+   "summary": ""
+  },
+  {
+   "id": "TU0273",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "CausalBench: Causal Learning Research Streamlined",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "http://tutorial.causalbench.org",
+   "summary": ""
+  },
+  {
+   "id": "TU0274",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Data Heterogeneity Modeling for Trustworthy Machine Learning",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://sites.google.com/view/kdd2025-data-heterogeneity",
+   "summary": ""
+  },
+  {
+   "id": "TU0275",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Deep Learning in the Frequency Domain: Advances, Challenges, and Applications for Time Series Analysis",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://hh4ts.github.io/Deep_Learning_in_Frequency_Domain_Tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0276",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Diffusion Models for Recommender Systems: From Content Distribution To Content Creation (Cancelled)",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://chiangel.github.io/KDD25-DiffRec-Tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0277",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Enhancing Digital Forensics Evidence Analysis with Large Language Models",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://github.com/dmark1021/digital-forensics-lab/tree/main/KDD2025",
+   "summary": ""
+  },
+  {
+   "id": "TU0278",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Evaluation and Benchmarking of AI Agents: A Survey",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://sap-samples.github.io/llm-agents-eval-tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0279",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Finding Repeated Structures in Time Series: Algorithms and Applications",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://www.cs.ucr.edu/~eamonn/TimeSeriesMotifs",
+   "summary": ""
+  },
+  {
+   "id": "TU0280",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Foundation Models for Spatio-Temporal Data Science: A Tutorial and Survey",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://wenhaomin.github.io/FM4ST.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0281",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Graph Foundation Models: Challenges, Methods, and Open Questions",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://sites.google.com/view/kdd25-gfm-tutorial",
+   "summary": ""
+  },
+  {
+   "id": "TU0282",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Graph ODEs and Beyond: A Comprehensive Survey on Integrating Differential Equations with Graph Neural Networks",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://kdd2025graphode.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0283",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Graph Prompting for Graph Learning Models: Recent Advances and Future Directions",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://www.xingbofu.com/tutorials/kdd25-graph-prompting",
+   "summary": ""
+  },
+  {
+   "id": "TU0284",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Hyperbolic Deep Learning for Foundation Models: A Tutorial",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://hyperboliclearning.github.io/events/kdd2025tutorial",
+   "summary": ""
+  },
+  {
+   "id": "TU0285",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Large Language Model Enhanced Recommender Systems: Methods, Applications and Trends",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://applied-machine-learning-lab.github.io/KDD25-Tutorial-LLMERS/",
+   "summary": ""
+  },
+  {
+   "id": "TU0286",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "MedKLM: Unifying Large Language Models and Knowledge Graphs for Medicine and Healthcare",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://sites.google.com/view/medklm2025/home",
+   "summary": ""
+  },
+  {
+   "id": "TU0287",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "MEDS: Building Models and Tools in a Reproducible Health AI Ecosystem",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://medical-event-data-standard.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0288",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Multi-Modal Time Series Analysis: Data, Methods, and Applications",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://uconn-dsis.github.io/MMTSA_tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0289",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Practical Guidance and Tutorial on Incentivizing Reasoning in LLMs using Distillation and Reinforcement Learning",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://zpqiu.github.io/reasoning-model-tutorial-kdd2025/",
+   "summary": ""
+  },
+  {
+   "id": "TU0290",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Relational Deep Learning: Challenges, Foundations and Next-Generation Architectures",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://sites.google.com/view/rdltutorial2025/home",
+   "summary": ""
+  },
+  {
+   "id": "TU0291",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Retrieval And Structuring Augmented Generation with Large Language Models",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://sites.google.com/view/ras-llm",
+   "summary": ""
+  },
+  {
+   "id": "TU0292",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Synthetic Tabular Data: methods, attacks and defenses",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://sites.google.com/view/synthetic-tab-data-tutorial",
+   "summary": ""
+  },
+  {
+   "id": "TU0293",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "The Hitchhikers guide to production-ready trustworthy Foundation Model powered Software (FMware)",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://kdd2025fmware.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0294",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Training Industry-scale GNNs with GiGL",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://github.com/Snapchat/GiGL/tree/main/examples/tutorial/KDD_2025",
+   "summary": ""
+  },
+  {
+   "id": "TU0295",
+   "conference": "KDD",
+   "year": 2025,
+   "title": "Uncertainty Quantification and Confidence Calibration in Large Language Models: A Survey",
+   "url": "https://kdd2025.kdd.org/tutorials/",
+   "site": "https://xiao0o0o.github.io/2025KDD_tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0296",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Building Agentic AI Systems with LangGraph: From LLM Pipelines to Multi-Agent Decision Workflows",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://drkuhail.com/kdd26/",
+   "summary": ""
+  },
+  {
+   "id": "TU0297",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "End-to-End Learning for Partially-Observed Time Series with PyPOTS",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://pypots.com/events/KDD2026Tutorial",
+   "summary": ""
+  },
+  {
+   "id": "TU0298",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Taming Structured Data Foundation Models with AutoML: A Hands-On Guide",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://kdd26-automl-hands-on.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0299",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Multi-Turn Reinforcement Learning for Large Language Models: From Theory to Practice with Amazon SageMaker AI",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://kdd2026-mtrl-tutorial.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0300",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Evidencing LLM Misuse: A Hands-on Forensic Tutorial on Copyright Infringement and Plagiarism Detection",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://evidencing-llm-misuse.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0301",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "OneEHR: Reproducible and AI Agent-Ready Longitudinal EHR Analysis Toolkit",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://medx-pku.github.io/OneEHR/",
+   "summary": ""
+  },
+  {
+   "id": "TU0302",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Building Reliable Industrial Agents with MCP: A Hands-on AssetOpsBench Tutorial for AI-Driven Operations",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://shuxinlin.github.io/assetopsbench-kdd-tutorial-2026/",
+   "summary": ""
+  },
+  {
+   "id": "TU0303",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "A Hands-on Tutorial for Diffusion Language Models with dLLM",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://lingjiechen2.github.io/kdd2026-dllm-tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0304",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Systematic Diagnosis and Benchmarking of Memory Systems in Autonomous AI Research Agents: A Low-Resource Framework",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://syaikhipin.github.io/kdd26-memdiag/",
+   "summary": ""
+  },
+  {
+   "id": "TU0305",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Foundation Models for Time Series Analysis: Concepts, Methodologies, and Applications",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://wenhaomin.github.io/FM4TS-KDD26.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0306",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Beyond Graph Distribution Shifts: LLMs, Adaptation, and Generalization",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://ood-generalization.com/KDD2026Tutorial.htm",
+   "summary": ""
+  },
+  {
+   "id": "TU0307",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Tutorial on Generative Recommendation: Foundations and Frontiers",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://applied-machine-learning-lab.github.io/KDD2026_GenRec_Tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0308",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Data Valuation for Generative Models",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://data-valuation-for-generative-models.github.io/KDD2026_Tutorial/",
+   "summary": ""
+  },
+  {
+   "id": "TU0309",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "AI for Precision Medicine: Histopathology-centered Computational analysis of Spatial Omics: Integration, Mapping, and Foundation Models",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://sites.google.com/view/kdd2026ai4pm-he?usp=sharing",
+   "summary": ""
+  },
+  {
+   "id": "TU0310",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Toward Generalist Models for Structured Data: Fundamentals, Emerging Trends and Applications",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://slies.github.io/kdd-2026-structured-data/",
+   "summary": ""
+  },
+  {
+   "id": "TU0311",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Hyperbolic Learning for Structured Data, Knowledge, and Memory: A Tutorial",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://hyperboliclearning.github.io/events/kdd2026tutorial",
+   "summary": ""
+  },
+  {
+   "id": "TU0312",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "A Tutorial on Retrieval-Augmented Generation for LLM-based Recommender Systems",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://recsys-rag-tutorial.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0313",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Agents in the Wild: Where Research Meets Deployment",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://esantus.github.io/agents-in-the-wild-kdd2026/",
+   "summary": ""
+  },
+  {
+   "id": "TU0314",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Interpretability in the Era of Large Language Models: Mechanistic Methodology, Empirical Practices, and Applications",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://polarisant.github.io/kdd26-tutorial-llm-interpretability/",
+   "summary": ""
+  },
+  {
+   "id": "TU0315",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Trustworthy LLM-Based Agents for Data-Centric AI",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://data-centric-trustworthy-llm-toturial.github.io",
+   "summary": ""
+  },
+  {
+   "id": "TU0316",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "When Models Leave the Training Distribution: A Tutorial on OOD Detection",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "http://ood-kdd2026.nss-research.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0317",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Teaching LLMs to Write System Kernels for AI Accelerators: Post-Training, Reasoning, and Agentic Optimization",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://neuron-science.github.io/llm_kernel_writing/",
+   "summary": ""
+  },
+  {
+   "id": "TU0318",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "From Generic Intelligence to Personalized AI: A Tutorial on Foundations of LLM Personalization",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://llm-personalization-tutorial.github.io",
+   "summary": ""
+  },
+  {
+   "id": "TU0319",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Generative AI and Large Language Models for Financial Markets: From Behavioral Prediction to Autonomous Trading",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://zangir.github.io/genai-finance-kdd2026/",
+   "summary": ""
+  },
+  {
+   "id": "TU0320",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Structure Shapes the Future of DataxLLM Systems: Retrieval, Structuring, and Reasoning",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://sites.google.com/view/dataxllm/home",
+   "summary": ""
+  },
+  {
+   "id": "TU0321",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Deep Multiple Clustering: From Foundations to Context-Aware Approaches",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://dmc-kdd2026.github.io/deep_multiple_clustering/",
+   "summary": ""
+  },
+  {
+   "id": "TU0322",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Generative AI in Healthcare: Temporal Data Analysis and Sequential Decision-Making",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://sites.google.com/view/genai-temporal/home",
+   "summary": ""
+  },
+  {
+   "id": "TU0323",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Discovery, Validation and Editing of Large Language Models Mechanisms: Recent Advances and Future Perspectives",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://yinhanhe123.github.io/tutorials/",
+   "summary": ""
+  },
+  {
+   "id": "TU0324",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Retrieval-Augmented Generation (RAG)— From Modular to Agentic Systems",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://tutorial.lunadong.com/",
+   "summary": ""
+  },
+  {
+   "id": "TU0325",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Knowledge Discovery with Knowledge Graphs: From Structural Embeddings to Generative Reasoning",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://bdi-lab.github.io/kkg_kdd2026/",
+   "summary": ""
+  },
+  {
+   "id": "TU0326",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "From VAEs to Diffusion and LLMs: Modern Generative Models for Molecular Discovery",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0327",
+   "conference": "KDD",
+   "year": 2026,
+   "title": "Beyond Prediction: Toward Verifiable Physiological Waveform Reasoning: Advances, Challenges, and Future Directions",
+   "url": "https://kdd2026.kdd.org/tutorials/",
+   "site": "https://ignite-abd.github.io/kdd2026_tutorial.html",
+   "summary": ""
+  },
+  {
+   "id": "TU0328",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "Robust Information Retrieval",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut1",
+   "site": null,
+   "summary": "Beyond effectiveness, the robustness of an information retrieval (IR) system is increasingly attracting attention. When deployed, a critical technology such as IR should not only deliver strong performance on average but also have the ability to handle a variety of exceptional situations. In recent..."
+  },
+  {
+   "id": "TU0329",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "Large Language Models for Recommendation: Past, Present, and Future",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut2",
+   "site": "https://generative-rec.github.io/tutorial/",
+   "summary": "Large language models (LLMs) have significantly influenced recommender systems, spurring interest across academia and industry in leveraging LLMs for recommendation tasks. This includes using LLMs for generative item retrieval and ranking, and developing versatile LLMs for various recommendation..."
+  },
+  {
+   "id": "TU0330",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "Large Language Model Powered Agents for Information Retrieval",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut3",
+   "site": "https://llmagenttutorial.github.io/sigir2024",
+   "summary": "The vital goal of information retrieval today extends beyond merely connecting users with relevant information they search for. It also aims to enrich the diversity, personalization, and interactivity of that connection, ensuring the information retrieval process is as seamless, beneficial, and..."
+  },
+  {
+   "id": "TU0331",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "Recent Advances in Generative Information Retrieval",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut4",
+   "site": null,
+   "summary": "Generative retrieval (GR) has witnessed significant growth recently in the area of information retrieval. Compared to the traditional ``index-retrieve-then-rank'' pipeline, the GR paradigm aims to consolidate all information within a corpus into a single model. Typically, a sequence-to-sequence..."
+  },
+  {
+   "id": "TU0332",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "Preventing and Detecting Misinformation Generated by Large Language Models",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut5",
+   "site": null,
+   "summary": "As large language models (LLMs) become increasingly capable and widely deployed, the risk of them generating misinformation poses a critical challenge. Misinformation from LLMs can take various forms, from factual errors due to hallucination to intentionally deceptive content, and can have severe..."
+  },
+  {
+   "id": "TU0333",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "Using and Evaluating Quantum Computing for Information Retrieval and Recommender Systems",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut6",
+   "site": null,
+   "summary": "The field of Quantum Computing (QC) has gained significant popularity in recent years, due to its potential to provide benefits in terms of efficiency and effectiveness when employed to solve certain computationally intensive tasks. In both Information Retrieval (IR) and Recommender Systems (RS) we..."
+  },
+  {
+   "id": "TU0334",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "Large Language Models for Tabular Data: Progresses and Future Directions",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut7",
+   "site": null,
+   "summary": "This tutorial provides a comprehensive study of the advancements, challenges, and opportunities in leveraging cutting-edge LLMs for tabular data. By exploring cutting-edge methods of LLMs for table interpreting, processing, reasoning, analytics, and generation, we aim to equip researchers and..."
+  },
+  {
+   "id": "TU0335",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "Empowering Large Language Models: Tool Learning for Real-World Interaction",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut8",
+   "site": "https://rulegreen.github.io/services/tools-meet-llm/",
+   "summary": "Since the advert of large language models (LLMs), the field of tool learning has remained very active to solve various tasks in practice, including but not limited to information retrieval. This half-day tutorial provides basic concepts of this field and an overview of recent advancements with..."
+  },
+  {
+   "id": "TU0336",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "Search under Uncertainty: Cognitive Biases and Heuristics",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut9",
+   "site": null,
+   "summary": "Understanding how people interact with search interfaces is core to the field of Interactive Information Retrieval (IIR). While various models have been proposed (e.g., Belkin's ASK, Berry picking, Everyday-life information seeking, Information foraging theory, Economic theory, etc.), they have..."
+  },
+  {
+   "id": "TU0337",
+   "conference": "SIGIR",
+   "year": 2024,
+   "title": "High Recall Retrieval Via Technology-Assisted Review",
+   "url": "https://sigir-2024.github.io/attend_Tutorials.html#tut10",
+   "site": null,
+   "summary": "High Recall Retrieval (HRR) tasks, including eDiscovery in the law, systematic literature reviews, and sunshine law requests, focus on efficiently prioritizing relevant documents for human review. Technology-assisted review (TAR) refers to iterative human-in-the-loop workflows that combine human..."
+  },
+  {
+   "id": "TU0338",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Conversational Search: From Fundamentals to Frontiers in the LLM Era",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T1",
+   "site": "https://convsearch.github.io/",
+   "summary": "Conversational search enables multi-turn interactions between users and systems to fulfill users' complex information needs. During this interaction, the system should understand the users' search intent within the conversational context and then return the relevant information through a flexible,..."
+  },
+  {
+   "id": "TU0339",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Efficient In-Memory Inverted Indexes: Theory and Practice",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T2",
+   "site": "https://pisa-engine.github.io/sigir-2025.html",
+   "summary": "Inverted indexes are the backbone of most large-scale information retrieval systems. Although conceptually simple, high-performance inverted indexes require a deep understanding of low-level system optimizations, compression techniques, and traversal strategies. With the widespread adoption of..."
+  },
+  {
+   "id": "TU0340",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "R 2 LLMs: Retrieval and Ranking with LLMs",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T3",
+   "site": "https://ielab.io/tutorials/r2llms.html",
+   "summary": "Generative Large Language Models (LLMs) like GPT, Gemini, and Llama are transforming Information Retrieval, enabling new and more effective approaches to document retrieval and ranking. The switch from the previous generation pre-trained language models backbones (e.g., BERT, T5) to the new..."
+  },
+  {
+   "id": "TU0341",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Retrieval-Enhanced Machine Learning: Synthesis and Opportunities",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T4",
+   "site": "https://retrieval-enhanced-ml.github.io/sigir-2025.html",
+   "summary": "Retrieval-enhanced machine learning (REML) refers to the use of information retrieval methods to support reasoning and inference in machine learning tasks. Although relatively recent, these approaches can substantially improve model performance. This includes improved generalization, knowledge..."
+  },
+  {
+   "id": "TU0342",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Query Understanding in LLM-based Conversational Information Seeking",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T5",
+   "site": "https://sigirusertutorial.github.io/",
+   "summary": "Query understanding in Conversational Information Seeking (CIS) involves accurately interpreting user intent through context-aware interactions. This includes resolving ambiguities, refining queries, and adapting to evolving information needs. Large Language Models (LLMs) enhance this process by..."
+  },
+  {
+   "id": "TU0343",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Navigating Large Language Models for Recommendation: From Architecture to Learning Paradigms and Deployment",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T6",
+   "site": "https://generative-rec.github.io/tutorial-sigir25/",
+   "summary": "Large Language Models (LLMs) are reshaping the landscape of recommender systems, giving rise to the emerging field of LLM4Rec that attracts both academia and industry. Unlike earlier approaches that simply borrowed model architectures or learning paradigms from language models, recent advances have..."
+  },
+  {
+   "id": "TU0344",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Theory and Toolkits for User Simulation in the Era of Generative AI: User Modeling, Synthetic Data Generation, and System Evaluation",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T7",
+   "site": "http://usersim.ai/sigir2025-tutorial",
+   "summary": "Interactive AI systems, including search engines, recommender systems, conversational agents, and generative AI applications, are increasingly central to user experiences. However, rigorously evaluating their performance, training them effectively with interaction data, and modeling user behavior..."
+  },
+  {
+   "id": "TU0345",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Psychological Aspects in Retrieval and Recommendation",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T8",
+   "site": "https://github.com/aisocietylab/Psy-IR-RecSys-SIGIR25",
+   "summary": "Psychological processes play a critical role in shaping users' interactions with information retrieval (IR) and recommender systems (RS). Therefore, understanding human cognition, decision-making, and emotions is vital to enable user-centric retrieval and recommendation systems. Vice versa,..."
+  },
+  {
+   "id": "TU0346",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Dynamic and Parametric Retrieval-Augmented Generation",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T9",
+   "site": "https://sites.google.com/view/sigir2025-tutorial-dprag/home-page",
+   "summary": "Retrieval-Augmented Generation (RAG) has become a foundational paradigm for enhancing large language models (LLMs) with external knowledge, playing an important role in modern information retrieval and knowledge-intensive tasks. Standard RAG systems typically adopt a static retrieve-then-generate..."
+  },
+  {
+   "id": "TU0347",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Fairness in Information Retrieval from an Economic Perspective",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T10",
+   "site": "https://economic-fairness-ir.github.io/",
+   "summary": "Recently, fairness-aware information retrieval (IR) systems have been receiving much attention. Numerous fairness metrics and algorithms have been proposed. The complexity of fairness and IR systems makes it challenging to provide a systematic summary of the progress that has been made. This..."
+  },
+  {
+   "id": "TU0348",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Unveiling Knowledge Boundary of Large Language Models for Trustworthy Information Access",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T11",
+   "site": "https://knowledge-boundary-tutorial.github.io/",
+   "summary": "Large Language Models (LLMs) have emerged as powerful tools for generating content and facilitating information seeking across diverse domains. While their integration into conversational systems opens new avenues for interactive information-seeking experiences, their effectiveness is constrained..."
+  },
+  {
+   "id": "TU0349",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Neural Lexical Search with Learned Sparse Retrieval",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T12",
+   "site": "https://lsr-tutorial.github.io/",
+   "summary": "Learned Sparse Retrieval (LSR) techniques use neural machinery to represent queries and documents as learned bags of words. In contrast with other neural retrieval techniques, such as generative retrieval and dense retrieval, LSR has been shown to be a remarkably robust, transferable, and efficient..."
+  },
+  {
+   "id": "TU0350",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Long Context vs. RAG: Strategies for Processing Long Documents in LLMs",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T13",
+   "site": "https://sites.google.com/view/sigir25-lc-vs-rag/",
+   "summary": "Large Language Models (LLMs) excel at zero- and few-shot learning but are restricted by the length of context windows when processing long documents. Two strategies have emerged to overcome this limitation: (1) Long Context (LC) methods, which extend or compress transformer architectures to input..."
+  },
+  {
+   "id": "TU0351",
+   "conference": "SIGIR",
+   "year": 2025,
+   "title": "Information Retrieval in Finance: Industry and Academic Perspectives on Innovation",
+   "url": "https://sigir2025.dei.unipd.it/attend-tutorials.html#T14",
+   "site": "https://sites.google.com/view/irfin/",
+   "summary": "Information retrieval (IR) plays a critical role in financial decision-making across investment research, trading, risk management, and reporting. With the rise of large language models (LLMs), IR systems have evolved to support more natural, context-aware workflows. In this tutorial, we survey..."
+  },
+  {
+   "id": "TU0352",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "Bridging Personalization and AI: From RAG to Agent",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0353",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "Retrieve, Rerank, Answer, Experiment: Hands-On IR Research with PyTerrier",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": "https://pyterrier-tutorial.github.io/",
+   "summary": ""
+  },
+  {
+   "id": "TU0354",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "LLM Personalization: Foundations, Breakthroughs, and Frontiers",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0355",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "Temporal Information Retrieval and Extraction: From Foundations to RAG",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0356",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "MANILA26: SIGIR 2026 Tutorial on Information Retrieval for Climate Change Impact",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0357",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "Multi-Agentic Recommender Systems: Foundations, Perspectives, and Lessons from Large Scale Deployments in eCommerce",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0358",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "Reasoning for IR & IR for Reasoning",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0359",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "Beyond Relevance: Utility-Centric Retrieval in the LLM Era",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0360",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "Verifiable User Simulation for Search and Recommendation Systems",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0361",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "Trustworthy Personalized Retrieval in the LLM Era: Fairness, Bias Awareness, Privacy, and Multimodality",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  },
+  {
+   "id": "TU0362",
+   "conference": "SIGIR",
+   "year": 2026,
+   "title": "Transdisciplinarity for Human Information Interaction and Retrieval: Strategies for Collaborating Across Research Disciplines to Foster Societal Impact",
+   "url": "https://sigir2026.org/en-AU/pages/program/accepted-tutorials",
+   "site": null,
+   "summary": ""
+  }
+ ]
+}

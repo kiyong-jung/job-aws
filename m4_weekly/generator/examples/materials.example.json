@@ -1,0 +1,93 @@
+{
+  "_example_only": "아래 교육자료는 실제 추천 결과가 아니라 입력 형식 시연용 가상 자료입니다. URL과 근거는 예시입니다.",
+  "core": [
+    {
+      "id": "M01",
+      "title": "에이전트 서비스 기초",
+      "url": "https://example.org/learn/agent",
+      "hours": 4,
+      "competencies": [
+        "C14",
+        "C20"
+      ],
+      "evidence": "예시 목차: 시스템 구성과 개발 환경",
+      "requires": [
+        "Python 기초"
+      ]
+    },
+    {
+      "id": "M02",
+      "title": "RAG 튜토리얼",
+      "url": "https://example.org/learn/rag",
+      "sections": [
+        {
+          "id": "S1",
+          "title": "문서 수집과 검색",
+          "minutes": 180,
+          "competencies": [
+            "C21"
+          ],
+          "evidence": "예시 목차 1~3장",
+          "requires": [
+            "C20"
+          ]
+        },
+        {
+          "id": "S2",
+          "title": "검색 결과와 응답 연결",
+          "minutes": 120,
+          "competencies": [
+            "C45"
+          ],
+          "evidence": "예시 목차 4~5장",
+          "requires": [
+            "C21"
+          ],
+          "study_method": "예제 문서를 검색해 순위를 살펴보고, 응답의 인용 ID를 원문과 대조한 뒤 검색 API에 연결합니다."
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "id": "M03",
+      "title": "응답 평가 가이드",
+      "url": "https://example.org/learn/eval",
+      "hours": 3,
+      "competencies": [
+        "C46"
+      ],
+      "evidence": "예시 학습목표: 품질 평가"
+    },
+    {
+      "id": "M04",
+      "title": "배포 튜토리얼",
+      "url": "https://example.org/learn/deploy",
+      "hours": 3,
+      "competencies": [
+        "C39"
+      ],
+      "evidence": "예시 학습목표: 배포 자동화"
+    },
+    {
+      "id": "M05",
+      "title": "긴 평가 강의",
+      "url": "https://example.org/learn/eval-long",
+      "hours": 5,
+      "competencies": [
+        "C46"
+      ],
+      "evidence": "예시 학습목표: 품질 평가 심화"
+    },
+    {
+      "id": "M06",
+      "title": "관련 없는 선택 강의",
+      "url": "https://example.org/learn/other",
+      "hours": 2,
+      "competencies": [
+        "C99"
+      ],
+      "evidence": "예시 학습목표: 다른 역량"
+    }
+  ]
+}

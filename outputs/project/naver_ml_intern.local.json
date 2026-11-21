@@ -1,0 +1,2785 @@
+{
+ "case": "naver_ml_intern",
+ "posting": {
+  "company": "네이버클라우드",
+  "title": "월드 모델 및 이미지 생성 모델 ML 엔지니어 (체험형 인턴)",
+  "url": "https://inthiswork.com/archives/403902",
+  "source": "지원/역량추출_결과_네이버클라우드_ML엔지니어_체험형인턴 (2).xlsx",
+  "run": {
+   "method": "general",
+   "model": "claude-sonnet",
+   "run": 2
+  }
+ },
+ "counts": {
+  "papers": 90239,
+  "repos": 21514,
+  "pool": 1000,
+  "shortlist": 100,
+  "judged": 100,
+  "k": 1
+ },
+ "queries": {
+  "per_competency": {
+   "C01": {
+    "paper": "diffusion model image video generation survey latent diffusion stable video diffusion",
+    "repo": "diffusion model image video generation tutorial implementation github"
+   },
+   "C02": {
+    "paper": "machine learning development cycle data curation training evaluation image generation pipeline",
+    "repo": "end to end ML pipeline data collection training evaluation image generation github"
+   },
+   "C03": {
+    "paper": "large scale image dataset processing filtering analysis pipeline deep learning",
+    "repo": "image video dataset processing analysis python pandas numpy pipeline github"
+   },
+   "C04": {
+    "paper": "large scale data processing GPU compute bottleneck optimization deep learning training throughput",
+    "repo": "large scale dataset GPU compute bottleneck profiling optimization pytorch github"
+   },
+   "C05": {
+    "paper": "large scale data loading IO bottleneck optimization deep learning training pipeline",
+    "repo": "data loading IO bottleneck optimization webdataset pytorch dataloader github"
+   },
+   "C07": {
+    "paper": "large scale image video dataset curation extraction web archive crawling for generative model training",
+    "repo": "image video dataset extraction curation pipeline web archive generative model github"
+   },
+   "C08": {
+    "paper": "multi-stage data quality filtering pipeline image video dataset for diffusion model training",
+    "repo": "multi-stage quality filtering image video dataset pipeline diffusion model training github"
+   },
+   "C09": {
+    "paper": "vision language model large scale automatic annotation image captioning dataset generation",
+    "repo": "VLM large scale automatic annotation image captioning dataset generation pipeline github"
+   },
+   "C10": {
+    "paper": "data recipe improvement based on training feedback image generation diffusion model dataset curation",
+    "repo": "data mixture recipe improvement training feedback image generation diffusion model github"
+   },
+   "C11": {
+    "paper": "synthetic data generation pipeline 3D simulator rendering engine for visual model training",
+    "repo": "synthetic data generation 3D simulator rendering engine Isaac Sim Blender pipeline github"
+   },
+   "C12": {
+    "paper": "synthetic dataset metadata refinement 3D rendering pipeline for deep learning",
+    "repo": "synthetic dataset metadata refinement 3D rendering pipeline annotation github"
+   },
+   "C13": {
+    "paper": "benchmark design evaluation image video generation diffusion model quality metrics",
+    "repo": "image video generation benchmark evaluation implementation diffusion model github"
+   },
+   "C14": {
+    "paper": "automated checkpoint evaluation pipeline image generation model training monitoring",
+    "repo": "automated model checkpoint evaluation pipeline image generation training github"
+   },
+   "C15": {
+    "paper": "multi-metric comparison analysis tool image video generation model evaluation dashboard",
+    "repo": "multi-metric evaluation comparison analysis tool image generation model github"
+   },
+   "C16": {
+    "paper": "large scale dataset design construction 100k samples image generation model training",
+    "repo": "large scale image video dataset construction 100k samples curation pipeline github"
+   },
+   "C17": {
+    "paper": "VLM as judge quality evaluation prompt design tuning image generation assessment",
+    "repo": "VLM judge quality evaluation prompt engineering image generation dataset github"
+   },
+   "C18": {
+    "paper": "vision language model custom image captioning prompt design tuning large scale dataset",
+    "repo": "VLM custom captioning prompt tuning large scale image dataset pipeline github"
+   },
+   "C19": {
+    "paper": "Isaac Sim synthetic data generation robot simulation visual model training NVIDIA",
+    "repo": "Isaac Sim synthetic dataset generation pipeline robot simulation github"
+   },
+   "C20": {
+    "paper": "NVIDIA Omniverse synthetic data generation rendering pipeline deep learning visual model",
+    "repo": "NVIDIA Omniverse synthetic data generation rendering pipeline deep learning github"
+   },
+   "C21": {
+    "paper": "Blender synthetic data generation rendering pipeline image dataset deep learning",
+    "repo": "Blender synthetic data generation rendering pipeline image dataset deep learning github"
+   },
+   "C22": {
+    "paper": "Unreal Engine synthetic data generation rendering pipeline image video dataset deep learning",
+    "repo": "Unreal Engine synthetic data generation rendering pipeline image dataset deep learning github"
+   }
+  },
+  "paper_names": [
+   "DataComp: In search of the next generation of multimodal datasets",
+   "LAION-5B: An open large-scale dataset for training next generation image-text models",
+   "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis",
+   "Video generation models as world simulators",
+   "Emu: Enhancing Image Generation Models Using Photogenic Needles in a Haystack",
+   "T2I-CompBench: A Comprehensive Benchmark for Open-world Compositional Text-to-image Generation",
+   "GenAI-Bench: Evaluating and Improving Compositional Text-to-Visual Generation",
+   "Evaluating Text-to-Visual Generation with Image-to-Text Generation",
+   "DINOv2: Learning Robust Visual Features without Supervision",
+   "Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding"
+  ],
+  "repo_names": [
+   "rom1504/img2dataset",
+   "mlfoundations/datacomp",
+   "LAION-AI/laion-datasets",
+   "huggingface/diffusers",
+   "Stability-AI/generative-models",
+   "openai/consistency_models",
+   "lucidrains/denoising-diffusion-pytorch",
+   "Tencent-Hunyuan/HunyuanDiT",
+   "black-forest-labs/flux",
+   "open-mmlab/mmagic"
+  ]
+ },
+ "sample": {
+  "key": "gh:duoan/mega-data-factory",
+  "kind": "repo",
+  "title": "duoan/mega-data-factory",
+  "year": "2026",
+  "venue": "GitHub ★382",
+  "url": "https://github.com/duoan/mega-data-factory",
+  "stars": 382,
+  "text": "duoan mega-data-factory 🏭 Mega Scale Multimodal DataPipeline for SOTA Foundation Models data-centric-ai data-curation data-quality datapipeline datapipelines deeplearning foundation-models image-editing image-generation llm machine-learning mllm multimodal ray rust video-generation vlm",
+  "search_score": 1.147
+ },
+ "must_all": true,
+ "must_missing": [],
+ "runner_up": [
+  {
+   "key": "gh:datajuicer/data-juicer",
+   "kind": "repo",
+   "title": "datajuicer/data-juicer",
+   "year": "2026",
+   "venue": "GitHub ★7250",
+   "url": "https://github.com/datajuicer/data-juicer",
+   "stars": 7250,
+   "text": "datajuicer data-juicer Data processing for and with foundation models!  🍎 🍋 🌽 ➡️ ➡️🍸 🍹 🍷 data data-analysis data-pipeline data-processing data-science data-visualization foundation-models instruction-tuning large-language-models llm llms multi-modal pre-training synthetic-data",
+   "search_score": 1.974
+  },
+  {
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2026/html/Ju_CI-VID_A_Coherent_Interleaved_Text-Video_Dataset_CVPR_2026_paper.html",
+   "kind": "paper",
+   "title": "CI-VID: A Coherent Interleaved Text-Video Dataset",
+   "year": "2026",
+   "venue": "CVPR",
+   "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Ju_CI-VID_A_Coherent_Interleaved_Text-Video_Dataset_CVPR_2026_paper.html",
+   "text": "Text-to-video (T2V) generation has recently attracted considerable attention, resulting in the development of numerous high-quality datasets that have propelled progress in this area. However, existing public datasets are primarily composed of isolated text-video (T-V) pairs and thus fail to model inter-clip relationships. To address this limitation, we introduce CI-VID, a dataset that moves beyond isolated T2V generation toward text-and-video-to-video (T&V2V) generation. CI-VID contains over 340,000 samples, each comprising a semantically coherent video sequence with interleaved text captions that capture both clip-level content and inter-clip relationships. To validate its effectiveness, we design a comprehensive, multi-dimensional benchmark incorporating human evaluation, VLM-based assessment, and similarity-based metrics. Experimental results demonstrate that models trained on CI-VID significantly improve both accuracy and content consistency in multi-clip video generation. This enables the creation of story-driven content with smooth transitions and strong semantic coherence.",
+   "code_url": "",
+   "search_score": 0.293
+  }
+ ],
+ "ranking": [
+  {
+   "title": "duoan/mega-data-factory",
+   "key": "gh:duoan/mega-data-factory",
+   "kind": "repo",
+   "url": "https://github.com/duoan/mega-data-factory",
+   "year": "2026",
+   "venue": "GitHub ★382",
+   "stars": 382,
+   "필수": 5,
+   "우대": 1,
+   "나머지": 4.5
+  },
+  {
+   "title": "datajuicer/data-juicer",
+   "key": "gh:datajuicer/data-juicer",
+   "kind": "repo",
+   "url": "https://github.com/datajuicer/data-juicer",
+   "year": "2026",
+   "venue": "GitHub ★7250",
+   "stars": 7250,
+   "필수": 4.0,
+   "우대": 1,
+   "나머지": 4.0
+  },
+  {
+   "title": "CI-VID: A Coherent Interleaved Text-Video Dataset",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2026/html/Ju_CI-VID_A_Coherent_Interleaved_Text-Video_Dataset_CVPR_2026_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Ju_CI-VID_A_Coherent_Interleaved_Text-Video_Dataset_CVPR_2026_paper.html",
+   "year": "2026",
+   "venue": "CVPR",
+   "필수": 3,
+   "우대": 2.0,
+   "나머지": 5.0
+  },
+  {
+   "title": "ADIEE: Automatic Dataset Creation and Scorer for Instruction-Guided Image Editing Evaluation",
+   "key": "url:https://openaccess.thecvf.com/content/ICCV2025/html/Chen_ADIEE_Automatic_Dataset_Creation_and_Scorer_for_Instruction-Guided_Image_Editing_ICCV_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Chen_ADIEE_Automatic_Dataset_Creation_and_Scorer_for_Instruction-Guided_Image_Editing_ICCV_2025_paper.html",
+   "year": "2025",
+   "venue": "ICCV",
+   "필수": 3,
+   "우대": 2,
+   "나머지": 2.5
+  },
+  {
+   "title": "NVIDIA-NeMo/Curator",
+   "key": "gh:nvidia-nemo/curator",
+   "kind": "repo",
+   "url": "https://github.com/NVIDIA-NeMo/Curator",
+   "year": "2026",
+   "venue": "GitHub ★1861",
+   "stars": 1861,
+   "필수": 3.0,
+   "우대": 1,
+   "나머지": 4.5
+  },
+  {
+   "title": "Goku: Flow Based Video Generative Foundation Models",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Goku_Flow_Based_Video_Generative_Foundation_Models_CVPR_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Goku_Flow_Based_Video_Generative_Foundation_Models_CVPR_2025_paper.html",
+   "year": "2025",
+   "venue": "CVPR",
+   "필수": 3.0,
+   "우대": 0,
+   "나머지": 4.5
+  },
+  {
+   "title": "Teaching the Old Dog New Tricks: Building Efficient Data Pipelines for Large-Scale LLM Pre-Training (Operational Systems)",
+   "key": "url:https://www.usenix.org/conference/osdi26/presentation/chen-luofan",
+   "kind": "paper",
+   "url": "https://www.usenix.org/conference/osdi26/presentation/chen-luofan",
+   "year": "2026",
+   "venue": "OSDI",
+   "필수": 3.0,
+   "우대": 0,
+   "나머지": 1.5
+  },
+  {
+   "title": "Flame-Code-VLM/Flame-Code-VLM",
+   "key": "gh:flame-code-vlm/flame-code-vlm",
+   "kind": "repo",
+   "url": "https://github.com/Flame-Code-VLM/Flame-Code-VLM",
+   "year": "2026",
+   "venue": "GitHub ★564",
+   "stars": 564,
+   "필수": 2.5,
+   "우대": 1.0,
+   "나머지": 4.5
+  },
+  {
+   "title": "InsViE-1M: Effective Instruction-based Video Editing with Elaborate Dataset Construction",
+   "key": "url:https://openaccess.thecvf.com/content/ICCV2025/html/Wu_InsViE-1M_Effective_Instruction-based_Video_Editing_with_Elaborate_Dataset_Construction_ICCV_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Wu_InsViE-1M_Effective_Instruction-based_Video_Editing_with_Elaborate_Dataset_Construction_ICCV_2025_paper.html",
+   "year": "2025",
+   "venue": "ICCV",
+   "필수": 2.5,
+   "우대": 1,
+   "나머지": 2.0
+  },
+  {
+   "title": "Somnusochi/VLM-AutoYOLO",
+   "key": "gh:somnusochi/vlm-autoyolo",
+   "kind": "repo",
+   "url": "https://github.com/Somnusochi/VLM-AutoYOLO",
+   "year": "2026",
+   "venue": "GitHub ★279",
+   "stars": 279,
+   "필수": 2.5,
+   "우대": 0.5,
+   "나머지": 3.5
+  },
+  {
+   "title": "modelscope/evalscope",
+   "key": "gh:modelscope/evalscope",
+   "kind": "repo",
+   "url": "https://github.com/modelscope/evalscope",
+   "year": "2026",
+   "venue": "GitHub ★3700",
+   "stars": 3700,
+   "필수": 2.5,
+   "우대": 0,
+   "나머지": 3.0
+  },
+  {
+   "title": "airscholar/e2e-data-engineering",
+   "key": "gh:airscholar/e2e-data-engineering",
+   "kind": "repo",
+   "url": "https://github.com/airscholar/e2e-data-engineering",
+   "year": "2025",
+   "venue": "GitHub ★380",
+   "stars": 380,
+   "필수": 2.5,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "Train a Unified Multimodal Data Quality Classifier with Synthetic Data",
+   "key": "doi:10.18653/v1/2025.findings-emnlp.104",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2025.findings-emnlp.104/",
+   "year": "2025",
+   "venue": "EMNLP-Findings",
+   "필수": 2.0,
+   "우대": 1.5,
+   "나머지": 1.5
+  },
+  {
+   "title": "SimGen: Simulator-conditioned Driving Scene Generation",
+   "key": "url:https://papers.nips.cc/paper_files/paper/2024/hash/57c5a7c83b056d74bc97b7db36bd3649-Abstract-Conference.html",
+   "kind": "paper",
+   "url": "https://papers.nips.cc/paper_files/paper/2024/hash/57c5a7c83b056d74bc97b7db36bd3649-Abstract-Conference.html",
+   "year": "2024",
+   "venue": "NeurIPS",
+   "필수": 2.0,
+   "우대": 1,
+   "나머지": 2.5
+  },
+  {
+   "title": "databrickslabs/dbldatagen",
+   "key": "gh:databrickslabs/dbldatagen",
+   "kind": "repo",
+   "url": "https://github.com/databrickslabs/dbldatagen",
+   "year": "2026",
+   "venue": "GitHub ★507",
+   "stars": 507,
+   "필수": 2.0,
+   "우대": 1,
+   "나머지": 0
+  },
+  {
+   "title": "Kiln-AI/Kiln",
+   "key": "gh:kiln-ai/kiln",
+   "kind": "repo",
+   "url": "https://github.com/Kiln-AI/Kiln",
+   "year": "2026",
+   "venue": "GitHub ★5283",
+   "stars": 5283,
+   "필수": 2,
+   "우대": 0.5,
+   "나머지": 3.5
+  },
+  {
+   "title": "Particle1904/DatasetHelpers",
+   "key": "gh:particle1904/datasethelpers",
+   "kind": "repo",
+   "url": "https://github.com/Particle1904/DatasetHelpers",
+   "year": "2026",
+   "venue": "GitHub ★229",
+   "stars": 229,
+   "필수": 2.0,
+   "우대": 0.5,
+   "나머지": 2.5
+  },
+  {
+   "title": "ShowTable: Unlocking Creative Table Visualization with Collaborative Reflection and Refinement",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2026/html/Liu_ShowTable_Unlocking_Creative_Table_Visualization_with_Collaborative_Reflection_and_Refinement_CVPR_2026_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Liu_ShowTable_Unlocking_Creative_Table_Visualization_with_Collaborative_Reflection_and_Refinement_CVPR_2026_paper.html",
+   "year": "2026",
+   "venue": "CVPR",
+   "필수": 2.0,
+   "우대": 0.5,
+   "나머지": 1.0
+  },
+  {
+   "title": "EvolvingLMMs-Lab/lmms-eval",
+   "key": "gh:evolvinglmms-lab/lmms-eval",
+   "kind": "repo",
+   "url": "https://github.com/EvolvingLMMs-Lab/lmms-eval",
+   "year": "2026",
+   "venue": "GitHub ★4497",
+   "stars": 4497,
+   "필수": 2.0,
+   "우대": 0,
+   "나머지": 4.0
+  },
+  {
+   "title": "iusztinpaul/energy-forecasting",
+   "key": "gh:iusztinpaul/energy-forecasting",
+   "kind": "repo",
+   "url": "https://github.com/iusztinpaul/energy-forecasting",
+   "year": "2024",
+   "venue": "GitHub ★990",
+   "stars": 990,
+   "필수": 2,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "mars-project/mars",
+   "key": "gh:mars-project/mars",
+   "kind": "repo",
+   "url": "https://github.com/mars-project/mars",
+   "year": "2024",
+   "venue": "GitHub ★2746",
+   "stars": 2746,
+   "필수": 2.0,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "MigoXLab/dingo",
+   "key": "gh:migoxlab/dingo",
+   "kind": "repo",
+   "url": "https://github.com/MigoXLab/dingo",
+   "year": "2026",
+   "venue": "GitHub ★768",
+   "stars": 768,
+   "필수": 1.5,
+   "우대": 2,
+   "나머지": 4.5
+  },
+  {
+   "title": "ROVI: A VLM-LLM Re-Captioned Dataset for Open-Vocabulary Instance-Grounded Text-to-Image Generation",
+   "key": "url:https://openaccess.thecvf.com/content/ICCV2025/html/Peng_ROVI_A_VLM-LLM_Re-Captioned_Dataset_for_Open-Vocabulary_Instance-Grounded_Text-to-Image_Generation_ICCV_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Peng_ROVI_A_VLM-LLM_Re-Captioned_Dataset_for_Open-Vocabulary_Instance-Grounded_Text-to-Image_Generation_ICCV_2025_paper.html",
+   "year": "2025",
+   "venue": "ICCV",
+   "필수": 1.5,
+   "우대": 2,
+   "나머지": 1.0
+  },
+  {
+   "title": "CREval: An Automated Interpretable Evaluation for Creative Image Manipulation under Complex Instructions",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2026/html/Wang_CREval_An_Automated_Interpretable_Evaluation_for_Creative_Image_Manipulation_under_CVPR_2026_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_CREval_An_Automated_Interpretable_Evaluation_for_Creative_Image_Manipulation_under_CVPR_2026_paper.html",
+   "year": "2026",
+   "venue": "CVPR",
+   "필수": 1.5,
+   "우대": 1.5,
+   "나머지": 2.5
+  },
+  {
+   "title": "X-PLUG/Youku-mPLUG",
+   "key": "gh:x-plug/youku-mplug",
+   "kind": "repo",
+   "url": "https://github.com/X-PLUG/Youku-mPLUG",
+   "year": "2024",
+   "venue": "GitHub ★313",
+   "stars": 313,
+   "필수": 1.5,
+   "우대": 1,
+   "나머지": 4
+  },
+  {
+   "title": "visual-layer/fastdup",
+   "key": "gh:visual-layer/fastdup",
+   "kind": "repo",
+   "url": "https://github.com/visual-layer/fastdup",
+   "year": "2026",
+   "venue": "GitHub ★1916",
+   "stars": 1916,
+   "필수": 1.5,
+   "우대": 1,
+   "나머지": 2.0
+  },
+  {
+   "title": "Mosaic3D: Foundation Dataset and Model for Open-Vocabulary 3D Segmentation",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2025/html/Lee_Mosaic3D_Foundation_Dataset_and_Model_for_Open-Vocabulary_3D_Segmentation_CVPR_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Lee_Mosaic3D_Foundation_Dataset_and_Model_for_Open-Vocabulary_3D_Segmentation_CVPR_2025_paper.html",
+   "year": "2025",
+   "venue": "CVPR",
+   "필수": 1.5,
+   "우대": 1,
+   "나머지": 1.5
+  },
+  {
+   "title": "kousheekc/isaac_drone_racer",
+   "key": "gh:kousheekc/isaac_drone_racer",
+   "kind": "repo",
+   "url": "https://github.com/kousheekc/isaac_drone_racer",
+   "year": "2025",
+   "venue": "GitHub ★200",
+   "stars": 200,
+   "필수": 1.5,
+   "우대": 1,
+   "나머지": 1.5
+  },
+  {
+   "title": "Leveraging Panoptic Scene Graph for Evaluating Fine-Grained Text-to-Image Generation",
+   "key": "url:https://openaccess.thecvf.com/content/ICCV2025/html/Deng_Leveraging_Panoptic_Scene_Graph_for_Evaluating_Fine-Grained_Text-to-Image_Generation_ICCV_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Deng_Leveraging_Panoptic_Scene_Graph_for_Evaluating_Fine-Grained_Text-to-Image_Generation_ICCV_2025_paper.html",
+   "year": "2025",
+   "venue": "ICCV",
+   "필수": 1.5,
+   "우대": 0.5,
+   "나머지": 3.0
+  },
+  {
+   "title": "Human Body Restoration with One-Step Diffusion Model and A New Benchmark",
+   "key": "url:https://proceedings.mlr.press/v267/gong25f.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlr.press/v267/gong25f.html",
+   "year": "2025",
+   "venue": "ICML",
+   "필수": 1.5,
+   "우대": 0.5,
+   "나머지": 2.5
+  },
+  {
+   "title": "oumi-ai/oumi",
+   "key": "gh:oumi-ai/oumi",
+   "kind": "repo",
+   "url": "https://github.com/oumi-ai/oumi",
+   "year": "2026",
+   "venue": "GitHub ★9434",
+   "stars": 9434,
+   "필수": 1.5,
+   "우대": 0.5,
+   "나머지": 1.0
+  },
+  {
+   "title": "bespokelabsai/curator",
+   "key": "gh:bespokelabsai/curator",
+   "kind": "repo",
+   "url": "https://github.com/bespokelabsai/curator",
+   "year": "2026",
+   "venue": "GitHub ★1767",
+   "stars": 1767,
+   "필수": 1.5,
+   "우대": 0.5,
+   "나머지": 0.5
+  },
+  {
+   "title": "sparkfish/augraphy",
+   "key": "gh:sparkfish/augraphy",
+   "kind": "repo",
+   "url": "https://github.com/sparkfish/augraphy",
+   "year": "2025",
+   "venue": "GitHub ★594",
+   "stars": 594,
+   "필수": 1.5,
+   "우대": 0.5,
+   "나머지": 0
+  },
+  {
+   "title": "OpenDCAI/DataFlex",
+   "key": "gh:opendcai/dataflex",
+   "kind": "repo",
+   "url": "https://github.com/OpenDCAI/DataFlex",
+   "year": "2026",
+   "venue": "GitHub ★3618",
+   "stars": 3618,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 4.0
+  },
+  {
+   "title": "nolabs-ai/deepfabric",
+   "key": "gh:nolabs-ai/deepfabric",
+   "kind": "repo",
+   "url": "https://github.com/nolabs-ai/deepfabric",
+   "year": "2026",
+   "venue": "GitHub ★897",
+   "stars": 897,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 3.5
+  },
+  {
+   "title": "ModelTC/LightX2V",
+   "key": "gh:modeltc/lightx2v",
+   "kind": "repo",
+   "url": "https://github.com/ModelTC/LightX2V",
+   "year": "2026",
+   "venue": "GitHub ★3009",
+   "stars": 3009,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 2
+  },
+  {
+   "title": "cleanlab/cleanvision",
+   "key": "gh:cleanlab/cleanvision",
+   "kind": "repo",
+   "url": "https://github.com/cleanlab/cleanvision",
+   "year": "2026",
+   "venue": "GitHub ★1213",
+   "stars": 1213,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 2.0
+  },
+  {
+   "title": "dlt-hub/dlt",
+   "key": "gh:dlt-hub/dlt",
+   "kind": "repo",
+   "url": "https://github.com/dlt-hub/dlt",
+   "year": "2026",
+   "venue": "GitHub ★6097",
+   "stars": 6097,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "PhysGen: Rigid-Body Physics-Grounded Image-to-Video Generation",
+   "key": "url:https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/10827_ECCV_2024_paper.php",
+   "kind": "paper",
+   "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/10827_ECCV_2024_paper.php",
+   "year": "2024",
+   "venue": "ECCV",
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "webdataset/webdataset",
+   "key": "gh:webdataset/webdataset",
+   "kind": "repo",
+   "url": "https://github.com/webdataset/webdataset",
+   "year": "2026",
+   "venue": "GitHub ★3221",
+   "stars": 3221,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "pandas-dev/pandas",
+   "key": "gh:pandas-dev/pandas",
+   "kind": "repo",
+   "url": "https://github.com/pandas-dev/pandas",
+   "year": "2026",
+   "venue": "GitHub ★50538",
+   "stars": 50538,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "stefmolin/Hands-On-Data-Analysis-with-Pandas-2nd-edition",
+   "key": "gh:stefmolin/hands-on-data-analysis-with-pandas-2nd-edition",
+   "kind": "repo",
+   "url": "https://github.com/stefmolin/Hands-On-Data-Analysis-with-Pandas-2nd-edition",
+   "year": "2026",
+   "venue": "GitHub ★739",
+   "stars": 739,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "stefmolin/Hands-On-Data-Analysis-with-Pandas",
+   "key": "gh:stefmolin/hands-on-data-analysis-with-pandas",
+   "kind": "repo",
+   "url": "https://github.com/stefmolin/Hands-On-Data-Analysis-with-Pandas",
+   "year": "2026",
+   "venue": "GitHub ★429",
+   "stars": 429,
+   "필수": 1.5,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "FreedomIntelligence/BlenderLLM",
+   "key": "gh:freedomintelligence/blenderllm",
+   "kind": "repo",
+   "url": "https://github.com/FreedomIntelligence/BlenderLLM",
+   "year": "2024",
+   "venue": "GitHub ★326",
+   "stars": 326,
+   "필수": 1.0,
+   "우대": 2,
+   "나머지": 2.5
+  },
+  {
+   "title": "meta-llama/synthetic-data-kit",
+   "key": "gh:meta-llama/synthetic-data-kit",
+   "kind": "repo",
+   "url": "https://github.com/meta-llama/synthetic-data-kit",
+   "year": "2025",
+   "venue": "GitHub ★1656",
+   "stars": 1656,
+   "필수": 1,
+   "우대": 1.5,
+   "나머지": 2.5
+  },
+  {
+   "title": "Font-Agent: Enhancing Font Understanding with Large Language Models",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2025/html/Lai_Font-Agent_Enhancing_Font_Understanding_with_Large_Language_Models_CVPR_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Lai_Font-Agent_Enhancing_Font_Understanding_with_Large_Language_Models_CVPR_2025_paper.html",
+   "year": "2025",
+   "venue": "CVPR",
+   "필수": 1.0,
+   "우대": 1.5,
+   "나머지": 1
+  },
+  {
+   "title": "RoboWheel: A Data Engine from Real-World Human Demonstrations for Cross-Embodiment Robotic Learning",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_RoboWheel_A_Data_Engine_from_Real-World_Human_Demonstrations_for_Cross-Embodiment_CVPR_2026_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_RoboWheel_A_Data_Engine_from_Real-World_Human_Demonstrations_for_Cross-Embodiment_CVPR_2026_paper.html",
+   "year": "2026",
+   "venue": "CVPR",
+   "필수": 1.0,
+   "우대": 1,
+   "나머지": 2.0
+  },
+  {
+   "title": "GarmentCodeData: A Dataset of 3D Made-to-Measure Garments With Sewing Patterns",
+   "key": "url:https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/7721_ECCV_2024_paper.php",
+   "kind": "paper",
+   "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/7721_ECCV_2024_paper.php",
+   "year": "2024",
+   "venue": "ECCV",
+   "필수": 1.0,
+   "우대": 1,
+   "나머지": 2
+  },
+  {
+   "title": "Newswire: A Large-Scale Structured Database of a Century of Historical News",
+   "key": "url:https://papers.nips.cc/paper_files/paper/2024/hash/58f52a01a516609336da78ff17e6f81f-Abstract-Datasets_and_Benchmarks_Track.html",
+   "kind": "paper",
+   "url": "https://papers.nips.cc/paper_files/paper/2024/hash/58f52a01a516609336da78ff17e6f81f-Abstract-Datasets_and_Benchmarks_Track.html",
+   "year": "2024",
+   "venue": "NeurIPS",
+   "필수": 1.0,
+   "우대": 1,
+   "나머지": 1.5
+  },
+  {
+   "title": "magpie-align/magpie",
+   "key": "gh:magpie-align/magpie",
+   "kind": "repo",
+   "url": "https://github.com/magpie-align/magpie",
+   "year": "2025",
+   "venue": "GitHub ★902",
+   "stars": 902,
+   "필수": 1.0,
+   "우대": 1,
+   "나머지": 1
+  },
+  {
+   "title": "DIYer22/bpycv",
+   "key": "gh:diyer22/bpycv",
+   "kind": "repo",
+   "url": "https://github.com/DIYer22/bpycv",
+   "year": "2025",
+   "venue": "GitHub ★508",
+   "stars": 508,
+   "필수": 1.0,
+   "우대": 1,
+   "나머지": 1
+  },
+  {
+   "title": "CALVIN: Improved Contextual Video Captioning via Instruction Tuning",
+   "key": "url:https://papers.nips.cc/paper_files/paper/2024/hash/a922b7121007768f78f770c404415375-Abstract-Conference.html",
+   "kind": "paper",
+   "url": "https://papers.nips.cc/paper_files/paper/2024/hash/a922b7121007768f78f770c404415375-Abstract-Conference.html",
+   "year": "2024",
+   "venue": "NeurIPS",
+   "필수": 1.0,
+   "우대": 1,
+   "나머지": 0.5
+  },
+  {
+   "title": "codepawl/crucible",
+   "key": "gh:codepawl/crucible",
+   "kind": "repo",
+   "url": "https://github.com/codepawl/crucible",
+   "year": "2026",
+   "venue": "GitHub ★683",
+   "stars": 683,
+   "필수": 1.0,
+   "우대": 1,
+   "나머지": 0
+  },
+  {
+   "title": "getnamo/TensorFlow-Unreal",
+   "key": "gh:getnamo/tensorflow-unreal",
+   "kind": "repo",
+   "url": "https://github.com/getnamo/TensorFlow-Unreal",
+   "year": "2026",
+   "venue": "GitHub ★1224",
+   "stars": 1224,
+   "필수": 1.0,
+   "우대": 1,
+   "나머지": 0
+  },
+  {
+   "title": "From Crowdsourced Data to High-quality Benchmarks: Arena-Hard and Benchbuilder Pipeline",
+   "key": "url:https://proceedings.mlr.press/v267/li25h.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlr.press/v267/li25h.html",
+   "year": "2025",
+   "venue": "ICML",
+   "필수": 1.0,
+   "우대": 0.5,
+   "나머지": 3.5
+  },
+  {
+   "title": "NVIDIA-NeMo/DataDesigner",
+   "key": "gh:nvidia-nemo/datadesigner",
+   "kind": "repo",
+   "url": "https://github.com/NVIDIA-NeMo/DataDesigner",
+   "year": "2026",
+   "venue": "GitHub ★2408",
+   "stars": 2408,
+   "필수": 1.0,
+   "우대": 0.5,
+   "나머지": 1.5
+  },
+  {
+   "title": "Automated Red Teaming for Text-to-Image Models through Feedback-Guided Prompt Iteration with Vision-Language Models",
+   "key": "url:https://openaccess.thecvf.com/content/ICCV2025/html/Xu_Automated_Red_Teaming_for_Text-to-Image_Models_through_Feedback-Guided_Prompt_Iteration_ICCV_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Xu_Automated_Red_Teaming_for_Text-to-Image_Models_through_Feedback-Guided_Prompt_Iteration_ICCV_2025_paper.html",
+   "year": "2025",
+   "venue": "ICCV",
+   "필수": 1.0,
+   "우대": 0.5,
+   "나머지": 0.5
+  },
+  {
+   "title": "OSV: One Step is Enough for High-Quality Image to Video Generation",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2025/html/Mao_OSV_One_Step_is_Enough_for_High-Quality_Image_to_Video_CVPR_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Mao_OSV_One_Step_is_Enough_for_High-Quality_Image_to_Video_CVPR_2025_paper.html",
+   "year": "2025",
+   "venue": "CVPR",
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 1
+  },
+  {
+   "title": "SkyworkAI/UniPic",
+   "key": "gh:skyworkai/unipic",
+   "kind": "repo",
+   "url": "https://github.com/SkyworkAI/UniPic",
+   "year": "2026",
+   "venue": "GitHub ★877",
+   "stars": 877,
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 1.0
+  },
+  {
+   "title": "Learning the Visualness of Text Using Large Vision-Language Models",
+   "key": "doi:10.18653/v1/2023.emnlp-main.147",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2023.emnlp-main.147/",
+   "year": "2023",
+   "venue": "EMNLP",
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 1.0
+  },
+  {
+   "title": "Pathways on the Image Manifold: Image Editing via Video Generation",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2025/html/Rotstein_Pathways_on_the_Image_Manifold_Image_Editing_via_Video_Generation_CVPR_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Rotstein_Pathways_on_the_Image_Manifold_Image_Editing_via_Video_Generation_CVPR_2025_paper.html",
+   "year": "2025",
+   "venue": "CVPR",
+   "필수": 1,
+   "우대": 0,
+   "나머지": 1
+  },
+  {
+   "title": "open-mmlab/mmflow",
+   "key": "gh:open-mmlab/mmflow",
+   "kind": "repo",
+   "url": "https://github.com/open-mmlab/mmflow",
+   "year": "2024",
+   "venue": "GitHub ★1063",
+   "stars": 1063,
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "UniversalDataTool/universal-data-tool",
+   "key": "gh:universaldatatool/universal-data-tool",
+   "kind": "repo",
+   "url": "https://github.com/UniversalDataTool/universal-data-tool",
+   "year": "2025",
+   "venue": "GitHub ★2073",
+   "stars": 2073,
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "Generative Zoo",
+   "key": "url:https://openaccess.thecvf.com/content/ICCV2025/html/Niewiadomski_Generative_Zoo_ICCV_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Niewiadomski_Generative_Zoo_ICCV_2025_paper.html",
+   "year": "2025",
+   "venue": "ICCV",
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "pipeline-tools/gusty",
+   "key": "gh:pipeline-tools/gusty",
+   "kind": "repo",
+   "url": "https://github.com/pipeline-tools/gusty",
+   "year": "2026",
+   "venue": "GitHub ★287",
+   "stars": 287,
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "Compute or Load KV Cache? Why Not Both?",
+   "key": "url:https://proceedings.mlr.press/v267/jin25d.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlr.press/v267/jin25d.html",
+   "year": "2025",
+   "venue": "ICML",
+   "필수": 1,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "TirendazAcademy/PANDAS-TUTORIAL",
+   "key": "gh:tirendazacademy/pandas-tutorial",
+   "kind": "repo",
+   "url": "https://github.com/TirendazAcademy/PANDAS-TUTORIAL",
+   "year": "2024",
+   "venue": "GitHub ★251",
+   "stars": 251,
+   "필수": 1.0,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "CapArena: Benchmarking and Analyzing Detailed Image Captioning in the LLM Era",
+   "key": "doi:10.18653/v1/2025.findings-acl.724",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2025.findings-acl.724/",
+   "year": "2025",
+   "venue": "ACL-Findings",
+   "필수": 0.5,
+   "우대": 2.0,
+   "나머지": 2.5
+  },
+  {
+   "title": "MuammerBay/isaac_so_arm101",
+   "key": "gh:muammerbay/isaac_so_arm101",
+   "kind": "repo",
+   "url": "https://github.com/MuammerBay/isaac_so_arm101",
+   "year": "2026",
+   "venue": "GitHub ★318",
+   "stars": 318,
+   "필수": 0.5,
+   "우대": 2,
+   "나머지": 1.5
+  },
+  {
+   "title": "Prometheus-Vision: Vision-Language Model as a Judge for Fine-Grained Evaluation",
+   "key": "doi:10.18653/v1/2024.findings-acl.672",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2024.findings-acl.672/",
+   "year": "2024",
+   "venue": "ACL-Findings",
+   "필수": 0.5,
+   "우대": 1.5,
+   "나머지": 1.0
+  },
+  {
+   "title": "zjunlp/IEPile",
+   "key": "gh:zjunlp/iepile",
+   "kind": "repo",
+   "url": "https://github.com/zjunlp/IEPile",
+   "year": "2025",
+   "venue": "GitHub ★214",
+   "stars": 214,
+   "필수": 0.5,
+   "우대": 1,
+   "나머지": 1
+  },
+  {
+   "title": "unrealcv/unrealcv",
+   "key": "gh:unrealcv/unrealcv",
+   "kind": "repo",
+   "url": "https://github.com/unrealcv/unrealcv",
+   "year": "2026",
+   "venue": "GitHub ★2228",
+   "stars": 2228,
+   "필수": 0.5,
+   "우대": 1,
+   "나머지": 1
+  },
+  {
+   "title": "maximeraafat/BlenderNeRF",
+   "key": "gh:maximeraafat/blendernerf",
+   "kind": "repo",
+   "url": "https://github.com/maximeraafat/BlenderNeRF",
+   "year": "2024",
+   "venue": "GitHub ★1020",
+   "stars": 1020,
+   "필수": 0.5,
+   "우대": 1,
+   "나머지": 1.0
+  },
+  {
+   "title": "louislelay/kinova_isaaclab_sim2real",
+   "key": "gh:louislelay/kinova_isaaclab_sim2real",
+   "kind": "repo",
+   "url": "https://github.com/louislelay/kinova_isaaclab_sim2real",
+   "year": "2025",
+   "venue": "GitHub ★233",
+   "stars": 233,
+   "필수": 0.5,
+   "우대": 1,
+   "나머지": 0.5
+  },
+  {
+   "title": "scenario-labs/blender-plugin",
+   "key": "gh:scenario-labs/blender-plugin",
+   "kind": "repo",
+   "url": "https://github.com/scenario-labs/blender-plugin",
+   "year": "2026",
+   "venue": "GitHub ★1029",
+   "stars": 1029,
+   "필수": 0.5,
+   "우대": 1,
+   "나머지": 0
+  },
+  {
+   "title": "Amend to Alignment: Decoupled Prompt Tuning for Mitigating Spurious Correlation in Vision-Language Models",
+   "key": "url:https://proceedings.mlr.press/v235/zhang24as.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlr.press/v235/zhang24as.html",
+   "year": "2024",
+   "venue": "ICML",
+   "필수": 0.5,
+   "우대": 1.0,
+   "나머지": 0
+  },
+  {
+   "title": "ahujasid/mcp-for-blender",
+   "key": "gh:ahujasid/mcp-for-blender",
+   "kind": "repo",
+   "url": "https://github.com/ahujasid/mcp-for-blender",
+   "year": "2026",
+   "venue": "GitHub ★34606",
+   "stars": 34606,
+   "필수": 0.5,
+   "우대": 1,
+   "나머지": 0
+  },
+  {
+   "title": "GPUOpen-LibrariesAndSDKs/RadeonProRenderBlenderAddon",
+   "key": "gh:gpuopen-librariesandsdks/radeonprorenderblenderaddon",
+   "kind": "repo",
+   "url": "https://github.com/GPUOpen-LibrariesAndSDKs/RadeonProRenderBlenderAddon",
+   "year": "2026",
+   "venue": "GitHub ★556",
+   "stars": 556,
+   "필수": 0.5,
+   "우대": 1,
+   "나머지": 0
+  },
+  {
+   "title": "A New Benchmark: On the Utility of Synthetic Data With Blender for Bare Supervised Learning and Downstream Domain Adaptation",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2023/html/Tang_A_New_Benchmark_On_the_Utility_of_Synthetic_Data_With_CVPR_2023_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2023/html/Tang_A_New_Benchmark_On_the_Utility_of_Synthetic_Data_With_CVPR_2023_paper.html",
+   "year": "2023",
+   "venue": "CVPR",
+   "필수": 0.5,
+   "우대": 0.5,
+   "나머지": 0.5
+  },
+  {
+   "title": "HDR-VLM: HDR-Domain Adaptation of VLMs and Preference-Aligned Quality Assessment for HDR Video Color Grading",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2026/html/Yuan_HDR-VLM_HDR-Domain_Adaptation_of_VLMs_and_Preference-Aligned_Quality_Assessment_for_CVPR_2026_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Yuan_HDR-VLM_HDR-Domain_Adaptation_of_VLMs_and_Preference-Aligned_Quality_Assessment_for_CVPR_2026_paper.html",
+   "year": "2026",
+   "venue": "CVPR",
+   "필수": 0.5,
+   "우대": 0.5,
+   "나머지": 0
+  },
+  {
+   "title": "AutoSimulate: (Quickly) Learning Synthetic Data Generation",
+   "key": "url:https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/4034_ECCV_2020_paper.php",
+   "kind": "paper",
+   "url": "https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/4034_ECCV_2020_paper.php",
+   "year": "2020",
+   "venue": "ECCV",
+   "필수": 0.5,
+   "우대": 0,
+   "나머지": 1.0
+  },
+  {
+   "title": "PUG: Photorealistic and Semantically Controllable Synthetic Data for Representation Learning",
+   "key": "url:https://papers.nips.cc/paper_files/paper/2023/hash/8d352fd0f07fde4a74f9476603b3773b-Abstract-Datasets_and_Benchmarks.html",
+   "kind": "paper",
+   "url": "https://papers.nips.cc/paper_files/paper/2023/hash/8d352fd0f07fde4a74f9476603b3773b-Abstract-Datasets_and_Benchmarks.html",
+   "year": "2023",
+   "venue": "NeurIPS",
+   "필수": 0.5,
+   "우대": 0,
+   "나머지": 1.0
+  },
+  {
+   "title": "open-mmlab/mmfewshot",
+   "key": "gh:open-mmlab/mmfewshot",
+   "kind": "repo",
+   "url": "https://github.com/open-mmlab/mmfewshot",
+   "year": "2023",
+   "venue": "GitHub ★754",
+   "stars": 754,
+   "필수": 0.5,
+   "우대": 0,
+   "나머지": 1.0
+  },
+  {
+   "title": "handong1587/handong1587.github.io",
+   "key": "gh:handong1587/handong1587.github.io",
+   "kind": "repo",
+   "url": "https://github.com/handong1587/handong1587.github.io",
+   "year": "2023",
+   "venue": "GitHub ★3133",
+   "stars": 3133,
+   "필수": 0.5,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "HumanSignal/awesome-data-labeling",
+   "key": "gh:humansignal/awesome-data-labeling",
+   "kind": "repo",
+   "url": "https://github.com/HumanSignal/awesome-data-labeling",
+   "year": "2024",
+   "venue": "GitHub ★4446",
+   "stars": 4446,
+   "필수": 0.5,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "mlops-guide/mlops-guide.github.io",
+   "key": "gh:mlops-guide/mlops-guide.github.io",
+   "kind": "repo",
+   "url": "https://github.com/mlops-guide/mlops-guide.github.io",
+   "year": "2024",
+   "venue": "GitHub ★326",
+   "stars": 326,
+   "필수": 0.5,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "jbrownlee/Datasets",
+   "key": "gh:jbrownlee/datasets",
+   "kind": "repo",
+   "url": "https://github.com/jbrownlee/Datasets",
+   "year": "2023",
+   "venue": "GitHub ★1261",
+   "stars": 1261,
+   "필수": 0.5,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+   "key": "url:https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3218_ECCV_2022_paper.php",
+   "kind": "paper",
+   "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3218_ECCV_2022_paper.php",
+   "year": "2022",
+   "venue": "ECCV",
+   "필수": 0,
+   "우대": 2,
+   "나머지": 2.0
+  },
+  {
+   "title": "Structured3D: A Large Photo-realistic Dataset for Structured 3D Modeling",
+   "key": "url:https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/890_ECCV_2020_paper.php",
+   "kind": "paper",
+   "url": "https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/890_ECCV_2020_paper.php",
+   "year": "2020",
+   "venue": "ECCV",
+   "필수": 0,
+   "우대": 1,
+   "나머지": 2.0
+  },
+  {
+   "title": "When Vision-Language Models Judge Without Seeing: Exposing Informativeness Bias",
+   "key": "doi:10.18653/v1/2026.acl-long.703",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2026.acl-long.703/",
+   "year": "2026",
+   "venue": "ACL",
+   "필수": 0,
+   "우대": 1,
+   "나머지": 0.5
+  },
+  {
+   "title": "open-airlab/UNav-Sim",
+   "key": "gh:open-airlab/unav-sim",
+   "kind": "repo",
+   "url": "https://github.com/open-airlab/UNav-Sim",
+   "year": "2025",
+   "venue": "GitHub ★336",
+   "stars": 336,
+   "필수": 0,
+   "우대": 1,
+   "나머지": 0.5
+  },
+  {
+   "title": "jaykorea/Isaac-RL-Two-wheel-Legged-Bot",
+   "key": "gh:jaykorea/isaac-rl-two-wheel-legged-bot",
+   "kind": "repo",
+   "url": "https://github.com/jaykorea/Isaac-RL-Two-wheel-Legged-Bot",
+   "year": "2026",
+   "venue": "GitHub ★354",
+   "stars": 354,
+   "필수": 0,
+   "우대": 1,
+   "나머지": 0.5
+  },
+  {
+   "title": "ILLUME: Rationalizing Vision-Language Models through Human Interactions",
+   "key": "url:https://proceedings.mlr.press/v202/brack23a.html",
+   "kind": "paper",
+   "url": "https://proceedings.mlr.press/v202/brack23a.html",
+   "year": "2023",
+   "venue": "ICML",
+   "필수": 0,
+   "우대": 1.0,
+   "나머지": 0.5
+  },
+  {
+   "title": "isaac-sim/IsaacAutomator",
+   "key": "gh:isaac-sim/isaacautomator",
+   "kind": "repo",
+   "url": "https://github.com/isaac-sim/IsaacAutomator",
+   "year": "2026",
+   "venue": "GitHub ★270",
+   "stars": 270,
+   "필수": 0,
+   "우대": 1,
+   "나머지": 0
+  },
+  {
+   "title": "Guiding Medical Vision-Language Models with Diverse Visual Prompts: Framework Design and Comprehensive Exploration of Prompt Variations",
+   "key": "doi:10.18653/v1/2025.naacl-long.587",
+   "kind": "paper",
+   "url": "https://aclanthology.org/2025.naacl-long.587/",
+   "year": "2025",
+   "venue": "NAACL",
+   "필수": 0,
+   "우대": 0.5,
+   "나머지": 0.5
+  },
+  {
+   "title": "Prompt-aligned Gradient for Prompt Tuning",
+   "key": "url:https://openaccess.thecvf.com/content/ICCV2023/html/Zhu_Prompt-aligned_Gradient_for_Prompt_Tuning_ICCV_2023_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/ICCV2023/html/Zhu_Prompt-aligned_Gradient_for_Prompt_Tuning_ICCV_2023_paper.html",
+   "year": "2023",
+   "venue": "ICCV",
+   "필수": 0,
+   "우대": 0.5,
+   "나머지": 0.5
+  },
+  {
+   "title": "open-mmlab/mmrazor",
+   "key": "gh:open-mmlab/mmrazor",
+   "kind": "repo",
+   "url": "https://github.com/open-mmlab/mmrazor",
+   "year": "2024",
+   "venue": "GitHub ★1692",
+   "stars": 1692,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 0.5
+  },
+  {
+   "title": "dair-ai/dair-ai.github.io",
+   "key": "gh:dair-ai/dair-ai.github.io",
+   "kind": "repo",
+   "url": "https://github.com/dair-ai/dair-ai.github.io",
+   "year": "2023",
+   "venue": "GitHub ★244",
+   "stars": 244,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "IDEA-Research/deepdataspace",
+   "key": "gh:idea-research/deepdataspace",
+   "kind": "repo",
+   "url": "https://github.com/IDEA-Research/deepdataspace",
+   "year": "2026",
+   "venue": "GitHub ★263",
+   "stars": 263,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 0
+  },
+  {
+   "title": "justmarkham/pandas-videos",
+   "key": "gh:justmarkham/pandas-videos",
+   "kind": "repo",
+   "url": "https://github.com/justmarkham/pandas-videos",
+   "year": "2024",
+   "venue": "GitHub ★2269",
+   "stars": 2269,
+   "필수": 0,
+   "우대": 0,
+   "나머지": 0
+  }
+ ],
+ "coverage": [
+  {
+   "cid": "C01",
+   "name": "이미지·비디오 생성 모델 동작 원리 이해",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets",
+   "downgraded": false
+  },
+  {
+   "cid": "C02",
+   "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Reproduce SOTA foundation model data pipelines — from rule-based to model-based, spanning text, image, and multimodal data",
+   "downgraded": false
+  },
+  {
+   "cid": "C03",
+   "name": "기본 데이터 처리 및 분석 독립 수행",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale",
+   "downgraded": false
+  },
+  {
+   "cid": "C04",
+   "name": "대규모 데이터 처리 시 연산 병목 이해",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale",
+   "downgraded": false
+  },
+  {
+   "cid": "C05",
+   "name": "대규모 데이터 처리 시 I/O 병목 이해",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "A reproducible, high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets",
+   "downgraded": false
+  },
+  {
+   "cid": "C06",
+   "name": "Diffusion 기반 학습 방법론 이해",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C07",
+   "name": "원시 이미지·비디오 아카이브에서 학습 데이터 추출",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "A reproducible, high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets",
+   "downgraded": false
+  },
+  {
+   "cid": "C08",
+   "name": "다단계 품질 필터링 로직 설계",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale",
+   "downgraded": false
+  },
+  {
+   "cid": "C09",
+   "name": "VLM을 활용한 대규모 어노테이션 생성",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "ImageAIGCDetectorRefiner AI-generated image detection CPU",
+   "downgraded": false
+  },
+  {
+   "cid": "C10",
+   "name": "학습 결과에 기반한 데이터 레시피 개선",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C11",
+   "name": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C12",
+   "name": "합성 데이터 메타데이터 정제",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C13",
+   "name": "신규 벤치마크 구현",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C14",
+   "name": "체크포인트 평가 자동화 파이프라인 개발",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C15",
+   "name": "다축 지표 비교·분석 도구 개발",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "Pipeline Run Reports This space contains interactive HTML reports for pipeline runs, showcasing metrics, visualizations, and performance statistics",
+   "downgraded": false
+  },
+  {
+   "cid": "C16",
+   "name": "10만 샘플 이상 규모의 데이터셋 설계·구축",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "있음",
+   "quote": "processing web-scale (hundreds of billions) multimodal datasets",
+   "downgraded": false
+  },
+  {
+   "cid": "C17",
+   "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C18",
+   "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C19",
+   "name": "Isaac Sim",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C20",
+   "name": "Omniverse",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C21",
+   "name": "Blender",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C22",
+   "name": "Unreal Engine",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C23",
+   "name": "Hugging Face를 통한 모델·결과물 공개",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "HuggingFaceLoader Load from HuggingFace datasets Streaming, sharding",
+   "downgraded": false
+  },
+  {
+   "cid": "C24",
+   "name": "짧은 주기의 피드백 기반 협업",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C25",
+   "name": "진행 상황 및 사고 과정의 적극적 공유",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C26",
+   "name": "연구·엔지니어링 인접 영역 자기주도 학습 태도",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C27",
+   "name": "결과 해석 및 다음 방향성 의견 제시",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C28",
+   "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C29",
+   "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale",
+   "downgraded": false
+  }
+ ],
+ "fit": [
+  {
+   "title": "duoan/mega-data-factory",
+   "key": "gh:duoan/mega-data-factory",
+   "kind": "repo",
+   "url": "https://github.com/duoan/mega-data-factory",
+   "year": "2026",
+   "venue": "GitHub ★382",
+   "stars": 382,
+   "필수": 5,
+   "우대": 1,
+   "나머지": 4.5
+  }
+ ],
+ "adapted": {
+  "case": "naver_ml_intern",
+  "request": "7847831fda232fd7",
+  "made": "global.anthropic.claude-sonnet-4-6, 응용 한 번 (첫 답 빔) + 다시 쓰기 2번",
+  "team": {
+   "members": 4,
+   "weeks": 12,
+   "hours_per_week": 7,
+   "budget_hours": 336
+  },
+  "base": "duoan/mega-data-factory",
+  "complements": [
+   "MigoXLab/dingo",
+   "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+   "Goku: Flow Based Video Generative Foundation Models"
+  ],
+  "complement_gains": [
+   {
+    "title": "MigoXLab/dingo",
+    "우대": 2,
+    "나머지": 2.0
+   },
+   {
+    "title": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+    "우대": 1,
+    "나머지": 2.0
+   },
+   {
+    "title": "Goku: Flow Based Video Generative Foundation Models",
+    "우대": 0,
+    "나머지": 2.0
+   }
+  ],
+  "project": {
+   "title": "멀티모달 학습 데이터 파이프라인 구축 및 생성 모델 평가 체계 개발",
+   "goal": "공개 이미지·비디오 아카이브와 Blender 합성 데이터를 결합한 멀티모달 학습 데이터 파이프라인을 구축하고, VLM 어노테이션·다단계 품질 필터링·자동 평가 체계를 통해 데이터 품질과 생성 모델 성능 간의 정량적 관계를 검증한다.",
+   "packages": [
+    {
+     "added": [
+      {
+       "competency": "C01",
+       "why": "Diffusion/Flow 기반 생성 모델 동작 원리를 파이프라인 설계 근거로 정리한다. 베이스 셀이 파이프라인 구조를 설명하지만 모델 원리 자체는 Goku 논문을 통해 보완한다."
+      },
+      {
+       "competency": "C02",
+       "why": "ML 개발 사이클 전체를 프로젝트 로드맵으로 명시하고 각 단계 연결 관계를 문서화한다."
+      },
+      {
+       "competency": "C24",
+       "why": "3일 단위 태스크 카드와 주간 리뷰 노트 작성 규칙을 이 패키지에서 수립하고 전 패키지에 적용한다."
+      },
+      {
+       "competency": "C25",
+       "why": "격주 작업 로그 작성 규칙을 정하고 Notion/GitHub Wiki에 공유한다."
+      },
+      {
+       "competency": "C26",
+       "why": "논문 리뷰와 구현 계획을 병행하며 연구·엔지니어링 인접 영역 자기주도 학습을 실천한다."
+      }
+     ],
+     "competencies": [
+      "C01",
+      "C02",
+      "C06",
+      "C24",
+      "C25",
+      "C26"
+     ],
+     "core": true,
+     "do": "이미지·비디오 생성 모델(Diffusion, rectified flow Transformer) 동작 원리를 정리한 기술 문서를 작성한다. Goku 논문의 데이터 파이프라인 구조를 분석해 프로젝트 전체 로드맵을 수립한다. 3일 단위 태스크 카드와 주간 리뷰 노트 템플릿을 만들고 협업 규칙을 문서화한다.",
+     "hours": 24,
+     "id": "W1",
+     "name": "프로젝트 설계 및 기술 기반 정리",
+     "order": 1,
+     "out": "기술 문서(모델 원리 요약, 파이프라인 로드맵), 태스크 카드 템플릿, 협업 규칙 문서",
+     "sources": [
+      {
+       "for": [
+        "C06"
+       ],
+       "project": "Goku: Flow Based Video Generative Foundation Models",
+       "quote": "joint image-and-video generation models leveraging rectified flow Transformers to achieve industry-leading performance"
+      },
+      {
+       "for": [
+        "C02"
+       ],
+       "project": "Goku: Flow Based Video Generative Foundation Models",
+       "quote": "data curation pipeline, model architecture design, flow formulation, and advanced infrastructure for efficient and robust large-scale training"
+      },
+      {
+       "for": [
+        "C01",
+        "C02"
+       ],
+       "project": "duoan/mega-data-factory",
+       "quote": "Reproduce SOTA foundation model data pipelines — from rule-based to model-based, spanning text, image, and multimodal data"
+      }
+     ]
+    },
+    {
+     "added": [],
+     "competencies": [
+      "C03",
+      "C04",
+      "C05",
+      "C07",
+      "C08",
+      "C16",
+      "C29"
+     ],
+     "core": true,
+     "do": "Ray 클러스터 위에서 공개 이미지·비디오 아카이브(CC12M, WebVid 서브셋 등)에서 원시 데이터를 추출한다. URL 필터, 해상도 필터, CLIP 임베딩 기반 중복 제거, 미적 점수 필터 등 다단계 품질 필터링 로직을 구현한다. Rust 가속 연산자를 적용해 연산·I/O 병목을 프로파일링하고 처리량을 측정한다. 최종 10만 샘플 이상의 정제 데이터셋을 생성한다.",
+     "hours": 72,
+     "id": "W2",
+     "name": "원시 데이터 추출 및 다단계 품질 필터링 파이프라인",
+     "order": 1,
+     "out": "정제된 이미지·비디오 데이터셋(≥10만 샘플), 필터링 단계별 통과율 리포트, 병목 프로파일링 결과",
+     "sources": [
+      {
+       "for": [
+        "C03",
+        "C04",
+        "C05",
+        "C29"
+       ],
+       "project": "duoan/mega-data-factory",
+       "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale"
+      },
+      {
+       "for": [
+        "C07",
+        "C16"
+       ],
+       "project": "duoan/mega-data-factory",
+       "quote": "A reproducible, high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets"
+      },
+      {
+       "for": [
+        "C08"
+       ],
+       "project": "duoan/mega-data-factory",
+       "quote": "URLFilter Domain blocklist, URL word scoring, quality source exclusion"
+      },
+      {
+       "for": [
+        "C05"
+       ],
+       "project": "duoan/mega-data-factory",
+       "quote": "HuggingFaceLoader Load from HuggingFace datasets Streaming, sharding"
+      }
+     ]
+    },
+    {
+     "added": [],
+     "competencies": [
+      "C09",
+      "C17",
+      "C18"
+     ],
+     "core": true,
+     "do": "LLaVA 또는 InternVL 등 오픈소스 VLM을 사용해 W2 정제 데이터셋에 대규모 캡션 어노테이션을 생성한다. Dingo의 프롬프트 설계 패턴을 참고해 품질 Judge 프롬프트와 도메인별 캡셔닝 프롬프트를 설계·튜닝한다. 프롬프트 버전별 캡션 품질 점수 분포를 비교한다.",
+     "hours": 48,
+     "id": "W3",
+     "name": "VLM 기반 대규모 어노테이션 및 프롬프트 튜닝",
+     "order": 1,
+     "out": "어노테이션이 완료된 데이터셋, Judge·캡셔닝 프롬프트 버전별 비교 리포트",
+     "sources": [
+      {
+       "for": [
+        "C09",
+        "C17",
+        "C18"
+       ],
+       "project": "MigoXLab/dingo",
+       "quote": "LLM & Rule & Agent Hybrid - Combine fast heuristic rules (30+ built-in) with LLM-based deep assessment"
+      },
+      {
+       "for": [
+        "C09",
+        "C18"
+       ],
+       "project": "MigoXLab/dingo",
+       "quote": "VLM quality, OCR visual evaluation Vision-language data"
+      }
+     ]
+    },
+    {
+     "added": [],
+     "competencies": [
+      "C11",
+      "C12",
+      "C16",
+      "C21",
+      "C22"
+     ],
+     "core": true,
+     "do": "Blender Python API로 실내·실외 장면을 자동 생성하고 렌더링하는 파이프라인을 구축한다. UrbanScene3D의 메타데이터 스키마를 참고해 깊이 맵, 2D/3D 바운딩박스, 법선 맵, 인스턴스 레이블을 자동 추출·정제한다. 합성 이미지 1만 장 이상을 생성해 W2 데이터셋에 합산한다.",
+     "hours": 56,
+     "id": "W4",
+     "name": "Blender 기반 합성 데이터 생성 파이프라인",
+     "order": 2,
+     "out": "합성 이미지·메타데이터 데이터셋(≥1만 샘플), 파이프라인 코드, 메타데이터 스키마 문서",
+     "sources": [
+      {
+       "for": [
+        "C11",
+        "C22"
+       ],
+       "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+       "quote": "the dataset, which is built on Unreal Engine and Airsim simulator together with the manually annotated unique instance label for each building in the dataset, enables the generation of all kinds of data"
+      },
+      {
+       "for": [
+        "C12"
+       ],
+       "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+       "quote": "manually annotated unique instance label for each building in the dataset, enables the generation of all kinds of data, e.g., 2D depth maps, 2D/3D bounding boxes, and 3D point cloud/mesh segmentations"
+      },
+      {
+       "for": [
+        "C16"
+       ],
+       "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+       "quote": "UrbanScene3D contains over 128k high-resolution images covering 16 scenes"
+      }
+     ]
+    },
+    {
+     "added": [
+      {
+       "competency": "C21",
+       "why": "Blender는 W4의 핵심 렌더링 도구로 사용하며, 입력 프로젝트 셀에 Blender 직접 언급이 없으므로 added로 명시한다."
+      }
+     ],
+     "competencies": [
+      "C13",
+      "C14",
+      "C15"
+     ],
+     "core": true,
+     "do": "GenEval·DPG-Bench 스타일의 신규 벤치마크를 구현한다. 체크포인트별 FID, CLIP-score, 미적 점수, VBench 지표를 자동으로 측정하는 평가 파이프라인을 개발한다. 다축 지표 비교 대시보드(HTML 리포트)를 구현한다.",
+     "hours": 48,
+     "id": "W5",
+     "name": "벤치마크 구현 및 자동 평가 파이프라인",
+     "order": 2,
+     "out": "벤치마크 코드, 자동 평가 스크립트, 다축 지표 대시보드",
+     "sources": [
+      {
+       "for": [
+        "C13"
+       ],
+       "project": "Goku: Flow Based Video Generative Foundation Models",
+       "quote": "setting new benchmarks across major tasks"
+      },
+      {
+       "for": [
+        "C13",
+        "C15"
+       ],
+       "project": "Goku: Flow Based Video Generative Foundation Models",
+       "quote": "Goku achieves 0.76 on GenEval and 83.65 on DPG-Bench for text-to-image generation, and 84.85 on VBench for text-to-video tasks"
+      },
+      {
+       "for": [
+        "C14",
+        "C15"
+       ],
+       "project": "MigoXLab/dingo",
+       "quote": "Rich Reporting - Detailed quality reports with GUI visualization and field-level insights"
+      },
+      {
+       "for": [
+        "C15"
+       ],
+       "project": "duoan/mega-data-factory",
+       "quote": "Pipeline Run Reports This space contains interactive HTML reports for pipeline runs, showcasing metrics, visualizations, and performance statistics"
+      }
+     ]
+    },
+    {
+     "added": [
+      {
+       "competency": "C10",
+       "why": "데이터 레시피 개선은 베이스의 ablation 구조에서 자연스럽게 도출된다. MigoXLab/dingo의 C10 셀이 없음이므로 added로 처리한다."
+      },
+      {
+       "competency": "C27",
+       "why": "실험 결과 해석 메모를 작성하고 다음 데이터 레시피 방향을 제안하는 과정이 이 패키지의 핵심이다. 입력 프로젝트 셀이 일부 수준이므로 added로 명시한다."
+      }
+     ],
+     "competencies": [
+      "C10",
+      "C27",
+      "C28"
+     ],
+     "core": true,
+     "do": "W5 평가 결과를 분석해 데이터 구성(필터 임계값, 합성 데이터 비율, 캡션 품질 기준)과 모델 성능 지표 변화의 정량적 관계를 분석한다. 실험 해석 메모를 작성하고 데이터 레시피 개선안을 제안한다. 개선된 레시피로 W2·W3를 재실행해 성능 변화를 검증한다.",
+     "hours": 40,
+     "id": "W6",
+     "name": "데이터 레시피 개선 및 성능 정량 분석",
+     "order": 2,
+     "out": "실험 해석 메모(≥3회), 개선된 데이터 레시피 문서, 성능 변화 비교 리포트",
+     "sources": [
+      {
+       "for": [
+        "C28"
+       ],
+       "project": "MigoXLab/dingo",
+       "quote": "helps you systematically assess and improve the quality of training data, fine-tuning datasets, and production AI systems"
+      },
+      {
+       "for": [
+        "C28"
+       ],
+       "project": "Goku: Flow Based Video Generative Foundation Models",
+       "quote": "superior performance in both qualitative and quantitative evaluations"
+      }
+     ]
+    },
+    {
+     "added": [],
+     "competencies": [
+      "C23"
+     ],
+     "core": false,
+     "do": "최종 정제 데이터셋(메타데이터 포함)과 평가 파이프라인 코드를 HuggingFace Hub에 공개한다. 데이터셋 카드와 모델 카드를 작성한다.",
+     "hours": 16,
+     "id": "W7",
+     "name": "HuggingFace 공개 및 문서화",
+     "order": 3,
+     "out": "HuggingFace Hub 데이터셋 저장소, 데이터셋 카드, README",
+     "sources": [
+      {
+       "for": [
+        "C23"
+       ],
+       "project": "duoan/mega-data-factory",
+       "quote": "HuggingFaceLoader Load from HuggingFace datasets Streaming, sharding"
+      }
+     ]
+    }
+   ]
+  },
+  "hours": {
+   "core": 288,
+   "extension": 16,
+   "total": 304,
+   "budget": 336
+  },
+  "coverage": [
+   {
+    "id": "C01",
+    "name": "이미지·비디오 생성 모델 동작 원리 이해",
+    "tier": "필수",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1에서 Diffusion/Flow 기반 이미지·비디오 생성 모델 동작 원리를 학습 자료로 다루고, 파이프라인 설계 근거로 활용한다."
+   },
+   {
+    "id": "C02",
+    "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
+    "tier": "필수",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1에서 ML 개발 사이클 전체를 프로젝트 로드맵으로 명시하고 각 단계 연결 관계를 문서화한다."
+   },
+   {
+    "id": "C03",
+    "name": "기본 데이터 처리 및 분석 독립 수행",
+    "tier": "필수",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2에서 Ray 기반 분산 파이프라인을 직접 구현하며 데이터 처리·분석을 독립 수행한다."
+   },
+   {
+    "id": "C04",
+    "name": "대규모 데이터 처리 시 연산 병목 이해",
+    "tier": "필수",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2에서 Ray 분산 처리 시 연산 병목을 프로파일링하고 Rust 가속 연산자를 적용한다."
+   },
+   {
+    "id": "C05",
+    "name": "대규모 데이터 처리 시 I/O 병목 이해",
+    "tier": "필수",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2에서 대규모 데이터 I/O 병목을 측정하고 스트리밍·샤딩 전략을 적용한다."
+   },
+   {
+    "id": "C06",
+    "name": "Diffusion 기반 학습 방법론 이해",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1에서 rectified flow Transformer 기반 생성 모델 방법론을 정리하고 파이프라인 설계에 반영한다."
+   },
+   {
+    "id": "C07",
+    "name": "원시 이미지·비디오 아카이브에서 학습 데이터 추출",
+    "tier": "나머지",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2에서 공개 이미지·비디오 아카이브(CC, HuggingFace)에서 원시 데이터를 추출한다."
+   },
+   {
+    "id": "C08",
+    "name": "다단계 품질 필터링 로직 설계",
+    "tier": "나머지",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2에서 URL 필터, 해상도, 중복 제거 등 다단계 품질 필터링 로직을 설계·구현한다."
+   },
+   {
+    "id": "C09",
+    "name": "VLM을 활용한 대규모 어노테이션 생성",
+    "tier": "나머지",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3에서 VLM(LLaVA 등)을 활용해 이미지·비디오 캡션 어노테이션을 대규모로 생성한다."
+   },
+   {
+    "id": "C10",
+    "name": "학습 결과에 기반한 데이터 레시피 개선",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6에서 소규모 파인튜닝 결과를 분석해 데이터 레시피(필터 임계값, 비율)를 개선한다. C10 출처는 베이스 파이프라인의 ablation 구조에서 도출하며 added로 명시한다."
+   },
+   {
+    "id": "C11",
+    "name": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+    "tier": "나머지",
+    "packages": [
+     "W4"
+    ],
+    "expect": "있음",
+    "note": "W4에서 Blender Python API로 합성 장면을 렌더링하는 파이프라인을 구축한다."
+   },
+   {
+    "id": "C12",
+    "name": "합성 데이터 메타데이터 정제",
+    "tier": "나머지",
+    "packages": [
+     "W4"
+    ],
+    "expect": "있음",
+    "note": "W4에서 렌더링 결과에 깊이·법선·바운딩박스 등 메타데이터를 자동 생성·정제한다."
+   },
+   {
+    "id": "C13",
+    "name": "신규 벤치마크 구현",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5에서 GenEval·DPG-Bench 스타일의 신규 벤치마크를 구현한다."
+   },
+   {
+    "id": "C14",
+    "name": "체크포인트 평가 자동화 파이프라인 개발",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5에서 체크포인트별 자동 평가 파이프라인을 구현한다."
+   },
+   {
+    "id": "C15",
+    "name": "다축 지표 비교·분석 도구 개발",
+    "tier": "나머지",
+    "packages": [
+     "W5"
+    ],
+    "expect": "있음",
+    "note": "W5에서 다축 지표(FID, CLIP-score, 미적 점수 등) 비교·분석 대시보드를 개발한다."
+   },
+   {
+    "id": "C16",
+    "name": "10만 샘플 이상 규모의 데이터셋 설계·구축",
+    "tier": "우대",
+    "packages": [
+     "W2",
+     "W4"
+    ],
+    "expect": "있음",
+    "note": "W2+W4 합산으로 10만 샘플 이상 규모의 데이터셋을 설계·구축한다."
+   },
+   {
+    "id": "C17",
+    "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝",
+    "tier": "우대",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3에서 VLM Judge 프롬프트를 설계하고 품질 점수 분포를 분석해 튜닝한다."
+   },
+   {
+    "id": "C18",
+    "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝",
+    "tier": "우대",
+    "packages": [
+     "W3"
+    ],
+    "expect": "있음",
+    "note": "W3에서 VLM 캡셔닝 프롬프트를 도메인별로 설계하고 캡션 품질을 평가해 튜닝한다."
+   },
+   {
+    "id": "C19",
+    "name": "Isaac Sim",
+    "tier": "우대",
+    "packages": [],
+    "expect": "없음",
+    "note": "Isaac Sim은 라이선스·하드웨어 제약으로 직접 사용하지 않는다. 일반 대학 팀 환경에서 실행이 불가하여 Blender로 대체했다."
+   },
+   {
+    "id": "C20",
+    "name": "Omniverse",
+    "tier": "우대",
+    "packages": [],
+    "expect": "없음",
+    "note": "Omniverse는 Isaac Sim과 동일한 이유로 직접 사용하지 않는다. 팀 환경에서 설치·실행이 불가하다."
+   },
+   {
+    "id": "C21",
+    "name": "Blender",
+    "tier": "우대",
+    "packages": [
+     "W4"
+    ],
+    "expect": "있음",
+    "note": "W4에서 Blender Python API를 핵심 렌더링 도구로 사용한다."
+   },
+   {
+    "id": "C22",
+    "name": "Unreal Engine",
+    "tier": "우대",
+    "packages": [
+     "W4"
+    ],
+    "expect": "일부",
+    "note": "UrbanScene3D 논문에서 Unreal Engine 기반 합성 데이터 생성 방식을 참고하지만, 실제 UE 실행은 하지 않는다."
+   },
+   {
+    "id": "C23",
+    "name": "Hugging Face를 통한 모델·결과물 공개",
+    "tier": "나머지",
+    "packages": [
+     "W7"
+    ],
+    "expect": "있음",
+    "note": "W7에서 최종 데이터셋과 평가 결과를 HuggingFace Hub에 공개한다."
+   },
+   {
+    "id": "C24",
+    "name": "짧은 주기의 피드백 기반 협업",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1에서 3일 단위 태스크 카드와 주간 리뷰 노트 작성 규칙을 수립하고 전 패키지에 적용한다."
+   },
+   {
+    "id": "C25",
+    "name": "진행 상황 및 사고 과정의 적극적 공유",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1에서 격주 작업 로그 작성 규칙을 정하고 전 패키지에 걸쳐 진행 상황을 공유한다."
+   },
+   {
+    "id": "C26",
+    "name": "연구·엔지니어링 인접 영역 자기주도 학습 태도",
+    "tier": "나머지",
+    "packages": [
+     "W1"
+    ],
+    "expect": "있음",
+    "note": "W1에서 연구 논문 리뷰와 엔지니어링 구현을 병행하며 인접 영역 자기주도 학습을 실천한다."
+   },
+   {
+    "id": "C27",
+    "name": "결과 해석 및 다음 방향성 의견 제시",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6에서 실험 결과 해석 메모를 작성하고 다음 데이터 레시피 방향을 제안한다."
+   },
+   {
+    "id": "C28",
+    "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증",
+    "tier": "나머지",
+    "packages": [
+     "W6"
+    ],
+    "expect": "있음",
+    "note": "W6에서 데이터 구성 변화와 모델 성능 지표 변화를 정량적으로 분석한다."
+   },
+   {
+    "id": "C29",
+    "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)",
+    "tier": "나머지",
+    "packages": [
+     "W2"
+    ],
+    "expect": "있음",
+    "note": "W2에서 Ray 클러스터(GPU 포함)를 활용해 대규모 이미지·비디오 데이터를 처리한다."
+   }
+  ],
+  "tier_counts": {
+   "core": {
+    "필수": {
+     "있음": 5,
+     "일부": 0,
+     "없음": 0,
+     "of": 5
+    },
+    "우대": {
+     "있음": 4,
+     "일부": 1,
+     "없음": 2,
+     "of": 7
+    },
+    "나머지": {
+     "있음": 16,
+     "일부": 0,
+     "없음": 1,
+     "of": 17
+    }
+   },
+   "with_extension": {
+    "필수": {
+     "있음": 5,
+     "일부": 0,
+     "없음": 0,
+     "of": 5
+    },
+    "우대": {
+     "있음": 4,
+     "일부": 1,
+     "없음": 2,
+     "of": 7
+    },
+    "나머지": {
+     "있음": 17,
+     "일부": 0,
+     "없음": 0,
+     "of": 17
+    }
+   },
+   "base_alone_by_judge": {
+    "필수": {
+     "있음": 5,
+     "일부": 0
+    },
+    "우대": {
+     "있음": 1,
+     "일부": 0
+    },
+    "나머지": {
+     "있음": 3,
+     "일부": 3
+    }
+   }
+  },
+  "decisions": [
+   {
+    "about": "베이스 프로젝트 선택",
+    "chose": "duoan/mega-data-factory를 베이스로 사용한다.",
+    "evidence": [
+     {
+      "project": "duoan/mega-data-factory",
+      "quote": "A reproducible, high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets"
+     }
+    ],
+    "rejected": "다른 프로젝트는 데이터 파이프라인 전체를 포괄하지 않는다.",
+    "why": "Ray 기반 분산 처리, 이미지·비디오 멀티모달 파이프라인, 품질 필터링 연산자가 모두 포함되어 있어 공고의 핵심 업무와 직접 연결된다."
+   },
+   {
+    "about": "3D 합성 데이터 렌더링 도구 선택",
+    "chose": "Blender Python API를 주 렌더링 도구로 선택한다.",
+    "evidence": [
+     {
+      "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+      "quote": "the dataset, which is built on Unreal Engine and Airsim simulator together with the manually annotated unique instance label for each building in the dataset, enables the generation of all kinds of data"
+     }
+    ],
+    "rejected": "Isaac Sim, Omniverse, Unreal Engine은 라이선스·GPU 하드웨어 요구사항이 높아 일반 대학 팀 환경에서 실행이 어렵다.",
+    "why": "Blender는 무료 오픈소스이며 Python API로 자동화가 가능하고, 깊이·법선·바운딩박스 메타데이터를 스크립트로 추출할 수 있다. UrbanScene3D의 합성 데이터 생성 방식을 참고해 장면 구성 방법을 차용한다."
+   },
+   {
+    "about": "VLM 어노테이션 및 품질 평가 도구 선택",
+    "chose": "Dingo의 VLM Judge 및 캡셔닝 프롬프트 설계 방식을 W3에 차용한다.",
+    "evidence": [
+     {
+      "project": "MigoXLab/dingo",
+      "quote": "LLM & Rule & Agent Hybrid - Combine fast heuristic rules (30+ built-in) with LLM-based deep assessment"
+     },
+     {
+      "project": "MigoXLab/dingo",
+      "quote": "VLM quality, OCR visual evaluation Vision-language data"
+     }
+    ],
+    "rejected": "Dingo 전체 시스템을 그대로 사용하는 것은 베이스 파이프라인과 중복된다.",
+    "why": "Dingo의 프롬프트 설계 패턴과 멀티필드 평가 방식만 차용해 W3의 VLM 어노테이션 단계에 통합한다."
+   },
+   {
+    "about": "평가 자동화 파이프라인 설계",
+    "chose": "Dingo의 리포팅 구조와 Goku의 벤치마크 지표(GenEval, DPG-Bench, VBench)를 W5에 결합한다.",
+    "evidence": [
+     {
+      "project": "MigoXLab/dingo",
+      "quote": "Rich Reporting - Detailed quality reports with GUI visualization and field-level insights"
+     },
+     {
+      "project": "Goku: Flow Based Video Generative Foundation Models",
+      "quote": "Goku achieves 0.76 on GenEval and 83.65 on DPG-Bench for text-to-image generation, and 84.85 on VBench for text-to-video tasks"
+     }
+    ],
+    "rejected": "Dingo의 SaaS 대시보드는 외부 서비스 의존성이 있어 사용하지 않는다.",
+    "why": "오픈소스 지표 라이브러리와 Dingo의 리포팅 구조를 결합하면 자동화 파이프라인을 팀 환경에서 구현할 수 있다."
+   },
+   {
+    "about": "Goku 논문 활용 범위",
+    "chose": "Goku의 rectified flow 방법론 설명과 벤치마크 지표를 W1·W5에서 참고 자료로 사용한다.",
+    "evidence": [
+     {
+      "project": "Goku: Flow Based Video Generative Foundation Models",
+      "quote": "joint image-and-video generation models leveraging rectified flow Transformers to achieve industry-leading performance"
+     }
+    ],
+    "rejected": "Goku 모델 전체를 학습하는 것은 GPU 예산 초과로 불가능하다.",
+    "why": "방법론 이해(C06)와 벤치마크 설계(C13) 목적으로만 차용하고, 실제 학습은 소규모 파인튜닝으로 대체한다."
+   },
+   {
+    "about": "UrbanScene3D 활용 범위",
+    "chose": "합성 데이터 생성 파이프라인 설계 방식과 메타데이터 구조를 W4에서 참고한다.",
+    "evidence": [
+     {
+      "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+      "quote": "manually annotated unique instance label for each building in the dataset, enables the generation of all kinds of data, e.g., 2D depth maps, 2D/3D bounding boxes, and 3D point cloud/mesh segmentations"
+     }
+    ],
+    "rejected": "UrbanScene3D 데이터셋 자체를 그대로 사용하는 것은 프로젝트 목표와 맞지 않는다.",
+    "why": "메타데이터 스키마(깊이, 바운딩박스, 세그멘테이션)와 파이프라인 구조만 차용해 Blender 기반 합성 데이터 생성에 적용한다."
+   },
+   {
+    "about": "C10 데이터 레시피 개선 출처",
+    "chose": "C10은 베이스(mega-data-factory)의 ablation 구조에서 자연스럽게 도출되므로 W6의 added로 처리한다.",
+    "evidence": [
+     {
+      "project": "duoan/mega-data-factory",
+      "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale"
+     }
+    ],
+    "rejected": "MigoXLab/dingo의 C10 셀은 없음이므로 출처로 사용할 수 없다.",
+    "why": "Dingo 셀에 C10이 없으므로 베이스의 ablation 개념을 근거로 added에 명시하고 W6에서 실습한다."
+   }
+  ],
+  "unverified": [
+   "C09 베이스 셀 인용문('ImageAIGCDetectorRefiner AI-generated image detection CPU')은 VLM 어노테이션 생성과 직접 관련이 없다. AI 생성 이미지 탐지기이지 VLM 캡셔닝 도구가 아니므로 셀 판정(일부)을 신뢰하기 어렵다. W3의 C09는 Dingo 셀을 주 출처로 사용한다.",
+   "C15 베이스 셀 인용문('Pipeline Run Reports This space contains interactive HTML reports')은 다축 지표 비교 도구라기보다 단순 실행 리포트에 가깝다. 일부 수준으로 처리한다.",
+   "C19(Isaac Sim), C20(Omniverse)은 라이선스 및 하드웨어 요구사항을 확인하지 못했다. 일반 대학 서버에서 실행 가능한지 불확실하므로 Blender로 대체했다.",
+   "W6의 소규모 파인튜닝은 GPU 자원 가용성에 따라 실현 가능성이 달라진다. 팀이 접근 가능한 GPU 클러스터 규모를 확인하지 못했다.",
+   "C22(Unreal Engine) 커버리지를 일부로 설정했으나, 실제 UE를 실행하지 않으므로 개념 참고 수준에 그친다.",
+   "C10을 MigoXLab/dingo에서 빌리려 했으나 해당 셀이 없음이므로 added로 전환했다. 베이스의 ablation 구조가 데이터 레시피 개선을 암시하지만 명시적 인용은 아니다."
+  ],
+  "checks": {
+   "passed": false,
+   "issues": [
+    {
+     "rule": "R4",
+     "level": "warn",
+     "detail": "W1: C02 는 입력 프로젝트가 있음으로 덮는데 added 에 있다. 그 칸을 의심했다면 doubts 에 있어야 한다"
+    },
+    {
+     "rule": "R4",
+     "level": "warn",
+     "detail": "W1: C01 는 입력 프로젝트가 있음으로 덮는데 added 에 있다. 그 칸을 의심했다면 doubts 에 있어야 한다"
+    },
+    {
+     "rule": "R4",
+     "level": "fix",
+     "detail": "W4: C21 가 출처의 for 에도 added 에도 없다"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 도구 C19 를 핵심 묶음이 덮지 않는다 (까닭: Isaac Sim은 라이선스·하드웨어 제약으로 직접 사용하지 않는다. 일반 대학 팀 환경에서 실행이 불가하여)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 도구 C20 를 핵심 묶음이 덮지 않는다 (까닭: Omniverse는 Isaac Sim과 동일한 이유로 직접 사용하지 않는다. 팀 환경에서 설치·실행이 불가하)"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 도구 C23 를 핵심 묶음이 덮지 않는다 (까닭: W7에서 최종 데이터셋과 평가 결과를 HuggingFace Hub에 공개한다.)"
+    },
+    {
+     "rule": "R10",
+     "level": "warn",
+     "detail": "고를 거리로 묶은 도구 ['C19', 'C20', 'C21', 'C22']: 하나는 핵심에서 있음, 나머지는 일부 이상이 목표다 (지금 ['없음', '없음', '있음', '일부'])"
+    }
+   ],
+   "first_issues": [
+    {
+     "rule": "R6",
+     "level": "fix",
+     "detail": "묶음 0개. 6~12개여야 한다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C19 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C27 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C04 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C14 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C28 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C17 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C26 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C24 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C03 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C21 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C07 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C11 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C18 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C20 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C01 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C25 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C06 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C15 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C02 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C22 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C08 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C23 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C05 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C10 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C16 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C09 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C12 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C29 가 없다"
+    },
+    {
+     "rule": "R8",
+     "level": "fix",
+     "detail": "덮기 표에 C13 가 없다"
+    },
+    {
+     "rule": "R7",
+     "level": "fix",
+     "detail": "필수 C01 가 바탕을 출처로 둔 핵심 묶음에서 덮이지 않는다"
+    },
+    {
+     "rule": "R7",
+     "level": "fix",
+     "detail": "필수 C02 가 바탕을 출처로 둔 핵심 묶음에서 덮이지 않는다"
+    },
+    {
+     "rule": "R7",
+     "level": "fix",
+     "detail": "필수 C03 가 바탕을 출처로 둔 핵심 묶음에서 덮이지 않는다"
+    },
+    {
+     "rule": "R7",
+     "level": "fix",
+     "detail": "필수 C04 가 바탕을 출처로 둔 핵심 묶음에서 덮이지 않는다"
+    },
+    {
+     "rule": "R7",
+     "level": "fix",
+     "detail": "필수 C05 가 바탕을 출처로 둔 핵심 묶음에서 덮이지 않는다"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C03 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C07 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C08 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C09 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C10 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C11 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C12 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C13 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C14 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C15 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C16 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C17 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C18 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 도구 C19 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 도구 C20 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 도구 C21 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 도구 C22 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 도구 C23 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 협업·태도 C24 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 협업·태도 C25 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 협업·태도 C26 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 협업·태도 C27 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C28 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R14",
+     "level": "warn",
+     "detail": "덮기 목표: 수행 C29 를 핵심 묶음이 덮지 않는다 (까닭: )"
+    },
+    {
+     "rule": "R10",
+     "level": "warn",
+     "detail": "고를 거리로 묶은 도구 ['C19', 'C20', 'C21', 'C22']: 하나는 핵심에서 있음, 나머지는 일부 이상이 목표다 (지금 ['없음', '없음', '없음', '없음'])"
+    },
+    {
+     "rule": "R11",
+     "level": "warn",
+     "detail": "보완 'MigoXLab/dingo' 를 쓰지도, 버린 까닭을 적지도 않았다"
+    },
+    {
+     "rule": "R11",
+     "level": "warn",
+     "detail": "보완 'Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset' 를 쓰지도, 버린 까닭을 적지도 않았다"
+    },
+    {
+     "rule": "R11",
+     "level": "warn",
+     "detail": "보완 'Goku: Flow Based Video Generative Foundation Models' 를 쓰지도, 버린 까닭을 적지도 않았다"
+    }
+   ],
+   "rewrote": 2,
+   "must_cover": "21/24",
+   "knowledge_touched": "5/5",
+   "tools": {
+    "C19": "없음",
+    "C20": "없음",
+    "C21": "있음",
+    "C22": "일부",
+    "C23": "없음"
+   },
+   "krw": 469.9
+  }
+ },
+ "cost": {
+  "trial_krw": 0.0,
+  "projected_krw": 0.0,
+  "judged": 100,
+  "spent_krw": 0.0,
+  "adapt_krw": 0.0
+ },
+ "seconds": 6.0
+}

@@ -1,0 +1,86 @@
+{
+ "C01": {
+  "paper": "diffusion model image video generation survey latent diffusion stable video diffusion",
+  "repo": "diffusion model image video generation tutorial implementation github"
+ },
+ "C02": {
+  "paper": "machine learning development cycle data curation training evaluation image generation pipeline",
+  "repo": "end to end ML pipeline data collection training evaluation image generation github"
+ },
+ "C03": {
+  "paper": "large scale image dataset processing filtering analysis pipeline deep learning",
+  "repo": "image video dataset processing analysis python pandas numpy pipeline github"
+ },
+ "C04": {
+  "paper": "large scale data processing GPU compute bottleneck optimization deep learning training throughput",
+  "repo": "large scale dataset GPU compute bottleneck profiling optimization pytorch github"
+ },
+ "C05": {
+  "paper": "large scale data loading IO bottleneck optimization deep learning training pipeline",
+  "repo": "data loading IO bottleneck optimization webdataset pytorch dataloader github"
+ },
+ "C07": {
+  "paper": "large scale image video dataset curation extraction web archive crawling for generative model training",
+  "repo": "image video dataset extraction curation pipeline web archive generative model github"
+ },
+ "C08": {
+  "paper": "multi-stage data quality filtering pipeline image video dataset for diffusion model training",
+  "repo": "multi-stage quality filtering image video dataset pipeline diffusion model training github"
+ },
+ "C09": {
+  "paper": "vision language model large scale automatic annotation image captioning dataset generation",
+  "repo": "VLM large scale automatic annotation image captioning dataset generation pipeline github"
+ },
+ "C10": {
+  "paper": "data recipe improvement based on training feedback image generation diffusion model dataset curation",
+  "repo": "data mixture recipe improvement training feedback image generation diffusion model github"
+ },
+ "C11": {
+  "paper": "synthetic data generation pipeline 3D simulator rendering engine for visual model training",
+  "repo": "synthetic data generation 3D simulator rendering engine Isaac Sim Blender pipeline github"
+ },
+ "C12": {
+  "paper": "synthetic dataset metadata refinement 3D rendering pipeline for deep learning",
+  "repo": "synthetic dataset metadata refinement 3D rendering pipeline annotation github"
+ },
+ "C13": {
+  "paper": "benchmark design evaluation image video generation diffusion model quality metrics",
+  "repo": "image video generation benchmark evaluation implementation diffusion model github"
+ },
+ "C14": {
+  "paper": "automated checkpoint evaluation pipeline image generation model training monitoring",
+  "repo": "automated model checkpoint evaluation pipeline image generation training github"
+ },
+ "C15": {
+  "paper": "multi-metric comparison analysis tool image video generation model evaluation dashboard",
+  "repo": "multi-metric evaluation comparison analysis tool image generation model github"
+ },
+ "C16": {
+  "paper": "large scale dataset design construction 100k samples image generation model training",
+  "repo": "large scale image video dataset construction 100k samples curation pipeline github"
+ },
+ "C17": {
+  "paper": "VLM as judge quality evaluation prompt design tuning image generation assessment",
+  "repo": "VLM judge quality evaluation prompt engineering image generation dataset github"
+ },
+ "C18": {
+  "paper": "vision language model custom image captioning prompt design tuning large scale dataset",
+  "repo": "VLM custom captioning prompt tuning large scale image dataset pipeline github"
+ },
+ "C19": {
+  "paper": "Isaac Sim synthetic data generation robot simulation visual model training NVIDIA",
+  "repo": "Isaac Sim synthetic dataset generation pipeline robot simulation github"
+ },
+ "C20": {
+  "paper": "NVIDIA Omniverse synthetic data generation rendering pipeline deep learning visual model",
+  "repo": "NVIDIA Omniverse synthetic data generation rendering pipeline deep learning github"
+ },
+ "C21": {
+  "paper": "Blender synthetic data generation rendering pipeline image dataset deep learning",
+  "repo": "Blender synthetic data generation rendering pipeline image dataset deep learning github"
+ },
+ "C22": {
+  "paper": "Unreal Engine synthetic data generation rendering pipeline image video dataset deep learning",
+  "repo": "Unreal Engine synthetic data generation rendering pipeline image dataset deep learning github"
+ }
+}

@@ -1,0 +1,1372 @@
+{
+ "schema_version": "roundlab.curriculum.output.v1",
+ "status": "needs_review",
+ "project": {
+  "title": "duoan/mega-data-factory 기반 프로토타입 구현과 검증",
+  "goal": "원본 프로젝트의 기능 한 가지를 구현하고 재현 가능한 검증 결과를 만든다.",
+  "base": {
+   "role": "원본",
+   "title": "duoan/mega-data-factory",
+   "kind": "깃헙",
+   "url": "https://github.com/duoan/mega-data-factory",
+   "venue": "GitHub ★382",
+   "rank": "1",
+   "필수": "5",
+   "우대": "1",
+   "나머지": "4.5",
+   "gain_필수": "",
+   "gain_우대": "",
+   "gain_나머지": "",
+   "borrowed": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해; C03 기본 데이터 처리 및 분석 독립 수행; C04 대규모 데이터 처리 시 연산 병목 이해; C05 대규모 데이터 처리 시 I/O 병목 이해; C29 대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용); C07 원시 이미지·비디오 아카이브에서 학습 데이터 추출; C16 10만 샘플 이상 규모의 데이터셋 설계·구축; C08 다단계 품질 필터링 로직 설계; C15 다축 지표 비교·분석 도구 개발; C23 Hugging Face를 통한 모델·결과물 공개",
+   "packages": "W1; W2; W5; W7"
+  },
+  "complements": [
+   {
+    "role": "보조 1",
+    "title": "MigoXLab/dingo",
+    "kind": "깃헙",
+    "url": "https://github.com/MigoXLab/dingo",
+    "venue": "GitHub ★768",
+    "rank": "22",
+    "필수": "1.5",
+    "우대": "2",
+    "나머지": "4.5",
+    "gain_필수": "",
+    "gain_우대": "2",
+    "gain_나머지": "2.0",
+    "borrowed": "C09 VLM을 활용한 대규모 어노테이션 생성; C17 VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝; C18 VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝; C14 체크포인트 평가 자동화 파이프라인 개발; C15 다축 지표 비교·분석 도구 개발; C28 데이터와 모델 성능 간 관계의 정량적 해석 및 검증",
+    "packages": "W3; W5; W6"
+   },
+   {
+    "role": "보조 2",
+    "title": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+    "kind": "논문",
+    "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3218_ECCV_2022_paper.php",
+    "venue": "ECCV",
+    "rank": "88",
+    "필수": "0",
+    "우대": "2",
+    "나머지": "2.0",
+    "gain_필수": "",
+    "gain_우대": "1",
+    "gain_나머지": "2.0",
+    "borrowed": "C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축; C22 Unreal Engine; C12 합성 데이터 메타데이터 정제; C16 10만 샘플 이상 규모의 데이터셋 설계·구축",
+    "packages": "W4"
+   },
+   {
+    "role": "보조 3",
+    "title": "Goku: Flow Based Video Generative Foundation Models",
+    "kind": "논문",
+    "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Goku_Flow_Based_Video_Generative_Foundation_Models_CVPR_2025_paper.html",
+    "venue": "CVPR",
+    "rank": "6",
+    "필수": "3.0",
+    "우대": "0",
+    "나머지": "4.5",
+    "gain_필수": "",
+    "gain_우대": "0",
+    "gain_나머지": "2.0",
+    "borrowed": "C06 Diffusion 기반 학습 방법론 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해; C13 신규 벤치마크 구현; C15 다축 지표 비교·분석 도구 개발; C28 데이터와 모델 성능 간 관계의 정량적 해석 및 검증",
+    "packages": "W1; W5; W6"
+   }
+  ]
+ },
+ "policy": {
+  "source": "선정 프로젝트 CSV + 선정 교육자료 CSV",
+  "order": "명시된 depends_on 우선, 그 외에는 입력 순서",
+  "learning": "작업·구간별 선수지식에서 보유 개념을 제외하고 필요한 구간을 순서대로 배치",
+  "core": "핵심 작업과 선행 작업 보호, 나머지는 시간 범위에서 포함",
+  "references": "선수조건을 충족할 수 있는 경로 중 핵심 자료 우선, 이후 경로 시간 우선",
+  "no_invention": "CSV 근거를 보존하며 작업·학습시간은 검토 필요 추정값으로 제안",
+  "reference_selection": "prerequisites"
+ },
+ "inputs": {
+  "packages_total": 6,
+  "materials_total": 6,
+  "core_materials": 2,
+  "reference_materials": 4
+ },
+ "constraints": {
+  "weeks": 12,
+  "hours_per_week": 14.0,
+  "capacity_hours": 168.0,
+  "project_budget_hours": null
+ },
+ "summary": {
+  "included_packages": [
+   "P01",
+   "P02",
+   "P03",
+   "P04",
+   "P05",
+   "P06"
+  ],
+  "core_packages": [
+   "P01",
+   "P02",
+   "P03"
+  ],
+  "promoted_dependencies": [],
+  "excluded_packages": [],
+  "selected_learning_units": [
+   "Ma54431942a"
+  ],
+  "selected_material_ids": [
+   "Ma54431942a"
+  ],
+  "implementation_hours": 70.0,
+  "learning_hours": 1.5,
+  "scheduled_hours": 71.5,
+  "remaining_hours": 96.5,
+  "uncovered_competencies": []
+ },
+ "learning_matches": [
+  {
+   "unit_id": "Ma54431942a",
+   "material_id": "Ma54431942a",
+   "role": "core",
+   "title": "[ECCV 2026] Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+   "url": "https://eccv.ecva.net/virtual/2026/3131",
+   "section": "CSV 인용문 기준 학습 범위 · ECCV 튜토리얼 (원문 절 미확인)",
+   "competencies": [
+    "C01",
+    "C02",
+    "입문-C04",
+    "입문-C05",
+    "입문-C06"
+   ],
+   "duration_minutes": 90,
+   "evidence": "C01: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C02: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C04: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C05: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C06: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
+  }
+ ],
+ "competency_coverage": {
+  "target": [
+   "C01",
+   "C02",
+   "C06",
+   "C08",
+   "C09",
+   "C11",
+   "C16"
+  ],
+  "covered_by_materials": [
+   "C01",
+   "C02"
+  ],
+  "missing_materials": [
+   "C06",
+   "C08",
+   "C09",
+   "C11",
+   "C16"
+  ]
+ },
+ "weeks": [
+  {
+   "week": 1,
+   "capacity_minutes": 840,
+   "used_minutes": 360,
+   "activities": [
+    {
+     "sequence": 1,
+     "kind": "project",
+     "id": "P01",
+     "title": "duoan/mega-data-factory 예제를 실행하고 최소 기능의 입력·출력 정의 (준비: 추천 교육자료에 없는 C16 10만 샘플 이상 규모의 데이터셋 설계·구축, C08 다단계 품질 필터링 로직 설계 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+     "minutes": 300,
+     "hours": 5.0,
+     "completed_in_this_chunk": true,
+     "out": "예제 실행 기록과 기능 명세 1장",
+     "core": true,
+     "competencies": [
+      "C16",
+      "C08"
+     ],
+     "completion_check": "같은 입력으로 예제를 재실행하고 예상 출력과 비교한다.",
+     "prerequisites": [],
+     "depends_on": [],
+     "sources": [
+      {
+       "project": "duoan/mega-data-factory",
+       "url": "https://github.com/duoan/mega-data-factory",
+       "quote": "C16 10만 샘플 이상 규모의 데이터셋 설계·구축; C08 다단계 품질 필터링 로직 설계",
+       "original_package_refs": "W1; W2; W5; W7"
+      }
+     ],
+     "added": []
+    },
+    {
+     "sequence": 2,
+     "kind": "project",
+     "id": "P02",
+     "title": "이미지·비디오 생성 모델 동작 원리 이해 기능 하나를 샘플 입력으로 구현",
+     "minutes": 60,
+     "hours": 1.0,
+     "completed_in_this_chunk": false,
+     "out": "실행 가능한 프로토타입과 입력 예제",
+     "core": true,
+     "competencies": [
+      "C01",
+      "C02"
+     ],
+     "completion_check": "정상 입력 2건과 빈 입력 1건의 결과를 기록한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P01"
+     ],
+     "sources": [
+      {
+       "project": "duoan/mega-data-factory",
+       "url": "https://github.com/duoan/mega-data-factory",
+       "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+       "original_package_refs": "W1; W2; W5; W7"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [
+    "예제 실행 기록과 기능 명세 1장"
+   ],
+   "learning_minutes": 0,
+   "implementation_minutes": 360,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 60,
+   "goals": [
+    "duoan/mega-data-factory 예제를 실행하고 최소 기능의 입력·출력 정의 (준비: 추천 교육자료에 없는 C16 10만 샘플 이상 규모의 데이터셋 설계·구축, C08 다단계 품질 필터링 로직 설계 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+    "이미지·비디오 생성 모델 동작 원리 이해 기능 하나를 샘플 입력으로 구현"
+   ],
+   "used_hours": 6.0,
+   "remaining_hours": 8.0
+  },
+  {
+   "week": 2,
+   "capacity_minutes": 840,
+   "used_minutes": 360,
+   "activities": [
+    {
+     "sequence": 3,
+     "kind": "project",
+     "id": "P02",
+     "title": "이미지·비디오 생성 모델 동작 원리 이해 기능 하나를 샘플 입력으로 구현",
+     "minutes": 360,
+     "hours": 6.0,
+     "completed_in_this_chunk": false,
+     "out": "실행 가능한 프로토타입과 입력 예제",
+     "core": true,
+     "competencies": [
+      "C01",
+      "C02"
+     ],
+     "completion_check": "정상 입력 2건과 빈 입력 1건의 결과를 기록한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P01"
+     ],
+     "sources": [
+      {
+       "project": "duoan/mega-data-factory",
+       "url": "https://github.com/duoan/mega-data-factory",
+       "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+       "original_package_refs": "W1; W2; W5; W7"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [],
+   "learning_minutes": 0,
+   "implementation_minutes": 360,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 60,
+   "goals": [
+    "이미지·비디오 생성 모델 동작 원리 이해 기능 하나를 샘플 입력으로 구현"
+   ],
+   "used_hours": 6.0,
+   "remaining_hours": 8.0
+  },
+  {
+   "week": 3,
+   "capacity_minutes": 840,
+   "used_minutes": 360,
+   "activities": [
+    {
+     "sequence": 4,
+     "kind": "project",
+     "id": "P02",
+     "title": "이미지·비디오 생성 모델 동작 원리 이해 기능 하나를 샘플 입력으로 구현",
+     "minutes": 360,
+     "hours": 6.0,
+     "completed_in_this_chunk": false,
+     "out": "실행 가능한 프로토타입과 입력 예제",
+     "core": true,
+     "competencies": [
+      "C01",
+      "C02"
+     ],
+     "completion_check": "정상 입력 2건과 빈 입력 1건의 결과를 기록한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P01"
+     ],
+     "sources": [
+      {
+       "project": "duoan/mega-data-factory",
+       "url": "https://github.com/duoan/mega-data-factory",
+       "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+       "original_package_refs": "W1; W2; W5; W7"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [],
+   "learning_minutes": 0,
+   "implementation_minutes": 360,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 60,
+   "goals": [
+    "이미지·비디오 생성 모델 동작 원리 이해 기능 하나를 샘플 입력으로 구현"
+   ],
+   "used_hours": 6.0,
+   "remaining_hours": 8.0
+  },
+  {
+   "week": 4,
+   "capacity_minutes": 840,
+   "used_minutes": 360,
+   "activities": [
+    {
+     "sequence": 5,
+     "kind": "project",
+     "id": "P02",
+     "title": "이미지·비디오 생성 모델 동작 원리 이해 기능 하나를 샘플 입력으로 구현",
+     "minutes": 180,
+     "hours": 3.0,
+     "completed_in_this_chunk": true,
+     "out": "실행 가능한 프로토타입과 입력 예제",
+     "core": true,
+     "competencies": [
+      "C01",
+      "C02"
+     ],
+     "completion_check": "정상 입력 2건과 빈 입력 1건의 결과를 기록한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P01"
+     ],
+     "sources": [
+      {
+       "project": "duoan/mega-data-factory",
+       "url": "https://github.com/duoan/mega-data-factory",
+       "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+       "original_package_refs": "W1; W2; W5; W7"
+      }
+     ],
+     "added": []
+    },
+    {
+     "sequence": 6,
+     "kind": "project",
+     "id": "P03",
+     "title": "프로토타입의 성공·실패 사례를 재실행하고 사용법 작성",
+     "minutes": 180,
+     "hours": 3.0,
+     "completed_in_this_chunk": false,
+     "out": "검증 스크립트, 결과표, 실행 안내서",
+     "core": true,
+     "competencies": [
+      "C01",
+      "C02"
+     ],
+     "completion_check": "새 환경에서 안내서대로 실행하고 테스트 결과를 재현한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P02"
+     ],
+     "sources": [
+      {
+       "project": "duoan/mega-data-factory",
+       "url": "https://github.com/duoan/mega-data-factory",
+       "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+       "original_package_refs": "W1; W2; W5; W7"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [
+    "실행 가능한 프로토타입과 입력 예제"
+   ],
+   "learning_minutes": 0,
+   "implementation_minutes": 360,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 40,
+   "goals": [
+    "이미지·비디오 생성 모델 동작 원리 이해 기능 하나를 샘플 입력으로 구현",
+    "프로토타입의 성공·실패 사례를 재실행하고 사용법 작성"
+   ],
+   "used_hours": 6.0,
+   "remaining_hours": 8.0
+  },
+  {
+   "week": 5,
+   "capacity_minutes": 840,
+   "used_minutes": 360,
+   "activities": [
+    {
+     "sequence": 7,
+     "kind": "project",
+     "id": "P03",
+     "title": "프로토타입의 성공·실패 사례를 재실행하고 사용법 작성",
+     "minutes": 240,
+     "hours": 4.0,
+     "completed_in_this_chunk": true,
+     "out": "검증 스크립트, 결과표, 실행 안내서",
+     "core": true,
+     "competencies": [
+      "C01",
+      "C02"
+     ],
+     "completion_check": "새 환경에서 안내서대로 실행하고 테스트 결과를 재현한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P02"
+     ],
+     "sources": [
+      {
+       "project": "duoan/mega-data-factory",
+       "url": "https://github.com/duoan/mega-data-factory",
+       "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+       "original_package_refs": "W1; W2; W5; W7"
+      }
+     ],
+     "added": []
+    },
+    {
+     "sequence": 8,
+     "kind": "project",
+     "id": "P04",
+     "title": "VLM을 활용한 대규모 어노테이션 생성의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C09 VLM을 활용한 대규모 어노테이션 생성 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+     "minutes": 120,
+     "hours": 2.0,
+     "completed_in_this_chunk": false,
+     "out": "실행 예제와 결과 기록",
+     "core": false,
+     "competencies": [
+      "C09"
+     ],
+     "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P03"
+     ],
+     "sources": [
+      {
+       "project": "MigoXLab/dingo",
+       "url": "https://github.com/MigoXLab/dingo",
+       "quote": "C09 VLM을 활용한 대규모 어노테이션 생성",
+       "original_package_refs": "W3; W5; W6"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [
+    "검증 스크립트, 결과표, 실행 안내서"
+   ],
+   "learning_minutes": 0,
+   "implementation_minutes": 360,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 40,
+   "goals": [
+    "프로토타입의 성공·실패 사례를 재실행하고 사용법 작성",
+    "VLM을 활용한 대규모 어노테이션 생성의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C09 VLM을 활용한 대규모 어노테이션 생성 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)"
+   ],
+   "used_hours": 6.0,
+   "remaining_hours": 8.0
+  },
+  {
+   "week": 6,
+   "capacity_minutes": 840,
+   "used_minutes": 360,
+   "activities": [
+    {
+     "sequence": 9,
+     "kind": "project",
+     "id": "P04",
+     "title": "VLM을 활용한 대규모 어노테이션 생성의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C09 VLM을 활용한 대규모 어노테이션 생성 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+     "minutes": 360,
+     "hours": 6.0,
+     "completed_in_this_chunk": false,
+     "out": "실행 예제와 결과 기록",
+     "core": false,
+     "competencies": [
+      "C09"
+     ],
+     "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P03"
+     ],
+     "sources": [
+      {
+       "project": "MigoXLab/dingo",
+       "url": "https://github.com/MigoXLab/dingo",
+       "quote": "C09 VLM을 활용한 대규모 어노테이션 생성",
+       "original_package_refs": "W3; W5; W6"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [],
+   "learning_minutes": 0,
+   "implementation_minutes": 360,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 40,
+   "goals": [
+    "VLM을 활용한 대규모 어노테이션 생성의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C09 VLM을 활용한 대규모 어노테이션 생성 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)"
+   ],
+   "used_hours": 6.0,
+   "remaining_hours": 8.0
+  },
+  {
+   "week": 7,
+   "capacity_minutes": 840,
+   "used_minutes": 360,
+   "activities": [
+    {
+     "sequence": 10,
+     "kind": "project",
+     "id": "P04",
+     "title": "VLM을 활용한 대규모 어노테이션 생성의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C09 VLM을 활용한 대규모 어노테이션 생성 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+     "minutes": 360,
+     "hours": 6.0,
+     "completed_in_this_chunk": true,
+     "out": "실행 예제와 결과 기록",
+     "core": false,
+     "competencies": [
+      "C09"
+     ],
+     "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P03"
+     ],
+     "sources": [
+      {
+       "project": "MigoXLab/dingo",
+       "url": "https://github.com/MigoXLab/dingo",
+       "quote": "C09 VLM을 활용한 대규모 어노테이션 생성",
+       "original_package_refs": "W3; W5; W6"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [
+    "실행 예제와 결과 기록"
+   ],
+   "learning_minutes": 0,
+   "implementation_minutes": 360,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 40,
+   "goals": [
+    "VLM을 활용한 대규모 어노테이션 생성의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C09 VLM을 활용한 대규모 어노테이션 생성 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)"
+   ],
+   "used_hours": 6.0,
+   "remaining_hours": 8.0
+  },
+  {
+   "week": 8,
+   "capacity_minutes": 840,
+   "used_minutes": 360,
+   "activities": [
+    {
+     "sequence": 11,
+     "kind": "project",
+     "id": "P05",
+     "title": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+     "minutes": 360,
+     "hours": 6.0,
+     "completed_in_this_chunk": false,
+     "out": "실행 예제와 결과 기록",
+     "core": false,
+     "competencies": [
+      "C11"
+     ],
+     "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P03"
+     ],
+     "sources": [
+      {
+       "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+       "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3218_ECCV_2022_paper.php",
+       "quote": "C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+       "original_package_refs": "W4"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [],
+   "learning_minutes": 0,
+   "implementation_minutes": 360,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 40,
+   "goals": [
+    "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)"
+   ],
+   "used_hours": 6.0,
+   "remaining_hours": 8.0
+  },
+  {
+   "week": 9,
+   "capacity_minutes": 840,
+   "used_minutes": 360,
+   "activities": [
+    {
+     "sequence": 12,
+     "kind": "project",
+     "id": "P05",
+     "title": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+     "minutes": 360,
+     "hours": 6.0,
+     "completed_in_this_chunk": false,
+     "out": "실행 예제와 결과 기록",
+     "core": false,
+     "competencies": [
+      "C11"
+     ],
+     "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P03"
+     ],
+     "sources": [
+      {
+       "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+       "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3218_ECCV_2022_paper.php",
+       "quote": "C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+       "original_package_refs": "W4"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [],
+   "learning_minutes": 0,
+   "implementation_minutes": 360,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 25,
+   "goals": [
+    "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)"
+   ],
+   "used_hours": 6.0,
+   "remaining_hours": 8.0
+  },
+  {
+   "week": 10,
+   "capacity_minutes": 840,
+   "used_minutes": 350,
+   "activities": [
+    {
+     "sequence": 13,
+     "kind": "project",
+     "id": "P05",
+     "title": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+     "minutes": 120,
+     "hours": 2.0,
+     "completed_in_this_chunk": true,
+     "out": "실행 예제와 결과 기록",
+     "core": false,
+     "competencies": [
+      "C11"
+     ],
+     "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+     "prerequisites": [],
+     "depends_on": [
+      "P03"
+     ],
+     "sources": [
+      {
+       "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+       "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3218_ECCV_2022_paper.php",
+       "quote": "C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+       "original_package_refs": "W4"
+      }
+     ],
+     "added": []
+    },
+    {
+     "sequence": 14,
+     "kind": "learning",
+     "id": "Ma54431942a",
+     "title": "[ECCV 2026] Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+     "minutes": 90,
+     "hours": 1.5,
+     "completed_in_this_chunk": true,
+     "material_id": "Ma54431942a",
+     "role": "core",
+     "url": "https://eccv.ecva.net/virtual/2026/3131",
+     "competencies": [
+      "C01",
+      "C02",
+      "입문-C04",
+      "입문-C05",
+      "입문-C06"
+     ],
+     "evidence": "C01: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C02: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C04: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C05: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C06: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+     "section": "CSV 인용문 기준 학습 범위 · ECCV 튜토리얼 (원문 절 미확인)",
+     "for_task": "P06",
+     "requires": [],
+     "reason": "P06 작업 전 선수학습",
+     "study_method": "표시된 범위에서 인용문과 관련된 내용을 찾고, 예제 한 건을 프로젝트에 적용할 방법을 기록합니다."
+    },
+    {
+     "sequence": 15,
+     "kind": "project",
+     "id": "P06",
+     "title": "Diffusion 기반 학습 방법론 이해의 최소 예제를 연결",
+     "minutes": 140,
+     "hours": 2.3333,
+     "completed_in_this_chunk": false,
+     "out": "실행 예제와 결과 기록",
+     "core": false,
+     "competencies": [
+      "C06"
+     ],
+     "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+     "prerequisites": [
+      "입문-C06"
+     ],
+     "depends_on": [
+      "P03"
+     ],
+     "sources": [
+      {
+       "project": "Goku: Flow Based Video Generative Foundation Models",
+       "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Goku_Flow_Based_Video_Generative_Foundation_Models_CVPR_2025_paper.html",
+       "quote": "C06 Diffusion 기반 학습 방법론 이해",
+       "original_package_refs": "W1; W5; W6"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [
+    "실행 예제와 결과 기록"
+   ],
+   "learning_minutes": 90,
+   "implementation_minutes": 260,
+   "actual_learning_percent": 25.7,
+   "recommended_learning_percent": 25,
+   "goals": [
+    "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+    "[ECCV 2026] Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+    "Diffusion 기반 학습 방법론 이해의 최소 예제를 연결"
+   ],
+   "used_hours": 5.8333,
+   "remaining_hours": 8.1667
+  },
+  {
+   "week": 11,
+   "capacity_minutes": 840,
+   "used_minutes": 350,
+   "activities": [
+    {
+     "sequence": 16,
+     "kind": "project",
+     "id": "P06",
+     "title": "Diffusion 기반 학습 방법론 이해의 최소 예제를 연결",
+     "minutes": 350,
+     "hours": 5.8333,
+     "completed_in_this_chunk": false,
+     "out": "실행 예제와 결과 기록",
+     "core": false,
+     "competencies": [
+      "C06"
+     ],
+     "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+     "prerequisites": [
+      "입문-C06"
+     ],
+     "depends_on": [
+      "P03"
+     ],
+     "sources": [
+      {
+       "project": "Goku: Flow Based Video Generative Foundation Models",
+       "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Goku_Flow_Based_Video_Generative_Foundation_Models_CVPR_2025_paper.html",
+       "quote": "C06 Diffusion 기반 학습 방법론 이해",
+       "original_package_refs": "W1; W5; W6"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [],
+   "learning_minutes": 0,
+   "implementation_minutes": 350,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 25,
+   "goals": [
+    "Diffusion 기반 학습 방법론 이해의 최소 예제를 연결"
+   ],
+   "used_hours": 5.8333,
+   "remaining_hours": 8.1667
+  },
+  {
+   "week": 12,
+   "capacity_minutes": 840,
+   "used_minutes": 350,
+   "activities": [
+    {
+     "sequence": 17,
+     "kind": "project",
+     "id": "P06",
+     "title": "Diffusion 기반 학습 방법론 이해의 최소 예제를 연결",
+     "minutes": 350,
+     "hours": 5.8333,
+     "completed_in_this_chunk": true,
+     "out": "실행 예제와 결과 기록",
+     "core": false,
+     "competencies": [
+      "C06"
+     ],
+     "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+     "prerequisites": [
+      "입문-C06"
+     ],
+     "depends_on": [
+      "P03"
+     ],
+     "sources": [
+      {
+       "project": "Goku: Flow Based Video Generative Foundation Models",
+       "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Goku_Flow_Based_Video_Generative_Foundation_Models_CVPR_2025_paper.html",
+       "quote": "C06 Diffusion 기반 학습 방법론 이해",
+       "original_package_refs": "W1; W5; W6"
+      }
+     ],
+     "added": []
+    }
+   ],
+   "deliverables_completed": [
+    "실행 예제와 결과 기록"
+   ],
+   "learning_minutes": 0,
+   "implementation_minutes": 350,
+   "actual_learning_percent": 0.0,
+   "recommended_learning_percent": 25,
+   "goals": [
+    "Diffusion 기반 학습 방법론 이해의 최소 예제를 연결"
+   ],
+   "used_hours": 5.8333,
+   "remaining_hours": 8.1667
+  }
+ ],
+ "learner_known": [],
+ "prerequisite_gaps": {},
+ "required_learning_topics": [
+  "입문-C06"
+ ],
+ "checks": {
+  "scheduled": true,
+  "core_not_dropped": true,
+  "within_total_capacity": true,
+  "material_durations_known": true,
+  "educational_coverage_complete": false,
+  "educational_evidence_complete": true,
+  "project_implementation_within_budget": true,
+  "added_claims_to_review": 0,
+  "unmatched_core_material_ids": [],
+  "upstream_project_passed": null,
+  "all_week_caps_ok": true,
+  "unverified_count": 1
+ },
+ "warnings": [
+  "상위 프로젝트 checks.passed 값이 제공되지 않았습니다",
+  "상위 프로젝트에 사람이 확인할 항목 1개가 있습니다"
+ ],
+ "upstream_review": {
+  "unverified": [
+   "작업 분해·선수관계·시간은 생성기 제안이며 실측 전입니다."
+  ],
+  "decisions": [],
+  "checks": {}
+ },
+ "task_preparation": [
+  {
+   "task_id": "P01",
+   "required": [],
+   "already_known": [],
+   "depends_on": [],
+   "completion_check": "같은 입력으로 예제를 재실행하고 예상 출력과 비교한다.",
+   "sources": [
+    {
+     "project": "duoan/mega-data-factory",
+     "url": "https://github.com/duoan/mega-data-factory",
+     "quote": "C16 10만 샘플 이상 규모의 데이터셋 설계·구축; C08 다단계 품질 필터링 로직 설계",
+     "original_package_refs": "W1; W2; W5; W7"
+    }
+   ],
+   "study_before_task": [],
+   "gaps": []
+  },
+  {
+   "task_id": "P02",
+   "required": [],
+   "already_known": [],
+   "depends_on": [
+    "P01"
+   ],
+   "completion_check": "정상 입력 2건과 빈 입력 1건의 결과를 기록한다.",
+   "sources": [
+    {
+     "project": "duoan/mega-data-factory",
+     "url": "https://github.com/duoan/mega-data-factory",
+     "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+     "original_package_refs": "W1; W2; W5; W7"
+    }
+   ],
+   "study_before_task": [],
+   "gaps": []
+  },
+  {
+   "task_id": "P03",
+   "required": [],
+   "already_known": [],
+   "depends_on": [
+    "P02"
+   ],
+   "completion_check": "새 환경에서 안내서대로 실행하고 테스트 결과를 재현한다.",
+   "sources": [
+    {
+     "project": "duoan/mega-data-factory",
+     "url": "https://github.com/duoan/mega-data-factory",
+     "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+     "original_package_refs": "W1; W2; W5; W7"
+    }
+   ],
+   "study_before_task": [],
+   "gaps": []
+  },
+  {
+   "task_id": "P04",
+   "required": [],
+   "already_known": [],
+   "depends_on": [
+    "P03"
+   ],
+   "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+   "sources": [
+    {
+     "project": "MigoXLab/dingo",
+     "url": "https://github.com/MigoXLab/dingo",
+     "quote": "C09 VLM을 활용한 대규모 어노테이션 생성",
+     "original_package_refs": "W3; W5; W6"
+    }
+   ],
+   "study_before_task": [],
+   "gaps": []
+  },
+  {
+   "task_id": "P05",
+   "required": [],
+   "already_known": [],
+   "depends_on": [
+    "P03"
+   ],
+   "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+   "sources": [
+    {
+     "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+     "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3218_ECCV_2022_paper.php",
+     "quote": "C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+     "original_package_refs": "W4"
+    }
+   ],
+   "study_before_task": [],
+   "gaps": []
+  },
+  {
+   "task_id": "P06",
+   "required": [
+    "입문-C06"
+   ],
+   "already_known": [],
+   "depends_on": [
+    "P03"
+   ],
+   "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+   "sources": [
+    {
+     "project": "Goku: Flow Based Video Generative Foundation Models",
+     "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Goku_Flow_Based_Video_Generative_Foundation_Models_CVPR_2025_paper.html",
+     "quote": "C06 Diffusion 기반 학습 방법론 이해",
+     "original_package_refs": "W1; W5; W6"
+    }
+   ],
+   "study_before_task": [
+    "Ma54431942a"
+   ],
+   "gaps": []
+  }
+ ],
+ "team_export": {
+  "input_files": [
+   "프로젝트_뽑힌프로젝트.csv",
+   "교육자료_고른자료.csv"
+  ],
+  "selected_projects": [
+   {
+    "role": "원본",
+    "title": "duoan/mega-data-factory",
+    "kind": "깃헙",
+    "url": "https://github.com/duoan/mega-data-factory",
+    "venue": "GitHub ★382",
+    "rank": "1",
+    "필수": "5",
+    "우대": "1",
+    "나머지": "4.5",
+    "gain_필수": "",
+    "gain_우대": "",
+    "gain_나머지": "",
+    "borrowed": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해; C03 기본 데이터 처리 및 분석 독립 수행; C04 대규모 데이터 처리 시 연산 병목 이해; C05 대규모 데이터 처리 시 I/O 병목 이해; C29 대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용); C07 원시 이미지·비디오 아카이브에서 학습 데이터 추출; C16 10만 샘플 이상 규모의 데이터셋 설계·구축; C08 다단계 품질 필터링 로직 설계; C15 다축 지표 비교·분석 도구 개발; C23 Hugging Face를 통한 모델·결과물 공개",
+    "packages": "W1; W2; W5; W7"
+   },
+   {
+    "role": "보조 1",
+    "title": "MigoXLab/dingo",
+    "kind": "깃헙",
+    "url": "https://github.com/MigoXLab/dingo",
+    "venue": "GitHub ★768",
+    "rank": "22",
+    "필수": "1.5",
+    "우대": "2",
+    "나머지": "4.5",
+    "gain_필수": "",
+    "gain_우대": "2",
+    "gain_나머지": "2.0",
+    "borrowed": "C09 VLM을 활용한 대규모 어노테이션 생성; C17 VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝; C18 VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝; C14 체크포인트 평가 자동화 파이프라인 개발; C15 다축 지표 비교·분석 도구 개발; C28 데이터와 모델 성능 간 관계의 정량적 해석 및 검증",
+    "packages": "W3; W5; W6"
+   },
+   {
+    "role": "보조 2",
+    "title": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+    "kind": "논문",
+    "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3218_ECCV_2022_paper.php",
+    "venue": "ECCV",
+    "rank": "88",
+    "필수": "0",
+    "우대": "2",
+    "나머지": "2.0",
+    "gain_필수": "",
+    "gain_우대": "1",
+    "gain_나머지": "2.0",
+    "borrowed": "C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축; C22 Unreal Engine; C12 합성 데이터 메타데이터 정제; C16 10만 샘플 이상 규모의 데이터셋 설계·구축",
+    "packages": "W4"
+   },
+   {
+    "role": "보조 3",
+    "title": "Goku: Flow Based Video Generative Foundation Models",
+    "kind": "논문",
+    "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Goku_Flow_Based_Video_Generative_Foundation_Models_CVPR_2025_paper.html",
+    "venue": "CVPR",
+    "rank": "6",
+    "필수": "3.0",
+    "우대": "0",
+    "나머지": "4.5",
+    "gain_필수": "",
+    "gain_우대": "0",
+    "gain_나머지": "2.0",
+    "borrowed": "C06 Diffusion 기반 학습 방법론 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해; C13 신규 벤치마크 구현; C15 다축 지표 비교·분석 도구 개발; C28 데이터와 모델 성능 간 관계의 정량적 해석 및 검증",
+    "packages": "W1; W5; W6"
+   }
+  ],
+  "recommended_materials": [
+   {
+    "role": "핵심",
+    "gain": "3000.5",
+    "id": "Ma54431942a",
+    "bank": "팀",
+    "type": "학회 튜토리얼",
+    "title": "[ECCV 2026] Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+    "url": "https://eccv.ecva.net/virtual/2026/3131",
+    "topic": "ECCV 튜토리얼",
+    "summary": "",
+    "source": "tutorial",
+    "covers": "C01 이미지·비디오 생성 모델 동작 원리 이해: 있음; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해: 있음; C04 대규모 데이터 처리 시 연산 병목 이해: 일부; C05 대규모 데이터 처리 시 I/O 병목 이해: 일부; C06 Diffusion 기반 학습 방법론 이해: 일부",
+    "quote": "C01: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C02: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C04: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C05: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies; C06: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
+   },
+   {
+    "role": "핵심",
+    "gain": "500.0",
+    "id": "LRN83d11fce37",
+    "bank": "추가",
+    "type": "글",
+    "title": "Profiling Machine Learning and MLOps Code",
+    "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/ml-and-ai-projects/profiling-ml-and-mlops-code.md",
+    "topic": "ISE Engineering Fundamentals Customer/Partner Engineering Playbook · ml and ai projects",
+    "summary": "Data Science projects, especially the ones that involve Deep Learning techniques, usually are resource intensive. One model training iteration might be multiple hours long. Although large data volumes processing genuinely takes time, minor bugs and suboptimal implementation of some functional pieces",
+    "source": "microsoft/code-with-engineering-playbook",
+    "covers": "C02 ML 개발 사이클(데이터 구축→학습→평가) 이해: 일부; C04 대규모 데이터 처리 시 연산 병목 이해: 있음; C05 대규모 데이터 처리 시 I/O 병목 이해: 일부",
+    "quote": "C02: Data Science projects, especially the ones that involve Deep Learning techniques, usually are resource intensive. One model training iteration might be multiple hours long.; C04: minor bugs and suboptimal implementation of some functional pieces; C05: large data volumes processing genuinely takes time, minor bugs and suboptimal implementation of some functional pieces"
+   },
+   {
+    "role": "보조",
+    "gain": "2.0",
+    "id": "ADD76a0f43d",
+    "bank": "추가",
+    "type": "저장소",
+    "title": "isaac-sim/IsaacSim",
+    "url": "https://github.com/isaac-sim/IsaacSim",
+    "topic": "NVIDIA Isaac Sim",
+    "summary": "NVIDIA Isaac Sim is a simulation platform built on NVIDIA Omniverse, designed to develop, test, train, and deploy AI-powered robots in realistic virtual environments. It supports importing robotic systems from common formats such as URDF, MJCF, and CAD.",
+    "source": "isaac-sim/IsaacSim",
+    "covers": "C19 Isaac Sim: 있음; C20 Omniverse: 있음",
+    "quote": "C19: NVIDIA Isaac Sim is a simulation platform built on NVIDIA Omniverse, designed to develop, test, train, and deploy AI-powered robots in realistic virtual environments.; C20: NVIDIA Isaac Sim is a simulation platform built on NVIDIA Omniverse, designed to develop, test, train, and deploy AI-powered robots in realistic virtual environments."
+   },
+   {
+    "role": "보조",
+    "gain": "1.0",
+    "id": "E4eff9553b5",
+    "bank": "진욱",
+    "type": "강의 레슨",
+    "title": "An Introduction to Unreal Learning Agents",
+    "url": "https://github.com/huggingface/deep-rl-class/blob/main/units/en/unitbonus3/learning-agents.mdx",
+    "topic": "deep-rl-class unitbonus3",
+    "summary": "Learning Agents is an Unreal Engine (UE) plugin that allows you to train AI characters using machine learning (ML) in Unreal .",
+    "source": "huggingface/deep-rl-class",
+    "covers": "C02 ML 개발 사이클(데이터 구축→학습→평가) 이해: 일부; C22 Unreal Engine: 있음",
+    "quote": "C02: train AI characters using machine learning (ML) in Unreal; C22: Learning Agents is an Unreal Engine (UE) plugin that allows you to train AI characters using machine learning (ML) in Unreal"
+   },
+   {
+    "role": "보조",
+    "gain": "1.0",
+    "id": "LRNc710a7cb9f",
+    "bank": "추가",
+    "type": "공식 문서 튜토리얼",
+    "title": "Sharing",
+    "url": "https://github.com/huggingface/transformers/blob/main/docs/source/en/model_sharing.md",
+    "topic": "Installation · en",
+    "summary": "The Hugging Face Hub is a platform for sharing, discovering, and consuming models of all different types and sizes. We highly recommend sharing your model on the Hub to push open-source machine learning forward for everyone!",
+    "source": "huggingface/transformers",
+    "covers": "C23 Hugging Face를 통한 모델·결과물 공개: 있음",
+    "quote": "C23: The Hugging Face Hub is a platform for sharing, discovering, and consuming models of all different types and sizes."
+   },
+   {
+    "role": "보조",
+    "gain": "0.5",
+    "id": "E58b7714811",
+    "bank": "진욱",
+    "type": "강의 레슨",
+    "title": "Using a 3D Renderer to Generate Synthetic Data",
+    "url": "https://github.com/huggingface/computer-vision-course/blob/main/chapters/en/unit10/blenderProc.mdx",
+    "topic": "computer-vision-course unit10",
+    "summary": "When creating computer-generated images to use as synthetic training data, ideally we want the images to look as realistic as possible. Physically Based Renderers (PBR) such as Blender Cycles or Unity help to create images that are super realistic and look and feel just like they do in the real worl",
+    "source": "huggingface/computer-vision-course",
+    "covers": "C21 Blender: 일부",
+    "quote": "C21: Physically Based Renderers (PBR) such as Blender Cycles or Unity help to create images that are super realistic"
+   }
+  ],
+  "proposed_tasks": [
+   {
+    "id": "P01",
+    "do": "duoan/mega-data-factory 예제를 실행하고 최소 기능의 입력·출력 정의 (준비: 추천 교육자료에 없는 C16 10만 샘플 이상 규모의 데이터셋 설계·구축, C08 다단계 품질 필터링 로직 설계 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+    "out": "예제 실행 기록과 기능 명세 1장",
+    "completion_check": "같은 입력으로 예제를 재실행하고 예상 출력과 비교한다.",
+    "hours": 5,
+    "core": true,
+    "depends_on": [],
+    "competencies": [
+     "C16",
+     "C08"
+    ],
+    "requires": [],
+    "sources": [
+     {
+      "project": "duoan/mega-data-factory",
+      "url": "https://github.com/duoan/mega-data-factory",
+      "quote": "C16 10만 샘플 이상 규모의 데이터셋 설계·구축; C08 다단계 품질 필터링 로직 설계",
+      "original_package_refs": "W1; W2; W5; W7"
+     }
+    ],
+    "project_study": [
+     "C16 10만 샘플 이상 규모의 데이터셋 설계·구축",
+     "C08 다단계 품질 필터링 로직 설계"
+    ],
+    "added": []
+   },
+   {
+    "id": "P02",
+    "do": "이미지·비디오 생성 모델 동작 원리 이해 기능 하나를 샘플 입력으로 구현",
+    "out": "실행 가능한 프로토타입과 입력 예제",
+    "completion_check": "정상 입력 2건과 빈 입력 1건의 결과를 기록한다.",
+    "hours": 16,
+    "core": true,
+    "depends_on": [
+     "P01"
+    ],
+    "competencies": [
+     "C01",
+     "C02"
+    ],
+    "requires": [],
+    "sources": [
+     {
+      "project": "duoan/mega-data-factory",
+      "url": "https://github.com/duoan/mega-data-factory",
+      "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+      "original_package_refs": "W1; W2; W5; W7"
+     }
+    ],
+    "project_study": [],
+    "added": []
+   },
+   {
+    "id": "P03",
+    "do": "프로토타입의 성공·실패 사례를 재실행하고 사용법 작성",
+    "out": "검증 스크립트, 결과표, 실행 안내서",
+    "completion_check": "새 환경에서 안내서대로 실행하고 테스트 결과를 재현한다.",
+    "hours": 7,
+    "core": true,
+    "depends_on": [
+     "P02"
+    ],
+    "competencies": [
+     "C01",
+     "C02"
+    ],
+    "requires": [],
+    "sources": [
+     {
+      "project": "duoan/mega-data-factory",
+      "url": "https://github.com/duoan/mega-data-factory",
+      "quote": "C01 이미지·비디오 생성 모델 동작 원리 이해; C02 ML 개발 사이클(데이터 구축→학습→평가) 이해",
+      "original_package_refs": "W1; W2; W5; W7"
+     }
+    ],
+    "project_study": [],
+    "added": []
+   },
+   {
+    "id": "P04",
+    "do": "VLM을 활용한 대규모 어노테이션 생성의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C09 VLM을 활용한 대규모 어노테이션 생성 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+    "out": "실행 예제와 결과 기록",
+    "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+    "hours": 14,
+    "core": false,
+    "depends_on": [
+     "P03"
+    ],
+    "competencies": [
+     "C09"
+    ],
+    "requires": [],
+    "sources": [
+     {
+      "project": "MigoXLab/dingo",
+      "url": "https://github.com/MigoXLab/dingo",
+      "quote": "C09 VLM을 활용한 대규모 어노테이션 생성",
+      "original_package_refs": "W3; W5; W6"
+     }
+    ],
+    "project_study": [
+     "C09 VLM을 활용한 대규모 어노테이션 생성"
+    ],
+    "added": []
+   },
+   {
+    "id": "P05",
+    "do": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축의 최소 예제를 연결 (준비: 추천 교육자료에 없는 C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축 항목은 프로젝트 문서에서 관련 예제를 찾아 확인)",
+    "out": "실행 예제와 결과 기록",
+    "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+    "hours": 14,
+    "core": false,
+    "depends_on": [
+     "P03"
+    ],
+    "competencies": [
+     "C11"
+    ],
+    "requires": [],
+    "sources": [
+     {
+      "project": "\"Capturing, Reconstructing, and Simulating: The UrbanScene3D Dataset\"",
+      "url": "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/3218_ECCV_2022_paper.php",
+      "quote": "C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+      "original_package_refs": "W4"
+     }
+    ],
+    "project_study": [
+     "C11 3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축"
+    ],
+    "added": []
+   },
+   {
+    "id": "P06",
+    "do": "Diffusion 기반 학습 방법론 이해의 최소 예제를 연결",
+    "out": "실행 예제와 결과 기록",
+    "completion_check": "예제 입력의 기대값과 실제 출력을 대조한다.",
+    "hours": 14,
+    "core": false,
+    "depends_on": [
+     "P03"
+    ],
+    "competencies": [
+     "C06"
+    ],
+    "requires": [
+     "입문-C06"
+    ],
+    "sources": [
+     {
+      "project": "Goku: Flow Based Video Generative Foundation Models",
+      "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Chen_Goku_Flow_Based_Video_Generative_Foundation_Models_CVPR_2025_paper.html",
+      "quote": "C06 Diffusion 기반 학습 방법론 이해",
+      "original_package_refs": "W1; W5; W6"
+     }
+    ],
+    "project_study": [],
+    "added": []
+   }
+  ],
+  "learning_estimates": [
+   {
+    "id": "Ma54431942a",
+    "minutes": 90,
+    "type": "학회 튜토리얼"
+   },
+   {
+    "id": "LRN83d11fce37",
+    "minutes": 60,
+    "type": "글"
+   },
+   {
+    "id": "ADD76a0f43d",
+    "minutes": 60,
+    "type": "저장소"
+   },
+   {
+    "id": "E4eff9553b5",
+    "minutes": 60,
+    "type": "강의 레슨"
+   },
+   {
+    "id": "LRNc710a7cb9f",
+    "minutes": 90,
+    "type": "공식 문서 튜토리얼"
+   },
+   {
+    "id": "E58b7714811",
+    "minutes": 60,
+    "type": "강의 레슨"
+   }
+  ]
+ },
+ "generator_commit": "3b11559 2026-11-21 03:34:41 +0900"
+}

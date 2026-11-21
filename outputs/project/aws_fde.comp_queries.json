@@ -1,0 +1,198 @@
+{
+ "C10": {
+  "paper": "collaborative software development embedded team engineering practices paper",
+  "repo": "embedded team collaboration engineering workflow open source tools GitHub"
+ },
+ "C11": {
+  "paper": "requirements elicitation stakeholder communication AI system business value paper",
+  "repo": "stakeholder requirements gathering AI system open source framework GitHub"
+ },
+ "C12": {
+  "paper": "enterprise technical architecture assessment AI system integration constraints paper",
+  "repo": "technical architecture discovery documentation open source tool GitHub"
+ },
+ "C13": {
+  "paper": "translating business requirements into AI system technical design specification paper",
+  "repo": "AI system technical design from requirements open source template GitHub"
+ },
+ "C14": {
+  "paper": "retrieval augmented generation pipeline design production LLM application paper",
+  "repo": "RAG retrieval pipeline production open source implementation GitHub"
+ },
+ "C15": {
+  "paper": "LLM-based workflow automation orchestration production system paper",
+  "repo": "workflow automation LLM orchestration open source Python GitHub"
+ },
+ "C16": {
+  "paper": "API orchestration layer design for AI microservices production system paper",
+  "repo": "API orchestration layer AI services open source implementation GitHub"
+ },
+ "C17": {
+  "paper": "data integration pipeline for AI applications heterogeneous sources paper",
+  "repo": "data integration pipeline AI application open source Python GitHub"
+ },
+ "C18": {
+  "paper": "agentic workflow design multi-step LLM agent production system paper",
+  "repo": "agentic workflow LLM multi-step agent open source implementation GitHub"
+ },
+ "C19": {
+  "paper": "software design decision making under uncertainty risk mitigation production system paper",
+  "repo": "software architecture decision risk mitigation open source framework GitHub"
+ },
+ "C20": {
+  "paper": "integrating foundation models with enterprise data sources existing applications paper",
+  "repo": "foundation model enterprise data integration open source connector GitHub"
+ },
+ "C21": {
+  "paper": "survey of large language model foundation models capabilities and applications paper",
+  "repo": "foundation model LLM survey tutorial open source notebook GitHub"
+ },
+ "C22": {
+  "paper": "latency optimization techniques for LLM inference serving production paper",
+  "repo": "LLM inference latency optimization open source serving framework GitHub"
+ },
+ "C23": {
+  "paper": "reliability engineering for AI production systems fault tolerance paper",
+  "repo": "AI system reliability fault tolerance open source monitoring GitHub"
+ },
+ "C24": {
+  "paper": "cost optimization strategies for LLM inference production deployment paper",
+  "repo": "LLM inference cost optimization open source benchmarking GitHub"
+ },
+ "C25": {
+  "paper": "full software development lifecycle practices for AI ML systems paper",
+  "repo": "AI ML software development lifecycle CI CD open source template GitHub"
+ },
+ "C26": {
+  "paper": "troubleshooting and debugging distributed AI model serving production incidents paper",
+  "repo": "distributed AI system debugging incident response open source tool GitHub"
+ },
+ "C27": {
+  "paper": "root cause analysis methods for production AI system failures paper",
+  "repo": "root cause analysis AI production system open source tool GitHub"
+ },
+ "C28": {
+  "paper": "monitoring observability for LLM AI production systems metrics paper",
+  "repo": "LLM AI system monitoring observability open source implementation GitHub"
+ },
+ "C29": {
+  "paper": "evaluation framework for LLM AI application production quality assessment paper",
+  "repo": "LLM evaluation framework open source production assessment GitHub"
+ },
+ "C30": {
+  "paper": "guardrails safety mechanisms for LLM production AI systems paper",
+  "repo": "LLM guardrails safety content filtering open source implementation GitHub"
+ },
+ "C31": {
+  "paper": "CI CD pipeline design for machine learning AI model deployment paper",
+  "repo": "CI CD pipeline machine learning AI deployment open source GitHub"
+ },
+ "C32": {
+  "paper": "continuous improvement operational excellence AI production systems paper",
+  "repo": "operational improvement automation AI systems open source tooling GitHub"
+ },
+ "C33": {
+  "paper": "knowledge transfer mentoring practices in software engineering teams paper",
+  "repo": "software engineering onboarding mentoring documentation open source template GitHub"
+ },
+ "C34": {
+  "paper": "automated code review quality feedback machine learning software engineering paper",
+  "repo": "automated code review quality feedback open source tool GitHub"
+ },
+ "C35": {
+  "paper": "effective code review practices feedback software engineering teams paper",
+  "repo": "code review feedback tool open source software engineering GitHub"
+ },
+ "C36": {
+  "paper": "AI adoption opportunity identification enterprise customer engagement paper",
+  "repo": "AI adoption assessment enterprise open source framework GitHub"
+ },
+ "C37": {
+  "paper": "reusable software patterns accelerators for AI application deployment paper",
+  "repo": "reusable AI application patterns accelerators open source library GitHub"
+ },
+ "C38": {
+  "paper": "continuous process improvement software team engineering practices paper",
+  "repo": "software process improvement automation open source tooling GitHub"
+ },
+ "C39": {
+  "paper": "agile development practices for AI ML software teams scaling paper",
+  "repo": "agile AI ML software development open source project management GitHub"
+ },
+ "C40": {
+  "paper": "communicating AI technical concepts to non-technical stakeholders paper",
+  "repo": "AI explainability visualization non-technical audience open source tool GitHub"
+ },
+ "C41": {
+  "paper": "spec-driven agentic AI development workflow automation paper",
+  "repo": "spec-driven agentic AI development open source framework GitHub"
+ },
+ "C42": {
+  "paper": "building autonomous AI agents with LLMs tool use planning paper",
+  "repo": "autonomous LLM AI agent development open source framework GitHub"
+ },
+ "C43": {
+  "paper": "LLM evaluation framework benchmarking production AI application quality paper",
+  "repo": "LLM eval framework open source benchmarking production GitHub"
+ },
+ "C44": {
+  "paper": "agent tooling function calling tool use LLM production system paper",
+  "repo": "LLM agent tooling function calling open source implementation GitHub"
+ },
+ "C45": {
+  "paper": "retrieval augmented generation RAG pipeline production deployment optimization paper",
+  "repo": "RAG pipeline production deployment open source Python GitHub"
+ },
+ "C46": {
+  "paper": "prompt engineering techniques for large language model task performance paper",
+  "repo": "prompt engineering open source library techniques LLM GitHub"
+ },
+ "C47": {
+  "paper": "software engineering best practices code review testing CI CD lifecycle paper",
+  "repo": "software development lifecycle best practices open source template GitHub"
+ },
+ "C48": {
+  "paper": "deploying and operating AI systems in customer production environments paper",
+  "repo": "AI system production deployment operations open source runbook GitHub"
+ },
+ "C49": {
+  "paper": "deploying machine learning models in production environments best practices paper",
+  "repo": "ML model production deployment open source MLOps framework GitHub"
+ },
+ "C50": {
+  "paper": "engineering leadership ownership urgency startup software team practices paper",
+  "repo": "engineering leadership ownership startup open source project management GitHub"
+ },
+ "C51": {
+  "paper": "React frontend architecture for AI application user interface paper",
+  "repo": "React AI application frontend open source implementation GitHub"
+ },
+ "C52": {
+  "paper": "TypeScript type-safe backend API development for AI services paper",
+  "repo": "TypeScript AI service backend open source implementation GitHub"
+ },
+ "C53": {
+  "paper": "Python production AI application development best practices paper",
+  "repo": "Python production AI application open source framework GitHub"
+ },
+ "C54": {
+  "paper": "Go high-performance backend service for AI application production paper",
+  "repo": "Go backend service AI application open source implementation GitHub"
+ },
+ "C55": {
+  "paper": "technical project leadership external stakeholder communication AI systems paper",
+  "repo": "technical project management external stakeholder AI open source template GitHub"
+ },
+ "C56": {
+  "paper": "building and scaling end-to-end production AI systems team collaboration paper",
+  "repo": "end-to-end production AI system scaling open source architecture GitHub"
+ },
+ "C57": {
+  "paper": "AWS cloud services for deploying scalable AI ML production applications paper",
+  "repo": "AWS AI ML production deployment open source CDK example GitHub"
+ },
+ "C58": {
+  "paper": "distributed systems concepts consistency availability fault tolerance paper",
+  "repo": "distributed systems concepts open source implementation tutorial GitHub"
+ }
+}

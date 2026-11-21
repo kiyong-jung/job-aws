@@ -1,0 +1,201 @@
+{
+ "paper_names": [
+  "DataComp: In search of the next generation of multimodal datasets",
+  "LAION-5B: An open large-scale dataset for training next generation image-text models",
+  "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis",
+  "Video generation models as world simulators",
+  "Emu: Enhancing Image Generation Models Using Photogenic Needles in a Haystack",
+  "T2I-CompBench: A Comprehensive Benchmark for Open-world Compositional Text-to-image Generation",
+  "GenAI-Bench: Evaluating and Improving Compositional Text-to-Visual Generation",
+  "Evaluating Text-to-Visual Generation with Image-to-Text Generation",
+  "DINOv2: Learning Robust Visual Features without Supervision",
+  "Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding"
+ ],
+ "paper_queries": [
+  "large scale image video data pipeline diffusion model training",
+  "VLM annotation quality filtering image generation dataset",
+  "synthetic data generation 3D simulator rendering diffusion training",
+  "world model video generation data curation pipeline",
+  "image generation benchmark evaluation automated checkpoint pipeline",
+  "data recipe improvement training image diffusion model quality",
+  "multi-stage quality filtering large scale visual dataset",
+  "VLM judge captioning prompt tuning image generation",
+  "video dataset curation filtering annotation generation model",
+  "diffusion model training data pipeline evaluation benchmark"
+ ],
+ "repo_names": [
+  "rom1504/img2dataset",
+  "mlfoundations/datacomp",
+  "LAION-AI/laion-datasets",
+  "huggingface/diffusers",
+  "Stability-AI/generative-models",
+  "openai/consistency_models",
+  "lucidrains/denoising-diffusion-pytorch",
+  "Tencent-Hunyuan/HunyuanDiT",
+  "black-forest-labs/flux",
+  "open-mmlab/mmagic"
+ ],
+ "repo_queries": [
+  "image video dataset pipeline",
+  "diffusion model training data",
+  "VLM annotation captioning",
+  "synthetic data 3D rendering",
+  "image generation benchmark evaluation",
+  "video generation world model",
+  "data quality filtering pipeline",
+  "large scale dataset curation"
+ ],
+ "errors": [],
+ "candidates": [
+  {
+   "key": "arxiv:2510.17519",
+   "kind": "paper",
+   "title": "MUG-V 10B: High-efficiency Training Pipeline for Large Video Generation Models",
+   "year": "2025",
+   "venue": "Technical Report; Project Page: https://github.com/Shopee-MUG/MUG-V",
+   "url": "https://arxiv.org/abs/2510.17519",
+   "text": "In recent years, large-scale generative models for visual content (\\textit{e.g.,} images, videos, and 3D objects/scenes) have made remarkable progress. However, training large-scale video generation models remains particularly challenging and resource-intensive due to cross-modal text-video alignment, the long sequences involved, and the complex spatiotemporal dependencies. To address these challenges, we present a training framework that optimizes four pillars: (i) data processing, (ii) model architecture, (iii) training strategy, and (iv) infrastructure for large-scale video generation models. These optimizations delivered significant efficiency gains and performance improvements across all stages of data preprocessing, video compression, parameter scaling, curriculum-based pretraining, and alignment-focused post-training. Our resulting model, MUG-V 10B, matches recent state-of-the-art video generators overall and, on e-commerce-oriented video generation tasks, surpasses leading open-source baselines in human evaluations. More importantly, we open-source the complete stack, including model weights, Megatron-Core-based large-scale training code, and inference pipelines for video generation and enhancement. To our knowledge, this is the first public release of large-scale video generation training code that exploits Megatron-Core to achieve high training efficiency and near-linear multi-node scaling, details are available in https://github.com/Shopee-MUG/MUG-V.",
+   "search_score": 1.0
+  },
+  {
+   "key": "arxiv:2606.07645",
+   "kind": "paper",
+   "title": "FineGen: A VLM-based Multi-Agent Framework for Fine-Grained Image-Text Dataset Construction",
+   "year": "2026",
+   "venue": "15 pages, 2 figures, conference",
+   "url": "https://arxiv.org/abs/2606.07645",
+   "text": "The scarcity of hard negative samples in current vision-language datasets significantly hinders fine-grained perception. To address this, we propose FineGen, a VLM-based Multi-Agent framework for automated dataset construction. By employing a collaborative Generation-Verification-Correction pipeline with a closed-loop feedback mechanism, FineGen ensures synthesized hard negatives are semantically valid yet strictly contradictory to visual content. Applying this to ImageNet, we construct FineGen-100K, a hierarchical dataset containing over 147,000 attribute-specific hard negatives with a rigorous 1:10 positive-to-negative ratio. Extensive evaluations confirm a 96.7% attribute validity rate. Crucially, downstream validation on the FG-OVD benchmark shows that fine-tuning on FineGen-100K yields a substantial +14.4% accuracy improvement on hard samples, significantly outperforming state-of-the-art methods.",
+   "search_score": 1.0
+  },
+  {
+   "key": "arxiv:2311.15127",
+   "kind": "paper",
+   "title": "Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets",
+   "year": "2023",
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2311.15127",
+   "text": "We present Stable Video Diffusion - a latent video diffusion model for high-resolution, state-of-the-art text-to-video and image-to-video generation. Recently, latent diffusion models trained for 2D image synthesis have been turned into generative video models by inserting temporal layers and finetuning them on small, high-quality video datasets. However, training methods in the literature vary widely, and the field has yet to agree on a unified strategy for curating video data. In this paper, we identify and evaluate three different stages for successful training of video LDMs: text-to-image pretraining, video pretraining, and high-quality video finetuning. Furthermore, we demonstrate the necessity of a well-curated pretraining dataset for generating high-quality videos and present a systematic curation process to train a strong base model, including captioning and filtering strategies. We then explore the impact of finetuning our base model on high-quality data and train a text-to-video model that is competitive with closed-source video generation. We also show that our base model provides a powerful motion representation for downstream tasks such as image-to-video generation and adaptability to camera motion-specific LoRA modules. Finally, we demonstrate that our model provides a strong multi-view 3D-prior and can serve as a base to finetune a multi-view diffusion model that jointly generates multiple views of objects in a feedforward fashion, outperforming image-based methods at a fraction of their compute budget. We release code and model weights at https://github.com/Stability-AI/generative-models .",
+   "search_score": 0.5
+  },
+  {
+   "key": "arxiv:2610.39664",
+   "kind": "paper",
+   "title": "EditAgent: Rethinking Agentic Image Editing",
+   "year": "2026",
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2610.39664",
+   "text": "Agentic image editors decompose complex requests into steps, but when a step fails, they mostly retry with the same narrow set of tools and a judge that scores each output by eye directly. We argue that such agents are bounded by two spaces: the action space of what the agent can do, and the observation space of what its judge can see. On our expert-annotated benchmark, a general-purpose editor yields no usable result in over 40% of the cases, and no judge is reliable across edit types. We present EditAgent, which expands both spaces. It routes each step to general editors and specialized methods, and attaches to each candidate a verification record. With these records, off-the-shelf VLM judges outperform finetuned reward models. Candidates are generated in parallel and judged in one listwise call: experts prefer this to sequential refinement in 78.5% of decided comparisons, at no more than half the judge calls. EditAgent improves two open-weight editors on three benchmarks and serves as a data engine for training stronger editors.",
+   "search_score": 0.5
+  },
+  {
+   "key": "arxiv:2604.07966",
+   "kind": "paper",
+   "title": "Lighting-grounded Video Generation with Renderer-based Agent Reasoning",
+   "year": "2026",
+   "venue": "Accepted to CVPR 2026",
+   "url": "https://arxiv.org/abs/2604.07966",
+   "text": "Diffusion models have achieved remarkable progress in video generation, but their controllability remains a major limitation. Key scene factors such as layout, lighting, and camera trajectory are often entangled or only weakly modeled, restricting their applicability in domains like filmmaking and virtual production where explicit scene control is essential. We present LiVER, a diffusion-based framework for scene-controllable video generation. To achieve this, we introduce a novel framework that conditions video synthesis on explicit 3D scene properties, supported by a new large-scale dataset with dense annotations of object layout, lighting, and camera parameters. Our method disentangles these properties by rendering control signals from a unified 3D representation. We propose a lightweight conditioning module and a progressive training strategy to integrate these signals into a foundational video diffusion model, ensuring stable convergence and high fidelity. Our framework enables a wide range of applications, including image-to-video and video-to-video synthesis where the underlying 3D scene is fully editable. To further enhance usability, we develop a scene agent that automatically translates high-level user instructions into the required 3D control signals. Experiments show that LiVER achieves state-of-the-art photorealism and temporal consistency while enabling precise, disentangled control over scene factors, setting a new standard for controllable video generation.",
+   "search_score": 0.333
+  },
+  {
+   "key": "arxiv:2603.27064",
+   "kind": "paper",
+   "title": "ChartNet: A Million-Scale, High-Quality Multimodal Dataset for Robust Chart Understanding",
+   "year": "2026",
+   "venue": "Accepted at CVPR 2026",
+   "url": "https://arxiv.org/abs/2603.27064",
+   "text": "Understanding charts requires models to jointly reason over geometric visual patterns, structured numerical data, and natural language -- a capability where current vision-language models (VLMs) remain limited. We introduce ChartNet, a high-quality, million-scale multimodal dataset designed to advance chart interpretation and reasoning. ChartNet leverages a novel code-guided synthesis pipeline to generate 1.5 million diverse chart samples spanning 24 chart types and 6 plotting libraries. Each sample consists of five aligned components: plotting code, rendered chart image, data table, natural language summary, and question-answering with reasoning, providing fine-grained cross-modal alignment. To capture the full spectrum of chart comprehension, ChartNet additionally includes specialized subsets encompassing human annotated data, real-world data, safety, and grounding. Moreover, a rigorous quality-filtering pipeline ensures visual fidelity, semantic accuracy, and diversity across chart representations. Fine-tuning on ChartNet consistently improves results across benchmarks, demonstrating its utility as large-scale supervision for multimodal models. As the largest open-source dataset of its kind, ChartNet aims to support the development of foundation models with robust and generalizable capabilities for data visualization understanding. The dataset is publicly available at https://huggingface.co/datasets/ibm-granite/ChartNet",
+   "search_score": 0.333
+  },
+  {
+   "key": "arxiv:2503.12964",
+   "kind": "paper",
+   "title": "Training Video Foundation Models with NVIDIA NeMo",
+   "year": "2025",
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2503.12964",
+   "text": "Video Foundation Models (VFMs) have recently been used to simulate the real world to train physical AI systems and develop creative visual experiences. However, there are significant challenges in training large-scale, high quality VFMs that can generate high-quality videos. We present a scalable, open-source VFM training pipeline with NVIDIA NeMo, providing accelerated video dataset curation, multimodal data loading, and parallelized video diffusion model training and inference. We also provide a comprehensive performance analysis highlighting best practices for efficient VFM training and inference.",
+   "search_score": 0.25
+  },
+  {
+   "key": "arxiv:2508.13229",
+   "kind": "paper",
+   "title": "RISE: Enhancing VLM Image Annotation with Self-Supervised Reasoning",
+   "year": "2025",
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2508.13229",
+   "text": "Vision-Language Models (VLMs) struggle with complex image annotation tasks, such as emotion classification and context-driven object detection, which demand sophisticated reasoning. Standard Supervised Fine-Tuning (SFT) focuses solely on annotation outcomes, ignoring underlying rationales, while Visual Reinforcement Fine-Tuning (Visual-RFT) produces inconsistent Chains of Thought (CoTs) due to the absence of high-quality, verified CoTs during pre-training. We introduce RISE (Reason-Inspire-Strengthen-Expertise), a two-stage framework to overcome these limitations. In the Reason stage (RISE-CoT), a reinforcement learning-driven \"annotation-reasoning-annotation\" closed-loop generates visually grounded, logically consistent CoTs by verifying their ability to reconstruct original annotations without direct leakage. The Inspire and Strengthen stage (RISE-R1) leverages a high-quality CoT subset, filtered by RISE-CoT rewards, for supervised fine-tuning, followed by reinforcement fine-tuning to produce interpretable reasoning and accurate annotations, achieving Expertise in complex visual tasks. Evaluated on complex and simple image annotation tasks, RISE-trained Qwen2-VL-2B outperforms SFT and Visual-RFT, achieving robust performance and enhanced explainability. RISE offers a self-supervised solution for advancing VLM reasoning without requiring manually annotated CoTs.Code and resources are available at: https://github.com/HSH55/RISE.",
+   "search_score": 0.25
+  },
+  {
+   "key": "arxiv:2606.19163",
+   "kind": "paper",
+   "title": "Pulse: Training Acceleration for Large Diffusion Models with Automatic Pipeline Parallelism",
+   "year": "2026",
+   "venue": "Accepted by International Conference on Distributed Computing Systems(ICDCS'26)",
+   "url": "https://arxiv.org/abs/2606.19163",
+   "text": "Diffusion models are now a dominant approach for high-fidelity image and video generation, yet scaling their training across GPU clusters remains challenging. Unlike transformer-only architectures, diffusion backbones commonly adopt UNet-style encoder-decoder structures with heterogeneous layers and long-range skip connections. Under conventional pipeline parallelism, these non-local dependencies force large skip activations and their gradients to traverse multiple pipeline boundaries, making peer-to-peer (P2P) communication a dominant bottleneck and substantially reducing pipeline efficiency. In this paper, we present PULSE, an automatic pipeline-parallel training strategy that makes skip locality a first-class optimization objective. PULSE eliminates skip-induced communication by collocating skip-connected encoder-decoder layers on the same device and caching skip activations locally for later use in backpropagation. To realize this placement while maintaining high pipeline utilization, PULSE co-designs: (1) a skip-aware dynamic-programming partitioner that balances heterogeneous stage workloads under symmetric collocation constraints, (2) an ILP-based schedule synthesizer that generates bubble-efficient wave schedules for the resulting stage-to-device mapping, and (3) a hybrid parallelism tuner that selects pipeline/data-parallel degrees and microbatch sizes under memory and network constraints. Our extensive experiments show that the volume of communication can be reduced by 89 percent, and the training throughput can be increased by up to 2.3x on communication-bound hardware, compared with state-of-the-art parallelism strategies.",
+   "search_score": 0.2
+  },
+  {
+   "key": "arxiv:2402.12501",
+   "kind": "paper",
+   "title": "Your Vision-Language Model Itself Is a Strong Filter: Towards High-Quality Instruction Tuning with Data Selection",
+   "year": "2024",
+   "venue": "9 pages, 3 figures, 4 tables",
+   "url": "https://arxiv.org/abs/2402.12501",
+   "text": "Data selection in instruction tuning emerges as a pivotal process for acquiring high-quality data and training instruction-following large language models (LLMs), but it is still a new and unexplored research area for vision-language models (VLMs). Existing data selection approaches on LLMs either rely on single unreliable scores, or use downstream tasks for selection, which is time-consuming and can lead to potential over-fitting on the chosen evaluation datasets. To address this challenge, we introduce a novel dataset selection method, Self-Filter, that utilizes the VLM itself as a filter. This approach is inspired by the observation that VLMs benefit from training with the most challenging instructions. Self-Filter operates in two stages. In the first stage, we devise a scoring network to evaluate the difficulty of training instructions, which is co-trained with the VLM. In the second stage, we use the trained score net to measure the difficulty of each instruction, select the most challenging samples, and penalize similar samples to encourage diversity. Comprehensive experiments on LLaVA and MiniGPT-4 show that Self-Filter can reach better results compared to full data settings with merely about 15% samples, and can achieve superior performance against competitive baselines.",
+   "search_score": 0.2
+  },
+  {
+   "key": "arxiv:2503.20314",
+   "kind": "paper",
+   "title": "Wan: Open and Advanced Large-Scale Video Generative Models",
+   "year": "2025",
+   "venue": "60 pages, 33 figures",
+   "url": "https://arxiv.org/abs/2503.20314",
+   "text": "This report presents Wan, a comprehensive and open suite of video foundation models designed to push the boundaries of video generation. Built upon the mainstream diffusion transformer paradigm, Wan achieves significant advancements in generative capabilities through a series of innovations, including our novel VAE, scalable pre-training strategies, large-scale data curation, and automated evaluation metrics. These contributions collectively enhance the model's performance and versatility. Specifically, Wan is characterized by four key features: Leading Performance: The 14B model of Wan, trained on a vast dataset comprising billions of images and videos, demonstrates the scaling laws of video generation with respect to both data and model size. It consistently outperforms the existing open-source models as well as state-of-the-art commercial solutions across multiple internal and external benchmarks, demonstrating a clear and significant performance superiority. Comprehensiveness: Wan offers two capable models, i.e., 1.3B and 14B parameters, for efficiency and effectiveness respectively. It also covers multiple downstream applications, including image-to-video, instruction-guided video editing, and personal video generation, encompassing up to eight tasks. Consumer-Grade Efficiency: The 1.3B model demonstrates exceptional resource efficiency, requiring only 8.19 GB VRAM, making it compatible with a wide range of consumer-grade GPUs. Openness: We open-source the entire series of Wan, including source code and all models, with the goal of fostering the growth of the video generation community. This openness seeks to significantly expand the creative possibilities of video production in the industry and provide academia with high-quality video foundation models. All the code and models are available at https://github.com/Wan-Video/Wan2.1.",
+   "search_score": 0.167
+  },
+  {
+   "key": "arxiv:2502.15563",
+   "kind": "paper",
+   "title": "Bridging vision language model (VLM) evaluation gaps with a framework for scalable and cost-effective benchmark generation",
+   "year": "2025",
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2502.15563",
+   "text": "Reliable evaluation of AI models is critical for scientific progress and practical application. While existing VLM benchmarks provide general insights into model capabilities, their heterogeneous designs and limited focus on a few imaging domains pose significant challenges for both cross-domain performance comparison and targeted domain-specific evaluation. To address this, we propose three key contributions: (1) a framework for the resource-efficient creation of domain-specific VLM benchmarks enabled by task augmentation for creating multiple diverse tasks from a single existing task, (2) the release of new VLM benchmarks for seven domains, created according to the same homogeneous protocol and including 162,946 thoroughly human-validated answers, and (3) an extensive benchmarking of 22 state-of-the-art VLMs on a total of 37,171 tasks, revealing performance variances across domains and tasks, thereby supporting the need for tailored VLM benchmarks. Adoption of our methodology will pave the way for the resource-efficient domain-specific selection of models and guide future research efforts toward addressing core open questions.",
+   "search_score": 0.167
+  },
+  {
+   "key": "arxiv:2405.01248",
+   "kind": "paper",
+   "title": "DiffusionPipe: Training Large Diffusion Models with Efficient Pipelines",
+   "year": "2024",
+   "venue": "MLSys 2024",
+   "url": "https://arxiv.org/abs/2405.01248",
+   "text": "Diffusion models have emerged as dominant performers for image generation. To support training large diffusion models, this paper studies pipeline parallel training of diffusion models and proposes DiffusionPipe, a synchronous pipeline training system that advocates innovative pipeline bubble filling technique, catering to structural characteristics of diffusion models. State-of-the-art diffusion models typically include trainable (the backbone) and non-trainable (e.g., frozen input encoders) parts. We first unify optimal stage partitioning and pipeline scheduling of single and multiple backbones in representative diffusion models with a dynamic programming approach. We then propose to fill the computation of non-trainable model parts into idle periods of the pipeline training of the backbones by an efficient greedy algorithm, thus achieving high training throughput. Extensive experiments show that DiffusionPipe can achieve up to 1.41x speedup over pipeline parallel methods and 1.28x speedup over data parallel training on popular diffusion models.",
+   "search_score": 0.143
+  },
+  {
+   "key": "arxiv:2407.20756",
+   "kind": "paper",
+   "title": "SynthVLM: Towards High-Quality and Efficient Synthesis of Image-Caption Datasets for Vision-Language Models",
+   "year": "2024",
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2407.20756",
+   "text": "Vision-Language Models (VLMs) have recently emerged, demonstrating remarkable vision-understanding capabilities. However, training these models requires large-scale datasets, which brings challenges related to efficiency, effectiveness, and quality of web data. In this paper, we introduce SynthVLM, a new data synthesis and curation method for generating image-caption pairs. Unlike traditional methods, where captions are generated from images, SynthVLM utilizes advanced diffusion models and high-quality captions to synthesize and select images from text captions, thereby creating precisely aligned image-text pairs. We further introduce SynthVLM-100K, a high-quality dataset consisting of 100K curated and synthesized image-caption pairs. In both model and human evaluations, SynthVLM-100K outperforms traditional real-world datasets. Leveraging this dataset, we develop a new family of multimodal large language models (MLLMs), SynthVLM-7B and SynthVLM-13B, which achieve state-of-the-art (SOTA) performance on various vision question-answering (VQA) tasks. Notably, our models outperform LLaVA across most metrics with only 18\\% pretrain data. Furthermore, SynthVLM-7B and SynthVLM-13B attain SOTA performance on the MMLU benchmark, demonstrating that the high-quality SynthVLM-100K dataset preserves language abilities.",
+   "search_score": 0.143
+  },
+  {
+   "key": "arxiv:2506.05450",
+   "kind": "paper",
+   "title": "Degradation-Aware Image Enhancement via Vision-Language Classification",
+   "year": "2025",
+   "venue": "arXiv",
+   "url": "https://arxiv.org/abs/2506.05450",
+   "text": "Image degradation is a prevalent issue in various real-world applications, affecting visual quality and downstream processing tasks. In this study, we propose a novel framework that employs a Vision-Language Model (VLM) to automatically classify degraded images into predefined categories. The VLM categorizes an input image into one of four degradation types: (A) super-resolution degradation (including noise, blur, and JPEG compression), (B) reflection artifacts, (C) motion blur, or (D) no visible degradation (high-quality image). Once classified, images assigned to categories A, B, or C undergo targeted restoration using dedicated models tailored for each specific degradation type. The final output is a restored image with improved visual quality. Experimental results demonstrate the effectiveness of our approach in accurately classifying image degradations and enhancing image quality through specialized restoration models. Our method presents a scalable and automated solution for real-world image enhancement tasks, leveraging the capabilities of VLMs in conjunction with state-of-the-art restoration techniques.",
+   "search_score": 0.125
+  }
+ ]
+}

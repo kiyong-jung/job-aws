@@ -1,0 +1,2767 @@
+{
+ "case": "naver_ml_intern",
+ "source": [
+  "../기용/docs/naver_ml_intern.교육자료.json (recommendation, week_fit.D_front2)",
+  "m2_project/research/adapt/hand_naver.json (project.packages, coverage)"
+ ],
+ "team": {
+  "members": 4,
+  "weeks": 12,
+  "hours_per_week_per_person": 14,
+  "study_per_person": 84,
+  "project_per_person": 84,
+  "project_team": 336,
+  "layout": "1~2주 공부만 주 14, 3~12주 공부 5.6 · 프로젝트 8.4",
+  "how": "한 사람이 주 14시간: 1~2주는 공부만 14시간, 3~12주는 공부 5.6 + 프로젝트 8.4. 공부 합 28+56=84, 프로젝트 합 84×4명=336 (m2 의 hours_per_week 7 은 프로젝트 몫만, 12주 평균)",
+  "semester_weeks": 16,
+  "exams": [
+   {
+    "weeks": [
+     7,
+     8
+    ],
+    "label": "중간고사"
+   },
+   {
+    "weeks": [
+     15,
+     16
+    ],
+    "label": "기말고사"
+   }
+  ]
+ },
+ "project": {
+  "title": "공개 이미지·영상으로 학습 데이터 10만 장을 만들고, 데이터 레시피가 작은 생성 모델을 어떻게 바꾸는지 재기",
+  "goal": "바탕 저장소(duoan/mega-data-factory)의 흐름인 '불러오기 → 정보 붙이기 → 거르기 → 겹침 지우기 → 처리 보고서'를 팀 규모로 다시 돌려, 공개 이미지와 영상에서 생성 모델 학습용 이미지 10만 장 이상을 만든다. 거르기의 마지막 단계와 캡션은 VLM 이 맡고, 그 프롬프트는 dingo 의 '규칙 먼저, LLM 은 깊게' 방식과 프롬프트 폴더 구조를 따라 사람 라벨 200장에 맞춰 고친다. Blender 를 파이썬 스크립트로 돌려 정답을 아는 합성 이미지를 만들고(BlenderLLM 의 '스크립트를 Blender 에서 실행해 렌더' 방식), 이것으로 CADBench 처럼 직접 만든 벤치마크의 채점기를 검증한다. 마지막으로 작은 이미지 생성 모델을 데이터 레시피만 바꿔 여러 번 학습하고, 체크포인트마다 자동으로 점수를 매겨, 데이터를 어떻게 만들었는지가 모델 점수를 얼마나 바꾸는지 수치로 보인다.",
+  "based_on": {
+   "sample": "duoan/mega-data-factory",
+   "url": "https://github.com/duoan/mega-data-factory",
+   "borrowed": [
+    "FreedomIntelligence/BlenderLLM",
+    "MigoXLab/dingo",
+    "MuammerBay/isaac_so_arm101"
+   ]
+  },
+  "hours_team": 300,
+  "extension_hours": 0,
+  "budget_team": 336,
+  "note": "작업 묶음과 시간은 손으로 만든 응용 프로젝트(m2_project/research/adapt/hand_naver.json)에서 왔다. 시간은 어림이다. 묶음의 주는 정리 리포트 손 사례(design/report_hand.md)가 정한 주이고, 그 주들에 시간을 고르게 나눈 것은 build_data.py 의 가정"
+ },
+ "packages": [
+  {
+   "id": "W1",
+   "name": "원본 불러오기와 영상 프레임 뽑기",
+   "hours_team": 30,
+   "core": true,
+   "order": 1,
+   "when": "핵심",
+   "weeks": [
+    3,
+    4
+   ],
+   "kind": "바탕",
+   "from": [],
+   "added": [],
+   "competencies": [
+    {
+     "cid": "C07",
+     "row": 3,
+     "badges": [
+      3
+     ],
+     "name": "원시 이미지·비디오 아카이브에서 학습 데이터 추출"
+    },
+    {
+     "cid": "C03",
+     "row": 14,
+     "badges": [
+      9
+     ],
+     "name": "기본 데이터 처리 및 분석 독립 수행"
+    },
+    {
+     "cid": "C05",
+     "row": 16,
+     "badges": [
+      10
+     ],
+     "name": "대규모 데이터 처리 시 I/O 병목 이해"
+    }
+   ]
+  },
+  {
+   "id": "W10",
+   "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+   "hours_team": 24,
+   "core": true,
+   "order": 1,
+   "when": "핵심",
+   "weeks": [
+    3,
+    14
+   ],
+   "kind": "새로 더함",
+   "from": [],
+   "added": [
+    "C24",
+    "C25",
+    "C26",
+    "C27"
+   ],
+   "competencies": [
+    {
+     "cid": "C24",
+     "row": 24,
+     "badges": [
+      14
+     ],
+     "name": "짧은 주기의 피드백 기반 협업"
+    },
+    {
+     "cid": "C25",
+     "row": 25,
+     "badges": [
+      15
+     ],
+     "name": "진행 상황 및 사고 과정의 적극적 공유"
+    },
+    {
+     "cid": "C26",
+     "row": 26,
+     "badges": [
+      16
+     ],
+     "name": "연구·엔지니어링 인접 영역 자기주도 학습 태도"
+    },
+    {
+     "cid": "C27",
+     "row": 27,
+     "badges": [
+      17
+     ],
+     "name": "결과 해석 및 다음 방향성 의견 제시"
+    }
+   ]
+  },
+  {
+   "id": "W2",
+   "name": "싼 검사부터 비싼 검사까지 네 단계 거르기",
+   "hours_team": 36,
+   "core": true,
+   "order": 1,
+   "when": "핵심",
+   "weeks": [
+    4,
+    5
+   ],
+   "kind": "바탕",
+   "from": [],
+   "added": [],
+   "competencies": [
+    {
+     "cid": "C08",
+     "row": 4,
+     "badges": [
+      3
+     ],
+     "name": "다단계 품질 필터링 로직 설계"
+    },
+    {
+     "cid": "C03",
+     "row": 14,
+     "badges": [
+      9
+     ],
+     "name": "기본 데이터 처리 및 분석 독립 수행"
+    },
+    {
+     "cid": "C29",
+     "row": 28,
+     "badges": [
+      18
+     ],
+     "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)"
+    }
+   ]
+  },
+  {
+   "id": "W3",
+   "name": "처리 속도와 병목 재기",
+   "hours_team": 16,
+   "core": true,
+   "order": 1,
+   "when": "핵심",
+   "weeks": [
+    5,
+    5
+   ],
+   "kind": "바탕",
+   "from": [],
+   "added": [],
+   "competencies": [
+    {
+     "cid": "C04",
+     "row": 15,
+     "badges": [
+      10
+     ],
+     "name": "대규모 데이터 처리 시 연산 병목 이해"
+    },
+    {
+     "cid": "C05",
+     "row": 16,
+     "badges": [
+      10
+     ],
+     "name": "대규모 데이터 처리 시 I/O 병목 이해"
+    },
+    {
+     "cid": "C29",
+     "row": 28,
+     "badges": [
+      18
+     ],
+     "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)"
+    }
+   ]
+  },
+  {
+   "id": "W4",
+   "name": "VLM 캡션과 품질 판정 프롬프트",
+   "hours_team": 32,
+   "core": true,
+   "order": 1,
+   "when": "핵심",
+   "weeks": [
+    5,
+    6
+   ],
+   "kind": "빌림",
+   "from": [
+    "MigoXLab/dingo"
+   ],
+   "added": [],
+   "competencies": [
+    {
+     "cid": "C09",
+     "row": 5,
+     "badges": [
+      4
+     ],
+     "name": "VLM을 활용한 대규모 어노테이션 생성"
+    },
+    {
+     "cid": "C17",
+     "row": 18,
+     "badges": [
+      12
+     ],
+     "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝"
+    },
+    {
+     "cid": "C18",
+     "row": 19,
+     "badges": [
+      12
+     ],
+     "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝"
+    }
+   ]
+  },
+  {
+   "id": "W7",
+   "name": "작은 생성 모델을 레시피만 바꿔 학습하기",
+   "hours_team": 44,
+   "core": true,
+   "order": 1,
+   "when": "핵심",
+   "weeks": [
+    6,
+    11
+   ],
+   "kind": "새로 더함",
+   "from": [],
+   "added": [
+    "C06",
+    "C10",
+    "C28"
+   ],
+   "competencies": [
+    {
+     "cid": "C01",
+     "row": 12,
+     "badges": [
+      7
+     ],
+     "name": "이미지·비디오 생성 모델 동작 원리 이해"
+    },
+    {
+     "cid": "C02",
+     "row": 13,
+     "badges": [
+      8
+     ],
+     "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해"
+    },
+    {
+     "cid": "C06",
+     "row": 1,
+     "badges": [
+      1
+     ],
+     "name": "Diffusion 기반 학습 방법론 이해"
+    },
+    {
+     "cid": "C10",
+     "row": 6,
+     "badges": [
+      4
+     ],
+     "name": "학습 결과에 기반한 데이터 레시피 개선"
+    },
+    {
+     "cid": "C28",
+     "row": 29,
+     "badges": [
+      19
+     ],
+     "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증"
+    }
+   ]
+  },
+  {
+   "id": "W9",
+   "name": "체크포인트 자동 평가와 비교 화면",
+   "hours_team": 28,
+   "core": true,
+   "order": 1,
+   "when": "핵심",
+   "weeks": [
+    9,
+    11
+   ],
+   "kind": "빌림",
+   "from": [
+    "MigoXLab/dingo"
+   ],
+   "added": [
+    "C28"
+   ],
+   "competencies": [
+    {
+     "cid": "C14",
+     "row": 10,
+     "badges": [
+      6
+     ],
+     "name": "체크포인트 평가 자동화 파이프라인 개발"
+    },
+    {
+     "cid": "C15",
+     "row": 11,
+     "badges": [
+      6
+     ],
+     "name": "다축 지표 비교·분석 도구 개발"
+    },
+    {
+     "cid": "C28",
+     "row": 29,
+     "badges": [
+      19
+     ],
+     "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증"
+    }
+   ]
+  },
+  {
+   "id": "W8",
+   "name": "개수·위치·색 세 축 벤치마크와 채점기 검증",
+   "hours_team": 34,
+   "core": true,
+   "order": 2,
+   "when": "핵심",
+   "weeks": [
+    12,
+    13
+   ],
+   "kind": "빌림",
+   "from": [
+    "FreedomIntelligence/BlenderLLM",
+    "MuammerBay/isaac_so_arm101"
+   ],
+   "added": [
+    "C28"
+   ],
+   "competencies": [
+    {
+     "cid": "C13",
+     "row": 9,
+     "badges": [
+      6
+     ],
+     "name": "신규 벤치마크 구현"
+    },
+    {
+     "cid": "C28",
+     "row": 29,
+     "badges": [
+      19
+     ],
+     "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증"
+    },
+    {
+     "cid": "C19",
+     "row": 20,
+     "badges": [
+      13
+     ],
+     "name": "Isaac Sim"
+    },
+    {
+     "cid": "C20",
+     "row": 21,
+     "badges": [
+      13
+     ],
+     "name": "Omniverse"
+    }
+   ]
+  },
+  {
+   "id": "W5",
+   "name": "10만 장으로 키우고 공개하기",
+   "hours_team": 26,
+   "core": true,
+   "order": 2,
+   "when": "핵심",
+   "weeks": [
+    12,
+    14
+   ],
+   "kind": "바탕",
+   "from": [],
+   "added": [],
+   "competencies": [
+    {
+     "cid": "C16",
+     "row": 17,
+     "badges": [
+      11
+     ],
+     "name": "10만 샘플 이상 규모의 데이터셋 설계·구축"
+    },
+    {
+     "cid": "C23",
+     "row": 2,
+     "badges": [
+      2
+     ],
+     "name": "Hugging Face를 통한 모델·결과물 공개"
+    },
+    {
+     "cid": "C29",
+     "row": 28,
+     "badges": [
+      18
+     ],
+     "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)"
+    }
+   ]
+  },
+  {
+   "id": "W6",
+   "name": "Blender 합성 이미지와 메타데이터",
+   "hours_team": 30,
+   "core": true,
+   "order": 2,
+   "when": "핵심",
+   "weeks": [
+    12,
+    14
+   ],
+   "kind": "빌림",
+   "from": [
+    "FreedomIntelligence/BlenderLLM"
+   ],
+   "added": [
+    "C12"
+   ],
+   "competencies": [
+    {
+     "cid": "C11",
+     "row": 7,
+     "badges": [
+      5
+     ],
+     "name": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축"
+    },
+    {
+     "cid": "C21",
+     "row": 22,
+     "badges": [
+      13
+     ],
+     "name": "Blender"
+    },
+    {
+     "cid": "C12",
+     "row": 8,
+     "badges": [
+      5
+     ],
+     "name": "합성 데이터 메타데이터 정제"
+    }
+   ]
+  }
+ ],
+ "weeks": [
+  {
+   "week": 1,
+   "caps": {
+    "study_per_person": 14.0,
+    "project_per_person": 0.0,
+    "project_team": 0.0
+   },
+   "study": [
+    {
+     "id": "L08",
+     "short": "기초 통계와 점수 흔들림",
+     "hours": 3.0
+    },
+    {
+     "id": "L07",
+     "short": "pandas 표와 그림",
+     "hours": 3.0
+    },
+    {
+     "id": "L03",
+     "short": "ML 개발 사이클",
+     "hours": 3.0
+    },
+    {
+     "id": "L04",
+     "short": "연산·읽고 쓰기 병목 재기",
+     "hours": 3.0
+    },
+    {
+     "id": "L10",
+     "short": "큰 데이터 나눠 저장·돌리기",
+     "hours": 2.0
+    }
+   ],
+   "study_hours": 14.0,
+   "study_spare": 0.0,
+   "study_done": [
+    "L08",
+    "L07",
+    "L03",
+    "L04"
+   ],
+   "study_needed_from": [],
+   "packages": [],
+   "project_hours_team": 0,
+   "project_starts": [],
+   "hours_per_person": 14.0,
+   "over_cap": false,
+   "plan_week": 1,
+   "kind": "work"
+  },
+  {
+   "week": 2,
+   "caps": {
+    "study_per_person": 14.0,
+    "project_per_person": 0.0,
+    "project_team": 0.0
+   },
+   "study": [
+    {
+     "id": "L10",
+     "short": "큰 데이터 나눠 저장·돌리기",
+     "hours": 1.0
+    },
+    {
+     "id": "L01",
+     "short": "생성 모델 원리",
+     "hours": 3.0
+    },
+    {
+     "id": "L02",
+     "short": "작은 생성 모델 학습 코드",
+     "hours": 3.0
+    },
+    {
+     "id": "L14",
+     "short": "VLM 구조와 돌리기",
+     "hours": 3.0
+    },
+    {
+     "id": "L16",
+     "short": "프롬프트 설계 기초",
+     "hours": 3.0
+    },
+    {
+     "id": "L17",
+     "short": "AI를 채점자로 쓰기",
+     "hours": 1.0
+    }
+   ],
+   "study_hours": 14.0,
+   "study_spare": 0.0,
+   "study_done": [
+    "L10",
+    "L01",
+    "L02",
+    "L14",
+    "L16"
+   ],
+   "study_needed_from": [],
+   "packages": [],
+   "project_hours_team": 0,
+   "project_starts": [],
+   "hours_per_person": 14.0,
+   "over_cap": false,
+   "plan_week": 2,
+   "kind": "work"
+  },
+  {
+   "week": 3,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [
+    {
+     "id": "L17",
+     "short": "AI를 채점자로 쓰기",
+     "hours": 2.0
+    },
+    {
+     "id": "L18",
+     "short": "채점기 검증하기",
+     "hours": 3.0
+    },
+    {
+     "id": "L12",
+     "short": "여러 단계로 데이터 거르기",
+     "hours": 0.6
+    }
+   ],
+   "study_hours": 5.6,
+   "study_spare": 0.0,
+   "study_done": [
+    "L17",
+    "L18"
+   ],
+   "study_needed_from": [
+    "L08",
+    "L07",
+    "L03",
+    "L04",
+    "L10",
+    "L01",
+    "L02"
+   ],
+   "packages": [
+    {
+     "id": "W1",
+     "name": "원본 불러오기와 영상 프레임 뽑기",
+     "hours_team": 15.0
+    },
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    }
+   ],
+   "project_hours_team": 17.4,
+   "project_starts": [
+    "W1",
+    "W10"
+   ],
+   "hours_per_person": 9.95,
+   "over_cap": false,
+   "plan_week": 3,
+   "kind": "work"
+  },
+  {
+   "week": 4,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [
+    {
+     "id": "L12",
+     "short": "여러 단계로 데이터 거르기",
+     "hours": 2.4
+    },
+    {
+     "id": "L06",
+     "short": "Hugging Face에 올리기",
+     "hours": 3.0
+    },
+    {
+     "id": "L19",
+     "short": "캡션 품질 재기",
+     "hours": 0.2
+    }
+   ],
+   "study_hours": 5.6,
+   "study_spare": 0.0,
+   "study_done": [
+    "L12",
+    "L06"
+   ],
+   "study_needed_from": [
+    "L14",
+    "L16",
+    "L17",
+    "L18",
+    "L12"
+   ],
+   "packages": [
+    {
+     "id": "W1",
+     "name": "원본 불러오기와 영상 프레임 뽑기",
+     "hours_team": 15.0
+    },
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    },
+    {
+     "id": "W2",
+     "name": "싼 검사부터 비싼 검사까지 네 단계 거르기",
+     "hours_team": 18.0
+    }
+   ],
+   "project_hours_team": 35.4,
+   "project_starts": [
+    "W2"
+   ],
+   "hours_per_person": 14.45,
+   "over_cap": true,
+   "plan_week": 4,
+   "kind": "work"
+  },
+  {
+   "week": 5,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [
+    {
+     "id": "L19",
+     "short": "캡션 품질 재기",
+     "hours": 2.8
+    },
+    {
+     "id": "L21",
+     "short": "생성 이미지 평가 지표",
+     "hours": 2.8
+    }
+   ],
+   "study_hours": 5.6,
+   "study_spare": 0.0,
+   "study_done": [
+    "L19"
+   ],
+   "study_needed_from": [
+    "L06",
+    "L19",
+    "L21"
+   ],
+   "packages": [
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    },
+    {
+     "id": "W2",
+     "name": "싼 검사부터 비싼 검사까지 네 단계 거르기",
+     "hours_team": 18.0
+    },
+    {
+     "id": "W3",
+     "name": "처리 속도와 병목 재기",
+     "hours_team": 16.0
+    },
+    {
+     "id": "W4",
+     "name": "VLM 캡션과 품질 판정 프롬프트",
+     "hours_team": 16.0
+    }
+   ],
+   "project_hours_team": 52.4,
+   "project_starts": [
+    "W3",
+    "W4"
+   ],
+   "hours_per_person": 18.7,
+   "over_cap": true,
+   "plan_week": 5,
+   "kind": "work"
+  },
+  {
+   "week": 6,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [
+    {
+     "id": "L21",
+     "short": "생성 이미지 평가 지표",
+     "hours": 0.2
+    },
+    {
+     "id": "L23",
+     "short": "데이터 레시피 비교 실험",
+     "hours": 3.0
+    },
+    {
+     "id": "L05",
+     "short": "Blender 기초와 스크립트",
+     "hours": 2.4
+    }
+   ],
+   "study_hours": 5.6,
+   "study_spare": 0.0,
+   "study_done": [
+    "L21",
+    "L23"
+   ],
+   "study_needed_from": [],
+   "packages": [
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    },
+    {
+     "id": "W4",
+     "name": "VLM 캡션과 품질 판정 프롬프트",
+     "hours_team": 16.0
+    },
+    {
+     "id": "W7",
+     "name": "작은 생성 모델을 레시피만 바꿔 학습하기",
+     "hours_team": 11.0
+    }
+   ],
+   "project_hours_team": 29.4,
+   "project_starts": [
+    "W7"
+   ],
+   "hours_per_person": 12.95,
+   "over_cap": false,
+   "plan_week": 6,
+   "kind": "work"
+  },
+  {
+   "week": 7,
+   "kind": "exam",
+   "label": "중간고사",
+   "study": [],
+   "study_hours": 0,
+   "study_spare": 0,
+   "study_done": [],
+   "study_needed_from": [],
+   "project_hours_team": 0,
+   "hours_per_person": 0,
+   "over_cap": false,
+   "caps": {
+    "study_per_person": 0,
+    "project_per_person": 0,
+    "project_team": 0
+   },
+   "packages": [],
+   "project_starts": []
+  },
+  {
+   "week": 8,
+   "kind": "exam",
+   "label": "중간고사",
+   "study": [],
+   "study_hours": 0,
+   "study_spare": 0,
+   "study_done": [],
+   "study_needed_from": [],
+   "project_hours_team": 0,
+   "hours_per_person": 0,
+   "over_cap": false,
+   "caps": {
+    "study_per_person": 0,
+    "project_per_person": 0,
+    "project_team": 0
+   },
+   "packages": [],
+   "project_starts": []
+  },
+  {
+   "week": 9,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [
+    {
+     "id": "L05",
+     "short": "Blender 기초와 스크립트",
+     "hours": 0.6
+    }
+   ],
+   "study_hours": 0.6,
+   "study_spare": 5.0,
+   "study_done": [
+    "L05"
+   ],
+   "study_needed_from": [
+    "L23"
+   ],
+   "packages": [
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    },
+    {
+     "id": "W7",
+     "name": "작은 생성 모델을 레시피만 바꿔 학습하기",
+     "hours_team": 11.0
+    },
+    {
+     "id": "W9",
+     "name": "체크포인트 자동 평가와 비교 화면",
+     "hours_team": 9.33
+    }
+   ],
+   "project_hours_team": 22.73,
+   "project_starts": [
+    "W9"
+   ],
+   "hours_per_person": 6.28,
+   "over_cap": false,
+   "plan_week": 7,
+   "kind": "work"
+  },
+  {
+   "week": 10,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [],
+   "study_hours": 0,
+   "study_spare": 5.6,
+   "study_done": [],
+   "study_needed_from": [
+    "L05"
+   ],
+   "packages": [
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    },
+    {
+     "id": "W7",
+     "name": "작은 생성 모델을 레시피만 바꿔 학습하기",
+     "hours_team": 11.0
+    },
+    {
+     "id": "W9",
+     "name": "체크포인트 자동 평가와 비교 화면",
+     "hours_team": 9.33
+    }
+   ],
+   "project_hours_team": 22.73,
+   "project_starts": [],
+   "hours_per_person": 5.68,
+   "over_cap": false,
+   "plan_week": 8,
+   "kind": "work"
+  },
+  {
+   "week": 11,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [],
+   "study_hours": 0,
+   "study_spare": 5.6,
+   "study_done": [],
+   "study_needed_from": [],
+   "packages": [
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    },
+    {
+     "id": "W7",
+     "name": "작은 생성 모델을 레시피만 바꿔 학습하기",
+     "hours_team": 11.0
+    },
+    {
+     "id": "W9",
+     "name": "체크포인트 자동 평가와 비교 화면",
+     "hours_team": 9.33
+    }
+   ],
+   "project_hours_team": 22.73,
+   "project_starts": [],
+   "hours_per_person": 5.68,
+   "over_cap": false,
+   "plan_week": 9,
+   "kind": "work"
+  },
+  {
+   "week": 12,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [],
+   "study_hours": 0,
+   "study_spare": 5.6,
+   "study_done": [],
+   "study_needed_from": [],
+   "packages": [
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    },
+    {
+     "id": "W8",
+     "name": "개수·위치·색 세 축 벤치마크와 채점기 검증",
+     "hours_team": 17.0
+    },
+    {
+     "id": "W5",
+     "name": "10만 장으로 키우고 공개하기",
+     "hours_team": 8.67
+    },
+    {
+     "id": "W6",
+     "name": "Blender 합성 이미지와 메타데이터",
+     "hours_team": 10.0
+    }
+   ],
+   "project_hours_team": 38.07,
+   "project_starts": [
+    "W8",
+    "W5",
+    "W6"
+   ],
+   "hours_per_person": 9.52,
+   "over_cap": false,
+   "plan_week": 10,
+   "kind": "work"
+  },
+  {
+   "week": 13,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [],
+   "study_hours": 0,
+   "study_spare": 5.6,
+   "study_done": [],
+   "study_needed_from": [],
+   "packages": [
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    },
+    {
+     "id": "W8",
+     "name": "개수·위치·색 세 축 벤치마크와 채점기 검증",
+     "hours_team": 17.0
+    },
+    {
+     "id": "W5",
+     "name": "10만 장으로 키우고 공개하기",
+     "hours_team": 8.67
+    },
+    {
+     "id": "W6",
+     "name": "Blender 합성 이미지와 메타데이터",
+     "hours_team": 10.0
+    }
+   ],
+   "project_hours_team": 38.07,
+   "project_starts": [],
+   "hours_per_person": 9.52,
+   "over_cap": false,
+   "plan_week": 11,
+   "kind": "work"
+  },
+  {
+   "week": 14,
+   "caps": {
+    "study_per_person": 5.6,
+    "project_per_person": 8.4,
+    "project_team": 33.6
+   },
+   "study": [],
+   "study_hours": 0,
+   "study_spare": 5.6,
+   "study_done": [],
+   "study_needed_from": [],
+   "packages": [
+    {
+     "id": "W10",
+     "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+     "hours_team": 2.4
+    },
+    {
+     "id": "W5",
+     "name": "10만 장으로 키우고 공개하기",
+     "hours_team": 8.67
+    },
+    {
+     "id": "W6",
+     "name": "Blender 합성 이미지와 메타데이터",
+     "hours_team": 10.0
+    }
+   ],
+   "project_hours_team": 21.07,
+   "project_starts": [],
+   "hours_per_person": 5.27,
+   "over_cap": false,
+   "plan_week": 12,
+   "kind": "work"
+  },
+  {
+   "week": 15,
+   "kind": "exam",
+   "label": "기말고사",
+   "study": [],
+   "study_hours": 0,
+   "study_spare": 0,
+   "study_done": [],
+   "study_needed_from": [],
+   "project_hours_team": 0,
+   "hours_per_person": 0,
+   "over_cap": false,
+   "caps": {
+    "study_per_person": 0,
+    "project_per_person": 0,
+    "project_team": 0
+   },
+   "packages": [],
+   "project_starts": []
+  },
+  {
+   "week": 16,
+   "kind": "exam",
+   "label": "기말고사",
+   "study": [],
+   "study_hours": 0,
+   "study_spare": 0,
+   "study_done": [],
+   "study_needed_from": [],
+   "project_hours_team": 0,
+   "hours_per_person": 0,
+   "over_cap": false,
+   "caps": {
+    "study_per_person": 0,
+    "project_per_person": 0,
+    "project_team": 0
+   },
+   "packages": [],
+   "project_starts": []
+  }
+ ],
+ "totals": {
+  "study_hours": 51.0,
+  "study_spare": 33.0,
+  "project_hours_team": 300,
+  "project_spare_team": 36,
+  "extension_hours_team": 0,
+  "over_cap_weeks": [
+   4,
+   5
+  ],
+  "big_items_done_week": 9,
+  "late": [
+   {
+    "id": "L21",
+    "late_weeks": 1
+   }
+  ]
+ },
+ "competencies_untouched": [
+  {
+   "cid": "C22",
+   "row": 23,
+   "badges": [
+    13
+   ],
+   "name": "Unreal Engine",
+   "tier": "우대",
+   "why": "억지로 넣지 않음. 세 번째 렌더러는 채점기 검증에 새 정보를 거의 더하지 않고, 입력 네 프로젝트 어디에도 없다.",
+   "why_ko": "일부러 넣지 않았어요. 세 번째 렌더러는 채점기 검증에 새로 알려 주는 것이 거의 없고, 살펴본 네 프로젝트에도 없어요."
+  }
+ ],
+ "old_packages": {
+  "source": "outputs/project/naver_ml_intern.json",
+  "sample": "mlfoundations/datacomp",
+  "ids": [
+   "W1",
+   "W2",
+   "W3",
+   "W4",
+   "W5"
+  ],
+  "hours_team": 376,
+  "note": "예전 m2 의 '바꾸기' 단계가 mlfoundations/datacomp 를 바탕으로 만든 다섯 묶음. 3단계 항목의 묶음 번호(W1~W10)와 맞지 않아 쓰지 않는다"
+ },
+ "budgets": {
+  "84": {
+   "hours": 84,
+   "label": "하루 1시간 · 84시간",
+   "week_cap": 14.0,
+   "how": "한 사람이 주 14시간: 1~2주는 공부만 14시간, 3~12주는 공부 5.6 + 프로젝트 8.4. 공부 합 28+56=84, 프로젝트는 세 안 모두 한 사람 84 · 팀 336",
+   "weeks": [
+    {
+     "week": 1,
+     "cap": 14.0,
+     "study_cap": 14.0,
+     "study": [
+      {
+       "id": "L08",
+       "short": "기초 통계와 점수 흔들림",
+       "hours": 3.0
+      },
+      {
+       "id": "L07",
+       "short": "pandas 표와 그림",
+       "hours": 3.0
+      },
+      {
+       "id": "L03",
+       "short": "ML 개발 사이클",
+       "hours": 3.0
+      },
+      {
+       "id": "L04",
+       "short": "연산·읽고 쓰기 병목 재기",
+       "hours": 3.0
+      },
+      {
+       "id": "L10",
+       "short": "큰 데이터 나눠 저장·돌리기",
+       "hours": 2.0
+      }
+     ],
+     "study_hours": 14.0,
+     "study_spare": 0.0,
+     "study_done": [
+      "L08",
+      "L07",
+      "L03",
+      "L04"
+     ],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 14.0,
+     "over_cap": false,
+     "plan_week": 1,
+     "kind": "work"
+    },
+    {
+     "week": 2,
+     "cap": 14.0,
+     "study_cap": 14.0,
+     "study": [
+      {
+       "id": "L10",
+       "short": "큰 데이터 나눠 저장·돌리기",
+       "hours": 1.0
+      },
+      {
+       "id": "L01",
+       "short": "생성 모델 원리",
+       "hours": 3.0
+      },
+      {
+       "id": "L02",
+       "short": "작은 생성 모델 학습 코드",
+       "hours": 3.0
+      },
+      {
+       "id": "L14",
+       "short": "VLM 구조와 돌리기",
+       "hours": 3.0
+      },
+      {
+       "id": "L16",
+       "short": "프롬프트 설계 기초",
+       "hours": 3.0
+      },
+      {
+       "id": "L17",
+       "short": "AI를 채점자로 쓰기",
+       "hours": 1.0
+      }
+     ],
+     "study_hours": 14.0,
+     "study_spare": 0.0,
+     "study_done": [
+      "L10",
+      "L01",
+      "L02",
+      "L14",
+      "L16"
+     ],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 14.0,
+     "over_cap": false,
+     "plan_week": 2,
+     "kind": "work"
+    },
+    {
+     "week": 3,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [
+      {
+       "id": "L17",
+       "short": "AI를 채점자로 쓰기",
+       "hours": 2.0
+      },
+      {
+       "id": "L18",
+       "short": "채점기 검증하기",
+       "hours": 3.0
+      },
+      {
+       "id": "L12",
+       "short": "여러 단계로 데이터 거르기",
+       "hours": 0.6
+      }
+     ],
+     "study_hours": 5.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L17",
+      "L18"
+     ],
+     "study_needed_from": [
+      "L08",
+      "L07",
+      "L03",
+      "L04",
+      "L10",
+      "L01",
+      "L02"
+     ],
+     "project_hours_team": 17.4,
+     "hours_per_person": 9.95,
+     "over_cap": false,
+     "plan_week": 3,
+     "kind": "work"
+    },
+    {
+     "week": 4,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [
+      {
+       "id": "L12",
+       "short": "여러 단계로 데이터 거르기",
+       "hours": 2.4
+      },
+      {
+       "id": "L06",
+       "short": "Hugging Face에 올리기",
+       "hours": 3.0
+      },
+      {
+       "id": "L19",
+       "short": "캡션 품질 재기",
+       "hours": 0.2
+      }
+     ],
+     "study_hours": 5.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L12",
+      "L06"
+     ],
+     "study_needed_from": [
+      "L14",
+      "L16",
+      "L17",
+      "L18",
+      "L12"
+     ],
+     "project_hours_team": 35.4,
+     "hours_per_person": 14.45,
+     "over_cap": true,
+     "plan_week": 4,
+     "kind": "work"
+    },
+    {
+     "week": 5,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [
+      {
+       "id": "L19",
+       "short": "캡션 품질 재기",
+       "hours": 2.8
+      },
+      {
+       "id": "L21",
+       "short": "생성 이미지 평가 지표",
+       "hours": 2.8
+      }
+     ],
+     "study_hours": 5.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L19"
+     ],
+     "study_needed_from": [
+      "L06",
+      "L19",
+      "L21"
+     ],
+     "project_hours_team": 52.4,
+     "hours_per_person": 18.7,
+     "over_cap": true,
+     "plan_week": 5,
+     "kind": "work"
+    },
+    {
+     "week": 6,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [
+      {
+       "id": "L21",
+       "short": "생성 이미지 평가 지표",
+       "hours": 0.2
+      },
+      {
+       "id": "L23",
+       "short": "데이터 레시피 비교 실험",
+       "hours": 3.0
+      },
+      {
+       "id": "L05",
+       "short": "Blender 기초와 스크립트",
+       "hours": 2.4
+      }
+     ],
+     "study_hours": 5.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L21",
+      "L23"
+     ],
+     "study_needed_from": [],
+     "project_hours_team": 29.4,
+     "hours_per_person": 12.95,
+     "over_cap": false,
+     "plan_week": 6,
+     "kind": "work"
+    },
+    {
+     "week": 7,
+     "kind": "exam",
+     "label": "중간고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 14.0,
+     "study_cap": 0
+    },
+    {
+     "week": 8,
+     "kind": "exam",
+     "label": "중간고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 14.0,
+     "study_cap": 0
+    },
+    {
+     "week": 9,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [
+      {
+       "id": "L05",
+       "short": "Blender 기초와 스크립트",
+       "hours": 0.6
+      }
+     ],
+     "study_hours": 0.6,
+     "study_spare": 5.0,
+     "study_done": [
+      "L05"
+     ],
+     "study_needed_from": [
+      "L23"
+     ],
+     "project_hours_team": 22.73,
+     "hours_per_person": 6.28,
+     "over_cap": false,
+     "plan_week": 7,
+     "kind": "work"
+    },
+    {
+     "week": 10,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 5.6,
+     "study_done": [],
+     "study_needed_from": [
+      "L05"
+     ],
+     "project_hours_team": 22.73,
+     "hours_per_person": 5.68,
+     "over_cap": false,
+     "plan_week": 8,
+     "kind": "work"
+    },
+    {
+     "week": 11,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 5.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 22.73,
+     "hours_per_person": 5.68,
+     "over_cap": false,
+     "plan_week": 9,
+     "kind": "work"
+    },
+    {
+     "week": 12,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 5.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 38.07,
+     "hours_per_person": 9.52,
+     "over_cap": false,
+     "plan_week": 10,
+     "kind": "work"
+    },
+    {
+     "week": 13,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 5.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 38.07,
+     "hours_per_person": 9.52,
+     "over_cap": false,
+     "plan_week": 11,
+     "kind": "work"
+    },
+    {
+     "week": 14,
+     "cap": 14.0,
+     "study_cap": 5.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 5.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 21.07,
+     "hours_per_person": 5.27,
+     "over_cap": false,
+     "plan_week": 12,
+     "kind": "work"
+    },
+    {
+     "week": 15,
+     "kind": "exam",
+     "label": "기말고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 14.0,
+     "study_cap": 0
+    },
+    {
+     "week": 16,
+     "kind": "exam",
+     "label": "기말고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 14.0,
+     "study_cap": 0
+    }
+   ],
+   "totals": {
+    "study_hours": 51.0,
+    "study_spare": 33.0,
+    "project_hours_team": 300,
+    "over_cap_weeks": [
+     4,
+     5
+    ],
+    "last_study_week": 9,
+    "late": [
+     {
+      "id": "L21",
+      "late_weeks": 1
+     }
+    ]
+   }
+  },
+  "168": {
+   "hours": 168,
+   "label": "하루 2시간 · 168시간",
+   "week_cap": 21.0,
+   "how": "한 사람이 주 21시간: 1~2주는 공부만 21시간, 3~12주는 공부 12.6 + 프로젝트 8.4. 공부 합 42+126=168, 프로젝트는 세 안 모두 한 사람 84 · 팀 336",
+   "weeks": [
+    {
+     "week": 1,
+     "cap": 21.0,
+     "study_cap": 21.0,
+     "study": [
+      {
+       "id": "L08",
+       "short": "기초 통계와 점수 흔들림",
+       "hours": 6.0
+      },
+      {
+       "id": "L07",
+       "short": "pandas 표와 그림",
+       "hours": 3.0
+      },
+      {
+       "id": "L03",
+       "short": "ML 개발 사이클",
+       "hours": 6.0
+      },
+      {
+       "id": "L04",
+       "short": "연산·읽고 쓰기 병목 재기",
+       "hours": 6.0
+      }
+     ],
+     "study_hours": 21.0,
+     "study_spare": 0.0,
+     "study_done": [
+      "L08",
+      "L07",
+      "L03",
+      "L04"
+     ],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 21.0,
+     "over_cap": false,
+     "plan_week": 1,
+     "kind": "work"
+    },
+    {
+     "week": 2,
+     "cap": 21.0,
+     "study_cap": 21.0,
+     "study": [
+      {
+       "id": "L10",
+       "short": "큰 데이터 나눠 저장·돌리기",
+       "hours": 6.0
+      },
+      {
+       "id": "L01",
+       "short": "생성 모델 원리",
+       "hours": 6.0
+      },
+      {
+       "id": "L02",
+       "short": "작은 생성 모델 학습 코드",
+       "hours": 6.0
+      },
+      {
+       "id": "L09",
+       "short": "영상에서 프레임 뽑기",
+       "hours": 3.0
+      }
+     ],
+     "study_hours": 21.0,
+     "study_spare": 0.0,
+     "study_done": [
+      "L10",
+      "L01",
+      "L02",
+      "L09"
+     ],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 21.0,
+     "over_cap": false,
+     "plan_week": 2,
+     "kind": "work"
+    },
+    {
+     "week": 3,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [
+      {
+       "id": "L27",
+       "short": "공개 데이터 사용권",
+       "hours": 3.0
+      },
+      {
+       "id": "L28",
+       "short": "Git·GitHub 협업",
+       "hours": 3.0
+      },
+      {
+       "id": "L14",
+       "short": "VLM 구조와 돌리기",
+       "hours": 6.0
+      },
+      {
+       "id": "L16",
+       "short": "프롬프트 설계 기초",
+       "hours": 0.6
+      }
+     ],
+     "study_hours": 12.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L27",
+      "L28",
+      "L14"
+     ],
+     "study_needed_from": [
+      "L08",
+      "L07",
+      "L03",
+      "L04",
+      "L10",
+      "L01",
+      "L02",
+      "L09",
+      "L27",
+      "L28"
+     ],
+     "project_hours_team": 17.4,
+     "hours_per_person": 16.95,
+     "over_cap": false,
+     "plan_week": 3,
+     "kind": "work"
+    },
+    {
+     "week": 4,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [
+      {
+       "id": "L16",
+       "short": "프롬프트 설계 기초",
+       "hours": 5.4
+      },
+      {
+       "id": "L17",
+       "short": "AI를 채점자로 쓰기",
+       "hours": 6.0
+      },
+      {
+       "id": "L18",
+       "short": "채점기 검증하기",
+       "hours": 1.2
+      }
+     ],
+     "study_hours": 12.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L16",
+      "L17"
+     ],
+     "study_needed_from": [
+      "L14",
+      "L16",
+      "L17",
+      "L18",
+      "L11",
+      "L12",
+      "L13"
+     ],
+     "project_hours_team": 35.4,
+     "hours_per_person": 21.45,
+     "over_cap": true,
+     "plan_week": 4,
+     "kind": "work"
+    },
+    {
+     "week": 5,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [
+      {
+       "id": "L18",
+       "short": "채점기 검증하기",
+       "hours": 1.8
+      },
+      {
+       "id": "L11",
+       "short": "이미지 품질 신호와 중복 찾기",
+       "hours": 3.0
+      },
+      {
+       "id": "L12",
+       "short": "여러 단계로 데이터 거르기",
+       "hours": 6.0
+      },
+      {
+       "id": "L13",
+       "short": "정밀도·재현율과 문턱",
+       "hours": 1.8
+      }
+     ],
+     "study_hours": 12.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L18",
+      "L11",
+      "L12"
+     ],
+     "study_needed_from": [
+      "L06",
+      "L19",
+      "L21",
+      "L15",
+      "L20"
+     ],
+     "project_hours_team": 52.4,
+     "hours_per_person": 25.7,
+     "over_cap": true,
+     "plan_week": 5,
+     "kind": "work"
+    },
+    {
+     "week": 6,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [
+      {
+       "id": "L13",
+       "short": "정밀도·재현율과 문턱",
+       "hours": 1.2
+      },
+      {
+       "id": "L06",
+       "short": "Hugging Face에 올리기",
+       "hours": 3.0
+      },
+      {
+       "id": "L19",
+       "short": "캡션 품질 재기",
+       "hours": 6.0
+      },
+      {
+       "id": "L21",
+       "short": "생성 이미지 평가 지표",
+       "hours": 2.4
+      }
+     ],
+     "study_hours": 12.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L13",
+      "L06",
+      "L19"
+     ],
+     "study_needed_from": [],
+     "project_hours_team": 29.4,
+     "hours_per_person": 19.95,
+     "over_cap": false,
+     "plan_week": 6,
+     "kind": "work"
+    },
+    {
+     "week": 7,
+     "kind": "exam",
+     "label": "중간고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 21.0,
+     "study_cap": 0
+    },
+    {
+     "week": 8,
+     "kind": "exam",
+     "label": "중간고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 21.0,
+     "study_cap": 0
+    },
+    {
+     "week": 9,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [
+      {
+       "id": "L21",
+       "short": "생성 이미지 평가 지표",
+       "hours": 0.6
+      },
+      {
+       "id": "L15",
+       "short": "묶음 추론과 처리량",
+       "hours": 3.0
+      },
+      {
+       "id": "L20",
+       "short": "실험 기록과 재현",
+       "hours": 3.0
+      },
+      {
+       "id": "L23",
+       "short": "데이터 레시피 비교 실험",
+       "hours": 6.0
+      }
+     ],
+     "study_hours": 12.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L21",
+      "L15",
+      "L20",
+      "L23"
+     ],
+     "study_needed_from": [
+      "L23"
+     ],
+     "project_hours_team": 22.73,
+     "hours_per_person": 18.28,
+     "over_cap": false,
+     "plan_week": 7,
+     "kind": "work"
+    },
+    {
+     "week": 10,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [
+      {
+       "id": "L05",
+       "short": "Blender 기초와 스크립트",
+       "hours": 3.0
+      },
+      {
+       "id": "L24",
+       "short": "합성 데이터 무작위로 만들기",
+       "hours": 3.0
+      },
+      {
+       "id": "L25",
+       "short": "합성 데이터 메타데이터 정리",
+       "hours": 3.0
+      },
+      {
+       "id": "L22",
+       "short": "구성 평가 벤치마크",
+       "hours": 3.0
+      },
+      {
+       "id": "L26",
+       "short": "분석 화면 만들기",
+       "hours": 0.6
+      }
+     ],
+     "study_hours": 12.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L05",
+      "L24",
+      "L25",
+      "L22"
+     ],
+     "study_needed_from": [
+      "L05",
+      "L24",
+      "L25"
+     ],
+     "project_hours_team": 22.73,
+     "hours_per_person": 18.28,
+     "over_cap": false,
+     "plan_week": 8,
+     "kind": "work"
+    },
+    {
+     "week": 11,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [
+      {
+       "id": "L26",
+       "short": "분석 화면 만들기",
+       "hours": 2.4
+      }
+     ],
+     "study_hours": 2.4,
+     "study_spare": 10.2,
+     "study_done": [
+      "L26"
+     ],
+     "study_needed_from": [
+      "L22",
+      "L26"
+     ],
+     "project_hours_team": 22.73,
+     "hours_per_person": 8.08,
+     "over_cap": false,
+     "plan_week": 9,
+     "kind": "work"
+    },
+    {
+     "week": 12,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 12.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 38.07,
+     "hours_per_person": 9.52,
+     "over_cap": false,
+     "plan_week": 10,
+     "kind": "work"
+    },
+    {
+     "week": 13,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 12.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 38.07,
+     "hours_per_person": 9.52,
+     "over_cap": false,
+     "plan_week": 11,
+     "kind": "work"
+    },
+    {
+     "week": 14,
+     "cap": 21.0,
+     "study_cap": 12.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 12.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 21.07,
+     "hours_per_person": 5.27,
+     "over_cap": false,
+     "plan_week": 12,
+     "kind": "work"
+    },
+    {
+     "week": 15,
+     "kind": "exam",
+     "label": "기말고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 21.0,
+     "study_cap": 0
+    },
+    {
+     "week": 16,
+     "kind": "exam",
+     "label": "기말고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 21.0,
+     "study_cap": 0
+    }
+   ],
+   "totals": {
+    "study_hours": 120.0,
+    "study_spare": 48.0,
+    "project_hours_team": 300,
+    "over_cap_weeks": [
+     4,
+     5
+    ],
+    "last_study_week": 11,
+    "late": [
+     {
+      "id": "L18",
+      "late_weeks": 1
+     },
+     {
+      "id": "L11",
+      "late_weeks": 1
+     },
+     {
+      "id": "L12",
+      "late_weeks": 1
+     },
+     {
+      "id": "L13",
+      "late_weeks": 2
+     },
+     {
+      "id": "L06",
+      "late_weeks": 1
+     },
+     {
+      "id": "L19",
+      "late_weeks": 1
+     },
+     {
+      "id": "L21",
+      "late_weeks": 2
+     },
+     {
+      "id": "L15",
+      "late_weeks": 2
+     },
+     {
+      "id": "L20",
+      "late_weeks": 2
+     }
+    ]
+   }
+  },
+  "252": {
+   "hours": 252,
+   "label": "하루 3시간 · 252시간",
+   "week_cap": 28.0,
+   "how": "한 사람이 주 28시간: 1~2주는 공부만 28시간, 3~12주는 공부 19.6 + 프로젝트 8.4. 공부 합 56+196=252, 프로젝트는 세 안 모두 한 사람 84 · 팀 336",
+   "weeks": [
+    {
+     "week": 1,
+     "cap": 28.0,
+     "study_cap": 28.0,
+     "study": [
+      {
+       "id": "L08",
+       "short": "기초 통계와 점수 흔들림",
+       "hours": 9.0
+      },
+      {
+       "id": "L07",
+       "short": "pandas 표와 그림",
+       "hours": 3.0
+      },
+      {
+       "id": "L03",
+       "short": "ML 개발 사이클",
+       "hours": 9.0
+      },
+      {
+       "id": "L04",
+       "short": "연산·읽고 쓰기 병목 재기",
+       "hours": 7.0
+      }
+     ],
+     "study_hours": 28.0,
+     "study_spare": 0.0,
+     "study_done": [
+      "L08",
+      "L07",
+      "L03"
+     ],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 28.0,
+     "over_cap": false,
+     "plan_week": 1,
+     "kind": "work"
+    },
+    {
+     "week": 2,
+     "cap": 28.0,
+     "study_cap": 28.0,
+     "study": [
+      {
+       "id": "L04",
+       "short": "연산·읽고 쓰기 병목 재기",
+       "hours": 2.0
+      },
+      {
+       "id": "L10",
+       "short": "큰 데이터 나눠 저장·돌리기",
+       "hours": 9.0
+      },
+      {
+       "id": "L01",
+       "short": "생성 모델 원리",
+       "hours": 9.0
+      },
+      {
+       "id": "L02",
+       "short": "작은 생성 모델 학습 코드",
+       "hours": 8.0
+      }
+     ],
+     "study_hours": 28.0,
+     "study_spare": 0.0,
+     "study_done": [
+      "L04",
+      "L10",
+      "L01"
+     ],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 28.0,
+     "over_cap": false,
+     "plan_week": 2,
+     "kind": "work"
+    },
+    {
+     "week": 3,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [
+      {
+       "id": "L02",
+       "short": "작은 생성 모델 학습 코드",
+       "hours": 1.0
+      },
+      {
+       "id": "L09",
+       "short": "영상에서 프레임 뽑기",
+       "hours": 3.0
+      },
+      {
+       "id": "L27",
+       "short": "공개 데이터 사용권",
+       "hours": 3.0
+      },
+      {
+       "id": "L28",
+       "short": "Git·GitHub 협업",
+       "hours": 6.0
+      },
+      {
+       "id": "L14",
+       "short": "VLM 구조와 돌리기",
+       "hours": 6.6
+      }
+     ],
+     "study_hours": 19.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L02",
+      "L09",
+      "L27",
+      "L28"
+     ],
+     "study_needed_from": [
+      "L08",
+      "L07",
+      "L03",
+      "L04",
+      "L10",
+      "L01",
+      "L02",
+      "L09",
+      "L27",
+      "L28"
+     ],
+     "project_hours_team": 17.4,
+     "hours_per_person": 23.95,
+     "over_cap": false,
+     "plan_week": 3,
+     "kind": "work"
+    },
+    {
+     "week": 4,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [
+      {
+       "id": "L14",
+       "short": "VLM 구조와 돌리기",
+       "hours": 2.4
+      },
+      {
+       "id": "L16",
+       "short": "프롬프트 설계 기초",
+       "hours": 9.0
+      },
+      {
+       "id": "L17",
+       "short": "AI를 채점자로 쓰기",
+       "hours": 8.2
+      }
+     ],
+     "study_hours": 19.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L14",
+      "L16"
+     ],
+     "study_needed_from": [
+      "L14",
+      "L16",
+      "L17",
+      "L18",
+      "L11",
+      "L12",
+      "L13"
+     ],
+     "project_hours_team": 35.4,
+     "hours_per_person": 28.45,
+     "over_cap": true,
+     "plan_week": 4,
+     "kind": "work"
+    },
+    {
+     "week": 5,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [
+      {
+       "id": "L17",
+       "short": "AI를 채점자로 쓰기",
+       "hours": 0.8
+      },
+      {
+       "id": "L18",
+       "short": "채점기 검증하기",
+       "hours": 3.0
+      },
+      {
+       "id": "L11",
+       "short": "이미지 품질 신호와 중복 찾기",
+       "hours": 6.0
+      },
+      {
+       "id": "L12",
+       "short": "여러 단계로 데이터 거르기",
+       "hours": 9.0
+      },
+      {
+       "id": "L13",
+       "short": "정밀도·재현율과 문턱",
+       "hours": 0.8
+      }
+     ],
+     "study_hours": 19.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L17",
+      "L18",
+      "L11",
+      "L12"
+     ],
+     "study_needed_from": [
+      "L06",
+      "L19",
+      "L21",
+      "L15",
+      "L20"
+     ],
+     "project_hours_team": 52.4,
+     "hours_per_person": 32.7,
+     "over_cap": true,
+     "plan_week": 5,
+     "kind": "work"
+    },
+    {
+     "week": 6,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [
+      {
+       "id": "L13",
+       "short": "정밀도·재현율과 문턱",
+       "hours": 5.2
+      },
+      {
+       "id": "L06",
+       "short": "Hugging Face에 올리기",
+       "hours": 3.0
+      },
+      {
+       "id": "L19",
+       "short": "캡션 품질 재기",
+       "hours": 6.0
+      },
+      {
+       "id": "L21",
+       "short": "생성 이미지 평가 지표",
+       "hours": 3.0
+      },
+      {
+       "id": "L15",
+       "short": "묶음 추론과 처리량",
+       "hours": 2.4
+      }
+     ],
+     "study_hours": 19.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L13",
+      "L06",
+      "L19",
+      "L21"
+     ],
+     "study_needed_from": [],
+     "project_hours_team": 29.4,
+     "hours_per_person": 26.95,
+     "over_cap": false,
+     "plan_week": 6,
+     "kind": "work"
+    },
+    {
+     "week": 7,
+     "kind": "exam",
+     "label": "중간고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 28.0,
+     "study_cap": 0
+    },
+    {
+     "week": 8,
+     "kind": "exam",
+     "label": "중간고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 28.0,
+     "study_cap": 0
+    },
+    {
+     "week": 9,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [
+      {
+       "id": "L15",
+       "short": "묶음 추론과 처리량",
+       "hours": 3.6
+      },
+      {
+       "id": "L20",
+       "short": "실험 기록과 재현",
+       "hours": 3.0
+      },
+      {
+       "id": "L23",
+       "short": "데이터 레시피 비교 실험",
+       "hours": 6.0
+      },
+      {
+       "id": "L05",
+       "short": "Blender 기초와 스크립트",
+       "hours": 3.0
+      },
+      {
+       "id": "L24",
+       "short": "합성 데이터 무작위로 만들기",
+       "hours": 3.0
+      },
+      {
+       "id": "L25",
+       "short": "합성 데이터 메타데이터 정리",
+       "hours": 1.0
+      }
+     ],
+     "study_hours": 19.6,
+     "study_spare": 0.0,
+     "study_done": [
+      "L15",
+      "L20",
+      "L23",
+      "L05",
+      "L24"
+     ],
+     "study_needed_from": [
+      "L23"
+     ],
+     "project_hours_team": 22.73,
+     "hours_per_person": 25.28,
+     "over_cap": false,
+     "plan_week": 7,
+     "kind": "work"
+    },
+    {
+     "week": 10,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [
+      {
+       "id": "L25",
+       "short": "합성 데이터 메타데이터 정리",
+       "hours": 2.0
+      },
+      {
+       "id": "L22",
+       "short": "구성 평가 벤치마크",
+       "hours": 3.0
+      },
+      {
+       "id": "L26",
+       "short": "분석 화면 만들기",
+       "hours": 3.0
+      }
+     ],
+     "study_hours": 8.0,
+     "study_spare": 11.6,
+     "study_done": [
+      "L25",
+      "L22",
+      "L26"
+     ],
+     "study_needed_from": [
+      "L05",
+      "L24",
+      "L25"
+     ],
+     "project_hours_team": 22.73,
+     "hours_per_person": 13.68,
+     "over_cap": false,
+     "plan_week": 8,
+     "kind": "work"
+    },
+    {
+     "week": 11,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 19.6,
+     "study_done": [],
+     "study_needed_from": [
+      "L22",
+      "L26"
+     ],
+     "project_hours_team": 22.73,
+     "hours_per_person": 5.68,
+     "over_cap": false,
+     "plan_week": 9,
+     "kind": "work"
+    },
+    {
+     "week": 12,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 19.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 38.07,
+     "hours_per_person": 9.52,
+     "over_cap": false,
+     "plan_week": 10,
+     "kind": "work"
+    },
+    {
+     "week": 13,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 19.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 38.07,
+     "hours_per_person": 9.52,
+     "over_cap": false,
+     "plan_week": 11,
+     "kind": "work"
+    },
+    {
+     "week": 14,
+     "cap": 28.0,
+     "study_cap": 19.6,
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 19.6,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 21.07,
+     "hours_per_person": 5.27,
+     "over_cap": false,
+     "plan_week": 12,
+     "kind": "work"
+    },
+    {
+     "week": 15,
+     "kind": "exam",
+     "label": "기말고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 28.0,
+     "study_cap": 0
+    },
+    {
+     "week": 16,
+     "kind": "exam",
+     "label": "기말고사",
+     "study": [],
+     "study_hours": 0,
+     "study_spare": 0,
+     "study_done": [],
+     "study_needed_from": [],
+     "project_hours_team": 0,
+     "hours_per_person": 0,
+     "over_cap": false,
+     "cap": 28.0,
+     "study_cap": 0
+    }
+   ],
+   "totals": {
+    "study_hours": 162.0,
+    "study_spare": 90.0,
+    "project_hours_team": 300,
+    "over_cap_weeks": [
+     4,
+     5
+    ],
+    "last_study_week": 10,
+    "late": [
+     {
+      "id": "L17",
+      "late_weeks": 1
+     },
+     {
+      "id": "L18",
+      "late_weeks": 1
+     },
+     {
+      "id": "L11",
+      "late_weeks": 1
+     },
+     {
+      "id": "L12",
+      "late_weeks": 1
+     },
+     {
+      "id": "L13",
+      "late_weeks": 2
+     },
+     {
+      "id": "L06",
+      "late_weeks": 1
+     },
+     {
+      "id": "L19",
+      "late_weeks": 1
+     },
+     {
+      "id": "L21",
+      "late_weeks": 1
+     },
+     {
+      "id": "L15",
+      "late_weeks": 2
+     },
+     {
+      "id": "L20",
+      "late_weeks": 2
+     }
+    ]
+   }
+  }
+ }
+}

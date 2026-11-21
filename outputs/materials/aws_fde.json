@@ -1,0 +1,2774 @@
+{
+ "case": "aws_fde",
+ "rules": {
+  "types": [
+   "도구",
+   "지식"
+  ],
+  "weight": {
+   "필수": 1000,
+   "우대·나머지": 1
+  },
+  "core": [
+   1,
+   2
+  ],
+  "support": [
+   3,
+   4
+  ],
+  "wide": 1000,
+  "rerank": "cohere.rerank-v3-5:0",
+  "shortlist": 50,
+  "bank_rows": 14385
+ },
+ "targets": [
+  {
+   "cid": "C21",
+   "name": "파운데이션 모델 개념 및 활용 이해",
+   "type": "지식",
+   "priority": "나머지",
+   "query": "foundation models concepts and applications tutorial"
+  },
+  {
+   "cid": "C43",
+   "name": "Eval 프레임워크 활용",
+   "type": "도구",
+   "priority": "필수",
+   "query": "LLM eval frameworks how to use"
+  },
+  {
+   "cid": "C44",
+   "name": "에이전트 툴링 활용",
+   "type": "도구",
+   "priority": "필수",
+   "query": "AI agent tooling development tutorial"
+  },
+  {
+   "cid": "C51",
+   "name": "React",
+   "type": "도구",
+   "priority": "우대",
+   "query": "React tutorial for beginners"
+  },
+  {
+   "cid": "C52",
+   "name": "TypeScript",
+   "type": "도구",
+   "priority": "우대",
+   "query": "TypeScript tutorial for beginners"
+  },
+  {
+   "cid": "C53",
+   "name": "Python",
+   "type": "도구",
+   "priority": "우대",
+   "query": "Python tutorial for beginners"
+  },
+  {
+   "cid": "C54",
+   "name": "Go",
+   "type": "도구",
+   "priority": "우대",
+   "query": "Go programming language tutorial"
+  },
+  {
+   "cid": "C57",
+   "name": "AWS 서비스 활용",
+   "type": "도구",
+   "priority": "우대",
+   "query": "AWS services overview tutorial"
+  },
+  {
+   "cid": "C58",
+   "name": "분산 시스템 개념 이해",
+   "type": "지식",
+   "priority": "나머지",
+   "query": "distributed systems concepts explained"
+  }
+ ],
+ "picks": [
+  {
+   "role": "핵심",
+   "gain": 1500.5,
+   "id": "E365c3dd16b",
+   "title": "Evaluate your ADK agent using Vertex AI Gen AI Evaluation service",
+   "type": "실습 노트북",
+   "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
+   "covers": {
+    "C21": "일부",
+    "C43": "있음",
+    "C44": "일부"
+   }
+  },
+  {
+   "role": "핵심",
+   "gain": 500.0,
+   "id": "LRN624bcb0ae0",
+   "title": "Production Architecture",
+   "type": "공식 문서 튜토리얼",
+   "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
+   "covers": {
+    "C21": "일부",
+    "C44": "있음"
+   }
+  },
+  {
+   "role": "보조",
+   "gain": 2.0,
+   "id": "LRN6a568bbf93",
+   "title": "Recommended Technologies",
+   "type": "글",
+   "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/UI-UX/recommended-technologies.md",
+   "covers": {
+    "C51": "있음",
+    "C52": "있음"
+   }
+  },
+  {
+   "role": "보조",
+   "gain": 1.5,
+   "id": "E03732779fa",
+   "title": "Module: Build a Multi-Region Serverless Application for Resilience and High Availability",
+   "type": "워크숍 랩",
+   "url": "https://github.com/aws-samples/aws-serverless-workshops/tree/master/MultiRegion",
+   "covers": {
+    "C57": "있음",
+    "C58": "일부"
+   }
+  },
+  {
+   "role": "보조",
+   "gain": 1.0,
+   "id": "E2a4fa23ce7",
+   "title": "Learn Go with Tests",
+   "type": "글",
+   "url": "https://quii.gitbook.io/learn-go-with-tests",
+   "covers": {
+    "C54": "있음"
+   }
+  },
+  {
+   "role": "보조",
+   "gain": 0.5,
+   "id": "E564ad08f67",
+   "title": "Evaluate and Optimize Prompt Template Design for Better Results",
+   "type": "실습 노트북",
+   "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaltask_approach/prompt_engineering_gen_ai_evaluation_service_sdk.ipynb",
+   "covers": {
+    "C43": "있음",
+    "C53": "일부"
+   }
+  }
+ ],
+ "coverage": [
+  {
+   "cid": "C21",
+   "name": "파운데이션 모델 개념 및 활용 이해",
+   "priority": "나머지",
+   "level": "일부"
+  },
+  {
+   "cid": "C43",
+   "name": "Eval 프레임워크 활용",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C44",
+   "name": "에이전트 툴링 활용",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C51",
+   "name": "React",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C52",
+   "name": "TypeScript",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C53",
+   "name": "Python",
+   "priority": "우대",
+   "level": "일부"
+  },
+  {
+   "cid": "C54",
+   "name": "Go",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C57",
+   "name": "AWS 서비스 활용",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C58",
+   "name": "분산 시스템 개념 이해",
+   "priority": "나머지",
+   "level": "일부"
+  }
+ ],
+ "candidates": [
+  {
+   "id": "LRNa06225114e",
+   "title": "Using TypeScript",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "일부",
+     "quote": "TypeScript supports JSX and you can get full React Web support by adding @types/react and @types/react-dom to your project.",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "있음",
+     "quote": "TypeScript is a popular way to add type definitions to JavaScript codebases.",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRNccbc80b362",
+   "title": "React",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "일부",
+     "quote": "TypeScript supports JSX and can correctly model the patterns used in React codebases like useState .",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "일부",
+     "quote": "TypeScript supports JSX and can correctly model the patterns used in React codebases like useState .",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ec8f58645a6",
+   "title": "Lab: AI Fundamentals for Developers",
+   "cells": {
+    "C21": {
+     "level": "있음",
+     "quote": "Learn the core concepts of AI development — models, prompt engineering, tool calling, and RAG — through hands-on exercises in a live environment.",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "일부",
+     "quote": "Learn the core concepts of AI development — models, prompt engineering, tool calling, and RAG — through hands-on exercises in a live environment.",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "일부",
+     "quote": "Learn the core concepts of AI development — models, prompt engineering, tool calling, and RAG — through hands-on exercises in a live environment.",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN7ca2b7f728",
+   "title": "Describing the UI",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "일부",
+     "quote": "React is a JavaScript library for rendering user interfaces (UI). React lets you combine them into reusable, nestable components.",
+     "downgraded": true
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRNe602fa4f45",
+   "title": "Top 5 LLM Evaluation Frameworks in 2026, Compared",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "있음",
+     "quote": "A practical comparison of the top LLM evaluation frameworks in 2026 for evaluating AI agents, RAG pipelines, and multi-turn chatbots.",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "일부",
+     "quote": "A practical comparison of the top LLM evaluation frameworks in 2026 for evaluating AI agents, RAG pipelines, and multi-turn chatbots.",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ma9fc886bfa",
+   "title": "Diffusion models explained",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "Diffusion models explained",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Mb58cca3d7f",
+   "title": "[CVPR 2025] Continuous Data Cycle via Foundation Models",
+   "cells": {
+    "C21": {
+     "level": "있음",
+     "quote": "foundation models are being continuously integrated into applications like autonomous driving and diagnostics",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E03732779fa",
+   "title": "Module: Build a Multi-Region Serverless Application for Resilience and High Availability",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "있음",
+     "quote": "you will use Amazon API Gateway, AWS Lambda, Amazon DynamoDB and a variety of other AWS services",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "일부",
+     "quote": "build a Multi-Region Serverless Application for Resilience and High Availability",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E48bc78d0cf",
+   "title": "Tutorial for Running Prompt Management and Evaluation",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "있음",
+     "quote": "This tutorial provides a comprehensive guide to prompt engineering, covering the entire lifecycle from creation to evaluation and optimization.",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN1448f9587c",
+   "title": "TypeScript for JavaScript Programmers",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "있음",
+     "quote": "TypeScript offers all of JavaScript's features, and an additional layer on top of these: TypeScript's type system.",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E2a4fa23ce7",
+   "title": "Learn Go with Tests",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "있음",
+     "quote": "Learn Go with Tests",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E9673ec88cf",
+   "title": "IDE for your programming language",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "일부",
+     "quote": "Introduction to the AWS Cloud Development Kit (CDK) - Workshop prerequisites · One of the benefits of the AWS CDK is that you can leverage your favorite development environments",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRNccf3ecb38b",
+   "title": "TypeScript for the New Programmer",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "일부",
+     "quote": "TypeScript for the New Programmer · get started · Congratulations on choosing TypeScript as one of your first languages",
+     "downgraded": true
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN624bcb0ae0",
+   "title": "Production Architecture",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "Best practices for building production-ready AI applications with CrewAI",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "있음",
+     "quote": "Fast and Flexible Multi-Agent Automation Framework · concepts · Best practices for building production-ready AI applications with CrewAI",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRNe276a25453",
+   "title": "TypeScript for Functional Programmers",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "있음",
+     "quote": "TypeScript began its life as an attempt to bring traditional object-oriented types to JavaScript",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN6a568bbf93",
+   "title": "Recommended Technologies",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "있음",
+     "quote": "React - Quick note on create-react-app - Documentation & Using older React coding patterns - Best Practices to Organize",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "있음",
+     "quote": "TypeScript - Guidance on types and interfaces",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E05346e0180",
+   "title": "Explore AI Agent Frameworks",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "있음",
+     "quote": "AI agent frameworks are software platforms designed to simplify the creation, deployment, and management of AI agents.",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ee6aa782e8d",
+   "title": "Foundation Models",
+   "cells": {
+    "C21": {
+     "level": "있음",
+     "quote": "To learn about foundation models like GPT-3, CLIP, Flamingo, Codex, and DINO.",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN2bbb69a29d",
+   "title": "JSX",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "일부",
+     "quote": "JSX rose to popularity with the React framework, but has since seen other implementations as well.",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "일부",
+     "quote": "TypeScript supports embedding, type c",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN3955283040",
+   "title": "Creating a React App",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "있음",
+     "quote": "If you want to build a new app or website with React, we recommend starting with a framework.",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ebdf12db0d5",
+   "title": "Go Workshop",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "일부",
+     "quote": "This version of the workshop will guide you through a getting started experience in Go.",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "일부",
+     "quote": "Introduction to the AWS Cloud Development Kit (CDK) - Workshop go",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN449a509347",
+   "title": "Creating Types from Types",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "일부",
+     "quote": "TypeScript's type system is very powerful because it allows expressing types in terms of other types.",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Eb4bcb40e2d",
+   "title": "Evals API: Image Inputs",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "we will grade model-generated responses to an image and prompt by using sampling to generate model responses and model grading (LLM as a Judge) to score the model responses",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "있음",
+     "quote": "This cookbook demonstrates how to use OpenAI's Evals framework for image-based tasks. Leveraging the Evals API, we will grade model-generated responses",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E442461a967",
+   "title": "TypeScript Workshop",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "일부",
+     "quote": "This version of the workshop will guide you through a getting started experience in TypeScript.",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "일부",
+     "quote": "Introduction to the AWS Cloud Development Kit (CDK) - Workshop typescript",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E49884fe096",
+   "title": "Go language-specific guide",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "일부",
+     "quote": "Containerize Go apps using Docker",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M1ac79b45ca",
+   "title": "KAIST CS492(D) Diffusion Models and Their Applications",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "Diffusion models as the new standard for generative AI behind image and video generation: theory, conditional generation, personalization and applications",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN51f2b6b189",
+   "title": "Thinking in React",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "있음",
+     "quote": "When you build a user interface with React, you will first break it apart into pieces called components . Then, you will describe the different visual states for each of your components.",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E58757a4284",
+   "title": "Context Engineering for AI Agents",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "We need to build AI Agents that effectively manage information to address complex needs beyond prompt engineering.",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "있음",
+     "quote": "Understanding the complexity of the application you are building an AI agent for is important to making a reliable one. We need to build AI Agents that effectively manage information",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M43c37dee78",
+   "title": "[KDD 2026] Foundation Models for Time Series Analysis: Concepts, Methodologies, and Applications",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "Foundation Models for Time Series Analysis: Concepts, Methodologies, and Applications",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ec9fef4ac5a",
+   "title": "Ingest data with Athena",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "있음",
+     "quote": "This notebook demonstrates how to set up a database with Athena and query data with it.",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN4aa25ce9fa",
+   "title": "TypeScript for Java/C Programmers",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "있음",
+     "quote": "TypeScript is a popular choice for programmers accustomed to other languages with static typing, such as C and Java.",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN501c52f809",
+   "title": "Prompt Evaluation",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "evaluate a prompt that is part of an AI system, here a movie review sentiment classifier",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "있음",
+     "quote": "we will write a simple evaluation pipeline to evaluate a prompt that is part of an AI system",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN6cdcb5c6e9",
+   "title": "Prompt flow RAG example",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "Amazon Bedrock Flows accelerates the creation, testing, and deployment of user-defined workflows for generative AI applications",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "일부",
+     "quote": "users can drag, drop and link Prompts, existing Agents, Knowledge Bases, Guardrails and other AWS services",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "있음",
+     "quote": "Amazon Bedrock Flows accelerates the creation, testing, and deployment of user-defined workflows for generative AI applications through an intuitive visual builder",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN80842578d6",
+   "title": "📚 Core Concepts",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "있음",
+     "quote": "Learn how to systematically evaluate your AI applications using experiments.",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E6dcba5a753",
+   "title": "Amazon Bedrock Workshop",
+   "cells": {
+    "C21": {
+     "level": "있음",
+     "quote": "introducing how to leverage AI foundation models through Amazon Bedrock on AWS",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "있음",
+     "quote": "introducing how to leverage AI foundation models through Amazon Bedrock on AWS",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN77cde7869d",
+   "title": "JS Projects Utilizing TypeScript",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "있음",
+     "quote": "The type system in TypeScript has different levels of strictness when working with a codebase",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Mb7393d84e5",
+   "title": "[KDD 2024] Multi-modal Data Processing for Foundation Models: Practical Guidances and Use Cases",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "Multi-modal Data Processing for Foundation Models: Practical Guidances and Use Cases",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Md5d442af71",
+   "title": "Other frameworks",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "있음",
+     "quote": "Agent development can be streamlined using different frameworks like LangGraph (design and visualization of workflows) LlamaIndex (data-augmented agents with RAG), or custom solutions.",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E2a2e32dab5",
+   "title": "AWS CLI",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "있음",
+     "quote": "The AWS CLI allows you to interact with AWS services from a terminal session.",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN39e5a0528f",
+   "title": "Distributed System Design Reference",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "있음",
+     "quote": "Distributed systems introduce new and interesting problems that need addressing. Software engineering as a field has dealt with these problems for years, and there are phenomenal resources available for reference",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E564ad08f67",
+   "title": "Evaluate and Optimize Prompt Template Design for Better Results",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "있음",
+     "quote": "use the Vertex AI Python SDK for Gen AI Evaluation Service for Prompt Engineering and Prompt Evaluation",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "일부",
+     "quote": "use the Vertex AI Python SDK for Gen AI Evaluation Service",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E08241e631c",
+   "title": "Context Engineering Deep Dive: Building a Deep Research Agent",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "Context engineering requires significant iteration and careful design decisions to build reliable AI agents",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "있음",
+     "quote": "building a Deep Research Agent ... exploring some of the techniques and design patterns",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRNe05d50dea8",
+   "title": "Quick Start",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "있음",
+     "quote": "Welcome to the React documentation! This page will give you an introduction to 80% of the React concepts that you will use on a daily basis.",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRNecb37e9077",
+   "title": "Lesson 4: AI Agents with Microsoft Agent Framework",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "Agents are the natural evolution of AI applications: systems that don't just respond, but reason, plan, and act",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "있음",
+     "quote": "AI Agents with Microsoft Agent Framework ... Everything you've learned (chat, function calling, RAG, vision) comes together here",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E5d5dc25763",
+   "title": "Services",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "일부",
+     "quote": "Services provide stable network endpoints for accessing pods. Since pods are ephemeral and can be created/destroyed frequently, services give you consistent DNS names and IP addresses",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E365c3dd16b",
+   "title": "Evaluate your ADK agent using Vertex AI Gen AI Evaluation service",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents.",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "있음",
+     "quote": "using Vertex AI Gen AI Evaluation provides a toolkit of quality controlled and explainable methods and metrics to evaluate any generat",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "일부",
+     "quote": "Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents.",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN65cc258f8b",
+   "title": "Angular",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "있음",
+     "quote": "Angular is a modern framework built entirely in TypeScript, and as a result, using TypeScript with Angular provides a seamless experience.",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN4a047de448",
+   "title": "Interfaces",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "있음",
+     "quote": "One of TypeScript's core principles is that type checking focuses on the shape that values have.",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E1ec0e81596",
+   "title": "AI Agents in Production: Observability & Evaluation",
+   "cells": {
+    "C21": {
+     "level": "일부",
+     "quote": "As AI agents move from experimental prototypes to real-world applications, the ability to understand their behavior, monitor their performance, and systematically evaluate their outputs becomes important.",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "있음",
+     "quote": "the ability to understand their behavior, monitor their performance, and systematically evaluate their outputs becomes important.",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "일부",
+     "quote": "As AI agents move from experimental prototypes to real-world applications, the ability to understand their behavior, monitor their performance, and systematically evaluate their outputs becomes important.",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Eea4b56fb72",
+   "title": "JavaScript Crash Course For Beginners",
+   "cells": {
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C43": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C44": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C51": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C52": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C53": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C54": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C57": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C58": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  }
+ ],
+ "cost_krw": 0.0,
+ "rerank_units": 0
+}

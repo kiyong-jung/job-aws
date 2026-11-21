@@ -1,0 +1,12 @@
+{
+ "C01": "how image and video generation models work diffusion transformer tutorial",
+ "C02": "machine learning development cycle data preparation training evaluation pipeline",
+ "C04": "compute bottleneck optimization large scale data processing deep learning",
+ "C05": "I/O bottleneck large scale dataset loading throughput optimization machine learning",
+ "C06": "diffusion model training methodology score matching noise scheduling tutorial",
+ "C19": "Isaac Sim robotics simulation tutorial getting started",
+ "C20": "NVIDIA Omniverse platform tutorial synthetic data generation",
+ "C21": "Blender 3D modeling rendering tutorial beginner",
+ "C22": "Unreal Engine real-time rendering tutorial introduction",
+ "C23": "Hugging Face model hub publishing sharing models datasets tutorial"
+}

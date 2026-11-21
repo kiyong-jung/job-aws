@@ -1,0 +1,283 @@
+"""정리 리포트(⑥): 발표 자료와 같은 모양(1920×1080, 먹색 글, 공고 인용은 노란 형광펜)의 면접 대비 슬라이드 여러 장. 모델·API 호출 없이 저장본만 읽는다.
+  PYTHONPATH=. .venv/bin/python demo/design/build_report_deck.py <예시 이름>
+공부 시간 세 안(84·168·252)마다 demo/data/<예시>.report.<시간>.<쪽>.png (화면용), .pptx (받기용, 쪽 그림을 한 장씩), .json (바닥 줄 불렛에 쓸 값).
+만드는 길: HTML → Chrome 머리 없이 PDF → pdftoppm 쪽 그림 → python-pptx (uv 로 그때 불러 쓴다). 발표 pptx 를 만든 길과 같다.
+넘침 검사: Chrome 이 HTML 을 그린 뒤 쪽 밖으로 나가거나 칸을 넘친 글을 세어, 하나라도 있으면 멈춘다.
+
+쪽: 표지 → 질문 다섯 (한 쪽에 하나) → 프로젝트 밖에서 채울 역량 (응용 프로젝트 덮기 표에서 '있음'이 아닌 것, ③ 화면과 같은 저장본).
+질문 고르기 (QUESTIONS 개):
+  1. 문장의 우선순위: 필수 문장 → 우대 문장 → 나머지
+  2. 질문의 출처: 회사 이름이 붙은 실제 질문 → 이름 없는 실제 질문 → 직접 만든 질문
+  3. 그 우선순위의 역량이 많은 문장 먼저, 같으면 공고 차례
+답 요점은 저장본의 다섯 점 그대로(해요체, 말로 하는 답). 예시 숫자(지어낸 값)는 밑줄."""
+import html
+import json
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+from demo.pipeline import WORTH, example_case, exam_weeks, weeks_text
+
+DEMO = Path(__file__).resolve().parent.parent
+DATA = DEMO / "data"
+FONT = DEMO / "static" / "fonts" / "PretendardVariable.woff2"
+CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+BUDGETS = ("84", "168", "252")
+QUESTIONS = 5
+PRIORITY = {"필수": 0, "우대": 1}
+LEVEL = {"없음": "프로젝트로 다루지 않아요", "일부": "프로젝트로 일부만 다뤄요"}
+
+
+# ── 고르기 ───────────────────────────────────────────────────────────
+def row_priority(row):
+    return min(PRIORITY.get(c["priority"], 2) for c in row["competencies"])
+
+
+def origin_rank(q):
+    if q["origin"] != "은행":
+        return 2
+    return 0 if q.get("company_short") else 1
+
+
+def rank(row):
+    p = row_priority(row)
+    same = sum(PRIORITY.get(c["priority"], 2) == p for c in row["competencies"])
+    return (p, origin_rank(row["question"]), -same, row["sentence_no"])
+
+
+def source_tag(q):
+    return {0: f"{q.get('company_short')} 면접 질문", 1: "면접 질문 모음", 2: "직접 만든 질문"}[origin_rank(q)]
+
+
+def outside(case, adapt):
+    """프로젝트 밖에서 채울 역량과 그것을 가르치는 교육자료 (④ 에서 고른 자료 가운데 그 역량을 다루는 것)"""
+    picks = json.loads((DATA / f"{case}.m3.json").read_text("utf-8"))["picks"]
+    out = []
+    for c in adapt["coverage"]:
+        if c["expect"] == "있음":
+            continue
+        mats = [p["title"] for p in picks if any(x["cid"] == c["id"] and x["level"] != "없음" for x in p["covers"])]
+        out.append({"name": c["name"], "tier": c["tier"], "level": c["expect"], "materials": mats})
+    return out
+
+
+def page(case, budget):
+    report = json.loads((DATA / f"{case}.report.json").read_text("utf-8"))
+    adapt = json.loads((DATA / f"{case}.adapt.json").read_text("utf-8"))
+    weeks = json.loads((DATA / f"{case}.weeks.json").read_text("utf-8"))
+    posting = example_case(case)["posting"]
+    exams = exam_weeks(weeks)
+    team = weeks["team"]
+    return {
+        "company": posting["company"], "role": posting["title"], "project": weeks["project"]["title"],
+        "coverage": (len(adapt["coverage"]), sum(WORTH[c["expect"]] for c in adapt["coverage"])),
+        "weeks": team["weeks"], "members": team["members"], "budget": weeks["budgets"][budget]["label"],
+        "questions": [{
+            "n": r["sentence_no"], "priority": ["필수", "우대", "나머지"][row_priority(r)], "q": r["question"],
+            "sentence": r["sentence_text"], "points": r["answer_points"], "examples": [x["value"] for x in r["example_numbers"]],
+            "packages": [(p["name"], weeks_text({"from": p["weeks"][0], "to": p["weeks"][-1]}, exams)) for p in r["packages"]],
+            "study": r["study_point"][budget]} for r in sorted(report["rows"], key=rank)[:QUESTIONS]],
+        "outside": outside(case, adapt)}
+
+
+# ── 쪽 짜기 (HTML) ────────────────────────────────────────────────────
+e = html.escape
+
+
+def marked(text, values):
+    """예시 숫자(지어낸 값)에 밑줄. 긴 값부터 찾고 겹치면 짧은 것을 버린다."""
+    spans = []
+    for v in sorted(set(values), key=len, reverse=True):
+        at = text.find(v)
+        if at >= 0 and not any(a < at + len(v) and at < b for a, b in spans):
+            spans.append((at, at + len(v)))
+    out, pos = "", 0
+    for a, b in sorted(spans):
+        out += e(text[pos:a]) + f'<u class="ex">{e(text[a:b])}</u>'
+        pos = b
+    return out + e(text[pos:]), bool(spans)
+
+
+def points(x):
+    return f"{x:g}"
+
+
+CSS = """
+@font-face { font-family: "Pretendard Variable"; src: url("%s") format("woff2-variations"); font-weight: 45 920; }
+@page { size: 1920px 1080px; margin: 0; }
+:root { --paper: #faf9f5; --surface: #fff; --sunk: #f0eee6; --ink: #2b2a27; --line: rgba(43,42,39,.12); --line-strong: rgba(43,42,39,.2);
+  --accent: #c6613f; --hl: #fde68a; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); }
+body { font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", sans-serif; color: var(--ink); font-size: 32px; line-height: 1.45;
+  word-break: keep-all; line-break: strict; font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; }
+.slide { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); page-break-after: always; break-after: page; }
+.tag { position: absolute; left: 120px; top: 72px; font-size: 24px; font-weight: 600; display: flex; gap: 16px; align-items: center; }
+.chip { display: inline-block; padding: 2px 14px; border-radius: 8px; font-size: 24px; font-weight: 600; }
+.chip.ink { background: var(--ink); color: var(--paper); }
+.chip.line { box-shadow: inset 0 0 0 2px var(--line-strong); }
+.title { position: absolute; left: 120px; right: 120px; top: 124px; font-size: 44px; font-weight: 600; line-height: 1.3; }
+.pg { position: absolute; right: 120px; bottom: 40px; font-size: 24px; }
+.foot { position: absolute; left: 120px; bottom: 40px; font-size: 24px; }
+u.ex { text-decoration: underline dotted 3px; text-underline-offset: 7px; }
+.hl { background: var(--hl); padding: 2px 10px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.label { font-size: 24px; font-weight: 600; margin-bottom: 16px; }
+/* 표지: 위에서부터 차례로 (직무 이름이 두 줄이어도 겹치지 않게) */
+.cover .head { position: absolute; left: 120px; right: 120px; top: 110px; display: flex; flex-direction: column; gap: 20px; }
+.cover .kicker { font-size: 32px; font-weight: 600; color: var(--accent); }
+.cover .role { font-size: 96px; font-weight: 600; line-height: 1.12; letter-spacing: -0.01em; }
+.cover .company { font-size: 44px; font-weight: 500; margin-top: 8px; }
+.cover .project { font-size: 32px; }
+.stats { position: absolute; left: 120px; right: 120px; top: 700px; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 80px;
+  border-top: 2px solid var(--ink); padding-top: 40px; }
+.stat .n { font-size: 96px; font-weight: 600; line-height: 1.05; white-space: nowrap; }
+.stat .n small { font-size: 44px; font-weight: 600; }
+.stat .c { font-size: 32px; margin-top: 8px; }
+/* 질문: 머리(번호·제목·공고 문장)를 위에서부터 쌓고, 남은 높이를 답과 카드가 쓴다 */
+.slide.q { display: flex; flex-direction: column; padding: 72px 120px 96px; }
+.slide.q .tag, .slide.q .title { position: static; }
+.slide.q .title { margin-top: 20px; }
+.quote { margin-top: 28px; font-size: 24px; line-height: 1.75; }
+.quote .src { font-weight: 600; margin-right: 12px; }
+.cols { flex: 1; min-height: 0; margin-top: 48px; display: grid; grid-template-columns: 1fr 600px; column-gap: 80px; }
+ol.ans { list-style: none; counter-reset: a; }
+ol.ans li { counter-increment: a; position: relative; padding-left: 52px; margin-bottom: 14px; font-size: 32px; line-height: 1.38; }
+ol.ans li::before { content: counter(a); position: absolute; left: 0; top: 4px; width: 36px; height: 36px; border-radius: 50%%; background: var(--ink);
+  color: var(--paper); font-size: 24px; font-weight: 600; display: grid; place-items: center; line-height: 1; }
+.card { background: var(--surface); border: 2px solid var(--line); border-radius: 24px; padding: 28px 36px 18px; align-self: start; }
+.card + .card { margin-top: 20px; }
+.card .label { margin-bottom: 12px; }
+.card ul { list-style: none; }
+.card li { font-size: 24px; line-height: 1.4; margin-bottom: 10px; }
+.card li b { display: block; font-weight: 600; }
+/* 밖에서 채울 역량 */
+.gaps { position: absolute; left: 120px; right: 120px; top: 380px; display: grid; grid-template-columns: repeat(%d, 1fr); column-gap: 80px; }
+.gap .name { font-size: 96px; font-weight: 600; line-height: 1.05; }
+.gap .what { font-size: 32px; margin: 20px 0 40px; }
+.gap .mat { font-size: 32px; font-weight: 600; }
+.gap .mat span { display: block; font-size: 24px; font-weight: 500; margin-bottom: 8px; }
+"""
+
+# 그린 뒤 넘친 글을 센다: 쪽 밖으로 나간 것, 칸보다 긴 것. 결과는 body 의 data-over 에 (dump-dom 으로 읽는다)
+CHECK = """<script>document.fonts.ready.then(() => { const bad = [];
+  for (const s of document.querySelectorAll('.slide')) { const r = s.getBoundingClientRect();
+    for (const x of s.querySelectorAll('*')) { const b = x.getBoundingClientRect();
+      if (b.width && (b.right > r.right + 1 || b.bottom > r.bottom + 1 || b.left < r.left - 1)) bad.push(x.className || x.tagName); }
+    const cols = s.querySelector('.cols'); if (cols) for (const c of cols.children) { const b = c.getBoundingClientRect(), k = cols.getBoundingClientRect();
+      if (b.bottom > k.bottom + 1) bad.push('cols-overflow'); }
+    const head = s.querySelector('.head'), stats = s.querySelector('.stats');
+    if (head && stats && head.getBoundingClientRect().bottom > stats.getBoundingClientRect().top - 24) bad.push('cover-clash'); }
+  document.body.dataset.over = bad.join(',') || 'none'; });</script>"""
+
+
+def cover(p, total):
+    n, got = p["coverage"]
+    return f"""<section class="slide cover">
+  <div class="head"><p class="kicker">면접 대비 리포트</p><h1 class="role">{e(p['role'])}</h1>
+    <p class="company">{e(p['company'])}</p><p class="project">프로젝트 · {e(p['project'])}</p></div>
+  <div class="stats">
+    <div class="stat"><p class="n">{points(got)}<small> / {n}</small></p><p class="c">공고 역량을 프로젝트로</p></div>
+    <div class="stat"><p class="n">{len(p['questions'])}<small>개</small></p><p class="c">예상 면접 질문</p></div>
+    <div class="stat"><p class="n">{p['weeks']}<small>주</small></p><p class="c">팀 {p['members']}명 · 공부 {e(p['budget'])}</p></div>
+  </div>
+  <p class="pg">1 / {total}</p>
+</section>"""
+
+
+def question(i, q, total):
+    pts = [marked(t, q["examples"]) for t in q["points"]]
+    jobs = "".join(f"<li><b>{e(name)}</b>{e(when)}</li>" for name, when in q["packages"])
+    s = q["study"]
+    study = (f"<li><b>{e(s['title'])}</b>{e(s['name'])} · {s['week']}주차까지</li>" if s and s.get("title")
+             else "<li>맞는 자료가 없어요</li>")
+    tag = source_tag(q["q"])
+    note = '<p class="foot">밑줄 숫자는 예시예요. 실제로 잰 값이 아니에요.</p>' if any(m for _, m in pts) else ""
+    return f"""<section class="slide q">
+  <p class="tag">질문 {i} / {QUESTIONS}<span class="chip {'ink' if q['q']['origin'] == '은행' else 'line'}">{e(tag)}</span><span class="chip line">{q['priority']} 문장</span></p>
+  <h1 class="title">{e(q['q']['text_ko'])}</h1>
+  <p class="quote"><span class="src">공고 {q['n']}번 문장</span><span class="hl">{e(q['sentence'])}</span></p>
+  <div class="cols">
+    <div><p class="label">이렇게 답해요</p><ol class="ans">{''.join(f'<li>{t}</li>' for t, _ in pts)}</ol></div>
+    <div><div class="card"><p class="label">말할 프로젝트 일</p><ul>{jobs}</ul></div>
+         <div class="card"><p class="label">미리 공부할 것</p><ul>{study}</ul></div></div>
+  </div>
+  {note}
+  <p class="pg">{i + 1} / {total}</p>
+</section>"""
+
+
+def gaps(p, total):
+    cards = "".join(f"""<div class="gap"><p class="name">{e(g['name'])}</p><p class="what">{g['tier']} · {LEVEL[g['level']]}</p>
+      <p class="mat"><span>교육자료</span>{e(', '.join(g['materials']) or '맞는 자료가 없어요')}</p></div>""" for g in p["outside"])
+    return f"""<section class="slide">
+  <h1 class="title" style="top:120px">프로젝트 밖에서 채울 역량</h1>
+  <div class="gaps">{cards}</div>
+  <p class="pg">{total} / {total}</p>
+</section>"""
+
+
+def deck_html(p):
+    total = 1 + len(p["questions"]) + bool(p["outside"])
+    slides = [cover(p, total)] + [question(i, q, total) for i, q in enumerate(p["questions"], 1)] + ([gaps(p, total)] if p["outside"] else [])
+    css = CSS % (FONT.as_uri(), max(1, len(p["outside"])))
+    return f"<!doctype html><html lang=ko><head><meta charset=utf-8><style>{css}</style></head><body>{''.join(slides)}{CHECK}</body></html>", total
+
+
+def facts(p):
+    qs = [q["q"] for q in p["questions"]]
+    return {"questions": len(qs), "bank": sum(q["origin"] == "은행" for q in qs),
+            "companies": list(dict.fromkeys(q["company_short"] for q in qs if q.get("company_short"))),
+            "uncovered": [g["name"] for g in p["outside"]]}
+
+
+def chrome(*args):
+    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--virtual-time-budget=4000", *args],
+                   check=True, capture_output=True, text=True, timeout=120)
+
+
+def build(case):
+    for old in DATA.glob(f"{case}.report.*"):      # 지난 판(LaTeX 한 장, 쪽 수가 다른 그림)을 지운다. report.json 은 원본이라 둔다
+        if old.name != f"{case}.report.json":
+            old.unlink()
+    for budget in BUDGETS:
+        p = page(case, budget)
+        doc, total = deck_html(p)
+        with tempfile.TemporaryDirectory() as tmp:
+            src = Path(tmp) / "deck.html"
+            src.write_text(doc, "utf-8")
+            dom = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--virtual-time-budget=4000", "--window-size=1920,1080",
+                                  "--dump-dom", src.as_uri()], check=True, capture_output=True, text=True, timeout=120).stdout
+            over = re.search(r'data-over="([^"]*)"', dom)
+            if not over or over[1] != "none":
+                raise SystemExit(f"{case} {budget}: 넘친 글 {over[1] if over else '(검사가 돌지 않음)'}")
+            pdf = Path(tmp) / "deck.pdf"
+            chrome("--no-pdf-header-footer", f"--print-to-pdf={pdf}", src.as_uri())
+            subprocess.run(["pdftoppm", "-png", "-scale-to-x", "1920", "-scale-to-y", "1080", str(pdf), str(Path(tmp) / "p")], check=True)
+            pngs = sorted(Path(tmp).glob("p-*.png"))
+            if len(pngs) != total:
+                raise SystemExit(f"{case} {budget}: 쪽 {len(pngs)}장 (기대 {total}장)")
+            for k, png in enumerate(pngs, 1):
+                shutil.copy(png, DATA / f"{case}.report.{budget}.{k}.png")
+        pptx = DATA / f"{case}.report.{budget}.pptx"
+        subprocess.run(["uv", "run", "--no-project", "--with", "python-pptx", "python", "-I", "-c", PPTX, str(pptx),
+                        *[str(DATA / f"{case}.report.{budget}.{k}.png") for k in range(1, total + 1)]], check=True)
+        (DATA / f"{case}.report.{budget}.json").write_text(json.dumps({**facts(p), "slides": total}, ensure_ascii=False, indent=1) + "\n", "utf-8")
+        print(pptx.name, total, "장", [q["n"] for q in p["questions"]])
+
+
+# 쪽 그림을 한 장씩 꽉 채운 16:9 pptx (발표 pptx 와 같은 길)
+PPTX = """import sys
+from pptx import Presentation
+from pptx.util import Emu
+prs = Presentation(); prs.slide_width, prs.slide_height = Emu(12192000), Emu(6858000)
+for im in sys.argv[2:]:
+    s = prs.slides.add_slide(prs.slide_layouts[6])
+    s.shapes.add_picture(im, 0, 0, prs.slide_width, prs.slide_height)
+prs.save(sys.argv[1])"""
+
+
+if __name__ == "__main__":
+    build(sys.argv[1])

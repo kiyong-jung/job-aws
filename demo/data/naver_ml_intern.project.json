@@ -1,0 +1,2005 @@
+{
+ "source": "outputs/project/naver_ml_intern.local.json",
+ "case": "naver_ml_intern",
+ "counts": {
+  "papers": 90239,
+  "repos": 21514,
+  "pool": 1000,
+  "shortlist": 100,
+  "judged": 100,
+  "k": 1
+ },
+ "seconds": null,
+ "seconds_how": "실행 파일의 6.0초는 저장해 둔 판정을 다시 읽은 시간이라 싣지 않았다",
+ "cost_krw": 0.0,
+ "funnel": [
+  {
+   "key": "db",
+   "n": 111753,
+   "label": "DB에 모인 프로젝트",
+   "how": "논문 90,239개 + 저장소 21,514개 (별 200개 이상)",
+   "by": "코드"
+  },
+  {
+   "key": "bm25",
+   "n": 1000,
+   "label": "낱말로 넓게 모은 후보",
+   "how": "역량마다 만든 영어 검색어로 BM25 검색, 검색어마다 위 100개에 1/(순위+1)점을 더해 위 1,000개",
+   "by": "코드 (BM25)"
+  },
+  {
+   "key": "rerank",
+   "n": 100,
+   "label": "역량별로 다시 고른 후보",
+   "how": "역량마다 '역량 이름 — 공고 근거 문장'으로 1,000개를 Cohere Rerank 3.5 가 뜻으로 다시 줄 세우고, 역량별 위 100개를 1/(순위+1) 합으로 합쳐 위 100개",
+   "by": "Reranker (Cohere)"
+  },
+  {
+   "key": "judge",
+   "n": 100,
+   "label": "AI가 견줘 본 후보",
+   "how": "Claude Sonnet 4.6 이 5개씩 읽고 역량마다 있음·일부·없음과 근거 구절을 냈다 (저장소는 README 앞 4,000자까지 읽음)",
+   "by": "LLM"
+  },
+  {
+   "key": "pick",
+   "n": 1,
+   "label": "필수 먼저 1위",
+   "how": "필수를 하나라도 더 다루는 후보가 먼저, 같으면 우대, 그다음 나머지 점수로 견줘 1등",
+   "by": "코드"
+  }
+ ],
+ "sample": {
+  "key": "gh:duoan/mega-data-factory",
+  "kind": "repo",
+  "title": "duoan/mega-data-factory",
+  "year": "2026",
+  "venue": "GitHub ★382",
+  "url": "https://github.com/duoan/mega-data-factory",
+  "stars": 382,
+  "text": "duoan mega-data-factory 🏭 Mega Scale Multimodal DataPipeline for SOTA Foundation Models data-centric-ai data-curation data-quality datapipeline datapipelines deeplearning foundation-models image-editing image-generation llm machine-learning mllm multimodal ray rust video-generation vlm",
+  "readme": "Mega Data Factory A reproducible, high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets. Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale. Star History Vision Reproduce SOTA foundation model data pipelines — from rule-based to model-based, spanning text, image, and multimodal data. Text Data Pipelines Pipeline Paper Status FineWeb 15T tokens, quality filtering 🚧 In Progress FineWeb-Edu Educational content classifier 🚧 In Progress RefinedWeb URL filtering, trafilatura, dedup ✅ URL Filter DCLM Data curation for LLMs 📋 Planned Dolma Open corpus toolkit 📋 Planned RedPajama-V2 30T tokens, quality signals 📋 Planned Image & Vision-Language Pipelines Pipeline Paper Status Z-Image Image generation foundation model ✅ Implemented Imagen 3 Image quality & AIGC detection ✅ Implemented LAION-5B CLIP filtering, dedup ✅ Implemented DataComp CLIP/SigLIP filtering ✅ Implemented Qwen-VL Vision-language data 🚧 In Progress Seed1.5-VL Vision-language reasoning 📋 Planned HoneyBee Data recipes for VL reasoners 📋 Planned Cosmos World model platform 📋 Planned Video & Multimodal Pipelines Pipeline Paper Status Panda-70M Video captioning 📋 Planned InternVid Video-language 📋 Planned OpenVid-1M Video generation 📋 Planned Pipeline Run Reports This space contains interactive HTML reports for pipeline runs, showcasing metrics, visualizations, and performance statistics. Data Quality Funnel Data Flow Sankey Data Detail Metrics Installation > Requires Rust toolchain for building accelerated operators. Install via rustup. Quick Start Operators > 🦀 = Rust Accelerated 🖥️ = GPU Optimized Data Loaders Loader Description Features HuggingFaceLoader Load from HuggingFace datasets Streaming, sharding CommonCrawlLoader Load from CommonCrawl WARC files 🦀 Rust text extraction, distributed Text Operators Refiners (normalize/enrich text fields): Operator Description TextNewLineRemovalRefiner Limit maximum consecutive newlines in text Filters (rule-based, from RefinedWeb): Operator Description Reference URLFilter Domain blocklist, URL word scoring, quality source exclusion RefinedWeb §G.1 TextLengthFilter Filter by character/word count FineWeb, RefinedWeb TextAlphabeticWordRationFilter (text_alphabetic_word_ration_filter) Filter by ratio of words without alphabetic chars Gopher-style heuristic TextAvgWordLengthFilter (text_avg_word_length_filter) Filter by average word length range RefinedWeb-style heuristic TextBulletFilter (text_bullet_filter) Filter by bullet-line ratio RefinedWeb-style heuristic TextEllipsisLineRatioFilter (text_ellipsis_line_ratio_filter) Filter by ellipsis-ending line ratio RefinedWeb-style heuristic TextSymbolRatioFilter (text_symbol_ratio_filter) Filter by symbol-to-word ratio (#, ..., . . ., …) RefinedWeb-style heuristic TextRepetitionFilter (text_repetition_filter) Multi-granularity n-gram repetition checks (line/paragraph/word) Gopher / MassiveText heuristic TextTargetLanguageFilter (text_target_language_filter) FastText language detection with score threshold CCNet Deduplicators: Operator Description TextExactDeduplicator Exact content hash deduplication (xxhash/MD5) Coming Soon: - PerplexityFilter - KenLM perplexity scoring - QualityClassifierFilter - Model-based quality (FineWeb-Edu style) - MinHashDeduplicator - Near-duplicate detection Image Operators Refiners (enrich records with new fields): Operator Description Acceleration ImageMetadataRefiner Width, height, format, file size CPU ImageTechnicalQualityRefiner Compression artifacts, entropy 🦀 Rust ImageVisualDegradationsRefiner Color cast, blur, watermark, noise CPU ImageClipEmbeddingRefiner CLIP embeddings (OpenCLIP) 🖥️ GPU ImageSigLIPEmbeddingRefiner SigLIP2 embeddings 🖥️ GPU ImageAestheticQualityRefiner Aesthetic score (CLIP-based) CPU ImageAIGCDetectorRefiner AI-generated image detection CPU Filters: Operator Description ImageQualityFilter Filter by size, qualit",
+  "readme_how": "m2_project.readme.text(key) 가 저장해 둔 README 를 정리한 앞 4,000자 (판정이 읽은 글). 근거 구절이 있는 역량 12개가 모두 이 안에 있다",
+  "readme_shown": "Mega Data Factory A reproducible, high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets. Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale. … Reproduce SOTA foundation model data pipelines — from rule-based to model-based, spanning text, image, and multimodal data.\n\n… Pipeline Run Reports This space contains interactive HTML reports for pipeline runs, showcasing metrics, visualizations, and performance statistics.\n\n… HuggingFaceLoader Load from HuggingFace datasets Streaming, sharding …\n\n… ImageAIGCDetectorRefiner AI-generated image detection CPU …",
+  "readme_shown_how": "판정이 읽은 글 4,000자 가운데 근거 구절이 든 곳 681자 (구절 앞뒤 80자 안의 문장 끝까지. 구절 앞에 붙은 제목·배지·표 머리 낱말은 뺐다)"
+ },
+ "ranking": [
+  {
+   "title": "duoan/mega-data-factory",
+   "key": "gh:duoan/mega-data-factory",
+   "kind": "repo",
+   "url": "https://github.com/duoan/mega-data-factory",
+   "year": "2026",
+   "venue": "GitHub ★382",
+   "stars": 382,
+   "필수": 5,
+   "우대": 1,
+   "나머지": 4.5
+  },
+  {
+   "title": "datajuicer/data-juicer",
+   "key": "gh:datajuicer/data-juicer",
+   "kind": "repo",
+   "url": "https://github.com/datajuicer/data-juicer",
+   "year": "2026",
+   "venue": "GitHub ★7250",
+   "stars": 7250,
+   "필수": 4.0,
+   "우대": 1,
+   "나머지": 4.0
+  },
+  {
+   "title": "CI-VID: A Coherent Interleaved Text-Video Dataset",
+   "key": "url:https://openaccess.thecvf.com/content/CVPR2026/html/Ju_CI-VID_A_Coherent_Interleaved_Text-Video_Dataset_CVPR_2026_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Ju_CI-VID_A_Coherent_Interleaved_Text-Video_Dataset_CVPR_2026_paper.html",
+   "year": "2026",
+   "venue": "CVPR",
+   "필수": 3,
+   "우대": 2.0,
+   "나머지": 5.0
+  },
+  {
+   "title": "ADIEE: Automatic Dataset Creation and Scorer for Instruction-Guided Image Editing Evaluation",
+   "key": "url:https://openaccess.thecvf.com/content/ICCV2025/html/Chen_ADIEE_Automatic_Dataset_Creation_and_Scorer_for_Instruction-Guided_Image_Editing_ICCV_2025_paper.html",
+   "kind": "paper",
+   "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Chen_ADIEE_Automatic_Dataset_Creation_and_Scorer_for_Instruction-Guided_Image_Editing_ICCV_2025_paper.html",
+   "year": "2025",
+   "venue": "ICCV",
+   "필수": 3,
+   "우대": 2,
+   "나머지": 2.5
+  },
+  {
+   "title": "NVIDIA-NeMo/Curator",
+   "key": "gh:nvidia-nemo/curator",
+   "kind": "repo",
+   "url": "https://github.com/NVIDIA-NeMo/Curator",
+   "year": "2026",
+   "venue": "GitHub ★1861",
+   "stars": 1861,
+   "필수": 3.0,
+   "우대": 1,
+   "나머지": 4.5
+  }
+ ],
+ "scores": [
+  5,
+  4.0,
+  3,
+  3,
+  3.0,
+  3.0,
+  3.0,
+  2.5,
+  2.5,
+  2.5,
+  2.5,
+  2.5,
+  2.0,
+  2.0,
+  2.0,
+  2,
+  2.0,
+  2.0,
+  2.0,
+  2,
+  2.0,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.5,
+  1.0,
+  1,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1,
+  1.0,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0.5,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "coverage": [
+  {
+   "cid": "C01",
+   "name": "이미지·비디오 생성 모델 동작 원리 이해",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets",
+   "downgraded": false
+  },
+  {
+   "cid": "C02",
+   "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Reproduce SOTA foundation model data pipelines — from rule-based to model-based, spanning text, image, and multimodal data",
+   "downgraded": false
+  },
+  {
+   "cid": "C03",
+   "name": "기본 데이터 처리 및 분석 독립 수행",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale",
+   "downgraded": false
+  },
+  {
+   "cid": "C04",
+   "name": "대규모 데이터 처리 시 연산 병목 이해",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale",
+   "downgraded": false
+  },
+  {
+   "cid": "C05",
+   "name": "대규모 데이터 처리 시 I/O 병목 이해",
+   "section": "자격요건",
+   "priority": "필수",
+   "level": "있음",
+   "quote": "A reproducible, high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets",
+   "downgraded": false
+  },
+  {
+   "cid": "C06",
+   "name": "Diffusion 기반 학습 방법론 이해",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C07",
+   "name": "원시 이미지·비디오 아카이브에서 학습 데이터 추출",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "A reproducible, high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets",
+   "downgraded": false
+  },
+  {
+   "cid": "C08",
+   "name": "다단계 품질 필터링 로직 설계",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale",
+   "downgraded": false
+  },
+  {
+   "cid": "C09",
+   "name": "VLM을 활용한 대규모 어노테이션 생성",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "ImageAIGCDetectorRefiner AI-generated image detection CPU",
+   "downgraded": false
+  },
+  {
+   "cid": "C10",
+   "name": "학습 결과에 기반한 데이터 레시피 개선",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C11",
+   "name": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C12",
+   "name": "합성 데이터 메타데이터 정제",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C13",
+   "name": "신규 벤치마크 구현",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C14",
+   "name": "체크포인트 평가 자동화 파이프라인 개발",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C15",
+   "name": "다축 지표 비교·분석 도구 개발",
+   "section": "담당업무",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "Pipeline Run Reports This space contains interactive HTML reports for pipeline runs, showcasing metrics, visualizations, and performance statistics",
+   "downgraded": false
+  },
+  {
+   "cid": "C16",
+   "name": "10만 샘플 이상 규모의 데이터셋 설계·구축",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "있음",
+   "quote": "processing web-scale (hundreds of billions) multimodal datasets",
+   "downgraded": false
+  },
+  {
+   "cid": "C17",
+   "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C18",
+   "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C19",
+   "name": "Isaac Sim",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C20",
+   "name": "Omniverse",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C21",
+   "name": "Blender",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C22",
+   "name": "Unreal Engine",
+   "section": "우대사항",
+   "priority": "우대",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C23",
+   "name": "Hugging Face를 통한 모델·결과물 공개",
+   "section": "부서소개",
+   "priority": "나머지",
+   "level": "일부",
+   "quote": "HuggingFaceLoader Load from HuggingFace datasets Streaming, sharding",
+   "downgraded": false
+  },
+  {
+   "cid": "C24",
+   "name": "짧은 주기의 피드백 기반 협업",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C25",
+   "name": "진행 상황 및 사고 과정의 적극적 공유",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C26",
+   "name": "연구·엔지니어링 인접 영역 자기주도 학습 태도",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C27",
+   "name": "결과 해석 및 다음 방향성 의견 제시",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C28",
+   "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "없음",
+   "quote": "",
+   "downgraded": false
+  },
+  {
+   "cid": "C29",
+   "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)",
+   "section": "팀메시지",
+   "priority": "나머지",
+   "level": "있음",
+   "quote": "Built on Ray with Rust-accelerated and GPU-optimized operators for ablation, scoring, and deduplication at scale",
+   "downgraded": false
+  }
+ ],
+ "levels": {
+  "있음": 9,
+  "일부": 3,
+  "없음": 17
+ },
+ "adapted_hand": {
+  "source": "m2_project/research/adapt/hand_naver.json",
+  "made_by": "사람이 손으로 한 건 (LLM 호출 없음). 시간은 모두 어림",
+  "title": "공개 이미지·영상으로 학습 데이터 10만 장을 만들고, 데이터 레시피가 작은 생성 모델을 어떻게 바꾸는지 재기",
+  "goal": "바탕 저장소(duoan/mega-data-factory)의 흐름인 '불러오기 → 정보 붙이기 → 거르기 → 겹침 지우기 → 처리 보고서'를 팀 규모로 다시 돌려, 공개 이미지와 영상에서 생성 모델 학습용 이미지 10만 장 이상을 만든다. 거르기의 마지막 단계와 캡션은 VLM 이 맡고, 그 프롬프트는 dingo 의 '규칙 먼저, LLM 은 깊게' 방식과 프롬프트 폴더 구조를 따라 사람 라벨 200장에 맞춰 고친다. Blender 를 파이썬 스크립트로 돌려 정답을 아는 합성 이미지를 만들고(BlenderLLM 의 '스크립트를 Blender 에서 실행해 렌더' 방식), 이것으로 CADBench 처럼 직접 만든 벤치마크의 채점기를 검증한다. 마지막으로 작은 이미지 생성 모델을 데이터 레시피만 바꿔 여러 번 학습하고, 체크포인트마다 자동으로 점수를 매겨, 데이터를 어떻게 만들었는지가 모델 점수를 얼마나 바꾸는지 수치로 보인다.",
+  "base": {
+   "title": "duoan/mega-data-factory",
+   "url": "https://github.com/duoan/mega-data-factory",
+   "kind": "repo"
+  },
+  "parts": [
+   {
+    "n": 1,
+    "package": "W4",
+    "name": "VLM 캡션과 품질 판정 프롬프트",
+    "extension": false,
+    "from": [
+     {
+      "title": "MigoXLab/dingo",
+      "url": "https://github.com/MigoXLab/dingo",
+      "kind": "repo"
+     }
+    ],
+    "cids": [
+     "C09",
+     "C17",
+     "C18"
+    ]
+   },
+   {
+    "n": 2,
+    "package": "W6",
+    "name": "Blender 합성 이미지와 메타데이터",
+    "extension": false,
+    "from": [
+     {
+      "title": "FreedomIntelligence/BlenderLLM",
+      "url": "https://github.com/FreedomIntelligence/BlenderLLM",
+      "kind": "repo"
+     }
+    ],
+    "cids": [
+     "C11",
+     "C21",
+     "C12"
+    ]
+   },
+   {
+    "n": 3,
+    "package": "W8",
+    "name": "개수·위치·색 세 축 벤치마크와 채점기 검증",
+    "extension": false,
+    "from": [
+     {
+      "title": "FreedomIntelligence/BlenderLLM",
+      "url": "https://github.com/FreedomIntelligence/BlenderLLM",
+      "kind": "repo"
+     },
+     {
+      "title": "MuammerBay/isaac_so_arm101",
+      "url": "https://github.com/MuammerBay/isaac_so_arm101",
+      "kind": "repo"
+     }
+    ],
+    "cids": [
+     "C13",
+     "C28",
+     "C19",
+     "C20"
+    ]
+   },
+   {
+    "n": 4,
+    "package": "W9",
+    "name": "체크포인트 자동 평가와 비교 화면",
+    "extension": false,
+    "from": [
+     {
+      "title": "MigoXLab/dingo",
+      "url": "https://github.com/MigoXLab/dingo",
+      "kind": "repo"
+     }
+    ],
+    "cids": [
+     "C14",
+     "C15",
+     "C28"
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "id": "W1",
+    "name": "원본 불러오기와 영상 프레임 뽑기",
+    "hours_team": 30,
+    "core": true,
+    "order": 1,
+    "kind": "바탕",
+    "gap": false,
+    "why": "목표의 원재료. 바탕 흐름의 첫 칸(불러오기)이고 W2 가 받는다.",
+    "competencies": [
+     {
+      "cid": "C07",
+      "row": 3,
+      "badges": [
+       3
+      ],
+      "name": "원시 이미지·비디오 아카이브에서 학습 데이터 추출"
+     },
+     {
+      "cid": "C03",
+      "row": 14,
+      "badges": [
+       9
+      ],
+      "name": "기본 데이터 처리 및 분석 독립 수행"
+     },
+     {
+      "cid": "C05",
+      "row": 16,
+      "badges": [
+       10
+      ],
+      "name": "대규모 데이터 처리 시 I/O 병목 이해"
+     }
+    ],
+    "from": [],
+    "added": []
+   },
+   {
+    "id": "W2",
+    "name": "싼 검사부터 비싼 검사까지 네 단계 거르기",
+    "hours_team": 36,
+    "core": true,
+    "order": 1,
+    "kind": "바탕",
+    "gap": false,
+    "why": "바탕 흐름의 가운데(정보 붙이기·거르기·겹침 지우기). 여기서 정한 문턱이 W7 이 견줄 레시피('거르지 않음'과 '거름')가 된다.",
+    "competencies": [
+     {
+      "cid": "C08",
+      "row": 4,
+      "badges": [
+       3
+      ],
+      "name": "다단계 품질 필터링 로직 설계"
+     },
+     {
+      "cid": "C03",
+      "row": 14,
+      "badges": [
+       9
+      ],
+      "name": "기본 데이터 처리 및 분석 독립 수행"
+     },
+     {
+      "cid": "C29",
+      "row": 28,
+      "badges": [
+       18
+      ],
+      "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)"
+     }
+    ],
+    "from": [],
+    "added": []
+   },
+   {
+    "id": "W3",
+    "name": "처리 속도와 병목 재기",
+    "hours_team": 16,
+    "core": true,
+    "order": 1,
+    "kind": "바탕",
+    "gap": false,
+    "why": "같은 파이프라인을 재는 일. W5 에서 30만 장으로 키울 때 어디를 고쳐야 할지 정해 준다.",
+    "competencies": [
+     {
+      "cid": "C04",
+      "row": 15,
+      "badges": [
+       10
+      ],
+      "name": "대규모 데이터 처리 시 연산 병목 이해"
+     },
+     {
+      "cid": "C05",
+      "row": 16,
+      "badges": [
+       10
+      ],
+      "name": "대규모 데이터 처리 시 I/O 병목 이해"
+     },
+     {
+      "cid": "C29",
+      "row": 28,
+      "badges": [
+       18
+      ],
+      "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)"
+     }
+    ],
+    "from": [],
+    "added": []
+   },
+   {
+    "id": "W4",
+    "name": "VLM 캡션과 품질 판정 프롬프트",
+    "hours_team": 32,
+    "core": true,
+    "order": 1,
+    "kind": "빌림",
+    "gap": false,
+    "why": "바탕 흐름의 마지막 거르기와 캡션. 캡션 길이가 W7 레시피('거름+긴 캡션')의 한 축이다.",
+    "competencies": [
+     {
+      "cid": "C09",
+      "row": 5,
+      "badges": [
+       4
+      ],
+      "name": "VLM을 활용한 대규모 어노테이션 생성"
+     },
+     {
+      "cid": "C17",
+      "row": 18,
+      "badges": [
+       12
+      ],
+      "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝"
+     },
+     {
+      "cid": "C18",
+      "row": 19,
+      "badges": [
+       12
+      ],
+      "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝"
+     }
+    ],
+    "from": [
+     {
+      "title": "MigoXLab/dingo",
+      "url": "https://github.com/MigoXLab/dingo",
+      "kind": "repo"
+     }
+    ],
+    "added": []
+   },
+   {
+    "id": "W5",
+    "name": "10만 장으로 키우고 공개하기",
+    "hours_team": 26,
+    "core": true,
+    "order": 2,
+    "kind": "바탕",
+    "gap": false,
+    "why": "같은 파이프라인을 10만 장으로 키운 결과물. W7 의 학습 데이터이자 공개하는 산출물이다.",
+    "competencies": [
+     {
+      "cid": "C16",
+      "row": 17,
+      "badges": [
+       11
+      ],
+      "name": "10만 샘플 이상 규모의 데이터셋 설계·구축"
+     },
+     {
+      "cid": "C23",
+      "row": 2,
+      "badges": [
+       2
+      ],
+      "name": "Hugging Face를 통한 모델·결과물 공개"
+     },
+     {
+      "cid": "C29",
+      "row": 28,
+      "badges": [
+       18
+      ],
+      "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)"
+     }
+    ],
+    "from": [],
+    "added": []
+   },
+   {
+    "id": "W6",
+    "name": "Blender 합성 이미지와 메타데이터",
+    "hours_team": 30,
+    "core": true,
+    "order": 2,
+    "kind": "빌림",
+    "gap": false,
+    "why": "정답을 아는 이미지. W8 채점기를 검증하고, W7 에 '합성 섞은 레시피'로 들어간다.",
+    "competencies": [
+     {
+      "cid": "C11",
+      "row": 7,
+      "badges": [
+       5
+      ],
+      "name": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축"
+     },
+     {
+      "cid": "C21",
+      "row": 22,
+      "badges": [
+       13
+      ],
+      "name": "Blender"
+     },
+     {
+      "cid": "C12",
+      "row": 8,
+      "badges": [
+       5
+      ],
+      "name": "합성 데이터 메타데이터 정제"
+     }
+    ],
+    "from": [
+     {
+      "title": "FreedomIntelligence/BlenderLLM",
+      "url": "https://github.com/FreedomIntelligence/BlenderLLM",
+      "kind": "repo"
+     }
+    ],
+    "added": [
+     "C12"
+    ]
+   },
+   {
+    "id": "W7",
+    "name": "작은 생성 모델을 레시피만 바꿔 학습하기",
+    "hours_team": 44,
+    "core": true,
+    "order": 1,
+    "kind": "새로 더함",
+    "gap": true,
+    "why": "목표의 가운데: 데이터 레시피만 바꿔 학습해 점수 차이를 본다. 바탕에 학습이 없어 바탕 밖에서 메운 빈자리다.",
+    "competencies": [
+     {
+      "cid": "C01",
+      "row": 12,
+      "badges": [
+       7
+      ],
+      "name": "이미지·비디오 생성 모델 동작 원리 이해"
+     },
+     {
+      "cid": "C02",
+      "row": 13,
+      "badges": [
+       8
+      ],
+      "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해"
+     },
+     {
+      "cid": "C06",
+      "row": 1,
+      "badges": [
+       1
+      ],
+      "name": "Diffusion 기반 학습 방법론 이해"
+     },
+     {
+      "cid": "C10",
+      "row": 6,
+      "badges": [
+       4
+      ],
+      "name": "학습 결과에 기반한 데이터 레시피 개선"
+     },
+     {
+      "cid": "C28",
+      "row": 29,
+      "badges": [
+       19
+      ],
+      "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증"
+     }
+    ],
+    "from": [],
+    "added": [
+     "C06",
+     "C10",
+     "C28"
+    ]
+   },
+   {
+    "id": "W8",
+    "name": "개수·위치·색 세 축 벤치마크와 채점기 검증",
+    "hours_team": 34,
+    "core": true,
+    "order": 2,
+    "kind": "빌림",
+    "gap": false,
+    "why": "W7 의 결과를 재는 자. 채점기를 W6 합성 이미지로 먼저 검증한다. Isaac Sim 렌더는 채점기가 한 렌더러에만 맞춰졌는지 보는 짧은 확인이다.",
+    "competencies": [
+     {
+      "cid": "C13",
+      "row": 9,
+      "badges": [
+       6
+      ],
+      "name": "신규 벤치마크 구현"
+     },
+     {
+      "cid": "C28",
+      "row": 29,
+      "badges": [
+       19
+      ],
+      "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증"
+     },
+     {
+      "cid": "C19",
+      "row": 20,
+      "badges": [
+       13
+      ],
+      "name": "Isaac Sim"
+     },
+     {
+      "cid": "C20",
+      "row": 21,
+      "badges": [
+       13
+      ],
+      "name": "Omniverse"
+     }
+    ],
+    "from": [
+     {
+      "title": "FreedomIntelligence/BlenderLLM",
+      "url": "https://github.com/FreedomIntelligence/BlenderLLM",
+      "kind": "repo"
+     },
+     {
+      "title": "MuammerBay/isaac_so_arm101",
+      "url": "https://github.com/MuammerBay/isaac_so_arm101",
+      "kind": "repo"
+     }
+    ],
+    "added": [
+     "C28"
+    ]
+   },
+   {
+    "id": "W9",
+    "name": "체크포인트 자동 평가와 비교 화면",
+    "hours_team": 28,
+    "core": true,
+    "order": 1,
+    "kind": "빌림",
+    "gap": false,
+    "why": "W7 체크포인트가 생길 때마다 W8·FID·CLIP 점수를 자동으로 매겨, 레시피 차이를 한 화면에서 읽게 한다. 바탕의 처리 보고서 꼴을 잇는다.",
+    "competencies": [
+     {
+      "cid": "C14",
+      "row": 10,
+      "badges": [
+       6
+      ],
+      "name": "체크포인트 평가 자동화 파이프라인 개발"
+     },
+     {
+      "cid": "C15",
+      "row": 11,
+      "badges": [
+       6
+      ],
+      "name": "다축 지표 비교·분석 도구 개발"
+     },
+     {
+      "cid": "C28",
+      "row": 29,
+      "badges": [
+       19
+      ],
+      "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증"
+     }
+    ],
+    "from": [
+     {
+      "title": "MigoXLab/dingo",
+      "url": "https://github.com/MigoXLab/dingo",
+      "kind": "repo"
+     }
+    ],
+    "added": [
+     "C28"
+    ]
+   },
+   {
+    "id": "W10",
+    "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+    "hours_team": 24,
+    "core": true,
+    "order": 1,
+    "kind": "새로 더함",
+    "gap": false,
+    "why": "고리를 도는 방식의 기록. 해석 메모의 '다음' 칸이 W2·W4·W7 의 다음 작업 카드가 된다.",
+    "competencies": [
+     {
+      "cid": "C24",
+      "row": 24,
+      "badges": [
+       14
+      ],
+      "name": "짧은 주기의 피드백 기반 협업"
+     },
+     {
+      "cid": "C25",
+      "row": 25,
+      "badges": [
+       15
+      ],
+      "name": "진행 상황 및 사고 과정의 적극적 공유"
+     },
+     {
+      "cid": "C26",
+      "row": 26,
+      "badges": [
+       16
+      ],
+      "name": "연구·엔지니어링 인접 영역 자기주도 학습 태도"
+     },
+     {
+      "cid": "C27",
+      "row": 27,
+      "badges": [
+       17
+      ],
+      "name": "결과 해석 및 다음 방향성 의견 제시"
+     }
+    ],
+    "from": [],
+    "added": [
+     "C24",
+     "C25",
+     "C26",
+     "C27"
+    ]
+   }
+  ],
+  "cells": [
+   {
+    "cid": "C01",
+    "row": 12,
+    "badges": [
+     7
+    ],
+    "name": "이미지·비디오 생성 모델 동작 원리 이해",
+    "tier": "필수",
+    "was": "있음",
+    "level": "있음",
+    "by": "new",
+    "weak": true
+   },
+   {
+    "cid": "C02",
+    "row": 13,
+    "badges": [
+     8
+    ],
+    "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
+    "tier": "필수",
+    "was": "있음",
+    "level": "있음",
+    "by": "new",
+    "weak": true
+   },
+   {
+    "cid": "C03",
+    "row": 14,
+    "badges": [
+     9
+    ],
+    "name": "기본 데이터 처리 및 분석 독립 수행",
+    "tier": "필수",
+    "was": "있음",
+    "level": "있음",
+    "by": "base",
+    "weak": false
+   },
+   {
+    "cid": "C04",
+    "row": 15,
+    "badges": [
+     10
+    ],
+    "name": "대규모 데이터 처리 시 연산 병목 이해",
+    "tier": "필수",
+    "was": "있음",
+    "level": "있음",
+    "by": "base",
+    "weak": false
+   },
+   {
+    "cid": "C05",
+    "row": 16,
+    "badges": [
+     10
+    ],
+    "name": "대규모 데이터 처리 시 I/O 병목 이해",
+    "tier": "필수",
+    "was": "있음",
+    "level": "있음",
+    "by": "base",
+    "weak": false
+   },
+   {
+    "cid": "C06",
+    "row": 1,
+    "badges": [
+     1
+    ],
+    "name": "Diffusion 기반 학습 방법론 이해",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C07",
+    "row": 3,
+    "badges": [
+     3
+    ],
+    "name": "원시 이미지·비디오 아카이브에서 학습 데이터 추출",
+    "tier": "나머지",
+    "was": "있음",
+    "level": "있음",
+    "by": "base",
+    "weak": false
+   },
+   {
+    "cid": "C08",
+    "row": 4,
+    "badges": [
+     3
+    ],
+    "name": "다단계 품질 필터링 로직 설계",
+    "tier": "나머지",
+    "was": "있음",
+    "level": "있음",
+    "by": "base",
+    "weak": false
+   },
+   {
+    "cid": "C09",
+    "row": 5,
+    "badges": [
+     4
+    ],
+    "name": "VLM을 활용한 대규모 어노테이션 생성",
+    "tier": "나머지",
+    "was": "일부",
+    "level": "있음",
+    "by": 1,
+    "weak": false
+   },
+   {
+    "cid": "C10",
+    "row": 6,
+    "badges": [
+     4
+    ],
+    "name": "학습 결과에 기반한 데이터 레시피 개선",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C11",
+    "row": 7,
+    "badges": [
+     5
+    ],
+    "name": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": 2,
+    "weak": false
+   },
+   {
+    "cid": "C12",
+    "row": 8,
+    "badges": [
+     5
+    ],
+    "name": "합성 데이터 메타데이터 정제",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": 2,
+    "weak": false
+   },
+   {
+    "cid": "C13",
+    "row": 9,
+    "badges": [
+     6
+    ],
+    "name": "신규 벤치마크 구현",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": 3,
+    "weak": false
+   },
+   {
+    "cid": "C14",
+    "row": 10,
+    "badges": [
+     6
+    ],
+    "name": "체크포인트 평가 자동화 파이프라인 개발",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": 4,
+    "weak": false
+   },
+   {
+    "cid": "C15",
+    "row": 11,
+    "badges": [
+     6
+    ],
+    "name": "다축 지표 비교·분석 도구 개발",
+    "tier": "나머지",
+    "was": "일부",
+    "level": "있음",
+    "by": 4,
+    "weak": false
+   },
+   {
+    "cid": "C16",
+    "row": 17,
+    "badges": [
+     11
+    ],
+    "name": "10만 샘플 이상 규모의 데이터셋 설계·구축",
+    "tier": "우대",
+    "was": "있음",
+    "level": "있음",
+    "by": "base",
+    "weak": false
+   },
+   {
+    "cid": "C17",
+    "row": 18,
+    "badges": [
+     12
+    ],
+    "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝",
+    "tier": "우대",
+    "was": "없음",
+    "level": "있음",
+    "by": 1,
+    "weak": false
+   },
+   {
+    "cid": "C18",
+    "row": 19,
+    "badges": [
+     12
+    ],
+    "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝",
+    "tier": "우대",
+    "was": "없음",
+    "level": "있음",
+    "by": 1,
+    "weak": false
+   },
+   {
+    "cid": "C19",
+    "row": 20,
+    "badges": [
+     13
+    ],
+    "name": "Isaac Sim",
+    "tier": "우대",
+    "was": "없음",
+    "level": "일부",
+    "by": 3,
+    "weak": false
+   },
+   {
+    "cid": "C20",
+    "row": 21,
+    "badges": [
+     13
+    ],
+    "name": "Omniverse",
+    "tier": "우대",
+    "was": "없음",
+    "level": "일부",
+    "by": 3,
+    "weak": false
+   },
+   {
+    "cid": "C21",
+    "row": 22,
+    "badges": [
+     13
+    ],
+    "name": "Blender",
+    "tier": "우대",
+    "was": "없음",
+    "level": "있음",
+    "by": 2,
+    "weak": false
+   },
+   {
+    "cid": "C22",
+    "row": 23,
+    "badges": [
+     13
+    ],
+    "name": "Unreal Engine",
+    "tier": "우대",
+    "was": "없음",
+    "level": "없음",
+    "by": null,
+    "weak": false
+   },
+   {
+    "cid": "C23",
+    "row": 2,
+    "badges": [
+     2
+    ],
+    "name": "Hugging Face를 통한 모델·결과물 공개",
+    "tier": "나머지",
+    "was": "일부",
+    "level": "있음",
+    "by": "base",
+    "weak": false
+   },
+   {
+    "cid": "C24",
+    "row": 24,
+    "badges": [
+     14
+    ],
+    "name": "짧은 주기의 피드백 기반 협업",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C25",
+    "row": 25,
+    "badges": [
+     15
+    ],
+    "name": "진행 상황 및 사고 과정의 적극적 공유",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C26",
+    "row": 26,
+    "badges": [
+     16
+    ],
+    "name": "연구·엔지니어링 인접 영역 자기주도 학습 태도",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C27",
+    "row": 27,
+    "badges": [
+     17
+    ],
+    "name": "결과 해석 및 다음 방향성 의견 제시",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C28",
+    "row": 29,
+    "badges": [
+     19
+    ],
+    "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증",
+    "tier": "나머지",
+    "was": "없음",
+    "level": "있음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C29",
+    "row": 28,
+    "badges": [
+     18
+    ],
+    "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)",
+    "tier": "나머지",
+    "was": "있음",
+    "level": "일부",
+    "by": "base",
+    "weak": false
+   }
+  ],
+  "fills": [
+   {
+    "cid": "C01",
+    "row": 12,
+    "badges": [
+     7
+    ],
+    "name": "이미지·비디오 생성 모델 동작 원리 이해",
+    "tier": "필수",
+    "level": "있음",
+    "was": "있음",
+    "by": "new",
+    "weak": true
+   },
+   {
+    "cid": "C02",
+    "row": 13,
+    "badges": [
+     8
+    ],
+    "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
+    "tier": "필수",
+    "level": "있음",
+    "was": "있음",
+    "by": "new",
+    "weak": true
+   },
+   {
+    "cid": "C06",
+    "row": 1,
+    "badges": [
+     1
+    ],
+    "name": "Diffusion 기반 학습 방법론 이해",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C09",
+    "row": 5,
+    "badges": [
+     4
+    ],
+    "name": "VLM을 활용한 대규모 어노테이션 생성",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "일부",
+    "by": 1,
+    "weak": false
+   },
+   {
+    "cid": "C10",
+    "row": 6,
+    "badges": [
+     4
+    ],
+    "name": "학습 결과에 기반한 데이터 레시피 개선",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C11",
+    "row": 7,
+    "badges": [
+     5
+    ],
+    "name": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": 2,
+    "weak": false
+   },
+   {
+    "cid": "C12",
+    "row": 8,
+    "badges": [
+     5
+    ],
+    "name": "합성 데이터 메타데이터 정제",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": 2,
+    "weak": false
+   },
+   {
+    "cid": "C13",
+    "row": 9,
+    "badges": [
+     6
+    ],
+    "name": "신규 벤치마크 구현",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": 3,
+    "weak": false
+   },
+   {
+    "cid": "C14",
+    "row": 10,
+    "badges": [
+     6
+    ],
+    "name": "체크포인트 평가 자동화 파이프라인 개발",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": 4,
+    "weak": false
+   },
+   {
+    "cid": "C15",
+    "row": 11,
+    "badges": [
+     6
+    ],
+    "name": "다축 지표 비교·분석 도구 개발",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "일부",
+    "by": 4,
+    "weak": false
+   },
+   {
+    "cid": "C17",
+    "row": 18,
+    "badges": [
+     12
+    ],
+    "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝",
+    "tier": "우대",
+    "level": "있음",
+    "was": "없음",
+    "by": 1,
+    "weak": false
+   },
+   {
+    "cid": "C18",
+    "row": 19,
+    "badges": [
+     12
+    ],
+    "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝",
+    "tier": "우대",
+    "level": "있음",
+    "was": "없음",
+    "by": 1,
+    "weak": false
+   },
+   {
+    "cid": "C19",
+    "row": 20,
+    "badges": [
+     13
+    ],
+    "name": "Isaac Sim",
+    "tier": "우대",
+    "level": "일부",
+    "was": "없음",
+    "by": 3,
+    "weak": false
+   },
+   {
+    "cid": "C20",
+    "row": 21,
+    "badges": [
+     13
+    ],
+    "name": "Omniverse",
+    "tier": "우대",
+    "level": "일부",
+    "was": "없음",
+    "by": 3,
+    "weak": false
+   },
+   {
+    "cid": "C21",
+    "row": 22,
+    "badges": [
+     13
+    ],
+    "name": "Blender",
+    "tier": "우대",
+    "level": "있음",
+    "was": "없음",
+    "by": 2,
+    "weak": false
+   },
+   {
+    "cid": "C23",
+    "row": 2,
+    "badges": [
+     2
+    ],
+    "name": "Hugging Face를 통한 모델·결과물 공개",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "일부",
+    "by": "base",
+    "weak": false
+   },
+   {
+    "cid": "C24",
+    "row": 24,
+    "badges": [
+     14
+    ],
+    "name": "짧은 주기의 피드백 기반 협업",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C25",
+    "row": 25,
+    "badges": [
+     15
+    ],
+    "name": "진행 상황 및 사고 과정의 적극적 공유",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C26",
+    "row": 26,
+    "badges": [
+     16
+    ],
+    "name": "연구·엔지니어링 인접 영역 자기주도 학습 태도",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C27",
+    "row": 27,
+    "badges": [
+     17
+    ],
+    "name": "결과 해석 및 다음 방향성 의견 제시",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C28",
+    "row": 29,
+    "badges": [
+     19
+    ],
+    "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증",
+    "tier": "나머지",
+    "level": "있음",
+    "was": "없음",
+    "by": "new",
+    "weak": false
+   },
+   {
+    "cid": "C29",
+    "row": 28,
+    "badges": [
+     18
+    ],
+    "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)",
+    "tier": "나머지",
+    "level": "일부",
+    "was": "있음",
+    "by": "base",
+    "weak": false
+   }
+  ],
+  "uncovered": [
+   {
+    "cid": "C22",
+    "row": 23,
+    "badges": [
+     13
+    ],
+    "name": "Unreal Engine",
+    "tier": "우대",
+    "why": "억지로 넣지 않음. 세 번째 렌더러는 채점기 검증에 새 정보를 거의 더하지 않고, 입력 네 프로젝트 어디에도 없다.",
+    "why_ko": "일부러 넣지 않았어요. 세 번째 렌더러는 채점기 검증에 새로 알려 주는 것이 거의 없고, 살펴본 네 프로젝트에도 없어요."
+   }
+  ],
+  "before": {
+   "있음": {
+    "필수": 5,
+    "우대": 1,
+    "나머지": 3
+   },
+   "일부": {
+    "필수": 0,
+    "우대": 0,
+    "나머지": 3
+   }
+  },
+  "after": {
+   "있음": {
+    "필수": 5,
+    "우대": 4,
+    "나머지": 16
+   },
+   "일부": {
+    "필수": 0,
+    "우대": 2,
+    "나머지": 1
+   }
+  },
+  "base_checked": 7,
+  "doubted": [
+   {
+    "cid": "C01",
+    "row": 12,
+    "badges": [
+     7
+    ],
+    "name": "이미지·비디오 생성 모델 동작 원리 이해",
+    "why": "구절이 생성 모델의 동작 원리를 말하지 않는다. 바탕은 데이터 파이프라인이고 생성 모델을 다루지 않는다.",
+    "why_ko": "근거 구절이 생성 모델의 원리를 말하지 않아요. 바탕은 데이터를 만드는 저장소예요."
+   },
+   {
+    "cid": "C02",
+    "row": 13,
+    "badges": [
+     8
+    ],
+    "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
+    "why": "데이터 구축은 있지만 학습과 평가가 없다. 사이클의 첫 단계만 있다.",
+    "why_ko": "데이터 만들기는 있지만 학습과 평가가 없어요. 사이클의 첫 단계만 있어요."
+   }
+  ],
+  "doubts": [
+   {
+    "name": "개수·위치·색 세 축 벤치마크와 채점기 검증",
+    "part": "Isaac Sim 으로 한 번 더 렌더",
+    "why": "가장 억지에 가까운 부분이다. 채점기 검증이라는 쓰임은 있지만, 우대 도구를 덮으려는 마음이 먼저였다. RTX GPU 를 못 구하면 바로 뺀다(C19, C20 은 없음).",
+    "part_ko": "Isaac Sim 렌더",
+    "why_ko": "채점기 확인에 쓰지만, 우대 도구를 채우려는 쪽에 더 가까워요. GPU를 못 구하면 바로 빼요."
+   },
+   {
+    "name": "일하는 방식 기록: 작업 카드, 일지, 담당 교대, 해석 메모",
+    "part": "일하는 방식 기록",
+    "why": "기술 목표의 일부는 아니다. 다만 해석 메모가 다음 작업 카드로 이어져 고리를 도는 방식 자체를 남기므로 남겼다. 쓰는 시간만 셌다.",
+    "part_ko": "일하는 방식 기록",
+    "why_ko": "기술 목표는 아니에요. 메모가 다음 작업으로 이어져서 남겼고, 쓰는 시간만 셌어요."
+   },
+   {
+    "name": "처리 속도와 병목 재기",
+    "part": "병목 재기",
+    "why": "덮는 역량 셋 가운데 둘이 지식이라 넘겨도 된다. W5 의 키우기 계획에 직접 쓰이므로 억지는 아니라고 봤다.",
+    "part_ko": "병목 재기",
+    "why_ko": "다루는 역량 셋 중 둘은 지식이라 꼭 필요하진 않아요. 10만 장으로 키울 때 바로 쓰여서 남겼어요."
+   }
+  ],
+  "hours": {
+   "core": 300,
+   "extension": 0,
+   "budget": 336
+  }
+ },
+ "names": {
+  "pool": [
+   {
+    "title": "AutoGUI: Scaling GUI Grounding with Automatic Functionality Annotations from LLMs",
+    "kind": "paper",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "Scalable Vision Language Model Training via High Quality Data Curation",
+    "kind": "paper",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "World to Code: Multi-modal Data Generation via Self-Instructed Compositional Captioning and Filtering",
+    "kind": "paper",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "Generative Zoo",
+    "kind": "paper",
+    "short": true,
+    "rank": 64
+   },
+   {
+    "title": "Mosaic3D: Foundation Dataset and Model for Open-Vocabulary 3D Segmentation",
+    "kind": "paper",
+    "short": true,
+    "rank": 27
+   },
+   {
+    "title": "Font-Agent: Enhancing Font Understanding with Large Language Models",
+    "kind": "paper",
+    "short": true,
+    "rank": 46
+   },
+   {
+    "title": "SpatialVLM: Endowing Vision-Language Models with Spatial Reasoning Capabilities",
+    "kind": "paper",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "Somnusochi/VLM-AutoYOLO",
+    "kind": "repo",
+    "short": true,
+    "rank": 10
+   },
+   {
+    "title": "TRoVE: Transforming Road Scene Datasets into Photorealistic Virtual Environments",
+    "kind": "paper",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "sparkfish/augraphy",
+    "kind": "repo",
+    "short": true,
+    "rank": 33
+   },
+   {
+    "title": "bespokelabsai/curator",
+    "kind": "repo",
+    "short": true,
+    "rank": 32
+   },
+   {
+    "title": "databrickslabs/dbldatagen",
+    "kind": "repo",
+    "short": true,
+    "rank": 15
+   },
+   {
+    "title": "ROVI: A VLM-LLM Re-Captioned Dataset for Open-Vocabulary Instance-Grounded Text-to-Image Generation",
+    "kind": "paper",
+    "short": true,
+    "rank": 23
+   },
+   {
+    "title": "Learning by Correction: Efficient Tuning Task for Zero-Shot Generative Vision-Language Reasoning",
+    "kind": "paper",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "A Picture is Worth More Than 77 Text Tokens: Evaluating CLIP-Style Models on Dense Captions",
+    "kind": "paper",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "ModelTC/LightX2V",
+    "kind": "repo",
+    "short": true,
+    "rank": 36
+   },
+   {
+    "title": "Learning the Visualness of Text Using Large Vision-Language Models",
+    "kind": "paper",
+    "short": true,
+    "rank": 60
+   },
+   {
+    "title": "magpie-align/magpie",
+    "kind": "repo",
+    "short": true,
+    "rank": 50
+   },
+   {
+    "title": "Goku: Flow Based Video Generative Foundation Models",
+    "kind": "paper",
+    "short": true,
+    "rank": 6
+   },
+   {
+    "title": "ADIEE: Automatic Dataset Creation and Scorer for Instruction-Guided Image Editing Evaluation",
+    "kind": "paper",
+    "short": true,
+    "rank": 4
+   },
+   {
+    "title": "modelscope/evalscope",
+    "kind": "repo",
+    "short": true,
+    "rank": 11
+   },
+   {
+    "title": "vlm-run/vlmrun-cookbook",
+    "kind": "repo",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "explosion/prodigy-recipes",
+    "kind": "repo",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "georgecazenavette/mtt-distillation",
+    "kind": "repo",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "gszfwsb/ncfm",
+    "kind": "repo",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "kodcode-ai/kodcode",
+    "kind": "repo",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "datadreamer-dev/datadreamer",
+    "kind": "repo",
+    "short": false,
+    "rank": null
+   },
+   {
+    "title": "sdv-dev/sdv",
+    "kind": "repo",
+    "short": false,
+    "rank": null
+   }
+  ],
+  "top": [
+   {
+    "title": "duoan/mega-data-factory",
+    "kind": "repo",
+    "rank": 1
+   },
+   {
+    "title": "datajuicer/data-juicer",
+    "kind": "repo",
+    "rank": 2
+   },
+   {
+    "title": "CI-VID: A Coherent Interleaved Text-Video Dataset",
+    "kind": "paper",
+    "rank": 3
+   },
+   {
+    "title": "ADIEE: Automatic Dataset Creation and Scorer for Instruction-Guided Image Editing Evaluation",
+    "kind": "paper",
+    "rank": 4
+   },
+   {
+    "title": "NVIDIA-NeMo/Curator",
+    "kind": "repo",
+    "rank": 5
+   }
+  ],
+  "pool_from_rerank": true
+ },
+ "intro": {
+  "en": "A reproducible, high-throughput, distributed open-source pipeline for processing web-scale (hundreds of billions) multimodal datasets.",
+  "ko": "수천억 건 규모의 멀티모달 학습 데이터를 처리하는 분산 오픈소스 파이프라인이에요. 점수 매기기·중복 제거를 Ray·Rust·GPU로 돌려요.",
+  "how": "en 은 저장소 README 첫 소개 문장 그대로, ko 는 그 문장을 사람이 옮긴 것 (11/21)"
+ }
+}

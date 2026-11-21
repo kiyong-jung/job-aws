@@ -1,0 +1,15 @@
+{
+ "questions": 5,
+ "bank": 5,
+ "companies": [
+  "Groq",
+  "Meta",
+  "OpenAI"
+ ],
+ "uncovered": [
+  "Isaac Sim",
+  "Omniverse",
+  "Unreal Engine"
+ ],
+ "slides": 7
+}

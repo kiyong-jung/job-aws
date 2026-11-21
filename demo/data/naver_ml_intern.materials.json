@@ -1,0 +1,6353 @@
+{
+ "case": "naver_ml_intern",
+ "source": [
+  "../기용/docs/naver_ml_intern.교육자료.json",
+  "data/banks/materials.csv",
+  "demo/data 의 1단계 번호 (pipeline.plan)"
+ ],
+ "made_by": "에이전트가 손으로 판단 (모델 호출 없음). 항목 묶기, 깊이, 자료 등급, 크기는 판단값이고 숫자는 build.py 가 셈",
+ "budget": {
+  "hours": 84,
+  "per": "한 사람, 12주",
+  "unit_hours": 3.0,
+  "unit_how": "개념마다 같은 시간 가정은 84 ÷ 28 = 3.0시간",
+  "length_how": "단어 수 ÷ 분당 238단어(Brysbaert 2019 영어 논픽션 묵독) × 2(내 가정: 읽고 따라 해 보기)"
+ },
+ "counts": {
+  "bank": 9723,
+  "items": 28,
+  "big": 17,
+  "small": 11,
+  "from": "배울 것 역량 10 + 선수 개념 36 = 46 (겹치는 선수 개념 5개는 배울 것 항목에 합침)",
+  "with_material": 23,
+  "with_teaching_material": 22,
+  "big_without_material": [
+   "L05",
+   "L06",
+   "L18",
+   "L21"
+  ],
+  "small_without_material": [
+   "L28"
+  ],
+  "best_fit": {
+   "맞음": 10,
+   "일부": 6,
+   "없음": 5,
+   "비슷함": 6,
+   "논문뿐": 1
+  }
+ },
+ "plan": {
+  "chosen": "D",
+  "edu_ids": [
+   "L01",
+   "L02",
+   "L03",
+   "L04",
+   "L05",
+   "L06",
+   "L07",
+   "L08",
+   "L10",
+   "L12",
+   "L14",
+   "L16",
+   "L17",
+   "L18",
+   "L19",
+   "L21",
+   "L23"
+  ],
+  "inside_project_ids": [
+   "L09",
+   "L11",
+   "L13",
+   "L15",
+   "L20",
+   "L22",
+   "L24",
+   "L25",
+   "L26",
+   "L27",
+   "L28"
+  ],
+  "hours_at_unit": 51.0,
+  "share_of_84": "61%",
+  "known_hours": 10.8,
+  "known_items": 7,
+  "on_time_big": "16/17",
+  "reasons": [
+   "큰 항목 17개만 교육자료로 공부한다. 3시간씩 잡으면 51시간으로, 84시간의 61%다",
+   "작은 항목 11개는 그 항목을 쓰는 작업 묶음 안에서 1~2시간씩 배운다",
+   "1~2주에 공부만 하면 큰 항목 17개 중 16개가 프로젝트에서 처음 필요한 주 전에 끝난다 (L21 하나가 한 주 늦다)",
+   "남는 33시간(84 − 51)은 작은 항목과 복습에 쓸 수 있다"
+  ]
+ },
+ "plans": {
+  "A": {
+   "note": "역량을 한 칸에만. 교육 자료는 배울 것 10개(이 글의 항목 5개)만",
+   "edu_items": 5,
+   "project_items": 0,
+   "missing_items": 23,
+   "hours_at_unit": 15.0,
+   "hours_vs_84": "18%",
+   "known_hours": 6.9,
+   "week1_items_delivered": "3/10"
+  },
+  "B": {
+   "note": "첫 넘김 = 공고에서 보이는 항목, 둘째 넘김 = 프로젝트를 봐야 보이는 항목과 바뀐 것",
+   "edu_items": 28,
+   "project_items": 0,
+   "missing_items": 0,
+   "hours_at_unit": 84.0,
+   "hours_vs_84": "100%",
+   "known_hours": 12.3,
+   "week1_items_delivered": "10/10"
+  },
+  "C": {
+   "note": "프로젝트를 정한 뒤 한 번에 넘김",
+   "edu_items": 28,
+   "project_items": 0,
+   "missing_items": 0,
+   "hours_at_unit": 84.0,
+   "hours_vs_84": "100%",
+   "known_hours": 12.3,
+   "week1_items_delivered": "10/10"
+  },
+  "D": {
+   "note": "B 의 두 번 넘기기에, 작은 항목은 작업 묶음 안에서 하면서 배우기",
+   "edu_items": 17,
+   "project_items": 11,
+   "missing_items": 0,
+   "hours_at_unit": 51.0,
+   "hours_vs_84": "61%",
+   "known_hours": 10.8,
+   "week1_items_delivered": "10/10"
+  }
+ },
+ "running_total": [
+  {
+   "id": "L08",
+   "short": "기초 통계와 점수 흔들림",
+   "hours": 3.0,
+   "total": 3.0,
+   "known_hours": null,
+   "known_total": 0.0
+  },
+  {
+   "id": "L07",
+   "short": "pandas 표와 그림",
+   "hours": 3.0,
+   "total": 6.0,
+   "known_hours": 2.79,
+   "known_total": 2.79
+  },
+  {
+   "id": "L03",
+   "short": "ML 개발 사이클",
+   "hours": 3.0,
+   "total": 9.0,
+   "known_hours": 4.5,
+   "known_total": 7.29
+  },
+  {
+   "id": "L04",
+   "short": "연산·읽고 쓰기 병목 재기",
+   "hours": 3.0,
+   "total": 12.0,
+   "known_hours": 1.15,
+   "known_total": 8.44
+  },
+  {
+   "id": "L10",
+   "short": "큰 데이터 나눠 저장·돌리기",
+   "hours": 3.0,
+   "total": 15.0,
+   "known_hours": null,
+   "known_total": 8.44
+  },
+  {
+   "id": "L01",
+   "short": "생성 모델 원리",
+   "hours": 3.0,
+   "total": 18.0,
+   "known_hours": 1.28,
+   "known_total": 9.72
+  },
+  {
+   "id": "L02",
+   "short": "작은 생성 모델 학습 코드",
+   "hours": 3.0,
+   "total": 21.0,
+   "known_hours": null,
+   "known_total": 9.72
+  },
+  {
+   "id": "L14",
+   "short": "VLM 구조와 돌리기",
+   "hours": 3.0,
+   "total": 24.0,
+   "known_hours": 0.43,
+   "known_total": 10.15
+  },
+  {
+   "id": "L16",
+   "short": "프롬프트 설계 기초",
+   "hours": 3.0,
+   "total": 27.0,
+   "known_hours": null,
+   "known_total": 10.15
+  },
+  {
+   "id": "L17",
+   "short": "AI를 채점자로 쓰기",
+   "hours": 3.0,
+   "total": 30.0,
+   "known_hours": 0.44,
+   "known_total": 10.59
+  },
+  {
+   "id": "L18",
+   "short": "채점기 검증하기",
+   "hours": 3.0,
+   "total": 33.0,
+   "known_hours": null,
+   "known_total": 10.59
+  },
+  {
+   "id": "L12",
+   "short": "여러 단계로 데이터 거르기",
+   "hours": 3.0,
+   "total": 36.0,
+   "known_hours": null,
+   "known_total": 10.59
+  },
+  {
+   "id": "L06",
+   "short": "Hugging Face에 올리기",
+   "hours": 3.0,
+   "total": 39.0,
+   "known_hours": null,
+   "known_total": 10.59
+  },
+  {
+   "id": "L19",
+   "short": "캡션 품질 재기",
+   "hours": 3.0,
+   "total": 42.0,
+   "known_hours": null,
+   "known_total": 10.59
+  },
+  {
+   "id": "L21",
+   "short": "생성 이미지 평가 지표",
+   "hours": 3.0,
+   "total": 45.0,
+   "known_hours": null,
+   "known_total": 10.59
+  },
+  {
+   "id": "L23",
+   "short": "데이터 레시피 비교 실험",
+   "hours": 3.0,
+   "total": 48.0,
+   "known_hours": 0.2,
+   "known_total": 10.79
+  },
+  {
+   "id": "L05",
+   "short": "Blender 기초와 스크립트",
+   "hours": 3.0,
+   "total": 51.0,
+   "known_hours": null,
+   "known_total": 10.79
+  }
+ ],
+ "all_items_equal_time": [
+  {
+   "id": "L08",
+   "total": 3.0
+  },
+  {
+   "id": "L07",
+   "total": 6.0
+  },
+  {
+   "id": "L03",
+   "total": 9.0
+  },
+  {
+   "id": "L04",
+   "total": 12.0
+  },
+  {
+   "id": "L10",
+   "total": 15.0
+  },
+  {
+   "id": "L01",
+   "total": 18.0
+  },
+  {
+   "id": "L02",
+   "total": 21.0
+  },
+  {
+   "id": "L09",
+   "total": 24.0
+  },
+  {
+   "id": "L27",
+   "total": 27.0
+  },
+  {
+   "id": "L28",
+   "total": 30.0
+  },
+  {
+   "id": "L14",
+   "total": 33.0
+  },
+  {
+   "id": "L16",
+   "total": 36.0
+  },
+  {
+   "id": "L17",
+   "total": 39.0
+  },
+  {
+   "id": "L18",
+   "total": 42.0
+  },
+  {
+   "id": "L11",
+   "total": 45.0
+  },
+  {
+   "id": "L12",
+   "total": 48.0
+  },
+  {
+   "id": "L13",
+   "total": 51.0
+  },
+  {
+   "id": "L06",
+   "total": 54.0
+  },
+  {
+   "id": "L19",
+   "total": 57.0
+  },
+  {
+   "id": "L21",
+   "total": 60.0
+  },
+  {
+   "id": "L15",
+   "total": 63.0
+  },
+  {
+   "id": "L20",
+   "total": 66.0
+  },
+  {
+   "id": "L23",
+   "total": 69.0
+  },
+  {
+   "id": "L05",
+   "total": 72.0
+  },
+  {
+   "id": "L24",
+   "total": 75.0
+  },
+  {
+   "id": "L25",
+   "total": 78.0
+  },
+  {
+   "id": "L22",
+   "total": 81.0
+  },
+  {
+   "id": "L26",
+   "total": 84.0
+  }
+ ],
+ "items": [
+  {
+   "id": "L01",
+   "name": "생성 모델의 동작 원리 (diffusion, flow matching)",
+   "short": "생성 모델 원리",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "S15 '동작 원리에 대한 기본적인 이해도'. S04 는 부서 소개라 원리 수준까지만",
+   "competencies": [
+    {
+     "cid": "C01",
+     "row": 12,
+     "badges": [
+      7
+     ],
+     "name": "이미지·비디오 생성 모델 동작 원리 이해"
+    },
+    {
+     "cid": "C06",
+     "row": 1,
+     "badges": [
+      1
+     ],
+     "name": "Diffusion 기반 학습 방법론 이해"
+    }
+   ],
+   "concepts": [],
+   "packages": [
+    "W4",
+    "W5"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": 1.28,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "M486c527c54",
+     "role": "주",
+     "title": "What are Diffusion Models?",
+     "kind": "글",
+     "site": "lilianweng.github.io",
+     "url": "https://lilianweng.github.io/lil-log/2021/07/11/diffusion-models.html",
+     "hours": 1.28,
+     "hours_how": "9,169단어 ÷ 분당 238단어 × 2",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "Lilian Weng, What are Diffusion Models?. 원리와 수식"
+    },
+    {
+     "id": "Mfc195cef8c",
+     "role": "보조",
+     "title": "Diffusion Probabilistic Models",
+     "kind": "영상",
+     "site": "youtube.com",
+     "url": "https://www.youtube.com/watch?v=XCUlnHP1TNM",
+     "hours": 1.03,
+     "hours_how": "영상 62분 (다른 에이전트의 materials_minutes_sample.jsonl, 내가 확인 안 함)",
+     "fit": "맞음",
+     "checked": "안 엶",
+     "note": "MIT 6.S192 강의 영상, 원리"
+    },
+    {
+     "id": "Mff09bea021",
+     "role": "보조",
+     "title": "Denoising Diffusion-based Generative Modeling: Foundations and Applications",
+     "kind": "글",
+     "site": "cvpr2022-tutorial-diffusion-models.github.io",
+     "url": "https://cvpr2022-tutorial-diffusion-models.github.io/",
+     "hours": 3.67,
+     "hours_how": "페이지의 일정 8:30~12:10",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "CVPR 2022 튜토리얼. 페이지에 8:30~12:10"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다 · 설명할 수 있어야 한다 · 작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L02",
+   "name": "작은 글→이미지 모델을 처음부터 학습하는 코드 (flow matching 학습 루프)",
+   "short": "작은 생성 모델 학습 코드",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "공고 말은 S04 'Diffusion 기반'. W4 가 이 코드를 쓴다. C06·C01 과 겹쳐 그 범위를 넓힌다",
+   "competencies": [
+    {
+     "cid": "C10",
+     "row": 6,
+     "badges": [
+      4
+     ],
+     "name": "학습 결과에 기반한 데이터 레시피 개선"
+    }
+   ],
+   "concepts": [
+    "K18"
+   ],
+   "packages": [
+    "W4",
+    "W7"
+   ],
+   "origin": "프로젝트를 봐야 보임",
+   "needed_week": 3,
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "M555a9dd2d0",
+     "role": "주",
+     "title": "MIT 6.S184 Generative AI with Stochastic Differential Equations: Flow Matching and Diffusion Models",
+     "kind": "대학 강의",
+     "site": "diffusion.csail.mit.edu",
+     "url": "https://diffusion.csail.mit.edu/",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "MIT 6.S184 2026. 강의 6개(1, 2, 3-A, 3-B, 4, 5), 실습 3개. 실습이 flow matching 모델을 처음부터 만든다. 강의 길이는 페이지에 없음"
+    },
+    {
+     "id": "M9275c00746",
+     "role": "보조",
+     "title": "The Annotated Diffusion Model",
+     "kind": "글",
+     "site": "huggingface.co",
+     "url": "https://huggingface.co/blog/annotated-diffusion",
+     "hours": 1.11,
+     "hours_how": "7,960단어 ÷ 분당 238단어 × 2",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "HF The Annotated Diffusion Model. DDPM 코드 따라 치기"
+    }
+   ],
+   "why": "작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L03",
+   "name": "ML 개발 사이클 (데이터 구축 → 학습 → 평가)",
+   "short": "ML 개발 사이클",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "S16 '이해도'",
+   "competencies": [
+    {
+     "cid": "C02",
+     "row": 13,
+     "badges": [
+      8
+     ],
+     "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해"
+    }
+   ],
+   "concepts": [],
+   "packages": [
+    "W4",
+    "W1",
+    "W5",
+    "W7"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "done_week": 1,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": 4.5,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "M3a0c3316a4",
+     "role": "주",
+     "title": "Stanford CS329S Machine Learning Systems Design",
+     "kind": "대학 강의",
+     "site": "stanford-cs329s.github.io",
+     "url": "https://stanford-cs329s.github.io/",
+     "hours": 4.5,
+     "hours_how": "강의 3회 × 90분 (syllabus 의 수업 시간)",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "Stanford CS329S. 강의 셋(Training Data, Model selection·development·training, Offline evaluation)만. 수업은 회당 90분(3:15~4:45). 강의 노트로 공부"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다 · 설명할 수 있어야 한다 · 작업 묶음 4개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L04",
+   "name": "연산 병목과 읽고 쓰기 병목 (재는 법 포함)",
+   "short": "연산·읽고 쓰기 병목 재기",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "S18 '연산 및 I/O 병목에 대한 이해도'",
+   "competencies": [
+    {
+     "cid": "C04",
+     "row": 15,
+     "badges": [
+      10
+     ],
+     "name": "대규모 데이터 처리 시 연산 병목 이해"
+    },
+    {
+     "cid": "C05",
+     "row": 16,
+     "badges": [
+      10
+     ],
+     "name": "대규모 데이터 처리 시 I/O 병목 이해"
+    },
+    {
+     "cid": "C08",
+     "row": 4,
+     "badges": [
+      3
+     ],
+     "name": "다단계 품질 필터링 로직 설계"
+    },
+    {
+     "cid": "C29",
+     "row": 28,
+     "badges": [
+      18
+     ],
+     "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)"
+    }
+   ],
+   "concepts": [
+    "K37"
+   ],
+   "packages": [
+    "W1",
+    "W2",
+    "W3"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "done_week": 1,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": 1.15,
+   "best_fit": "일부",
+   "materials": [
+    {
+     "id": "M48320239d2",
+     "role": "주",
+     "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+     "kind": "기술 블로그",
+     "site": "huggingface.co",
+     "url": "https://huggingface.co/blog/torch-profiler",
+     "hours": 1.15,
+     "hours_how": "8,180단어 ÷ 분당 238단어 × 2",
+     "fit": "일부",
+     "checked": "열어 봄",
+     "note": "HF Profiling in PyTorch Part 1. 연산 쪽은 맞다. I/O 병목은 거의 없다"
+    }
+   ],
+   "why": "공고의 역량에서 바로 왔다 · 설명할 수 있어야 한다 · 작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L05",
+   "name": "Blender 기초와 파이썬 스크립팅 (3D 장면, 카메라·조명·렌더)",
+   "short": "Blender 기초와 스크립트",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S21 '사용 경험'. 넷 가운데 하나면 되어 Isaac Sim(C19), Omniverse(C20), Unreal(C22)은 이름만 안다",
+   "competencies": [
+    {
+     "cid": "C11",
+     "row": 7,
+     "badges": [
+      5
+     ],
+     "name": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축"
+    },
+    {
+     "cid": "C21",
+     "row": 22,
+     "badges": [
+      13
+     ],
+     "name": "Blender"
+    }
+   ],
+   "concepts": [
+    "K26",
+    "K28"
+   ],
+   "packages": [
+    "W6"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 8,
+   "done_week": 7,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "없음",
+   "materials": [],
+   "why": "공고의 역량에서 바로 왔다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L06",
+   "name": "Hugging Face 에 데이터셋·결과 올리기와 데이터셋 설명서",
+   "short": "Hugging Face에 올리기",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S05 는 부서 소개라 경험을 묻지 않는다. S19 데이터셋 구축 경험의 결과물로 올린다",
+   "competencies": [
+    {
+     "cid": "C16",
+     "row": 17,
+     "badges": [
+      11
+     ],
+     "name": "10만 샘플 이상 규모의 데이터셋 설계·구축"
+    },
+    {
+     "cid": "C23",
+     "row": 2,
+     "badges": [
+      2
+     ],
+     "name": "Hugging Face를 통한 모델·결과물 공개"
+    }
+   ],
+   "concepts": [
+    "K38",
+    "K34"
+   ],
+   "packages": [
+    "W5",
+    "W3",
+    "W9"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 5,
+   "done_week": 4,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "없음",
+   "materials": [],
+   "why": "공고의 역량에서 바로 왔다 · 작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L07",
+   "name": "pandas 로 표 다루기와 matplotlib 그림",
+   "short": "pandas 표와 그림",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S17 '독립적으로 수행'",
+   "competencies": [
+    {
+     "cid": "C03",
+     "row": 14,
+     "badges": [
+      9
+     ],
+     "name": "기본 데이터 처리 및 분석 독립 수행"
+    },
+    {
+     "cid": "C15",
+     "row": 11,
+     "badges": [
+      6
+     ],
+     "name": "다축 지표 비교·분석 도구 개발"
+    }
+   ],
+   "concepts": [
+    "K01",
+    "K02"
+   ],
+   "packages": [
+    "W1",
+    "W2",
+    "W5",
+    "W3",
+    "W10"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "done_week": 1,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": 2.79,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "Mdd410ed001",
+     "role": "주",
+     "title": "Python Data Science Handbook",
+     "kind": "글",
+     "site": "jakevdp.github.io",
+     "url": "https://jakevdp.github.io/PythonDataScienceHandbook/",
+     "hours": 2.79,
+     "hours_how": "19,950단어 ÷ 분당 238단어 × 2",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "Python Data Science Handbook 3.01~3.04, 3.07, 3.08, 4.01~4.03, 4.05 열 절만"
+    }
+   ],
+   "why": "작업 묶음 5개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L08",
+   "name": "기초 통계와 점수 흔들림 읽기 (분산, 신뢰구간, 부트스트랩)",
+   "short": "기초 통계와 점수 흔들림",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "S28 '정량적으로 해석하고 검증', S25 결과 해석",
+   "competencies": [
+    {
+     "cid": "C03",
+     "row": 14,
+     "badges": [
+      9
+     ],
+     "name": "기본 데이터 처리 및 분석 독립 수행"
+    },
+    {
+     "cid": "C27",
+     "row": 27,
+     "badges": [
+      17
+     ],
+     "name": "결과 해석 및 다음 방향성 의견 제시"
+    },
+    {
+     "cid": "C28",
+     "row": 29,
+     "badges": [
+      19
+     ],
+     "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증"
+    }
+   ],
+   "concepts": [
+    "K43",
+    "K24"
+   ],
+   "packages": [
+    "W8",
+    "W1",
+    "W2",
+    "W5",
+    "W3",
+    "W7"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "done_week": 1,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "M80ae229567",
+     "role": "주",
+     "title": "Seeing Theory",
+     "kind": "글",
+     "site": "seeing-theory.brown.edu",
+     "url": "https://seeing-theory.brown.edu/",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "Seeing Theory. 1·3·4장 (기댓값·분산, 분포, 점추정·구간추정·부트스트랩). 대화형이라 길이 모름"
+    },
+    {
+     "id": "M8205e8d578",
+     "role": "보조",
+     "title": "Interpreting A/B Test Results: False Positives and Statistical Significance",
+     "kind": "글",
+     "site": "netflixtechblog.com",
+     "url": "https://netflixtechblog.com/interpreting-a-b-test-results-false-positives-and-statistical-significance-c1522d0db27a",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "비슷함",
+     "checked": "확인 못 함 (오류 HTTPError: HTTP Error 403: Forbidden)",
+     "note": "Netflix A/B 시험 결과 읽기. 온라인 실험 쪽"
+    }
+   ],
+   "why": "설명할 수 있어야 한다 · 작업 묶음 5개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L09",
+   "name": "영상에서 프레임 뽑기 (디코딩, 장면 전환 찾기, 장면마다 대표 프레임)",
+   "short": "영상에서 프레임 뽑기",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S09 '원시 이미지·비디오 아카이브에 기반한 학습 데이터 추출'",
+   "competencies": [
+    {
+     "cid": "C07",
+     "row": 3,
+     "badges": [
+      3
+     ],
+     "name": "원시 이미지·비디오 아카이브에서 학습 데이터 추출"
+    }
+   ],
+   "concepts": [
+    "K03",
+    "K04",
+    "K05"
+   ],
+   "packages": [
+    "W1"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": 0.14,
+   "best_fit": "일부",
+   "materials": [
+    {
+     "id": "M13d0a4b2b6",
+     "role": "주",
+     "title": "PySceneDetect",
+     "kind": "저장소",
+     "site": "github.com",
+     "url": "https://github.com/Breakthrough/PySceneDetect",
+     "hours": 0.14,
+     "hours_how": "1,008단어 ÷ 분당 238단어 × 2",
+     "fit": "일부",
+     "checked": "열어 봄",
+     "note": "PySceneDetect. 장면 전환은 맞다. save-images 가 장면마다 프레임 몇 장을 저장해 대표 프레임 일부. 디코딩(ffmpeg) 자체는 없다. README 만 쟀고 문서 전체 길이는 모름"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W1 한 묶음에서만 쓴다. 그래서 W1 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L10",
+   "name": "큰 데이터를 묶음 파일(샤드)로 저장하고 나눠 돌리기, 끊긴 곳부터 다시",
+   "short": "큰 데이터 나눠 저장·돌리기",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S07 '대규모', S19 10만 샘플, S26 GPU 클러스터로 처리",
+   "competencies": [
+    {
+     "cid": "C07",
+     "row": 3,
+     "badges": [
+      3
+     ],
+     "name": "원시 이미지·비디오 아카이브에서 학습 데이터 추출"
+    },
+    {
+     "cid": "C09",
+     "row": 5,
+     "badges": [
+      4
+     ],
+     "name": "VLM을 활용한 대규모 어노테이션 생성"
+    },
+    {
+     "cid": "C16",
+     "row": 17,
+     "badges": [
+      11
+     ],
+     "name": "10만 샘플 이상 규모의 데이터셋 설계·구축"
+    },
+    {
+     "cid": "C29",
+     "row": 28,
+     "badges": [
+      18
+     ],
+     "name": "대규모 이미지·비디오 데이터 처리(GPU 클러스터 활용)"
+    }
+   ],
+   "concepts": [
+    "K06",
+    "K35"
+   ],
+   "packages": [
+    "W1",
+    "W3",
+    "W9"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 3,
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "비슷함",
+   "materials": [
+    {
+     "id": "Mcdb88608a1",
+     "role": "주",
+     "title": "Scaling Model Evaluation at Pinterest with Ray (Part 4)",
+     "kind": "기술 블로그",
+     "site": "medium.com",
+     "url": "https://medium.com/pinterest-engineering/scaling-model-evaluation-at-pinterest-with-ray-part-4-4a96cd12cc11?source=rss----4c5a5f6279b6---4",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "비슷함",
+     "checked": "확인 못 함 (오류 HTTPError: HTTP Error 403: Forbidden)",
+     "note": "Pinterest 의 Ray 로 평가 나눠 돌리기. 샤드 형식(WebDataset, Parquet)은 없다"
+    }
+   ],
+   "why": "작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L11",
+   "name": "이미지 품질 신호와 중복 찾기 (흐림, 밝기, 지각 해시)",
+   "short": "이미지 품질 신호와 중복 찾기",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S09 '품질 필터링'",
+   "competencies": [
+    {
+     "cid": "C08",
+     "row": 4,
+     "badges": [
+      3
+     ],
+     "name": "다단계 품질 필터링 로직 설계"
+    }
+   ],
+   "concepts": [
+    "K07",
+    "K08"
+   ],
+   "packages": [
+    "W2"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": null,
+   "best_fit": "비슷함",
+   "materials": [
+    {
+     "id": "M09544bba15",
+     "role": "주",
+     "title": "Semhash",
+     "kind": "저장소",
+     "site": "github.com",
+     "url": "https://github.com/MinishLab/semhash",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "비슷함",
+     "checked": "안 엶",
+     "note": "Semhash. 글 중복 찾기라 이미지가 아니다. 은행의 'Quality filtering' 줄은 주소가 다른 페이지(argilla 합성 데이터)라 뺐다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W2 한 묶음에서만 쓴다. 그래서 W2 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L12",
+   "name": "싼 검사에서 비싼 검사로 거르는 다단계 데이터 필터 (DataComp 방식, 작은 모델 점수)",
+   "short": "여러 단계로 데이터 거르기",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "S09 '다단계 품질 필터링 로직 설계'. 왜 그 순서인지 말할 수 있어야 한다",
+   "competencies": [
+    {
+     "cid": "C08",
+     "row": 4,
+     "badges": [
+      3
+     ],
+     "name": "다단계 품질 필터링 로직 설계"
+    }
+   ],
+   "concepts": [
+    "K09",
+    "K11"
+   ],
+   "packages": [
+    "W2"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 4,
+   "done_week": 4,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "M484f5dd975",
+     "role": "주",
+     "title": "[NeurIPS 2024] Advancing Data Selection for Foundation Models: From Heuristics to Principled Methods",
+     "kind": "학회 튜토리얼",
+     "site": "neurips.cc",
+     "url": "https://neurips.cc/virtual/2024/tutorial/99530",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "NeurIPS 2024 튜토리얼 (Wang, Schmidt, Jia). 요약이 휴리스틱 필터부터 다룬다. 페이지에 길이 없음"
+    },
+    {
+     "id": "Mb58cca3d7f",
+     "role": "보조",
+     "title": "[CVPR 2025] Continuous Data Cycle via Foundation Models",
+     "kind": "학회 튜토리얼",
+     "site": "cvpr.thecvf.com",
+     "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35914",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "CVPR 2025 튜토리얼, 데이터와 모델의 되먹임. 길이 없음"
+    }
+   ],
+   "why": "설명할 수 있어야 한다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L13",
+   "name": "정밀도·재현율과 문턱 정하기",
+   "short": "정밀도·재현율과 문턱",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S09 필터 설계. 문턱을 사람 라벨로 정한다(W2)",
+   "competencies": [
+    {
+     "cid": "C08",
+     "row": 4,
+     "badges": [
+      3
+     ],
+     "name": "다단계 품질 필터링 로직 설계"
+    }
+   ],
+   "concepts": [
+    "K10"
+   ],
+   "packages": [
+    "W2"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": 0.32,
+   "best_fit": "일부",
+   "materials": [
+    {
+     "id": "Me8d08faa0b",
+     "role": "주",
+     "title": "Precision vs Recall",
+     "kind": "글",
+     "site": "outcomeschool.com",
+     "url": "https://outcomeschool.com/blog/precision-vs-recall",
+     "hours": 0.32,
+     "hours_how": "2,253단어 ÷ 분당 238단어 × 2",
+     "fit": "일부",
+     "checked": "열어 봄",
+     "note": "Outcome School. 두 지표의 뜻은 있다. 문턱(threshold)이라는 말이 본문에 없다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W2 한 묶음에서만 쓴다. 그래서 W2 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L14",
+   "name": "VLM 의 구조와 추론 돌리기",
+   "short": "VLM 구조와 돌리기",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S10 'VLM을 활용한', S20 'VLM 기반'",
+   "competencies": [
+    {
+     "cid": "C08",
+     "row": 4,
+     "badges": [
+      3
+     ],
+     "name": "다단계 품질 필터링 로직 설계"
+    },
+    {
+     "cid": "C09",
+     "row": 5,
+     "badges": [
+      4
+     ],
+     "name": "VLM을 활용한 대규모 어노테이션 생성"
+    },
+    {
+     "cid": "C13",
+     "row": 9,
+     "badges": [
+      6
+     ],
+     "name": "신규 벤치마크 구현"
+    },
+    {
+     "cid": "C17",
+     "row": 18,
+     "badges": [
+      12
+     ],
+     "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝"
+    },
+    {
+     "cid": "C18",
+     "row": 19,
+     "badges": [
+      12
+     ],
+     "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝"
+    }
+   ],
+   "concepts": [
+    "K12"
+   ],
+   "packages": [
+    "W2",
+    "W3",
+    "W7",
+    "W10"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 4,
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": 0.43,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "M4caa8274b8",
+     "role": "주",
+     "title": "How does a Vision-Language Model (VLM) work?",
+     "kind": "글",
+     "site": "outcomeschool.com",
+     "url": "https://outcomeschool.com/blog/vision-language-model-vlm",
+     "hours": 0.43,
+     "hours_how": "3,055단어 ÷ 분당 238단어 × 2",
+     "fit": "일부",
+     "checked": "열어 봄",
+     "note": "Outcome School. 이미지가 언어 모델로 들어가는 구조는 있다. 직접 돌리는 법은 없다"
+    },
+    {
+     "id": "M69d171dd0b",
+     "role": "보조",
+     "title": "Inha University ECE7115 Large Language Models (official title: Multimodal VLM)",
+     "kind": "대학 강의",
+     "site": "gcl-inha.github.io",
+     "url": "https://gcl-inha.github.io/ece7115/",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "인하대 ECE7115 (한국어, 공식 이름 Multimodal VLM). 길이 모름"
+    }
+   ],
+   "why": "작업 묶음 4개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L15",
+   "name": "묶음 추론과 처리량 (vLLM)",
+   "short": "묶음 추론과 처리량",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S10 '대규모 어노테이션 생성'",
+   "competencies": [
+    {
+     "cid": "C09",
+     "row": 5,
+     "badges": [
+      4
+     ],
+     "name": "VLM을 활용한 대규모 어노테이션 생성"
+    }
+   ],
+   "concepts": [
+    "K13"
+   ],
+   "packages": [
+    "W3"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": 0.63,
+   "best_fit": "일부",
+   "materials": [
+    {
+     "id": "M7743840acd",
+     "role": "주",
+     "title": "How does vLLM work?",
+     "kind": "글",
+     "site": "outcomeschool.com",
+     "url": "https://outcomeschool.com/blog/how-does-vllm-work",
+     "hours": 0.63,
+     "hours_how": "4,519단어 ÷ 분당 238단어 × 2",
+     "fit": "일부",
+     "checked": "열어 봄",
+     "note": "Outcome School. vLLM 내부(PagedAttention)를 설명한다. 묶음으로 돌리는 사용법은 없다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W3 한 묶음에서만 쓴다. 그래서 W3 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L16",
+   "name": "프롬프트 설계 기초",
+   "short": "프롬프트 설계 기초",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S20 '프롬프트 설계·튜닝 경험'",
+   "competencies": [
+    {
+     "cid": "C09",
+     "row": 5,
+     "badges": [
+      4
+     ],
+     "name": "VLM을 활용한 대규모 어노테이션 생성"
+    },
+    {
+     "cid": "C17",
+     "row": 18,
+     "badges": [
+      12
+     ],
+     "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝"
+    },
+    {
+     "cid": "C18",
+     "row": 19,
+     "badges": [
+      12
+     ],
+     "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝"
+    }
+   ],
+   "concepts": [
+    "K14"
+   ],
+   "packages": [
+    "W2",
+    "W3",
+    "W7"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 4,
+   "done_week": 2,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "M883a5d0c5b",
+     "role": "주",
+     "title": "Anthropics：Prompt Engineering Interactive Tutorial",
+     "kind": "저장소",
+     "site": "github.com",
+     "url": "https://github.com/anthropics/courses/tree/master/prompt_engineering_interactive_tutorial/Anthropic%201P",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "Anthropic 공식 대화형 튜토리얼. 노트북 10개(00~09). 길이 모름"
+    }
+   ],
+   "why": "작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L17",
+   "name": "모델을 채점자로 쓰기와 기준표 (VLM-as-a-Judge)",
+   "short": "AI를 채점자로 쓰기",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S20 'VLM 기반 품질 평가(Judge)'",
+   "competencies": [
+    {
+     "cid": "C13",
+     "row": 9,
+     "badges": [
+      6
+     ],
+     "name": "신규 벤치마크 구현"
+    },
+    {
+     "cid": "C17",
+     "row": 18,
+     "badges": [
+      12
+     ],
+     "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝"
+    }
+   ],
+   "concepts": [
+    "K15"
+   ],
+   "packages": [
+    "W2",
+    "W3",
+    "W10"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 4,
+   "done_week": 3,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": 0.44,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "M07e5542735",
+     "role": "주",
+     "title": "2부: 정책을 따르는 평가자, LLM-as-a-Judge",
+     "kind": "기술 블로그",
+     "site": "hyperconnect.github.io",
+     "url": "https://hyperconnect.github.io/2026/04/22/llm-as-a-judge-for-explanation-quality.html",
+     "hours": 0.44,
+     "hours_how": "3,158단어 ÷ 분당 238단어 × 2",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "하이퍼커넥트 기술 블로그 2부 (한국어). 정책을 기준표로 바꿔 판정하고 데이터 정제에 쓴다"
+    },
+    {
+     "id": "Mc4b43e3b25",
+     "role": "보조",
+     "title": "LLM as a Judge",
+     "kind": "글",
+     "site": "outcomeschool.com",
+     "url": "https://outcomeschool.com/blog/llm-as-a-judge",
+     "hours": 0.59,
+     "hours_how": "4,202단어 ÷ 분당 238단어 × 2",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "Outcome School LLM as a Judge"
+    }
+   ],
+   "why": "작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L18",
+   "name": "채점기 검증 (사람 라벨과의 일치도, 정답 아는 데이터로 채점기 정확도)",
+   "short": "채점기 검증하기",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S20 튜닝은 일치도를 보며 한다. S12 벤치마크 구현",
+   "competencies": [
+    {
+     "cid": "C13",
+     "row": 9,
+     "badges": [
+      6
+     ],
+     "name": "신규 벤치마크 구현"
+    },
+    {
+     "cid": "C17",
+     "row": 18,
+     "badges": [
+      12
+     ],
+     "name": "VLM 기반 품질 평가(Judge)를 위한 프롬프트 설계·튜닝"
+    }
+   ],
+   "concepts": [
+    "K16",
+    "K32"
+   ],
+   "packages": [
+    "W2",
+    "W3",
+    "W10"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 4,
+   "done_week": 3,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "없음",
+   "materials": [],
+   "why": "작업 묶음 3개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L19",
+   "name": "캡션 품질 재기와 다시 캡션 달기 (지어냄·빠뜨림, 긴 캡션)",
+   "short": "캡션 품질 재기",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S20 '맞춤형 캡셔닝'",
+   "competencies": [
+    {
+     "cid": "C09",
+     "row": 5,
+     "badges": [
+      4
+     ],
+     "name": "VLM을 활용한 대규모 어노테이션 생성"
+    },
+    {
+     "cid": "C18",
+     "row": 19,
+     "badges": [
+      12
+     ],
+     "name": "VLM 기반 맞춤형 캡셔닝을 위한 프롬프트 설계·튜닝"
+    }
+   ],
+   "concepts": [
+    "K17",
+    "K40"
+   ],
+   "packages": [
+    "W3",
+    "W7"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 5,
+   "done_week": 5,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "비슷함",
+   "materials": [
+    {
+     "id": "Md0d8dff452",
+     "role": "주",
+     "title": "[ECCV 2026] From Hallucination Detection to Adversarial Defense: A Unified Framework for LVLM and LLM Safety",
+     "kind": "학회 튜토리얼",
+     "site": "eccv.ecva.net",
+     "url": "https://eccv.ecva.net/virtual/2026/3132",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "비슷함",
+     "checked": "열어 봄",
+     "note": "ECCV 2026 튜토리얼. VLM 지어냄 검출이 안전 쪽이다. 길이 모름"
+    },
+    {
+     "id": "Me57c31f855",
+     "role": "보조",
+     "title": "A Picture is Worth a Thousand Words: Principled Recaptioning Improves Image Generation",
+     "kind": "논문",
+     "site": "arxiv.org",
+     "url": "https://arxiv.org/abs/2310.16656",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "논문뿐",
+     "checked": "안 엶",
+     "note": "다시 캡션 달기 논문"
+    }
+   ],
+   "why": "작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L20",
+   "name": "실험 재현과 추적 (체크포인트, 씨앗 고정, 실험 기록 도구)",
+   "short": "실험 기록과 재현",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S12 '체크포인트 평가 자동화'",
+   "competencies": [
+    {
+     "cid": "C14",
+     "row": 10,
+     "badges": [
+      6
+     ],
+     "name": "체크포인트 평가 자동화 파이프라인 개발"
+    }
+   ],
+   "concepts": [
+    "K19",
+    "K22"
+   ],
+   "packages": [
+    "W5"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": null,
+   "best_fit": "비슷함",
+   "materials": [
+    {
+     "id": "Mf3ed9d1d06",
+     "role": "주",
+     "title": "MLflow",
+     "kind": "글",
+     "site": "mlflow.org",
+     "url": "https://mlflow.org/",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "비슷함",
+     "checked": "열어 봄",
+     "note": "MLflow 첫 화면. 소개뿐이고 가르치는 글이 아니다. CS329S 의 W&B 실험 추적 튜토리얼(2월 14일)이 더 맞을 수 있으나 은행에 따로 없다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W5 한 묶음에서만 쓴다. 그래서 W5 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L21",
+   "name": "생성 이미지 평가 지표 (FID, CMMD, CLIPScore)",
+   "short": "생성 이미지 평가 지표",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "S12 지표 비교, S28 '정량적으로 해석'. 면접에서 지표의 뜻을 묻는다",
+   "competencies": [
+    {
+     "cid": "C10",
+     "row": 6,
+     "badges": [
+      4
+     ],
+     "name": "학습 결과에 기반한 데이터 레시피 개선"
+    },
+    {
+     "cid": "C14",
+     "row": 10,
+     "badges": [
+      6
+     ],
+     "name": "체크포인트 평가 자동화 파이프라인 개발"
+    },
+    {
+     "cid": "C28",
+     "row": 29,
+     "badges": [
+      19
+     ],
+     "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증"
+    }
+   ],
+   "concepts": [
+    "K20",
+    "K21"
+   ],
+   "packages": [
+    "W5",
+    "W7"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 5,
+   "done_week": 6,
+   "late_weeks": 1,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": null,
+   "best_fit": "없음",
+   "materials": [],
+   "why": "설명할 수 있어야 한다 · 작업 묶음 2개에서 쓴다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L22",
+   "name": "글→이미지 구성 평가 벤치마크 (개수·위치·색)",
+   "short": "구성 평가 벤치마크",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S12 '신규 벤치마크 구현'",
+   "competencies": [
+    {
+     "cid": "C13",
+     "row": 9,
+     "badges": [
+      6
+     ],
+     "name": "신규 벤치마크 구현"
+    }
+   ],
+   "concepts": [
+    "K31"
+   ],
+   "packages": [
+    "W10"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": null,
+   "best_fit": "논문뿐",
+   "materials": [
+    {
+     "id": "M8d662500b4",
+     "role": "주",
+     "title": "GenEval: An Object-Focused Framework for Evaluating Text-to-Image Alignment",
+     "kind": "논문",
+     "site": "arxiv.org",
+     "url": "https://arxiv.org/abs/2310.11513",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "논문뿐",
+     "checked": "안 엶",
+     "note": "GenEval 논문"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W10 한 묶음에서만 쓴다. 그래서 W10 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L23",
+   "name": "데이터 레시피 실험과 변인 고정 비교 (데이터 중심 AI)",
+   "short": "데이터 레시피 비교 실험",
+   "size": "큰",
+   "route": "교육자료",
+   "depth": "설명",
+   "depth_plain": "설명할 수 있게",
+   "depth_why": "S10 '학습 결과에 기반한 데이터 레시피 개선', S28",
+   "competencies": [
+    {
+     "cid": "C10",
+     "row": 6,
+     "badges": [
+      4
+     ],
+     "name": "학습 결과에 기반한 데이터 레시피 개선"
+    },
+    {
+     "cid": "C28",
+     "row": 29,
+     "badges": [
+      19
+     ],
+     "name": "데이터와 모델 성능 간 관계의 정량적 해석 및 검증"
+    }
+   ],
+   "concepts": [
+    "K23",
+    "K25"
+   ],
+   "packages": [
+    "W7"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": 7,
+   "done_week": 6,
+   "late_weeks": 0,
+   "hours_plan": 3.0,
+   "hours_plan_how": "항목마다 같은 3시간 가정 (84 ÷ 28)",
+   "main_hours": 0.2,
+   "best_fit": "맞음",
+   "materials": [
+    {
+     "id": "M6b1b272b4a",
+     "role": "주",
+     "title": "Data-centric ML benchmarking: Announcing DataPerf’s 2023 challenges",
+     "kind": "기술 블로그",
+     "site": "research.google",
+     "url": "https://research.google/blog/data-centric-ml-benchmarking-announcing-dataperfs-2023-challenges/",
+     "hours": 0.2,
+     "hours_how": "1,450단어 ÷ 분당 238단어 × 2",
+     "fit": "일부",
+     "checked": "열어 봄",
+     "note": "Google Research DataPerf 글. 모델을 두고 데이터만 바꾸는 생각은 있다. 실험 설계는 없다"
+    },
+    {
+     "id": "M484f5dd975",
+     "role": "보조",
+     "title": "[NeurIPS 2024] Advancing Data Selection for Foundation Models: From Heuristics to Principled Methods",
+     "kind": "학회 튜토리얼",
+     "site": "neurips.cc",
+     "url": "https://neurips.cc/virtual/2024/tutorial/99530",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "맞음",
+     "checked": "열어 봄",
+     "note": "L12 의 NeurIPS 2024 튜토리얼을 같이 쓴다"
+    }
+   ],
+   "why": "설명할 수 있어야 한다. 그래서 교육자료로 먼저 공부한다"
+  },
+  {
+   "id": "L24",
+   "name": "도메인 무작위화로 합성 데이터 만들기",
+   "short": "합성 데이터 무작위로 만들기",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S11 '합성 데이터 생성 파이프라인'",
+   "competencies": [
+    {
+     "cid": "C11",
+     "row": 7,
+     "badges": [
+      5
+     ],
+     "name": "3D 시뮬레이터·렌더링 엔진을 활용한 합성 데이터 생성 파이프라인 구축"
+    }
+   ],
+   "concepts": [
+    "K27"
+   ],
+   "packages": [
+    "W6"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": null,
+   "best_fit": "비슷함",
+   "materials": [
+    {
+     "id": "M22a1c09d86",
+     "role": "주",
+     "title": "[ACL 2025] Synthetic Data in the Era of Large Language Models",
+     "kind": "학회 튜토리얼",
+     "site": "2025.aclweb.org",
+     "url": "https://2025.aclweb.org/program/tutorials/",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "비슷함",
+     "checked": "안 엶",
+     "note": "ACL 2025 튜토리얼. 언어 모델의 합성 데이터라 3D 장면이 아니다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W6 한 묶음에서만 쓴다. 그래서 W6 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L25",
+   "name": "합성 데이터 메타데이터 정제 (주석 형식, 스키마 검사, 카메라 투영과 가림)",
+   "short": "합성 데이터 메타데이터 정리",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S11 '메타데이터 정제'",
+   "competencies": [
+    {
+     "cid": "C12",
+     "row": 8,
+     "badges": [
+      5
+     ],
+     "name": "합성 데이터 메타데이터 정제"
+    }
+   ],
+   "concepts": [
+    "K29",
+    "K30"
+   ],
+   "packages": [
+    "W6"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": null,
+   "best_fit": "일부",
+   "materials": [
+    {
+     "id": "M36e960a169",
+     "role": "주",
+     "title": "Pydantic",
+     "kind": "저장소",
+     "site": "github.com",
+     "url": "https://github.com/pydantic/pydantic",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "일부",
+     "checked": "열어 봄",
+     "note": "Pydantic. 스키마 검사만. 카메라 투영은 은행에 맞는 것이 없다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W6 한 묶음에서만 쓴다. 그래서 W6 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L26",
+   "name": "분석 화면 만들기 (Streamlit)",
+   "short": "분석 화면 만들기",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "S12 '다축 지표 비교·분석 도구 개발'",
+   "competencies": [
+    {
+     "cid": "C15",
+     "row": 11,
+     "badges": [
+      6
+     ],
+     "name": "다축 지표 비교·분석 도구 개발"
+    }
+   ],
+   "concepts": [
+    "K33"
+   ],
+   "packages": [
+    "W10"
+   ],
+   "origin": "공고에서 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": 0.44,
+   "best_fit": "일부",
+   "materials": [
+    {
+     "id": "M8721e1410e",
+     "role": "주",
+     "title": "Streamlit - Build a basic LLM app",
+     "kind": "글",
+     "site": "docs.streamlit.io",
+     "url": "https://docs.streamlit.io/knowledge-base/tutorials/build-conversational-apps",
+     "hours": 0.44,
+     "hours_how": "3,130단어 ÷ 분당 238단어 × 2",
+     "fit": "일부",
+     "checked": "열어 봄",
+     "note": "Streamlit 공식 문서. 대화 앱 만들기라 표·그림 화면은 아니지만 기본기는 같다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W10 한 묶음에서만 쓴다. 그래서 W10 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L27",
+   "name": "공개 데이터의 사용권과 유해 콘텐츠 거르기",
+   "short": "공개 데이터 사용권",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "이름",
+   "depth_plain": "이름과 뜻을 알게",
+   "depth_why": "공고에 말이 없다. FineVideo 약관과 유해 영상 때문에 프로젝트가 필요로 한다",
+   "competencies": [
+    {
+     "cid": "C07",
+     "row": 3,
+     "badges": [
+      3
+     ],
+     "name": "원시 이미지·비디오 아카이브에서 학습 데이터 추출"
+    }
+   ],
+   "concepts": [
+    "K39"
+   ],
+   "packages": [
+    "W1"
+   ],
+   "origin": "프로젝트를 봐야 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": null,
+   "best_fit": "비슷함",
+   "materials": [
+    {
+     "id": "M121753e4c5",
+     "role": "주",
+     "title": "[NAACL 2025] LLMs and Copyright Risks: Benchmarks and Mitigation Approaches",
+     "kind": "학회 튜토리얼",
+     "site": "2025.naacl.org",
+     "url": "https://2025.naacl.org/program/tutorials/",
+     "hours": null,
+     "hours_how": "모름",
+     "fit": "비슷함",
+     "checked": "열어 봄",
+     "note": "NAACL 2025 튜토리얼. 언어 모델 저작권이라 영상 데이터 사용권이 아니다"
+    }
+   ],
+   "why": "공고 역량이 아니고, 깊이가 '이름과 뜻을 알게'이고, W1 한 묶음에서만 쓴다. 그래서 W1 를 하면서 그 자리에서 배운다"
+  },
+  {
+   "id": "L28",
+   "name": "Git·GitHub 협업 흐름 (이슈, 풀 리퀘스트, 코드 리뷰)",
+   "short": "Git·GitHub 협업",
+   "size": "작은",
+   "route": "프로젝트 안에서",
+   "depth": "사용",
+   "depth_plain": "직접 써 볼 수 있게",
+   "depth_why": "공고 말이 아니다. S22 를 옮긴 운영 규칙(W8)에서 나왔다",
+   "competencies": [
+    {
+     "cid": "C24",
+     "row": 24,
+     "badges": [
+      14
+     ],
+     "name": "짧은 주기의 피드백 기반 협업"
+    }
+   ],
+   "concepts": [
+    "K42"
+   ],
+   "packages": [
+    "W8"
+   ],
+   "origin": "프로젝트를 봐야 보임",
+   "needed_week": null,
+   "done_week": null,
+   "late_weeks": null,
+   "hours_plan": null,
+   "hours_plan_how": "작업 묶음 시간 안에 1~2시간 (가정)",
+   "main_hours": null,
+   "best_fit": "없음",
+   "materials": [],
+   "why": "공고 역량이 아니고, 깊이가 '직접 써 볼 수 있게'이고, W8 한 묶음에서만 쓴다. 그래서 W8 를 하면서 그 자리에서 배운다"
+  }
+ ],
+ "competencies_not_in_items": [
+  {
+   "cid": "C19",
+   "row": 20,
+   "badges": [
+    13
+   ],
+   "name": "Isaac Sim"
+  },
+  {
+   "cid": "C20",
+   "row": 21,
+   "badges": [
+    13
+   ],
+   "name": "Omniverse"
+  },
+  {
+   "cid": "C22",
+   "row": 23,
+   "badges": [
+    13
+   ],
+   "name": "Unreal Engine"
+  },
+  {
+   "cid": "C25",
+   "row": 25,
+   "badges": [
+    15
+   ],
+   "name": "진행 상황 및 사고 과정의 적극적 공유"
+  },
+  {
+   "cid": "C26",
+   "row": 26,
+   "badges": [
+    16
+   ],
+   "name": "연구·엔지니어링 인접 영역 자기주도 학습 태도"
+  }
+ ],
+ "learn_route_not_in_items": [
+  "C19",
+  "C20",
+  "C22"
+ ],
+ "budgets": {
+  "84": {
+   "hours": 84,
+   "per_day": 1,
+   "label": "하루 1시간 · 84시간",
+   "week_cap": 14.0,
+   "study_caps": [
+    14.0,
+    14.0,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6,
+    5.6
+   ],
+   "rule": "자료 자리 하나에 3시간 가정 (84 ÷ 28). 주 자리는 자료가 없어도 세고, 보조·실습 자리는 고른 자료가 있을 때만 센다",
+   "items": [
+    {
+     "id": "L08",
+     "short": "기초 통계와 점수 흔들림",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M80ae229567",
+       "role": "주",
+       "title": "Seeing Theory",
+       "kind": "글",
+       "site": "seeing-theory.brown.edu",
+       "url": "https://seeing-theory.brown.edu/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Seeing Theory. 1·3·4장 (기댓값·분산, 분포, 점추정·구간추정·부트스트랩). 대화형이라 길이 모름",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 3.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L07",
+     "short": "pandas 표와 그림",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 2.79,
+     "materials": [
+      {
+       "id": "Mdd410ed001",
+       "role": "주",
+       "title": "Python Data Science Handbook",
+       "kind": "글",
+       "site": "jakevdp.github.io",
+       "url": "https://jakevdp.github.io/PythonDataScienceHandbook/",
+       "hours": 2.79,
+       "hours_how": "19,950단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Python Data Science Handbook 3.01~3.04, 3.07, 3.08, 4.01~4.03, 4.05 열 절만",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 6.0,
+     "known_total": 2.79,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L03",
+     "short": "ML 개발 사이클",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 4.5,
+     "materials": [
+      {
+       "id": "M3a0c3316a4",
+       "role": "주",
+       "title": "Stanford CS329S Machine Learning Systems Design",
+       "kind": "대학 강의",
+       "site": "stanford-cs329s.github.io",
+       "url": "https://stanford-cs329s.github.io/",
+       "hours": 4.5,
+       "hours_how": "강의 3회 × 90분 (syllabus 의 수업 시간)",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Stanford CS329S. 강의 셋(Training Data, Model selection·development·training, Offline evaluation)만. 수업은 회당 90분(3:15~4:45). 강의 노트로 공부",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 9.0,
+     "known_total": 7.29,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L04",
+     "short": "연산·읽고 쓰기 병목 재기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 1.15,
+     "materials": [
+      {
+       "id": "M48320239d2",
+       "role": "주",
+       "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+       "kind": "기술 블로그",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/blog/torch-profiler",
+       "hours": 1.15,
+       "hours_how": "8,180단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "HF Profiling in PyTorch Part 1. 연산 쪽은 맞다. I/O 병목은 거의 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 12.0,
+     "known_total": 8.44,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L10",
+     "short": "큰 데이터 나눠 저장·돌리기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Mcdb88608a1",
+       "role": "주",
+       "title": "Scaling Model Evaluation at Pinterest with Ray (Part 4)",
+       "kind": "기술 블로그",
+       "site": "medium.com",
+       "url": "https://medium.com/pinterest-engineering/scaling-model-evaluation-at-pinterest-with-ray-part-4-4a96cd12cc11?source=rss----4c5a5f6279b6---4",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "확인 못 함 (오류 HTTPError: HTTP Error 403: Forbidden)",
+       "note": "Pinterest 의 Ray 로 평가 나눠 돌리기. 샤드 형식(WebDataset, Parquet)은 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 15.0,
+     "known_total": 8.44,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L01",
+     "short": "생성 모델 원리",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 1.28,
+     "materials": [
+      {
+       "id": "M486c527c54",
+       "role": "주",
+       "title": "What are Diffusion Models?",
+       "kind": "글",
+       "site": "lilianweng.github.io",
+       "url": "https://lilianweng.github.io/lil-log/2021/07/11/diffusion-models.html",
+       "hours": 1.28,
+       "hours_how": "9,169단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Lilian Weng, What are Diffusion Models?. 원리와 수식",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 18.0,
+     "known_total": 9.72,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L02",
+     "short": "작은 생성 모델 학습 코드",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M555a9dd2d0",
+       "role": "주",
+       "title": "MIT 6.S184 Generative AI with Stochastic Differential Equations: Flow Matching and Diffusion Models",
+       "kind": "대학 강의",
+       "site": "diffusion.csail.mit.edu",
+       "url": "https://diffusion.csail.mit.edu/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "MIT 6.S184 2026. 강의 6개(1, 2, 3-A, 3-B, 4, 5), 실습 3개. 실습이 flow matching 모델을 처음부터 만든다. 강의 길이는 페이지에 없음",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 21.0,
+     "known_total": 9.72,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L14",
+     "short": "VLM 구조와 돌리기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 0.43,
+     "materials": [
+      {
+       "id": "M4caa8274b8",
+       "role": "주",
+       "title": "How does a Vision-Language Model (VLM) work?",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/vision-language-model-vlm",
+       "hours": 0.43,
+       "hours_how": "3,055단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Outcome School. 이미지가 언어 모델로 들어가는 구조는 있다. 직접 돌리는 법은 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 24.0,
+     "known_total": 10.15,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L16",
+     "short": "프롬프트 설계 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M883a5d0c5b",
+       "role": "주",
+       "title": "Anthropics：Prompt Engineering Interactive Tutorial",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/anthropics/courses/tree/master/prompt_engineering_interactive_tutorial/Anthropic%201P",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Anthropic 공식 대화형 튜토리얼. 노트북 10개(00~09). 길이 모름",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 27.0,
+     "known_total": 10.15,
+     "needed_week": 4,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L17",
+     "short": "AI를 채점자로 쓰기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 0.44,
+     "materials": [
+      {
+       "id": "M07e5542735",
+       "role": "주",
+       "title": "2부: 정책을 따르는 평가자, LLM-as-a-Judge",
+       "kind": "기술 블로그",
+       "site": "hyperconnect.github.io",
+       "url": "https://hyperconnect.github.io/2026/04/22/llm-as-a-judge-for-explanation-quality.html",
+       "hours": 0.44,
+       "hours_how": "3,158단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "하이퍼커넥트 기술 블로그 2부 (한국어). 정책을 기준표로 바꿔 판정하고 데이터 정제에 쓴다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 30.0,
+     "known_total": 10.59,
+     "needed_week": 4,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L18",
+     "short": "채점기 검증하기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 33.0,
+     "known_total": 10.59,
+     "needed_week": 4,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L12",
+     "short": "여러 단계로 데이터 거르기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M484f5dd975",
+       "role": "주",
+       "title": "[NeurIPS 2024] Advancing Data Selection for Foundation Models: From Heuristics to Principled Methods",
+       "kind": "학회 튜토리얼",
+       "site": "neurips.cc",
+       "url": "https://neurips.cc/virtual/2024/tutorial/99530",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "NeurIPS 2024 튜토리얼 (Wang, Schmidt, Jia). 요약이 휴리스틱 필터부터 다룬다. 페이지에 길이 없음",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 36.0,
+     "known_total": 10.59,
+     "needed_week": 4,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L06",
+     "short": "Hugging Face에 올리기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 39.0,
+     "known_total": 10.59,
+     "needed_week": 5,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L19",
+     "short": "캡션 품질 재기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Md0d8dff452",
+       "role": "주",
+       "title": "[ECCV 2026] From Hallucination Detection to Adversarial Defense: A Unified Framework for LVLM and LLM Safety",
+       "kind": "학회 튜토리얼",
+       "site": "eccv.ecva.net",
+       "url": "https://eccv.ecva.net/virtual/2026/3132",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "열어 봄",
+       "note": "ECCV 2026 튜토리얼. VLM 지어냄 검출이 안전 쪽이다. 길이 모름",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 42.0,
+     "known_total": 10.59,
+     "needed_week": 5,
+     "done_week": 5,
+     "late_weeks": 0
+    },
+    {
+     "id": "L21",
+     "short": "생성 이미지 평가 지표",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 45.0,
+     "known_total": 10.59,
+     "needed_week": 5,
+     "done_week": 6,
+     "late_weeks": 1
+    },
+    {
+     "id": "L23",
+     "short": "데이터 레시피 비교 실험",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 0.2,
+     "materials": [
+      {
+       "id": "M6b1b272b4a",
+       "role": "주",
+       "title": "Data-centric ML benchmarking: Announcing DataPerf’s 2023 challenges",
+       "kind": "기술 블로그",
+       "site": "research.google",
+       "url": "https://research.google/blog/data-centric-ml-benchmarking-announcing-dataperfs-2023-challenges/",
+       "hours": 0.2,
+       "hours_how": "1,450단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Google Research DataPerf 글. 모델을 두고 데이터만 바꾸는 생각은 있다. 실험 설계는 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 48.0,
+     "known_total": 10.79,
+     "needed_week": 7,
+     "done_week": 6,
+     "late_weeks": 0
+    },
+    {
+     "id": "L05",
+     "short": "Blender 기초와 스크립트",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 51.0,
+     "known_total": 10.79,
+     "needed_week": 8,
+     "done_week": 7,
+     "late_weeks": 0
+    }
+   ],
+   "inside_project_ids": [
+    "L09",
+    "L27",
+    "L28",
+    "L11",
+    "L13",
+    "L15",
+    "L20",
+    "L24",
+    "L25",
+    "L22",
+    "L26"
+   ],
+   "order": [
+    "L08",
+    "L07",
+    "L03",
+    "L04",
+    "L10",
+    "L01",
+    "L02",
+    "L14",
+    "L16",
+    "L17",
+    "L18",
+    "L12",
+    "L06",
+    "L19",
+    "L21",
+    "L23",
+    "L05"
+   ],
+   "total_hours": 51.0,
+   "spare_hours": 33.0,
+   "spare_parts": {
+    "no_slot": 33.0,
+    "empty_slots": 0.0,
+    "empty_slot_count": {
+     "보조": 0,
+     "실습": 0
+    }
+   },
+   "design_hours": 51.0,
+   "share": "61%",
+   "known_hours": 10.79,
+   "known_materials": 7,
+   "counts": {
+    "items": 17,
+    "big": 17,
+    "small": 0,
+    "inside_project": 11,
+    "slots": 17,
+    "materials": 13,
+    "unique_materials": 13,
+    "by_role": {
+     "주": 13,
+     "보조": 0,
+     "실습": 0
+    },
+    "new_materials": 0,
+    "fit": {
+     "맞음": 8,
+     "일부": 3,
+     "비슷함": 2
+    },
+    "no_main": [
+     "L18",
+     "L06",
+     "L21",
+     "L05"
+    ],
+    "no_extra": {
+     "보조": [],
+     "실습": []
+    }
+   },
+   "late": [
+    {
+     "id": "L21",
+     "late_weeks": 1
+    }
+   ],
+   "last_study_week": 7,
+   "layout": {
+    "1": [
+     {
+      "id": "L08",
+      "short": "기초 통계와 점수 흔들림",
+      "hours": 3.0
+     },
+     {
+      "id": "L07",
+      "short": "pandas 표와 그림",
+      "hours": 3.0
+     },
+     {
+      "id": "L03",
+      "short": "ML 개발 사이클",
+      "hours": 3.0
+     },
+     {
+      "id": "L04",
+      "short": "연산·읽고 쓰기 병목 재기",
+      "hours": 3.0
+     },
+     {
+      "id": "L10",
+      "short": "큰 데이터 나눠 저장·돌리기",
+      "hours": 2.0
+     }
+    ],
+    "2": [
+     {
+      "id": "L10",
+      "short": "큰 데이터 나눠 저장·돌리기",
+      "hours": 1.0
+     },
+     {
+      "id": "L01",
+      "short": "생성 모델 원리",
+      "hours": 3.0
+     },
+     {
+      "id": "L02",
+      "short": "작은 생성 모델 학습 코드",
+      "hours": 3.0
+     },
+     {
+      "id": "L14",
+      "short": "VLM 구조와 돌리기",
+      "hours": 3.0
+     },
+     {
+      "id": "L16",
+      "short": "프롬프트 설계 기초",
+      "hours": 3.0
+     },
+     {
+      "id": "L17",
+      "short": "AI를 채점자로 쓰기",
+      "hours": 1.0
+     }
+    ],
+    "3": [
+     {
+      "id": "L17",
+      "short": "AI를 채점자로 쓰기",
+      "hours": 2.0
+     },
+     {
+      "id": "L18",
+      "short": "채점기 검증하기",
+      "hours": 3.0
+     },
+     {
+      "id": "L12",
+      "short": "여러 단계로 데이터 거르기",
+      "hours": 0.6
+     }
+    ],
+    "4": [
+     {
+      "id": "L12",
+      "short": "여러 단계로 데이터 거르기",
+      "hours": 2.4
+     },
+     {
+      "id": "L06",
+      "short": "Hugging Face에 올리기",
+      "hours": 3.0
+     },
+     {
+      "id": "L19",
+      "short": "캡션 품질 재기",
+      "hours": 0.2
+     }
+    ],
+    "5": [
+     {
+      "id": "L19",
+      "short": "캡션 품질 재기",
+      "hours": 2.8
+     },
+     {
+      "id": "L21",
+      "short": "생성 이미지 평가 지표",
+      "hours": 2.8
+     }
+    ],
+    "6": [
+     {
+      "id": "L21",
+      "short": "생성 이미지 평가 지표",
+      "hours": 0.2
+     },
+     {
+      "id": "L23",
+      "short": "데이터 레시피 비교 실험",
+      "hours": 3.0
+     },
+     {
+      "id": "L05",
+      "short": "Blender 기초와 스크립트",
+      "hours": 2.4
+     }
+    ],
+    "7": [
+     {
+      "id": "L05",
+      "short": "Blender 기초와 스크립트",
+      "hours": 0.6
+     }
+    ]
+   },
+   "reasons": [
+    "큰 항목 17개만 교육자료로 공부해요. 주 자료 하나에 3시간씩 잡아 51시간이에요.",
+    "작은 항목 11개는 그 항목을 쓰는 작업 묶음 안에서 배워요.",
+    "84시간 중 33시간이 남아요. 작은 항목과 복습에 쓸 수 있어요."
+   ]
+  },
+  "168": {
+   "hours": 168,
+   "per_day": 2,
+   "label": "하루 2시간 · 168시간",
+   "week_cap": 21.0,
+   "study_caps": [
+    21.0,
+    21.0,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6,
+    12.6
+   ],
+   "rule": "자료 자리 하나에 3시간 가정 (84 ÷ 28). 주 자리는 자료가 없어도 세고, 보조·실습 자리는 고른 자료가 있을 때만 센다",
+   "items": [
+    {
+     "id": "L08",
+     "short": "기초 통계와 점수 흔들림",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M80ae229567",
+       "role": "주",
+       "title": "Seeing Theory",
+       "kind": "글",
+       "site": "seeing-theory.brown.edu",
+       "url": "https://seeing-theory.brown.edu/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Seeing Theory. 1·3·4장 (기댓값·분산, 분포, 점추정·구간추정·부트스트랩). 대화형이라 길이 모름",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M8205e8d578",
+       "role": "보조",
+       "title": "Interpreting A/B Test Results: False Positives and Statistical Significance",
+       "kind": "글",
+       "site": "netflixtechblog.com",
+       "url": "https://netflixtechblog.com/interpreting-a-b-test-results-false-positives-and-statistical-significance-c1522d0db27a",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "확인 못 함 (오류 HTTPError: HTTP Error 403: Forbidden)",
+       "note": "Netflix A/B 시험 결과 읽기. 온라인 실험 쪽",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 6.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L07",
+     "short": "pandas 표와 그림",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조"
+     ],
+     "hours": 3.0,
+     "known_hours": 2.79,
+     "materials": [
+      {
+       "id": "Mdd410ed001",
+       "role": "주",
+       "title": "Python Data Science Handbook",
+       "kind": "글",
+       "site": "jakevdp.github.io",
+       "url": "https://jakevdp.github.io/PythonDataScienceHandbook/",
+       "hours": 2.79,
+       "hours_how": "19,950단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Python Data Science Handbook 3.01~3.04, 3.07, 3.08, 4.01~4.03, 4.05 열 절만",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 9.0,
+     "known_total": 2.79,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L03",
+     "short": "ML 개발 사이클",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 4.5,
+     "materials": [
+      {
+       "id": "M3a0c3316a4",
+       "role": "주",
+       "title": "Stanford CS329S Machine Learning Systems Design",
+       "kind": "대학 강의",
+       "site": "stanford-cs329s.github.io",
+       "url": "https://stanford-cs329s.github.io/",
+       "hours": 4.5,
+       "hours_how": "강의 3회 × 90분 (syllabus 의 수업 시간)",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Stanford CS329S. 강의 셋(Training Data, Model selection·development·training, Offline evaluation)만. 수업은 회당 90분(3:15~4:45). 강의 노트로 공부",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M4d1424593f",
+       "role": "보조",
+       "title": "쿠팡의 머신러닝 플랫폼을 통한 ML 개발 가속화",
+       "kind": "기술 블로그",
+       "site": "medium.com",
+       "url": "https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1%EC%9D%98-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%84-%ED%86%B5%ED%95%9C-ml-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%86%8D%ED%99%94-de29804148bb?source=rss----fb028911af07---4",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "일부",
+       "checked": "안 엶",
+       "note": "회사 기술 블로그. 플랫폼 소개라 사이클 전체를 가르치지는 않는다 (일부)",
+       "new": true,
+       "why": "쿠팡이 데이터부터 학습·배포까지 ML 개발 고리를 어떻게 돌리는지 한국어로 쓴 글이에요."
+      }
+     ],
+     "total": 15.0,
+     "known_total": 7.29,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L04",
+     "short": "연산·읽고 쓰기 병목 재기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 1.81,
+     "materials": [
+      {
+       "id": "M48320239d2",
+       "role": "주",
+       "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+       "kind": "기술 블로그",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/blog/torch-profiler",
+       "hours": 1.15,
+       "hours_how": "8,180단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "HF Profiling in PyTorch Part 1. 연산 쪽은 맞다. I/O 병목은 거의 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M4bba0bbec1",
+       "role": "보조",
+       "title": "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP",
+       "kind": "기술 블로그",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/blog/torch-mlp-fusion",
+       "hours": 0.66,
+       "hours_how": "4,680단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Hugging Face 'Profiling in PyTorch' 2편. overhead-bound 와 compute-bound 를 가른다. 읽고 쓰기(I/O) 병목은 다루지 않는다",
+       "new": true,
+       "why": "주 자료의 다음 편이에요. 실행 준비가 막히는 경우와 계산이 막히는 경우를 재서 가르는 법을 이어서 보여 줘요."
+      }
+     ],
+     "total": 21.0,
+     "known_total": 9.1,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L10",
+     "short": "큰 데이터 나눠 저장·돌리기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Mcdb88608a1",
+       "role": "주",
+       "title": "Scaling Model Evaluation at Pinterest with Ray (Part 4)",
+       "kind": "기술 블로그",
+       "site": "medium.com",
+       "url": "https://medium.com/pinterest-engineering/scaling-model-evaluation-at-pinterest-with-ray-part-4-4a96cd12cc11?source=rss----4c5a5f6279b6---4",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "확인 못 함 (오류 HTTPError: HTTP Error 403: Forbidden)",
+       "note": "Pinterest 의 Ray 로 평가 나눠 돌리기. 샤드 형식(WebDataset, Parquet)은 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M36fd7ea5bd",
+       "role": "보조",
+       "title": "Stanford CS246 Mining Massive Data Sets",
+       "kind": "대학 강의",
+       "site": "web.stanford.edu",
+       "url": "https://web.stanford.edu/class/cs246/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "안 엶",
+       "note": "Stanford CS246. 앞 강의만 해당 (뒤는 데이터 마이닝 알고리즘)",
+       "new": true,
+       "why": "큰 데이터를 나눠 처리하는 MapReduce·Spark를 대학 강의로 배워요. 나눈 파일을 실제로 돌리는 법은 실습 자료에서 봐요."
+      }
+     ],
+     "total": 27.0,
+     "known_total": 9.1,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L01",
+     "short": "생성 모델 원리",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 4.95,
+     "materials": [
+      {
+       "id": "M486c527c54",
+       "role": "주",
+       "title": "What are Diffusion Models?",
+       "kind": "글",
+       "site": "lilianweng.github.io",
+       "url": "https://lilianweng.github.io/lil-log/2021/07/11/diffusion-models.html",
+       "hours": 1.28,
+       "hours_how": "9,169단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Lilian Weng, What are Diffusion Models?. 원리와 수식",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Mff09bea021",
+       "role": "보조",
+       "title": "Denoising Diffusion-based Generative Modeling: Foundations and Applications",
+       "kind": "글",
+       "site": "cvpr2022-tutorial-diffusion-models.github.io",
+       "url": "https://cvpr2022-tutorial-diffusion-models.github.io/",
+       "hours": 3.67,
+       "hours_how": "페이지의 일정 8:30~12:10",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "CVPR 2022 튜토리얼. 페이지에 8:30~12:10",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 33.0,
+     "known_total": 14.05,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L02",
+     "short": "작은 생성 모델 학습 코드",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 1.11,
+     "materials": [
+      {
+       "id": "M555a9dd2d0",
+       "role": "주",
+       "title": "MIT 6.S184 Generative AI with Stochastic Differential Equations: Flow Matching and Diffusion Models",
+       "kind": "대학 강의",
+       "site": "diffusion.csail.mit.edu",
+       "url": "https://diffusion.csail.mit.edu/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "MIT 6.S184 2026. 강의 6개(1, 2, 3-A, 3-B, 4, 5), 실습 3개. 실습이 flow matching 모델을 처음부터 만든다. 강의 길이는 페이지에 없음",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M9275c00746",
+       "role": "보조",
+       "title": "The Annotated Diffusion Model",
+       "kind": "글",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/blog/annotated-diffusion",
+       "hours": 1.11,
+       "hours_how": "7,960단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "HF The Annotated Diffusion Model. DDPM 코드 따라 치기",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 39.0,
+     "known_total": 15.16,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L09",
+     "short": "영상에서 프레임 뽑기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 0.14,
+     "materials": [
+      {
+       "id": "M13d0a4b2b6",
+       "role": "주",
+       "title": "PySceneDetect",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/Breakthrough/PySceneDetect",
+       "hours": 0.14,
+       "hours_how": "1,008단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "PySceneDetect. 장면 전환은 맞다. save-images 가 장면마다 프레임 몇 장을 저장해 대표 프레임 일부. 디코딩(ffmpeg) 자체는 없다. README 만 쟀고 문서 전체 길이는 모름",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 42.0,
+     "known_total": 15.3,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L27",
+     "short": "공개 데이터 사용권",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M121753e4c5",
+       "role": "주",
+       "title": "[NAACL 2025] LLMs and Copyright Risks: Benchmarks and Mitigation Approaches",
+       "kind": "학회 튜토리얼",
+       "site": "2025.naacl.org",
+       "url": "https://2025.naacl.org/program/tutorials/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "열어 봄",
+       "note": "NAACL 2025 튜토리얼. 언어 모델 저작권이라 영상 데이터 사용권이 아니다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 45.0,
+     "known_total": 15.3,
+     "needed_week": 3,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L28",
+     "short": "Git·GitHub 협업",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 48.0,
+     "known_total": 15.3,
+     "needed_week": 3,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L14",
+     "short": "VLM 구조와 돌리기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 0.43,
+     "materials": [
+      {
+       "id": "M4caa8274b8",
+       "role": "주",
+       "title": "How does a Vision-Language Model (VLM) work?",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/vision-language-model-vlm",
+       "hours": 0.43,
+       "hours_how": "3,055단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Outcome School. 이미지가 언어 모델로 들어가는 구조는 있다. 직접 돌리는 법은 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M69d171dd0b",
+       "role": "보조",
+       "title": "Inha University ECE7115 Large Language Models (official title: Multimodal VLM)",
+       "kind": "대학 강의",
+       "site": "gcl-inha.github.io",
+       "url": "https://gcl-inha.github.io/ece7115/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "인하대 ECE7115 (한국어, 공식 이름 Multimodal VLM). 길이 모름",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 54.0,
+     "known_total": 15.73,
+     "needed_week": 4,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L16",
+     "short": "프롬프트 설계 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 0.64,
+     "materials": [
+      {
+       "id": "M883a5d0c5b",
+       "role": "주",
+       "title": "Anthropics：Prompt Engineering Interactive Tutorial",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/anthropics/courses/tree/master/prompt_engineering_interactive_tutorial/Anthropic%201P",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Anthropic 공식 대화형 튜토리얼. 노트북 10개(00~09). 길이 모름",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M413520a564",
+       "role": "보조",
+       "title": "Prompt Engineering",
+       "kind": "글",
+       "site": "lilianweng.github.io",
+       "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
+       "hours": 0.64,
+       "hours_how": "4,597단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Lilian Weng, Prompt Engineering (개인 글이지만 은행에 같은 깊이의 공식 문서가 없다)",
+       "new": true,
+       "why": "예시 넣기, 단계별로 생각하게 하기 같은 프롬프트 기법을 한 글에 정리했어요."
+      }
+     ],
+     "total": 60.0,
+     "known_total": 16.37,
+     "needed_week": 4,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L17",
+     "short": "AI를 채점자로 쓰기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 1.03,
+     "materials": [
+      {
+       "id": "M07e5542735",
+       "role": "주",
+       "title": "2부: 정책을 따르는 평가자, LLM-as-a-Judge",
+       "kind": "기술 블로그",
+       "site": "hyperconnect.github.io",
+       "url": "https://hyperconnect.github.io/2026/04/22/llm-as-a-judge-for-explanation-quality.html",
+       "hours": 0.44,
+       "hours_how": "3,158단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "하이퍼커넥트 기술 블로그 2부 (한국어). 정책을 기준표로 바꿔 판정하고 데이터 정제에 쓴다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Mc4b43e3b25",
+       "role": "보조",
+       "title": "LLM as a Judge",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/llm-as-a-judge",
+       "hours": 0.59,
+       "hours_how": "4,202단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Outcome School LLM as a Judge",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 66.0,
+     "known_total": 17.4,
+     "needed_week": 4,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L18",
+     "short": "채점기 검증하기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Mdf36615518",
+       "role": "주",
+       "title": "LLM as a Judge를 활용한 CodeBuddy 성능 평가 - tech.kakao.com",
+       "kind": "기술 블로그",
+       "site": "tech.kakao.com",
+       "url": "https://tech.kakao.com/posts/690",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "확인 못 함 (본문을 스크립트로 그려 받은 글이 155단어뿐)",
+       "note": "은행에 채점기 검증(사람 라벨과의 일치도, 정답을 아는 데이터로 채점기 정확도)을 가르치는 자료가 없다. 가장 가까운 것",
+       "new": true,
+       "why": "카카오가 LLM 채점자로 코드 리뷰 품질을 잰 한국어 글이에요. 채점기를 사람 판단과 견주는지는 열어 확인하지 못했어요."
+      }
+     ],
+     "total": 69.0,
+     "known_total": 17.4,
+     "needed_week": 4,
+     "done_week": 5,
+     "late_weeks": 1
+    },
+    {
+     "id": "L11",
+     "short": "이미지 품질 신호와 중복 찾기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M09544bba15",
+       "role": "주",
+       "title": "Semhash",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/MinishLab/semhash",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "안 엶",
+       "note": "Semhash. 글 중복 찾기라 이미지가 아니다. 은행의 'Quality filtering' 줄은 주소가 다른 페이지(argilla 합성 데이터)라 뺐다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 72.0,
+     "known_total": 17.4,
+     "needed_week": 4,
+     "done_week": 5,
+     "late_weeks": 1
+    },
+    {
+     "id": "L12",
+     "short": "여러 단계로 데이터 거르기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M484f5dd975",
+       "role": "주",
+       "title": "[NeurIPS 2024] Advancing Data Selection for Foundation Models: From Heuristics to Principled Methods",
+       "kind": "학회 튜토리얼",
+       "site": "neurips.cc",
+       "url": "https://neurips.cc/virtual/2024/tutorial/99530",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "NeurIPS 2024 튜토리얼 (Wang, Schmidt, Jia). 요약이 휴리스틱 필터부터 다룬다. 페이지에 길이 없음",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Mb58cca3d7f",
+       "role": "보조",
+       "title": "[CVPR 2025] Continuous Data Cycle via Foundation Models",
+       "kind": "학회 튜토리얼",
+       "site": "cvpr.thecvf.com",
+       "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35914",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "CVPR 2025 튜토리얼, 데이터와 모델의 되먹임. 길이 없음",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 78.0,
+     "known_total": 17.4,
+     "needed_week": 4,
+     "done_week": 5,
+     "late_weeks": 1
+    },
+    {
+     "id": "L13",
+     "short": "정밀도·재현율과 문턱",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 0.32,
+     "materials": [
+      {
+       "id": "Me8d08faa0b",
+       "role": "주",
+       "title": "Precision vs Recall",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/precision-vs-recall",
+       "hours": 0.32,
+       "hours_how": "2,253단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Outcome School. 두 지표의 뜻은 있다. 문턱(threshold)이라는 말이 본문에 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 81.0,
+     "known_total": 17.72,
+     "needed_week": 4,
+     "done_week": 6,
+     "late_weeks": 2
+    },
+    {
+     "id": "L06",
+     "short": "Hugging Face에 올리기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조"
+     ],
+     "hours": 3.0,
+     "known_hours": 0.45,
+     "materials": [
+      {
+       "id": "M5d98f2b0f9",
+       "role": "주",
+       "title": "HuggingFace NLP Course",
+       "kind": "글",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/learn/nlp-course/chapter1/1",
+       "hours": 0.45,
+       "hours_how": "5장 5절 3,229단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄 (5장 5절)",
+       "note": "은행 주소는 강좌 첫 쪽(chapter1/1)이다. 읽을 곳은 5장 5절 'Creating your own dataset' (push_to_hub, dataset card 를 열어 확인)",
+       "new": true,
+       "why": "Hugging Face 공식 강좌예요. 5장 5절이 데이터셋을 Hub에 올리고 데이터셋 카드를 쓰는 법을 그대로 보여 줘요."
+      }
+     ],
+     "total": 84.0,
+     "known_total": 18.17,
+     "needed_week": 5,
+     "done_week": 6,
+     "late_weeks": 1
+    },
+    {
+     "id": "L19",
+     "short": "캡션 품질 재기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Md0d8dff452",
+       "role": "주",
+       "title": "[ECCV 2026] From Hallucination Detection to Adversarial Defense: A Unified Framework for LVLM and LLM Safety",
+       "kind": "학회 튜토리얼",
+       "site": "eccv.ecva.net",
+       "url": "https://eccv.ecva.net/virtual/2026/3132",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "열어 봄",
+       "note": "ECCV 2026 튜토리얼. VLM 지어냄 검출이 안전 쪽이다. 길이 모름",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Me57c31f855",
+       "role": "보조",
+       "title": "A Picture is Worth a Thousand Words: Principled Recaptioning Improves Image Generation",
+       "kind": "논문",
+       "site": "arxiv.org",
+       "url": "https://arxiv.org/abs/2310.16656",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "논문뿐",
+       "checked": "안 엶",
+       "note": "다시 캡션 달기 논문",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 90.0,
+     "known_total": 18.17,
+     "needed_week": 5,
+     "done_week": 6,
+     "late_weeks": 1
+    },
+    {
+     "id": "L21",
+     "short": "생성 이미지 평가 지표",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Mc82875b85d",
+       "role": "주",
+       "title": "Stanford CS236 Deep Generative Models",
+       "kind": "대학 강의",
+       "site": "deepgenerativemodels.github.io",
+       "url": "https://deepgenerativemodels.github.io/",
+       "hours": null,
+       "hours_how": "모름 (강의 한 번, 길이 안 적힘)",
+       "fit": "일부",
+       "checked": "열어 봄 (강의 일정표)",
+       "note": "syllabus.html 8주차 'Energy Based Models + Evaluation of Generative Models (Slides)'. FID·CLIPScore·CMMD 를 이름으로 다루는 자료는 은행에 없다 (FID, Fréchet, CLIPScore, CMMD, torchmetrics, clean-fid 로 찾음)",
+       "new": true,
+       "why": "스탠퍼드 생성 모델 강의예요. 8주차 '생성 모델 평가' 강의 자료로 지표의 뜻을 배워요. CLIPScore·CMMD까지 다루는지는 확인하지 못했어요."
+      }
+     ],
+     "total": 93.0,
+     "known_total": 18.17,
+     "needed_week": 5,
+     "done_week": 7,
+     "late_weeks": 2
+    },
+    {
+     "id": "L15",
+     "short": "묶음 추론과 처리량",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 0.63,
+     "materials": [
+      {
+       "id": "M7743840acd",
+       "role": "주",
+       "title": "How does vLLM work?",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/how-does-vllm-work",
+       "hours": 0.63,
+       "hours_how": "4,519단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Outcome School. vLLM 내부(PagedAttention)를 설명한다. 묶음으로 돌리는 사용법은 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 96.0,
+     "known_total": 18.8,
+     "needed_week": 5,
+     "done_week": 7,
+     "late_weeks": 2
+    },
+    {
+     "id": "L20",
+     "short": "실험 기록과 재현",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Mf3ed9d1d06",
+       "role": "주",
+       "title": "MLflow",
+       "kind": "글",
+       "site": "mlflow.org",
+       "url": "https://mlflow.org/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "열어 봄",
+       "note": "MLflow 첫 화면. 소개뿐이고 가르치는 글이 아니다. CS329S 의 W&B 실험 추적 튜토리얼(2월 14일)이 더 맞을 수 있으나 은행에 따로 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 99.0,
+     "known_total": 18.8,
+     "needed_week": 5,
+     "done_week": 7,
+     "late_weeks": 2
+    },
+    {
+     "id": "L23",
+     "short": "데이터 레시피 비교 실험",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 0.2,
+     "materials": [
+      {
+       "id": "M6b1b272b4a",
+       "role": "주",
+       "title": "Data-centric ML benchmarking: Announcing DataPerf’s 2023 challenges",
+       "kind": "기술 블로그",
+       "site": "research.google",
+       "url": "https://research.google/blog/data-centric-ml-benchmarking-announcing-dataperfs-2023-challenges/",
+       "hours": 0.2,
+       "hours_how": "1,450단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Google Research DataPerf 글. 모델을 두고 데이터만 바꾸는 생각은 있다. 실험 설계는 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M484f5dd975",
+       "role": "보조",
+       "title": "[NeurIPS 2024] Advancing Data Selection for Foundation Models: From Heuristics to Principled Methods",
+       "kind": "학회 튜토리얼",
+       "site": "neurips.cc",
+       "url": "https://neurips.cc/virtual/2024/tutorial/99530",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "L12 의 NeurIPS 2024 튜토리얼을 같이 쓴다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 105.0,
+     "known_total": 19.0,
+     "needed_week": 7,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L05",
+     "short": "Blender 기초와 스크립트",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주",
+      "보조"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 108.0,
+     "known_total": 19.0,
+     "needed_week": 8,
+     "done_week": 8,
+     "late_weeks": 0
+    },
+    {
+     "id": "L24",
+     "short": "합성 데이터 무작위로 만들기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M22a1c09d86",
+       "role": "주",
+       "title": "[ACL 2025] Synthetic Data in the Era of Large Language Models",
+       "kind": "학회 튜토리얼",
+       "site": "2025.aclweb.org",
+       "url": "https://2025.aclweb.org/program/tutorials/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "안 엶",
+       "note": "ACL 2025 튜토리얼. 언어 모델의 합성 데이터라 3D 장면이 아니다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 111.0,
+     "known_total": 19.0,
+     "needed_week": 8,
+     "done_week": 8,
+     "late_weeks": 0
+    },
+    {
+     "id": "L25",
+     "short": "합성 데이터 메타데이터 정리",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M36e960a169",
+       "role": "주",
+       "title": "Pydantic",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/pydantic/pydantic",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Pydantic. 스키마 검사만. 카메라 투영은 은행에 맞는 것이 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 114.0,
+     "known_total": 19.0,
+     "needed_week": 8,
+     "done_week": 8,
+     "late_weeks": 0
+    },
+    {
+     "id": "L22",
+     "short": "구성 평가 벤치마크",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M8d662500b4",
+       "role": "주",
+       "title": "GenEval: An Object-Focused Framework for Evaluating Text-to-Image Alignment",
+       "kind": "논문",
+       "site": "arxiv.org",
+       "url": "https://arxiv.org/abs/2310.11513",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "논문뿐",
+       "checked": "안 엶",
+       "note": "GenEval 논문",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 117.0,
+     "known_total": 19.0,
+     "needed_week": 9,
+     "done_week": 8,
+     "late_weeks": 0
+    },
+    {
+     "id": "L26",
+     "short": "분석 화면 만들기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [],
+     "hours": 3.0,
+     "known_hours": 0.44,
+     "materials": [
+      {
+       "id": "M8721e1410e",
+       "role": "주",
+       "title": "Streamlit - Build a basic LLM app",
+       "kind": "글",
+       "site": "docs.streamlit.io",
+       "url": "https://docs.streamlit.io/knowledge-base/tutorials/build-conversational-apps",
+       "hours": 0.44,
+       "hours_how": "3,130단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Streamlit 공식 문서. 대화 앱 만들기라 표·그림 화면은 아니지만 기본기는 같다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 120.0,
+     "known_total": 19.44,
+     "needed_week": 9,
+     "done_week": 9,
+     "late_weeks": 0
+    }
+   ],
+   "inside_project_ids": [],
+   "order": [
+    "L08",
+    "L07",
+    "L03",
+    "L04",
+    "L10",
+    "L01",
+    "L02",
+    "L09",
+    "L27",
+    "L28",
+    "L14",
+    "L16",
+    "L17",
+    "L18",
+    "L11",
+    "L12",
+    "L13",
+    "L06",
+    "L19",
+    "L21",
+    "L15",
+    "L20",
+    "L23",
+    "L05",
+    "L24",
+    "L25",
+    "L22",
+    "L26"
+   ],
+   "total_hours": 120.0,
+   "spare_hours": 48.0,
+   "spare_parts": {
+    "no_slot": 33.0,
+    "empty_slots": 15.0,
+    "empty_slot_count": {
+     "보조": 5,
+     "실습": 0
+    }
+   },
+   "design_hours": 135.0,
+   "share": "71%",
+   "known_hours": 19.44,
+   "known_materials": 17,
+   "counts": {
+    "items": 28,
+    "big": 17,
+    "small": 11,
+    "inside_project": 0,
+    "slots": 40,
+    "materials": 38,
+    "unique_materials": 37,
+    "by_role": {
+     "주": 26,
+     "보조": 12,
+     "실습": 0
+    },
+    "new_materials": 7,
+    "fit": {
+     "맞음": 16,
+     "비슷함": 9,
+     "일부": 11,
+     "논문뿐": 2
+    },
+    "no_main": [
+     "L28",
+     "L05"
+    ],
+    "no_extra": {
+     "보조": [
+      "L07",
+      "L18",
+      "L06",
+      "L21",
+      "L05"
+     ],
+     "실습": []
+    }
+   },
+   "late": [
+    {
+     "id": "L18",
+     "late_weeks": 1
+    },
+    {
+     "id": "L11",
+     "late_weeks": 1
+    },
+    {
+     "id": "L12",
+     "late_weeks": 1
+    },
+    {
+     "id": "L13",
+     "late_weeks": 2
+    },
+    {
+     "id": "L06",
+     "late_weeks": 1
+    },
+    {
+     "id": "L19",
+     "late_weeks": 1
+    },
+    {
+     "id": "L21",
+     "late_weeks": 2
+    },
+    {
+     "id": "L15",
+     "late_weeks": 2
+    },
+    {
+     "id": "L20",
+     "late_weeks": 2
+    }
+   ],
+   "last_study_week": 9,
+   "layout": {
+    "1": [
+     {
+      "id": "L08",
+      "short": "기초 통계와 점수 흔들림",
+      "hours": 6.0
+     },
+     {
+      "id": "L07",
+      "short": "pandas 표와 그림",
+      "hours": 3.0
+     },
+     {
+      "id": "L03",
+      "short": "ML 개발 사이클",
+      "hours": 6.0
+     },
+     {
+      "id": "L04",
+      "short": "연산·읽고 쓰기 병목 재기",
+      "hours": 6.0
+     }
+    ],
+    "2": [
+     {
+      "id": "L10",
+      "short": "큰 데이터 나눠 저장·돌리기",
+      "hours": 6.0
+     },
+     {
+      "id": "L01",
+      "short": "생성 모델 원리",
+      "hours": 6.0
+     },
+     {
+      "id": "L02",
+      "short": "작은 생성 모델 학습 코드",
+      "hours": 6.0
+     },
+     {
+      "id": "L09",
+      "short": "영상에서 프레임 뽑기",
+      "hours": 3.0
+     }
+    ],
+    "3": [
+     {
+      "id": "L27",
+      "short": "공개 데이터 사용권",
+      "hours": 3.0
+     },
+     {
+      "id": "L28",
+      "short": "Git·GitHub 협업",
+      "hours": 3.0
+     },
+     {
+      "id": "L14",
+      "short": "VLM 구조와 돌리기",
+      "hours": 6.0
+     },
+     {
+      "id": "L16",
+      "short": "프롬프트 설계 기초",
+      "hours": 0.6
+     }
+    ],
+    "4": [
+     {
+      "id": "L16",
+      "short": "프롬프트 설계 기초",
+      "hours": 5.4
+     },
+     {
+      "id": "L17",
+      "short": "AI를 채점자로 쓰기",
+      "hours": 6.0
+     },
+     {
+      "id": "L18",
+      "short": "채점기 검증하기",
+      "hours": 1.2
+     }
+    ],
+    "5": [
+     {
+      "id": "L18",
+      "short": "채점기 검증하기",
+      "hours": 1.8
+     },
+     {
+      "id": "L11",
+      "short": "이미지 품질 신호와 중복 찾기",
+      "hours": 3.0
+     },
+     {
+      "id": "L12",
+      "short": "여러 단계로 데이터 거르기",
+      "hours": 6.0
+     },
+     {
+      "id": "L13",
+      "short": "정밀도·재현율과 문턱",
+      "hours": 1.8
+     }
+    ],
+    "6": [
+     {
+      "id": "L13",
+      "short": "정밀도·재현율과 문턱",
+      "hours": 1.2
+     },
+     {
+      "id": "L06",
+      "short": "Hugging Face에 올리기",
+      "hours": 3.0
+     },
+     {
+      "id": "L19",
+      "short": "캡션 품질 재기",
+      "hours": 6.0
+     },
+     {
+      "id": "L21",
+      "short": "생성 이미지 평가 지표",
+      "hours": 2.4
+     }
+    ],
+    "7": [
+     {
+      "id": "L21",
+      "short": "생성 이미지 평가 지표",
+      "hours": 0.6
+     },
+     {
+      "id": "L15",
+      "short": "묶음 추론과 처리량",
+      "hours": 3.0
+     },
+     {
+      "id": "L20",
+      "short": "실험 기록과 재현",
+      "hours": 3.0
+     },
+     {
+      "id": "L23",
+      "short": "데이터 레시피 비교 실험",
+      "hours": 6.0
+     }
+    ],
+    "8": [
+     {
+      "id": "L05",
+      "short": "Blender 기초와 스크립트",
+      "hours": 3.0
+     },
+     {
+      "id": "L24",
+      "short": "합성 데이터 무작위로 만들기",
+      "hours": 3.0
+     },
+     {
+      "id": "L25",
+      "short": "합성 데이터 메타데이터 정리",
+      "hours": 3.0
+     },
+     {
+      "id": "L22",
+      "short": "구성 평가 벤치마크",
+      "hours": 3.0
+     },
+     {
+      "id": "L26",
+      "short": "분석 화면 만들기",
+      "hours": 0.6
+     }
+    ],
+    "9": [
+     {
+      "id": "L26",
+      "short": "분석 화면 만들기",
+      "hours": 2.4
+     }
+    ]
+   },
+   "reasons": [
+    "28개 항목을 모두 교육자료로 공부해요. 큰 항목은 주 자료와 보조 자료, 작은 항목은 주 자료만 봐요.",
+    "자료 하나에 3시간씩 잡아 120시간이에요.",
+    "남는 48시간은 작은 항목에 보조 자료를 두지 않은 33시간과, 보조 자료를 못 찾은 큰 항목 5개의 15시간이에요.",
+    "맞는 자료가 없는 항목도 3시간을 잡아 두었어요: Git·GitHub 협업, Blender 기초와 스크립트."
+   ]
+  },
+  "252": {
+   "hours": 252,
+   "per_day": 3,
+   "label": "하루 3시간 · 252시간",
+   "week_cap": 28.0,
+   "study_caps": [
+    28.0,
+    28.0,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6,
+    19.6
+   ],
+   "rule": "자료 자리 하나에 3시간 가정 (84 ÷ 28). 주 자리는 자료가 없어도 세고, 보조·실습 자리는 고른 자료가 있을 때만 센다",
+   "items": [
+    {
+     "id": "L08",
+     "short": "기초 통계와 점수 흔들림",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M80ae229567",
+       "role": "주",
+       "title": "Seeing Theory",
+       "kind": "글",
+       "site": "seeing-theory.brown.edu",
+       "url": "https://seeing-theory.brown.edu/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Seeing Theory. 1·3·4장 (기댓값·분산, 분포, 점추정·구간추정·부트스트랩). 대화형이라 길이 모름",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M8205e8d578",
+       "role": "보조",
+       "title": "Interpreting A/B Test Results: False Positives and Statistical Significance",
+       "kind": "글",
+       "site": "netflixtechblog.com",
+       "url": "https://netflixtechblog.com/interpreting-a-b-test-results-false-positives-and-statistical-significance-c1522d0db27a",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "확인 못 함 (오류 HTTPError: HTTP Error 403: Forbidden)",
+       "note": "Netflix A/B 시험 결과 읽기. 온라인 실험 쪽",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Mad3f3f0985",
+       "role": "실습",
+       "title": "Khan Academy - Probability and Statistics",
+       "kind": "글",
+       "site": "khanacademy.org",
+       "url": "https://www.khanacademy.org/math/statistics-probability",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "일부",
+       "checked": "안 엶",
+       "note": "Khan Academy. 부트스트랩은 없을 수 있다",
+       "new": true,
+       "why": "확률·통계 문제를 풀며 분산과 신뢰구간을 손에 익혀요."
+      }
+     ],
+     "total": 9.0,
+     "known_total": 0.0,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L07",
+     "short": "pandas 표와 그림",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조",
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": 2.79,
+     "materials": [
+      {
+       "id": "Mdd410ed001",
+       "role": "주",
+       "title": "Python Data Science Handbook",
+       "kind": "글",
+       "site": "jakevdp.github.io",
+       "url": "https://jakevdp.github.io/PythonDataScienceHandbook/",
+       "hours": 2.79,
+       "hours_how": "19,950단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Python Data Science Handbook 3.01~3.04, 3.07, 3.08, 4.01~4.03, 4.05 열 절만",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 12.0,
+     "known_total": 2.79,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L03",
+     "short": "ML 개발 사이클",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": 4.5,
+     "materials": [
+      {
+       "id": "M3a0c3316a4",
+       "role": "주",
+       "title": "Stanford CS329S Machine Learning Systems Design",
+       "kind": "대학 강의",
+       "site": "stanford-cs329s.github.io",
+       "url": "https://stanford-cs329s.github.io/",
+       "hours": 4.5,
+       "hours_how": "강의 3회 × 90분 (syllabus 의 수업 시간)",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Stanford CS329S. 강의 셋(Training Data, Model selection·development·training, Offline evaluation)만. 수업은 회당 90분(3:15~4:45). 강의 노트로 공부",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M4d1424593f",
+       "role": "보조",
+       "title": "쿠팡의 머신러닝 플랫폼을 통한 ML 개발 가속화",
+       "kind": "기술 블로그",
+       "site": "medium.com",
+       "url": "https://medium.com/coupang-engineering/%EC%BF%A0%ED%8C%A1%EC%9D%98-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%84-%ED%86%B5%ED%95%9C-ml-%EA%B0%9C%EB%B0%9C-%EA%B0%80%EC%86%8D%ED%99%94-de29804148bb?source=rss----fb028911af07---4",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "일부",
+       "checked": "안 엶",
+       "note": "회사 기술 블로그. 플랫폼 소개라 사이클 전체를 가르치지는 않는다 (일부)",
+       "new": true,
+       "why": "쿠팡이 데이터부터 학습·배포까지 ML 개발 고리를 어떻게 돌리는지 한국어로 쓴 글이에요."
+      },
+      {
+       "id": "Md0123cca95",
+       "role": "실습",
+       "title": "\"You Don't Need a Bigger Boat\": A Full Data Pipeline Built with Open-Source Tools",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/jacopotagliabue/you-dont-need-a-bigger-boat",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "jacopotagliabue/you-dont-need-a-bigger-boat (Metaflow 바탕). 추천 문제라 이미지 생성과 다르다",
+       "new": true,
+       "why": "데이터 → 학습 → 배포를 오픈소스 도구로 잇는 저장소를 따라 해 봐요."
+      }
+     ],
+     "total": 21.0,
+     "known_total": 7.29,
+     "needed_week": 3,
+     "done_week": 1,
+     "late_weeks": 0
+    },
+    {
+     "id": "L04",
+     "short": "연산·읽고 쓰기 병목 재기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": 2.48,
+     "materials": [
+      {
+       "id": "M48320239d2",
+       "role": "주",
+       "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+       "kind": "기술 블로그",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/blog/torch-profiler",
+       "hours": 1.15,
+       "hours_how": "8,180단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "HF Profiling in PyTorch Part 1. 연산 쪽은 맞다. I/O 병목은 거의 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M4bba0bbec1",
+       "role": "보조",
+       "title": "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP",
+       "kind": "기술 블로그",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/blog/torch-mlp-fusion",
+       "hours": 0.66,
+       "hours_how": "4,680단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Hugging Face 'Profiling in PyTorch' 2편. overhead-bound 와 compute-bound 를 가른다. 읽고 쓰기(I/O) 병목은 다루지 않는다",
+       "new": true,
+       "why": "주 자료의 다음 편이에요. 실행 준비가 막히는 경우와 계산이 막히는 경우를 재서 가르는 법을 이어서 보여 줘요."
+      },
+      {
+       "id": "M783764f8aa",
+       "role": "실습",
+       "title": "Profiling in PyTorch (Part 3): Attention is all you profile",
+       "kind": "기술 블로그",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/blog/torch-attention-profile",
+       "hours": 0.67,
+       "hours_how": "4,794단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "'Profiling in PyTorch' 3편. 코드를 따라 돌리는 글",
+       "new": true,
+       "why": "어텐션 계산을 직접 재 보며 병목을 찾는 연습을 해요."
+      }
+     ],
+     "total": 30.0,
+     "known_total": 9.77,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L10",
+     "short": "큰 데이터 나눠 저장·돌리기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Mcdb88608a1",
+       "role": "주",
+       "title": "Scaling Model Evaluation at Pinterest with Ray (Part 4)",
+       "kind": "기술 블로그",
+       "site": "medium.com",
+       "url": "https://medium.com/pinterest-engineering/scaling-model-evaluation-at-pinterest-with-ray-part-4-4a96cd12cc11?source=rss----4c5a5f6279b6---4",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "확인 못 함 (오류 HTTPError: HTTP Error 403: Forbidden)",
+       "note": "Pinterest 의 Ray 로 평가 나눠 돌리기. 샤드 형식(WebDataset, Parquet)은 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M36fd7ea5bd",
+       "role": "보조",
+       "title": "Stanford CS246 Mining Massive Data Sets",
+       "kind": "대학 강의",
+       "site": "web.stanford.edu",
+       "url": "https://web.stanford.edu/class/cs246/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "안 엶",
+       "note": "Stanford CS246. 앞 강의만 해당 (뒤는 데이터 마이닝 알고리즘)",
+       "new": true,
+       "why": "큰 데이터를 나눠 처리하는 MapReduce·Spark를 대학 강의로 배워요. 나눈 파일을 실제로 돌리는 법은 실습 자료에서 봐요."
+      },
+      {
+       "id": "Mbf794501cd",
+       "role": "실습",
+       "title": "Datatrove",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/huggingface/datatrove",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "huggingface/datatrove. pipeline · executor · task 개념",
+       "new": true,
+       "why": "큰 데이터를 작업 여러 개로 나눠 돌리는 Hugging Face 도구로, 나눠 저장하고 돌리는 법을 따라 해 봐요."
+      }
+     ],
+     "total": 39.0,
+     "known_total": 9.77,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L01",
+     "short": "생성 모델 원리",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": 4.95,
+     "materials": [
+      {
+       "id": "M486c527c54",
+       "role": "주",
+       "title": "What are Diffusion Models?",
+       "kind": "글",
+       "site": "lilianweng.github.io",
+       "url": "https://lilianweng.github.io/lil-log/2021/07/11/diffusion-models.html",
+       "hours": 1.28,
+       "hours_how": "9,169단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Lilian Weng, What are Diffusion Models?. 원리와 수식",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Mff09bea021",
+       "role": "보조",
+       "title": "Denoising Diffusion-based Generative Modeling: Foundations and Applications",
+       "kind": "글",
+       "site": "cvpr2022-tutorial-diffusion-models.github.io",
+       "url": "https://cvpr2022-tutorial-diffusion-models.github.io/",
+       "hours": 3.67,
+       "hours_how": "페이지의 일정 8:30~12:10",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "CVPR 2022 튜토리얼. 페이지에 8:30~12:10",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M0edefc06b1",
+       "role": "실습",
+       "title": "Minimal implementation of diffusion models",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/VSehwag/minimal-diffusion",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "VSehwag/minimal-diffusion. main.py 로 학습·샘플링. flow matching 은 없다",
+       "new": true,
+       "why": "짧은 코드로 확산 모델을 학습하고 그림을 뽑아 보며 원리를 확인해요."
+      }
+     ],
+     "total": 48.0,
+     "known_total": 14.72,
+     "needed_week": 3,
+     "done_week": 2,
+     "late_weeks": 0
+    },
+    {
+     "id": "L02",
+     "short": "작은 생성 모델 학습 코드",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": 1.11,
+     "materials": [
+      {
+       "id": "M555a9dd2d0",
+       "role": "주",
+       "title": "MIT 6.S184 Generative AI with Stochastic Differential Equations: Flow Matching and Diffusion Models",
+       "kind": "대학 강의",
+       "site": "diffusion.csail.mit.edu",
+       "url": "https://diffusion.csail.mit.edu/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "MIT 6.S184 2026. 강의 6개(1, 2, 3-A, 3-B, 4, 5), 실습 3개. 실습이 flow matching 모델을 처음부터 만든다. 강의 길이는 페이지에 없음",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M9275c00746",
+       "role": "보조",
+       "title": "The Annotated Diffusion Model",
+       "kind": "글",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/blog/annotated-diffusion",
+       "hours": 1.11,
+       "hours_how": "7,960단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "HF The Annotated Diffusion Model. DDPM 코드 따라 치기",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M3f67dd7e91",
+       "role": "실습",
+       "title": "fast forward: DiffusionFastForward: train from scratch in colab",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/mikonvergence/DiffusionFastForward",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "mikonvergence/DiffusionFastForward. PyTorch Lightning, Colab 노트북",
+       "new": true,
+       "why": "Colab에서 내 GPU 없이 확산 모델을 처음부터 학습해 봐요."
+      }
+     ],
+     "total": 57.0,
+     "known_total": 15.83,
+     "needed_week": 3,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L09",
+     "short": "영상에서 프레임 뽑기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": 0.14,
+     "materials": [
+      {
+       "id": "M13d0a4b2b6",
+       "role": "주",
+       "title": "PySceneDetect",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/Breakthrough/PySceneDetect",
+       "hours": 0.14,
+       "hours_how": "1,008단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "PySceneDetect. 장면 전환은 맞다. save-images 가 장면마다 프레임 몇 장을 저장해 대표 프레임 일부. 디코딩(ffmpeg) 자체는 없다. README 만 쟀고 문서 전체 길이는 모름",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 60.0,
+     "known_total": 15.97,
+     "needed_week": 3,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L27",
+     "short": "공개 데이터 사용권",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M121753e4c5",
+       "role": "주",
+       "title": "[NAACL 2025] LLMs and Copyright Risks: Benchmarks and Mitigation Approaches",
+       "kind": "학회 튜토리얼",
+       "site": "2025.naacl.org",
+       "url": "https://2025.naacl.org/program/tutorials/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "열어 봄",
+       "note": "NAACL 2025 튜토리얼. 언어 모델 저작권이라 영상 데이터 사용권이 아니다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 63.0,
+     "known_total": 15.97,
+     "needed_week": 3,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L28",
+     "short": "Git·GitHub 협업",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "실습"
+     ],
+     "empty": [
+      "주"
+     ],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M51459489f2",
+       "role": "실습",
+       "title": "Git-Collaboration",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/jduckles/git-collaboration",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "jduckles/git-collaboration. README 는 '협업 흐름을 가르치는 데 쓰는 저장소' 한 줄뿐. 은행에 Git 협업을 가르치는 글·강의가 없다 (git, pull request, code review 로 찾음)",
+       "new": true,
+       "why": "Git·GitHub 협업 수업용 연습 저장소예요. 포크하고 풀 리퀘스트를 보내 봐요. 설명 글은 없어요."
+      }
+     ],
+     "total": 69.0,
+     "known_total": 15.97,
+     "needed_week": 3,
+     "done_week": 3,
+     "late_weeks": 0
+    },
+    {
+     "id": "L14",
+     "short": "VLM 구조와 돌리기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": 0.43,
+     "materials": [
+      {
+       "id": "M4caa8274b8",
+       "role": "주",
+       "title": "How does a Vision-Language Model (VLM) work?",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/vision-language-model-vlm",
+       "hours": 0.43,
+       "hours_how": "3,055단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Outcome School. 이미지가 언어 모델로 들어가는 구조는 있다. 직접 돌리는 법은 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M69d171dd0b",
+       "role": "보조",
+       "title": "Inha University ECE7115 Large Language Models (official title: Multimodal VLM)",
+       "kind": "대학 강의",
+       "site": "gcl-inha.github.io",
+       "url": "https://gcl-inha.github.io/ece7115/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "인하대 ECE7115 (한국어, 공식 이름 Multimodal VLM). 길이 모름",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Md774b69e50",
+       "role": "실습",
+       "title": "Smol Vision",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/merveenoyan/smol-vision",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "merveenoyan/smol-vision. 미세 조정 예시가 많다 (캡션 다는 예시가 따로 있는지는 안 봄)",
+       "new": true,
+       "why": "작은 VLM을 돌리고 다듬어 보는 노트북 모음이에요."
+      }
+     ],
+     "total": 78.0,
+     "known_total": 16.4,
+     "needed_week": 4,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L16",
+     "short": "프롬프트 설계 기초",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": 0.64,
+     "materials": [
+      {
+       "id": "M883a5d0c5b",
+       "role": "주",
+       "title": "Anthropics：Prompt Engineering Interactive Tutorial",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/anthropics/courses/tree/master/prompt_engineering_interactive_tutorial/Anthropic%201P",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Anthropic 공식 대화형 튜토리얼. 노트북 10개(00~09). 길이 모름",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M413520a564",
+       "role": "보조",
+       "title": "Prompt Engineering",
+       "kind": "글",
+       "site": "lilianweng.github.io",
+       "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
+       "hours": 0.64,
+       "hours_how": "4,597단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Lilian Weng, Prompt Engineering (개인 글이지만 은행에 같은 깊이의 공식 문서가 없다)",
+       "new": true,
+       "why": "예시 넣기, 단계별로 생각하게 하기 같은 프롬프트 기법을 한 글에 정리했어요."
+      },
+      {
+       "id": "M5df2fa4fd8",
+       "role": "실습",
+       "title": "promptfoo",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/typpo/promptfoo",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "promptfoo. API 키가 있어야 돈다 (공부하는 사람 몫)",
+       "new": true,
+       "why": "프롬프트를 고정된 시험 세트로 재고 판끼리 견주는 도구예요."
+      }
+     ],
+     "total": 87.0,
+     "known_total": 17.04,
+     "needed_week": 4,
+     "done_week": 4,
+     "late_weeks": 0
+    },
+    {
+     "id": "L17",
+     "short": "AI를 채점자로 쓰기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": 1.03,
+     "materials": [
+      {
+       "id": "M07e5542735",
+       "role": "주",
+       "title": "2부: 정책을 따르는 평가자, LLM-as-a-Judge",
+       "kind": "기술 블로그",
+       "site": "hyperconnect.github.io",
+       "url": "https://hyperconnect.github.io/2026/04/22/llm-as-a-judge-for-explanation-quality.html",
+       "hours": 0.44,
+       "hours_how": "3,158단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "하이퍼커넥트 기술 블로그 2부 (한국어). 정책을 기준표로 바꿔 판정하고 데이터 정제에 쓴다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Mc4b43e3b25",
+       "role": "보조",
+       "title": "LLM as a Judge",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/llm-as-a-judge",
+       "hours": 0.59,
+       "hours_how": "4,202단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "Outcome School LLM as a Judge",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M74b714c755",
+       "role": "실습",
+       "title": "DeepEval",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/confident-ai/deepeval",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "confident-ai/deepeval. G-Eval 같은 LLM-as-a-judge 지표",
+       "new": true,
+       "why": "LLM 채점자로 점수를 매기는 평가 도구를 직접 써 봐요."
+      }
+     ],
+     "total": 96.0,
+     "known_total": 18.07,
+     "needed_week": 4,
+     "done_week": 5,
+     "late_weeks": 1
+    },
+    {
+     "id": "L18",
+     "short": "채점기 검증하기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조",
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Mdf36615518",
+       "role": "주",
+       "title": "LLM as a Judge를 활용한 CodeBuddy 성능 평가 - tech.kakao.com",
+       "kind": "기술 블로그",
+       "site": "tech.kakao.com",
+       "url": "https://tech.kakao.com/posts/690",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "확인 못 함 (본문을 스크립트로 그려 받은 글이 155단어뿐)",
+       "note": "은행에 채점기 검증(사람 라벨과의 일치도, 정답을 아는 데이터로 채점기 정확도)을 가르치는 자료가 없다. 가장 가까운 것",
+       "new": true,
+       "why": "카카오가 LLM 채점자로 코드 리뷰 품질을 잰 한국어 글이에요. 채점기를 사람 판단과 견주는지는 열어 확인하지 못했어요."
+      }
+     ],
+     "total": 99.0,
+     "known_total": 18.07,
+     "needed_week": 4,
+     "done_week": 5,
+     "late_weeks": 1
+    },
+    {
+     "id": "L11",
+     "short": "이미지 품질 신호와 중복 찾기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M09544bba15",
+       "role": "주",
+       "title": "Semhash",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/MinishLab/semhash",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "안 엶",
+       "note": "Semhash. 글 중복 찾기라 이미지가 아니다. 은행의 'Quality filtering' 줄은 주소가 다른 페이지(argilla 합성 데이터)라 뺐다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Mf68422f412",
+       "role": "실습",
+       "title": "NeMo-Curator",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/NVIDIA/NeMo-Curator",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "NVIDIA/NeMo-Curator. text·image·video 거르기, 중복 지우기. GPU 가 있어야 빠르다",
+       "new": true,
+       "why": "이미지 데이터를 거르고 겹친 것을 지우는 NVIDIA 도구를 돌려 봐요."
+      }
+     ],
+     "total": 105.0,
+     "known_total": 18.07,
+     "needed_week": 4,
+     "done_week": 5,
+     "late_weeks": 1
+    },
+    {
+     "id": "L12",
+     "short": "여러 단계로 데이터 거르기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 9.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M484f5dd975",
+       "role": "주",
+       "title": "[NeurIPS 2024] Advancing Data Selection for Foundation Models: From Heuristics to Principled Methods",
+       "kind": "학회 튜토리얼",
+       "site": "neurips.cc",
+       "url": "https://neurips.cc/virtual/2024/tutorial/99530",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "NeurIPS 2024 튜토리얼 (Wang, Schmidt, Jia). 요약이 휴리스틱 필터부터 다룬다. 페이지에 길이 없음",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Mb58cca3d7f",
+       "role": "보조",
+       "title": "[CVPR 2025] Continuous Data Cycle via Foundation Models",
+       "kind": "학회 튜토리얼",
+       "site": "cvpr.thecvf.com",
+       "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35914",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "CVPR 2025 튜토리얼, 데이터와 모델의 되먹임. 길이 없음",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Me3acc78699",
+       "role": "실습",
+       "title": "data-juicer",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/modelscope/data-juicer",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "맞음",
+       "checked": "안 엶",
+       "note": "data-juicer (은행 주소는 modelscope/data-juicer, 지금은 datajuicer/data-juicer). 2단계 후보에도 있다",
+       "new": true,
+       "why": "여러 거르기 단계를 이어 붙여 데이터를 직접 걸러 보는 오픈소스 도구예요."
+      }
+     ],
+     "total": 114.0,
+     "known_total": 18.07,
+     "needed_week": 4,
+     "done_week": 5,
+     "late_weeks": 1
+    },
+    {
+     "id": "L13",
+     "short": "정밀도·재현율과 문턱",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 0.32,
+     "materials": [
+      {
+       "id": "Me8d08faa0b",
+       "role": "주",
+       "title": "Precision vs Recall",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/precision-vs-recall",
+       "hours": 0.32,
+       "hours_how": "2,253단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Outcome School. 두 지표의 뜻은 있다. 문턱(threshold)이라는 말이 본문에 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Mdcf6fe6a75",
+       "role": "실습",
+       "title": "Hugging Face Evaluate",
+       "kind": "글",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/docs/evaluate/en/index",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "일부",
+       "checked": "안 엶",
+       "note": "Hugging Face Evaluate 문서",
+       "new": true,
+       "why": "정밀도·재현율을 코드로 계산해 보며 기준값에 따라 어떻게 바뀌는지 봐요."
+      }
+     ],
+     "total": 120.0,
+     "known_total": 18.39,
+     "needed_week": 4,
+     "done_week": 6,
+     "late_weeks": 2
+    },
+    {
+     "id": "L06",
+     "short": "Hugging Face에 올리기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조",
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": 0.45,
+     "materials": [
+      {
+       "id": "M5d98f2b0f9",
+       "role": "주",
+       "title": "HuggingFace NLP Course",
+       "kind": "글",
+       "site": "huggingface.co",
+       "url": "https://huggingface.co/learn/nlp-course/chapter1/1",
+       "hours": 0.45,
+       "hours_how": "5장 5절 3,229단어 ÷ 분당 238단어 × 2",
+       "fit": "맞음",
+       "checked": "열어 봄 (5장 5절)",
+       "note": "은행 주소는 강좌 첫 쪽(chapter1/1)이다. 읽을 곳은 5장 5절 'Creating your own dataset' (push_to_hub, dataset card 를 열어 확인)",
+       "new": true,
+       "why": "Hugging Face 공식 강좌예요. 5장 5절이 데이터셋을 Hub에 올리고 데이터셋 카드를 쓰는 법을 그대로 보여 줘요."
+      }
+     ],
+     "total": 123.0,
+     "known_total": 18.84,
+     "needed_week": 5,
+     "done_week": 6,
+     "late_weeks": 1
+    },
+    {
+     "id": "L19",
+     "short": "캡션 품질 재기",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 6.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Md0d8dff452",
+       "role": "주",
+       "title": "[ECCV 2026] From Hallucination Detection to Adversarial Defense: A Unified Framework for LVLM and LLM Safety",
+       "kind": "학회 튜토리얼",
+       "site": "eccv.ecva.net",
+       "url": "https://eccv.ecva.net/virtual/2026/3132",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "열어 봄",
+       "note": "ECCV 2026 튜토리얼. VLM 지어냄 검출이 안전 쪽이다. 길이 모름",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Me57c31f855",
+       "role": "보조",
+       "title": "A Picture is Worth a Thousand Words: Principled Recaptioning Improves Image Generation",
+       "kind": "논문",
+       "site": "arxiv.org",
+       "url": "https://arxiv.org/abs/2310.16656",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "논문뿐",
+       "checked": "안 엶",
+       "note": "다시 캡션 달기 논문",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 129.0,
+     "known_total": 18.84,
+     "needed_week": 5,
+     "done_week": 6,
+     "late_weeks": 1
+    },
+    {
+     "id": "L21",
+     "short": "생성 이미지 평가 지표",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "보조",
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Mc82875b85d",
+       "role": "주",
+       "title": "Stanford CS236 Deep Generative Models",
+       "kind": "대학 강의",
+       "site": "deepgenerativemodels.github.io",
+       "url": "https://deepgenerativemodels.github.io/",
+       "hours": null,
+       "hours_how": "모름 (강의 한 번, 길이 안 적힘)",
+       "fit": "일부",
+       "checked": "열어 봄 (강의 일정표)",
+       "note": "syllabus.html 8주차 'Energy Based Models + Evaluation of Generative Models (Slides)'. FID·CLIPScore·CMMD 를 이름으로 다루는 자료는 은행에 없다 (FID, Fréchet, CLIPScore, CMMD, torchmetrics, clean-fid 로 찾음)",
+       "new": true,
+       "why": "스탠퍼드 생성 모델 강의예요. 8주차 '생성 모델 평가' 강의 자료로 지표의 뜻을 배워요. CLIPScore·CMMD까지 다루는지는 확인하지 못했어요."
+      }
+     ],
+     "total": 132.0,
+     "known_total": 18.84,
+     "needed_week": 5,
+     "done_week": 6,
+     "late_weeks": 1
+    },
+    {
+     "id": "L15",
+     "short": "묶음 추론과 처리량",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "실습"
+     ],
+     "empty": [],
+     "hours": 6.0,
+     "known_hours": 0.63,
+     "materials": [
+      {
+       "id": "M7743840acd",
+       "role": "주",
+       "title": "How does vLLM work?",
+       "kind": "글",
+       "site": "outcomeschool.com",
+       "url": "https://outcomeschool.com/blog/how-does-vllm-work",
+       "hours": 0.63,
+       "hours_how": "4,519단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Outcome School. vLLM 내부(PagedAttention)를 설명한다. 묶음으로 돌리는 사용법은 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "Md3a858b4ec",
+       "role": "실습",
+       "title": "vLLM",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/vllm-project/vllm",
+       "hours": null,
+       "hours_how": "모름 (따라 하는 저장소)",
+       "fit": "일부",
+       "checked": "안 엶",
+       "note": "vllm-project/vllm. 시작하기 문서의 묶음(오프라인) 추론",
+       "new": true,
+       "why": "vLLM으로 여러 입력을 한 번에 돌려 처리량을 재 봐요."
+      }
+     ],
+     "total": 138.0,
+     "known_total": 19.47,
+     "needed_week": 5,
+     "done_week": 7,
+     "late_weeks": 2
+    },
+    {
+     "id": "L20",
+     "short": "실험 기록과 재현",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "Mf3ed9d1d06",
+       "role": "주",
+       "title": "MLflow",
+       "kind": "글",
+       "site": "mlflow.org",
+       "url": "https://mlflow.org/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "열어 봄",
+       "note": "MLflow 첫 화면. 소개뿐이고 가르치는 글이 아니다. CS329S 의 W&B 실험 추적 튜토리얼(2월 14일)이 더 맞을 수 있으나 은행에 따로 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 141.0,
+     "known_total": 19.47,
+     "needed_week": 5,
+     "done_week": 7,
+     "late_weeks": 2
+    },
+    {
+     "id": "L23",
+     "short": "데이터 레시피 비교 실험",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주",
+      "보조"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 6.0,
+     "known_hours": 0.2,
+     "materials": [
+      {
+       "id": "M6b1b272b4a",
+       "role": "주",
+       "title": "Data-centric ML benchmarking: Announcing DataPerf’s 2023 challenges",
+       "kind": "기술 블로그",
+       "site": "research.google",
+       "url": "https://research.google/blog/data-centric-ml-benchmarking-announcing-dataperfs-2023-challenges/",
+       "hours": 0.2,
+       "hours_how": "1,450단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Google Research DataPerf 글. 모델을 두고 데이터만 바꾸는 생각은 있다. 실험 설계는 없다",
+       "new": false,
+       "why": null
+      },
+      {
+       "id": "M484f5dd975",
+       "role": "보조",
+       "title": "[NeurIPS 2024] Advancing Data Selection for Foundation Models: From Heuristics to Principled Methods",
+       "kind": "학회 튜토리얼",
+       "site": "neurips.cc",
+       "url": "https://neurips.cc/virtual/2024/tutorial/99530",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "맞음",
+       "checked": "열어 봄",
+       "note": "L12 의 NeurIPS 2024 튜토리얼을 같이 쓴다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 147.0,
+     "known_total": 19.67,
+     "needed_week": 7,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L05",
+     "short": "Blender 기초와 스크립트",
+     "size": "큰",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "주",
+      "보조",
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [],
+     "total": 150.0,
+     "known_total": 19.67,
+     "needed_week": 8,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L24",
+     "short": "합성 데이터 무작위로 만들기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M22a1c09d86",
+       "role": "주",
+       "title": "[ACL 2025] Synthetic Data in the Era of Large Language Models",
+       "kind": "학회 튜토리얼",
+       "site": "2025.aclweb.org",
+       "url": "https://2025.aclweb.org/program/tutorials/",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "비슷함",
+       "checked": "안 엶",
+       "note": "ACL 2025 튜토리얼. 언어 모델의 합성 데이터라 3D 장면이 아니다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 153.0,
+     "known_total": 19.67,
+     "needed_week": 8,
+     "done_week": 7,
+     "late_weeks": 0
+    },
+    {
+     "id": "L25",
+     "short": "합성 데이터 메타데이터 정리",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M36e960a169",
+       "role": "주",
+       "title": "Pydantic",
+       "kind": "저장소",
+       "site": "github.com",
+       "url": "https://github.com/pydantic/pydantic",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Pydantic. 스키마 검사만. 카메라 투영은 은행에 맞는 것이 없다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 156.0,
+     "known_total": 19.67,
+     "needed_week": 8,
+     "done_week": 8,
+     "late_weeks": 0
+    },
+    {
+     "id": "L22",
+     "short": "구성 평가 벤치마크",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": null,
+     "materials": [
+      {
+       "id": "M8d662500b4",
+       "role": "주",
+       "title": "GenEval: An Object-Focused Framework for Evaluating Text-to-Image Alignment",
+       "kind": "논문",
+       "site": "arxiv.org",
+       "url": "https://arxiv.org/abs/2310.11513",
+       "hours": null,
+       "hours_how": "모름",
+       "fit": "논문뿐",
+       "checked": "안 엶",
+       "note": "GenEval 논문",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 159.0,
+     "known_total": 19.67,
+     "needed_week": 9,
+     "done_week": 8,
+     "late_weeks": 0
+    },
+    {
+     "id": "L26",
+     "short": "분석 화면 만들기",
+     "size": "작은",
+     "route": "교육자료",
+     "roles": [
+      "주",
+      "실습"
+     ],
+     "slots": [
+      "주"
+     ],
+     "empty": [
+      "실습"
+     ],
+     "hours": 3.0,
+     "known_hours": 0.44,
+     "materials": [
+      {
+       "id": "M8721e1410e",
+       "role": "주",
+       "title": "Streamlit - Build a basic LLM app",
+       "kind": "글",
+       "site": "docs.streamlit.io",
+       "url": "https://docs.streamlit.io/knowledge-base/tutorials/build-conversational-apps",
+       "hours": 0.44,
+       "hours_how": "3,130단어 ÷ 분당 238단어 × 2",
+       "fit": "일부",
+       "checked": "열어 봄",
+       "note": "Streamlit 공식 문서. 대화 앱 만들기라 표·그림 화면은 아니지만 기본기는 같다",
+       "new": false,
+       "why": null
+      }
+     ],
+     "total": 162.0,
+     "known_total": 20.11,
+     "needed_week": 9,
+     "done_week": 8,
+     "late_weeks": 0
+    }
+   ],
+   "inside_project_ids": [],
+   "order": [
+    "L08",
+    "L07",
+    "L03",
+    "L04",
+    "L10",
+    "L01",
+    "L02",
+    "L09",
+    "L27",
+    "L28",
+    "L14",
+    "L16",
+    "L17",
+    "L18",
+    "L11",
+    "L12",
+    "L13",
+    "L06",
+    "L19",
+    "L21",
+    "L15",
+    "L20",
+    "L23",
+    "L05",
+    "L24",
+    "L25",
+    "L22",
+    "L26"
+   ],
+   "total_hours": 162.0,
+   "spare_hours": 90.0,
+   "spare_parts": {
+    "no_slot": 33.0,
+    "empty_slots": 57.0,
+    "empty_slot_count": {
+     "보조": 5,
+     "실습": 14
+    }
+   },
+   "design_hours": 219.0,
+   "share": "64%",
+   "known_hours": 20.11,
+   "known_materials": 18,
+   "counts": {
+    "items": 28,
+    "big": 17,
+    "small": 11,
+    "inside_project": 0,
+    "slots": 54,
+    "materials": 52,
+    "unique_materials": 51,
+    "by_role": {
+     "주": 26,
+     "보조": 12,
+     "실습": 14
+    },
+    "new_materials": 21,
+    "fit": {
+     "맞음": 21,
+     "비슷함": 9,
+     "일부": 20,
+     "논문뿐": 2
+    },
+    "no_main": [
+     "L28",
+     "L05"
+    ],
+    "no_extra": {
+     "보조": [
+      "L07",
+      "L18",
+      "L06",
+      "L21",
+      "L05"
+     ],
+     "실습": [
+      "L07",
+      "L09",
+      "L27",
+      "L18",
+      "L06",
+      "L19",
+      "L21",
+      "L20",
+      "L23",
+      "L05",
+      "L24",
+      "L25",
+      "L22",
+      "L26"
+     ]
+    }
+   },
+   "late": [
+    {
+     "id": "L17",
+     "late_weeks": 1
+    },
+    {
+     "id": "L18",
+     "late_weeks": 1
+    },
+    {
+     "id": "L11",
+     "late_weeks": 1
+    },
+    {
+     "id": "L12",
+     "late_weeks": 1
+    },
+    {
+     "id": "L13",
+     "late_weeks": 2
+    },
+    {
+     "id": "L06",
+     "late_weeks": 1
+    },
+    {
+     "id": "L19",
+     "late_weeks": 1
+    },
+    {
+     "id": "L21",
+     "late_weeks": 1
+    },
+    {
+     "id": "L15",
+     "late_weeks": 2
+    },
+    {
+     "id": "L20",
+     "late_weeks": 2
+    }
+   ],
+   "last_study_week": 8,
+   "layout": {
+    "1": [
+     {
+      "id": "L08",
+      "short": "기초 통계와 점수 흔들림",
+      "hours": 9.0
+     },
+     {
+      "id": "L07",
+      "short": "pandas 표와 그림",
+      "hours": 3.0
+     },
+     {
+      "id": "L03",
+      "short": "ML 개발 사이클",
+      "hours": 9.0
+     },
+     {
+      "id": "L04",
+      "short": "연산·읽고 쓰기 병목 재기",
+      "hours": 7.0
+     }
+    ],
+    "2": [
+     {
+      "id": "L04",
+      "short": "연산·읽고 쓰기 병목 재기",
+      "hours": 2.0
+     },
+     {
+      "id": "L10",
+      "short": "큰 데이터 나눠 저장·돌리기",
+      "hours": 9.0
+     },
+     {
+      "id": "L01",
+      "short": "생성 모델 원리",
+      "hours": 9.0
+     },
+     {
+      "id": "L02",
+      "short": "작은 생성 모델 학습 코드",
+      "hours": 8.0
+     }
+    ],
+    "3": [
+     {
+      "id": "L02",
+      "short": "작은 생성 모델 학습 코드",
+      "hours": 1.0
+     },
+     {
+      "id": "L09",
+      "short": "영상에서 프레임 뽑기",
+      "hours": 3.0
+     },
+     {
+      "id": "L27",
+      "short": "공개 데이터 사용권",
+      "hours": 3.0
+     },
+     {
+      "id": "L28",
+      "short": "Git·GitHub 협업",
+      "hours": 6.0
+     },
+     {
+      "id": "L14",
+      "short": "VLM 구조와 돌리기",
+      "hours": 6.6
+     }
+    ],
+    "4": [
+     {
+      "id": "L14",
+      "short": "VLM 구조와 돌리기",
+      "hours": 2.4
+     },
+     {
+      "id": "L16",
+      "short": "프롬프트 설계 기초",
+      "hours": 9.0
+     },
+     {
+      "id": "L17",
+      "short": "AI를 채점자로 쓰기",
+      "hours": 8.2
+     }
+    ],
+    "5": [
+     {
+      "id": "L17",
+      "short": "AI를 채점자로 쓰기",
+      "hours": 0.8
+     },
+     {
+      "id": "L18",
+      "short": "채점기 검증하기",
+      "hours": 3.0
+     },
+     {
+      "id": "L11",
+      "short": "이미지 품질 신호와 중복 찾기",
+      "hours": 6.0
+     },
+     {
+      "id": "L12",
+      "short": "여러 단계로 데이터 거르기",
+      "hours": 9.0
+     },
+     {
+      "id": "L13",
+      "short": "정밀도·재현율과 문턱",
+      "hours": 0.8
+     }
+    ],
+    "6": [
+     {
+      "id": "L13",
+      "short": "정밀도·재현율과 문턱",
+      "hours": 5.2
+     },
+     {
+      "id": "L06",
+      "short": "Hugging Face에 올리기",
+      "hours": 3.0
+     },
+     {
+      "id": "L19",
+      "short": "캡션 품질 재기",
+      "hours": 6.0
+     },
+     {
+      "id": "L21",
+      "short": "생성 이미지 평가 지표",
+      "hours": 3.0
+     },
+     {
+      "id": "L15",
+      "short": "묶음 추론과 처리량",
+      "hours": 2.4
+     }
+    ],
+    "7": [
+     {
+      "id": "L15",
+      "short": "묶음 추론과 처리량",
+      "hours": 3.6
+     },
+     {
+      "id": "L20",
+      "short": "실험 기록과 재현",
+      "hours": 3.0
+     },
+     {
+      "id": "L23",
+      "short": "데이터 레시피 비교 실험",
+      "hours": 6.0
+     },
+     {
+      "id": "L05",
+      "short": "Blender 기초와 스크립트",
+      "hours": 3.0
+     },
+     {
+      "id": "L24",
+      "short": "합성 데이터 무작위로 만들기",
+      "hours": 3.0
+     },
+     {
+      "id": "L25",
+      "short": "합성 데이터 메타데이터 정리",
+      "hours": 1.0
+     }
+    ],
+    "8": [
+     {
+      "id": "L25",
+      "short": "합성 데이터 메타데이터 정리",
+      "hours": 2.0
+     },
+     {
+      "id": "L22",
+      "short": "구성 평가 벤치마크",
+      "hours": 3.0
+     },
+     {
+      "id": "L26",
+      "short": "분석 화면 만들기",
+      "hours": 3.0
+     }
+    ]
+   },
+   "reasons": [
+    "하루 2시간 안에 더해, 항목마다 따라 해 볼 실습 자료 자리를 하나씩 두었어요.",
+    "실습 자료는 14개 항목에서 찾았어요. 나머지 14개는 자료 은행에 맞는 실습 자료가 없어요.",
+    "자료 하나에 3시간씩 잡아 162시간이에요.",
+    "남는 90시간은 작은 항목에 보조 자료를 두지 않은 33시간과, 못 찾은 보조 5개·실습 14개의 57시간이에요. 지어내 채우지 않았어요."
+   ]
+  }
+ },
+ "budgets_source": [
+  "../기용/docs/naver_ml_intern.교육자료.json",
+  "demo/design/budgets_hand.json"
+ ]
+}

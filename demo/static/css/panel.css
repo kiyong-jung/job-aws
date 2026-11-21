@@ -1,0 +1,773 @@
+/* 오른쪽 패널: 머리(뒤로, 단계 길, 상태 줄, 닫기)와 쪽 더미. 쪽은 ① 공고 원문(형광펜) → ② 프로젝트 찾기(DB 그림) → ③ 샘플
+   → ④ 교육자료(84시간 막대) → ⑤ 12주 계획(학기 16주 칸) → ⑥ 정리 리포트.
+   역량 표는 대화 칸에 있다 (chat.css). 글 왼쪽 끝은 머리, 쪽 모두 24px (휴대폰 16px) 에 맞춘다. */
+.panel-head {
+  display: flex; align-items: flex-start; gap: var(--s1);      /* ← · × 는 단계 길 줄에 고정: 쪽마다 같은 자리 */
+  min-height: var(--header-h); padding: var(--s2) var(--s2) var(--s2) var(--s5);
+  border-bottom: 1px solid var(--line);
+}
+.panel-head:has(#panel-back:not([hidden])) { padding-left: var(--s2); }
+.panel-head .icon-btn { margin-top: -2px; }
+#panel-back { width: 36px; height: 36px; position: relative; }
+#panel-back::after { content: ""; position: absolute; inset: -4px; }      /* 누르는 곳은 44px */
+.panel-titles { flex: 1; min-width: 0; container-type: inline-size; }
+.panel-line { display: flex; align-items: center; gap: var(--s2); min-width: 0; }
+.panel-line .panel-status { flex: 1; min-width: 0; }
+/* ① 쪽 상태 줄 옆: 리포트 줄에서 넘어온 문장 번호("6번 문장")와 `리포트로 돌아가기` (36px, 좁으면 44px). 상태 줄(다시 틀기 알림)은 그대로 둔다 */
+.panel-where { flex: none; font-size: var(--fs-label); line-height: 1.5; white-space: nowrap; }
+#panel-return { flex: none; min-height: 36px; margin-block: calc((1.5em - 36px) / 2); padding: 0 var(--s3); font-size: var(--fs-label); }      /* 상태 줄 높이를 늘리지 않게 (머리가 쪽마다 같은 높이) */
+.panel-status { font-size: var(--fs-label); line-height: 1.5; min-height: 1.5em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* 단계 길: ① 공고 읽기 › ② 프로젝트 찾기 › ③ 저장소 요약 › ④ 교육자료 › ⑤ 12주 계획. 다섯 다 늘 보인다. 지금 쪽만 굵게, 그린 다른 쪽은 눌러서 가고, 아직 안 그린 쪽은 옅게 */
+.path { display: flex; align-items: center; min-width: 0; font-size: var(--fs-label); line-height: 1.5; white-space: nowrap; }
+.path li { display: flex; align-items: center; min-width: 0; }
+.path li + li::before { content: "›"; flex: none; width: var(--s4); text-align: center; color: var(--faint); }      /* › 칸은 고정 폭 16px */
+.path [aria-current], .path button, .path [aria-disabled] { display: inline-flex; align-items: center; gap: var(--s1); min-width: 0; }
+/* 보고 있지 않을 때 새로 그린 쪽: 번호 오른쪽 위에 먹 점 하나 ("새로 그렸어요" 는 title 과 화면 읽기 글로). 가 보면 사라진다 */
+.path li[data-new] .path-n { position: relative; }
+.path li[data-new] .path-n::after { content: ""; position: absolute; top: -2px; right: -2px; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 1.5px var(--surface); }
+.path [aria-current] { font-weight: 600; }
+.path [aria-current] .path-name { overflow: hidden; text-overflow: ellipsis; }
+.path [aria-disabled] { color: var(--faint); cursor: default; }
+.path [aria-disabled] .path-n { box-shadow: inset 0 0 0 1px var(--line); color: var(--faint); font-weight: 500; }
+/* 단계 번호: 지금 쪽은 먹 바탕, 다른 쪽은 테두리 (토스 ProgressStepper 처럼) */
+.path-n {
+  display: inline-grid; place-items: center; flex: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  font-size: var(--fs-label); font-weight: 600; line-height: 1;
+  box-shadow: inset 0 0 0 1px var(--line-strong); 
+}
+.path [aria-current] .path-n { background: var(--ink); color: var(--surface); box-shadow: none; }
+.path button {
+  position: relative; border-radius: var(--r-chip);
+  text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px;
+  transition: color var(--t-out) var(--ease), text-decoration-color var(--t-out) var(--ease);
+}
+.path button::after { content: ""; position: absolute; inset: -12px -4px; }      /* 누르는 곳은 44px */
+.path button:hover { color: var(--ink); text-decoration-color: var(--line-strong); transition-duration: var(--t-hover); }
+/* 단계 길의 이름은 짧은 이름 여섯 (공고 · 프로젝트 · 응용 · 교육자료 · 12주 계획 · 리포트). 단계 길은 늘 한 줄.
+   재어 본 값: 여섯 이름 + 번호 + › 다섯 = 430px 안팎. 머리 폭이 460px 아래면(1024px 화면의 406px) › 칸과 번호 옆 틈을 좁혀 여섯을 다 담고(394px 안팎),
+   400px 아래면(휴대폰) 지금 쪽만 이름을 쓰고 나머지는 번호만 (이름은 화면 읽기 프로그램에 남는다) */
+@container (max-width: 459.98px) {
+  .path li + li::before { width: 10px; }
+  .path [aria-current], .path button, .path [aria-disabled] { gap: 3px; }
+}
+@container (max-width: 399.98px) {
+  .path li:not(:has([aria-current])) .path-name { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+/* 휴대폰: 머리 폭 규칙(위 @container)대로 지금 쪽만 이름을 쓴다. 닫기 단추와 겹치지 않게 › 칸을 좁힌다 */
+@media (max-width: 599.98px) {
+  .path li + li::before { width: 10px; }      /* 단계가 여섯이라 360px 에서도 닫기 단추와 떨어지게 › 칸을 좁힌다 */
+  /* 번호만 보이는 단추도 누르는 곳은 44×44 (번호 18 + 양옆 13). 옆 번호에 닿지 않게 단추 옆 › 칸은 13px, 단추 둘 사이는 26px */
+  .path button::after { inset: -13px; }
+  .path li:has(> button) + li::before, .path li + li:has(> button)::before { width: 13px; }
+  .path li:has(> button) + li:has(> button)::before { width: 26px; }
+  .panel-status { white-space: normal; }
+  /* 휴대폰: 상태 줄은 한 줄을 다 쓰고, 문장 번호와 리포트 단추는 그 아래 한 줄 */
+  .panel-line { flex-wrap: wrap; row-gap: var(--s1); }
+  .panel-line .panel-status { flex-basis: 100%; }
+  .panel-line:has(#panel-return:not([hidden])) { margin-bottom: var(--s1); }
+}
+
+/* 쪽 더미: 모든 쪽이 같은 칸에 겹쳐 있고 맨 위 쪽만 보인다. 넘길 때는 transform·opacity 만 움직인다 (panel.js) */
+.stack { flex: 1 1 0; min-height: 0; display: grid; overflow: hidden; contain: paint; }
+.page { grid-area: 1 / 1; min-height: 0; min-width: 0; display: flex; flex-direction: column; background: var(--surface); }
+
+
+/* 공고 원문 */
+.doc {
+  position: relative;      /* 형광펜 안 sr-only 글이 문서 밖으로 나가 쪽 전체를 늘리지 않게 */
+  flex: 1 1 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+  padding: var(--s5) var(--s5) var(--s6);
+  font-size: var(--fs-doc); line-height: var(--lh-doc);
+  scroll-padding: var(--s7) 0;
+}
+.doc:focus { outline: none; }
+.doc:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; border-radius: 0; }
+.doc > * { max-width: 44em; }
+.doc-company { font-size: var(--fs-doc); }
+.doc-title { font-size: var(--fs-title); font-weight: 600; line-height: 1.4; letter-spacing: -0.01em; margin-bottom: var(--s4); }
+.doc-sec + .doc-sec { margin-top: var(--s4); }
+.doc-sec h4 { margin: 0 0 var(--s1); font-size: var(--fs-doc); font-weight: 600; }
+.doc-sec p + p, .doc-sec p + ul, .doc-sec ul + p { margin-top: var(--s2); }
+.doc-sec ul { display: flex; flex-direction: column; gap: 2px; }
+.doc-sec li { position: relative; padding-left: 1.1em; }
+.doc-sec li::before { content: ""; position: absolute; left: 0.25em; top: 0.8em; width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
+
+/* 형광펜: 왼쪽에서 오른쪽으로 칠한다. 색만으로 알리지 않게 번호를 함께 단다.
+   쉴 때 옅은 노랑 + 조용한 번호, 짝이 켜지면 진한 노랑 하나만 */
+.hl {
+  color: inherit;
+  background-color: transparent;
+  background-image: linear-gradient(var(--hl), var(--hl));
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  padding: 0 var(--s1);
+  transition: background-size var(--t-paint) var(--ease-in);
+}
+.hl[role=button] { cursor: pointer; }
+.hl[data-painted] { background-size: 100% 100%; }
+.hl[data-lit], .hl[data-active] { background-image: linear-gradient(var(--hl-strong), var(--hl-strong)); }
+.doc[data-focus] .hl:not([data-lit]):not([data-active]) { background-image: linear-gradient(var(--hl-soft), var(--hl-soft)); }
+.hl:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 0; }
+
+.hl .badge { margin-right: var(--s1); opacity: 0; transition: opacity var(--t-hover) var(--ease); }
+.hl[data-painted] .badge { opacity: 1; }
+.doc[data-focus] .hl:not([data-lit]):not([data-active]) .badge { color: var(--muted); }
+
+@media (max-width: 1023.98px) {
+  .doc { padding: var(--s4) var(--s4) var(--s5); }
+  .panel-head { padding-left: var(--s4); }
+  .page-count { padding-inline: var(--s4); }
+}
+
+/* ── ② 프로젝트 찾기: DB 에서 찾는 그림 (search.js) ──
+   맨 위 깔때기 띠 DB › 낱말로 모은 후보 › 뜻으로 다시 고른 후보 › 점수 1위 는 늘 남는다 (지금 칸은 먹, 지난 칸은 체크와 흐린 이름표, 올 칸은 옅은 글).
+   그 아래 그림이 쌓인다: DB 점(점 하나 = 100개) → 후보 칸 100개 → 1위 카드. 그림이 쪽 너비를 다 쓴다 */
+.search { display: flex; flex-direction: column; gap: var(--s5); }
+.search > * { max-width: none; }
+
+/* 띠는 쪽을 스크롤해도 위에 붙어 있다 (좁은 화면에서 카드까지 내려가도 어디인지 보이게).
+   칸 넷 사이에 › 칸 셋: 그리드 auto 16px auto 16px auto 16px auto. › 는 제 칸 가운데에 있다 (칸 너비와 따로 놀지 않는다).
+   칸은 오른쪽으로 맞춘다 (.stop): 숫자 끝이 칸 끝이라, 숫자 끝에서 › 칸까지가 어느 칸에서나 column-gap 하나다 (8px, 휴대폰 4px).
+   이름표는 어느 너비에서나 짧은 이름이다 (긴 이름은 화면 읽기 프로그램에만).
+   칸 너비는 장면이 바뀌어도 그대로다: 숫자 굵기는 늘 600, 체크는 이름표 앞자리에 늘 자리를 잡아 두고, 견준 수는 칸 아래 그림에 쓴다 */
+.funnel {
+  position: sticky; top: calc(var(--s5) * -1); z-index: 1;
+  display: grid; grid-template-columns: auto 16px auto 16px auto 16px auto; justify-content: start; align-items: start; column-gap: var(--s2);
+  margin: calc(var(--s5) * -1) calc(var(--s5) * -1) 0; padding: var(--s5) var(--s5) var(--s3);
+  background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.stop { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; min-width: 0; color: var(--ink); text-align: right; }
+.stop-sep { align-self: start; margin-top: 32px; text-align: center; font-size: var(--fs-body); line-height: 1.15; color: var(--ink); }      /* 숫자 줄 높이에 */
+.stop-label { display: inline-flex; align-items: center; gap: 2px; font-size: var(--fs-label); line-height: 1.5; white-space: nowrap; }
+.stop-n {
+  display: flex; align-items: baseline; gap: 2px; min-height: 37px;
+  font-size: var(--fs-title); font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; white-space: nowrap;
+}
+.stop-n.is-db { font-family: var(--font-title); font-size: var(--fs-display); font-weight: 400; font-synthesis: none; letter-spacing: 0; }      /* HALUNA 400 (줄맞춤 칸이 아니다) */
+/* 아직 시작하지 않은 단계의 숫자는 비워 둔다 (자리는 그대로). 그 단계가 시작될 때 한 번 나타난다 */
+.stop-n { transition: opacity var(--t-out) var(--ease); }
+.stop[data-state="todo"] .stop-n { visibility: hidden; opacity: 0; }
+.stop-unit { font-size: var(--fs-body); font-weight: 400; letter-spacing: 0; }
+.stop-n:not(.is-db) { padding-top: 10px; }      /* 20px 숫자의 바닥을 32px 숫자의 바닥에 맞춘다 */
+@media (max-width: 1023.98px) {      /* 쪽 안쪽 여백이 16px 인 너비 */
+  .funnel { top: calc(var(--s4) * -1); margin: calc(var(--s4) * -1) calc(var(--s4) * -1) 0; padding: var(--s4) var(--s4) var(--s3); }
+}
+@media (max-width: 599.98px) {      /* 휴대폰: 네 칸을 한 줄에 (체크 없이). › 칸 6px, 양옆 4px 씩 (이름표가 13px 라 8px 로는 360px 에서 쪽 여백을 넘는다) */
+  .funnel { grid-template-columns: auto 6px auto 6px auto 6px auto; column-gap: var(--s1); }
+  .stop:not(:last-child) .stop-unit { display: none; }      /* 앞 세 칸은 "개" 없이 (360px 에서도 네 칸이 넘치지 않게). 끝 칸은 "1개" 그대로 */
+  .stop-n.is-db { font-size: var(--fs-title); }      /* 휴대폰: DB 숫자도 20px (넘침 여유가 없다) */
+  .stop-n:not(.is-db) { padding-top: 0; }
+  .stop-n { min-height: 23px; }
+  .stop-sep { margin-top: 22px; }
+}
+
+/* DB 점: 5px 점, 9px 간격으로 쪽 너비를 다 채운다. 논문 덩어리와 저장소 덩어리는 둘 다 먹 60% (S4 3:1), 덩어리 사이 8px 와 왼쪽 위 이름표로 가른다 */
+.pool { display: flex; flex-direction: column; gap: var(--s2); }
+.pool-part { display: flex; flex-direction: column; gap: var(--s1); }
+.pool-name { font-size: var(--fs-label); line-height: 1.5; }
+.field { display: grid; grid-template-columns: repeat(auto-fill, 5px); grid-auto-rows: 5px; gap: 4px; justify-content: space-between; }
+.dot { width: 5px; height: 5px; border-radius: 50%; }
+.dot[data-kind="paper"] { background: var(--dot-paper); }
+.dot[data-kind="repo"] { background: var(--dot-paper); }
+.dot[data-kind="pick"] { background: var(--ink); }      /* 범례의 먹색 점: 낱말로 모은 후보 1,000개는 열 개, 다시 고른 후보 100개는 하나 */
+.field .dot { opacity: 0.35; transition: opacity var(--t-paint) var(--ease); }
+.search[data-stage="scan"] .field .dot { opacity: 1; }
+.search[data-stage="judge"] .field .dot, .search[data-stage="pick"] .field .dot { opacity: 0.55; }
+/* 낱말로 모은 후보 1,000개 = 파란 점 10개 (사용자 11/19). 모으는 단계부터 켜지고 나머지 점은 옅어진다. 다시 고르면 100개 몫(점 1개)만 파랑으로 남는다 */
+.dot[data-picked] { transition: background-color var(--t-paint) var(--ease), transform var(--t-paint) var(--ease), opacity var(--t-paint) var(--ease); }
+.search:is([data-stage="scan"], [data-stage="rerank"], [data-stage="judge"], [data-stage="pick"]) .field .dot:not([data-picked]) { opacity: 0.18; }
+.search[data-stage="scan"] .field .dot[data-picked],
+.search:is([data-stage="rerank"], [data-stage="judge"], [data-stage="pick"]) .field .dot[data-kept] { opacity: 1; background: var(--pick); transform: scale(1.8); position: relative; z-index: 1; }
+.search:is([data-stage="rerank"], [data-stage="judge"], [data-stage="pick"]) .field .dot[data-picked]:not([data-kept]) { opacity: 0.6; background: var(--pick); }
+.stop-swatch { display: inline-block; width: 8px; height: 8px; margin-right: var(--s1); background: var(--pick); }
+
+/* 후보 칸 100개 (20×5). 아직 안 견준 칸은 옅은 테두리만, 견준 칸은 점수 짙기로 채운다 (0점도 채운 칸).
+   포인트색은 1위 칸의 고리에만 */
+.short { display: flex; flex-direction: column; gap: var(--s3); }
+.cells { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: var(--s1); width: 100%; transform-origin: top left; }
+/* 칸은 필수 점수를 높이로 보인다: 아래에서부터 점수 ÷ 만점만큼 먹 60% 로 찬다 (--f). 아직 안 견준 칸은 옅은 테두리, 0점은 또렷한 테두리만, 만점은 먹으로 꽉 */
+.cell { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: var(--r-mark); box-shadow: inset 0 0 0 1px var(--line); }
+.cell > i { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--f, 0) * 100%); background: var(--dot-paper); }
+.cell[data-fill] { box-shadow: inset 0 0 0 1px var(--dot-paper); }
+.cell[data-fill="full"] > i { background: var(--ink); }
+.cell[data-fill="full"] { box-shadow: none; }
+.cell[data-top] { overflow: visible; outline: 2px solid var(--accent); outline-offset: 1px; }
+.cell-key { display: inline-block; width: 12px; height: 12px; aspect-ratio: auto; }
+.art-note { font-size: var(--fs-label); line-height: 1.5; }
+
+.art-key { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s1) var(--s4); font-size: var(--fs-label); }
+.art-key > span { display: inline-flex; align-items: center; gap: var(--s1); }
+.art-key .dot { width: 8px; height: 8px; }
+
+/* 1위 후보 카드: 대화 칸의 샘플 카드와 같은 단추. 누르면 ③ 쪽이 밀려 들어온다 */
+.found:empty { display: none; }
+.found .artifact { max-width: none; transform-origin: top left; }
+.found .artifact-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+/* ③ 샘플 프로젝트. 근거 구절은 원문 형광펜과 같은 칠(.hl)과 번호를 쓴다 (밑줄 없음) */
+.sample-abstract { white-space: pre-line; }      /* 저장소 소개 글은 문단과 목록에서 줄을 바꾼다 (pipeline.tidy) */
+.hl.quote .quote-lead { white-space: nowrap; }      /* 번호 묶음과 첫 낱말이 줄 끝에서 갈라지지 않게 */
+
+/* ── ③ 응용 프로젝트, ④ 교육자료, ⑤ 12주 계획: 쪽마다 주 그림 하나 (panel.js renderAdapted, study.js, weeks.js). 상자 없이 간격과 1px 선으로만 가른다 ── */
+.art { display: flex; flex-direction: column; gap: var(--s5); }
+.art > * { max-width: none; }
+.art-title { margin-bottom: var(--s2); font-size: var(--fs-label); font-weight: 600; line-height: 1.5; }
+/* 범례의 작은 칸: 상태는 모양으로도 가른다 (다 칠 = 자료를 고름·공부, 빈 테두리 = 자료 없음, 먹 = 프로젝트, 빗금 = 넘긴 몫) */
+.seg-key, .piece-key { flex: none; display: inline-block; width: 10px; height: 10px; border-radius: var(--r-mark); }
+.seg-key[data-state="found"], .piece-key[data-kind="study"] { background: var(--dot-paper); }
+.seg-key[data-state="none"] { box-shadow: inset 0 0 0 1.5px var(--dot-paper); }
+.seg-key[data-state="inside"] { visibility: hidden; }      /* 막대에 없는 묶음: 표시는 없이 글 시작만 맞춘다 */
+.piece-key[data-kind="work"] { background: var(--ink); }
+.piece-key[data-kind="over"] { background: repeating-linear-gradient(135deg, var(--ink) 0 2px, var(--surface) 2px 4px); }
+
+/* 공부 시간 막대: 바탕 띠가 252시간(세 안이 같은 자), 2px 먹 선이 고른 시간의 목표다. 막대는 자료를 고른 거리의 한 덩이 칠 + 자료가 없는 거리의 빈 테두리 덩이로
+   읽힌다 (조각 사이 선이 없다. 거리별 구분은 아래 목록이 한다). 조각은 왼쪽에서 자란다 (scaleX). 막대 옆 글 "84시간 중 51시간" 은 작게 (큰 글은 대화 칸 답 맨 위 한 줄에만) */
+.meter-box { display: flex; flex-direction: column; gap: var(--s2); }
+.meter-head { font-size: var(--fs-label); line-height: 1.5; }
+.meter-head b { font-weight: 600; }
+.meter { position: relative; padding: var(--s1) 0; }
+.meter-track { display: flex; height: 24px; border-radius: var(--r-mark); background: var(--tone-0); }
+.meter-goal { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--ink); z-index: 1; }      /* 고른 시간 자리의 목표선 (left 는 start 가 정한다) */
+.meter-goal[data-end] { margin-left: -4px; }      /* 252 목표선은 틀 끝선과 겹치지 않게 안쪽으로 2px */
+/* 틀 아래 눈금: 서버가 보낸 안의 시간 (84 · 168 · 252). 고른 안의 눈금은 굵게. 끝 눈금은 틀 오른쪽 끝에 맞춘다 */
+.meter-ticks { position: relative; height: 28px; font-size: var(--fs-label); line-height: 22px; }
+.tick { position: absolute; top: 0; padding-top: 6px; transform: translateX(-50%); white-space: nowrap; }
+.tick::before { content: ""; position: absolute; top: 0; left: calc(50% - 0.5px); width: 1px; height: 6px; background: var(--ink); }      /* 막대 위 자리를 짚는 짧은 눈금 선 */
+.tick[data-end] { transform: translateX(-100%); }
+.tick[data-end]::before { left: auto; right: 0; }
+.tick[data-goal] { font-weight: 600; }
+.seg { position: relative; flex: 0 0 var(--w); min-width: 0; height: 100%; transform-origin: left center; cursor: pointer; }
+.seg[data-state="found"] { background: var(--dot-paper); }
+/* 자료가 없는 조각은 칠한 조각 뒤(오른쪽)에 모인다 (study.js). 이어진 빈 테두리 한 덩이: 위아래 선은 조각마다, 왼쪽 끝 선은 첫 조각, 오른쪽 끝 선은 마지막 조각 */
+.seg[data-state="none"] { min-width: 8px; background: transparent; box-shadow: inset 0 1px 0 var(--dot-paper), inset 0 -1px 0 var(--dot-paper); }      /* 속이 빈 자리: 위아래 1px 선만 (옆 테두리·흰 바탕이 없어 손잡이로 안 읽힌다) */
+.seg[data-state="found"][data-lit], .seg[data-state="found"][data-active] { background: var(--ink); }
+.seg[data-state="none"][data-lit], .seg[data-state="none"][data-active] { box-shadow: inset 0 2px 0 var(--ink), inset 0 -2px 0 var(--ink); }
+.seg[data-now] { position: relative; outline: 2px solid var(--accent); outline-offset: 1px; }      /* 지금 고르는 조각. 끝나면 뗀다 */
+
+/* 막대의 범례 세 묶음과 ⑤ 쪽의 작업 묶음: 접고 펴는 줄 (details). 묶음 사이는 1px 선 */
+.groups { display: flex; flex-direction: column; }
+.group { border-top: 1px solid var(--line); font-size: var(--fs-label); line-height: var(--lh-table); }
+.group:last-child { border-bottom: 1px solid var(--line); }
+.group > summary { display: flex; align-items: center; gap: var(--s2); min-height: var(--row-h); cursor: pointer; list-style: none; }
+.group > summary::-webkit-details-marker { display: none; }
+/* 꺾쇠는 대화 칸 펼치기 단추(.more .chev)와 같은 그림, 같은 크기(14px). 그림은 icons.js 의 chev */
+.group > summary::after {
+  content: ""; flex: none; margin-left: auto; width: 14px; height: 14px; background: var(--muted); transform: rotate(90deg);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.group[open] > summary::after { transform: rotate(-90deg); }
+.group > summary:focus-visible { outline-offset: -2px; }
+/* "공부할 거리 28개" 머리와 그 아래 묶음 (자료로 공부할 것 + 맞는 자료가 없는 것 (+ 하루 1시간 안의 하면서 배울 것) = 28): 묶음은 한 칸 들여 쓴다 */
+.group-head { min-height: var(--row-h); display: flex; align-items: center; border-top: 1px solid var(--line); font-size: var(--fs-label); font-weight: 600; line-height: var(--lh-table); }
+.group[data-big] { margin-left: var(--s4); }
+.group-names { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); padding: 0 0 var(--s3) calc(10px + var(--s2)); }
+.group-name { cursor: pointer; border-radius: var(--r-mark); }
+/* 자료로 공부할 것: 이름을 열면 그 거리의 자료가 역할 이름과 함께 나온다 */
+.group[data-group="found"] .group-names { flex-direction: column; gap: 0; }
+.mats > summary { display: flex; align-items: center; min-height: var(--row-h); cursor: pointer; list-style: none; }
+.mats > summary::-webkit-details-marker { display: none; }
+.mats > summary::after { content: "›"; margin-left: var(--s2); transition: transform var(--t-out) var(--ease); }
+.mats[open] > summary::after { transform: rotate(90deg); }
+.mat-roles { display: flex; flex-direction: column; gap: var(--s1); padding: 0 0 var(--s2) var(--s4); }
+.mat-roles li { display: flex; flex-wrap: wrap; gap: 0 var(--s2); }
+.mat-role { flex: none; min-width: 7em; font-weight: 500; }
+.mat-roles a { min-width: 0; overflow-wrap: anywhere; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.mat-roles a:hover { text-decoration-color: var(--ink); }
+
+/* 공부 시간 고르기 (budget.js): ④ ⑤ ⑥ 쪽 머리의 라디오 칸. 390 의 `대화 | 과정` 칸(.views)과 같은 모양: 한 줄 트랙 하나, 고른 칸만 바탕. 높이 44px, 1440 에서 너비는 360px 까지.
+   고른 칸은 바탕 + 600 굵기 (강조색 없음). 막힌 동안(자료를 찾는 중)은 칸을 흐리게 */
+.budget { display: flex; gap: var(--s1); --gutter: var(--s5); box-sizing: border-box; width: calc(100% - 2 * var(--gutter)); max-width: 360px; min-width: 0; margin: var(--s3) var(--gutter) var(--s2); padding: var(--s1); border: 0; background: var(--sunk); border-radius: var(--r-card); }
+.budget[hidden] { display: none; }      /* 제자리(⑥, 쪽 더미 바로 위)에서는 아래 8px: ⑥ 의 붙는 줄 머리와 맞닿지 않게 */
+@media (max-width: 1023.98px) { .budget { --gutter: var(--s4); } }
+.budget-opt { position: relative; flex: 1 1 0; min-width: 0; }
+.budget-opt input { position: absolute; inset: calc(var(--s1) * -1) 0; width: 100%; height: calc(100% + var(--s2)); margin: 0; opacity: 0; cursor: pointer; }      /* 누르는 곳은 44px */
+.budget-opt span {
+  display: flex; align-items: center; justify-content: center; height: 36px; border-radius: var(--r-chip);
+  font-size: var(--fs-label); font-weight: 500; white-space: nowrap;
+  transition: background-color var(--t-out) var(--ease), opacity var(--t-out) var(--ease);
+}
+@media (max-width: 1023.98px) { .budget-opt span { height: var(--control); } }      /* 손가락 칸 44px */
+.budget-opt input:checked + span { background: var(--surface); box-shadow: 0 0 0 1px var(--line-strong); font-weight: 600; }
+.budget-opt input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 2px; }
+.budget[data-locked] .budget-opt span { opacity: 0.45; }
+.budget[data-locked] .budget-opt input { cursor: progress; }
+.group-name[data-lit], .group-name[data-active] { background: var(--hl-soft); color: var(--ink); }
+.job-list { display: flex; flex-direction: column; padding-bottom: var(--s2); }
+.job { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s2); padding: var(--s1) 0; }
+.job-name { font-weight: 500; }
+.job-meta { font-size: var(--fs-label); }
+@media (max-width: 1023.98px) { .group > summary, .mats > summary { min-height: var(--control); } }      /* 손가락 칸 44px (펼친 묶음 안 공부할 거리 줄도) */
+
+/* ③ 응용 프로젝트: 제목과 목표 아래 29칸 덮기 띠가 주 그림, 그 아래 줄 목록이 띠의 범례 (바탕 한 줄 + 빌린 프로젝트 k 줄 + AI가 더함 한 줄), 그다음 작업 묶음 줄 목록.
+   표시는 셋: 바탕(먹 칸) / 빌림(번호 배지: 16px 원, 13px 글) / AI가 더함(＋). 빌리거나 새로 더해 채운 칸은 먹 60% 와 2px 윗선 */
+.adapt-box .strip-cells { max-width: none; }
+.adapt-box .strip-cell { width: 16px; }
+.adapt-box .strip-row { row-gap: var(--s2); }      /* 한 묶음이 쪽 너비보다 길면 (aws_fde 나머지 39칸) 칸을 다음 줄로 (줄 사이는 8) */
+.adapt-cell { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
+.adapt-by { display: grid; place-items: center; min-height: 17px; font-size: var(--fs-label); line-height: 17px; }
+.strip-cell[data-fill="있음"], .key-swatch[data-fill="있음"] { background: var(--dot-paper); box-shadow: inset 0 2px 0 var(--ink); }
+.strip-cell[data-fill="일부"] { background: linear-gradient(90deg, var(--dot-paper) 50%, transparent 50%); box-shadow: inset 0 2px 0 var(--ink), inset 0 0 0 1px var(--line-strong); }
+.adapt-key .key-swatch { flex: none; display: inline-block; }
+/* 빌린 부분의 번호: 단계 길의 테두리 원이나 문장 번호 배지(회색 둥근 칸)와 다른 모양 (먹 원에 흰 글) */
+.badge.by-n { min-width: 16px; height: 16px; padding: 0; margin: 0; border-radius: 50%; background: var(--ink); color: var(--surface); vertical-align: 0; }
+.by-plus { font-size: var(--fs-label); font-weight: 600; line-height: 16px; }
+.lines { border-top: 1px solid var(--line); }
+.line { display: flex; align-items: center; gap: var(--s2); min-height: var(--row-h); padding: 6px 0; border-bottom: 1px solid var(--line); font-size: var(--fs-label); line-height: var(--lh-table); }
+.part-n { flex: none; display: inline-flex; align-items: center; gap: 6px; width: 76px; font-size: var(--fs-label); font-weight: 600; white-space: nowrap; }
+.part-n .key-swatch { flex: none; display: inline-block; }
+.line-name { flex: 1 1 40%; min-width: 0; }
+.line-what { position: relative;      /* 안의 화면 읽기용 글(새 창)이 줄 밖으로 나가 쪽을 옆으로 늘리지 않게 */
+  flex: 0 1 auto; min-width: 0; text-align: right; font-size: var(--fs-label); }
+.line-what a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.line-what a:hover { color: var(--ink); text-decoration-color: var(--ink); }
+@container (max-width: 560px) {      /* 좁으면 이름과 출처를 자르지 않고 두 줄로: 1줄 종류와 이름, 2줄 출처 */
+  .line { flex-wrap: wrap; row-gap: 2px; }
+  .line-name { flex: 1 1 calc(100% - 76px - var(--s2)); }
+  .line-what { flex: 1 1 100%; padding-left: calc(76px + var(--s2)); text-align: left; }
+}
+.adapt-goal { margin: 0; font-size: var(--fs-doc); line-height: 1.6; }
+.adapt-jobs h4, .adapt-left h4 { margin: 0 0 var(--s2); font-size: var(--fs-doc); font-weight: 600; }
+.adapt-left .facts b { font-weight: 600; }
+.adapt-rest .readme { padding-bottom: var(--s4); }
+.readme .doc-title { font-size: var(--fs-doc); margin-bottom: var(--s2); }
+.sample-rest { margin: var(--s2) 0 0; }
+
+/* 학기 16주 막대. 주 칸은 너비가 모두 같고 막대는 제 칸 안에 있다. 칸은 위부터 합계(한도를 넘는 주만), 막대(공부 위에 프로젝트), 주 이름.
+   높이는 --u(1시간의 px) × 시간. 조각 사이 선은 없다. 그림 높이는 이 안의 가장 긴 주(또는 한도, --top) + 위 글 자리 48px (그림 위가 비지 않게) */
+.chart { display: flex; flex-direction: column; gap: var(--s3); }
+.bars { --gap: var(--s2); position: relative; display: grid; grid-template-columns: repeat(var(--n, 12), minmax(0, 1fr)); gap: var(--gap); height: calc(var(--top) * var(--u) + 48px); }
+.col { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 17px minmax(0, 1fr) 22px; min-width: 0; padding: 0; text-align: center; border-radius: var(--r-mark); }
+.col::after { content: ""; position: absolute; inset: 0 calc(var(--gap) / -2); }      /* 누르는 곳은 칸 사이 틈까지 (보이는 막대는 그대로. 휴대폰 16칸이라 한 칸 21px 이 최대) */
+.col-sum, .col-name { font-size: var(--fs-label); line-height: 17px; white-space: nowrap; }
+/* 넘친 시간 글 "+4시간 42분": 한도를 넘는 주에만, 그 막대 바로 위 4px (쌓기 칸 안에서 흐름 밖. 칸보다 넓으면 가운데에서 양옆으로 넘친다) */
+.col-sum { position: absolute; left: 50%; bottom: calc(100% + var(--s1)); transform: translateX(-50%); font-weight: 600; }
+.col-sum:empty { display: none; }
+.col-stack { grid-row: 2; align-self: end; position: relative; display: flex; flex-direction: column-reverse; }
+.col-name { grid-row: 3; align-self: end; }
+.col { grid-row: 1; }
+/* 시험 주: 막대 대신 두 칸 너비의 옅은 바탕 띠(먹 8%, 바닥부터 한도 높이까지)와 그 가운데 이름표 (13px 500 먹). 띠는 불투명이라 한도 점선이 시험 칸에서 끊긴다.
+   휴대폰은 이름표가 "중간"·"기말" (띠 두 칸보다 "중간고사"가 넓다) */
+.exam {
+  grid-row: 1; align-self: end; position: relative; z-index: 1; min-width: 0;
+  display: grid; place-items: center; height: calc(var(--cap) * var(--u) + 1px); margin-bottom: 22px; border-radius: var(--r-mark);
+  background: linear-gradient(var(--tone-0), var(--tone-0)), var(--surface);
+  font-size: var(--fs-label); line-height: 17px; font-weight: 500; color: var(--ink); white-space: nowrap;
+}
+.exam-short { display: none; }
+.piece { display: block; height: calc(var(--h) * var(--u)); transform-origin: bottom center; }
+.piece[data-kind="study"] { background: var(--dot-paper); }
+.piece[data-kind="work"] { background: var(--ink); }
+.piece:not(:has(~ .piece)) { border-radius: var(--r-mark) var(--r-mark) 0 0; }      /* 쌓은 맨 위 조각만 위 두 모서리 2px */
+/* 한도를 넘긴 몫: 막대 맨 위에 바탕색 빗금을 덮는다 (색이 아니라 무늬와 "+N" 글자로) */
+.over-mark { position: absolute; left: 0; right: 0; top: 0; height: calc(var(--h) * var(--u)); background: repeating-linear-gradient(135deg, var(--surface) 0 2px, transparent 2px 4px); }
+/* 한 주 한도: 점선 한 줄과 그 오른쪽 끝 위 4px 의 이름표 (왼쪽 끝에 두면 한도까지 찬 1주 막대 머리에 글이 닿는다) */
+.cap-line {
+  position: absolute; left: 0; right: 0; bottom: calc(var(--cap) * var(--u) + 22px); pointer-events: none; padding-bottom: var(--s1); text-align: right;
+  border-bottom: 1px dashed var(--ink); font-size: var(--fs-label); line-height: 1.5; 
+}
+.col[data-lit] .col-name, .col[aria-pressed="true"] .col-name { color: var(--ink); font-weight: 600; }
+.col[data-lit] .col-stack, .col[aria-pressed="true"] .col-stack { outline: 2px solid var(--ink); outline-offset: 2px; }
+.col[data-now] .col-stack { outline: 2px solid var(--accent); outline-offset: 2px; }      /* 지금 놓는 주. 끝나면 뗀다 */
+/* 그림이 좁으면(주 칸이 50px 아래) 넘친 시간 글이 칸보다 넓어 옆 주의 글과 겹친다: 막대 위 글 대신 범례 "한도를 넘긴 주" 뒤에 "· 4주차 +27분, 5주차 +4시간 42분" */
+.chart { container-type: inline-size; }
+.over-note { display: none; }
+@container (max-width: 599.98px) {
+  .col-sum { display: none; }
+  .over-note { display: inline; }
+}
+/* 그림이 좁으면(1024 의 462px, 휴대폰) 주 이름 "10주"끼리 4px 안으로 붙는다: 1·4·10·14 만 (시험 띠 바로 옆 6·9 는 비우고, 일하는 마지막 주 14 에는 이름) */
+@container (max-width: 519.98px) {
+  .col-name { visibility: hidden; }
+  .col:is([data-week="1"], [data-week="4"], [data-week="10"], [data-week="14"]) .col-name { visibility: visible; }
+}
+/* 그림이 좁으면(1024 의 462px, 휴대폰) 시험 이름표는 "중간"·"기말" (띠 두 칸보다 "기말고사"가 넓다. 화면 너비가 아니라 그림 너비로 고른다) */
+@container (max-width: 519.98px) {
+  .exam-name { display: none; }
+  .exam-short { display: inline; }
+}
+@media (max-width: 599.98px) { .bars { --gap: var(--s1); } }      /* 휴대폰: 칸 사이 4px */
+
+/* ── ⑥ 정리 리포트 (report.js, design/reviews/v6-report-spec.md). 줄의 얼굴은 1단계의 형광펜 줄 그대로다 (mark.hl.echo: 같은 .hl·.badge 규칙).
+   여기 규칙은 줄의 틀(접기·자르기·붙는 머리)과 펼친 몸통만 정한다. 노랑은 .hl 규칙과 토큰만 쓴다 ── */
+.report-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s2) var(--s4); }
+.report-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+.report-tools .text-btn { min-height: 36px; padding: 0 var(--s3); font-size: var(--fs-label); }
+.report-tools .text-btn:disabled { color: var(--faint); }
+.report-list { container-type: inline-size; }
+.report-sec { display: flex; flex-direction: column; }
+.report-sec > h4 { margin-bottom: var(--s2); }
+/* 접힌 줄: 넓으면(글 칸 440px 이상, 1440·1024) [형광펜 한 줄 1fr][은행 질문 auto][꺾쇠 16px],
+   좁으면(휴대폰) [형광펜 두 줄 1fr][꺾쇠 위, 은행 질문 아래 auto]: 표시가 제 줄을 따로 먹지 않고, 접힌 줄 높이는 한 가지 (넓으면 한 줄, 좁으면 두 줄).
+   글은 1단계 원문과 같은 14px/1.7 */
+.report-row { font-size: var(--fs-doc); line-height: var(--lh-doc); }
+.report-row:last-child { border-bottom: 1px solid var(--line); }
+.report-row > summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto 1fr; align-items: start; gap: 0 var(--s2); padding: 6px 0; }
+.report-row > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }      /* 노랑 위 주황 고리를 피해 줄 밖에 */
+.report-row > summary::after { grid-column: 2; grid-row: 1; justify-self: end; margin: calc((1.7em - 14px) / 2) 0 0; }
+.echo-clip { grid-row: 1 / span 2; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: calc(2em * 1.7); }
+.hl.echo .badge { min-width: 24px; }      /* 한·두 자리 번호의 배지 폭을 같게 (원문 시작 자리가 번호에 따라 밀리지 않게) */
+.q-mark { grid-column: 2; grid-row: 2; justify-self: end; margin-top: var(--s1); box-shadow: inset 0 0 0 1px var(--line-strong); }
+@container (min-width: 440px) {
+  .report-row > summary { grid-template-columns: minmax(0, 1fr) auto 16px; grid-template-rows: auto; }
+  .report-row > summary::after { grid-column: 3; }
+  .echo-clip { grid-row: 1; -webkit-line-clamp: 1; min-height: 0; }
+  .q-mark { grid-row: 1; margin-top: calc((1.7em - 20px) / 2); }
+}
+/* 고른 형광펜과 펼친 줄의 배지는 1단계와 리포트가 같은 한 규칙: 먹 바탕 흰 글 (대화 칸 표의 고른 줄과도 같다). 올리기만 한 것은 배지를 바꾸지 않는다 */
+.hl[data-active] .badge, .report-row[open] .hl.echo .badge { background: var(--ink); color: var(--surface); }
+/* 펼친 줄: 형광펜 전체(같은 노드가 자르기를 푼다), 진한 노랑 + 먹 배지. 긴 답을 읽어도 줄 머리는 칸 맨 위에 붙어 있고, 그 아래 1px 선과 12px 바탕 여백이 따라 붙는다 */
+.report-row[open] .echo-clip { display: block; overflow: visible; min-height: 0; }
+.report-list .report-row[open] .hl.echo { background-image: linear-gradient(var(--hl-strong), var(--hl-strong)); }      /* 다른 줄에 올려도(짝 보기의 옅은 칠) 펼친 줄은 진한 노랑 */
+/* 펼친 줄의 머리는 붙는다. 바탕은 아래 여백(12px)까지 칠하고 맨 아래에 1px 선 하나 (그림자 없이): 밑으로 지나가는 글이 선 위로 비치지 않는다 */
+.report-row[open] > summary { position: sticky; top: calc(var(--s5) * -1); z-index: 1; padding-bottom: var(--s3); background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: none; }
+/* 한 줄을 펼쳐 볼 때 나머지 줄은 옅은 노랑 (짝을 볼 때는 .doc[data-focus] 규칙이 같은 일을 한다) */
+.report-list:has(.report-row[open]) .report-row:not([open]) .hl.echo:not([data-lit]):not([data-active]) { background-image: linear-gradient(var(--hl-soft), var(--hl-soft)); }
+/* 몸통: 이름표 위(13px 500 먹) · 내용 아래(14px 400 먹), 글 칸은 원문 시작에 맞춰 들인다 */
+.report-body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s4); padding: var(--s3) 0 var(--s5) calc(var(--s1) * 2 + 24px); }
+.report-body > .report-part { max-width: 38em; }
+.report-part { display: flex; flex-direction: column; gap: 2px; }
+.report-label { font-size: var(--fs-label); font-weight: 500; line-height: 1.5; }
+.report-q { font-size: var(--fs-body); font-weight: 500; line-height: var(--lh-body); }
+.ex-num { text-decoration: underline dotted var(--ink) 1px; text-underline-offset: 2px; }
+.report-learn a { color: var(--ink); overflow-wrap: anywhere; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.report-learn a:hover { text-decoration-color: var(--ink); }
+.report-go { min-height: 36px; padding: 0 var(--s3); font-size: var(--fs-label); }
+@container (max-width: 519.98px) {
+  .report-row > summary { min-height: var(--control); }
+  .report-body { padding-left: 0; }
+  .report-go { min-height: var(--control); }
+}
+@media (max-width: 1023.98px) {
+  .report-tools .text-btn { min-height: var(--control); }
+  .report-row[open] > summary { top: calc(var(--s4) * -1); }      /* 좁은 화면의 쪽 위 여백 16px */
+}
+@media (max-width: 1023.98px) { #panel-return { min-height: var(--control); margin-block: 0; } }
+
+/* ── 주 그림 틀과 범례 (cards.js, design/reviews/v7-dash-spec.md). 쪽마다 하나: ② 후보 칸, ③ 덮기 띠, ④ 공부 시간 막대, ⑤ 12주 막대.
+   1px 선, 둥글기 12, 그림자 없음, 안쪽 16 (휴대폰 12). 머리 줄 = 왼쪽 사실 문장 14px 먹 + 오른쪽 공부 시간 고르기 (④ ⑤). 좁아서 모자라면 고르기가 다음 줄로 ── */
+.chart-card { display: flex; flex-direction: column; gap: var(--s3); padding: var(--s4); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); box-shadow: none; }
+.chart-card[hidden] { display: none; }
+.chart-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s2) var(--s4); min-height: var(--control); }
+.chart-fact { flex: 0 1 auto; min-width: 0; font-size: var(--fs-doc); line-height: 1.5; color: var(--ink); }
+.chart-fact b { font-weight: 600; }
+.chart-aside { flex: 1 1 240px; display: flex; justify-content: flex-end; max-width: 360px; min-width: 0; }
+.chart-aside:empty { display: none; }
+.chart-aside .budget { --gutter: 0px; width: 100%; max-width: 360px; margin: 0; }
+.chart-head:has(.chart-aside:not(:empty)) .chart-fact { white-space: nowrap; }
+.report-head .meter-head { font-size: var(--fs-doc); }      /* ⑥ 머리 글도 ④ ⑤ 와 같은 14px */
+/* 범례: 줄마다 [10px 견본][이름 13px][개수 오른쪽 맞춤 13px 600], 줄 32px, 줄 사이 1px 선 */
+ul.legend { display: flex; flex-direction: column; align-items: stretch; gap: 0; font-size: var(--fs-label); line-height: var(--lh-table); }
+ul.legend[hidden] { display: none; }
+.legend-row { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; align-items: center; gap: var(--s2); min-height: var(--row-h); border-top: 1px solid var(--line); }
+.legend-row[hidden] { display: none; }
+.legend-swatch { display: inline-block; width: 10px; height: 10px; margin: 0; vertical-align: 0; }
+.legend-n { font-weight: 600; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* ④ 묶음 줄의 수도 오른쪽 맞춤 (꺾쇠 바로 앞) */
+.group-n { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
+.group > summary:has(.group-n)::after { margin-left: var(--s2); }
+@media (max-width: 599.98px) {
+  .chart-card { padding: var(--s3); }
+  .chart-aside { flex-basis: 100%; max-width: none; }
+  .chart-head:has(.chart-aside:not(:empty)) .chart-fact { white-space: normal; }
+  .cells { grid-template-columns: repeat(10, minmax(0, 1fr)); }      /* 휴대폰: 후보 칸 10×10 (한 칸 28px 이상) */
+}
+
+/* ④ 교육자료 쪽 (study.js): 배울 역량 목록, 고른 자료, 끝의 두 줄. 글은 모두 먹색, 13px 아래 없음 (U4-1) */
+#materials-doc { display: flex; flex-direction: column; gap: var(--s4); }
+.m3-box { gap: var(--s2); }
+.m3-list { display: flex; flex-direction: column; }
+.m3-row { display: flex; align-items: center; gap: var(--s2); min-height: var(--row-h); border-top: 1px solid var(--line); font-size: var(--fs-label); line-height: var(--lh-table); }
+.m3-name { flex: 1 1 auto; min-width: 0; }
+.m3-level:empty { display: none; }
+.m3-level[data-level="없음"] { box-shadow: inset 0 0 0 1px var(--line-strong); font-weight: 600; }
+.m3-pick { display: flex; flex-direction: column; gap: var(--s1); padding: var(--s3) 0; border-top: 1px solid var(--line); font-size: var(--fs-label); line-height: 1.5; }
+.m3-pick:last-child { border-bottom: 1px solid var(--line); }
+.m3-pick-head { display: flex; align-items: baseline; gap: var(--s2); }
+.m3-role { flex: none; }
+.m3-role[data-role="핵심"] { background: var(--ink); color: var(--paper, #fff); font-weight: 600; }
+.m3-role[data-role="보조"] { box-shadow: inset 0 0 0 1px var(--line-strong); }
+.m3-title { min-width: 0; color: var(--ink); font-size: var(--fs-doc); font-weight: 500; overflow-wrap: anywhere; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.m3-title:hover { text-decoration-color: var(--ink); }
+.m3-covers { padding-left: calc(2.6em + var(--s2)); }
+.m3-kind { font-weight: 600; }
+.m3-note { font-size: var(--fs-doc); line-height: 1.5; color: var(--ink); }
+
+
+/* ── 대시보드 (사용자 11/19): 쪽마다 그림 하나 + 바닥 줄 (한 줄 불렛 둘 + 다음 단계 단추). 대화 칸은 없다 ── */
+.doc.search > *, .doc.art > * { width: 100%; max-width: 1180px; margin-inline: auto; }      /* 가운데 (사용자 11/21) */
+
+.foot {
+  flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
+  padding: var(--s4) var(--s5); border-top: 1px solid var(--line); background: var(--surface);
+}
+.foot[hidden] { display: none; }
+.bullets { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: var(--s1); }
+.bullets li {      /* 노트북(1440×900)에서 한눈에 읽히게 20px 600 (사용자 11/19: 15px 은 너무 안 보인다) */
+  position: relative; padding-left: 1.1em;
+  font-size: var(--fs-title); line-height: 1.45; font-weight: 600; letter-spacing: -0.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;      /* 불렛은 한 줄씩 (넘치면 shots 가 잡는다) */
+}
+.bullets li::before { content: ""; position: absolute; left: 0.25em; top: 0.62em; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); }
+.actions { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--s2); }
+.go {
+  display: inline-flex; align-items: center; height: 52px; padding: 0 var(--s5);
+  border-radius: var(--r-chip); background: var(--ink); color: var(--surface);
+  font-size: var(--fs-body); font-weight: 600; white-space: nowrap; text-decoration: none;
+  transition: background-color var(--t-out) var(--ease);
+}
+.go:hover { background: #000; transition-duration: var(--t-hover); }
+.go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* ① 공고 원문(왼쪽, 스크롤) + 찾은 역량 칸(오른쪽). 칸은 row 사건마다 하나씩 생긴다 */
+.posting-board { flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 38%); }
+.posting-board > .doc { border-right: 1px solid var(--line); }
+.posting-cells { min-height: 0; overflow-y: auto; padding: var(--s5); }
+.found-cells { display: flex; flex-direction: column; gap: var(--s4); }
+.found-cells .strip-group { gap: var(--s2); }
+.found-cells .strip-row { gap: 6px; }
+.found-cells .strip-cell { width: 28px; cursor: pointer; }
+.found-cells .strip-cell:hover, .found-cells .strip-cell:focus-visible { outline: 2px solid var(--hl-strong); outline-offset: 1px; }
+
+/* 칸 판 (①·③·④ 같이): 필수 | 우대 | 나머지 묶음, 칸 모양으로 정도를 가른다 (꽉 참 · 왼쪽 반 · 빈 테두리) */
+.strip-cells { display: flex; flex-wrap: wrap; gap: var(--s3) var(--s5); }
+.strip-group { display: inline-flex; flex-direction: column; gap: var(--s1); }
+.strip-tier { font-size: var(--fs-label); line-height: 1.4; font-weight: 600; }
+.strip-row { display: inline-flex; flex-wrap: wrap; gap: 3px; }
+.strip-cell { display: inline-block; width: 12px; aspect-ratio: 1; padding: 0; border-radius: var(--r-mark); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.strip-cell[data-level="있음"], .key-swatch[data-level="있음"] { background: var(--ink); }
+.strip-cell[data-level="일부"], .key-swatch[data-level="일부"] { background: linear-gradient(90deg, var(--ink) 50%, transparent 50%); }
+.strip-cell[data-level="없음"] { box-shadow: inset 0 0 0 1px var(--line-strong); }
+.key-swatch { display: inline-block; flex: none; width: 10px; height: 10px; border-radius: var(--r-mark); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.key-swatch[data-level="없음"] { box-shadow: inset 0 0 0 1px var(--line-strong); }
+.tag { display: inline-block; padding: 0 6px; border-radius: var(--r-chip); font-size: var(--fs-label); line-height: 20px; white-space: nowrap; }
+.tag[data-pri="필수"] { background: var(--sunk); font-weight: 600; }
+.tag[data-pri="우대"] { box-shadow: inset 0 0 0 1px var(--line-strong); }
+
+/* ③ 응용 프로젝트: 큰 숫자(다루는 역량 / 전체) → 덮기 띠 → 범례 둘 */
+.kpi { display: flex; align-items: baseline; gap: var(--s1); }
+.kpi-n { font-family: var(--font-title); font-size: var(--fs-display); font-weight: 400; font-synthesis: none; line-height: 1.1; }
+.kpi-of { font-size: var(--fs-title); font-weight: 600; }
+.adapt-box .strip-cells { gap: var(--s4) var(--s6); }
+.adapt-box .strip-cell { width: 22px; }
+.adapt-box .strip-row { row-gap: var(--s2); }
+.adapt-box .legend { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); }
+.adapt-box .legend-row { display: inline-flex; gap: var(--s2); min-height: 0; border: 0; font-size: var(--fs-label); }
+
+/* ④ 자료 × 역량 행렬: 왼쪽 자료 이름 칸, 역량마다 한 열. 맨 아래 합친 것 줄은 굵은 윗선 */
+.matrix { display: flex; flex-direction: column; font-size: var(--fs-label); }
+.mx-row { display: grid; grid-template-columns: minmax(220px, 32%) repeat(var(--cols, 1), minmax(0, 1fr)); align-items: center; column-gap: var(--s2); min-height: 44px; border-top: 1px solid var(--line); }
+.mx-head { align-items: end; border-top: 0; padding-bottom: var(--s2); }
+.mx-sum { border-top: 2px solid var(--ink); font-weight: 600; }
+.mx-label { display: flex; align-items: center; gap: var(--s2); min-width: 0; }
+.mx-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink); }
+.mx-col { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; text-align: center; line-height: 1.35; }
+.mx-col-name { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; word-break: keep-all; }
+.mx-cell { width: 24px; justify-self: center; }
+
+/* ⑥ 리포트 슬라이드: 16:9 쪽을 위에서 아래로, 쪽 사이 24 */
+#report-doc { background: var(--sunk); }
+.slides { display: flex; flex-direction: column; gap: var(--s5); }
+.sheet { width: min(100%, 1000px);      /* 1440×900 에서 한 장이 바닥 줄 위에 통째로 */
+   margin: 0 auto; background: #fff; border: 1px solid var(--line); }
+.sheet[data-empty] { aspect-ratio: 16 / 9; }
+.sheet img { display: block; width: 100%; height: auto; }
+
+/* ── 발표 디자인 그대로 (사용자 11/21): 쪽 제목 형광펜 줄, 걸음 동그라미, 숫자 상자 흐름, 역량 칸 색 ── */
+.page-title { flex: none; padding: var(--s4) var(--s5) 0; font-size: var(--fs-title); font-weight: 600; line-height: 1.4; letter-spacing: -0.01em; }
+.hl-line { background: linear-gradient(transparent 55%, var(--hl) 55%); padding: 0 2px; }
+/* 걸음: 상태 줄 앞의 번호 동그라미 (발표의 "걸음 ① ② ③ ④ ⑤"). 끝난 것 먹 테두리, 지금 것 주황, 아직 옅게 */
+.panel-status { display: flex; align-items: center; gap: var(--s3); }
+.walk { display: inline-flex; align-items: center; gap: 6px; flex: none; }
+.walk-name { font-weight: 600; margin-right: 2px; }
+.walk-n { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; font-size: var(--fs-label); font-weight: 600; line-height: 1;
+  box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--faint); transition: background-color var(--t-out) var(--ease), color var(--t-out) var(--ease); }
+.walk-n[data-state="done"] { box-shadow: inset 0 0 0 1.5px var(--ink); color: var(--ink); }
+.walk-n[data-state="now"] { background: var(--accent); box-shadow: none; color: #fff; }
+.walk-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* 숫자 상자 흐름 (발표 27쪽): ② 깔때기와 ④ 교육자료가 같이 쓴다. 지난 칸 옅은 바탕, 지금 칸 주황, 끝 칸(고른 것) 먹 */
+.funnel { position: static; display: flex; flex-wrap: wrap; align-items: stretch; gap: var(--s3); margin: 0 0 var(--s5); padding: 0; border: 0; background: none; }
+.funnel .stop { display: flex; flex-direction: column-reverse; justify-content: center; align-items: center; gap: var(--s1); min-width: 150px; padding: var(--s4) var(--s5);
+  border-radius: var(--r-card); background: var(--sunk); color: var(--ink); text-align: center; transition: background-color var(--t-paint) var(--ease), color var(--t-paint) var(--ease); }
+.funnel .stop[data-state="todo"] { opacity: 0.45; }
+.funnel .stop[data-state="current"] { background: var(--accent); color: #fff; opacity: 1; }
+.funnel .stop[data-state="end"] { background: var(--ink); color: #fff; }
+.funnel .stop-n, .funnel .stop-n.is-db { font-family: var(--font); font-size: 32px; font-weight: 700; line-height: 1.1; padding-top: 0; min-height: 0; letter-spacing: -0.01em; }
+.funnel .stop[data-state="todo"] .stop-n { visibility: visible; opacity: 1; }
+.funnel .stop-label { font-size: var(--fs-label); font-weight: 600; }
+.funnel .stop-unit { font-size: var(--fs-body); font-weight: 600; }
+.funnel .stop-sep { align-self: center; margin: 0; font-size: var(--fs-title); color: var(--faint); }
+/* ① 찾은 역량 칸: 필수 주황 · 우대 먹 · 나머지 옅은 먹 (사용자 11/21: 색이라도 다르게) */
+.found-cells [data-tier="필수"] .strip-cell { background: var(--accent); box-shadow: none; }
+.found-cells [data-tier="우대"] .strip-cell { background: var(--ink); box-shadow: none; }
+.found-cells [data-tier="나머지"] .strip-cell { background: #c9c3b7; box-shadow: none; }
+.found-cells [data-tier="필수"] .strip-tier { color: var(--accent); }
+.found-cells .strip-tier { font-size: var(--fs-body); }
+/* ③ 큰 숫자는 발표처럼 주황 */
+.kpi-n { color: var(--accent); }
+/* ② 단계별 후보 이름 칩: 논문 파란 칸, 깃헙 먹 테두리 칸. 다시 고르면 떨어진 것은 옅게, 고르면 위 다섯 (1위 주황) */
+.names { margin: var(--s4) 0; }
+.names[hidden] { display: none; }
+.names-head { font-size: var(--fs-body); font-weight: 600; margin-bottom: var(--s2); }
+.names-list { display: flex; flex-wrap: wrap; gap: 6px var(--s2); }
+.name-chip { display: inline-flex; align-items: center; gap: 6px; max-width: 340px; padding: 4px 10px; border-radius: var(--r-chip); font-size: var(--fs-label);
+  transition: opacity var(--t-paint) var(--ease); }
+.name-chip[data-kind="paper"] { background: #e3edfd; color: #123c86; }
+.name-chip[data-kind="repo"] { background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--ink); color: var(--ink); }
+.name-kind { flex: none; font-weight: 700; }
+.name-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.names-list[data-cut] .name-chip[data-short="false"] { opacity: 0.18; }
+.name-rank { flex: none; font-weight: 700; }
+.name-chip[data-rank="1"] { background: var(--accent); color: #fff; box-shadow: none; }
+/* ③ 능력치 효과: 큰 숫자 오른쪽에 "+1 역량 이름" 줄이 아래에서 쌓였다 하나씩 사라진다 (넷까지). 채워진 칸은 잠깐 주황 테두리 */
+.adapt-box { position: relative; }
+.kpi-n { display: inline-block; transform-origin: left bottom; }
+@keyframes pop-in { 0% { opacity: 0; transform: translateY(10px); } 12% { opacity: 1; transform: none; } 75% { opacity: 1; } 100% { opacity: 0; } }
+.strip-cell[data-flash] { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ① 실제 공고 화면: 그림 위에 형광펜 칸 (곱하기 섞기라 글이 그대로 보인다). 원문 글은 숨긴 칸에 둔다 */
+.doc[data-shot] > .shot { max-width: none; }
+.shot { position: relative; border: 1px solid var(--line); border-radius: var(--r-chip); overflow: hidden; background: #fff; }
+.shot img { display: block; width: 100%; height: auto; }
+.shot-layer { position: absolute; inset: 0; pointer-events: none; }
+.shot-hl { position: absolute; padding: 0; background: var(--hl); mix-blend-mode: multiply; border-radius: 2px;
+  transform-origin: left center; transform: scaleX(0); transition: transform var(--t-paint) var(--ease-in); }
+.shot-hl[data-painted] { transform: none; }
+.shot-hl[data-lit] { background: var(--hl-strong); }
+.shot-hl .badge { position: absolute; left: -26px; top: 50%; transform: translateY(-50%); opacity: 1; mix-blend-mode: normal; }
+.shot-text[hidden] { display: none; }
+
+/* ⑤ 12주 계획 (커리큘럼 생성기): 막대 = 교육자료로 배우기(주황) + 프로젝트에 적용(먹), 한도 점선. 아래 주마다 한 줄 흐름 */
+.cbars { position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s2); align-items: end; height: 236px; padding-top: 16px; }
+.ccol { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+.cstack { display: flex; flex-direction: column-reverse; transform-origin: bottom; }
+.cpiece { display: block; width: 100%; }
+.cpiece[data-kind="project"] { background: var(--ink); border-radius: 0 0 var(--r-mark) var(--r-mark); }
+.cpiece[data-kind="learning"] { background: var(--accent); border-radius: var(--r-mark) var(--r-mark) 0 0; }
+.cstack .cpiece:last-child { border-top-left-radius: var(--r-mark); border-top-right-radius: var(--r-mark); }
+.cpiece-key { display: inline-block; width: 10px; height: 10px; border-radius: var(--r-mark); }
+.cpiece-key[data-kind="learning"] { background: var(--accent); }
+.cpiece-key[data-kind="project"] { background: var(--ink); }
+.cname { text-align: center; font-size: var(--fs-label); }
+.cap-line2 { position: absolute; left: 0; right: 0; margin-bottom: 24px; padding-bottom: 4px; border-bottom: 1.5px dashed var(--ink); font-size: var(--fs-label); line-height: 1; text-align: right; pointer-events: none; }      /* bottom 은 한도 높이 (js), margin 24 는 주 이름 줄 */
+.wrows { list-style: none; margin-top: var(--s4); border-top: 1px solid var(--line); max-width: 1120px; }
+.wrow { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center; gap: var(--s2); min-height: 36px; border-bottom: 1px solid var(--line); font-size: var(--fs-label); }
+.wrow-n { font-weight: 700; }
+.wrow-flow { display: flex; align-items: center; gap: 6px; min-width: 0; overflow: hidden; white-space: nowrap; }
+.wrow-arrow { flex: none; color: var(--faint); }
+.wact, .wout { min-width: 0; max-width: 360px; overflow: hidden; text-overflow: ellipsis; padding: 2px 8px; border-radius: var(--r-chip); }
+.wact[data-kind="learning"] { flex: none; background: #f7e3da; color: #8a3b1f; font-weight: 600; }
+.wact[data-kind="project"] { flex: 0 1 auto; background: var(--sunk); color: var(--ink); }
+.wout { flex: 0 1 auto; box-shadow: inset 0 0 0 1px var(--line-strong); }
+
+/* ── 결과와 근거 (사용자 11/21: 과정보다 결과가 쓸모 있는지. 쪽마다 결과 카드 + "공고 문장 ↔ 결과 쪽 문장" 짝) ── */
+.tag[data-pri="필수"] { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.rs { display: flex; flex-direction: column; gap: var(--s3); max-width: 1180px; }
+.rs-h { margin: 0; font-size: 18px; font-weight: 700; line-height: 1.4; }
+.rs-hero { position: relative; display: flex; flex-direction: column; gap: var(--s3); max-width: 1180px; padding: var(--s5); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); }
+.rs-kicker { margin: 0; font-size: var(--fs-body); font-weight: 600; color: var(--accent); }
+.rs-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s3); margin: 0; font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
+.rs-title a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.rs-rank { padding: 2px 10px; border-radius: var(--r-chip); background: var(--accent); color: var(--accent-ink); font-size: 18px; }
+.rs-title .name-kind { font-size: 15px; padding: 2px 8px; border-radius: var(--r-chip); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.rs-title .name-kind[data-kind="paper"] { background: #e3edfd; color: #123c86; box-shadow: none; }
+.rs-where { font-size: 18px; font-weight: 600; }
+.rs-intro { margin: 0; font-size: 17px; line-height: 1.6; }
+.rs-en { margin: 0; padding-left: var(--s3); border-left: 3px solid var(--line-strong); font-size: var(--fs-body); line-height: 1.6; }
+.rs-scores { display: flex; flex-wrap: wrap; gap: var(--s5); }
+.rs-score { margin: 0; display: flex; align-items: baseline; gap: 6px; font-size: 17px; }
+.rs-score-label { font-weight: 600; }
+.rs-score b { font-size: 30px; font-weight: 700; color: var(--accent); }
+.rs-rivals { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); margin: 0; padding: 0; list-style: none; font-size: var(--fs-body); }
+.rs-rivals li { padding: 4px 10px; border-radius: var(--r-chip); background: var(--sunk); }
+.rs-gaps { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); margin: 0; padding: 0; list-style: none; font-size: var(--fs-body); font-weight: 600; }
+.rs-gain { min-width: 3.2em; margin-left: var(--s2); font-size: 20px; font-weight: 700; color: var(--accent); }
+.rs-gain[data-on] { animation: pop-in 1400ms var(--ease-in) forwards; }
+
+.ev-list { display: flex; flex-direction: column; gap: var(--s3); margin: 0; padding: 0; list-style: none; }
+.ev { padding: var(--s3) var(--s4); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); transition: box-shadow var(--t-hover) var(--ease); }
+.ev[data-flash] { box-shadow: 0 0 0 3px var(--accent); }
+.ev-head { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s2); margin-bottom: var(--s2); }
+.ev-name { font-size: 17px; font-weight: 700; }
+.ev-state { margin-left: auto; padding: 2px 10px; border-radius: var(--r-chip); font-size: var(--fs-body); font-weight: 700; background: var(--sunk); }
+.ev-state[data-level="있음"] { background: var(--ink); color: var(--paper); }
+.ev-state[data-level="일부"] { box-shadow: inset 0 0 0 1.5px var(--ink); background: var(--surface); }
+.ev-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+.ev-q { margin: 0; padding: var(--s2) var(--s3); border-radius: 8px; }
+.ev-q[data-kind="posting"] { background: var(--hl-soft); }
+.ev-q[data-kind="proof"] { background: #eef3fc; }
+.ev-who { font-size: var(--fs-label); font-weight: 700; margin-bottom: 2px; }
+.ev-q blockquote { margin: 0; font-size: var(--fs-body); line-height: 1.55; }
+@media (max-width: 1023.98px) { .ev-pair { grid-template-columns: 1fr; } }
+
+.jobs { display: flex; flex-direction: column; gap: var(--s2); margin: 0; padding: 0; list-style: none; }
+.job { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px var(--s3); padding: var(--s3) var(--s4); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); }
+.job-head { margin: 0; font-size: 17px; font-weight: 700; }
+.job-head > b { display: inline-grid; place-items: center; width: 24px; height: 24px; margin-right: 4px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 13px; }
+.job-h { font-weight: 600; }
+.job-out { grid-column: 1; margin: 0; font-size: var(--fs-body); line-height: 1.55; }
+.job-from { grid-column: 2; grid-row: 1 / span 2; align-self: center; padding: 2px 10px; border-radius: var(--r-chip); background: var(--sunk); font-size: var(--fs-label); font-weight: 600; white-space: nowrap; }
+.job[data-core="false"] { border-style: dashed; }
+
+/* ① 이 공고가 원하는 역량 (오른쪽 칸) */
+.wants { display: flex; flex-direction: column; gap: var(--s4); }
+.want-group { display: flex; flex-direction: column; gap: var(--s2); }
+.want-h { display: flex; align-items: center; gap: var(--s2); margin: 0; font-size: var(--fs-body); font-weight: 700; }
+.want-n { margin-left: auto; font-weight: 600; }
+.want-list { display: flex; flex-direction: column; gap: var(--s2); margin: 0; padding: 0; list-style: none; }
+.want { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 2px var(--s2); align-items: start; }
+.want > .badge { margin-top: 5px; justify-self: start; white-space: nowrap; }
+.want-names { display: flex; flex-wrap: wrap; gap: 2px var(--s1); }
+.want-q { grid-column: 2; }
+.want-btn { display: inline-flex; align-items: center; gap: var(--s2); padding: 4px 6px; border: 0; border-radius: var(--r-chip); background: none; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.want-btn:hover, .want-btn:focus-visible { background: var(--hl-soft); outline: none; }
+.want-name { font-size: var(--fs-body); font-weight: 700; }
+.want-q { margin: 0 0 var(--s1) 6px; padding-left: var(--s2); border-left: 3px solid var(--hl-strong); font-size: var(--fs-doc); line-height: 1.5; }
+.want-rest summary { cursor: pointer; font-size: var(--fs-body); font-weight: 600; }
+.want-rest-list { margin: var(--s2) 0 0; font-size: var(--fs-doc); line-height: 1.6; }
+.posting-board { grid-template-columns: minmax(0, 1fr) minmax(320px, 40%); }
+
+/* ④ 고른 교육자료 카드 */
+.mats { display: flex; flex-direction: column; gap: var(--s4); margin: 0; padding: 0; list-style: none; }
+.mat { display: flex; flex-direction: column; gap: var(--s2); }
+.mat-head { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s2); margin: 0; font-size: 17px; }
+.mat-title { font-weight: 700; color: var(--ink); text-underline-offset: 3px; }
+.mat-kind { padding: 0 8px; border-radius: var(--r-chip); background: var(--sunk); font-size: var(--fs-label); font-weight: 600; line-height: 22px; }
+.mat .ev-list { padding-left: var(--s4); border-left: 2px solid var(--line); }
+
+.skill { display: inline-block; margin: 0 4px 4px 0; padding: 0 8px; border-radius: var(--r-chip); background: var(--sunk); font-size: var(--fs-label); line-height: 22px; }
+.tag[data-pri="나머지"] { background: var(--sunk); }
+
+/* 쪽 제목도 가운데 칸에 맞춘다 (① 공고 쪽은 화면 전체를 쓴다) */
+.page:not(#page-posting) .page-title { width: 100%; max-width: calc(1180px + 2 * var(--s5)); margin-inline: auto; }
+
+/* ⑤ 12주 계획: 일마다 한 줄, 주마다 한 칸 (간트 표) */
+.wk-fact { margin: 0; font-size: var(--fs-body); font-weight: 600; }
+.wk-fact .g-kind + * { margin-left: 0; }
+.gantt { display: grid; }
+.g-row { display: grid; grid-template-columns: minmax(300px, 2fr) repeat(var(--weeks), minmax(40px, 1fr)); border-top: 1px solid var(--line); }
+.g-head { border-top: 0; }
+.g-week { padding: 6px 0; text-align: center; font-size: var(--fs-label); font-weight: 700; }
+.g-head .g-label { padding: 6px 0; font-size: var(--fs-label); font-weight: 700; }
+.g-label { padding: 10px 14px 10px 0; min-width: 0; }
+.g-name { margin: 0; font-size: var(--fs-body); font-weight: 600; line-height: 1.45; }
+.g-name a { color: var(--ink); text-underline-offset: 3px; }
+.g-kind { display: inline-block; margin-right: 6px; padding: 0 6px; border-radius: var(--r-chip); font-size: var(--fs-label); font-weight: 700; line-height: 20px; vertical-align: 1px; }
+.g-kind[data-kind="learning"] { background: var(--accent); color: var(--accent-ink); }
+.g-kind[data-kind="project"] { background: var(--ink); color: var(--paper); }
+.g-total { font-weight: 600; }
+.g-out { margin: 4px 0 0; font-size: var(--fs-doc); line-height: 1.5; }
+.g-skills { margin: 6px 0 0; }
+.g-cell { position: relative; display: flex; justify-content: center; align-items: flex-start; padding-top: 10px; border-left: 1px solid var(--line); }
+.g-cell[data-on]::before { content: ""; position: absolute; top: 10px; height: 26px; left: 0; right: 0; background: var(--ink); }
+.g-row[data-kind="learning"] .g-cell[data-on]::before { background: var(--accent); }
+.g-cell[data-first]::before { left: 4px; border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.g-cell[data-last]::before { right: 4px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.g-h { position: relative; line-height: 26px; color: var(--paper); font-size: var(--fs-label); font-weight: 700; }
+.g-row[data-kind="learning"] .g-h { color: var(--accent-ink); }
+.g-sum .g-label { font-size: var(--fs-body); font-weight: 700; }
+.g-sum .g-cell { padding: 10px 0; font-size: var(--fs-label); font-weight: 700; }
+.g-sum .g-cell[data-over="true"] { color: var(--danger); }

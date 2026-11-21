@@ -1,0 +1,7 @@
+
+[표준 목록 매핑]
+10. 각 역량마다 아래 {label} 목록에서 의미가 가장 가까운 항목 하나를 골라 standard_code, standard_name에 쓴다.
+11. 맞는 항목이 없으면 standard_code와 standard_name을 모두 "없음"으로 쓴다. 목록에 없는 코드를 만들어내지 않는다.
+
+[{label} 목록 — code | name]
+{items}

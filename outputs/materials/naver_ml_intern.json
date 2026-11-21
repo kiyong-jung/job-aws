@@ -1,0 +1,3039 @@
+{
+ "case": "naver_ml_intern",
+ "rules": {
+  "types": [
+   "도구",
+   "지식"
+  ],
+  "weight": {
+   "필수": 1000,
+   "우대·나머지": 1
+  },
+  "core": [
+   1,
+   2
+  ],
+  "support": [
+   3,
+   4
+  ],
+  "wide": 1000,
+  "rerank": "cohere.rerank-v3-5:0",
+  "shortlist": 50,
+  "bank_rows": 14385
+ },
+ "targets": [
+  {
+   "cid": "C01",
+   "name": "이미지·비디오 생성 모델 동작 원리 이해",
+   "type": "지식",
+   "priority": "필수",
+   "query": "how image and video generation models work diffusion transformer tutorial"
+  },
+  {
+   "cid": "C02",
+   "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
+   "type": "지식",
+   "priority": "필수",
+   "query": "machine learning development cycle data preparation training evaluation pipeline"
+  },
+  {
+   "cid": "C04",
+   "name": "대규모 데이터 처리 시 연산 병목 이해",
+   "type": "지식",
+   "priority": "필수",
+   "query": "compute bottleneck optimization large scale data processing deep learning"
+  },
+  {
+   "cid": "C05",
+   "name": "대규모 데이터 처리 시 I/O 병목 이해",
+   "type": "지식",
+   "priority": "필수",
+   "query": "I/O bottleneck large scale dataset loading throughput optimization machine learning"
+  },
+  {
+   "cid": "C06",
+   "name": "Diffusion 기반 학습 방법론 이해",
+   "type": "지식",
+   "priority": "나머지",
+   "query": "diffusion model training methodology score matching noise scheduling tutorial"
+  },
+  {
+   "cid": "C19",
+   "name": "Isaac Sim",
+   "type": "도구",
+   "priority": "우대",
+   "query": "Isaac Sim robotics simulation tutorial getting started"
+  },
+  {
+   "cid": "C20",
+   "name": "Omniverse",
+   "type": "도구",
+   "priority": "우대",
+   "query": "NVIDIA Omniverse platform tutorial synthetic data generation"
+  },
+  {
+   "cid": "C21",
+   "name": "Blender",
+   "type": "도구",
+   "priority": "우대",
+   "query": "Blender 3D modeling rendering tutorial beginner"
+  },
+  {
+   "cid": "C22",
+   "name": "Unreal Engine",
+   "type": "도구",
+   "priority": "우대",
+   "query": "Unreal Engine real-time rendering tutorial introduction"
+  },
+  {
+   "cid": "C23",
+   "name": "Hugging Face를 통한 모델·결과물 공개",
+   "type": "도구",
+   "priority": "나머지",
+   "query": "Hugging Face model hub publishing sharing models datasets tutorial"
+  }
+ ],
+ "picks": [
+  {
+   "role": "핵심",
+   "gain": 3000.5,
+   "id": "Ma54431942a",
+   "title": "[ECCV 2026] Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+   "type": "학회 튜토리얼",
+   "url": "https://eccv.ecva.net/virtual/2026/3131",
+   "covers": {
+    "C01": "있음",
+    "C02": "있음",
+    "C04": "일부",
+    "C05": "일부",
+    "C06": "일부"
+   }
+  },
+  {
+   "role": "핵심",
+   "gain": 500.0,
+   "id": "LRN83d11fce37",
+   "title": "Profiling Machine Learning and MLOps Code",
+   "type": "글",
+   "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/ml-and-ai-projects/profiling-ml-and-mlops-code.md",
+   "covers": {
+    "C02": "일부",
+    "C04": "있음",
+    "C05": "일부"
+   }
+  },
+  {
+   "role": "보조",
+   "gain": 2.0,
+   "id": "ADD76a0f43d",
+   "title": "isaac-sim/IsaacSim",
+   "type": "저장소",
+   "url": "https://github.com/isaac-sim/IsaacSim",
+   "covers": {
+    "C19": "있음",
+    "C20": "있음"
+   }
+  },
+  {
+   "role": "보조",
+   "gain": 1.0,
+   "id": "E4eff9553b5",
+   "title": "An Introduction to Unreal Learning Agents",
+   "type": "강의 레슨",
+   "url": "https://github.com/huggingface/deep-rl-class/blob/main/units/en/unitbonus3/learning-agents.mdx",
+   "covers": {
+    "C02": "일부",
+    "C22": "있음"
+   }
+  },
+  {
+   "role": "보조",
+   "gain": 1.0,
+   "id": "LRNc710a7cb9f",
+   "title": "Sharing",
+   "type": "공식 문서 튜토리얼",
+   "url": "https://github.com/huggingface/transformers/blob/main/docs/source/en/model_sharing.md",
+   "covers": {
+    "C23": "있음"
+   }
+  },
+  {
+   "role": "보조",
+   "gain": 0.5,
+   "id": "E58b7714811",
+   "title": "Using a 3D Renderer to Generate Synthetic Data",
+   "type": "강의 레슨",
+   "url": "https://github.com/huggingface/computer-vision-course/blob/main/chapters/en/unit10/blenderProc.mdx",
+   "covers": {
+    "C21": "일부"
+   }
+  }
+ ],
+ "coverage": [
+  {
+   "cid": "C01",
+   "name": "이미지·비디오 생성 모델 동작 원리 이해",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C02",
+   "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C04",
+   "name": "대규모 데이터 처리 시 연산 병목 이해",
+   "priority": "필수",
+   "level": "있음"
+  },
+  {
+   "cid": "C05",
+   "name": "대규모 데이터 처리 시 I/O 병목 이해",
+   "priority": "필수",
+   "level": "일부"
+  },
+  {
+   "cid": "C06",
+   "name": "Diffusion 기반 학습 방법론 이해",
+   "priority": "나머지",
+   "level": "일부"
+  },
+  {
+   "cid": "C19",
+   "name": "Isaac Sim",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C20",
+   "name": "Omniverse",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C21",
+   "name": "Blender",
+   "priority": "우대",
+   "level": "일부"
+  },
+  {
+   "cid": "C22",
+   "name": "Unreal Engine",
+   "priority": "우대",
+   "level": "있음"
+  },
+  {
+   "cid": "C23",
+   "name": "Hugging Face를 통한 모델·결과물 공개",
+   "priority": "나머지",
+   "level": "있음"
+  }
+ ],
+ "candidates": [
+  {
+   "id": "ADD76a0f43d",
+   "title": "isaac-sim/IsaacSim",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "있음",
+     "quote": "NVIDIA Isaac Sim is a simulation platform built on NVIDIA Omniverse, designed to develop, test, train, and deploy AI-powered robots in realistic virtual environments.",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "있음",
+     "quote": "NVIDIA Isaac Sim is a simulation platform built on NVIDIA Omniverse, designed to develop, test, train, and deploy AI-powered robots in realistic virtual environments.",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADDbc9b7af3",
+   "title": "Isaac Sim - Robotics Simulation and Synthetic Data Generation",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "있음",
+     "quote": "NVIDIA Isaac Sim is an open source reference framework built on NVIDIA Omniverse libraries for robotics simulation, testing, and synthetic data generation in physically based virtual environments.",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "있음",
+     "quote": "NVIDIA Isaac Sim is an open source reference framework built on NVIDIA Omniverse libraries for robotics simulation, testing, and synthetic data generation in physically based virtual environments.",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ed4638fc2ae",
+   "title": "labs: Loading large datasets",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "있음",
+     "quote": "Understand difference between loading data entirely in-memory and loading in batches from disk - Practice loading a .csv file from disk in batches using the tf.data module",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E98616e68bc",
+   "title": "tensorflow: Loading large datasets",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "있음",
+     "quote": "Understand difference between loading data entirely in-memory and loading in batches from disk - Practice loading a .csv file from disk in batches using the tf.data module",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADDd250dc49",
+   "title": "Isaac Sim Basic Usage Tutorial",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "있음",
+     "quote": "This tutorial covers the basics of Isaac Sim, including navigating the GUI, adding objects to the stage, looking up basic properties of objects, and running simulations.",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E0b3bb47f94",
+   "title": "Techniques of Machine Learning",
+   "cells": {
+    "C01": {
+     "level": "일부",
+     "quote": "the process of building, using, and maintaining machine learning models and the data they use is a very different process from many other development workflows",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "the process of building, using, and maintaining machine learning models and the data they use",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN6fd16855c7",
+   "title": "Video generation",
+   "cells": {
+    "C01": {
+     "level": "있음",
+     "quote": "Video generation models extend image generation (can be considered a 1-frame video) to also process data related to space and time.",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRNc710a7cb9f",
+   "title": "Sharing",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "있음",
+     "quote": "The Hugging Face Hub is a platform for sharing, discovering, and consuming models of all different types and sizes.",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M80198383c9",
+   "title": "UC Berkeley CS294-158 Deep Unsupervised Learning",
+   "cells": {
+    "C01": {
+     "level": "일부",
+     "quote": "deep generative models and self-supervised learning, covering theoretical foundations and new applications",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "있음",
+     "quote": "diffusion-generative, self-supervised-learning · Two areas of deep learning that need no labels: deep generative models and self-supervised learning, covering theoretical foundations",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADD9a973b9a",
+   "title": "What Is Isaac Sim? (Isaac Sim Documentation)",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "있음",
+     "quote": "Simulate with PhysX or Newton, add RTX and physics-based sensors, generate synthetic data, prepare robots for Isaac Lab, and validate robot stacks with ROS 2.",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADDf3397208",
+   "title": "Getting Started With Isaac Sim (NVIDIA learning modules)",
+   "cells": {
+    "C01": {
+     "level": "일부",
+     "quote": "synthetic data generation with Replicator, and Software-in-the-Loop testing.",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "있음",
+     "quote": "This collection of modules will guide you through building, simulating, and working with robots in NVIDIA Isaac Sim",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "일부",
+     "quote": "robot construction and control using OmniGraph and ROS 2, URDF import and physics configuration",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN17040dbd45",
+   "title": "Multimodal Generation",
+   "cells": {
+    "C01": {
+     "level": "있음",
+     "quote": "Multimodal (any-to-any) models are language models capable of processing diverse types of input data (e.g., text, images, audio, or video) and generating outputs in any of these modalities.",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN83d11fce37",
+   "title": "Profiling Machine Learning and MLOps Code",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "Data Science projects, especially the ones that involve Deep Learning techniques, usually are resource intensive. One model training iteration might be multiple hours long.",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "있음",
+     "quote": "minor bugs and suboptimal implementation of some functional pieces",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "일부",
+     "quote": "large data volumes processing genuinely takes time, minor bugs and suboptimal implementation of some functional pieces",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADD8da175f0",
+   "title": "Isaac Sim Quick Install",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "일부",
+     "quote": "After completing the quick install, you can create a room with a robot in it.",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADD0bb5deab",
+   "title": "Isaac Sim Core API Tutorial Series",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "있음",
+     "quote": "This tutorial series explains how to create scripted scenes, control wheeled robots and manipulators, coordinate tasks, and add physics-ready props.",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADDd476db2e",
+   "title": "Perception Data Generation (Replicator) in Isaac Sim",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "있음",
+     "quote": "NVIDIA Isaac Sim · Isaac Sim Replicator offers various tools and workflows for synthetic data generation (SDG), primarily using the omni.replicator extension.",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "일부",
+     "quote": "Isaac Sim Replicator offers various tools and workflows for synthetic data generation (SDG), primarily using the omni.replicator extension.",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRNfd8afe2e2b",
+   "title": "Tutorial: Create production machine learning pipelines",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "The core of a machine learning pipeline is to split a complete machine learning task into a multistep workflow. Each step is a manageable component that can be developed, optimized, configured, and automated individually.",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ma5a1d4a6c2",
+   "title": "Introduction to Diffusion Models for Machine Learning",
+   "cells": {
+    "C01": {
+     "level": "일부",
+     "quote": "Introduction to Diffusion Models for Machine Learning",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "일부",
+     "quote": "Introduction to Diffusion Models for Machine Learning",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M6a56d0a994",
+   "title": "Data Mesh — A Data Movement and Processing Platform @ Netflix",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Eccfaf1e564",
+   "title": "Using Phi Family in Hugging Face",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "일부",
+     "quote": "Hugging Face is a very popular AI community with rich data and open source model resources. Different manufacturers will release open source LLM and SLM through Hugging Face.",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADDbbc0a0b7",
+   "title": "Robot Setup (Isaac Sim)",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "일부",
+     "quote": "Robot Setup (Isaac Sim) · NVIDIA Isaac Sim · These tools and tutorials detail the different importers and exporters for converting assets to and from the USD format and how you can build custom robots in the simulator.",
+     "downgraded": true
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M8e15423fe7",
+   "title": "[CVPR 2026] The Principles of Diffusion Models: Real-Time Continuous & Discrete Diffusion",
+   "cells": {
+    "C01": {
+     "level": "있음",
+     "quote": "diffusion models have become a central paradigm in computer vision, powering advances in image synthesis, editing, and video generation.",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "일부",
+     "quote": "The Principles of Diffusion Models: Real-Time Continuous & Discrete Diffusion · diffusion models have become a central paradigm in computer vision, powering advances in image synthesis, editing, and video generation.",
+     "downgraded": true
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRNea7c89d73a",
+   "title": "Know your dataset",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "일부",
+     "quote": "memory-mapping so that loading even large datasets only uses a relatively small amount of device memory. But for really, really big datasets",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "일부",
+     "quote": "There are two types of dataset objects, a regular [ Dataset ] and then an ✨ [ IterableDataset ] ✨.",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E754cce5ae0",
+   "title": "Inference Pipeline with Custom Containers and xgBoost",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "a Machine Learning (ML) process consists of few steps: data gathering with various ETL jobs, pre-processing the data, featurizing the dataset by incorporating standard techniques or prior knowledge, and finally training an ML model",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADDe4e0b320",
+   "title": "ROS 2 tutorials (Isaac Sim)",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "있음",
+     "quote": "ROS 2 tutorials (Isaac Sim) · NVIDIA Isaac Sim · Isaac Sim is connected to ROS through the ROS 2 bridge extension.",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E02366d8d63",
+   "title": "chapter1: Introduction",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "일부",
+     "quote": "This course will teach you about large language models (LLMs) and natural language processing (NLP) using libraries from the Hugging Face ecosystem",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M0a52f1076c",
+   "title": "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "ADDc478c544",
+   "title": "Welcome to Isaac Lab",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "있음",
+     "quote": "It supports NVIDIA Isaac Sim for photo-realistic scenes and RTX rendering.",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ma9fc886bfa",
+   "title": "Diffusion models explained",
+   "cells": {
+    "C01": {
+     "level": "일부",
+     "quote": "Diffusion models explained",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "일부",
+     "quote": "Diffusion models explained",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E0807fdf7a8",
+   "title": "spark distributed data processing: Distributed Data Processing using Apache Spark and SageMaker Processing",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "The Spark framework is often used within the context of machine learning workflows to run data transformation or feature engineering workloads at scale.",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "일부",
+     "quote": "Apache Spark is a unified analytics engine for large-scale data processing.",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "일부",
+     "quote": "Apache Spark is a unified analytics engine for large-scale data processing.",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E58b7714811",
+   "title": "Using a 3D Renderer to Generate Synthetic Data",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "일부",
+     "quote": "Physically Based Renderers (PBR) such as Blender Cycles or Unity help to create images that are super realistic",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M218ba2f35e",
+   "title": "Model Routing Is Simple. Until It Isn’t.",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Mef4dd73e4c",
+   "title": "Featuring Every Eval Ever Results on Hugging Face Model Pages",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Mfd11fb1684",
+   "title": "动手学大模型应用开发",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M82167b33ce",
+   "title": "B站：小黑黑讲AI",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M36fd7ea5bd",
+   "title": "Stanford CS246 Mining Massive Data Sets",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "일부",
+     "quote": "Data mining and machine learning algorithms for very large data with MapReduce and Spark",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "LRN43dde11d92",
+   "title": "ParaAttention",
+   "cells": {
+    "C01": {
+     "level": "일부",
+     "quote": "Large image and video generation models, such as FLUX.1-dev and HunyuanVideo, can be an inference challenge for real-time applications and deployment because of their size.",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E8844055cb6",
+   "title": "An Introduction to Unity ML-Agents",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "일부",
+     "quote": "game engines to do so. These engines, such as Unity, Godot or Unreal Engine, are programs made to create video games. They are perfectly suited for creating environments",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E233851906f",
+   "title": "Learning from Data",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "Introduction to machine learning covering basic theory, algorithms and applications",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ma54431942a",
+   "title": "[ECCV 2026] Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+   "cells": {
+    "C01": {
+     "level": "있음",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "있음",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "일부",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "일부",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "일부",
+     "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M43a7bc4032",
+   "title": "GROOT-Dreams",
+   "cells": {
+    "C01": {
+     "level": "일부",
+     "quote": "World Models for Locomotion",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "일부",
+     "quote": "NVIDIA Isaac GR00T-Dreams Advances Robot Training With Synthetic Data and Neural Simulation",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Mac86ebe115",
+   "title": "Stanford CME296 Stanford CME296: Diffusion & Large Vision Models",
+   "cells": {
+    "C01": {
+     "level": "있음",
+     "quote": "Diffusion-based generative models for vision: foundations of diffusion, score matching and flow matching, Diffusion Transformers, and controllable image generation and evaluation",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "controllable image generation and evaluation",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "있음",
+     "quote": "foundations of diffusion, score matching and flow matching, Diffusion Transformers, and controllable image generation and evaluation",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "E4eff9553b5",
+   "title": "An Introduction to Unreal Learning Agents",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "train AI characters using machine learning (ML) in Unreal",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "있음",
+     "quote": "Learning Agents is an Unreal Engine (UE) plugin that allows you to train AI characters using machine learning (ML) in Unreal",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M95240f368a",
+   "title": "知乎: ybq",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Mb4ff56d4c4",
+   "title": "Scale AV Perception Across Vehicle Platforms with NVIDIA Omniverse NuRec",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "있음",
+     "quote": "Scale AV Perception Across Vehicle Platforms with NVIDIA Omniverse NuRec",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M4d9975e440",
+   "title": "B站：黄益贺",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "M5e359d8ff9",
+   "title": "B站：AI老兵文哲",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Edd02d919fb",
+   "title": "Build a machine learning workflow using Step Functions and SageMaker",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "Build a machine learning workflow",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  },
+  {
+   "id": "Ea6ad8d8821",
+   "title": "The Hugging Face Hub",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "일부",
+     "quote": "The Hugging Face Hub is a central platform that enables anyone to discover, use, and contribute new state-of-the-art models and datasets.",
+     "downgraded": true
+    }
+   }
+  },
+  {
+   "id": "Ma9f27e628c",
+   "title": "[ICML 2024] Foundations of Data-efficient Machine Learning",
+   "cells": {
+    "C01": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C02": {
+     "level": "일부",
+     "quote": "machine learning models have achieved remarkable success by learning from large amounts of data",
+     "downgraded": false
+    },
+    "C04": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C05": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C06": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C19": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C20": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C21": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C22": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    },
+    "C23": {
+     "level": "없음",
+     "quote": "",
+     "downgraded": false
+    }
+   }
+  }
+ ],
+ "cost_krw": 555.6,
+ "rerank_units": 50
+}
