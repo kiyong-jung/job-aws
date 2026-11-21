@@ -74,7 +74,7 @@ STAGES = {"read": "공고를 읽는 중", "split": "문장을 나누는 중", "f
 # 걸음 사이 간격(초). speed 를 곱한다. 예시 다시 틀기가 8초 안팎이 되게 맞췄다
 # 형광펜은 WAVES 번에 나눠 몇 줄씩 함께 칠한다 (사용자 11/19: 1.5초 안에 끝). 0.3초 × 3 틈 + 칠하기 0.3초 = 1.2초
 WAVES = 4
-PACE = {"stage": 0.4, "chunk": 0.035, "wave": 0.3, "search": 0.45, "batch": 0.03, "cover": 0, "item": 0.16, "fill": 0.12, "week": 0}      # week·cover 0: ⑤ 막대는 한 번에, 덮기 칸은 그리는 곳이 없다 (사용자 11/21: 쓸데없이 기다리지 않게)
+PACE = {"stage": 0.4, "chunk": 0.035, "wave": 0.3, "search": 0.45, "batch": 0.03, "cover": 0, "item": 0.16, "fill": 0.03, "week": 0}      # week·cover 0: ⑤ 막대는 한 번에, 덮기 칸은 그리는 곳이 없다 (사용자 11/21: 쓸데없이 기다리지 않게). fill 0.03: 응용 +1 은 화면이 1.5초 안에 다시 튼다 (사용자 11/21 "+1 되는거 좀 느린듯")
 SECTION_NAMES = {"필수": "자격요건", "우대": "우대사항", "미션": "담당업무", "소개": "소개"}
 
 
@@ -882,33 +882,48 @@ def curriculum_case(name, hours):
     return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else None
 
 
-SIZES = ("소", "중", "대")      # 주차 계획 크기 (사용자 11/21). 기본은 중 (한 주 14시간), 대 = 한 주 28시간. 소·52시간 안은 아직 없다
+PLAN_HOURS = (7, 14, 28)      # ④ 한 주 공부 시간 단추 (사용자 11/21 밤: 7·14·28). 7 은 보류 안내. 15시간 판(plan.15.json)은 파일만 두고 쓰지 않는다
+DEFAULT_WEEK_HOURS = 28      # 처음 보이는 계획 (사용자 11/21 밤: "28을 기본으로")
 
 
 def plans_case(name):
     """응용 프로젝트 작업(W1~W10)과 교육자료를 주마다 배치한 계획 md 를 옮긴 것들 (design/build_curriculum_md.py → data/<예시>.plan.<상한>.json).
-    한 주 상한이 작은 차례. 없으면 [] (그때는 생성기 결과를 쓴다)"""
-    return sorted((_read(f) for f in DATA.glob(f"{name}.plan.*.json")), key=lambda d: d["constraints"]["hours_per_week"])
+    단추에 있는 시간(PLAN_HOURS)만, 한 주 상한이 작은 차례. 없으면 [] (그때는 생성기 결과를 쓴다)"""
+    got = (_read(f) for f in DATA.glob(f"{name}.plan.*.json"))
+    return sorted((d for d in got if d["constraints"]["hours_per_week"] in PLAN_HOURS), key=lambda d: d["constraints"]["hours_per_week"])
 
 
 def blocked_case(name):
-    """배정을 보류한 계획 md (data/<예시>.blocked.<한 주 시간>.json): 그 시간으로는 짜지 않고 주당 최소 시간을 알린다. 한 주 시간이 작은 차례"""
-    return sorted((_read(f) for f in DATA.glob(f"{name}.blocked.*.json")), key=lambda d: d["hours_per_week"])
+    """배정을 보류한 계획 md (data/<예시>.blocked.<한 주 시간>.json): 그 시간으로는 짜지 않고 주당 최소 시간을 알린다. 단추에 있는 시간만, 작은 차례"""
+    got = (_read(f) for f in DATA.glob(f"{name}.blocked.*.json"))
+    return sorted((b for b in got if b["hours_per_week"] in PLAN_HOURS), key=lambda d: d["hours_per_week"])
 
 
-DEFAULT_WEEK_HOURS = 14      # 계획이 여럿인 예시의 처음 보이는 계획 (사용자 11/21: 기본 14시간)
+def scale_line(views):
+    """한 주 공부 시간에 따라 분량이 맞춰진다는 한 줄 (사용자 11/21). 단추 차례, 숫자는 모두 계획·보류 파일 값:
+    '한 주 공부 시간은 정수로 정한다. 7시간이면 … 보류하고 한 주 최소 11시간 40분이 필요하다고 알려 주고, 14시간이면 W9·W10을 미루고, 28시간이면 모두 들어간다.'"""
+    def part(v):
+        if v["source"] == "blocked":
+            b = v["blocked"]
+            return (f"{v['cap']:g}시간이면 12주 {b['available_hours']}시간으로 필요한 {b['needed_hours']}시간에 못 미쳐 계획을 보류하고 "
+                    f"한 주 최소 {b['min_text']}이 필요하다고 알려 주고")
+        return f"{v['cap']:g}시간이면 " + ("·".join(h["id"] for h in v["held"]) + ("만" if len(v["held"]) == 1 else "을") + " 미루고" if v["held"] else "모두 들어가고")
+    body = ", ".join(part(v) for v in views)
+    return "한 주 공부 시간은 정수로 정한다. " + re.sub(r"(미루|들어가|알려 주)고$", lambda m: {"미루": "미룬다", "들어가": "들어간다", "알려 주": "알려 준다"}[m.group(1)], body) + "."
 
 
-def scale_line(views, blocks):
-    """한 주 공부 시간에 따라 분량이 맞춰진다는 한 줄 (사용자 11/21). 숫자는 모두 계획 파일 값:
-    '한 주 공부 시간은 정수로 정한다. 14시간이면 W9·W10을 미루고, 15시간이면 W10만 미루고, 28시간이면 모두 들어간다. 7시간이면 …'"""
-    parts = [f"{v['cap']:g}시간이면 " + ("·".join(h["id"] for h in v["held"]) + ("만" if len(v["held"]) == 1 else "을") + " 미루고" if v["held"] else "모두 들어가고")
-             for v in views]
-    line = "한 주 공부 시간은 정수로 정한다. " + re.sub(r"(미루|들어가)고$", lambda m: {"미루": "미룬다", "들어가": "들어간다"}[m.group(1)], ", ".join(parts)) + "."
-    for b in blocks:
-        line += (f" {b['hours_per_week']}시간이면 12주 {b['available_minutes'] // 60}시간으로 필요한 {b['needed_minutes'] // 60}시간에 못 미쳐 계획을 보류하고, "
-                 f"한 주 최소 {span_text(b['min_per_week_minutes'])}이 필요하다고 알려 준다.")
-    return line
+def blocked_view(b):
+    """보류 파일 하나 → 화면 값 (주 칸 없이 본문 글 셋). 오류가 아니라 그 시간으로는 짜지 않았다는 결과다"""
+    need, have = b["needed_minutes"] // 60, b["available_minutes"] // 60
+    info = {"available_hours": have, "needed_hours": need, "min_text": span_text(b["min_per_week_minutes"]),
+            "build_hours": b["needed_build_minutes"] // 60, "learning_hours": b["needed_learning_minutes"] // 60}
+    lines = [f"12주 {have}시간으로는 필요한 {need}시간(만들기 {info['build_hours']}시간 + 배우기 {info['learning_hours']}시간)에 못 미쳐요.",
+             f"한 주 최소 {info['min_text']}이 필요해요.",
+             "시간을 늘리거나 꼭 할 범위를 정하면 다시 짤 수 있어요."]
+    cap = b["hours_per_week"]
+    summary = {"weeks": b["weeks"], "cap": cap, "blocked": True, "min_text": info["min_text"], "source": "blocked"}
+    return {"key": f"{cap:g}", "label": f"주 {cap:g}시간", "source": "blocked", "plan": [], "cap": cap, "learning": 0, "project": 0, "total": 0,
+            "assigned": [], "held": [], "blocked": {**info, "title": f"주 {cap:g}시간 · 계획 보류", "lines": lines}, "summary": summary}
 
 
 def span_text(m):
@@ -937,16 +952,18 @@ def plan_view(case, d, hours, source):
 
 @tagged
 def weeks(case, speed=1.0, budget="84", curriculum=None):
-    """⑤ 12주 계획. 예시 공고에 주차 계획 md(plans_case)가 있으면 그것들을 보인다: 화면이 한 주 공부 시간(주 14·15·28시간)을 고르고, 기본은 14.
-    그 예시는 ④ 쪽에서 하루 1·2·3시간 칸을 숨기고 그 선택과 상관없다 (그 선택은 ⑥ 리포트가 쓴다). 보류 md(blocked_case)는 분량 한 줄(scale)에만.
+    """⑤ 12주 계획. 예시 공고에 주차 계획 md(plans_case)가 있으면 그것들을 보인다: 화면이 한 주 공부 시간(주 7·14·28시간)을 고르고, 기본은 28.
+    7시간은 보류 md(blocked_case): 주 칸 없이 왜 짜지 않았는지와 한 주 최소 시간을 본문 글로. 분량 한 줄(scale)은 단추 차례로 셋을 다 말한다.
+    그 예시는 하루 1·2·3시간 칸을 숨기고 그 선택과 상관없다 (⑥ 리포트도 고른 한 주 공부 시간을 따른다).
     없거나 새 공고면 라운드랩 커리큘럼 생성기(github.com/gaori2952/Round_labcurriculum) 결과: 하루 1·2·3시간 = 주당 7·14·21시간 (한 사람).
     주마다 교육자료 공부 → 프로젝트 작업 → 산출물. 12주를 사건 하나로 보내 화면이 한 번에 그린다."""
     name_ = case["case"]
     mds = [] if curriculum is not None else plans_case(name_)
     if mds:
-        views = [plan_view(case, d, d["constraints"]["hours_per_week"], "md") for d in mds]
-        first = next((v for v in views if v["cap"] == DEFAULT_WEEK_HOURS), views[0])
-        status, generator, scale = mds[0]["status"], "", scale_line(views, blocked_case(name_))
+        views = sorted([plan_view(case, d, d["constraints"]["hours_per_week"], "md") for d in mds] + [blocked_view(b) for b in blocked_case(name_)],
+                       key=lambda v: v["cap"])
+        first = next((v for v in views if v["cap"] == DEFAULT_WEEK_HOURS), views[-1])
+        status, generator, scale = mds[0]["status"], "", scale_line(views)
     else:
         per_day = {b["key"]: b["per_day"] for b in LIVE_BUDGETS}[budget] if curriculum is not None else materials_case(name_)["budgets"][budget]["per_day"]
         hours = 7 * per_day
@@ -1031,23 +1048,56 @@ def report_page(name, budget):
     slides = [f"/report/{name}.{budget}.{k}.png" for k in range(1, facts["slides"] + 1)]
     if not all((DATA / f"{name}.report.{budget}.{k}.png").is_file() for k in range(1, facts["slides"] + 1)):
         return None
-    return {**facts, "slides": slides, "pptx": f"/report/{name}.{budget}.pptx", "filename": f"면접대비리포트_{name}_{budget}시간.pptx"}      # facts 의 쪽 수(slides)를 쪽 주소 목록이 덮는다
+    label = f"{budget}시간" if budget in budget_keys(name) else f"주{budget}시간"      # 하루 공부 시간 안은 12주 합(84), 주차 계획은 한 주 시간
+    return {**facts, "slides": slides, "pptx": f"/report/{name}.{budget}.pptx", "filename": f"면접대비리포트_{name}_{label}.pptx"}      # facts 의 쪽 수(slides)를 쪽 주소 목록이 덮는다
+
+
+def report_keys(name):
+    """⑥ 리포트의 안 열쇠. 주차 계획 md 가 있는 예시는 ④ 의 한 주 공부 시간 ("7"·"14"·"28"), 아니면 하루 공부 시간 안 ("84"·"168"·"252")"""
+    hours = [d["constraints"]["hours_per_week"] for d in plans_case(name)] + [b["hours_per_week"] for b in blocked_case(name)] if plans_case(name) else []
+    return [f"{h:g}" for h in sorted(hours)] if hours else budget_keys(name)
+
+
+def report_key_of(key, name):
+    """요청의 budget 값을 ⑥ 의 안 열쇠로: 주차 계획 md 예시는 한 주 공부 시간 (없으면 기본 28), 아니면 budget_of 와 같다. 없는 값은 None"""
+    if not plans_case(name):
+        return budget_of(key, name)
+    if key is None:
+        return f"{DEFAULT_WEEK_HOURS:g}"
+    if isinstance(key, bool) or not isinstance(key, (str, int)):
+        return None
+    return str(key) if str(key) in report_keys(name) else None
 
 
 @tagged
 def report(case, speed=1.0, budget="84"):
-    """정리 리포트: 사람이 미리 짠 면접 대비 슬라이드를 고른 공부 시간 안으로 보인다. 바닥 줄 불렛 둘은 그 쪽에 적힌 값만."""
+    """정리 리포트: 사람이 미리 짠 면접 대비 슬라이드를 고른 안으로 보인다. 바닥 줄 불렛 둘은 그 쪽에 적힌 값만.
+    주차 계획 md 예시는 ④ 에서 고른 한 주 공부 시간의 계획 (build_report_deck.py 가 주와 공부 자료를 그 계획 파일에서 옮긴다).
+    계획을 보류한 시간(주 7시간)은 리포트 대신 본문 글 한 줄(note)."""
     name_ = case["case"]
+    blocked = next((b for b in blocked_case(name_) if f"{b['hours_per_week']:g}" == budget), None) if plans_case(name_) else None
+    if blocked:
+        other = [h for h in report_keys(name_) if h != budget]
+        steps = [{"key": "check", "label": f"한 주 {budget}시간 계획을 확인하는 중", "done": "계획을 보류한 시간이에요"}]
+        yield {"type": "steps", "items": steps, "hours": int(budget)}
+        yield {"type": "stage", "key": "check", "label": steps[0]["label"]}
+        time.sleep(PACE["stage"] * speed)
+        yield {"type": "done", "slides": [], "pptx": None, "filename": None,
+               "note": f"한 주 {budget}시간으로는 12주 계획을 보류해서 리포트로 정리할 계획이 없어요. ④ 12주 계획에서 {'이나 '.join(f'주 {h}시간' for h in other)}을 고르면 그 계획으로 리포트를 보여 드려요.",
+               "bullets": [f"한 주 {budget}시간은 계획을 보류해 리포트가 없어요", f"④ 에서 주 {'·'.join(other)}시간을 고르면 리포트가 나와요"]}
+        return
     data, page = report_case(name_), report_page(name_, budget)
     if not page:
         yield {"type": "notice", "text": "이 공고의 정리 리포트는 아직 준비 중이에요."}
         return
     steps = report_steps(data)
-    yield {"type": "steps", "items": steps, "per_day": materials_case(name_)["budgets"][budget]["per_day"]}
+    plan = page.get("plan")
+    yield {"type": "steps", "items": steps, **({"hours": int(plan["hours"])} if plan else {"per_day": materials_case(name_)["budgets"][budget]["per_day"]})}
     for s in steps:
         yield {"type": "stage", "key": s["key"], "label": s["label"]}
         time.sleep(PACE["stage"] * speed)
     companies = page["companies"]
     yield {"type": "done", "slides": page["slides"], "pptx": page["pptx"], "filename": page["filename"],
+           **({"basis": f"한 주 {plan['hours']:g}시간 계획 기준" + (f" · 미룬 일 {'·'.join(plan['held'])}" if plan["held"] else "") + " · 시간은 ④ 12주 계획에서 바꿔요"} if plan else {}),
            "bullets": [f"공고 핵심 문장 {data['counts']['rows']}개에서 고른 면접 질문 {page['questions']}개 · 공개 면접 질문 은행 {page['bank']}개",
                        f"질문 출처 {', '.join(companies)}" if companies else "모두 직접 만든 질문"]}

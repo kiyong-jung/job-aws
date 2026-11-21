@@ -1,6 +1,9 @@
 """정리 리포트(⑥): 발표 자료와 같은 모양(1920×1080, 먹색 글, 공고 인용은 노란 형광펜)의 면접 대비 슬라이드 여러 장. 모델·API 호출 없이 저장본만 읽는다.
-  PYTHONPATH=. .venv/bin/python demo/design/build_report_deck.py <예시 이름>
+  cd code && PYTHONPATH=. ../기용/.venv/bin/python demo/design/build_report_deck.py <예시 이름>
 공부 시간 세 안(84·168·252)마다 demo/data/<예시>.report.<시간>.<쪽>.png (화면용), .pptx (받기용, 쪽 그림을 한 장씩), .json (바닥 줄 불렛에 쓸 값).
+주차 계획 md 가 있는 예시(aws_fde)는 그 대신 ④ 의 한 주 공부 시간 계획마다 (report.14·report.28; 보류한 7 은 리포트가 없다):
+말할 프로젝트 일의 주는 그 계획에서 그 작업이 놓인 주, 미룬 작업은 '미룬 일', 미리 공부할 것은 그 계획의 교육자료 가운데 그 문장의 역량을 다루는 것.
+.json 의 rows 에 37줄 모두의 작업·주·공부 자료를 남긴다 (tests/test_demo.py 가 계획 파일과 맞는지 본다).
 만드는 길: HTML → Chrome 머리 없이 PDF → pdftoppm 쪽 그림 → python-pptx (uv 로 그때 불러 쓴다). 발표 pptx 를 만든 길과 같다.
 넘침 검사: Chrome 이 HTML 을 그린 뒤 쪽 밖으로 나가거나 칸을 넘친 글을 세어, 하나라도 있으면 멈춘다.
 
@@ -19,7 +22,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from demo.pipeline import WORTH, example_case, exam_weeks, weeks_text
+from demo.pipeline import WORTH, example_case, exam_weeks, plans_case, span_text, weeks_text
 
 DEMO = Path(__file__).resolve().parent.parent
 DATA = DEMO / "data"
@@ -71,16 +74,108 @@ def page(case, budget):
     posting = example_case(case)["posting"]
     exams = exam_weeks(weeks)
     team = weeks["team"]
+    study = lambda s: s and {**s, "when": f"{s['week']}주차까지"}
     return {
         "company": posting["company"], "role": posting["title"], "project": weeks["project"]["title"],
         "coverage": (len(adapt["coverage"]), sum(WORTH[c["expect"]] for c in adapt["coverage"])),
-        "weeks": team["weeks"], "members": team["members"], "budget": weeks["budgets"][budget]["label"],
+        "weeks": team["weeks"], "when": f"팀 {team['members']}명 · 공부 {weeks['budgets'][budget]['label']}",
         "questions": [{
             "n": r["sentence_no"], "priority": ["필수", "우대", "나머지"][row_priority(r)], "q": r["question"],
             "sentence": r["sentence_text"], "points": r["answer_points"], "examples": [x["value"] for x in r["example_numbers"]],
             "packages": [(p["name"], weeks_text({"from": p["weeks"][0], "to": p["weeks"][-1]}, exams)) for p in r["packages"]],
-            "study": r["study_point"][budget]} for r in sorted(report["rows"], key=rank)[:QUESTIONS]],
+            "study": study(r["study_point"][budget])} for r in sorted(report["rows"], key=rank)[:QUESTIONS]],
         "outside": outside(case, adapt)}
+
+
+# ── 주차 계획 md 의 리포트 (④ 의 한 주 공부 시간 계획마다) ───────────────────
+def placed(plan):
+    """계획 → {작업 id: 그 작업이 놓인 주들}"""
+    at = {}
+    for w in plan["weeks"]:
+        for x in w["activities"]:
+            if x["kind"] == "project":
+                at.setdefault(x["id"], []).append(w["week"])
+    return at
+
+
+def runs_text(weeks):
+    """[2, 3, 5] → "2~3주차, 5주차" (계획의 주는 1~12, 시험 주가 없다)"""
+    runs = []
+    for k in sorted(set(weeks)):
+        if runs and runs[-1][1] == k - 1:
+            runs[-1][1] = k
+        else:
+            runs.append([k, k])
+    return ", ".join(f"{a}주차" if a == b else f"{a}~{b}주차" for a, b in runs)
+
+
+def plan_study(row, plan, names, pk):
+    """그 줄의 역량을 다루는 그 계획의 교육자료 하나: 다루는 정도의 합이 큰 것, 같으면 이른 주.
+    다루는 자료가 없으면 그 줄의 첫 작업이 시작하는 주에 놓인 자료 (계획이 그 일 바로 앞에 둔 공부). 그것도 없으면 None"""
+    want = {c["cid"] for c in row["competencies"]}
+    best = None
+    for w in plan["weeks"]:
+        for x in w["activities"]:
+            hit = [c for c in x.get("covers", []) if x["kind"] == "learning" and c["cid"] in want and c["level"] != "없음"]
+            if not hit:
+                continue
+            key = (-sum(WORTH[c["level"]] for c in hit), w["week"], x["sequence"])
+            if best is None or key < best[0]:
+                top = max(hit, key=lambda c: WORTH[c["level"]])
+                best = (key, {"title": x["title"], "name": names[top["cid"]], "week": w["week"], "minutes": x["minutes"], "url": x.get("url", "")})
+    if best is None:
+        start = min((p["weeks"][0] for p in pk if p["weeks"]), default=None)
+        x = next((x for w in plan["weeks"] if w["week"] == start for x in w["activities"] if x["kind"] == "learning"), None)
+        best = x and ((), {"title": x["title"], "name": "그 일을 시작하는 주에 보는 자료", "week": start, "minutes": x["minutes"], "url": x.get("url", "")})
+    return best and {**best[1], "when": f"{best[1]['week']}주차 · {span_text(best[1]['minutes'])}"}
+
+
+def plan_rows(report, plan, names):
+    """37줄 모두: 줄의 작업마다 그 계획의 주 (미룬 작업은 held), 공부 자료 하나. 어느 쪽도 아닌 작업은 계획이 틀린 것이라 멈춘다"""
+    at, held = placed(plan), {h["id"] for h in plan["held"]}
+    out = []
+    for r in report["rows"]:
+        pk = []
+        for p in r["packages"]:
+            if p["id"] not in at and p["id"] not in held:
+                raise SystemExit(f"{p['id']} 가 {plan['source']} 에 놓이지도 미뤄지지도 않았다")
+            pk.append({"id": p["id"], "name": p["name"], "weeks": sorted(set(at.get(p["id"], []))), "held": p["id"] in held})
+        out.append({"n": r["sentence_no"], "packages": pk, "study": plan_study(r, plan, names, pk)})
+    return out
+
+
+def plan_page(case, plan):
+    report = json.loads((DATA / f"{case}.report.json").read_text("utf-8"))
+    adapt = json.loads((DATA / f"{case}.adapt.json").read_text("utf-8"))
+    posting = example_case(case)["posting"]
+    hours = plan["constraints"]["hours_per_week"]
+    names = {c["id"]: c["name"] for c in adapt["coverage"]}
+    rows = {x["n"]: x for x in plan_rows(report, plan, names)}
+    job = lambda p: (p["name"], f"미룬 일 · 한 주 {hours:g}시간 계획에는 넣지 못했어요" if p["held"] else runs_text(p["weeks"]))
+    total = plan["summary"]["scheduled_hours"] * 60
+    return {
+        "company": posting["company"], "role": posting["title"], "project": plan["project"]["title"],
+        "coverage": (len(adapt["coverage"]), sum(WORTH[c["expect"]] for c in adapt["coverage"])),
+        "weeks": len(plan["weeks"]), "when": f"한 주 {hours:g}시간 계획 · 총 {span_text(round(total))}",
+        "plan": {"hours": hours, "held": [h["id"] for h in plan["held"]], "source": plan["source"]}, "rows": list(rows.values()),
+        "questions": [{
+            "n": r["sentence_no"], "priority": ["필수", "우대", "나머지"][row_priority(r)], "q": r["question"],
+            "sentence": r["sentence_text"], "points": r["answer_points"], "examples": [x["value"] for x in r["example_numbers"]],
+            "packages": [job(p) for p in rows[r["sentence_no"]]["packages"]],
+            "study": rows[r["sentence_no"]]["study"]} for r in sorted(report["rows"], key=rank)[:QUESTIONS]],
+        "outside": plan_outside(adapt, plan)}
+
+
+def plan_outside(adapt, plan):
+    """프로젝트 밖에서 채울 역량 (응용 덮기 표에서 '있음'이 아닌 것)과 그것을 다루는 그 계획의 교육자료 (주)"""
+    out = []
+    for c in adapt["coverage"]:
+        if c["expect"] == "있음":
+            continue
+        mats = [f"{x['title']} ({w['week']}주차)" for w in plan["weeks"] for x in w["activities"]
+                if x["kind"] == "learning" and any(k["cid"] == c["id"] and k["level"] != "없음" for k in x.get("covers", []))]
+        out.append({"name": c["name"], "tier": c["tier"], "level": c["expect"], "materials": mats})
+    return out
 
 
 # ── 쪽 짜기 (HTML) ────────────────────────────────────────────────────
@@ -181,7 +276,7 @@ def cover(p, total):
   <div class="stats">
     <div class="stat"><p class="n">{points(got)}<small> / {n}</small></p><p class="c">공고 역량을 프로젝트로</p></div>
     <div class="stat"><p class="n">{len(p['questions'])}<small>개</small></p><p class="c">예상 면접 질문</p></div>
-    <div class="stat"><p class="n">{p['weeks']}<small>주</small></p><p class="c">팀 {p['members']}명 · 공부 {e(p['budget'])}</p></div>
+    <div class="stat"><p class="n">{p['weeks']}<small>주</small></p><p class="c">{e(p['when'])}</p></div>
   </div>
   <p class="pg">1 / {total}</p>
 </section>"""
@@ -191,7 +286,7 @@ def question(i, q, total):
     pts = [marked(t, q["examples"]) for t in q["points"]]
     jobs = "".join(f"<li><b>{e(name)}</b>{e(when)}</li>" for name, when in q["packages"])
     s = q["study"]
-    study = (f"<li><b>{e(s['title'])}</b>{e(s['name'])} · {s['week']}주차까지</li>" if s and s.get("title")
+    study = (f"<li><b>{e(s['title'])}</b>{e(s['name'])} · {e(s['when'])}</li>" if s and s.get("title")
              else "<li>맞는 자료가 없어요</li>")
     tag = source_tag(q["q"])
     note = '<p class="foot">밑줄 숫자는 예시예요. 실제로 잰 값이 아니에요.</p>' if any(m for _, m in pts) else ""
@@ -228,9 +323,10 @@ def deck_html(p):
 
 def facts(p):
     qs = [q["q"] for q in p["questions"]]
+    plan = {"plan": p["plan"], "shown": [q["n"] for q in p["questions"]], "rows": p["rows"]} if "plan" in p else {}
     return {"questions": len(qs), "bank": sum(q["origin"] == "은행" for q in qs),
             "companies": list(dict.fromkeys(q["company_short"] for q in qs if q.get("company_short"))),
-            "uncovered": [g["name"] for g in p["outside"]]}
+            "uncovered": [g["name"] for g in p["outside"]], **plan}
 
 
 def chrome(*args):
@@ -242,8 +338,9 @@ def build(case):
     for old in DATA.glob(f"{case}.report.*"):      # 지난 판(LaTeX 한 장, 쪽 수가 다른 그림)을 지운다. report.json 은 원본이라 둔다
         if old.name != f"{case}.report.json":
             old.unlink()
-    for budget in BUDGETS:
-        p = page(case, budget)
+    plans = {f"{d['constraints']['hours_per_week']:g}": d for d in plans_case(case)}      # 주차 계획 md 예시는 계획마다, 아니면 공부 시간 안마다
+    for budget in plans or BUDGETS:
+        p = plan_page(case, plans[budget]) if plans else page(case, budget)
         doc, total = deck_html(p)
         with tempfile.TemporaryDirectory() as tmp:
             src = Path(tmp) / "deck.html"

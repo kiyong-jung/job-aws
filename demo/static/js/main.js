@@ -296,6 +296,11 @@ const materialHandlers = {
 };
 
 function weeksFoot(ev) {
+  if (ev.blocked) {      // 계획을 보류한 시간 (주 7시간): 짜지 않은 까닭은 ⑤ 본문에, 바닥 줄은 두 줄
+    panel.foot('weeks', [`한 주 ${hoursText(ev.cap)}으로는 12주 계획을 보류했어요`, `한 주 최소 ${ev.min_text}이 필요해요`],
+      store.drawn.has('report') ? [] : next('report'));
+    return '계획을 보류했어요';
+  }
   const inside = ev.inside_weeks < ev.weeks ? `${ev.weeks}주 중 ${ev.inside_weeks}주는 그 안에` : `${ev.weeks}주 모두 그 안에`;
   const who = ev.source === 'md' ? '' : ' (한 사람)';      // md 계획은 한 사람 기준이라고 적혀 있지 않다
   panel.foot('weeks', [`교육자료로 배우기 ${hoursText(ev.learning)} · 프로젝트에 적용 ${hoursText(ev.project)}${who}`,
@@ -303,7 +308,12 @@ function weeksFoot(ev) {
   store.drawn.has('report') ? [] : next('report'));      // 공부 시간을 바꿔 다시 그려도(quiet) 아직 리포트가 없으면 단추는 남는다
   return inside;
 }
-weeks.picked((sum) => { if (store.drawn.has('weeks') && !store.controller) weeksFoot(sum); });      // 도는 중이면 done 이 고른 계획으로 쓴다
+// 한 주 공부 시간을 바꾸면 바닥 줄을 고치고, 그린 ⑥ 리포트도 그 계획으로 다시 쓴다. 도는 중이면 done 이 고른 계획으로 쓴다
+weeks.picked((sum, key) => {
+  if (!store.drawn.has('weeks') || store.controller) return;
+  weeksFoot(sum);
+  if (store.drawn.has('report')) redrawReport(key);
+});
 
 // ── 4단계: 12주 계획 (예시는 주차 계획 md, 새 공고는 라운드랩 커리큘럼 생성기 결과). ⑤ 쪽에 12주 막대와 주마다 "배우기 → 적용 → 산출물" (weeks.js) ──
 const weekHandlers = {
@@ -364,6 +374,8 @@ const STEPS = {
 // 다음 단계는 바닥 줄 단추로 연다 (사용자 11/21: 읽고 나서 단추로 넘긴다). 12주 계획은 첫 안(하루 1시간)으로 짜고, 바꾸기는 ⑤ ⑥ 의 라디오 칸
 const next = (key, pick = null) => (store.pending[key] ? [] : [[`${STEPS[key].label} →`, () => { if (!store.controller) runStep(key, pick); }]]);
 const choose = () => (store.pending.weeks || !store.budgets.length ? [] : next('weeks', store.budgets[0].key));
+// ⑥ 리포트의 안: 한 주 공부 시간을 ④ 에서 고르는 예시는 고른 계획 ("28"), 아니면 하루 공부 시간 안 ("84")
+const reportKey = () => (store.ownHours ? weeks.planKey() : store.budget);
 const perDayText = (key = store.budget) => `하루 ${store.budgets.find((b) => b.key === key)?.per_day}시간`;
 
 // 고른 안을 한 곳에서 바꾼다: 상태, 라디오 칸
@@ -383,7 +395,7 @@ async function runStep(key, pick = null) {
   reset({ from: step.from });
   // 같은 공고가 그대로일 때만 다시 하게 한다 (그사이 새 공고를 보냈으면 그 공고 것이 아니다)
   const again = () => { if (store.text === text && !store.controller) runStep(key, key === 'weeks' ? store.budget : null); };
-  const budget = ['project', 'materials'].includes(key) ? null : store.budget;
+  const budget = ['project', 'materials'].includes(key) ? null : key === 'report' ? reportKey() : store.budget;
   const ctx = { ended: false, again, onStop: () => step.art.stopped(), budget, log: [], posted: true,
     ...(key === 'adapt' ? { project: store.lastProject, db: store.lastDb } : {}) };
   await stream({ step: key, text, ...(budget ? { budget } : {}), ...(store.live?.case ? { state: store.live } : {}) }, step.handlers, ctx, again);
@@ -405,6 +417,25 @@ function redraw(step, log) {
   art.clear();
   const ctx = { quiet: true, ended: false, budget: log[0].budget_key, again() {}, onStop() {} };
   for (const ev of log) if (Object.hasOwn(table, ev.type)) table[ev.type](ev, ctx);
+}
+// ④ 에서 한 주 공부 시간을 바꿨을 때 이미 그린 ⑥ 을 그 계획의 리포트로 (다시 틀지 않고 제자리에서)
+async function redrawReport(key) {
+  store.switching?.abort();
+  const ac = (store.switching = new AbortController());
+  $('report-doc').setAttribute('aria-busy', 'true');
+  try {
+    const log = store.runs.get(`report:${key}`) ?? await fetchLog('report', key, ac.signal);
+    if (ac.signal.aborted || store.controller || weeks.planKey() !== key) return;
+    setInstant(true);
+    try { redraw('report', log); } finally { setInstant(false); }
+  } catch (e) {
+    if (e.name !== 'AbortError') announce('리포트를 바꾸지 못했어요. 지금 그림은 그대로예요');
+  } finally {
+    if (store.switching === ac) {
+      store.switching = null;
+      $('report-doc').removeAttribute('aria-busy');
+    }
+  }
 }
 function stopSwitch() {
   if (!store.switching) return;

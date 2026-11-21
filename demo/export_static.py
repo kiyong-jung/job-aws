@@ -58,7 +58,8 @@ def main(out):
     for ex in examples:
         name, text = ex["case"], ex["text"]
         jobs = [("read", {"text": text})] + [(s, {"text": text, "step": s}) for s in ("project", "materials")]
-        jobs += [(f"{s}.{b}", {"text": text, "step": s, "budget": b}) for s in ("weeks", "report") for b in pipeline.budget_keys(name)]
+        jobs += [(f"weeks.{b}", {"text": text, "step": "weeks", "budget": b}) for b in pipeline.budget_keys(name)]
+        jobs += [(f"report.{b}", {"text": text, "step": "report", "budget": b}) for b in pipeline.report_keys(name)]      # 주차 계획 md 예시는 한 주 공부 시간마다
         for key, req in jobs:
             (out / "data" / "runs" / f"{name}.{key}.json").write_text(record(req), encoding="utf-8")
             n += 1

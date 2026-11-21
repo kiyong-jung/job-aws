@@ -571,6 +571,8 @@ ul.legend[hidden] { display: none; }
 /* ⑥ 리포트 슬라이드: 16:9 쪽을 위에서 아래로, 쪽 사이 24 */
 #report-doc { background: var(--sunk); }
 .slides { display: flex; flex-direction: column; gap: var(--s5); }
+.rep-basis { width: min(100%, 1000px); margin: 0 auto var(--s3); font-size: var(--fs-body); font-weight: 600; line-height: 1.5; }      /* ⑥ 이 어느 계획 기준인지 (본문 크기·먹색) */
+.rep-note { max-width: 760px; margin: 0 auto; padding: var(--s4); background: var(--surface); border-radius: var(--r-card); font-size: var(--fs-body); line-height: 1.6; word-break: keep-all; }
 .sheet { width: min(100%, 1000px);      /* 1440×900 에서 한 장이 바닥 줄 위에 통째로 */
    margin: 0 auto; background: #fff; border: 1px solid var(--line); }
 .sheet[data-empty] { aspect-ratio: 16 / 9; }
@@ -766,6 +768,11 @@ ul.legend[hidden] { display: none; }
 .wk-scale { margin: 0; font-size: var(--fs-body); line-height: 1.6; word-break: keep-all; }      /* 한 주 공부 시간에 따라 분량이 맞춰진다는 한 줄 (본문 크기·먹색) */
 .wk-held { margin: 0; font-size: var(--fs-body); line-height: 1.5; }
 .wk-held[hidden] { display: none; }
+.wk-list[hidden] { display: none; }
+/* 계획을 보류한 시간 (주 7시간): 주 칸 대신 본문 글. 오류가 아니라 결과라 빨강을 쓰지 않는다 */
+.wk-blocked { max-width: 760px; padding: var(--s4); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); }
+.wk-blocked-title { margin: 0 0 var(--s2); font-size: var(--fs-body); font-weight: 700; }
+.wk-blocked p { margin: 0 0 var(--s1); font-size: var(--fs-body); line-height: 1.6; word-break: keep-all; }
 .wk-title, .wk-h, .wk-ends { font-weight: 600; }
 .wk-out { display: block; margin: 4px 0 0; padding: 4px 8px; border-left: 3px solid var(--ink); background: var(--sunk); font-size: var(--fs-body); line-height: 1.5; }
 .wk-more { padding-top: var(--s2); border-top: 1px solid var(--line); }

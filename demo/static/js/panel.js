@@ -112,8 +112,8 @@ function head() {
   }));
   $('panel').dataset.stack = store.stack.join(' ');
   drawStatus(now);
-  // 하루 공부 시간 고르기: 12주 계획·리포트 쪽에서만. 12주 계획이 한 주 공부 시간을 스스로 고르는 예시면 ④ 쪽에서는 숨긴다 (⑤ 는 그대로)
-  budgetBox.hidden = !(store.budget && (now === 'report' || (now === 'weeks' && !store.ownHours)));
+  // 하루 공부 시간 고르기: 12주 계획·리포트 쪽에서만. 12주 계획이 한 주 공부 시간을 스스로 고르는 예시면 어디서도 숨긴다 (⑥ 도 ④ 에서 고른 시간을 따른다)
+  budgetBox.hidden = !(store.budget && !store.ownHours && (now === 'report' || now === 'weeks'));
   placeBudget();
 }
 // 공부 시간 고르기 칸의 자리: ⑤ 쪽이면 주 그림 틀의 머리 줄 오른쪽, 그 밖(⑥)은 쪽 더미 바로 위.
@@ -443,9 +443,11 @@ export function renderAdapted(a, { db = 0, top = null } = {}) {
 }
 // fill 사건은 모아 두었다가 ③ 이 보이면 하나씩 튼다 (보이지 않는 동안 틀면 움직임이 없다)
 export function fill(ev) { adapt?.queue.push(ev); }
-export function playFills(gap = 160) {
+// 몇 개든 다 합쳐 1.5초 안 (사용자 11/21: "+1 되는거 좀 느린듯"). 적으면 160ms 간격 그대로
+export function playFills() {
   if (!adapt) return;
   const q = adapt.queue.splice(0);
+  const gap = Math.min(160, Math.round(1500 / Math.max(q.length, 1)));
   q.forEach((ev, i) => setTimeout(() => step(ev), reducedMotion() ? 0 : i * gap));
 }
 function step({ id, tier, tier_count: n }) {

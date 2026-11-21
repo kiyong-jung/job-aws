@@ -11,9 +11,15 @@ export function start() {
   root.replaceChildren(el('div', { class: 'sheet', 'data-empty': '' }));      // 첫 장 자리
 }
 
-// done 사건: 쪽 그림을 차례로 (첫 장은 바로, 나머지는 보일 때 읽는다)
-export function done({ slides, rows }) {
+// done 사건: 쪽 그림을 차례로 (첫 장은 바로, 나머지는 보일 때 읽는다). basis 는 쪽 더미 위 본문 한 줄 (어느 계획 기준인지),
+// note 는 리포트 대신 본문 글 (계획을 보류한 시간)
+export function done({ slides, rows, basis, note }) {
   const root = $('report-doc');
+  if (note) {
+    root.replaceChildren(el('p', { class: 'rep-note', text: note }));
+    root.removeAttribute('aria-busy');
+    return;
+  }
   if (rows && rows.length) {      // 새 공고 (demo/live.py): 역량마다 공고 문장 → 프로젝트 일 → 교육자료 → 면접 질문
     const list = el('ol', { class: 'ev-list' });
     rows.forEach((r) => {
@@ -36,7 +42,7 @@ export function done({ slides, rows }) {
     sheet.append(el('img', { src, alt: `면접 대비 리포트 ${i + 1}쪽 / ${slides.length}쪽`, width: '1920', height: '1080', loading: i ? 'lazy' : 'eager' }));
     deck.append(sheet);
   });
-  root.replaceChildren(deck);
+  root.replaceChildren(...(basis ? [el('p', { class: 'rep-basis', text: basis })] : []), deck);
   root.removeAttribute('aria-busy');
   play(deck, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], 240);
 }

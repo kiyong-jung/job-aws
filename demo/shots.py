@@ -16,6 +16,7 @@ import base64
 import json
 import shutil
 import subprocess
+import sys
 import tempfile
 import time
 import urllib.request
@@ -34,8 +35,14 @@ CASE, BASE, OUT, SCALE = ARGS.case, ARGS.base.rstrip("/") + "/", Path(ARGS.out),
 EXAMPLE = f'[data-example="{CASE}"]'
 DATA = Path(__file__).resolve().parent / "data"
 PROJECT = json.loads((DATA / f"{CASE}.project.json").read_text(encoding="utf-8"))
-PLANS = sorted((json.loads(f.read_text(encoding="utf-8")) for f in DATA.glob(f"{CASE}.plan.*.json")), key=lambda d: d["constraints"]["hours_per_week"])
-PLAN = next((d for d in PLANS if d["constraints"]["hours_per_week"] == 14), PLANS[0] if PLANS else None)      # 주차 계획 md (기본 주 14시간): ⑤ 는 하루 공부 시간과 상관없다
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from demo.pipeline import DEFAULT_WEEK_HOURS, blocked_case, plans_case  # noqa: E402
+
+PLANS = plans_case(CASE)      # ④ 단추에 있는 주차 계획 md (주 14·28시간). 15시간 판은 파일만 있고 단추에 없다
+BLOCKED = blocked_case(CASE)      # 계획을 보류한 시간 (주 7시간): 주 칸 없이 본문 글
+BUTTONS = sorted([f"{d['constraints']['hours_per_week']:g}" for d in PLANS] + [f"{b['hours_per_week']:g}" for b in BLOCKED], key=float)
+PLAN = next((d for d in PLANS if d["constraints"]["hours_per_week"] == DEFAULT_WEEK_HOURS), PLANS[-1] if PLANS else None)      # 기본 주 28시간: ⑤ 는 하루 공부 시간과 상관없다
+REPORT_FACTS = lambda key: json.loads((DATA / f"{CASE}.report.{key}.json").read_text(encoding="utf-8"))
 
 # 화면에 보이는 글 줄 가운데 글자 크기 < 13px, 또는 --muted 색인 것 (짝 보기에서 다른 줄을 흐리게 하는 [data-focus] 안, 화면 읽기용 글은 뺀다)
 SMALL_TEXT = """(() => { const probe = document.createElement('i'); probe.style.color = 'var(--muted)'; document.body.append(probe);
@@ -195,6 +202,24 @@ async def press(p, label):
     await p.mouse(".go[data-press]")
 
 
+# ④ 주 칸마다 만들기 줄의 작업 번호: {"W2": [2, 3], …}
+WEEK_JOBS = """(() => { const at = {}; for (const c of document.querySelectorAll('#weeks-doc .wk')) { const w = parseInt(c.getAttribute('aria-label'));
+  for (const li of c.querySelectorAll('.wk-item[data-kind=project]')) { const id = li.textContent.match(/W\\d+/)?.[0]; if (id) (at[id] ||= []).push(w); } } return at; })()"""
+
+
+async def report_matches_weeks(p, cap):
+    """⑥ 이 고른 계획(cap)의 리포트인지: 쪽 그림 주소, 쪽 위 본문 한 줄, 하루 칸 숨김, ⑥ 의 작업 주(리포트를 그린 값)가 ④ 화면의 주 칸과 같은지"""
+    await p.until(f"document.querySelector('#report-doc img')?.getAttribute('src').includes('.{cap}.1.png') && document.querySelector('#report-doc img').naturalWidth > 0", timeout=10)
+    basis = await p.js("document.querySelector('#report-doc .rep-basis')?.textContent || ''")
+    assert basis.startswith(f"한 주 {cap}시간 계획 기준"), f"⑥ 기준 줄 {basis!r}"
+    assert await p.js("document.getElementById('budget').hidden"), "⑥ 에 하루 공부 시간 칸이 보인다"
+    at = await p.js(WEEK_JOBS)
+    for r in REPORT_FACTS(cap)["rows"]:
+        for pk in r["packages"]:
+            assert sorted(at.get(pk["id"], [])) == pk["weeks"], f"⑥ {r['n']}번 줄 {pk['id']} 주 {pk['weeks']} ≠ ④ {sorted(at.get(pk['id'], []))}"
+    print(f"  ⑥ {cap}시간: {basis}", flush=True)
+
+
 async def flow(p):
     await p.open(1440, 900)
     assert await p.js("!document.getElementById('thread') && !document.getElementById('chat')"), "대화 칸이 남아 있다"
@@ -233,6 +258,9 @@ async def flow(p):
     data = (await p.send("Page.captureScreenshot", format="png"))["data"]
     (OUT / "05a-adapted-filling.png").write_bytes(base64.b64decode(data))
     await p.until("/응용 프로젝트는/.test(" + ANNOUNCE + ") && document.querySelector('#foot-search .go')", timeout=30)
+    # 응용 +1 은 몇 개든 1.5초 남짓에 다 튼다 (사용자 11/21: "+1 되는거 좀 느린듯"): 끝 알림 뒤 2.5초 안에 큰 숫자가 바닥 줄의 마지막 셈과 같다
+    await p.until("""(() => { const m = document.querySelector('#foot-search .bullets li:last-child')?.textContent.match(/필수 \\d+개 중 ([\\d.]+) · 우대 \\d+개 중 ([\\d.]+)/);
+      const b = [...document.querySelectorAll('#search-doc .rs-scores b')].map((x) => x.textContent); return m && b[0] === m[1] && b[1] === m[2]; })()""", timeout=2.5)
     await foot_ok(p, "②", ["교육자료 찾기 →"])
     await evidence_ok(p, "② 최종 응용", "#search-doc")
     assert await p.js("!document.querySelector('#search-doc .rs-rivals') && !document.getElementById('page-sample')"), "② 에 1위 카드나 ③ 쪽이 남아 있다"
@@ -260,20 +288,30 @@ async def flow(p):
         assert todo and all(1 <= n <= 3 for w in todo for n in w), f"⑤ 목표·할 일 개조식 줄 수 {todo}"      # 사용자 11/21: 세 줄까지
         assert [w[1] for w in todo] == [len(w["method_steps"]) for w in PLAN["weeks"]], "⑤ 할 일 줄이 계획 파일과 다르다"
     await p.shot("08-weeks")
-    if len(PLANS) > 1:      # 한 주 공부 시간 고르기: 14(기본) → 15 → 28 → 14. 주 칸 머리의 상한, 보류 작업 줄, 바닥 줄이 고른 계획을 따른다
-        assert await p.js("document.getElementById('budget').hidden && document.querySelectorAll('#weeks-doc input[type=radio]').length === " + str(len(PLANS))), \
+    if len(BUTTONS) > 1:      # 한 주 공부 시간 고르기: 7 · 14 · 28(기본). 고른 다음 기본으로 돌아온다. 주 칸 머리의 상한, 보류 작업 줄, 바닥 줄이 고른 계획을 따른다
+        assert await p.js("document.getElementById('budget').hidden && document.querySelectorAll('#weeks-doc input[type=radio]').length === " + str(len(BUTTONS))), \
             "⑤ 에 시간 고르기가 하나가 아니다 (하루 1·2·3시간 칸이 보인다)"
+        labels = await p.js("[...document.querySelectorAll('#weeks-doc .plan-pick label')].map((x) => x.textContent)")
+        assert labels == [f"주 {h}시간" for h in BUTTONS], f"⑤ 단추 {labels}"
         name = await p.js("document.querySelector('#weeks-doc .plan-name')?.textContent")
         assert name == "한 주 공부 시간", f"⑤ 시간 고르기 이름 {name!r}"
         scale = await p.js("document.querySelector('#weeks-doc .wk-scale')?.textContent || ''")
-        assert scale.startswith("한 주 공부 시간은 정수로 정한다.") and all(f"{d['constraints']['hours_per_week']:g}시간이면" in scale for d in PLANS), f"⑤ 분량 줄 {scale!r}"
+        assert scale.startswith("한 주 공부 시간은 정수로 정한다.") and all(f"{h}시간이면" in scale for h in BUTTONS) and "15시간" not in scale, f"⑤ 분량 줄 {scale!r}"
         checked = await p.js("document.querySelector('#weeks-doc .plan-pick input:checked')?.value")
         assert checked == f"{PLAN['constraints']['hours_per_week']:g}", f"⑤ 기본 계획 {checked}"
-        for d in [x for x in PLANS if x is not PLAN] + [PLAN]:
-            cap = f"{d['constraints']['hours_per_week']:g}"
+        for cap in [h for h in BUTTONS if h != checked] + [checked]:
+            d = next((x for x in PLANS if f"{x['constraints']['hours_per_week']:g}" == cap), None)
             await p.mouse(f"#weeks-doc .plan-pick input[value='{cap}']")
+            if d is None:      # 보류한 시간: 주 칸 없이 본문 글 셋, 바닥 줄은 보류와 최소 시간
+                b = next(x for x in BLOCKED if f"{x['hours_per_week']:g}" == cap)
+                await p.until(f"/한 주 {cap}시간으로는 12주 계획을 보류했어요/.test(document.querySelector('#foot-weeks').textContent)", timeout=5)
+                note = await p.js("[document.querySelector('#weeks-doc .wk-list').hidden, document.querySelector('#weeks-doc .wk-held').hidden, document.querySelector('#weeks-doc .wk-blocked')?.textContent || '']")
+                assert note[0] and note[1] and f"{b['needed_minutes'] // 60}시간" in note[2] and "11시간 40분" in note[2], f"⑤ {cap}시간 보류 글 {note}"
+                await p.shot(f"08c-weeks-{cap}h")
+                continue
             await p.until(f"document.querySelector('#weeks-doc .wk-used').textContent.endsWith('상한 {cap}시간')", timeout=5)
             await p.until(f"/한 주 {cap}시간까지/.test(document.querySelector('#foot-weeks').textContent)", timeout=5)
+            assert await p.js("!document.querySelector('#weeks-doc .wk-blocked')"), f"⑤ {cap}시간에 보류 글이 남아 있다"
             held = await p.js("document.querySelector('#weeks-doc .wk-held').textContent")
             want = "보류 작업 · " + (", ".join(f"{h['id']} {h['name']}" for h in d["held"]) or "없음")
             assert held == want, f"⑤ 보류 줄 {held!r} ≠ {want!r}"
@@ -311,11 +349,27 @@ async def flow(p):
     await p.js("document.getElementById('report-doc').scrollTop = 99999")
     await p.shot("10-report-bottom")
 
-    # 공부 시간 바꾸기: ⑥ 쪽 그림이 그 안의 쪽으로 바뀐다
-    before = await p.js("document.querySelector('#report-doc img').getAttribute('src')")
-    await p.mouse("#budget label:nth-of-type(2) input")
-    await p.until(f"document.querySelector('#report-doc img') && document.querySelector('#report-doc img').getAttribute('src') !== {json.dumps(before)}", timeout=10)
-    await p.shot("11-report-budget")
+    if PLAN and len(BUTTONS) > 1:      # ⑥ 은 ④ 에서 고른 한 주 공부 시간의 계획: 하루 칸이 없고, 쪽 위 본문 한 줄이 그 계획을 말하고, 주는 ④ 와 같다
+        await report_matches_weeks(p, checked)
+        for cap in [h for h in BUTTONS if h != checked] + [checked]:
+            await p.mouse("#panel-path button[data-to='weeks']")
+            await p.until(STACK + ".endsWith('weeks')")
+            await p.mouse(f"#weeks-doc .plan-pick input[value='{cap}']")
+            await p.mouse("#panel-path button[data-to='report']")
+            await p.until(STACK + ".endsWith('report')")
+            if any(f"{b['hours_per_week']:g}" == cap for b in BLOCKED):      # 보류한 시간: 리포트 대신 본문 글
+                await p.until("/보류/.test(document.querySelector('#report-doc .rep-note')?.textContent || '')", timeout=10)
+                assert await p.js("!document.querySelector('#report-doc img') && document.getElementById('budget').hidden"), f"⑥ {cap}시간에 쪽 그림이나 하루 칸이 남았다"
+                await p.shot(f"11-report-{cap}h")
+                continue
+            await report_matches_weeks(p, cap)
+            if cap != checked:
+                await p.shot(f"11-report-{cap}h")
+    else:      # 공부 시간 바꾸기: ⑥ 쪽 그림이 그 안의 쪽으로 바뀐다
+        before = await p.js("document.querySelector('#report-doc img').getAttribute('src')")
+        await p.mouse("#budget label:nth-of-type(2) input")
+        await p.until(f"document.querySelector('#report-doc img') && document.querySelector('#report-doc img').getAttribute('src') !== {json.dumps(before)}", timeout=10)
+        await p.shot("11-report-budget")
     await p.mouse("#panel-path button[data-to='search']")
     await p.until(STACK + ".endsWith('search')")
     await foot_ok(p, "②", [])

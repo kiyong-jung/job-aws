@@ -514,8 +514,7 @@ def test_demo_project_copy_matches_outputs():
     assert [r["title"] for r in copy["ranking"]] == [r["title"] for r in full["ranking"][:len(copy["ranking"])]]
 
 
-@pytest.mark.parametrize("name", [NAVER, "aws_fde"])
-@pytest.mark.parametrize("key", KEYS)
+@pytest.mark.parametrize("name,key", [(NAVER, k) for k in KEYS] + [("aws_fde", k) for k in ("14", "28")])      # AWS 는 ④ 의 한 주 공부 시간 계획마다
 def test_report_step_shows_interview_slides_for_the_chosen_budget(name, key, live_server):
     """⑥ 은 발표 자료 모양의 면접 대비 슬라이드 (design/build_report_deck.py): 표지, 질문 다섯, 프로젝트 밖에서 채울 역량. 받기는 pptx"""
     case = pipeline.example_case(name)
@@ -547,9 +546,9 @@ def test_report_files_are_served_only_by_name(live_server):
 
 
 def test_report_slides_differ_between_budgets():
-    for name in (NAVER, "aws_fde"):
-        covers = {k: (pipeline.DATA / f"{name}.report.{k}.1.png").read_bytes() for k in KEYS}
-        assert len(set(covers.values())) == len(KEYS)      # 표지의 공부 시간 줄이 안마다 다르다
+    for name, keys in ((NAVER, KEYS), ("aws_fde", ["14", "28"])):
+        covers = {k: (pipeline.DATA / f"{name}.report.{k}.1.png").read_bytes() for k in keys}
+        assert len(set(covers.values())) == len(keys)      # 표지의 공부 시간 줄이 안마다 다르다
 
 
 @pytest.mark.parametrize("key", KEYS)
@@ -670,9 +669,10 @@ def test_weeks_step_shows_round_lab_curriculum_in_one_event(name, key):
     assert (done["learning"], done["project"]) == (saved["summary"]["learning_hours"], saved["summary"]["implementation_hours"])
 
 
-def test_weeks_step_shows_md_plans_with_14_hours_as_default():
-    """예시에 주차 계획 md(data/<예시>.plan.<상한>.json)가 있으면 한 주 공부 시간마다 한 안을 보낸다 (주 14·15·28시간).
-    기본은 14시간이고, 하루 1·2·3시간 선택과 상관없다. 분량 한 줄은 계획·보류 파일의 숫자로 쓴다 (사용자 11/21)"""
+def test_weeks_step_shows_7_14_28_hour_plans_with_28_as_default():
+    """예시에 주차 계획 md(data/<예시>.plan.<상한>.json)가 있으면 단추 시간(주 7·14·28시간)마다 한 안을 보낸다 (사용자 11/21 밤).
+    기본은 28시간이고, 하루 1·2·3시간 선택과 상관없다. 7시간은 보류 파일(blocked)이라 주 칸 없이 본문 글. 15시간 판은 파일만 있고 단추에 없다.
+    분량 한 줄은 단추 차례로 계획·보류 파일의 숫자로 쓴다"""
     case = pipeline.example_case("aws_fde")
     saved = {d["constraints"]["hours_per_week"]: d for d in pipeline.plans_case("aws_fde")}
     runs = [[{k: v for k, v in e.items() if k != "budget_key"} for e in server.events(
@@ -680,21 +680,60 @@ def test_weeks_step_shows_md_plans_with_14_hours_as_default():
     assert all(r == runs[0] for r in runs)
     steps, done = runs[0][0], runs[0][-1]
     base = saved[pipeline.DEFAULT_WEEK_HOURS]
-    assert sorted(saved) == [14, 15, 28] and steps["default"] == "14" and steps["cap"] == 14 and steps["held"] == base["held"]
-    assert [(p["key"], p["label"]) for p in steps["plans"]] == [("14", "주 14시간"), ("15", "주 15시간"), ("28", "주 28시간")]
+    assert (pipeline.DATA / "aws_fde.plan.15.json").is_file() and sorted(saved) == [14, 28]      # 15 는 파일만
+    assert steps["default"] == "28" and steps["cap"] == 28 and steps["held"] == base["held"] == []
+    assert [(p["key"], p["label"], p["source"]) for p in steps["plans"]] == [("7", "주 7시간", "blocked"), ("14", "주 14시간", "md"), ("28", "주 28시간", "md")]
     for p in steps["plans"]:
+        if p["source"] == "blocked":
+            assert p["plan"] == [] and p["summary"]["blocked"] and p["summary"]["min_text"] == "11시간 40분"
+            assert p["blocked"]["lines"][0] == "12주 84시간으로는 필요한 139시간(만들기 128시간 + 배우기 11시간)에 못 미쳐요."
+            continue
         d = saved[p["cap"]]
         assert [round(w["learning"] + w["project"], 4) for w in p["plan"]] == [round(w["used_minutes"] / 60, 4) for w in d["weeks"]]
         assert all(w["learning"] + w["project"] <= w["cap"] + 1e-9 for w in p["plan"])
         assert {a["id"] for w in p["plan"] for a in w["activities"] if a["kind"] == "project"} == set(d["assigned"])
         assert p["summary"]["deliverables"] == len(d["assigned"]) and p["held"] == d["held"]
         assert all(1 <= len(w["method_steps"]) <= 3 and 1 <= len(w["goal_steps"]) <= 3 for w in p["plan"])      # 토글은 개조식 세 줄까지
-    assert [h["id"] for h in saved[14]["held"]] == ["W9", "W10"] and [h["id"] for h in saved[15]["held"]] == ["W10"] and saved[28]["held"] == []
+    assert [h["id"] for h in saved[14]["held"]] == ["W9", "W10"] and saved[28]["held"] == []
     block = pipeline.blocked_case("aws_fde")
     assert [(b["hours_per_week"], b["available_minutes"], b["needed_minutes"], b["min_per_week_minutes"]) for b in block] == [(7, 84 * 60, 139 * 60, 700)]
-    assert steps["scale"] == ("한 주 공부 시간은 정수로 정한다. 14시간이면 W9·W10을 미루고, 15시간이면 W10만 미루고, 28시간이면 모두 들어간다. "
-                              "7시간이면 12주 84시간으로 필요한 139시간에 못 미쳐 계획을 보류하고, 한 주 최소 11시간 40분이 필요하다고 알려 준다.")
-    assert (done["cap"], done["project"], done["deliverables"]) == (14, base["summary"]["implementation_hours"], len(base["assigned"]))
+    assert steps["scale"] == ("한 주 공부 시간은 정수로 정한다. 7시간이면 12주 84시간으로 필요한 139시간에 못 미쳐 계획을 보류하고 "
+                              "한 주 최소 11시간 40분이 필요하다고 알려 주고, 14시간이면 W9·W10을 미루고, 28시간이면 모두 들어간다.")
+    assert (done["cap"], done["project"], done["deliverables"]) == (28, base["summary"]["implementation_hours"], len(base["assigned"]))
+
+
+def test_report_follows_the_chosen_weekly_plan():
+    """⑥ 은 ④ 에서 고른 한 주 공부 시간의 계획으로 (사용자 11/21): 37줄 모두, 줄의 작업마다 ⑥ 의 주 = 그 계획에서 그 작업이 놓인 주.
+    미룬 작업은 주 없이 미룬 일. 공부 자료는 그 계획 파일의 교육자료. 7시간(보류)은 리포트 대신 본문 글, 하루 공부 시간 열쇠는 받지 않는다"""
+    case = pipeline.example_case("aws_fde")
+    report = pipeline.report_case("aws_fde")
+    for d in pipeline.plans_case("aws_fde"):
+        key = f"{d['constraints']['hours_per_week']:g}"
+        facts = json.loads((pipeline.DATA / f"aws_fde.report.{key}.json").read_text("utf-8"))
+        at = {}
+        for w in d["weeks"]:
+            for x in w["activities"]:
+                if x["kind"] == "project":
+                    at.setdefault(x["id"], set()).add(w["week"])
+        held = {h["id"] for h in d["held"]}
+        learning = {(w["week"], x["title"]) for w in d["weeks"] for x in w["activities"] if x["kind"] == "learning"}
+        assert facts["plan"]["hours"] == d["constraints"]["hours_per_week"] and facts["plan"]["held"] == [h["id"] for h in d["held"]]
+        assert [r["n"] for r in facts["rows"]] == [r["sentence_no"] for r in report["rows"]]      # 37줄 모두
+        for r, src in zip(facts["rows"], report["rows"]):
+            assert [p["id"] for p in r["packages"]] == [p["id"] for p in src["packages"]]
+            for p in r["packages"]:
+                assert (p["held"], set(p["weeks"])) == ((True, set()) if p["id"] in held else (False, at[p["id"]])), (key, r["n"], p)
+            assert r["study"] is None or (r["study"]["week"], r["study"]["title"]) in learning, (key, r["n"])
+        assert set(facts["shown"]) <= {r["n"] for r in facts["rows"]} and len(facts["shown"]) == facts["questions"]
+        events = list(server.events({"step": "report", "text": pipeline.posting_text(case), "budget": key}, live_mode=False, default_speed=0))
+        assert events[-1]["basis"].startswith(f"한 주 {key}시간 계획 기준") and all(e["budget_key"] == key for e in events)
+    blocked = list(server.events({"step": "report", "text": pipeline.posting_text(case), "budget": "7"}, live_mode=False, default_speed=0))
+    assert blocked[-1]["type"] == "done" and blocked[-1]["slides"] == [] and blocked[-1]["pptx"] is None and "보류" in blocked[-1]["note"]
+    default = list(server.events({"step": "report", "text": pipeline.posting_text(case)}, live_mode=False, default_speed=0))
+    assert default[-1]["budget_key"] == "28"
+    for bad in ("84", "15", True, ["28"]):
+        got = list(server.events({"step": "report", "text": pipeline.posting_text(case), "budget": bad}, live_mode=False, default_speed=0))
+        assert [e["type"] for e in got] == ["error"] and "7·14·28시간" in got[0]["message"]
 
 
 def test_plan_steps_keep_md_words_and_split_at_clause_endings():

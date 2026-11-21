@@ -1,7 +1,7 @@
 // ⑤ 12주 계획 쪽 (사용자 11/21). 주마다 한 칸: 그 주의 배우기(교육자료)와 만들기(프로젝트 작업)를 한 칸에.
 // 칸 아래 토글을 열면 목표·할 일·배우는 역량을 세 줄까지. 역량을 누르거나 마우스를 올리면 그 역량이 나온 공고 원문 문장을 작은 카드로 보인다.
 // 시간·글은 모두 서버 값이다. 예시 공고의 주차 계획 md(source 'md')는 목표·할 일이 md 의 목표·학습·실습 방법을 연결 어미에서 나눈 개조식 줄(세 줄까지)이고,
-// 작업이 끝나는 주에 산출물을 보인다. 계획이 여럿이면(주 14·15·28시간) 머리에 한 주 공부 시간 고르기와 분량 한 줄(scale).
+// 작업이 끝나는 주에 산출물을 보인다. 계획이 여럿이면(주 7·14·28시간) 머리에 한 주 공부 시간 고르기와 분량 한 줄(scale). 7 은 보류 안내 글.
 // 생성기 결과(source 'generator')는 목표 = 만들기의 산출물, 할 일 = 만들기의 확인 기준과 배울 자료
 import { el, play } from './icons.js';
 import { chartCard, clearDoc } from './cards.js';
@@ -160,7 +160,7 @@ function popover(root, comps) {
   };
 }
 
-// 한 주 공부 시간 고르기 (예시 공고의 주차 계획 md 가 둘 이상일 때: 주 14·15·28시간). 진짜 라디오라 화살표 키로도 바뀐다
+// 한 주 공부 시간 고르기 (예시 공고의 주차 계획 md 가 둘 이상일 때: 주 7·14·28시간, 7 은 보류 안내). 진짜 라디오라 화살표 키로도 바뀐다
 function planPick(plans, key, change) {
   const row = el('div', { class: 'plan-row' });
   const group = el('div', { class: 'plan-pick', role: 'radiogroup', 'aria-label': '한 주 공부 시간' });
@@ -179,19 +179,29 @@ function planPick(plans, key, change) {
 function fillFact(fact, p) {
   const md = p.source === 'md';
   fact.replaceChildren();
+  if (p.source === 'blocked') { fact.append(p.blocked.title); return; }
   if (md) fact.append(`총 ${hoursText(p.total)} · `);
   fact.append(el('span', { class: 'g-kind', 'data-kind': 'learning', text: '배우기' }), ` 교육자료 ${hoursText(p.learning)}  `,
     el('span', { class: 'g-kind', 'data-kind': 'project', text: '만들기' }), ` 프로젝트 ${hoursText(p.project)}`,
     md ? ` · 한 주 상한 ${hoursText(p.cap)}` : ` · 한 사람, 한 주 ${short(p.cap)}시간`);
 }
 
-let chosen = null;      // 고른 한 주 공부 시간(계획 열쇠). 하루 공부 시간을 바꿔 다시 그려도 남고, clear 가 지운다
+// 계획을 보류한 시간(주 7시간): 주 칸 대신 본문 글 셋 (오류가 아니라 그 시간으로는 짜지 않았다는 결과). 글은 서버 값
+function blockedNote(b) {
+  const box = el('section', { class: 'wk-blocked', 'aria-label': b.title });
+  box.append(el('h4', { class: 'wk-blocked-title', text: '이 시간으로는 12주 계획을 짜지 않았어요' }), ...b.lines.map((t) => el('p', { text: t })));
+  return box;
+}
+
+let chosen = null;      // 고른 한 주 공부 시간(계획 열쇠). 하루 공부 시간을 바꿔 다시 그려도 남는다
 let onPick = () => {};
 // 한 주 공부 시간을 바꾸면 부를 것 (main.js 가 바닥 줄을 고친다). 인자는 고른 계획의 바닥 줄 수 (서버 값 summary)
 export function picked(fn) { onPick = fn; }
 let current = null;
 // 지금 보이는 계획의 바닥 줄 수. 시간 고르기가 없는 계획이면 null (done 사건의 수를 쓴다)
 export const summary = () => current;
+// 고른 한 주 공부 시간의 열쇠 ("28"). ⑥ 리포트가 이 안으로 그린다 (main.js)
+export const planKey = () => chosen;
 
 export function start({ plans = [], comps = {}, default: first, scale = '', ...one }) {
   s?.drop?.();
@@ -202,6 +212,7 @@ export function start({ plans = [], comps = {}, default: first, scale = '', ...o
   const fact = el('p', { class: 'wk-fact' });
   const held = el('p', { class: 'wk-held' });
   const grid = el('div', { class: 'wk-list', role: 'list' });
+  const note = el('div', { class: 'wk-blocked-slot' });
   const show = (key) => {
     chosen = key;
     const p = all.find((x) => x.key === key);
@@ -209,11 +220,13 @@ export function start({ plans = [], comps = {}, default: first, scale = '', ...o
     fillFact(fact, p);
     held.hidden = p.source !== 'md';
     held.textContent = `보류 작업 · ${p.held?.length ? p.held.map((h) => `${h.id} ${h.name}`).join(', ') : '없음'}`;
+    grid.hidden = p.source === 'blocked';
+    note.replaceChildren(...(p.source === 'blocked' ? [blockedNote(p.blocked)] : []));
     grid.setAttribute('aria-label', `${p.plan.length}주 계획`);
     grid.replaceChildren(...p.plan.map((w) => weekCard(w, p.cap, comps, p.source === 'md')));
   };
   const line = el('p', { class: 'wk-scale', text: scale });
-  const body = all.length > 1 ? [planPick(all, chosen, (k) => { show(k); onPick(current); }), ...(scale ? [line] : []), held, grid] : [held, grid];
+  const body = all.length > 1 ? [planPick(all, chosen, (k) => { show(k); onPick(current, k); }), ...(scale ? [line] : []), held, note, grid] : [held, grid];
   root.replaceChildren(chartCard(fact, body, { cls: 'wk-card', aside: true }));
   show(chosen);
   s = { root, drop: popover(grid, comps) };
