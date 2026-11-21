@@ -28,6 +28,7 @@ def build(case, out, local=None, adapt=None, mat=None, comps=None):
     adapt = adapt or json.loads((ROOT / f"outputs/project/{case}.adapt.json").read_text(encoding="utf-8"))
     mat = mat or json.loads((ROOT / f"outputs/materials/{case}.json").read_text(encoding="utf-8"))
     name = {c["id"]: c["name"] for c in (comps or inputs.build_input(case)["competencies"])}
+    short = lambda c: c.split("-")[-1]      # 생성기는 'C14' 꼴만 읽는다 (새 공고의 'P57eea47158-C14' → 'C14'). 화면이 되돌려 잇는다 (pipeline.skill_ids)
     rank = {r["title"]: (i, r) for i, r in enumerate(local["ranking"], 1)}
     gains = {g["title"]: g for g in adapt["complement_gains"]}
     packs = adapt["project"]["packages"]
@@ -39,7 +40,7 @@ def build(case, out, local=None, adapt=None, mat=None, comps=None):
         rows.append([role, t, "깃헙" if r["kind"] == "repo" else "논문", r["url"],
                      f"GitHub ★{r['stars']}" if r["kind"] == "repo" else r.get("venue", ""), i, r["필수"], r["우대"], r["나머지"],
                      g.get("필수", ""), g.get("우대", ""), g.get("나머지", ""),
-                     J(dict.fromkeys(f"{c} {name[c]}" for _, c in used)), J(dict.fromkeys(pid for pid, _ in used))])
+                     J(dict.fromkeys(f"{short(c)} {name[c]}" for _, c in used)), J(dict.fromkeys(pid for pid, _ in used))])
     write(out / "프로젝트_뽑힌프로젝트.csv", ["role", "title", "kind", "url", "venue", "rank", "필수", "우대", "나머지",
                                            "gain_필수", "gain_우대", "gain_나머지", "borrowed", "packages"], rows)
     bank = {r["id"]: r for r in pick.bank()[0]}
@@ -48,8 +49,8 @@ def build(case, out, local=None, adapt=None, mat=None, comps=None):
     for p in mat["picks"]:
         b = bank.get(p["id"], {})
         rows.append([p["role"], p["gain"], p["id"], b.get("bank", ""), p["type"], p["title"], p["url"], b.get("topic", ""), b.get("summary", ""),
-                     b.get("source", ""), J(f"{c} {name[c]}: {lv}" for c, lv in p["covers"].items()),
-                     J(f"{c}: {(cells.get(p['id'], {}).get(c) or {}).get('quote', '')}" for c in p["covers"])])
+                     b.get("source", ""), J(f"{short(c)} {name[c]}: {lv}" for c, lv in p["covers"].items()),
+                     J(f"{short(c)}: {(cells.get(p['id'], {}).get(c) or {}).get('quote', '')}" for c in p["covers"])])
     write(out / "교육자료_고른자료.csv", ["role", "gain", "id", "bank", "type", "title", "url", "topic", "summary", "source", "covers", "quote"], rows)
     print(case, "→", out, f"프로젝트 {len(adapt['complements']) + 1}줄 · 교육자료 {len(mat['picks'])}줄")
 

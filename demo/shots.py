@@ -1,7 +1,7 @@
 """대시보드 화면을 실제 조작으로 찍고 검사한다 (Chrome 원격 조종, 실제 시간). 서버가 먼저 떠 있어야 한다.
 
-  PYTHONPATH=. .venv/bin/python -m demo --port 8770 &
-  .venv/bin/python demo/shots.py [--case aws_fde] [--base http://127.0.0.1:8770/] [--out 폴더]
+  cd code && PYTHONPATH=. ../기용/.venv/bin/python -m demo --port 8770 &
+  cd code && ../기용/.venv/bin/python demo/shots.py [--case aws_fde] [--base http://127.0.0.1:8770/] [--out 폴더]
 
 1440×900 하나로 본다 (DESIGN_RULES U5-1). 흐름(바닥 줄 단추를 눌러 넘긴다): 시작 화면 → 예시 공고 → ① 공고 읽기 → ② 프로젝트 찾기 → ③ 응용 → ④ 교육자료
 → (하루 1시간) ⑤ 12주 계획 → ⑥ 정리 리포트(슬라이드 여러 장) → 공부 시간 바꾸기 → 새 공고(시작 화면).
@@ -245,10 +245,19 @@ async def flow(p):
     await press(p, "12주 계획 짜기 →")
     await p.until("/주 계획을 짰어요/.test(" + ANNOUNCE + ")", timeout=30)
     await foot_ok(p, "⑤", ["정리 리포트 만들기 →"])
-    weeks_n = await p.js("document.querySelectorAll('#weeks-doc .g-head .g-week').length")
-    tasks_n = await p.js("document.querySelectorAll('#weeks-doc .g-row[data-kind]').length")
-    assert weeks_n == 12 and tasks_n >= 3, f"⑤ 주 칸 {weeks_n}개, 일 줄 {tasks_n}개"
+    weeks_n = await p.js("document.querySelectorAll('#weeks-doc .wk').length")
+    items_n = await p.js("document.querySelectorAll('#weeks-doc .wk-item').length")
+    assert weeks_n == 12 and items_n >= 12, f"⑤ 주 칸 {weeks_n}개, 할 일 {items_n}개"
     await p.shot("08-weeks")
+    await p.js("document.querySelector('#weeks-doc .wk-more').open = true, true")      # 토글: 목표·할 일·배우는 역량, 줄마다 세 줄까지
+    lines = await p.js("[...document.querySelectorAll('#weeks-doc .wk-more[open] .wk-lines')].map((u) => u.children.length)")
+    assert lines and all(1 <= n <= 3 for n in lines), f"⑤ 토글 줄 수 {lines}"
+    await p.mouse("#weeks-doc .wk-more[open] .wk-comp")      # 역량을 누르면 공고 원문 카드
+    await p.until("!document.querySelector('.comp-pop').hidden && document.querySelector('.comp-pop blockquote')?.textContent.length > 10", timeout=5)
+    await p.shot("08b-weeks-comp")
+    await p.js("document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'})), true")
+    assert await p.js("document.querySelector('.comp-pop').hidden"), "⑤ 원문 카드가 Esc 로 닫히지 않음"
+    await p.js("document.querySelector('#weeks-doc .wk-more').open = false, true")
     await p.mouse("#budget label:nth-of-type(2) input")      # 리포트 전에 공부 시간을 바꿔도 단추가 남는다 (사용자 11/21: 리포트로 안 넘어감)
     await p.until("/한 주 14시간까지/.test(document.querySelector('#foot-weeks').textContent)", timeout=10)
     await foot_ok(p, "⑤ 바꾼 뒤", ["정리 리포트 만들기 →"])

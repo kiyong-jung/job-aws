@@ -55,5 +55,8 @@
  "use the Vertex AI Python SDK for Gen AI Evaluation Service for Prompt Engineering and Prompt Evaluation": "Vertex AI Python SDK 의 생성형 AI 평가 서비스로 프롬프트를 설계하고 평가한다",
  "using Vertex AI Gen AI Evaluation provides a toolkit of quality controlled and explainable methods and metrics to evaluate any generat": "Vertex AI 생성형 AI 평가는 생성 결과를 평가하는, 품질이 관리되고 설명 가능한 방법과 지표 도구를 준다",
  "we will build all the core architectural layers needed to deploy a production-ready agentic system, so teams can confidently deploy AI agents in their own infrastructure or for their clients": "실서비스 수준의 에이전트 시스템에 필요한 핵심 계층을 모두 만들어, 팀이 자기 인프라나 고객사에 AI 에이전트를 자신 있게 배포하게 한다",
- "you will use Amazon API Gateway, AWS Lambda, Amazon DynamoDB and a variety of other AWS services": "Amazon API Gateway, AWS Lambda, Amazon DynamoDB 등 여러 AWS 서비스를 쓴다"
+ "you will use Amazon API Gateway, AWS Lambda, Amazon DynamoDB and a variety of other AWS services": "Amazon API Gateway, AWS Lambda, Amazon DynamoDB 등 여러 AWS 서비스를 쓴다",
+ "A Forward Deployed Engineer II (FDE II) embeds directly inside a strategic enterprise customer to independently design, build, deploy, and run AI-powered production systems alongside the customer's engineering team.": "FDE II는 전략 고객사 안에 직접 들어가, 고객 엔지니어링 팀과 함께 AI 기반 프로덕션 시스템을 스스로 설계·구축·배포·운영한다.",
+ "Design and develop production-grade software powering AI and agentic workflows — retrieval pipelines, workflow automation, API orchestration layers, data integration.": "AI와 에이전트 워크플로를 움직이는 프로덕션 수준 소프트웨어(검색 파이프라인, 워크플로 자동화, API 조율 계층, 데이터 통합)를 설계·개발한다.",
+ "Implement monitoring, evaluations, guardrails, and CI/CD that keep AI systems healthy.": "AI 시스템을 건강하게 유지하는 모니터링, 평가, 가드레일, CI/CD를 구현한다."
 }

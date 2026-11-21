@@ -832,15 +832,45 @@ def exam_weeks(data):
     return [k for e in data["team"]["exams"] for k in e["weeks"]]
 
 
+def full_id(case, x):
+    """생성기 역량 표시('C14', '입문-C14') → 이 공고의 역량 id. 새 공고는 'P57eea47158-C14' 꼴이라 끝 번호로 잇는다"""
+    tail = x.split("-")[-1]
+    return next((c["id"] for c in case["competencies"] if c["id"].split("-")[-1] == tail), tail)
+
+
 def skill_names(case, ids):
     """생성기의 역량 표시('C44', '입문-C21') → 이름 ('입문-' 은 '기초'). 한 번씩"""
-    names = {c["id"]: c["name"] for c in case["competencies"]}
+    names = {full_id(case, c["id"]): c["name"] for c in case["competencies"]}
     out = []
     for x in ids:
-        cid = x.split("-")[-1]
+        cid = full_id(case, x)
         if cid in names:
             out.append(names[cid] + (" 기초" if x.startswith("입문-") else ""))
     return list(dict.fromkeys(out))
+
+
+def skill_ids(case, ids):
+    """생성기의 역량 표시 → [{cid, basic}] (한 번씩). basic 은 '입문-' (그 역량의 기초)"""
+    known = {c["id"] for c in case["competencies"]}
+    out = {}
+    for x in ids:
+        cid = full_id(case, x)
+        if cid in known:
+            out[cid] = out.get(cid, True) and x.startswith("입문-")
+    return [{"cid": k, "basic": v} for k, v in out.items()]
+
+
+def comp_refs(case, cids):
+    """역량마다 화면 카드에 띄울 것: 이름, 필수·우대, 유형, 근거가 된 공고 원문 문장(최대 둘, 부분 이름과 한국어 옮김)"""
+    by = {c["id"]: c for c in case["competencies"]}
+    sents = {s["id"]: s for s in case["sentences"]}
+    out = {}
+    for cid in cids:
+        c = by.get(cid)
+        if c:
+            said_ = [{"section": sents[x]["section"], "text": sents[x]["text"], "ko": ko(sents[x]["text"])} for x in evidence_ids(c) if x in sents]
+            out[cid] = {"name": c["name"], "tier": tier_of(c), "type": c.get("type", ""), "said": said_[:2]}
+    return out
 
 
 def curriculum_case(name, hours):
@@ -866,10 +896,12 @@ def weeks(case, speed=1.0, budget="84", curriculum=None):
              {"key": "check", "label": "주마다 시간 한도와 산출물을 확인하는 중", "done": "한도와 산출물을 확인했어요"}]
     plan_ = [{"week": w["week"], "learning": w["learning_minutes"] / 60, "project": w["implementation_minutes"] / 60, "cap": w["capacity_minutes"] / 60,
               "activities": [{"id": x["id"], "done": x.get("completed_in_this_chunk", True), "kind": x["kind"], "title": re.sub(r"\s*\(준비:.*\)$", "", x["title"]), "hours": x["hours"], "out": x.get("out", ""), "role": x.get("role", ""),
-                              "url": web(x.get("url", "")), "skills": skill_names(case, x.get("competencies", [])), "check": x.get("completion_check", "")} for x in w["activities"]],
+                              "url": web(x.get("url", "")), "skills": skill_names(case, x.get("competencies", [])),
+                              "cids": skill_ids(case, x.get("competencies", [])), "check": x.get("completion_check", "")} for x in w["activities"]],
               "deliverables": w["deliverables_completed"]} for w in d["weeks"]]
+    cids = list(dict.fromkeys(r["cid"] for w in plan_ for a in w["activities"] for r in a["cids"]))
     yield {"type": "steps", "items": steps, "plan": plan_, "cap": hours, "learning": s["learning_hours"], "project": s["implementation_hours"],
-           "generator": d.get("generator_commit", "")}
+           "generator": d.get("generator_commit", ""), "comps": comp_refs(case, cids)}
     for st in steps:
         yield {"type": "stage", "key": st["key"], "label": st["label"]}
         time.sleep(PACE["stage"] * speed)

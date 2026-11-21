@@ -114,12 +114,13 @@ def tier_scores(cells, case):
                      if tier_of(c) == tier) for tier in TIERS)
 
 
-def pick_best(case, candidates):
+def pick_best(case, candidates, cells=None):
     """case, 후보 목록 → {sample, runner_up, ranking, coverage, cells, order}. 순위는 tier_scores 를 앞 단계부터 견준다.
     cells 는 후보 전부의 칸(후보 차례), order 는 순위 차례의 후보 번호다. 응용 단계(adapt.py)가 보완을 고를 때 쓴다 (이미 낸 판정이라 돈이 들지 않는다).
     필수는 샘플이 모두 '있음'으로 덮어야 한다 (11/18 사용자 규칙). 그런 후보가 있으면 필수 점수가 가장 높아 순위 첫째가 된다.
-    없으면 그래도 1등을 내되 must_all 을 거짓으로, 빠진 필수 이름을 must_missing 에 적는다."""
-    cells = judge(case, candidates)
+    없으면 그래도 1등을 내되 must_all 을 거짓으로, 빠진 필수 이름을 must_missing 에 적는다.
+    cells 를 주면 (이미 묶음별로 판정한 칸, 후보 차례) 다시 묻지 않는다."""
+    cells = cells if cells is not None else judge(case, candidates)
     order = sorted(range(len(candidates)), key=lambda i: tier_scores(cells[i], case), reverse=True)
     names = {c["id"]: (c["name"], section_of(c, case), tier_of(c)) for c in case["competencies"]}
     best = order[0]

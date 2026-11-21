@@ -76,15 +76,17 @@ def project(case):
     top = sorted(score, key=lambda i: -score[i])[:local.SHORTLIST]
     cands = [{**bank[i], "search_score": round(score[i], 3)} for i in top]
     yield _stage(steps, "judge")
-    chunks = [cands[i:i + 10] for i in range(0, len(cands), 10)]      # 5개 묶음 둘씩 (pick_best 가 다시 물으면 저장본이 맞는다)
-    n = 0
-    with ThreadPoolExecutor(4) as ex:
-        for f in as_completed([ex.submit(pick.judge, case, ch) for ch in chunks]):
-            f.result()
+    starts = range(0, len(cands), 10)      # 10개 묶음을 한꺼번에 (Vercel 300초 안에 들도록)
+    cells, n = [None] * len(cands), 0
+    with ThreadPoolExecutor(len(starts)) as ex:
+        jobs = {ex.submit(pick.judge, case, cands[s:s + 10]): s for s in starts}
+        for f in as_completed(jobs):
+            s = jobs[f]
+            cells[s:s + 10] = f.result()
             n += 10
             yield {"type": "judged", "n": min(n, len(cands)), "ranks": [], "scores": []}
     yield {**_stage(steps, "pick"), "top": 0, "order": list(range(len(cands))), "full": 0, "note": ""}
-    out = pick.pick_best(case, cands)
+    out = pick.pick_best(case, cands, cells)
     cells, order = out.pop("cells"), out.pop("order")
     data = {"counts": {**counts, "judged": len(cands)}, "coverage": out["coverage"], "sample": out["sample"], "ranking": out["ranking"][:5],
             "scores": [r[P.TIERS[0]] for r in out["ranking"]], "seconds": round(time.time() - t0, 1)}
