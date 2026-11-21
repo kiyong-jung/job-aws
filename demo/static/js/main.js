@@ -260,7 +260,7 @@ const projectHandlers = {
     }
     // ② 바닥 줄: 숫자마다 무엇을 셌는지 (디자이너 2차 11/21). "공개 프로젝트 111,753개에서 고른 1위 …" / "필수 역량 8개 모두 다뤄요 · 우대 역량 11개 중 9개 다룸, 1개 일부만"
     const [must, nice] = ctx.adapt.tiers;
-    panel.foot('search', [`공개 프로젝트 ${fmt(ctx.db)}개에서 고른 1위 ${ctx.adapt.base.title} 바탕에 빈 역량을 빌려 채웠어요`,
+    panel.foot('search', [`공개 프로젝트 ${fmt(ctx.db)}개에서 고른 바탕 프로젝트 ${ctx.adapt.base.title}에 빈 역량을 보조 프로젝트에서 빌려 채웠어요`,
       `${coverText(must)} · ${coverText(nice)}`], next('materials'));
     panel.playFills();
     announce(`응용 프로젝트는 역량 ${yes + part + no}개 중 ${ev.after}개를 다뤄요`);

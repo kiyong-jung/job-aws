@@ -27,7 +27,7 @@ const statusOf = Object.fromEntries(ORDER.map((k) => [k, '']));      // 쪽 머�
 const doing = {};                                                   // 도는 동안 그 쪽의 지금 하는 일 (상태 줄을 잠시 덮는다)
 const feet = Object.fromEntries(ORDER.map((k) => [k, { bullets: [], actions: [] }]));
 // 쪽 제목 (발표 자료의 그 장 제목 그대로, 사용자 11/21: 발표 디자인을 그대로). 형광펜 줄로 보인다
-const TITLE = { posting: '공고 한 건에서 역량을 뽑는다', search: '1위 프로젝트에, 빈 역량은 다른 프로젝트에서 방식만 빌린다',
+const TITLE = { posting: '공고 한 건에서 역량을 뽑는다', search: '바탕 프로젝트의 빈 역량은 보조 프로젝트에서 방식만 빌린다',
   materials: '낱말로 넓게 모아, 뜻으로 다시 고른다', weeks: '프로젝트 하나와 교육자료가 12주 계획이 된다', report: '공고 문장 하나에 빅테크 면접 질문 하나' };
 // 걸음 (발표의 "걸음 ① ② ③ ④ ⑤"): 쪽마다 그 단계의 하위 일 목록과 지금 하는 일. 서버의 steps·stage 사건이 채운다
 const walks = {};      // 쪽 → {items:[{key, label}], at: 지금 걸음 번호(0부터), done}
@@ -406,6 +406,8 @@ export function scrollInto(scroller, target, { smooth = true } = {}) {
 // (공고 문장 ↔ 채우는 일과 그 근거: 빌린 프로젝트의 구절 또는 AI가 더한 까닭) → 만들 것 (일마다 시간과 산출물).
 // fill 사건은 ③ 이 보일 때 차례로 다시 튼다 (playFills): 그 줄의 판정이 "없음 → 다룸"으로 바뀌고 큰 숫자가 오른다 (게임처럼 능력치가 하나씩)
 let adapt = null;
+// 묶음 출처 이름 (저장본의 '바탕'·짧은 이름·'AI가 더함') → 화면 말: 바탕 프로젝트 / 보조 프로젝트 ○○ / AI가 더한 일 (사용자 11/22)
+const fromName = (x) => (x === '바탕' ? '바탕 프로젝트' : x === 'AI가 더함' ? 'AI가 더한 일' : `보조 프로젝트 ${x}`);
 export function renderAdapted(a, { top = null } = {}) {
   const doc = $('search-doc');
   doc.scrollTop = 0;
@@ -416,7 +418,7 @@ export function renderAdapted(a, { top = null } = {}) {
   for (const t of a.tiers) {      // "필수 역량 8개 중 바탕 5.5개 → 빌려서 8개": 앞은 1위 바탕만으로 덮은 정도, 큰 숫자는 빌린 뒤 (fill 사건마다 오른다)
     const p = el('p', { class: 'rs-score' });
     const b = el('b', { class: 'num', text: String(t.before), 'data-after': String(t.after) });
-    p.append(el('span', { class: 'rs-score-label', text: `${t.name} 역량 ${t.total}개 중` }), el('span', { class: 'rs-score-was', text: `바탕 ${t.before}개 → 빌려서` }),
+    p.append(el('span', { class: 'rs-score-label', text: `${t.name} 역량 ${t.total}개 중` }), el('span', { class: 'rs-score-was', text: `바탕 프로젝트 ${t.before}개 → 빌려서` }),
       numUnit(b));
     const gain = el('span', { class: 'rs-gain', 'aria-hidden': 'true' });      // 오른 만큼 (+1, +0.5) 이 그 숫자 바로 옆에 잠깐 뜬다
     p.append(gain);
@@ -426,8 +428,8 @@ export function renderAdapted(a, { top = null } = {}) {
   hero.append(scores, ...[halfNote(...a.tiers.flatMap((t) => [t.before, t.after]))].filter(Boolean));
   const rows = new Map();
   const filled = new Set(a.filled.map((r) => r.cid));      // 1위에 없던 것을 채운 줄: "없음 → 다룸" 으로 바뀌는 모습을 튼다
-  const who = (r) => (r.from === 'AI가 더함' ? `AI가 더한 일 · ${r.job}` : r.from === '바탕' ? `1위 ${a.base.title} · ${r.job}`
-    : r.from ? `${r.from}에서 빌림 · ${r.job}` : r.job);
+  const who = (r) => (r.from === 'AI가 더함' ? `AI가 더한 일 · ${r.job}` : r.from === '바탕' ? `바탕 프로젝트 ${a.base.title} · ${r.job}`
+    : r.from ? `보조 프로젝트 ${r.from}에서 빌림 · ${r.job}` : r.job);
   const list = evList(a.rows.map((r) => {
     const grow = filled.has(r.cid);
     const li = evRow({ cid: r.cid, tier: r.tier, name: r.name, level: grow ? r.was : r.level, state: grow ? `${LEVEL[r.was]} → ${LEVEL[r.level]}` : LEVEL[r.level],
@@ -440,7 +442,7 @@ export function renderAdapted(a, { top = null } = {}) {
     const li = el('li', { class: 'job', 'data-core': String(j.core) });
     const head = el('p', { class: 'job-head' });
     head.append(el('b', { class: 'num', text: `${i + 1}` }), ` ${j.name}`, el('span', { class: 'job-h num', text: ` · ${j.hours}시간` }));
-    const from = el('span', { class: 'job-from', text: j.from.join(' + ') });
+    const from = el('span', { class: 'job-from', text: j.from.map(fromName).join(' + ') });
     li.append(head, el('p', { class: 'job-out', text: `산출물 · ${j.out}` }), from);
     jobs.append(li);
   });
