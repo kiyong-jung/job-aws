@@ -884,7 +884,7 @@ def curriculum_case(name, hours):
 
 
 PLAN_HOURS = (7, 14, 28)      # ④ 한 주 공부 시간 단추 (사용자 11/21 밤: 7·14·28). 7 은 보류 안내. 15시간 판(plan.15.json)은 파일만 두고 쓰지 않는다
-DEFAULT_WEEK_HOURS = 28      # 처음 보이는 계획 (사용자 11/21 밤: "28을 기본으로")
+DEFAULT_WEEK_HOURS = 14      # 처음 보이는 계획 (사용자 11/22: 발표 기준을 "주 14시간으로 통일", 가온님 판에 맞춤. 11/21 밤의 28 기본을 바꿈)
 
 
 def plans_case(name):
@@ -951,7 +951,7 @@ def plan_view(case, d, hours, source):
 
 @tagged
 def weeks(case, speed=1.0, budget="84", curriculum=None):
-    """⑤ 12주 계획. 예시 공고에 주차 계획 md(plans_case)가 있으면 그것들을 보인다: 화면이 한 주 공부 시간(주 7·14·28시간)을 고르고, 기본은 28.
+    """⑤ 12주 계획. 예시 공고에 주차 계획 md(plans_case)가 있으면 그것들을 보인다: 화면이 한 주 공부 시간(주 7·14·28시간)을 고르고, 기본은 14.
     7시간은 보류 md(blocked_case): 주 칸 없이 왜 짜지 않았는지를 본문 글로 (한 주 최소 시간은 바닥 줄). 안마다 분량 한 줄(line)이 있다.
     그 예시는 하루 1·2·3시간 칸을 숨기고 그 선택과 상관없다 (⑥ 리포트도 고른 한 주 공부 시간을 따른다).
     없거나 새 공고면 라운드랩 커리큘럼 생성기(github.com/gaori2952/Round_labcurriculum) 결과: 하루 1·2·3시간 = 주당 7·14·21시간 (한 사람).
@@ -1058,7 +1058,7 @@ def report_keys(name):
 
 
 def report_key_of(key, name):
-    """요청의 budget 값을 ⑥ 의 안 열쇠로: 주차 계획 md 예시는 한 주 공부 시간 (없으면 기본 28), 아니면 budget_of 와 같다. 없는 값은 None"""
+    """요청의 budget 값을 ⑥ 의 안 열쇠로: 주차 계획 md 예시는 한 주 공부 시간 (없으면 기본 14), 아니면 budget_of 와 같다. 없는 값은 None"""
     if not plans_case(name):
         return budget_of(key, name)
     if key is None:

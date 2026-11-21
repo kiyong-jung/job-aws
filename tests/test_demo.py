@@ -668,9 +668,9 @@ def test_weeks_step_shows_round_lab_curriculum_in_one_event(name, key):
     assert (done["learning"], done["project"]) == (saved["summary"]["learning_hours"], saved["summary"]["implementation_hours"])
 
 
-def test_weeks_step_shows_7_14_28_hour_plans_with_28_as_default():
+def test_weeks_step_shows_7_14_28_hour_plans_with_14_as_default():
     """예시에 주차 계획 md(data/<예시>.plan.<상한>.json)가 있으면 단추 시간(주 7·14·28시간)마다 한 안을 보낸다 (사용자 11/21 밤).
-    기본은 28시간이고, 하루 1·2·3시간 선택과 상관없다. 7시간은 보류 파일(blocked)이라 주 칸 없이 본문 글. 15시간 판은 파일만 있고 단추에 없다.
+    기본은 14시간이고 (사용자 11/22), 하루 1·2·3시간 선택과 상관없다. 7시간은 보류 파일(blocked)이라 주 칸 없이 본문 글. 15시간 판은 파일만 있고 단추에 없다.
     안마다 분량 한 줄(line)은 계획 파일의 숫자·이름으로 쓰고, 보류한 시간은 빈 줄 (까닭은 보류 글, 최소 시간은 바닥 줄이 한 번씩)"""
     case = pipeline.example_case("aws_fde")
     saved = {d["constraints"]["hours_per_week"]: d for d in pipeline.plans_case("aws_fde")}
@@ -680,7 +680,7 @@ def test_weeks_step_shows_7_14_28_hour_plans_with_28_as_default():
     steps, done = runs[0][0], runs[0][-1]
     base = saved[pipeline.DEFAULT_WEEK_HOURS]
     assert (pipeline.DATA / "aws_fde.plan.15.json").is_file() and sorted(saved) == [14, 28]      # 15 는 파일만
-    assert steps["default"] == "28" and steps["cap"] == 28 and steps["held"] == base["held"] == []
+    assert steps["default"] == "14" and steps["cap"] == 14 and steps["held"] == base["held"] and [h["id"] for h in base["held"]] == ["W9", "W10"]
     assert [(p["key"], p["label"], p["source"]) for p in steps["plans"]] == [("7", "주 7시간", "blocked"), ("14", "주 14시간", "md"), ("28", "주 28시간", "md")]
     for p in steps["plans"]:
         if p["source"] == "blocked":
@@ -702,7 +702,7 @@ def test_weeks_step_shows_7_14_28_hour_plans_with_28_as_default():
     assert lines["14"] == ("주 14시간이면 작업 2개는 12주 뒤로 미뤄요 ("
                            + ", ".join(f"{h['id']} {h['name']}" for h in saved[14]["held"]) + ")")
     assert "scale" not in steps
-    assert (done["cap"], done["project"], done["deliverables"]) == (28, base["summary"]["implementation_hours"], len(base["assigned"]))
+    assert (done["cap"], done["project"], done["deliverables"]) == (14, base["summary"]["implementation_hours"], len(base["assigned"]))
 
 
 def test_report_follows_the_chosen_weekly_plan():
@@ -733,7 +733,7 @@ def test_report_follows_the_chosen_weekly_plan():
     blocked = list(server.events({"step": "report", "text": pipeline.posting_text(case), "budget": "7"}, live_mode=False, default_speed=0))
     assert blocked[-1]["type"] == "done" and blocked[-1]["slides"] == [] and blocked[-1]["pptx"] is None and "보류" in blocked[-1]["note"]
     default = list(server.events({"step": "report", "text": pipeline.posting_text(case)}, live_mode=False, default_speed=0))
-    assert default[-1]["budget_key"] == "28"
+    assert default[-1]["budget_key"] == "14"
     for bad in ("84", "15", True, ["28"]):
         got = list(server.events({"step": "report", "text": pipeline.posting_text(case), "budget": bad}, live_mode=False, default_speed=0))
         assert [e["type"] for e in got] == ["error"] and "7·14·28시간" in got[0]["message"]

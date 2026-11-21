@@ -382,7 +382,7 @@ const STEPS = {
 // 다음 단계는 바닥 줄 단추로 연다 (사용자 11/21: 읽고 나서 단추로 넘긴다). 12주 계획은 첫 안(하루 1시간)으로 짜고, 바꾸기는 ⑤ ⑥ 의 라디오 칸
 const next = (key, pick = null) => (store.pending[key] ? [] : [[`${STEPS[key].label} →`, () => { if (!store.controller) runStep(key, pick); }]]);
 const choose = () => (store.pending.weeks || !store.budgets.length ? [] : next('weeks', store.budgets[0].key));
-// ⑥ 리포트의 안: 한 주 공부 시간을 ④ 에서 고르는 예시는 고른 계획 ("28"), 아니면 하루 공부 시간 안 ("84")
+// ⑥ 리포트의 안: 한 주 공부 시간을 ④ 에서 고르는 예시는 고른 계획 ("14"), 아니면 하루 공부 시간 안 ("84")
 const reportKey = () => (store.ownHours ? weeks.planKey() : store.budget);
 const perDayText = (key = store.budget) => `하루 ${store.budgets.find((b) => b.key === key)?.per_day}시간`;
 

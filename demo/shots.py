@@ -41,7 +41,7 @@ from demo.pipeline import DEFAULT_WEEK_HOURS, blocked_case, plans_case  # noqa: 
 PLANS = plans_case(CASE)      # ④ 단추에 있는 주차 계획 md (주 14·28시간). 15시간 판은 파일만 있고 단추에 없다
 BLOCKED = blocked_case(CASE)      # 계획을 보류한 시간 (주 7시간): 주 칸 없이 본문 글
 BUTTONS = sorted([f"{d['constraints']['hours_per_week']:g}" for d in PLANS] + [f"{b['hours_per_week']:g}" for b in BLOCKED], key=float)
-PLAN = next((d for d in PLANS if d["constraints"]["hours_per_week"] == DEFAULT_WEEK_HOURS), PLANS[-1] if PLANS else None)      # 기본 주 28시간: ⑤ 는 하루 공부 시간과 상관없다
+PLAN = next((d for d in PLANS if d["constraints"]["hours_per_week"] == DEFAULT_WEEK_HOURS), PLANS[-1] if PLANS else None)      # 기본 주 14시간: ⑤ 는 하루 공부 시간과 상관없다
 REPORT_FACTS = lambda key: json.loads((DATA / f"{CASE}.report.{key}.json").read_text(encoding="utf-8"))
 
 # 화면에 보이는 글 줄 가운데 글자 크기 < 13px, 또는 --muted 색인 것 (짝 보기에서 다른 줄을 흐리게 하는 [data-focus] 안, 화면 읽기용 글은 뺀다)
@@ -302,7 +302,7 @@ async def flow(p):
         assert len(ends) == len(set(ends)), f"⑤ 끝나는 주가 되풀이된다 {ends}"
         assert await p.js("[...document.querySelectorAll('#weeks-doc .wk-ends')].every((x) => x.parentElement.classList.contains('wk-name'))"), "⑤ 끝나는 주가 따로 줄에 있다"
     await p.shot("08-weeks")
-    if len(BUTTONS) > 1:      # 한 주 공부 시간 고르기: 7 · 14 · 28(기본). 고른 다음 기본으로 돌아온다. 분량 한 줄, 보류 글, 바닥 줄이 고른 계획을 따른다
+    if len(BUTTONS) > 1:      # 한 주 공부 시간 고르기: 7 · 14(기본) · 28. 고른 다음 기본으로 돌아온다. 분량 한 줄, 보류 글, 바닥 줄이 고른 계획을 따른다
         assert await p.js("document.getElementById('budget').hidden && document.querySelectorAll('#weeks-doc input[type=radio]').length === " + str(len(BUTTONS))), \
             "⑤ 에 시간 고르기가 하나가 아니다 (하루 1·2·3시간 칸이 보인다)"
         labels = await p.js("[...document.querySelectorAll('#weeks-doc .plan-pick label')].map((x) => x.textContent)")

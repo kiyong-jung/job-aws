@@ -90,7 +90,7 @@ def events(req, live_mode, default_speed):
         if step in ("project", "materials"):      # 2·3단계는 공부 시간을 읽지 않는다
             yield from getattr(pipeline, step)(case, speed)
             return
-        if step == "report" and pipeline.plans_case(case["case"]):      # ⑥ 은 ④ 에서 고른 한 주 공부 시간의 계획 (없으면 기본 28)
+        if step == "report" and pipeline.plans_case(case["case"]):      # ⑥ 은 ④ 에서 고른 한 주 공부 시간의 계획 (없으면 기본 14)
             budget = pipeline.report_key_of(req.get("budget"), case["case"])
             if budget is None:
                 yield {"type": "error", "reason": "budget", "message": f"한 주 공부 시간은 {'·'.join(pipeline.report_keys(case['case']))}시간 중에서 고를 수 있어요."}

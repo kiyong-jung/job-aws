@@ -233,7 +233,7 @@ export function picked(fn) { onPick = fn; }
 let current = null;
 // 지금 보이는 계획의 바닥 줄 수. 시간 고르기가 없는 계획이면 null (done 사건의 수를 쓴다)
 export const summary = () => current;
-// 고른 한 주 공부 시간의 열쇠 ("28"). ⑥ 리포트가 이 안으로 그린다 (main.js)
+// 고른 한 주 공부 시간의 열쇠 ("14"). ⑥ 리포트가 이 안으로 그린다 (main.js)
 export const planKey = () => chosen;
 
 export function start({ plans = [], comps = {}, default: first, ...one }) {
