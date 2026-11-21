@@ -6,7 +6,7 @@
 import { el, icon, reducedMotion, play } from './icons.js';
 import { place, element as budgetBox } from './budget.js';
 import { store } from './store.js';
-import { evRow, evList, section, score, LEVEL } from './result.js';
+import { evRow, evList, section, halfNote, numUnit, LEVEL } from './result.js';
 
 const $ = (id) => document.getElementById(id);
 const sentences = new Map();      // sid → 문장 span (칠한 뒤에는 mark)
@@ -145,17 +145,19 @@ export function walk(of, items) {
   walks[of] = { items, at: -1, done: false };
   if (top() === of) drawStatus(of);
 }
-// 상태 줄: 걸음 동그라미(끝난 것 먹 테두리, 지금 것 주황, 아직 옅게) + 지금 하는 일, 끝나면 다시 틀기 알림
+// 상태 줄: 걸음 동그라미(끝난 것 먹 테두리, 지금 것 주황, 아직 옅게) + 지금 하는 일, 끝나면 다시 틀기 알림.
+// 동그라미는 단계가 도는 동안만 (끝난 뒤 이름 없는 번호 줄이 단계 길과 겹쳐 보이지 않게, 디자이너 셋 합의 11/21)
 function drawStatus(now) {
   const box = $('panel-status'), w = walks[now];
   box.replaceChildren();
-  if (w) {
+  if (w && doing[now]) {
     const dots = el('span', { class: 'walk', 'aria-hidden': 'true' });
     dots.append(el('span', { class: 'walk-name', text: '걸음' }));
     w.items.forEach((x, i) => dots.append(el('span', { class: 'walk-n', 'data-state': w.done || i < w.at ? 'done' : i === w.at ? 'now' : 'todo', title: x.label, text: String(i + 1) })));
     box.append(dots);
   }
-  box.append(el('span', { class: 'walk-text', text: doing[now] || statusOf[now] }));
+  const text = doing[now] || statusOf[now];
+  if (text) box.append(el('span', { class: 'walk-text', text }));      // 빈 상태 줄은 그리지 않는다 (머리가 한 줄 52px, 디자이너 2차 11/21)
 }
 
 // 바닥 줄: 한 줄 불렛 둘(받은 글 그대로, 둘까지)과 단추. bullets 가 null 이면 불렛은 그대로 두고 단추만 바꾼다.
@@ -238,9 +240,12 @@ function paintShot(n) {
   const rs = shot?.marks[n];
   if (!rs) return null;
   const pct = (v, of) => `${(v / of) * 100}%`;
+  // 번호 배지는 글 칸 왼쪽 여백에 (형광펜 첫 칸 바로 왼쪽에 두면 줄 가운데서 시작하는 문장이 앞 낱말을 덮는다, 디자이너 2차 11/21).
+  // 배지는 첫 칸 안에 두어 칠·켜짐 상태를 그대로 따르고, 자리만 글 칸 왼쪽 끝(모든 형광펜 가운데 가장 왼쪽)에서 28px 왼쪽으로
+  shot.colX ??= Math.min(...Object.values(shot.marks).flat().map(([x]) => x));
   const parts = rs.map(([x, y, w, h], i) => {
     const d = el('mark', { class: 'hl shot-hl', 'data-n': n, style: `left:${pct(x, shot.width)};top:${pct(y, shot.height)};width:${pct(w, shot.width)};height:${pct(h, shot.height)}` });
-    if (!i) d.append(el('span', { class: 'badge', 'aria-hidden': 'true', text: String(n) }));
+    if (!i) d.append(el('span', { class: 'badge', 'aria-hidden': 'true', text: String(n), style: `left:calc(${((shot.colX - x) / w) * 100}% - 28px)` }));
     shot.layer.append(d);
     return d;
   });
@@ -401,22 +406,24 @@ export function scrollInto(scroller, target, { smooth = true } = {}) {
 // (공고 문장 ↔ 채우는 일과 그 근거: 빌린 프로젝트의 구절 또는 AI가 더한 까닭) → 만들 것 (일마다 시간과 산출물).
 // fill 사건은 ③ 이 보일 때 차례로 다시 튼다 (playFills): 그 줄의 판정이 "없음 → 다룸"으로 바뀌고 큰 숫자가 오른다 (게임처럼 능력치가 하나씩)
 let adapt = null;
-export function renderAdapted(a, { db = 0, top = null } = {}) {
+export function renderAdapted(a, { top = null } = {}) {
   const doc = $('search-doc');
   doc.scrollTop = 0;
   const hero = el('section', { class: 'rs-hero' });
-  hero.append(el('p', { class: 'rs-kicker', text: `${db ? `${db.toLocaleString('ko-KR')}개에서 고른 ` : ''}1위 ${a.base.title} 바탕에 ${a.parts.map((x) => x.short).join(', ')}의 방식을 빌려 고친 프로젝트` }),
-    el('h3', { class: 'rs-title', text: a.title }), el('p', { class: 'rs-intro', text: a.goal }));
+  hero.append(el('h3', { class: 'rs-title', text: a.title }), el('p', { class: 'rs-intro', text: a.goal }));
   const scores = el('div', { class: 'rs-scores' });
   const now = {};
-  for (const t of a.tiers) {
-    const p = score(`${t.name} 역량`, t.before, t.total);
+  for (const t of a.tiers) {      // "필수 역량 8개 중 바탕 5.5개 → 빌려서 8개": 앞은 1위 바탕만으로 덮은 정도, 큰 숫자는 빌린 뒤 (fill 사건마다 오른다)
+    const p = el('p', { class: 'rs-score' });
+    const b = el('b', { class: 'num', text: String(t.before), 'data-after': String(t.after) });
+    p.append(el('span', { class: 'rs-score-label', text: `${t.name} 역량 ${t.total}개 중` }), el('span', { class: 'rs-score-was', text: `바탕 ${t.before}개 → 빌려서` }),
+      numUnit(b));
     const gain = el('span', { class: 'rs-gain', 'aria-hidden': 'true' });      // 오른 만큼 (+1, +0.5) 이 그 숫자 바로 옆에 잠깐 뜬다
     p.append(gain);
-    now[t.name] = { b: p.querySelector('b'), gain };
+    now[t.name] = { b, gain };
     scores.append(p);
   }
-  hero.append(scores);
+  hero.append(scores, ...[halfNote(...a.tiers.flatMap((t) => [t.before, t.after]))].filter(Boolean));
   const rows = new Map();
   const filled = new Set(a.filled.map((r) => r.cid));      // 1위에 없던 것을 채운 줄: "없음 → 다룸" 으로 바뀌는 모습을 튼다
   const who = (r) => (r.from === 'AI가 더함' ? `AI가 더한 일 · ${r.job}` : r.from === '바탕' ? `1위 ${a.base.title} · ${r.job}`

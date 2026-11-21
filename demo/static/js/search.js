@@ -9,7 +9,7 @@
 //   C (pick): 칸이 한 번에 점수 차례로 자리를 옮기고(FLIP), 1위 칸에 고리. 1위 이름과 점수는 바닥 줄 불렛이 말한다
 // 숫자는 모두 서버가 보낸 저장본 값이다. 세어 올라가는 숫자처럼 계산하지 않은 값은 그리지 않는다.
 import { el, play, reducedMotion } from './icons.js';
-import { evRow, evList, section, score, tag, LEVEL, appear } from './result.js';
+import { evRow, evList, section, score, halfNote, tag, LEVEL, appear } from './result.js';
 
 const $ = (id) => document.getElementById(id);
 const fmt = (n) => n.toLocaleString('ko-KR');
@@ -54,8 +54,8 @@ export function start({ db, pool, shortlist, tier, fit, names }) {
   root.dataset.stage = 'search';
   root.setAttribute('aria-busy', 'true');
   const funnel = el('ol', { class: 'funnel', 'aria-label': '찾는 차례' });
-  const stops = [stop('DB에 모인 프로젝트', 'DB', total, true), stop('낱말로 모은 후보', '낱말로 모음', pool, false, '개', true),
-    stop('역량마다 다시 고른 후보', '다시 고름', shortlist), stop(fit.label, fit.label, fit.n)];
+  const stops = [stop('모아 둔 공개 프로젝트', '공개 프로젝트', total, true), stop('낱말로 모은 후보', '낱말로 모은 후보', pool, false, '개', true),
+    stop('역량마다 다시 고른 후보', '다시 고른 후보', shortlist), stop(fit.label, fit.label, fit.n)];
   funnel.append(...stops.flatMap((x, i) => (i ? [sep(), x.li] : [x.li])));
 
   // DB 점: 논문 덩어리와 저장소 덩어리 (둘 다 먹 60%. 짙기가 아니라 자리와 이름표로 가른다: 덩어리마다 왼쪽 위 이름표, 덩어리 사이 8px)
@@ -206,7 +206,7 @@ export function found(ev) {
   if (fit.intro) hero.append(el('p', { class: 'rs-intro', text: fit.intro.ko }), el('blockquote', { class: 'rs-en', text: fit.intro.en }));
   const scores = el('div', { class: 'rs-scores' });
   tiers.slice(0, 2).forEach((t, i) => scores.append(score(`${t.name} 역량`, top.scores[i], t.total)));
-  hero.append(scores);
+  hero.append(scores, ...[halfNote(...top.scores.slice(0, 2))].filter(Boolean));
   const rivals = el('ol', { class: 'rs-rivals', 'aria-label': '2~5위' });
   ev.ranking.slice(1, 5).forEach((r) => {
     const li = el('li');

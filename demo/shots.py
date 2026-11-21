@@ -192,6 +192,11 @@ EVIDENCE = """((sel) => { const rows = [...document.querySelectorAll(sel + ' .ev
 async def evidence_ok(p, page, sel, at_least=1):
     n, empty = await p.js(f"{EVIDENCE}({json.dumps(sel)})")
     assert n >= at_least and empty == 0, f"{page}: 근거 줄 {n}개, 문장이 빈 줄 {empty}개"
+    # 원문 캡처는 찍은 크기(2배 그림의 절반)보다 크게 그리지 않는다: srcset 2x 만 두면 naturalWidth 가 그 크기다 (src 가 있으면 배율 1 화면에서 2배로 커진다)
+    big = await p.js(f"""[...document.querySelectorAll({json.dumps(sel + ' .ev-shot img')})].filter((i) => i.getAttribute('src') || (i.complete && i.naturalWidth && i.getBoundingClientRect().width > i.naturalWidth + 1)).length""")
+    assert big == 0, f"{page}: 찍은 크기보다 크게 그린 캡처 {big}개"
+    zoom = await p.js(f"[document.querySelectorAll({json.dumps(sel + ' .ev-shot')}).length, document.querySelectorAll({json.dumps(sel + ' .ev-zoom')}).length]")
+    assert zoom[0] == zoom[1], f"{page}: 캡처 {zoom[0]}개, 크게 보기 단추 {zoom[1]}개"
     print(f"  {page} 근거 줄 {n}개", flush=True)
 
 
@@ -259,8 +264,13 @@ async def flow(p):
     (OUT / "05a-adapted-filling.png").write_bytes(base64.b64decode(data))
     await p.until("/응용 프로젝트는/.test(" + ANNOUNCE + ") && document.querySelector('#foot-search .go')", timeout=30)
     # 응용 +1 은 몇 개든 1.5초 남짓에 다 튼다 (사용자 11/21: "+1 되는거 좀 느린듯"): 끝 알림 뒤 2.5초 안에 큰 숫자가 바닥 줄의 마지막 셈과 같다
-    await p.until("""(() => { const m = document.querySelector('#foot-search .bullets li:last-child')?.textContent.match(/필수 \\d+개 중 ([\\d.]+) · 우대 \\d+개 중 ([\\d.]+)/);
-      const b = [...document.querySelectorAll('#search-doc .rs-scores b')].map((x) => x.textContent); return m && b[0] === m[1] && b[1] === m[2]; })()""", timeout=2.5)
+    await p.until("""(() => { const b = [...document.querySelectorAll('#search-doc .rs-scores b')];
+      return b.length === 2 && b.every((x) => x.dataset.after && x.textContent === x.dataset.after); })()""", timeout=2.5)
+    # 숫자마다 무엇을 셌는지 (디자이너 2차 11/21): 바닥 줄 "공개 프로젝트 N개에서 …" / "필수 역량 …" · "우대 역량 …", 점수 줄 "필수 역량 8개 중 바탕 5.5개 → 빌려서 8개"
+    foot2 = await p.js("[...document.querySelectorAll('#foot-search .bullets li')].map((x) => x.textContent)")
+    assert foot2[0].startswith("공개 프로젝트 ") and "필수 역량 " in foot2[1] and "우대 역량 " in foot2[1] and "." not in foot2[1], f"② 바닥 줄 {foot2}"
+    sc = await p.js("[...document.querySelectorAll('#search-doc .rs-score')].map((x) => { const c = x.cloneNode(true); c.querySelectorAll('.rs-gain').forEach((g) => g.remove()); return c.textContent; })")
+    assert sc and all("개 중" in x and "바탕 " in x and "빌려서" in x and x.rstrip().endswith("개") for x in sc), f"② 점수 줄 {sc}"
     await foot_ok(p, "②", ["교육자료 찾기 →"])
     await evidence_ok(p, "② 최종 응용", "#search-doc")
     assert await p.js("!document.querySelector('#search-doc .rs-rivals') && !document.getElementById('page-sample')"), "② 에 1위 카드나 ③ 쪽이 남아 있다"
@@ -287,16 +297,19 @@ async def flow(p):
         todo = await p.js("[...document.querySelectorAll('#weeks-doc .wk-body')].map((b) => [...b.querySelectorAll('.wk-lines')].map((u) => u.children.length))")
         assert todo and all(1 <= n <= 3 for w in todo for n in w), f"⑤ 목표·할 일 개조식 줄 수 {todo}"      # 사용자 11/21: 세 줄까지
         assert [w[1] for w in todo] == [len(w["method_steps"]) for w in PLAN["weeks"]], "⑤ 할 일 줄이 계획 파일과 다르다"
+    if PLAN:      # 끝나는 주는 작업이 처음 나온 주에만 이름 뒤에 (따로 줄 없이). 같은 작업의 "N주차까지" 가 두 번 나오지 않는다
+        ends = await p.js("[...document.querySelectorAll('#weeks-doc .wk-ends')].map((x) => x.closest('.wk-item').querySelector('.wk-name').textContent.split(' · ')[0])")
+        assert len(ends) == len(set(ends)), f"⑤ 끝나는 주가 되풀이된다 {ends}"
+        assert await p.js("[...document.querySelectorAll('#weeks-doc .wk-ends')].every((x) => x.parentElement.classList.contains('wk-name'))"), "⑤ 끝나는 주가 따로 줄에 있다"
     await p.shot("08-weeks")
-    if len(BUTTONS) > 1:      # 한 주 공부 시간 고르기: 7 · 14 · 28(기본). 고른 다음 기본으로 돌아온다. 주 칸 머리의 상한, 보류 작업 줄, 바닥 줄이 고른 계획을 따른다
+    if len(BUTTONS) > 1:      # 한 주 공부 시간 고르기: 7 · 14 · 28(기본). 고른 다음 기본으로 돌아온다. 분량 한 줄, 보류 글, 바닥 줄이 고른 계획을 따른다
         assert await p.js("document.getElementById('budget').hidden && document.querySelectorAll('#weeks-doc input[type=radio]').length === " + str(len(BUTTONS))), \
             "⑤ 에 시간 고르기가 하나가 아니다 (하루 1·2·3시간 칸이 보인다)"
         labels = await p.js("[...document.querySelectorAll('#weeks-doc .plan-pick label')].map((x) => x.textContent)")
         assert labels == [f"주 {h}시간" for h in BUTTONS], f"⑤ 단추 {labels}"
         name = await p.js("document.querySelector('#weeks-doc .plan-name')?.textContent")
         assert name == "한 주 공부 시간", f"⑤ 시간 고르기 이름 {name!r}"
-        scale = await p.js("document.querySelector('#weeks-doc .wk-scale')?.textContent || ''")
-        assert scale.startswith("한 주 공부 시간은 정수로 정한다.") and all(f"{h}시간이면" in scale for h in BUTTONS) and "15시간" not in scale, f"⑤ 분량 줄 {scale!r}"
+        assert await p.js("!document.querySelector('#weeks-doc .wk-scale, #weeks-doc .wk-held')"), "⑤ 긴 설명 문단·보류 작업 줄이 남아 있다 (분량은 한 줄)"
         checked = await p.js("document.querySelector('#weeks-doc .plan-pick input:checked')?.value")
         assert checked == f"{PLAN['constraints']['hours_per_week']:g}", f"⑤ 기본 계획 {checked}"
         for cap in [h for h in BUTTONS if h != checked] + [checked]:
@@ -305,16 +318,17 @@ async def flow(p):
             if d is None:      # 보류한 시간: 주 칸 없이 본문 글 셋, 바닥 줄은 보류와 최소 시간
                 b = next(x for x in BLOCKED if f"{x['hours_per_week']:g}" == cap)
                 await p.until(f"/한 주 {cap}시간으로는 12주 계획을 보류했어요/.test(document.querySelector('#foot-weeks').textContent)", timeout=5)
-                note = await p.js("[document.querySelector('#weeks-doc .wk-list').hidden, document.querySelector('#weeks-doc .wk-held').hidden, document.querySelector('#weeks-doc .wk-blocked')?.textContent || '']")
-                assert note[0] and note[1] and f"{b['needed_minutes'] // 60}시간" in note[2] and "11시간 40분" in note[2], f"⑤ {cap}시간 보류 글 {note}"
+                note = await p.js("[document.querySelector('#weeks-doc .wk-list').hidden, document.querySelector('#weeks-doc .wk-line').textContent, document.querySelector('#weeks-doc .wk-blocked')?.textContent || '', document.querySelector('#foot-weeks').textContent]")
+                assert note[0] and not note[1] and f"{b['needed_minutes'] // 60}시간" in note[2] and "11시간 40분" not in note[2] and "11시간 40분" in note[3], f"⑤ {cap}시간 보류 글 {note}"      # 최소 시간은 바닥 줄에만
                 await p.shot(f"08c-weeks-{cap}h")
                 continue
-            await p.until(f"document.querySelector('#weeks-doc .wk-used').textContent.endsWith('상한 {cap}시간')", timeout=5)
+            await p.until(f"document.querySelector('#weeks-doc .wk-line').textContent.includes('주 {cap}시간이면')", timeout=5)
             await p.until(f"/한 주 {cap}시간까지/.test(document.querySelector('#foot-weeks').textContent)", timeout=5)
             assert await p.js("!document.querySelector('#weeks-doc .wk-blocked')"), f"⑤ {cap}시간에 보류 글이 남아 있다"
-            held = await p.js("document.querySelector('#weeks-doc .wk-held').textContent")
-            want = "보류 작업 · " + (", ".join(f"{h['id']} {h['name']}" for h in d["held"]) or "없음")
-            assert held == want, f"⑤ 보류 줄 {held!r} ≠ {want!r}"
+            line = await p.js("document.querySelector('#weeks-doc .wk-line').textContent")
+            want = (f"작업 {len(d['held'])}개는 12주 뒤로 미뤄요 (" + ", ".join(f"{h['id']} {h['name']}" for h in d["held"]) + ")") if d["held"] else f"작업 {len(d['assigned'])}개가 모두 12주 안에 들어가요"
+            assert line == f"주 {cap}시간이면 " + want, f"⑤ 분량 줄 {line!r}"
+            assert await p.js("![...document.querySelectorAll('#weeks-doc .wk-used')].some((x) => x.textContent.includes('상한'))"), "⑤ 주 칸 머리에 상한이 되풀이된다"
             outs = await p.js("document.querySelectorAll('#weeks-doc .wk-out').length")
             assert outs == sum(len(w["deliverables_completed"]) for w in d["weeks"]), f"⑤ {cap}시간 산출물 줄 {outs}개"
             if d is not PLAN:

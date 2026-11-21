@@ -243,7 +243,7 @@ const projectHandlers = {
   // 최종 응용 프로젝트: ② 쪽의 찾는 그림을 걷고 깔때기 띠 아래에 그린다 (1위와 응용을 따로 두지 않는다)
   adapt(ev, ctx) {
     ctx.adapt = ev;
-    panel.renderAdapted(ev, { db: ctx.db, top: search.funnel() });
+    panel.renderAdapted(ev, { top: search.funnel() });
   },
   fill(ev) { panel.fill(ev); },
   done(ev, ctx) {
@@ -258,10 +258,10 @@ const projectHandlers = {
       announce(`${fmt(ctx.db)}개 중 1위를 골랐어요. 역량 ${yes + part + no}개 중 ${yes}개를 다루고, ${part}개는 일부만 다뤄요`);
       return;
     }
-    // ② 바닥 줄: "111,753개에서 고른 1위 genkit-ai/genkit 바탕" / "필수 8개 중 8 · 우대 11개 중 9.5"
+    // ② 바닥 줄: 숫자마다 무엇을 셌는지 (디자이너 2차 11/21). "공개 프로젝트 111,753개에서 고른 1위 …" / "필수 역량 8개 모두 다뤄요 · 우대 역량 11개 중 9개 다룸, 1개 일부만"
     const [must, nice] = ctx.adapt.tiers;
-    panel.foot('search', [`${fmt(ctx.db)}개에서 고른 1위 ${ctx.adapt.base.title} 바탕에 빈 역량을 빌려 채웠어요`,
-      `필수 ${must.total}개 중 ${must.after} · 우대 ${nice.total}개 중 ${nice.after}`], next('materials'));
+    panel.foot('search', [`공개 프로젝트 ${fmt(ctx.db)}개에서 고른 1위 ${ctx.adapt.base.title} 바탕에 빈 역량을 빌려 채웠어요`,
+      `${coverText(must)} · ${coverText(nice)}`], next('materials'));
     panel.playFills();
     announce(`응용 프로젝트는 역량 ${yes + part + no}개 중 ${ev.after}개를 다뤄요`);
   },
@@ -295,6 +295,12 @@ const materialHandlers = {
   error: stepError,
 };
 
+// 묶음 하나를 덮은 정도를 개수로: "필수 역량 8개 모두 다뤄요" / "우대 역량 11개 중 9개 다룸, 1개 일부만" (0.5 셈은 화면 숫자가 말한다)
+function coverText(t) {
+  if (t.yes === t.total) return `${t.name} 역량 ${t.total}개 모두 다뤄요`;
+  return `${t.name} 역량 ${t.total}개 중 ${t.yes}개 다룸` + (t.part ? `, ${t.part}개 일부만` : '');
+}
+
 function weeksFoot(ev) {
   if (ev.blocked) {      // 계획을 보류한 시간 (주 7시간): 짜지 않은 까닭은 ⑤ 본문에, 바닥 줄은 두 줄
     panel.foot('weeks', [`한 주 ${hoursText(ev.cap)}으로는 12주 계획을 보류했어요`, `한 주 최소 ${ev.min_text}이 필요해요`],
@@ -302,8 +308,10 @@ function weeksFoot(ev) {
     return '계획을 보류했어요';
   }
   const inside = ev.inside_weeks < ev.weeks ? `${ev.weeks}주 중 ${ev.inside_weeks}주는 그 안에` : `${ev.weeks}주 모두 그 안에`;
-  const who = ev.source === 'md' ? '' : ' (한 사람)';      // md 계획은 한 사람 기준이라고 적혀 있지 않다
-  panel.foot('weeks', [`교육자료로 배우기 ${hoursText(ev.learning)} · 프로젝트에 적용 ${hoursText(ev.project)}${who}`,
+  // md 계획은 누구의 시간인지 적혀 있지 않다 (② 는 팀 전체 시간): "한 사람" 이라 하지 않고 "이 12주 계획의" 시간이라고만
+  const sum = ev.source === 'md' ? `이 12주 계획의 배우기 ${hoursText(ev.learning)} · 만들기 ${hoursText(ev.project)}`
+    : `교육자료로 배우기 ${hoursText(ev.learning)} · 프로젝트에 적용 ${hoursText(ev.project)} (한 사람)`;
+  panel.foot('weeks', [sum,
     `한 주 ${hoursText(ev.cap)}까지 · ${inside} · 산출물 ${ev.deliverables}개`],
   store.drawn.has('report') ? [] : next('report'));      // 공부 시간을 바꿔 다시 그려도(quiet) 아직 리포트가 없으면 단추는 남는다
   return inside;

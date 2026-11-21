@@ -42,7 +42,8 @@ export function done({ slides, rows, basis, note }) {
     sheet.append(el('img', { src, alt: `면접 대비 리포트 ${i + 1}쪽 / ${slides.length}쪽`, width: '1920', height: '1080', loading: i ? 'lazy' : 'eager' }));
     deck.append(sheet);
   });
-  root.replaceChildren(...(basis ? [el('p', { class: 'rep-basis', text: basis })] : []), deck);
+  // 휴대폰: 쪽 그림을 720px 로 두고 옆으로 민다 (358px 로 줄이면 그림 속 글이 4~6px). 그 안내는 휴대폰에서만 보인다 (css)
+  root.replaceChildren(...(basis ? [el('p', { class: 'rep-basis', text: basis })] : []), el('p', { class: 'rep-swipe', text: '옆으로 밀어서 보세요' }), deck);
   root.removeAttribute('aria-busy');
   play(deck, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], 240);
 }

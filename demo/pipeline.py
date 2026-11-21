@@ -465,7 +465,8 @@ def adapt_tiers(a, judged):
     out = []
     for name in TIERS[:2]:
         cs = [c for c in a["coverage"] if c["tier"] == name]
-        out.append({"name": name, "total": len(cs), "before": sum(WORTH[judged[c["id"]]] for c in cs), "after": sum(WORTH[c["expect"]] for c in cs)})
+        out.append({"name": name, "total": len(cs), "before": sum(WORTH[judged[c["id"]]] for c in cs), "after": sum(WORTH[c["expect"]] for c in cs),
+                    "yes": sum(c["expect"] == "있음" for c in cs), "part": sum(c["expect"] == "일부" for c in cs)})      # 바닥 줄 "11개 중 9개 다룸, 1개 일부만"
     return out
 
 
@@ -792,8 +793,8 @@ def materials(case, speed=1.0, data=None, live=False):
     names_ = {t["cid"]: t["name"] for t in data["targets"]}
     tiers_ = {t["cid"]: t["priority"] for t in data["targets"]}
     r = data["rules"]      # 숫자 흐름 (발표 27쪽과 같다): 은행 → BM25 → Cohere Rerank → AI 판정으로 고른 자료
-    funnel = [{"n": r["bank_rows"], "label": "교육자료 은행"}, {"n": r["wide"], "label": "BM25"},
-              {"n": r["shortlist"], "label": "Cohere Rerank"}, {"n": len(data["picks"]), "label": "AI 판정"}] if "bank_rows" in r else []
+    funnel = [{"n": r["bank_rows"], "label": "모아 둔 교육자료"}, {"n": r["wide"], "label": "낱말로 모은 자료 (BM25)"},
+              {"n": r["shortlist"], "label": "뜻으로 다시 고른 자료 (Cohere Rerank)"}, {"n": len(data["picks"]), "label": "AI가 고른 자료"}] if "bank_rows" in r else []
     if not live:      # 새 공고는 live.py 가 단계를 실제 때에 낸다
         yield {"type": "steps", "items": steps, "funnel": funnel}
     levels = {t["cid"]: "없음" for t in data["targets"]}
@@ -823,8 +824,8 @@ def materials(case, speed=1.0, data=None, live=False):
     part = sum(levels[t["cid"]] == "일부" for t in data["targets"])
     yield {"type": "done", "n": len(data["picks"]), "targets": len(data["targets"]), "covered": covered, "missing": left,
            "levels": {k: {"level": v, "text": LEVEL_TEXT[v]} for k, v in levels.items()},
-           "line": f"도구·지식 역량 {len(data['targets'])}개 중 {covered - part / 2:g}개를 자료로 배워요"
-                   + (f" (일부만 다루는 {part}개는 0.5로 세요)" if part else ""),
+           # 무엇을 몇 개 세는지 말로 (디자이너 2차 11/21): "도구·지식 역량 9개 중 7개를 자료로 다뤄요, 1개는 일부만". 0.5 셈은 쓰지 않는다
+           "line": f"도구·지식 역량 {len(data['targets'])}개 중 {covered - part}개를 자료로 다뤄요" + (f", {part}개는 일부만" if part else ""),
            "rule": f"필수 역량은 {r['must']:,}점, 우대·나머지는 {r['other']}점으로 세어, 점수를 가장 많이 채우는 자료부터 핵심 {r['core'][0]}~{r['core'][1]}개, "
                    f"보조 {r['support'][0]}~{r['support'][1]}개를 골랐어요",
            "left": f"{names(left)} {len(left)}개는 맞는 자료를 찾지 못했어요" if left else ""}
@@ -899,17 +900,15 @@ def blocked_case(name):
     return sorted((b for b in got if b["hours_per_week"] in PLAN_HOURS), key=lambda d: d["hours_per_week"])
 
 
-def scale_line(views):
-    """한 주 공부 시간에 따라 분량이 맞춰진다는 한 줄 (사용자 11/21). 단추 차례, 숫자는 모두 계획·보류 파일 값:
-    '한 주 공부 시간은 정수로 정한다. 7시간이면 … 보류하고 한 주 최소 11시간 40분이 필요하다고 알려 주고, 14시간이면 W9·W10을 미루고, 28시간이면 모두 들어간다.'"""
-    def part(v):
-        if v["source"] == "blocked":
-            b = v["blocked"]
-            return (f"{v['cap']:g}시간이면 12주 {b['available_hours']}시간으로 필요한 {b['needed_hours']}시간에 못 미쳐 계획을 보류하고 "
-                    f"한 주 최소 {b['min_text']}이 필요하다고 알려 주고")
-        return f"{v['cap']:g}시간이면 " + ("·".join(h["id"] for h in v["held"]) + ("만" if len(v["held"]) == 1 else "을") + " 미루고" if v["held"] else "모두 들어가고")
-    body = ", ".join(part(v) for v in views)
-    return "한 주 공부 시간은 정수로 정한다. " + re.sub(r"(미루|들어가|알려 주)고$", lambda m: {"미루": "미룬다", "들어가": "들어간다", "알려 주": "알려 준다"}[m.group(1)], body) + "."
+def plan_line(v):
+    """고른 한 주 공부 시간이면 분량이 어떻게 되는지 해요체 한 줄 (사용자 11/21: 시간을 정수로 넣으면 분량이 맞춰진다). 숫자·이름은 계획 파일 값.
+    보류한 시간(7)은 빈 줄: 그 까닭은 ④ 의 보류 글과 바닥 줄이 한 번씩 말한다"""
+    if v["source"] != "md":
+        return ""
+    head = f"주 {v['cap']:g}시간이면 "      # 한 줄에 든다 (디자이너 2차 11/21: 앞머리 "정수로 고르면 분량이 맞춰져요" 는 뺀다)
+    if v["held"]:
+        return head + f"작업 {len(v['held'])}개는 12주 뒤로 미뤄요 (" + ", ".join(f"{h['id']} {h['name']}" for h in v["held"]) + ")"
+    return head + f"작업 {len(v['assigned'])}개가 모두 12주 안에 들어가요"
 
 
 def blocked_view(b):
@@ -917,13 +916,12 @@ def blocked_view(b):
     need, have = b["needed_minutes"] // 60, b["available_minutes"] // 60
     info = {"available_hours": have, "needed_hours": need, "min_text": span_text(b["min_per_week_minutes"]),
             "build_hours": b["needed_build_minutes"] // 60, "learning_hours": b["needed_learning_minutes"] // 60}
-    lines = [f"12주 {have}시간으로는 필요한 {need}시간(만들기 {info['build_hours']}시간 + 배우기 {info['learning_hours']}시간)에 못 미쳐요.",
-             f"한 주 최소 {info['min_text']}이 필요해요.",
-             "시간을 늘리거나 꼭 할 범위를 정하면 다시 짤 수 있어요."]
+    lines = [f"12주 {have}시간으로는 핵심 작업과 꼭 볼 자료에 필요한 {need}시간(만들기 {info['build_hours']}시간 + 배우기 {info['learning_hours']}시간)에 못 미쳐요.",
+             "시간을 늘리거나 꼭 할 범위를 정하면 다시 짤 수 있어요."]      # 한 주 최소 시간은 바닥 줄이 말한다 (같은 말을 두 번 쓰지 않는다)
     cap = b["hours_per_week"]
     summary = {"weeks": b["weeks"], "cap": cap, "blocked": True, "min_text": info["min_text"], "source": "blocked"}
     return {"key": f"{cap:g}", "label": f"주 {cap:g}시간", "source": "blocked", "plan": [], "cap": cap, "learning": 0, "project": 0, "total": 0,
-            "assigned": [], "held": [], "blocked": {**info, "title": f"주 {cap:g}시간 · 계획 보류", "lines": lines}, "summary": summary}
+            "assigned": [], "held": [], "line": "", "blocked": {**info, "title": f"주 {cap:g}시간 · 계획 보류", "lines": lines}, "summary": summary}
 
 
 def span_text(m):
@@ -944,16 +942,17 @@ def plan_view(case, d, hours, source):
     summary = {"weeks": len(d["weeks"]), "cap": hours, "inside_weeks": sum(w["used_minutes"] <= w["capacity_minutes"] for w in d["weeks"]),
                "learning": s["learning_hours"], "project": s["implementation_hours"], "deliverables": sum(len(w["deliverables_completed"]) for w in d["weeks"]),
                "source": source}
-    return {"key": f"{hours:g}", "label": f"주 {hours:g}시간", "source": source,
+    view = {"key": f"{hours:g}", "label": f"주 {hours:g}시간", "source": source,
             "plan": plan_, "cap": hours, "learning": s["learning_hours"], "project": s["implementation_hours"],
             "total": s.get("scheduled_hours", s["learning_hours"] + s["implementation_hours"]),
             "assigned": d.get("assigned", []), "held": d.get("held", []), "summary": summary}
+    return {**view, "line": plan_line(view)}
 
 
 @tagged
 def weeks(case, speed=1.0, budget="84", curriculum=None):
     """⑤ 12주 계획. 예시 공고에 주차 계획 md(plans_case)가 있으면 그것들을 보인다: 화면이 한 주 공부 시간(주 7·14·28시간)을 고르고, 기본은 28.
-    7시간은 보류 md(blocked_case): 주 칸 없이 왜 짜지 않았는지와 한 주 최소 시간을 본문 글로. 분량 한 줄(scale)은 단추 차례로 셋을 다 말한다.
+    7시간은 보류 md(blocked_case): 주 칸 없이 왜 짜지 않았는지를 본문 글로 (한 주 최소 시간은 바닥 줄). 안마다 분량 한 줄(line)이 있다.
     그 예시는 하루 1·2·3시간 칸을 숨기고 그 선택과 상관없다 (⑥ 리포트도 고른 한 주 공부 시간을 따른다).
     없거나 새 공고면 라운드랩 커리큘럼 생성기(github.com/gaori2952/Round_labcurriculum) 결과: 하루 1·2·3시간 = 주당 7·14·21시간 (한 사람).
     주마다 교육자료 공부 → 프로젝트 작업 → 산출물. 12주를 사건 하나로 보내 화면이 한 번에 그린다."""
@@ -963,7 +962,7 @@ def weeks(case, speed=1.0, budget="84", curriculum=None):
         views = sorted([plan_view(case, d, d["constraints"]["hours_per_week"], "md") for d in mds] + [blocked_view(b) for b in blocked_case(name_)],
                        key=lambda v: v["cap"])
         first = next((v for v in views if v["cap"] == DEFAULT_WEEK_HOURS), views[-1])
-        status, generator, scale = mds[0]["status"], "", scale_line(views)
+        status, generator = mds[0]["status"], ""
     else:
         per_day = {b["key"]: b["per_day"] for b in LIVE_BUDGETS}[budget] if curriculum is not None else materials_case(name_)["budgets"][budget]["per_day"]
         hours = 7 * per_day
@@ -972,7 +971,7 @@ def weeks(case, speed=1.0, budget="84", curriculum=None):
             yield {"type": "notice", "text": "이 공고의 12주 계획은 아직 준비 중이에요."}
             return
         views = [plan_view(case, d, hours, "generator")]
-        first, status, generator, scale = views[0], d["status"], d.get("generator_commit", ""), ""
+        first, status, generator = views[0], d["status"], d.get("generator_commit", "")
     learning_n = sum(a["kind"] == "learning" for w in first["plan"] for a in w["activities"])
     steps = [{"key": "order", "label": (f"응용 프로젝트 작업 {len(first['assigned'])}개와 교육자료 {learning_n}개의 순서를 정하는 중" if mds
                                        else "교육자료와 프로젝트 작업의 순서(선수 관계)를 정하는 중"), "done": "순서를 정했어요"},
@@ -980,7 +979,7 @@ def weeks(case, speed=1.0, budget="84", curriculum=None):
              {"key": "check", "label": "주마다 시간 한도와 산출물을 확인하는 중", "done": "한도와 산출물을 확인했어요"}]
     cids = list(dict.fromkeys(r["cid"] for v in views for w in v["plan"] for a in w["activities"] for r in a["cids"]))
     yield {"type": "steps", "items": steps, **{k: v for k, v in first.items() if k != "summary"},
-           "plans": views if len(views) > 1 else [], "default": first["key"], "scale": scale, "generator": generator, "comps": comp_refs(case, cids)}
+           "plans": views if len(views) > 1 else [], "default": first["key"], "generator": generator, "comps": comp_refs(case, cids)}
     for st in steps:
         yield {"type": "stage", "key": st["key"], "label": st["label"]}
         time.sleep(PACE["stage"] * speed)
@@ -1099,5 +1098,7 @@ def report(case, speed=1.0, budget="84"):
     companies = page["companies"]
     yield {"type": "done", "slides": page["slides"], "pptx": page["pptx"], "filename": page["filename"],
            **({"basis": f"한 주 {plan['hours']:g}시간 계획 기준" + (f" · 미룬 일 {'·'.join(plan['held'])}" if plan["held"] else "") + " · 시간은 ④ 12주 계획에서 바꿔요"} if plan else {}),
-           "bullets": [f"공고 핵심 문장 {data['counts']['rows']}개에서 고른 면접 질문 {page['questions']}개 · 공개 면접 질문 은행 {page['bank']}개",
+           # bank = 고른 질문 가운데 공개 면접 질문 은행에서 온 수 (build_report_deck.py). "은행 5개" 로 읽히지 않게 질문의 수로 말한다
+           "bullets": [f"공고 핵심 문장 {data['counts']['rows']}개에서 고른 면접 질문 {page['questions']}개 · "
+                       + ("모두 공개 면접 질문 은행에서 골랐어요" if page["bank"] == page["questions"] else f"그중 {page['bank']}개는 공개 면접 질문 은행에서"),
                        f"질문 출처 {', '.join(companies)}" if companies else "모두 직접 만든 질문"]}

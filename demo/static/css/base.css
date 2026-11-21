@@ -15,6 +15,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 h1, h2, h3, h4, p, ul, ol { margin: 0; }
+b, strong { font-weight: 600; }      /* 굵기는 400·500·600 셋 (700 없음, design/readability/merged.md) */
+a { color: var(--ink); text-decoration-line: underline; text-decoration-thickness: 1px; text-decoration-color: var(--link-line); text-underline-offset: 3px; }      /* 링크는 한 모양: 먹 + 밑줄 (파랑 글 없음) */
+a:hover { text-decoration-color: var(--ink); }
 ul, ol { padding: 0; list-style: none; }
 button, input, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
 button { cursor: pointer; background: none; border: 0; padding: 0; }

@@ -17,7 +17,9 @@ function flow(funnel) {
   funnel.forEach((f, i) => {
     if (i) ol.append(el('li', { class: 'stop-sep', 'aria-hidden': 'true', text: '→' }));
     const li = el('li', { class: 'stop', 'data-state': 'todo' });
-    li.append(el('span', { class: 'stop-label', text: f.label }), el('span', { class: 'stop-n num', text: f.n.toLocaleString('ko-KR') }));      // ② 깔때기와 같은 차례 (css 가 숫자를 위로)
+    const n = el('span', { class: 'stop-n num', text: f.n.toLocaleString('ko-KR') });
+    n.append(el('span', { class: 'stop-unit', text: '개' }));      // 숫자마다 "개" (이름표가 무엇을 셌는지 말한다)
+    li.append(el('span', { class: 'stop-label', text: f.label }), n);      // ② 깔때기와 같은 차례 (css 가 숫자를 위로)
     ol.append(li);
   });
   return ol;

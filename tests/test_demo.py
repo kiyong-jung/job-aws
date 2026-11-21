@@ -425,8 +425,7 @@ def test_materials_step_replays_m3_picks_without_hours():
     covered = sum(t["level"] != "없음" for t in data["targets"])
     assert (done["n"], done["targets"], done["covered"]) == (len(data["picks"]), len(data["targets"]), covered)
     part = sum(t["level"] == "일부" for t in data["targets"])      # 일부만 다루면 0.5 로 센다 (슬라이드와 같은 셈)
-    assert done["line"] == (f"도구·지식 역량 {len(data['targets'])}개 중 {covered - part / 2:g}개를 자료로 배워요"
-                            + (f" (일부만 다루는 {part}개는 0.5로 세요)" if part else ""))
+    assert done["line"] == (f"도구·지식 역량 {len(data['targets'])}개 중 {covered - part}개를 자료로 다뤄요" + (f", {part}개는 일부만" if part else ""))      # 무엇을 몇 개 (0.5 셈 없이)
     assert done["missing"] == [t["name"] for t in data["targets"] if t["level"] == "없음"] and all(m in done["left"] for m in done["missing"])
     assert "1,000점" in done["rule"] and "핵심 1~2개" in done["rule"] and "보조 3~4개" in done["rule"]
     assert not any("budget_key" in e or "hours" in e for e in events)
@@ -672,7 +671,7 @@ def test_weeks_step_shows_round_lab_curriculum_in_one_event(name, key):
 def test_weeks_step_shows_7_14_28_hour_plans_with_28_as_default():
     """예시에 주차 계획 md(data/<예시>.plan.<상한>.json)가 있으면 단추 시간(주 7·14·28시간)마다 한 안을 보낸다 (사용자 11/21 밤).
     기본은 28시간이고, 하루 1·2·3시간 선택과 상관없다. 7시간은 보류 파일(blocked)이라 주 칸 없이 본문 글. 15시간 판은 파일만 있고 단추에 없다.
-    분량 한 줄은 단추 차례로 계획·보류 파일의 숫자로 쓴다"""
+    안마다 분량 한 줄(line)은 계획 파일의 숫자·이름으로 쓰고, 보류한 시간은 빈 줄 (까닭은 보류 글, 최소 시간은 바닥 줄이 한 번씩)"""
     case = pipeline.example_case("aws_fde")
     saved = {d["constraints"]["hours_per_week"]: d for d in pipeline.plans_case("aws_fde")}
     runs = [[{k: v for k, v in e.items() if k != "budget_key"} for e in server.events(
@@ -686,7 +685,8 @@ def test_weeks_step_shows_7_14_28_hour_plans_with_28_as_default():
     for p in steps["plans"]:
         if p["source"] == "blocked":
             assert p["plan"] == [] and p["summary"]["blocked"] and p["summary"]["min_text"] == "11시간 40분"
-            assert p["blocked"]["lines"][0] == "12주 84시간으로는 필요한 139시간(만들기 128시간 + 배우기 11시간)에 못 미쳐요."
+            assert p["blocked"]["lines"][0] == "12주 84시간으로는 핵심 작업과 꼭 볼 자료에 필요한 139시간(만들기 128시간 + 배우기 11시간)에 못 미쳐요."
+            assert p["line"] == "" and not any("11시간 40분" in x for x in p["blocked"]["lines"])
             continue
         d = saved[p["cap"]]
         assert [round(w["learning"] + w["project"], 4) for w in p["plan"]] == [round(w["used_minutes"] / 60, 4) for w in d["weeks"]]
@@ -697,8 +697,11 @@ def test_weeks_step_shows_7_14_28_hour_plans_with_28_as_default():
     assert [h["id"] for h in saved[14]["held"]] == ["W9", "W10"] and saved[28]["held"] == []
     block = pipeline.blocked_case("aws_fde")
     assert [(b["hours_per_week"], b["available_minutes"], b["needed_minutes"], b["min_per_week_minutes"]) for b in block] == [(7, 84 * 60, 139 * 60, 700)]
-    assert steps["scale"] == ("한 주 공부 시간은 정수로 정한다. 7시간이면 12주 84시간으로 필요한 139시간에 못 미쳐 계획을 보류하고 "
-                              "한 주 최소 11시간 40분이 필요하다고 알려 주고, 14시간이면 W9·W10을 미루고, 28시간이면 모두 들어간다.")
+    lines = {p["key"]: p["line"] for p in steps["plans"]}
+    assert lines["28"] == "주 28시간이면 작업 10개가 모두 12주 안에 들어가요"
+    assert lines["14"] == ("주 14시간이면 작업 2개는 12주 뒤로 미뤄요 ("
+                           + ", ".join(f"{h['id']} {h['name']}" for h in saved[14]["held"]) + ")")
+    assert "scale" not in steps
     assert (done["cap"], done["project"], done["deliverables"]) == (28, base["summary"]["implementation_hours"], len(base["assigned"]))
 
 

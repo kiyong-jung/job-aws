@@ -1,9 +1,10 @@
 // ⑤ 12주 계획 쪽 (사용자 11/21). 주마다 한 칸: 그 주의 배우기(교육자료)와 만들기(프로젝트 작업)를 한 칸에.
 // 칸 아래 토글을 열면 목표·할 일·배우는 역량을 세 줄까지. 역량을 누르거나 마우스를 올리면 그 역량이 나온 공고 원문 문장을 작은 카드로 보인다.
 // 시간·글은 모두 서버 값이다. 예시 공고의 주차 계획 md(source 'md')는 목표·할 일이 md 의 목표·학습·실습 방법을 연결 어미에서 나눈 개조식 줄(세 줄까지)이고,
-// 작업이 끝나는 주에 산출물을 보인다. 계획이 여럿이면(주 7·14·28시간) 머리에 한 주 공부 시간 고르기와 분량 한 줄(scale). 7 은 보류 안내 글.
+// 작업이 끝나는 주에 산출물을 보인다. 계획이 여럿이면(주 7·14·28시간) 머리에 한 주 공부 시간 고르기와 고른 안의 분량 한 줄(line). 7 은 보류 안내 글.
+// 칸 모양은 디자이너 셋 합의 (11/21, design/readability/merged.md): 줄마다 칠한 알약 대신 배우기 / 만들기 묶음 머리, 이름 | 오른쪽 시간 칸
 // 생성기 결과(source 'generator')는 목표 = 만들기의 산출물, 할 일 = 만들기의 확인 기준과 배울 자료
-import { el, play } from './icons.js';
+import { el, icon, play } from './icons.js';
 import { chartCard, clearDoc } from './cards.js';
 import { hoursText } from './tables.js';
 
@@ -49,32 +50,42 @@ function compLine(cs) {
   if (cs.length > MAX) {
     const rest = el('span', { class: 'wk-rest', hidden: '' });
     cs.slice(MAX).forEach((c) => rest.append(chip(c)));
-    const more = el('button', { type: 'button', class: 'wk-more-comps', text: `+${cs.length - MAX}` });
+    const more = el('button', { type: 'button', class: 'wk-more-comps', text: `+${cs.length - MAX}개 더` });
     more.addEventListener('click', () => { rest.hidden = false; more.remove(); });
     p.append(more, rest);
   }
   return p;
 }
 
-// 한 줄: 배우기(자료 링크 · 시간) 또는 만들기(작업 이름 · 시간). md 계획은 끝나지 않은 작업에 끝나는 주, 끝나는 주에 산출물을 단다
-function item(a, md, week) {
+// 한 줄: 이름 | 오른쪽 시간. 만들기 이름은 작업 번호와 함께 (md 의 목표·방법 글이 W2 처럼 번호로 부른다).
+// md 계획은 작업이 처음 나온 주에만 이름 뒤에 끝나는 주 ("· 3주차까지", 따로 줄을 두지 않는다), 끝나는 주에 산출물 한 줄 (두 줄까지, 토글을 열면 다)
+function item(a, md, week, first) {
   const li = el('li', { class: 'wk-item', 'data-kind': a.kind });
-  li.append(el('span', { class: 'g-kind', 'data-kind': a.kind, text: a.kind === 'learning' ? '배우기' : '만들기' }));
-  const name = md && a.kind === 'project' ? `${a.id} ${a.title}` : a.title;      // md 의 목표·방법 글이 W2 처럼 작업 번호로 부른다
-  li.append(a.url ? el('a', { href: a.url, target: '_blank', rel: 'noopener noreferrer', text: name }) : el('span', { class: 'wk-title', text: name }));
-  li.append(el('span', { class: 'wk-h num', text: ` · ${hoursText(a.hours)}` }));
-  if (md && a.kind === 'project' && !a.done && a.ends > week) li.append(el('span', { class: 'wk-ends', text: ` → ${a.ends}주에 끝` }));
-  if (md && a.kind === 'project' && a.done && a.out) li.append(el('span', { class: 'wk-out', text: `산출물 · ${a.out}` }));
+  const name = md && a.kind === 'project' ? `${a.id} · ${a.title}` : a.title;
+  const n = a.url ? el('a', { class: 'wk-name', href: a.url, target: '_blank', rel: 'noopener noreferrer', text: name }) : el('span', { class: 'wk-name', text: name });
+  if (md && a.kind === 'project' && !a.done && a.ends > week && first) n.append(el('span', { class: 'wk-ends', text: ` · ${a.ends}주차까지` }));
+  li.append(n, el('span', { class: 'wk-h num', text: hoursText(a.hours) }));
+  if (md && a.kind === 'project' && a.done && a.out) li.append(el('span', { class: 'wk-out', title: `산출물 · ${a.out}`, text: `산출물 · ${a.out}` }));
   return li;
 }
 
-function weekCard(w, cap, comps, md) {
+// 칸 안 묶음 하나: 머리 "배우기 · 1시간 20분" 과 그 줄들. 빈 묶음은 그리지 않는다
+function group(kind, acts, hours, md, week, seen) {
+  if (!acts.length) return [];
+  const sec = el('section', { class: 'wk-group', 'data-kind': kind });
+  sec.append(el('h4', { class: 'wk-group-h', text: `${kind === 'learning' ? '배우기' : '만들기'} · ${hoursText(hours)}` }));
+  const ul = el('ul', { class: 'wk-items' });
+  acts.forEach((a) => { ul.append(item(a, md, week, !seen.has(a.id))); seen.add(a.id); });
+  sec.append(ul);
+  return [sec];
+}
+
+function weekCard(w, cap, comps, md, seen = new Set()) {
   const used = w.learning + w.project;
-  const card = el('article', { class: 'wk', 'data-over': String(used > cap + 1e-9), 'aria-label': `${w.week}주` });
+  const over = used > cap + 1e-9;
+  const card = el('article', { class: 'wk', 'data-over': String(over), 'aria-label': `${w.week}주` });
   const head = el('header', { class: 'wk-head' });
-  head.append(el('b', { class: 'wk-n', text: `${w.week}주` }), el('span', { class: 'wk-used num', text: `${hoursText(used)} / 상한 ${hoursText(cap)}` }));
-  const items = el('ul', { class: 'wk-items' });
-  w.activities.forEach((a) => items.append(item(a, md, w.week)));
+  head.append(el('b', { class: 'wk-n', text: `${w.week}주` }), el('span', { class: 'wk-used num', text: over ? `${hoursText(used)} · ${hoursText(used - cap)} 넘음` : hoursText(used) }));
   const more = el('details', { class: 'wk-more' });
   more.append(el('summary', { text: '목표 · 할 일 · 배우는 역량' }));
   const body = el('dl', { class: 'wk-body' });
@@ -83,7 +94,8 @@ function weekCard(w, cap, comps, md) {
   body.append(el('dt', { text: '할 일' }), holding('dd', list(md && w.method_steps?.length ? w.method_steps : todos(w.activities))));
   if (cs.length) body.append(el('dt', { text: '배우는 역량' }), holding('dd', compLine(cs)));
   more.append(body);
-  card.append(head, items, more);
+  const of = (k) => w.activities.filter((a) => a.kind === k);
+  card.append(head, ...group('learning', of('learning'), w.learning, md, w.week, seen), ...group('project', of('project'), w.project, md, w.week, seen), more);
   return card;
 }
 
@@ -93,26 +105,33 @@ function popover(root, comps) {
   document.body.append(pop);
   let pinned = null;
   let timer = 0;
+  // 머리 = 필수·우대 태그 + 이름 (분류 낱말 '수행' 은 쓰지 않는다), 닫기 단추. 문장마다 한국어 먼저, 그 아래 영어 원문 (노랑 띠)
   const fill = (c) => {
     const head = el('p', { class: 'cp-head' });
     head.append(el('span', { class: 'wk-tier', 'data-tier': c.tier, text: c.tier }), el('b', { class: 'cp-name', text: c.name }));
-    if (c.type) head.append(el('span', { class: 'cp-type', text: c.type }));
+    const close = el('button', { type: 'button', class: 'cp-close', 'aria-label': '닫기' }, icon('x'));
+    close.addEventListener('click', () => { pinned?.focus(); hide(); });
     const rows = c.said.map((q) => {
       const box = el('figure', { class: 'cp-said' });
-      box.append(el('figcaption', { text: `공고 원문 · ${q.section}` }), el('blockquote', { text: q.text }));
+      box.append(el('figcaption', { text: `공고 원문 · ${q.section}` }));
       if (q.ko) box.append(el('p', { class: 'cp-ko', text: q.ko }));
+      box.append(el('blockquote', { text: q.text }));
       return box;
     });
-    pop.replaceChildren(head, ...(rows.length ? rows : [el('p', { class: 'cp-ko', text: '공고 문장 번호가 없는 역량이에요.' })]));
+    pop.replaceChildren(head, close, ...(rows.length ? rows : [el('p', { class: 'cp-ko', text: '공고 문장 번호가 없는 역량이에요.' })]));
   };
+  // 칩 아래에 두고, 자리가 모자라면 위로. 바닥 줄(.foot) 위에서 끝난다. 휴대폰은 css 가 아래 시트로 둔다
   const place = (btn) => {
     const r = btn.getBoundingClientRect();
     pop.hidden = false;
-    const w = pop.offsetWidth, h = pop.offsetHeight, pad = 12;
+    pop.scrollTop = 0;
+    const foot = btn.closest('.page')?.querySelector('.foot:not([hidden])');
+    const floor = Math.min(innerHeight, foot && !btn.closest('.page').hasAttribute('data-foot-away') ? foot.getBoundingClientRect().top : innerHeight);
+    const w = pop.offsetWidth, h = pop.offsetHeight, pad = 16;
     const left = Math.min(Math.max(pad, r.left), innerWidth - w - pad);
-    const below = r.bottom + 8 + h < innerHeight - pad;
+    const below = r.bottom + 8 + h <= floor - pad;
     pop.style.left = `${left}px`;
-    pop.style.top = `${below ? r.bottom + 8 : Math.max(pad, r.top - h - 8)}px`;
+    pop.style.top = `${below ? r.bottom + 8 : Math.max(pad, Math.min(r.top - h - 8, floor - pad - h))}px`;
   };
   const show = (btn) => {
     const c = comps[btn.dataset.cid];
@@ -147,6 +166,7 @@ function popover(root, comps) {
     show(b);
   });
   const outside = (e) => { if (pinned && !pop.contains(e.target) && !e.target.closest('.wk-comp')) hide(); };
+  pop.addEventListener('mouseover', () => clearTimeout(timer));      // 카드 위로 옮겨 가는 동안 닫지 않는다 (닫기 단추를 누를 수 있게)
   const esc = (e) => { if (e.key === 'Escape' && !pop.hidden) { pinned?.focus(); hide(); } };
   const away = () => { if (!pop.hidden) hide(); };
   document.addEventListener('click', outside);
@@ -176,6 +196,18 @@ function planPick(plans, key, change) {
   return row;
 }
 
+// 주 칸 열두 개의 토글을 한 번에 열고 닫는다 (열린 칸만 길어져 격자가 들쭉날쭉하지 않게)
+function allToggle(grid) {
+  const b = el('button', { type: 'button', class: 'wk-all', 'aria-pressed': 'false', text: '모두 펼치기' });
+  b.addEventListener('click', () => {
+    const open = b.getAttribute('aria-pressed') !== 'true';
+    grid.querySelectorAll('.wk-more').forEach((d) => { d.open = open; });
+    b.setAttribute('aria-pressed', String(open));
+    b.textContent = open ? '모두 접기' : '모두 펼치기';
+  });
+  return b;
+}
+
 function fillFact(fact, p) {
   const md = p.source === 'md';
   fact.replaceChildren();
@@ -186,10 +218,11 @@ function fillFact(fact, p) {
     md ? ` · 한 주 상한 ${hoursText(p.cap)}` : ` · 한 사람, 한 주 ${short(p.cap)}시간`);
 }
 
-// 계획을 보류한 시간(주 7시간): 주 칸 대신 본문 글 셋 (오류가 아니라 그 시간으로는 짜지 않았다는 결과). 글은 서버 값
+// 계획을 보류한 시간(주 7시간): 주 칸 대신 본문 글 (오류가 아니라 그 시간으로는 짜지 않았다는 결과). 글은 서버 값.
+// "보류했어요"·한 주 최소 시간은 바닥 줄이 말하므로 여기서는 까닭과 다시 짜는 길만
 function blockedNote(b) {
   const box = el('section', { class: 'wk-blocked', 'aria-label': b.title });
-  box.append(el('h4', { class: 'wk-blocked-title', text: '이 시간으로는 12주 계획을 짜지 않았어요' }), ...b.lines.map((t) => el('p', { text: t })));
+  box.append(...b.lines.map((t) => el('p', { text: t })));
   return box;
 }
 
@@ -203,31 +236,37 @@ export const summary = () => current;
 // 고른 한 주 공부 시간의 열쇠 ("28"). ⑥ 리포트가 이 안으로 그린다 (main.js)
 export const planKey = () => chosen;
 
-export function start({ plans = [], comps = {}, default: first, scale = '', ...one }) {
+export function start({ plans = [], comps = {}, default: first, ...one }) {
   s?.drop?.();
   const all = plans.length ? plans : [{ ...one }];
   if (!all.some((p) => p.key === chosen)) chosen = first ?? all[0].key;
   const root = $('weeks-doc');
   root.setAttribute('aria-busy', 'true');
   const fact = el('p', { class: 'wk-fact' });
-  const held = el('p', { class: 'wk-held' });
+  const line = el('p', { class: 'wk-line' });
   const grid = el('div', { class: 'wk-list', role: 'list' });
   const note = el('div', { class: 'wk-blocked-slot' });
+  const all12 = allToggle(grid);
   const show = (key) => {
     chosen = key;
     const p = all.find((x) => x.key === key);
     current = plans.length ? p.summary : null;
     fillFact(fact, p);
-    held.hidden = p.source !== 'md';
-    held.textContent = `보류 작업 · ${p.held?.length ? p.held.map((h) => `${h.id} ${h.name}`).join(', ') : '없음'}`;
+    line.textContent = p.line || '';
     grid.hidden = p.source === 'blocked';
+    all12.hidden = p.source === 'blocked';
+    all12.setAttribute('aria-pressed', 'false');
+    all12.textContent = '모두 펼치기';
     note.replaceChildren(...(p.source === 'blocked' ? [blockedNote(p.blocked)] : []));
     grid.setAttribute('aria-label', `${p.plan.length}주 계획`);
-    grid.replaceChildren(...p.plan.map((w) => weekCard(w, p.cap, comps, p.source === 'md')));
+    const seen = new Set();      // 앞 주에 이미 나온 작업 (끝나는 주는 처음 나온 주에만 말한다)
+    grid.replaceChildren(...p.plan.map((w) => weekCard(w, p.cap, comps, p.source === 'md', seen)));
   };
-  const line = el('p', { class: 'wk-scale', text: scale });
-  const body = all.length > 1 ? [planPick(all, chosen, (k) => { show(k); onPick(current, k); }), ...(scale ? [line] : []), held, note, grid] : [held, grid];
-  root.replaceChildren(chartCard(fact, body, { cls: 'wk-card', aside: true }));
+  const row = all.length > 1 ? planPick(all, chosen, (k) => { show(k); onPick(current, k); }) : el('div', { class: 'plan-row' });
+  row.append(all12);
+  const card = chartCard(fact, [row, line, note, grid], { cls: 'wk-card', aside: true });
+  if (plans.length) card.dataset.plans = '';      // 계획 고르기가 있으면 합계 줄은 바닥 줄이 말한다
+  root.replaceChildren(card);
   show(chosen);
   s = { root, drop: popover(grid, comps) };
   play(grid, [{ opacity: 0 }, { opacity: 1 }], 240);

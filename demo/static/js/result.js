@@ -1,6 +1,6 @@
 // 결과와 근거 (사용자 11/21: 과정 그림보다 결과가 사람에게 쓸모 있는지가 중요하다).
 // 쪽마다 "무엇이 나왔나"(큰 카드)와 "왜 이 공고에 맞나"(공고 문장 ↔ 결과 쪽 문장 짝)를 같은 부품으로 그린다.
-import { el, play } from './icons.js';
+import { el, icon, play } from './icons.js';
 
 export const LEVEL = { 있음: '다룸', 일부: '일부만', 없음: '없음' };
 
@@ -22,12 +22,31 @@ function said(who, text, kind, ko = '', url = '', shot = '') {
     cap.append(a);
   }
   q.append(cap, el('blockquote', { text: ko || text || '근거 문장 없음', title: ko ? `원문: ${text}` : null }));
-  if (shot) {      // 원문 캡처 (구절에 형광펜). 누르면 원문 페이지로
-    const a = el('a', { class: 'ev-shot', href: url || shot, target: '_blank', rel: 'noopener noreferrer' });
-    a.append(el('img', { src: shot, alt: `원문 캡처: ${text}`, loading: 'lazy' }));
-    q.append(a);
+  if (shot) {      // 원문 캡처 (구절에 형광펜). 2배로 찍은 그림이라 찍은 크기보다 키우지 않고, 누르면 원래 크기로 (원문 페이지는 '원문 보기')
+    // srcset 2x 만 둔다: src 를 같이 두면 배율 1 화면(프로젝터)에서 src 가 1x 후보가 되어 그림이 찍은 크기의 2배로 커진다 (디자이너 2차 11/21)
+    const open = () => enlarge(shot, `원문 캡처: ${text}`);
+    const b = el('button', { type: 'button', class: 'ev-shot', 'aria-label': '원문 캡처 크게 보기' });
+    b.append(el('img', { srcset: `${shot} 2x`, alt: `원문 캡처: ${text}`, loading: 'lazy' }));
+    b.addEventListener('click', open);
+    const zoom = el('button', { type: 'button', class: 'ev-zoom', text: '크게 보기' });      // 눌러서 커진다는 것이 보이게 (커서 모양만으로는 모른다)
+    zoom.addEventListener('click', open);
+    q.append(b, zoom);
   }
   return q;
+}
+
+// 캡처 크게 보기: 쪽마다 하나의 대화상자. Esc·바깥·닫기로 닫힌다
+let box = null;
+function enlarge(src, alt) {
+  if (!box) {
+    box = el('dialog', { class: 'shot-dialog', 'aria-label': '원문 캡처' });
+    box.addEventListener('click', (e) => { if (e.target === box) box.close(); });
+    document.body.append(box);
+  }
+  const close = el('button', { type: 'button', class: 'icon-btn shot-close', 'aria-label': '닫기' }, icon('x'));
+  close.addEventListener('click', () => box.close());
+  box.replaceChildren(close, el('img', { src, srcset: `${src} 2x`, alt }));
+  box.showModal();
 }
 
 // 근거 한 줄: [필수] 역량 이름 · 판정, 그 아래 왼쪽 공고 문장 | 오른쪽 결과 쪽 문장
@@ -47,11 +66,21 @@ export const evList = (rows) => {
   return ol;
 };
 
-// 숫자 한 쌍: "필수 8개 중 5.5개"
+// 숫자 한 쌍: "필수 역량 8개 중 5.5개" (무엇을 몇 개 중 몇 개 셌는지 말로, 디자이너 2차 11/21)
 export function score(label, n, total, cls = '') {
   const p = el('p', { class: `rs-score${cls ? ` ${cls}` : ''}` });
-  p.append(el('span', { class: 'rs-score-label', text: label }), el('b', { class: 'num', text: String(n) }), el('span', { text: ` / ${total}` }));
+  p.append(el('span', { class: 'rs-score-label', text: `${label} ${total}개 중` }), numUnit(el('b', { class: 'num', text: String(n) })));
   return p;
 }
+
+// 큰 숫자와 "개" 를 한 덩어리로 (사이에 틈 없이, 줄이 갈라지지 않게)
+export function numUnit(b) {
+  const s = el('span', { class: 'rs-score-n' });
+  s.append(b, el('span', { class: 'rs-score-unit', text: '개' }));
+  return s;
+}
+
+// 일부만 다룬 것을 0.5개로 센 숫자가 있으면 그 셈을 한 번 말한다
+export const halfNote = (...ns) => (ns.some((x) => !Number.isInteger(Number(x))) ? el('p', { class: 'rs-half', text: '일부만 다룬 역량은 0.5개로 세요' }) : null);
 
 export const appear = (node) => play(node, [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], 240);
