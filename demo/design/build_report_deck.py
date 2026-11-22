@@ -22,7 +22,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from demo.pipeline import WORTH, example_case, exam_weeks, plans_case, span_text, weeks_text
+from demo.pipeline import WORTH, example_case, exam_weeks, plans_case, sem_week, span_text, weeks_text
 
 DEMO = Path(__file__).resolve().parent.parent
 DATA = DEMO / "data"
@@ -89,17 +89,17 @@ def page(case, budget):
 
 # ── 주차 계획 md 의 리포트 (④ 의 한 주 공부 시간 계획마다) ───────────────────
 def placed(plan):
-    """계획 → {작업 id: 그 작업이 놓인 주들}"""
+    """계획 → {작업 id: 그 작업이 놓인 학기 주들} (계획 1~12주 = 학기 1~6·9~14주, ④ 의 칸 이름과 같다)"""
     at = {}
     for w in plan["weeks"]:
         for x in w["activities"]:
             if x["kind"] == "project":
-                at.setdefault(x["id"], []).append(w["week"])
+                at.setdefault(x["id"], []).append(sem_week(w["week"]))
     return at
 
 
 def runs_text(weeks):
-    """[2, 3, 5] → "2~3주차, 5주차" (계획의 주는 1~12, 시험 주가 없다)"""
+    """학기 주 [2, 3, 5] → "2~3주차, 5주차". 시험 주를 건너뛴 6·9 는 이어지지 않아 "6주차, 9주차" """
     runs = []
     for k in sorted(set(weeks)):
         if runs and runs[-1][1] == k - 1:
@@ -122,10 +122,10 @@ def plan_study(row, plan, names, pk):
             key = (-sum(WORTH[c["level"]] for c in hit), w["week"], x["sequence"])
             if best is None or key < best[0]:
                 top = max(hit, key=lambda c: WORTH[c["level"]])
-                best = (key, {"title": x["title"], "name": names[top["cid"]], "week": w["week"], "minutes": x["minutes"], "url": x.get("url", "")})
+                best = (key, {"title": x["title"], "name": names[top["cid"]], "week": sem_week(w["week"]), "minutes": x["minutes"], "url": x.get("url", "")})
     if best is None:
         start = min((p["weeks"][0] for p in pk if p["weeks"]), default=None)
-        x = next((x for w in plan["weeks"] if w["week"] == start for x in w["activities"] if x["kind"] == "learning"), None)
+        x = next((x for w in plan["weeks"] if sem_week(w["week"]) == start for x in w["activities"] if x["kind"] == "learning"), None)
         best = x and ((), {"title": x["title"], "name": "그 일을 시작하는 주에 보는 자료", "week": start, "minutes": x["minutes"], "url": x.get("url", "")})
     return best and {**best[1], "when": f"{best[1]['week']}주차 · {span_text(best[1]['minutes'])}"}
 
@@ -172,7 +172,7 @@ def plan_outside(adapt, plan):
     for c in adapt["coverage"]:
         if c["expect"] == "있음":
             continue
-        mats = [f"{x['title']} ({w['week']}주차)" for w in plan["weeks"] for x in w["activities"]
+        mats = [f"{x['title']} ({sem_week(w['week'])}주차)" for w in plan["weeks"] for x in w["activities"]
                 if x["kind"] == "learning" and any(k["cid"] == c["id"] and k["level"] != "없음" for k in x.get("covers", []))]
         out.append({"name": c["name"], "tier": c["tier"], "level": c["expect"], "materials": mats})
     return out

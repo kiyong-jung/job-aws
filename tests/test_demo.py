@@ -705,6 +705,29 @@ def test_weeks_step_shows_7_14_28_hour_plans_with_14_as_default():
     assert (done["cap"], done["project"], done["deliverables"]) == (14, base["summary"]["implementation_hours"], len(base["assigned"]))
 
 
+def test_weekly_plans_name_weeks_by_semester_6_exam_2_6_exam_2():
+    """사용자 11/22: 12주 계획은 학기 16주에서 중간·기말 시험 2주씩을 뺀 것 (6 + 2 + 6 + 2).
+    ④ 칸 이름·끝나는 주·⑥ 의 주는 학기 주 (계획 7주 → 학기 9주), 시험 띠는 저장본 team.exams 와 같다"""
+    for name in ("aws_fde", NAVER):
+        team = pipeline.weeks_case(name)["team"]
+        assert team["semester_weeks"] == pipeline.SEMESTER_WEEKS
+        assert [(list(e["weeks"]), e["label"]) for e in pipeline.SEMESTER_EXAMS] == [(e["weeks"], e["label"]) for e in team["exams"]]
+    assert [pipeline.sem_week(k) for k in range(1, 13)] == [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14]
+    case = pipeline.example_case("aws_fde")
+    steps = next(server.events({"step": "weeks", "text": pipeline.posting_text(case)}, live_mode=False, default_speed=0))
+    for p in steps["plans"]:
+        if p["source"] == "blocked":
+            continue
+        d = {x["constraints"]["hours_per_week"]: x for x in pipeline.plans_case("aws_fde")}[p["cap"]]
+        assert [w["sem"] for w in p["plan"]] == [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14]
+        assert p["exams"] == [{"from": 7, "to": 8, "label": "중간고사"}, {"from": 15, "to": 16, "label": "기말고사"}]
+        assert p["semester"] == "한 학기 16주 = 6주 + 중간고사 2주 + 6주 + 기말고사 2주"
+        ends = [(a["ends"], x["ends_week"]) for w, dw in zip(p["plan"], d["weeks"]) for a, x in zip(w["activities"], dw["activities"]) if x.get("ends_week")]
+        assert ends and all(a == pipeline.sem_week(b) for a, b in ends)
+        facts = json.loads((pipeline.DATA / f"aws_fde.report.{p['key']}.json").read_text("utf-8"))
+        assert all(k not in (7, 8, 15, 16) and k <= 14 for r in facts["rows"] for pk in r["packages"] for k in pk["weeks"])
+
+
 def test_report_follows_the_chosen_weekly_plan():
     """⑥ 은 ④ 에서 고른 한 주 공부 시간의 계획으로 (사용자 11/21): 37줄 모두, 줄의 작업마다 ⑥ 의 주 = 그 계획에서 그 작업이 놓인 주.
     미룬 작업은 주 없이 미룬 일. 공부 자료는 그 계획 파일의 교육자료. 7시간(보류)은 리포트 대신 본문 글, 하루 공부 시간 열쇠는 받지 않는다"""
@@ -717,9 +740,9 @@ def test_report_follows_the_chosen_weekly_plan():
         for w in d["weeks"]:
             for x in w["activities"]:
                 if x["kind"] == "project":
-                    at.setdefault(x["id"], set()).add(w["week"])
+                    at.setdefault(x["id"], set()).add(pipeline.sem_week(w["week"]))      # ⑥ 의 주는 ④ 칸과 같은 학기 주
         held = {h["id"] for h in d["held"]}
-        learning = {(w["week"], x["title"]) for w in d["weeks"] for x in w["activities"] if x["kind"] == "learning"}
+        learning = {(pipeline.sem_week(w["week"]), x["title"]) for w in d["weeks"] for x in w["activities"] if x["kind"] == "learning"}
         assert facts["plan"]["hours"] == d["constraints"]["hours_per_week"] and facts["plan"]["held"] == [h["id"] for h in d["held"]]
         assert [r["n"] for r in facts["rows"]] == [r["sentence_no"] for r in report["rows"]]      # 37줄 모두
         for r, src in zip(facts["rows"], report["rows"]):

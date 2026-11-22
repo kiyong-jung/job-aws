@@ -775,6 +775,9 @@ ul.legend[hidden] { display: none; }
 .plan-pick { display: flex; gap: var(--s1); flex: 0 0 auto; min-width: 0; padding: var(--s1); background: var(--sunk); border-radius: var(--r-card); }
 .wk-line { margin: 0; max-width: none; font-size: var(--fs-body); line-height: 1.6; }      /* 고른 시간이면 분량이 어떻게 되는지 해요체 한 줄 */
 .wk-line:empty { display: none; }
+.wk-sem { margin: 0; max-width: none; font-size: var(--fs-body); line-height: 1.6; }      /* 한 학기 16주 = 6 + 시험 2 + 6 + 시험 2 (사용자 11/22) */
+.wk-sem[hidden] { display: none; }
+.wk-exam { grid-column: 1 / -1; padding: var(--s3) var(--s5); border: 1px solid var(--line); border-radius: 12px; background: var(--sunk); color: var(--ink); font-size: var(--fs-body); line-height: 1.6; }      /* 시험 띠: 칸보다 낮게, 한 줄 다 */
 .wk-card[data-plans] > .chart-head { display: none; }      /* 합계는 바닥 줄이 말한다 (같은 숫자를 두 번 쓰지 않는다) */
 .wk-card.chart-card { padding: 0; border: 0; background: none; }      /* ④ 는 주 칸이 상자다 (상자 두 겹까지) */
 .wk-list[hidden] { display: none; }

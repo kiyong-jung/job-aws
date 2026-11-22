@@ -80,12 +80,14 @@ function group(kind, acts, hours, md, week, seen) {
   return [sec];
 }
 
+// 주 이름은 학기 주 (12주 계획 = 학기 1~6주 + 9~14주, 7·8·15·16주는 시험. 사용자 11/22 "6 + 2 + 6 + 2")
 function weekCard(w, cap, comps, md, seen = new Set()) {
   const used = w.learning + w.project;
   const over = used > cap + 1e-9;
-  const card = el('article', { class: 'wk', 'data-over': String(over), 'aria-label': `${w.week}주` });
+  const n = w.sem ?? w.week;
+  const card = el('article', { class: 'wk', 'data-over': String(over), 'aria-label': `${n}주` });
   const head = el('header', { class: 'wk-head' });
-  head.append(el('b', { class: 'wk-n', text: `${w.week}주` }), el('span', { class: 'wk-used num', text: over ? `${hoursText(used)} · ${hoursText(used - cap)} 넘음` : hoursText(used) }));
+  head.append(el('b', { class: 'wk-n', text: `${n}주` }), el('span', { class: 'wk-used num', text: over ? `${hoursText(used)} · ${hoursText(used - cap)} 넘음` : hoursText(used) }));
   const more = el('details', { class: 'wk-more' });
   more.append(el('summary', { text: '목표 · 할 일 · 배우는 역량' }));
   const body = el('dl', { class: 'wk-body' });
@@ -95,8 +97,22 @@ function weekCard(w, cap, comps, md, seen = new Set()) {
   if (cs.length) body.append(el('dt', { text: '배우는 역량' }), holding('dd', compLine(cs)));
   more.append(body);
   const of = (k) => w.activities.filter((a) => a.kind === k);
-  card.append(head, ...group('learning', of('learning'), w.learning, md, w.week, seen), ...group('project', of('project'), w.project, md, w.week, seen), more);
+  card.append(head, ...group('learning', of('learning'), w.learning, md, n, seen), ...group('project', of('project'), w.project, md, n, seen), more);
   return card;
+}
+
+// 시험 띠 하나: "7~8주 · 중간고사 · 계획 없음". 격자 한 줄을 다 쓰고 낮게
+const examBand = (e) => el('div', { class: 'wk-exam', role: 'listitem', text: `${e.from}~${e.to}주 · ${e.label} · 계획 없음` });
+
+// 주 칸 사이에 시험 띠를 끼운다: 시험 첫 주보다 앞인 마지막 칸 다음에 (6주 다음 중간고사, 14주 다음 기말고사)
+function withExams(cards, plan, exams = []) {
+  const out = [];
+  let i = 0;
+  for (const e of exams) {
+    while (i < plan.length && (plan[i].sem ?? plan[i].week) < e.from) out.push(cards[i++]);
+    out.push(examBand(e));
+  }
+  return [...out, ...cards.slice(i)];
 }
 
 // 역량 카드 (하나만). 마우스를 올리면 잠깐 보이고, 누르면 고정. Esc·바깥 누르기로 닫는다
@@ -244,6 +260,7 @@ export function start({ plans = [], comps = {}, default: first, ...one }) {
   root.setAttribute('aria-busy', 'true');
   const fact = el('p', { class: 'wk-fact' });
   const line = el('p', { class: 'wk-line' });
+  const sem = el('p', { class: 'wk-sem' });
   const grid = el('div', { class: 'wk-list', role: 'list' });
   const note = el('div', { class: 'wk-blocked-slot' });
   const all12 = allToggle(grid);
@@ -253,6 +270,8 @@ export function start({ plans = [], comps = {}, default: first, ...one }) {
     current = plans.length ? p.summary : null;
     fillFact(fact, p);
     line.textContent = p.line || '';
+    sem.textContent = p.semester || '';
+    sem.hidden = p.source === 'blocked' || !p.semester;
     grid.hidden = p.source === 'blocked';
     all12.hidden = p.source === 'blocked';
     all12.setAttribute('aria-pressed', 'false');
@@ -260,11 +279,12 @@ export function start({ plans = [], comps = {}, default: first, ...one }) {
     note.replaceChildren(...(p.source === 'blocked' ? [blockedNote(p.blocked)] : []));
     grid.setAttribute('aria-label', `${p.plan.length}주 계획`);
     const seen = new Set();      // 앞 주에 이미 나온 작업 (끝나는 주는 처음 나온 주에만 말한다)
-    grid.replaceChildren(...p.plan.map((w) => weekCard(w, p.cap, comps, p.source === 'md', seen)));
+    const cards = p.plan.map((w) => weekCard(w, p.cap, comps, p.source === 'md', seen));
+    grid.replaceChildren(...withExams(cards, p.plan, p.exams));
   };
   const row = all.length > 1 ? planPick(all, chosen, (k) => { show(k); onPick(current, k); }) : el('div', { class: 'plan-row' });
   row.append(all12);
-  const card = chartCard(fact, [row, line, note, grid], { cls: 'wk-card', aside: true });
+  const card = chartCard(fact, [row, sem, line, note, grid], { cls: 'wk-card', aside: true });
   if (plans.length) card.dataset.plans = '';      // 계획 고르기가 있으면 합계 줄은 바닥 줄이 말한다
   root.replaceChildren(card);
   show(chosen);

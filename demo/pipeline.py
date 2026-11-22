@@ -883,6 +883,23 @@ def curriculum_case(name, hours):
     return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else None
 
 
+SEMESTER_WEEKS = 16
+SEMESTER_EXAMS = ({"weeks": (7, 8), "label": "중간고사"}, {"weeks": (15, 16), "label": "기말고사"})      # aws_fde.weeks.json team.exams 와 같다 (테스트가 확인)
+SEMESTER_LINE = "한 학기 16주 = 6주 + 중간고사 2주 + 6주 + 기말고사 2주"
+
+
+def sem_week(k):
+    """12주 계획의 주(1~12) → 학기 주(1~6, 9~14). 시험 주(7·8·15·16)는 계획에 없다 (사용자 11/22: 6 + 2 + 6 + 2)"""
+    exams = {x for e in SEMESTER_EXAMS for x in e["weeks"]}
+    study = [w for w in range(1, SEMESTER_WEEKS + 1) if w not in exams]
+    return study[k - 1] if 1 <= k <= len(study) else k
+
+
+def sem_exams():
+    """④ 의 시험 띠: [{from, to, label}]"""
+    return [{"from": e["weeks"][0], "to": e["weeks"][-1], "label": e["label"]} for e in SEMESTER_EXAMS]
+
+
 PLAN_HOURS = (7, 14, 28)      # ④ 한 주 공부 시간 단추 (사용자 11/21 밤: 7·14·28). 7 은 보류 안내. 15시간 판(plan.15.json)은 파일만 두고 쓰지 않는다
 DEFAULT_WEEK_HOURS = 14      # 처음 보이는 계획 (사용자 11/22: 발표 기준을 "주 14시간으로 통일", 가온님 판에 맞춤. 11/21 밤의 28 기본을 바꿈)
 
@@ -933,10 +950,10 @@ def span_text(m):
 def plan_view(case, d, hours, source):
     """계획 하나 → 화면 값: 주마다 활동(배우기·만들기), 합, 보류 작업, 바닥 줄 숫자(summary)"""
     s = d["summary"]
-    plan_ = [{"week": w["week"], "learning": w["learning_minutes"] / 60, "project": w["implementation_minutes"] / 60, "cap": w["capacity_minutes"] / 60,
+    plan_ = [{"week": w["week"], "sem": sem_week(w["week"]), "learning": w["learning_minutes"] / 60, "project": w["implementation_minutes"] / 60, "cap": w["capacity_minutes"] / 60,
               "goal": w.get("goal", ""), "method": w.get("method", ""), "goal_steps": w.get("goal_steps", []), "method_steps": w.get("method_steps", []),
               "activities": [{"id": x["id"], "done": x.get("completed_in_this_chunk", True), "kind": x["kind"], "title": re.sub(r"\s*\(준비:.*\)$", "", x["title"]), "hours": x["hours"], "out": x.get("out", ""), "role": x.get("role", ""),
-                              "url": web(x.get("url", "")), "skills": skill_names(case, x.get("competencies", [])), "ends": x.get("ends_week"),
+                              "url": web(x.get("url", "")), "skills": skill_names(case, x.get("competencies", [])), "ends": x.get("ends_week") and sem_week(x["ends_week"]),
                               "cids": skill_ids(case, x.get("competencies", [])), "check": x.get("completion_check", "")} for x in w["activities"]],
               "deliverables": w["deliverables_completed"]} for w in d["weeks"]]
     summary = {"weeks": len(d["weeks"]), "cap": hours, "inside_weeks": sum(w["used_minutes"] <= w["capacity_minutes"] for w in d["weeks"]),
@@ -945,7 +962,8 @@ def plan_view(case, d, hours, source):
     view = {"key": f"{hours:g}", "label": f"주 {hours:g}시간", "source": source,
             "plan": plan_, "cap": hours, "learning": s["learning_hours"], "project": s["implementation_hours"],
             "total": s.get("scheduled_hours", s["learning_hours"] + s["implementation_hours"]),
-            "assigned": d.get("assigned", []), "held": d.get("held", []), "summary": summary}
+            "assigned": d.get("assigned", []), "held": d.get("held", []), "summary": summary,
+            "exams": sem_exams(), "semester": SEMESTER_LINE}
     return {**view, "line": plan_line(view)}
 
 

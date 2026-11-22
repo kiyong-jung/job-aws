@@ -288,6 +288,16 @@ async def flow(p):
     weeks_n = await p.js("document.querySelectorAll('#weeks-doc .wk').length")
     items_n = await p.js("document.querySelectorAll('#weeks-doc .wk-item').length")
     assert weeks_n == 12 and items_n >= 12, f"⑤ 주 칸 {weeks_n}개, 할 일 {items_n}개"
+    if PLAN:      # 사용자 11/22: 12주 계획 = 학기 6주 + 중간고사 2주 + 6주 + 기말고사 2주. 칸 이름은 학기 주, 시험 띠 둘은 본문 크기·먹색
+        order = await p.js("[...document.querySelector('#weeks-doc .wk-list').children].map((c) => c.classList.contains('wk-exam') ? c.textContent : c.getAttribute('aria-label'))")
+        want = [f"{k}주" for k in range(1, 7)] + ["7~8주 · 중간고사 · 계획 없음"] + [f"{k}주" for k in range(9, 15)] + ["15~16주 · 기말고사 · 계획 없음"]
+        assert order == want, f"⑤ 주 칸 차례 {order}"
+        sem = await p.js("document.querySelector('#weeks-doc .wk-sem')?.textContent")
+        assert sem == "한 학기 16주 = 6주 + 중간고사 2주 + 6주 + 기말고사 2주", f"⑤ 학기 줄 {sem!r}"
+        look = await p.js("[...document.querySelectorAll('#weeks-doc .wk-exam, #weeks-doc .wk-sem')].map((x) => [getComputedStyle(x).fontSize, getComputedStyle(x).color])")
+        assert all(f == "16px" and c == "rgb(43, 42, 39)" for f, c in look), f"⑤ 시험 띠·학기 줄 글씨 {look}"
+        ends = await p.js("[...document.querySelectorAll('#weeks-doc .wk-ends')].map((x) => parseInt(x.textContent.match(/(\\d+)주차까지/)[1]))")
+        assert ends and all(k not in (7, 8) and k <= 14 for k in ends), f"⑤ 끝나는 주가 학기 주가 아니다 {ends}"
     if PLAN:
         outs = await p.js("document.querySelectorAll('#weeks-doc .wk-out').length")
         n_out = sum(len(w["deliverables_completed"]) for w in PLAN["weeks"])
