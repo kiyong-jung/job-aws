@@ -447,7 +447,7 @@ export function renderAdapted(a, { top = null } = {}) {
     jobs.append(li);
   });
   doc.replaceChildren(...(top ? [top] : []), hero, section(`공고의 필수·우대 역량 ${a.rows.length}개를 이 프로젝트에서 이렇게 다뤄요`, list),
-    section(`만들 것 · 일 ${a.jobs.length}개 · ${a.hours.total}시간 (팀 전체)`, jobs));
+    section(`만들 것 · 작업 묶음 ${a.jobs.length}개 · ${a.hours.total}시간 (팀 전체)`, jobs));
   adapt = { rows, now, queue: [] };
 }
 // fill 사건은 모아 두었다가 ③ 이 보이면 하나씩 튼다 (보이지 않는 동안 틀면 움직임이 없다)
