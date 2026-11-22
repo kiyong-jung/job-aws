@@ -1,119 +1,17 @@
-// ⑤ 12주 계획 쪽 (사용자 11/21). 주마다 한 칸: 그 주의 배우기(교육자료)와 만들기(프로젝트 작업)를 한 칸에.
-// 칸 아래 토글을 열면 목표·할 일·배우는 역량을 세 줄까지. 역량을 누르거나 마우스를 올리면 그 역량이 나온 공고 원문 문장을 작은 카드로 보인다.
-// 시간·글은 모두 서버 값이다. 예시 공고의 주차 계획 md(source 'md')는 목표·할 일이 md 의 목표·학습·실습 방법을 연결 어미에서 나눈 개조식 줄(세 줄까지)이고,
-// 작업이 끝나는 주에 산출물을 보인다. 계획이 여럿이면(주 7·14·28시간) 머리에 한 주 공부 시간 고르기와 고른 안의 분량 한 줄(line). 7 은 보류 안내 글.
-// 칸 모양은 디자이너 셋 합의 (11/21, design/readability/merged.md): 줄마다 칠한 알약 대신 배우기 / 만들기 묶음 머리, 이름 | 오른쪽 시간 칸
-// 생성기 결과(source 'generator')는 목표 = 만들기의 산출물, 할 일 = 만들기의 확인 기준과 배울 자료
-import { el, icon, play } from './icons.js';
+// ④ 12주 계획 쪽 (사용자 11/22: "12주 계획 간트차트 형태로 보이도록 해줘. 세부 내용은 클릭하면 오른쪽에 사이드 탭이 뜨게(노션처럼)").
+// 그림은 간트차트 하나 (gantt.js: 학기 16주 열, 작업 묶음 줄, 막대·교육자료 동그라미), 세부는 오른쪽 옆 패널 (peek.js).
+// 시간·글은 모두 서버 값이다. 계획이 여럿이면(주 7·14·28시간) 머리에 한 주 공부 시간 고르기와 고른 안의 분량 한 줄(line). 7 은 보류 안내 글.
+// 학기 모양은 6주 + 중간고사 2주 + 6주 + 기말고사 2주 (사용자 11/22): 계획의 12주가 학기 1~6주와 9~14주다 (서버 sem).
+// 역량을 누르거나 마우스를 올리면 그 역량이 나온 공고 원문 문장을 작은 카드로 보인다 (popover, 옆 패널 안의 역량 칩).
+import { el, icon } from './icons.js';
+import { model, chart, legend, grow } from './gantt.js';
+import { createPeek } from './peek.js';
 import { chartCard, clearDoc } from './cards.js';
 import { hoursText } from './tables.js';
 
 const $ = (id) => document.getElementById(id);
 const short = (h) => `${Math.round(h * 10) / 10}`;
-const MAX = 3;
-const TIER = { 필수: 0, 우대: 1, 나머지: 2 };
 let s = null;
-const holding = (tag, ...kids) => { const n = el(tag); n.append(...kids); return n; };
-
-function list(items) {
-  const ul = el('ul', { class: 'wk-lines' });
-  items.slice(0, MAX).forEach((x) => ul.append(el('li', { text: x })));
-  return ul;
-}
-
-function goals(acts) {
-  const out = acts.filter((a) => a.kind === 'project' && a.out).map((a) => (a.done ? a.out : `${a.out} (다음 주까지)`));
-  return out.length ? out : acts.filter((a) => a.kind === 'learning').map((a) => `「${a.title}」 공부 끝내기`);
-}
-
-function todos(acts) {
-  return [...acts.filter((a) => a.kind === 'project' && a.check).map((a) => a.check),
-    ...acts.filter((a) => a.kind === 'learning').map((a) => `「${a.title}」 공부 · ${hoursText(a.hours)}`)];
-}
-
-// 그 주 역량 (한 번씩, 필수 → 우대 → 나머지). '기초' 는 같은 역량의 기초만 다룬다는 표시
-function weekComps(acts, comps) {
-  const seen = new Map();
-  for (const a of acts) for (const r of a.cids || []) if (comps[r.cid]) seen.set(r.cid, (seen.get(r.cid) ?? true) && r.basic);
-  return [...seen].map(([cid, basic]) => ({ cid, basic, ...comps[cid] })).sort((x, y) => (TIER[x.tier] ?? 3) - (TIER[y.tier] ?? 3));
-}
-
-function chip(c) {
-  const b = el('button', { type: 'button', class: 'wk-comp', 'data-cid': c.cid, 'data-tier': c.tier, 'aria-haspopup': 'dialog', 'aria-expanded': 'false' });
-  b.append(el('span', { class: 'wk-tier', text: c.tier }), el('span', { text: c.basic ? `${c.name} 기초` : c.name }));
-  return b;
-}
-
-function compLine(cs) {
-  const p = el('p', { class: 'wk-comps' });
-  cs.slice(0, MAX).forEach((c) => p.append(chip(c)));
-  if (cs.length > MAX) {
-    const rest = el('span', { class: 'wk-rest', hidden: '' });
-    cs.slice(MAX).forEach((c) => rest.append(chip(c)));
-    const more = el('button', { type: 'button', class: 'wk-more-comps', text: `+${cs.length - MAX}개 더` });
-    more.addEventListener('click', () => { rest.hidden = false; more.remove(); });
-    p.append(more, rest);
-  }
-  return p;
-}
-
-// 한 줄: 이름 | 오른쪽 시간. 만들기 이름은 작업 번호와 함께 (md 의 목표·방법 글이 W2 처럼 번호로 부른다).
-// md 계획은 작업이 처음 나온 주에만 이름 뒤에 끝나는 주 ("· 3주차까지", 따로 줄을 두지 않는다), 끝나는 주에 산출물 한 줄 (두 줄까지, 토글을 열면 다)
-function item(a, md, week, first) {
-  const li = el('li', { class: 'wk-item', 'data-kind': a.kind });
-  const name = md && a.kind === 'project' ? `${a.id} · ${a.title}` : a.title;
-  const n = a.url ? el('a', { class: 'wk-name', href: a.url, target: '_blank', rel: 'noopener noreferrer', text: name }) : el('span', { class: 'wk-name', text: name });
-  if (md && a.kind === 'project' && !a.done && a.ends > week && first) n.append(el('span', { class: 'wk-ends', text: ` · ${a.ends}주차까지` }));
-  li.append(n, el('span', { class: 'wk-h num', text: hoursText(a.hours) }));
-  if (md && a.kind === 'project' && a.done && a.out) li.append(el('span', { class: 'wk-out', title: `산출물 · ${a.out}`, text: `산출물 · ${a.out}` }));
-  return li;
-}
-
-// 칸 안 묶음 하나: 머리 "배우기 · 1시간 20분" 과 그 줄들. 빈 묶음은 그리지 않는다
-function group(kind, acts, hours, md, week, seen) {
-  if (!acts.length) return [];
-  const sec = el('section', { class: 'wk-group', 'data-kind': kind });
-  sec.append(el('h4', { class: 'wk-group-h', text: `${kind === 'learning' ? '배우기' : '만들기'} · ${hoursText(hours)}` }));
-  const ul = el('ul', { class: 'wk-items' });
-  acts.forEach((a) => { ul.append(item(a, md, week, !seen.has(a.id))); seen.add(a.id); });
-  sec.append(ul);
-  return [sec];
-}
-
-// 주 이름은 학기 주 (12주 계획 = 학기 1~6주 + 9~14주, 7·8·15·16주는 시험. 사용자 11/22 "6 + 2 + 6 + 2")
-function weekCard(w, cap, comps, md, seen = new Set()) {
-  const used = w.learning + w.project;
-  const over = used > cap + 1e-9;
-  const n = w.sem ?? w.week;
-  const card = el('article', { class: 'wk', 'data-over': String(over), 'aria-label': `${n}주` });
-  const head = el('header', { class: 'wk-head' });
-  head.append(el('b', { class: 'wk-n', text: `${n}주` }), el('span', { class: 'wk-used num', text: over ? `${hoursText(used)} · ${hoursText(used - cap)} 넘음` : hoursText(used) }));
-  const more = el('details', { class: 'wk-more' });
-  more.append(el('summary', { text: '목표 · 할 일 · 배우는 역량' }));
-  const body = el('dl', { class: 'wk-body' });
-  const cs = weekComps(w.activities, comps);
-  body.append(el('dt', { text: '목표' }), holding('dd', list(md && w.goal_steps?.length ? w.goal_steps : goals(w.activities))));
-  body.append(el('dt', { text: '할 일' }), holding('dd', list(md && w.method_steps?.length ? w.method_steps : todos(w.activities))));
-  if (cs.length) body.append(el('dt', { text: '배우는 역량' }), holding('dd', compLine(cs)));
-  more.append(body);
-  const of = (k) => w.activities.filter((a) => a.kind === k);
-  card.append(head, ...group('learning', of('learning'), w.learning, md, n, seen), ...group('project', of('project'), w.project, md, n, seen), more);
-  return card;
-}
-
-// 시험 띠 하나: "7~8주 · 중간고사 · 계획 없음". 격자 한 줄을 다 쓰고 낮게
-const examBand = (e) => el('div', { class: 'wk-exam', role: 'listitem', text: `${e.from}~${e.to}주 · ${e.label} · 계획 없음` });
-
-// 주 칸 사이에 시험 띠를 끼운다: 시험 첫 주보다 앞인 마지막 칸 다음에 (6주 다음 중간고사, 14주 다음 기말고사)
-function withExams(cards, plan, exams = []) {
-  const out = [];
-  let i = 0;
-  for (const e of exams) {
-    while (i < plan.length && (plan[i].sem ?? plan[i].week) < e.from) out.push(cards[i++]);
-    out.push(examBand(e));
-  }
-  return [...out, ...cards.slice(i)];
-}
 
 // 역량 카드 (하나만). 마우스를 올리면 잠깐 보이고, 누르면 고정. Esc·바깥 누르기로 닫는다
 function popover(root, comps) {
@@ -152,7 +50,7 @@ function popover(root, comps) {
   const show = (btn) => {
     const c = comps[btn.dataset.cid];
     if (!c) return;
-    fill({ ...c, name: btn.textContent.replace(/^(필수|우대|나머지)/, '') });
+    fill({ ...c, name: btn.dataset.name ?? btn.textContent.replace(/^(필수|우대|나머지)/, '') });
     place(btn);
   };
   const hide = () => {
@@ -212,18 +110,6 @@ function planPick(plans, key, change) {
   return row;
 }
 
-// 주 칸 열두 개의 토글을 한 번에 열고 닫는다 (열린 칸만 길어져 격자가 들쭉날쭉하지 않게)
-function allToggle(grid) {
-  const b = el('button', { type: 'button', class: 'wk-all', 'aria-pressed': 'false', text: '모두 펼치기' });
-  b.addEventListener('click', () => {
-    const open = b.getAttribute('aria-pressed') !== 'true';
-    grid.querySelectorAll('.wk-more').forEach((d) => { d.open = open; });
-    b.setAttribute('aria-pressed', String(open));
-    b.textContent = open ? '모두 접기' : '모두 펼치기';
-  });
-  return b;
-}
-
 function fillFact(fact, p) {
   const md = p.source === 'md';
   fact.replaceChildren();
@@ -260,36 +146,35 @@ export function start({ plans = [], comps = {}, default: first, ...one }) {
   root.setAttribute('aria-busy', 'true');
   const fact = el('p', { class: 'wk-fact' });
   const line = el('p', { class: 'wk-line' });
-  const sem = el('p', { class: 'wk-sem' });
-  const grid = el('div', { class: 'wk-list', role: 'list' });
+  const key = legend();
+  const scroll = el('div', { class: 'g-scroll', tabindex: '-1' });
   const note = el('div', { class: 'wk-blocked-slot' });
-  const all12 = allToggle(grid);
-  const show = (key) => {
-    chosen = key;
-    const p = all.find((x) => x.key === key);
+  const peek = createPeek({ comps, popover });
+  const page = $('page-weeks');
+  const show = (k) => {
+    chosen = k;
+    const p = all.find((x) => x.key === k);
     current = plans.length ? p.summary : null;
     fillFact(fact, p);
     line.textContent = p.line || '';
-    sem.textContent = p.semester || '';
-    sem.hidden = p.source === 'blocked' || !p.semester;
-    grid.hidden = p.source === 'blocked';
-    all12.hidden = p.source === 'blocked';
-    all12.setAttribute('aria-pressed', 'false');
-    all12.textContent = '모두 펼치기';
-    note.replaceChildren(...(p.source === 'blocked' ? [blockedNote(p.blocked)] : []));
-    grid.setAttribute('aria-label', `${p.plan.length}주 계획`);
-    const seen = new Set();      // 앞 주에 이미 나온 작업 (끝나는 주는 처음 나온 주에만 말한다)
-    const cards = p.plan.map((w) => weekCard(w, p.cap, comps, p.source === 'md', seen));
-    grid.replaceChildren(...withExams(cards, p.plan, p.exams));
+    const blocked = p.source === 'blocked';
+    key.hidden = blocked;
+    scroll.hidden = blocked;
+    note.replaceChildren(...(blocked ? [blockedNote(p.blocked)] : []));
+    if (blocked) { scroll.replaceChildren(); peek.close({ focus: false, keepHash: true }); return; }
+    const m = model(p);
+    const g = chart(m, p.exams);
+    scroll.replaceChildren(g);
+    peek.use(m, page);
+    return g;
   };
   const row = all.length > 1 ? planPick(all, chosen, (k) => { show(k); onPick(current, k); }) : el('div', { class: 'plan-row' });
-  row.append(all12);
-  const card = chartCard(fact, [row, sem, line, note, grid], { cls: 'wk-card', aside: true });
+  const card = chartCard(fact, [row, line, key, scroll, note], { cls: 'wk-card', aside: true });
   if (plans.length) card.dataset.plans = '';      // 계획 고르기가 있으면 합계 줄은 바닥 줄이 말한다
   root.replaceChildren(card);
-  show(chosen);
-  s = { root, drop: popover(grid, comps) };
-  play(grid, [{ opacity: 0 }, { opacity: 1 }], 240);
+  const g = show(chosen);
+  s = { root, drop: () => peek.destroy() };
+  if (g) grow(g);
 }
 
 export function done() {

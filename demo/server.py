@@ -2,7 +2,7 @@
 
 GET  /                 화면 (static/index.html)
 GET  /static/...       화면 파일
-GET  /report/<예시>.<시간>.<쪽>.png|.pptx   ⑥ 정리 리포트 슬라이드 (쪽 그림과 받을 pptx)
+GET  /report/<예시>.<시간>.<쪽>.png|.pptx|.all.pdf   ⑥ 정리 리포트 슬라이드 (쪽 그림과 받을 pptx)
 GET  /api/examples     예시 공고 목록 [{case, label, title, company, text, filename}] (빈 화면 단추 차례. 읽을 수 있는 것만)
 GET  /api/mode         {live}
 POST /api/run          {text | html | url, title?, speed?, stop?, step?, budget?} → text/event-stream (사건은 pipeline.py 참고)
@@ -27,10 +27,10 @@ MAX_BODY = 2_000_000
 MAX_SPEED = 8.0
 TYPES = {".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8",
          ".css": "text/css; charset=utf-8", ".woff2": "font/woff2", ".webp": "image/webp", ".png": "image/png", ".txt": "text/plain; charset=utf-8",
-         ".svg": "image/svg+xml", ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation"}
+         ".svg": "image/svg+xml", ".pdf": "application/pdf", ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation"}
 POSTING = re.compile(r"/posting/([a-z0-9_]+)\.png")
 PROOF = re.compile(r"/proof/([0-9a-f]{12})\.png")      # 근거 구절의 원문 캡처 (data/proof/<id>.png)      # ① 실제 공고 사이트 화면 (data/<예시>.posting.png)
-REPORT = re.compile(r"/report/([a-z0-9_]+)\.(\d+)\.((?:\d+\.)?png|pptx)")      # ⑥ 리포트 쪽 그림과 pptx (data/<예시>.report.<시간>.<쪽>.png·.pptx). 이름 꼴이 맞을 때만
+REPORT = re.compile(r"/report/([a-z0-9_]+)\.(\d+)\.((?:\d+\.)?png|pptx|all\.pdf)")      # ⑥ 리포트 쪽 그림과 pptx (data/<예시>.report.<시간>.<쪽>.png·.pptx). 이름 꼴이 맞을 때만
 
 
 # css 의 @font-face 한 덩어리와 그 글꼴 파일 주소 (css 파일 자리에서 본 상대 주소)

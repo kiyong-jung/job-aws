@@ -771,3 +771,28 @@ def test_plan_steps_keep_md_words_and_split_at_clause_endings():
     assert got == ["가를 정하고, 나를 점검하기", "다를 정리해 근거로 삼기", "라를 확인한 뒤 마를 등록하기"]      # 가장 짧게 붙는 이웃 둘을 쉼표째 붙인다
     assert steps("A를 완성한다. 아울러 B를 시작한다.") == ["A를 완성하기", "B를 시작하기"]
 
+
+
+def test_gantt_plan_view_attaches_every_learning_item_to_a_package_and_lists_packages():
+    """④ 간트차트: 교육자료마다 받쳐 주는 작업(for)이 있고, 작업 묶음 표(packages)는 번호 차례, 미룬 것은 held"""
+    case = pipeline.example_case("aws_fde")
+    steps = next(e for e in pipeline.weeks(case, speed=0) if e["type"] == "steps")
+    for v in steps["plans"]:
+        if v["source"] != "md":
+            continue
+        ids = [k["id"] for k in v["packages"]]
+        assert ids == sorted(ids, key=lambda x: int(x[1:])) and {k["id"] for k in v["packages"] if k["held"]} == {h["id"] for h in v["held"]}
+        learning = [a for w in v["plan"] for a in w["activities"] if a["kind"] == "learning"]
+        assert learning and all(a["for"] in ids and a["why"] and a["levels"] for a in learning)
+        assert all(w["reason"] for w in v["plan"])
+    two = {a["id"]: a["for"] for w in steps["plans"][1]["plan"] for a in w["activities"] if a["kind"] == "learning"}
+    assert two["L0201"] == "W2" and two["L0303"] == "W3"      # 겹치는 역량 + 그 주의 작업
+
+
+def test_report_event_offers_full_pdf_only_when_the_file_exists():
+    """⑥ PDF 받기: 질문 전체 PDF 파일이 있는 계획만 주소를 싣는다 (없으면 None), 서버는 application/pdf 로 준다"""
+    aws = pipeline.report_page("aws_fde", "14")
+    assert aws["pdf"] == "/report/aws_fde.14.all.pdf" and aws["pdf_filename"].endswith("_전체.pdf")
+    assert server.REPORT.fullmatch(aws["pdf"]) and server.TYPES[".pdf"] == "application/pdf"
+    if not (pipeline.DATA / f"{NAVER}.report.84.all.pdf").is_file():
+        assert pipeline.report_page(NAVER, "84")["pdf"] is None

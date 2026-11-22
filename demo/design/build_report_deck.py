@@ -336,7 +336,7 @@ def chrome(*args):
 
 def build(case):
     for old in DATA.glob(f"{case}.report.*"):      # 지난 판(LaTeX 한 장, 쪽 수가 다른 그림)을 지운다. report.json 은 원본이라 둔다
-        if old.name != f"{case}.report.json":
+        if old.name != f"{case}.report.json" and ".all." not in old.name:      # 전체 리포트(.all.)는 build_report_all.py 가 따로 만든다
             old.unlink()
     plans = {f"{d['constraints']['hours_per_week']:g}": d for d in plans_case(case)}      # 주차 계획 md 예시는 계획마다, 아니면 공부 시간 안마다
     for budget in plans or BUDGETS:

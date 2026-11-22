@@ -207,9 +207,9 @@ async def press(p, label):
     await p.mouse(".go[data-press]")
 
 
-# ④ 주 칸마다 만들기 줄의 작업 번호: {"W2": [2, 3], …}
-WEEK_JOBS = """(() => { const at = {}; for (const c of document.querySelectorAll('#weeks-doc .wk')) { const w = parseInt(c.getAttribute('aria-label'));
-  for (const li of c.querySelectorAll('.wk-item[data-kind=project]')) { const id = li.textContent.match(/W\\d+/)?.[0]; if (id) (at[id] ||= []).push(w); } } return at; })()"""
+# ④ 간트차트 막대 칸마다 작업 번호의 학기 주: {"W2": [2, 3], …}
+WEEK_JOBS = """(() => { const at = {}; for (const c of document.querySelectorAll('#weeks-doc .g-bar .g-cell[data-lv]')) {
+  (at[c.closest('.g-bar').dataset.id] ||= []).push(Number(c.dataset.w)); } return at; })()"""
 
 
 async def report_matches_weeks(p, cap):
@@ -218,11 +218,95 @@ async def report_matches_weeks(p, cap):
     basis = await p.js("document.querySelector('#report-doc .rep-basis')?.textContent || ''")
     assert basis.startswith(f"한 주 {cap}시간 계획 기준"), f"⑥ 기준 줄 {basis!r}"
     assert await p.js("document.getElementById('budget').hidden"), "⑥ 에 하루 공부 시간 칸이 보인다"
+    want_go = ["pptx 받기"] + (["PDF 받기"] if (DATA / f"{CASE}.report.{cap}.all.pdf").is_file() else [])      # 질문 전체 PDF 는 파일이 있는 계획에만
+    got_go = await p.js("[...document.querySelectorAll('.page:not([hidden]) .go')].map((x) => x.textContent)")
+    assert got_go == want_go, f"⑥ {cap}시간 받기 단추 {got_go} (기대 {want_go})"
+    if len(want_go) == 2:
+        href = await p.js("[...document.querySelectorAll('.page:not([hidden]) .go')].find((x) => x.textContent === 'PDF 받기').href")
+        pdf = urllib.request.urlopen(href).read()
+        assert pdf[:5] == b"%PDF-" and len(pdf) == (DATA / f"{CASE}.report.{cap}.all.pdf").stat().st_size, f"⑥ {cap}시간 PDF 받기 {href}"
     at = await p.js(WEEK_JOBS)
     for r in REPORT_FACTS(cap)["rows"]:
         for pk in r["packages"]:
             assert sorted(at.get(pk["id"], [])) == pk["weeks"], f"⑥ {r['n']}번 줄 {pk['id']} 주 {pk['weeks']} ≠ ④ {sorted(at.get(pk['id'], []))}"
     print(f"  ⑥ {cap}시간: {basis}", flush=True)
+
+
+async def gantt_ok(p, d):
+    """④ 간트차트가 계획 파일(d)과 같은지: 열 16개(학기 주), 시험 띠 둘, 작업 줄·막대 주·끝나는 주 마름모·교육자료 동그라미 수, 미룸 줄, 글 크기"""
+    from demo.pipeline import sem_week
+    assert await p.js("!document.querySelector('#weeks-doc .wk, #weeks-doc .wk-list, #weeks-doc .wk-sem')"), "④ 옛 주 칸이 남아 있다"
+    assert await p.js("document.querySelectorAll('#weeks-doc .g-head').length") == 16, "④ 학기 주 열이 16개가 아니다"
+    if not d:
+        assert await p.js("document.querySelectorAll('#weeks-doc .g-bar').length") >= 1, "④ 막대가 없다"
+        return
+    weeks = [sem_week(k) for k in range(1, 13)]
+    heads = await p.js("[...document.querySelectorAll('#weeks-doc button.g-head')].map((x) => Number(x.textContent))")
+    assert heads == weeks, f"④ 주 머리 단추 {heads} (학기 주 {weeks})"
+    exams = await p.js("[...document.querySelectorAll('#weeks-doc .g-exam')].map((x) => [x.textContent, getComputedStyle(x.firstChild).fontSize, getComputedStyle(x.firstChild).color, x.getBoundingClientRect().width > 80])")
+    assert exams == [["중간고사", "16px", "rgb(43, 42, 39)", True], ["기말고사", "16px", "rgb(43, 42, 39)", True]], f"④ 시험 띠 {exams}"
+    rows = await p.js("[...document.querySelectorAll('#weeks-doc .g-grid > .g-label[data-id]')].map((x) => x.dataset.id)")
+    held = await p.js("[...document.querySelectorAll('#weeks-doc .g-held .g-label')].map((x) => x.dataset.id)")
+    assert rows == d["assigned"] and held == [h["id"] for h in d["held"]], f"④ 작업 줄 {rows} / 미룸 {held} (계획 {d['assigned']} / {[h['id'] for h in d['held']]})"
+    assert bool(held) == await p.js("!!document.querySelector('#weeks-doc .g-held')"), "④ 미룸 줄"
+    want = {}
+    for w in d["weeks"]:
+        for a in w["activities"]:
+            if a["kind"] == "project" and a["id"] in d["assigned"]:
+                want.setdefault(a["id"], set()).add(sem_week(w["week"]))
+    got = {k: set(v) for k, v in (await p.js(WEEK_JOBS)).items()}
+    assert got == want, f"④ 막대 주 {got} ≠ 계획 {want}"
+    dia = await p.js("[...document.querySelectorAll('#weeks-doc .g-bar .g-done')].map((x) => [x.closest('.g-bar').dataset.id, Number(x.closest('.g-cell').dataset.w)])")
+    fin = sorted((t["task"], sem_week(w["week"])) for w in d["weeks"] for t in w["deliverables_completed"])
+    assert sorted(map(tuple, dia)) == fin, f"④ 끝나는 주 마름모 {dia} ≠ 산출물 {fin}"
+    learn = [a for w in d["weeks"] for a in w["activities"] if a["kind"] == "learning"]
+    marks = await p.js("[document.querySelectorAll('#weeks-doc .g-grid .g-mark[data-peek=m]').length, document.querySelectorAll('#weeks-doc .g-grid .g-mark[data-picked]').length]")
+    assert marks == [len(learn), sum(any("기존 배정" in t for t in a["why"]) for a in learn)], f"④ 교육자료 동그라미 {marks}"
+    assert await p.js("[...document.querySelectorAll('#weeks-doc .g-key-item')].length") == 4, "④ 범례 항목이 넷이 아니다"
+    # 한 화면: 간트차트(주 14·28시간 모두) 아래가 바닥 줄에 가리지 않는다 (1440×900)
+    box = await p.js("(() => { const g = document.querySelector('#weeks-doc .g-grid').getBoundingClientRect(), f = document.querySelector('#foot-weeks').getBoundingClientRect(); return [g.bottom, f.top]; })()")
+    assert box[0] <= box[1] + 1, f"④ 간트차트가 바닥 줄에 가려진다 {box}"
+    print(f"  ④ 간트차트: 작업 {len(rows)}개 · 미룸 {len(held)}개 · 동그라미 {marks[0]}개 · 마름모 {len(dia)}개", flush=True)
+
+
+async def peek_ok(p, d):
+    """④ 옆 패널: 작업 막대 → 주 머리 → 교육자료 동그라미, 주소 #, 초점, 앞 열 가리지 않음, 역량 카드, Esc·바깥 누르기"""
+    hidden = "document.querySelector('.peek').hidden"
+    await p.mouse("#weeks-doc .g-bar[data-id='W2']")
+    await p.until("!" + hidden + " && document.querySelector('.peek[data-open]')")
+    await asyncio.sleep(0.4)
+    assert await p.js("document.querySelector('.pk-title').textContent") == "W2 RAG 파이프라인", "④ 패널 제목"
+    assert await p.js("location.hash") == "#w=W2" and await p.js("document.activeElement === document.querySelector('.pk-title')"), "④ 패널 주소·초점"
+    assert await p.js("document.querySelector('.g-bar[data-id=W2]').getAttribute('aria-pressed')") == "true"
+    secs = await p.js("[...document.querySelectorAll('.peek .pk-h')].map((x) => x.textContent)")
+    assert secs[0] == "할 일" and "산출물" in secs and secs[3] == "완료" and "다루는 역량" in secs and "붙은 공부 자료" in secs and secs[2].startswith("총 "), f"④ 작업 패널 {secs}"
+    gap = await p.js("[document.querySelector('.peek').getBoundingClientRect().left, document.querySelector('#weeks-doc .g-grid').getBoundingClientRect().right]")
+    assert gap[1] <= gap[0] + 1, f"④ 패널이 간트차트를 가린다 {gap}"      # 쪽 글이 패널 너비만큼 비켜 있다
+    await p.shot("08d-peek-w2")
+    await p.mouse(".peek .wk-comp")      # 역량을 누르면 공고 원문 카드. Esc 는 카드만 닫는다
+    await p.until("!document.querySelector('.comp-pop').hidden && document.querySelector('.comp-pop blockquote')?.textContent.length > 10", timeout=5)
+    await p.shot("08b-weeks-comp")
+    await p.js("document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'})), true")
+    assert await p.js("document.querySelector('.comp-pop').hidden") and not await p.js(hidden), "④ Esc 가 역량 카드가 아니라 패널을 닫았다"
+    await p.mouse("#weeks-doc .g-head[data-id='9']")      # 다른 것을 누르면 닫지 않고 내용만
+    await p.until("document.querySelector('.pk-title').textContent === '9주차'")
+    assert not await p.js(hidden) and await p.js("location.hash") == "#week=9", "④ 주 패널로 안 바뀐다"
+    secs = await p.js("[...document.querySelectorAll('.peek .pk-h')].map((x) => x.textContent)")
+    assert secs[:3] == ["주간 목표", "방법", "이유"] and "이번 주 할 일 차례" in secs and "이번 주 끝나는 산출물" in secs, f"④ 주 패널 {secs}"
+    await p.shot("08e-peek-week9")
+    await p.mouse("#weeks-doc .g-mark[data-peek=m]")
+    await p.until("/^#m=L/.test(location.hash)")
+    secs = await p.js("[...document.querySelectorAll('.peek .pk-h')].map((x) => x.textContent)")
+    assert "다루는 역량" in secs and "배정 근거" in secs, f"④ 자료 패널 {secs}"
+    await p.shot("08f-peek-material")
+    await p.js("document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'})), true")
+    await p.until(hidden, timeout=3)
+    assert await p.js("location.hash") == "" and await p.js("document.activeElement?.classList.contains('g-mark')"), "④ Esc 뒤 주소·초점"
+    await p.mouse("#weeks-doc .g-label[data-id='W3']")
+    await p.until("!" + hidden)
+    await p.mouse("#weeks-doc .wk-line")      # 바깥을 누르면 닫는다
+    await p.until(hidden, timeout=3)
+    print("  ④ 옆 패널 열기·바꾸기·Esc·바깥 누르기 확인", flush=True)
 
 
 async def flow(p):
@@ -285,73 +369,37 @@ async def flow(p):
     await press(p, "12주 계획 짜기 →")
     await p.until("/주 계획을 짰어요/.test(" + ANNOUNCE + ")", timeout=30)
     await foot_ok(p, "⑤", ["정리 리포트 만들기 →"])
-    weeks_n = await p.js("document.querySelectorAll('#weeks-doc .wk').length")
-    items_n = await p.js("document.querySelectorAll('#weeks-doc .wk-item').length")
-    assert weeks_n == 12 and items_n >= 12, f"⑤ 주 칸 {weeks_n}개, 할 일 {items_n}개"
-    if PLAN:      # 사용자 11/22: 12주 계획 = 학기 6주 + 중간고사 2주 + 6주 + 기말고사 2주. 칸 이름은 학기 주, 시험 띠 둘은 본문 크기·먹색
-        order = await p.js("[...document.querySelector('#weeks-doc .wk-list').children].map((c) => c.classList.contains('wk-exam') ? c.textContent : c.getAttribute('aria-label'))")
-        want = [f"{k}주" for k in range(1, 7)] + ["7~8주 · 중간고사 · 계획 없음"] + [f"{k}주" for k in range(9, 15)] + ["15~16주 · 기말고사 · 계획 없음"]
-        assert order == want, f"⑤ 주 칸 차례 {order}"
-        sem = await p.js("document.querySelector('#weeks-doc .wk-sem')?.textContent")
-        assert sem == "한 학기 16주 = 6주 + 중간고사 2주 + 6주 + 기말고사 2주", f"⑤ 학기 줄 {sem!r}"
-        look = await p.js("[...document.querySelectorAll('#weeks-doc .wk-exam, #weeks-doc .wk-sem')].map((x) => [getComputedStyle(x).fontSize, getComputedStyle(x).color])")
-        assert all(f == "16px" and c == "rgb(43, 42, 39)" for f, c in look), f"⑤ 시험 띠·학기 줄 글씨 {look}"
-        ends = await p.js("[...document.querySelectorAll('#weeks-doc .wk-ends')].map((x) => parseInt(x.textContent.match(/(\\d+)주차까지/)[1]))")
-        assert ends and all(k not in (7, 8) and k <= 14 for k in ends), f"⑤ 끝나는 주가 학기 주가 아니다 {ends}"
-    if PLAN:
-        outs = await p.js("document.querySelectorAll('#weeks-doc .wk-out').length")
-        n_out = sum(len(w["deliverables_completed"]) for w in PLAN["weeks"])
-        assert outs == n_out, f"⑤ 산출물 줄 {outs}개 ≠ 계획 {n_out}개"
-        goal = await p.js("document.querySelector('#weeks-doc .wk-body dd li')?.textContent")
-        assert goal == PLAN["weeks"][0]["goal_steps"][0], f"⑤ 1주 목표 {goal!r}"
-        todo = await p.js("[...document.querySelectorAll('#weeks-doc .wk-body')].map((b) => [...b.querySelectorAll('.wk-lines')].map((u) => u.children.length))")
-        assert todo and all(1 <= n <= 3 for w in todo for n in w), f"⑤ 목표·할 일 개조식 줄 수 {todo}"      # 사용자 11/21: 세 줄까지
-        assert [w[1] for w in todo] == [len(w["method_steps"]) for w in PLAN["weeks"]], "⑤ 할 일 줄이 계획 파일과 다르다"
-    if PLAN:      # 끝나는 주는 작업이 처음 나온 주에만 이름 뒤에 (따로 줄 없이). 같은 작업의 "N주차까지" 가 두 번 나오지 않는다
-        ends = await p.js("[...document.querySelectorAll('#weeks-doc .wk-ends')].map((x) => x.closest('.wk-item').querySelector('.wk-name').textContent.split(' · ')[0])")
-        assert len(ends) == len(set(ends)), f"⑤ 끝나는 주가 되풀이된다 {ends}"
-        assert await p.js("[...document.querySelectorAll('#weeks-doc .wk-ends')].every((x) => x.parentElement.classList.contains('wk-name'))"), "⑤ 끝나는 주가 따로 줄에 있다"
+    await gantt_ok(p, PLAN)
     await p.shot("08-weeks")
     if len(BUTTONS) > 1:      # 한 주 공부 시간 고르기: 7 · 14(기본) · 28. 고른 다음 기본으로 돌아온다. 분량 한 줄, 보류 글, 바닥 줄이 고른 계획을 따른다
         assert await p.js("document.getElementById('budget').hidden && document.querySelectorAll('#weeks-doc input[type=radio]').length === " + str(len(BUTTONS))), \
-            "⑤ 에 시간 고르기가 하나가 아니다 (하루 1·2·3시간 칸이 보인다)"
+            "④ 에 시간 고르기가 하나가 아니다 (하루 1·2·3시간 칸이 보인다)"
         labels = await p.js("[...document.querySelectorAll('#weeks-doc .plan-pick label')].map((x) => x.textContent)")
-        assert labels == [f"주 {h}시간" for h in BUTTONS], f"⑤ 단추 {labels}"
+        assert labels == [f"주 {h}시간" for h in BUTTONS], f"④ 단추 {labels}"
         name = await p.js("document.querySelector('#weeks-doc .plan-name')?.textContent")
-        assert name == "한 주 공부 시간", f"⑤ 시간 고르기 이름 {name!r}"
-        assert await p.js("!document.querySelector('#weeks-doc .wk-scale, #weeks-doc .wk-held')"), "⑤ 긴 설명 문단·보류 작업 줄이 남아 있다 (분량은 한 줄)"
+        assert name == "한 주 공부 시간", f"④ 시간 고르기 이름 {name!r}"
         checked = await p.js("document.querySelector('#weeks-doc .plan-pick input:checked')?.value")
-        assert checked == f"{PLAN['constraints']['hours_per_week']:g}", f"⑤ 기본 계획 {checked}"
+        assert checked == f"{PLAN['constraints']['hours_per_week']:g}", f"④ 기본 계획 {checked}"
+        await peek_ok(p, PLAN)      # 옆 패널: 열기·바꾸기·닫기·주소·초점
         for cap in [h for h in BUTTONS if h != checked] + [checked]:
             d = next((x for x in PLANS if f"{x['constraints']['hours_per_week']:g}" == cap), None)
             await p.mouse(f"#weeks-doc .plan-pick input[value='{cap}']")
-            if d is None:      # 보류한 시간: 주 칸 없이 본문 글 셋, 바닥 줄은 보류와 최소 시간
+            if d is None:      # 보류한 시간: 간트차트 없이 본문 글 셋, 바닥 줄은 보류와 최소 시간
                 b = next(x for x in BLOCKED if f"{x['hours_per_week']:g}" == cap)
                 await p.until(f"/한 주 {cap}시간으로는 12주 계획을 보류했어요/.test(document.querySelector('#foot-weeks').textContent)", timeout=5)
-                note = await p.js("[document.querySelector('#weeks-doc .wk-list').hidden, document.querySelector('#weeks-doc .wk-line').textContent, document.querySelector('#weeks-doc .wk-blocked')?.textContent || '', document.querySelector('#foot-weeks').textContent]")
-                assert note[0] and not note[1] and f"{b['needed_minutes'] // 60}시간" in note[2] and "11시간 40분" not in note[2] and "11시간 40분" in note[3], f"⑤ {cap}시간 보류 글 {note}"      # 최소 시간은 바닥 줄에만
+                note = await p.js("[document.querySelector('#weeks-doc .g-scroll').hidden, document.querySelector('#weeks-doc .wk-line').textContent, document.querySelector('#weeks-doc .wk-blocked')?.textContent || '', document.querySelector('#foot-weeks').textContent, document.querySelector('#weeks-doc .g-key').hidden]")
+                assert note[0] and note[4] and not note[1] and f"{b['needed_minutes'] // 60}시간" in note[2] and "11시간 40분" not in note[2] and "11시간 40분" in note[3], f"④ {cap}시간 보류 글 {note}"      # 최소 시간은 바닥 줄에만
                 await p.shot(f"08c-weeks-{cap}h")
                 continue
             await p.until(f"document.querySelector('#weeks-doc .wk-line').textContent.includes('주 {cap}시간이면')", timeout=5)
             await p.until(f"/한 주 {cap}시간까지/.test(document.querySelector('#foot-weeks').textContent)", timeout=5)
-            assert await p.js("!document.querySelector('#weeks-doc .wk-blocked')"), f"⑤ {cap}시간에 보류 글이 남아 있다"
+            assert await p.js("!document.querySelector('#weeks-doc .wk-blocked') && !document.querySelector('#weeks-doc .g-scroll').hidden"), f"④ {cap}시간에 보류 글이 남아 있다"
             line = await p.js("document.querySelector('#weeks-doc .wk-line').textContent")
             want = (f"작업 {len(d['held'])}개는 12주 뒤로 미뤄요 (" + ", ".join(f"{h['id']} {h['name']}" for h in d["held"]) + ")") if d["held"] else f"작업 {len(d['assigned'])}개가 모두 12주 안에 들어가요"
-            assert line == f"주 {cap}시간이면 " + want, f"⑤ 분량 줄 {line!r}"
-            assert await p.js("![...document.querySelectorAll('#weeks-doc .wk-used')].some((x) => x.textContent.includes('상한'))"), "⑤ 주 칸 머리에 상한이 되풀이된다"
-            outs = await p.js("document.querySelectorAll('#weeks-doc .wk-out').length")
-            assert outs == sum(len(w["deliverables_completed"]) for w in d["weeks"]), f"⑤ {cap}시간 산출물 줄 {outs}개"
+            assert line == f"주 {cap}시간이면 " + want, f"④ 분량 줄 {line!r}"
+            await gantt_ok(p, d)
             if d is not PLAN:
                 await p.shot(f"08c-weeks-{cap}h")
-    await p.js("document.querySelector('#weeks-doc .wk-more').open = true, true")      # 토글: 목표·할 일·배우는 역량, 줄마다 세 줄까지
-    lines = await p.js("[...document.querySelectorAll('#weeks-doc .wk-more[open] .wk-lines')].map((u) => u.children.length)")
-    assert lines and all(1 <= n <= 3 for n in lines), f"⑤ 토글 줄 수 {lines}"
-    await p.mouse("#weeks-doc .wk-more[open] .wk-comp")      # 역량을 누르면 공고 원문 카드
-    await p.until("!document.querySelector('.comp-pop').hidden && document.querySelector('.comp-pop blockquote')?.textContent.length > 10", timeout=5)
-    await p.shot("08b-weeks-comp")
-    await p.js("document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'})), true")
-    assert await p.js("document.querySelector('.comp-pop').hidden"), "⑤ 원문 카드가 Esc 로 닫히지 않음"
-    await p.js("document.querySelector('#weeks-doc .wk-more').open = false, true")
     if len(PLANS) < 2:      # 하루 공부 시간 칸이 ④ 에 있는 예시: 리포트 전에 바꿔도 단추가 남는다 (사용자 11/21: 리포트로 안 넘어감)
         cap = {1: "7", 2: "14"} if not PLAN else {k: f"{PLAN['constraints']['hours_per_week']:g}" for k in (1, 2)}      # md 계획 하나면 시간을 바꿔도 그대로
         await p.mouse("#budget label:nth-of-type(2) input")
@@ -364,7 +412,7 @@ async def flow(p):
     await press(p, "정리 리포트 만들기 →")
     await p.until("/정리 리포트를 만들었어요/.test(" + ANNOUNCE + ")", timeout=30)
     await p.until("document.querySelector('#report-doc img')?.complete && document.querySelector('#report-doc img').naturalWidth > 0")
-    await foot_ok(p, "⑥", ["pptx 받기"])
+    await foot_ok(p, "⑥", ["pptx 받기"] + (["PDF 받기"] if (DATA / f"{CASE}.report.{PLAN['constraints']['hours_per_week'] if PLAN else 84:g}.all.pdf").is_file() else []))
     pptx = await p.js("document.querySelector('.page:not([hidden]) .go').href")
     assert urllib.request.urlopen(pptx).read(2) == b"PK", f"pptx 받기 {pptx}"      # pptx 는 zip
     n = await p.js("document.querySelectorAll('#report-doc .sheet img').length")

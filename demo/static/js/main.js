@@ -361,7 +361,7 @@ const reportHandlers = {
     ctx.ended = true;
     report.done(ev);
     settle(ctx, 'report');
-    panel.foot('report', ev.bullets, ev.pptx ? [{ label: 'pptx 받기', href: ev.pptx, download: ev.filename }] : []);
+    panel.foot('report', ev.bullets, [...(ev.pptx ? [{ label: 'pptx 받기', href: ev.pptx, download: ev.filename }] : []), ...(ev.pdf ? [{ label: 'PDF 받기', href: ev.pdf, download: ev.pdf_filename }] : [])]);
     if (!ctx.quiet) announce('정리 리포트를 만들었어요');
     finishRun(ctx, 'report');
   },

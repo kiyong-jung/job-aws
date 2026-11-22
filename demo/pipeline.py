@@ -947,14 +947,51 @@ def span_text(m):
     return " ".join(x for x in (f"{h}시간" if h else "", f"{mm}분" if mm else "") if x)
 
 
+def serves(weeks):
+    """배우기 거리 → 그것이 받쳐 주는 프로젝트 작업의 id ({L0201: "W2"}). ④ 간트차트가 거리를 그 작업 줄에 놓는다.
+    점수 = 겹치는 역량 하나에 10 + 배정 근거 글에 작업 번호가 있으면 5 - (그 주가 작업 기간 밖으로 떨어진 주 수 × 2) + 그 주 그 작업 분(÷1000, 동점 가르기). 작업이 없으면 {}"""
+    spans = {}
+    for w in weeks:
+        for a in w["activities"]:
+            if a["kind"] == "project":
+                p = spans.setdefault(a["id"], {"lo": w["week"], "hi": w["week"], "c": set(), "min": {}})
+                p["hi"] = w["week"]
+                p["c"] |= set(a.get("competencies", []))
+                p["min"][w["week"]] = a["minutes"]
+    out = {}
+    for w in weeks:
+        for a in w["activities"]:
+            if a["kind"] != "learning" or not spans:
+                continue
+            why, cs = " ".join(a.get("why", [])), set(a.get("competencies", []))
+            out[a["id"]] = max(spans, key=lambda i: 10 * len(cs & spans[i]["c"]) + (5 if re.search(rf"\b{i}\b", why) else 0)
+                               - 2 * max(0, spans[i]["lo"] - w["week"], w["week"] - spans[i]["hi"]) + spans[i]["min"].get(w["week"], 0) / 1000)
+    return out
+
+
+def package_rows(case, d):
+    """④ 간트차트의 작업 묶음: 작업 번호 차례 (미룬 것은 held 가 참). [{id, name, short, do, out, held}]. 이름·할 일·산출물은 응용 프로젝트 저장본(adapt)에서, 없으면 계획 파일에서"""
+    name_ = case["case"]
+    known = {p["id"]: p for p in (saved(name_, "adapt") or {}).get("packages", [])}
+    short = saved(name_, "short") or {}
+    titles = {a["id"]: a["title"] for w in d["weeks"] for a in w["activities"] if a["kind"] == "project"}
+    held = {h["id"]: h["name"] for h in d.get("held", [])}
+    return [{"id": i, "name": known.get(i, {}).get("name") or titles.get(i) or held.get(i, i), "short": short.get(i, ""),
+             "do": known.get(i, {}).get("do", ""), "out": known.get(i, {}).get("out", ""), "held": i in held}
+            for i in sorted({*titles, *held}, key=lambda k: (int(re.sub(r"\D", "", k) or 0), k))]
+
+
 def plan_view(case, d, hours, source):
     """계획 하나 → 화면 값: 주마다 활동(배우기·만들기), 합, 보류 작업, 바닥 줄 숫자(summary)"""
     s = d["summary"]
+    for_ = serves(d["weeks"])
     plan_ = [{"week": w["week"], "sem": sem_week(w["week"]), "learning": w["learning_minutes"] / 60, "project": w["implementation_minutes"] / 60, "cap": w["capacity_minutes"] / 60,
-              "goal": w.get("goal", ""), "method": w.get("method", ""), "goal_steps": w.get("goal_steps", []), "method_steps": w.get("method_steps", []),
+              "goal": w.get("goal", ""), "method": w.get("method", ""), "reason": w.get("reason", ""), "goal_steps": w.get("goal_steps", []), "method_steps": w.get("method_steps", []),
               "activities": [{"id": x["id"], "done": x.get("completed_in_this_chunk", True), "kind": x["kind"], "title": re.sub(r"\s*\(준비:.*\)$", "", x["title"]), "hours": x["hours"], "out": x.get("out", ""), "role": x.get("role", ""),
                               "url": web(x.get("url", "")), "skills": skill_names(case, x.get("competencies", [])), "ends": x.get("ends_week") and sem_week(x["ends_week"]),
-                              "cids": skill_ids(case, x.get("competencies", [])), "check": x.get("completion_check", "")} for x in w["activities"]],
+                              "cids": skill_ids(case, x.get("competencies", [])), "check": x.get("completion_check", ""),
+                              "minutes": x["minutes"], "why": x.get("why", []), "levels": {full_id(case, c["cid"]): c["level"] for c in x.get("covers", [])},
+                              "for": for_.get(x["id"], "")} for x in w["activities"]],
               "deliverables": w["deliverables_completed"]} for w in d["weeks"]]
     summary = {"weeks": len(d["weeks"]), "cap": hours, "inside_weeks": sum(w["used_minutes"] <= w["capacity_minutes"] for w in d["weeks"]),
                "learning": s["learning_hours"], "project": s["implementation_hours"], "deliverables": sum(len(w["deliverables_completed"]) for w in d["weeks"]),
@@ -963,7 +1000,7 @@ def plan_view(case, d, hours, source):
             "plan": plan_, "cap": hours, "learning": s["learning_hours"], "project": s["implementation_hours"],
             "total": s.get("scheduled_hours", s["learning_hours"] + s["implementation_hours"]),
             "assigned": d.get("assigned", []), "held": d.get("held", []), "summary": summary,
-            "exams": sem_exams(), "semester": SEMESTER_LINE}
+            "exams": sem_exams(), "semester": SEMESTER_LINE, "packages": package_rows(case, d)}
     return {**view, "line": plan_line(view)}
 
 
@@ -1066,7 +1103,9 @@ def report_page(name, budget):
     if not all((DATA / f"{name}.report.{budget}.{k}.png").is_file() for k in range(1, facts["slides"] + 1)):
         return None
     label = f"{budget}시간" if budget in budget_keys(name) else f"주{budget}시간"      # 하루 공부 시간 안은 12주 합(84), 주차 계획은 한 주 시간
-    return {**facts, "slides": slides, "pptx": f"/report/{name}.{budget}.pptx", "filename": f"면접대비리포트_{name}_{label}.pptx"}      # facts 의 쪽 수(slides)를 쪽 주소 목록이 덮는다
+    full = DATA / f"{name}.report.{budget}.all.pdf"      # 질문 전체 PDF (있을 때만 받기 단추)
+    return {**facts, "slides": slides, "pptx": f"/report/{name}.{budget}.pptx", "pdf": f"/report/{name}.{budget}.all.pdf" if full.is_file() else None,
+            "pdf_filename": f"면접대비리포트_{name}_{label}_전체.pdf", "filename": f"면접대비리포트_{name}_{label}.pptx"}      # facts 의 쪽 수(slides)를 쪽 주소 목록이 덮는다
 
 
 def report_keys(name):
@@ -1114,7 +1153,7 @@ def report(case, speed=1.0, budget="84"):
         yield {"type": "stage", "key": s["key"], "label": s["label"]}
         time.sleep(PACE["stage"] * speed)
     companies = page["companies"]
-    yield {"type": "done", "slides": page["slides"], "pptx": page["pptx"], "filename": page["filename"],
+    yield {"type": "done", "slides": page["slides"], "pptx": page["pptx"], "filename": page["filename"], "pdf": page["pdf"], "pdf_filename": page["pdf_filename"],
            **({"basis": f"한 주 {plan['hours']:g}시간 계획 기준" + (f" · 미룬 일 {'·'.join(plan['held'])}" if plan["held"] else "") + " · 시간은 ④ 12주 계획에서 바꿔요"} if plan else {}),
            # bank = 고른 질문 가운데 공개 면접 질문 은행에서 온 수 (build_report_deck.py). "은행 5개" 로 읽히지 않게 질문의 수로 말한다
            "bullets": [f"공고 핵심 문장 {data['counts']['rows']}개에서 고른 면접 질문 {page['questions']}개 · "
