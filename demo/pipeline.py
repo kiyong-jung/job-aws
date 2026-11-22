@@ -974,7 +974,7 @@ def package_rows(case, d):
     name_ = case["case"]
     known = {p["id"]: p for p in (saved(name_, "adapt") or {}).get("packages", [])}
     short = saved(name_, "short") or {}
-    titles = {a["id"]: a["title"] for w in d["weeks"] for a in w["activities"] if a["kind"] == "project"}
+    titles = {a["id"]: re.sub(r"\s*\(준비:.*\)$", "", a["title"]) for w in d["weeks"] for a in w["activities"] if a["kind"] == "project"}
     held = {h["id"]: h["name"] for h in d.get("held", [])}
     return [{"id": i, "name": known.get(i, {}).get("name") or titles.get(i) or held.get(i, i), "short": short.get(i, ""),
              "do": known.get(i, {}).get("do", ""), "out": known.get(i, {}).get("out", ""), "held": i in held}

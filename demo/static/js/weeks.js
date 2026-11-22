@@ -114,6 +114,8 @@ function fillFact(fact, p) {
   const md = p.source === 'md';
   fact.replaceChildren();
   if (p.source === 'blocked') { fact.append(p.blocked.title); return; }
+  // 생성기 계획(하루 1·2·3시간): 배우기·만들기 합은 바닥 줄이 말하니 (S9) 머리 줄은 오른쪽 하루 공부 시간 고르기의 이름만
+  if (p.source === 'generator') { fact.append('하루 공부 시간'); return; }
   if (md) fact.append(`총 ${hoursText(p.total)} · `);
   fact.append(el('span', { class: 'g-kind', 'data-kind': 'learning', text: '배우기' }), ` 교육자료 ${hoursText(p.learning)}  `,
     el('span', { class: 'g-kind', 'data-kind': 'project', text: '만들기' }), ` 프로젝트 ${hoursText(p.project)}`,
