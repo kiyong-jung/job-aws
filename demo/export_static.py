@@ -66,7 +66,10 @@ def main(out):
         for f in pipeline.DATA.glob(f"{name}.posting.png"):
             (out / "posting").mkdir(exist_ok=True)
             shutil.copy2(f, out / "posting" / f"{name}.png")
+        keys = set(pipeline.report_keys(name))      # 화면이 부르는 안만 (네이버의 옛 84·168·252 판은 11/22 부터 디스크에만 둔다)
         for f in pipeline.DATA.glob(f"{name}.report.*"):      # 서버 주소 꼴 그대로: report/<예시>.<시간>[.<쪽>].png·.pptx
+            if f.name.split(".")[2] not in keys:
+                continue
             if (f.suffix in (".png", ".pptx") and ".all." not in f.name) or f.name.endswith(".all.pdf"):      # .all.pdf = 질문 전체 PDF 받기 (.all.pptx 는 화면에 없다)
                 (out / "report").mkdir(exist_ok=True)
                 shutil.copy2(f, out / "report" / f.name.replace(".report.", ".", 1))

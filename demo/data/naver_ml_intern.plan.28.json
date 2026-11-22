@@ -1,0 +1,1632 @@
+{
+ "schema_version": "jobaws.plan.md.v3",
+ "source": "naver_plan.28.md",
+ "status": "ok",
+ "project": {
+  "title": "멀티모달 학습 데이터 파이프라인 구축 및 생성 모델 평가 체계 개발"
+ },
+ "assigned": [
+  "W1",
+  "W2",
+  "W3",
+  "W4",
+  "W5",
+  "W6",
+  "W7"
+ ],
+ "held": [],
+ "constraints": {
+  "weeks": 12,
+  "hours_per_week": 28.0,
+  "capacity_hours": 336.0
+ },
+ "summary": {
+  "scheduled_hours": 165.08333333333334,
+  "learning_hours": 13.083333333333334,
+  "implementation_hours": 152.0
+ },
+ "weeks": [
+  {
+   "week": 1,
+   "capacity_minutes": 1680,
+   "used_minutes": 1120,
+   "learning_minutes": 360,
+   "implementation_minutes": 760,
+   "goal": "생성 모델 동작 원리와 Goku 데이터 파이프라인 구조를 정리한 기술 문서·로드맵·태스크 카드 템플릿·협업 규칙 문서를 완성하고, 원시 데이터 추출(W2)의 작업 환경을 잡는다.",
+   "method": "ECCV 튜토리얼과 확산 모델 글·강의로 생성 모델 원리와 데이터 구축→학습→평가 흐름을 정리해 기술 문서를 쓰고, 데이터 선택 튜토리얼·Ray 배치 처리·근접 중복 찾기·프로파일링 자료로 W2 필터 차례와 측정 방법을 미리 정한 뒤, Ray 클러스터와 아카이브 목록을 준비한다.",
+   "reason": "주 28시간이면 W2 자료까지 첫 주에 읽을 여유가 있어 W1 기술 문서와 W2 설계 근거를 한 주에 함께 잡고, 로드맵이 W2 이후 작업 차례를 정하므로 W1을 1주차에 끝내며, W2는 환경 준비만 먼저 시작한다.",
+   "goal_steps": [
+    "생성 모델 동작 원리와 Goku 데이터 파이프라인 구조를 정리한 기술 문서·로드맵·태스크 카드 템플릿·협업 규칙 문서를 완성하기",
+    "원시 데이터 추출(W2)의 작업 환경을 잡기"
+   ],
+   "method_steps": [
+    "ECCV 튜토리얼과 확산 모델 글·강의로 생성 모델 원리와 데이터 구축→학습→평가 흐름을 정리해 기술 문서를 쓰기",
+    "데이터 선택 튜토리얼·Ray 배치 처리·근접 중복 찾기·프로파일링 자료로 W2 필터 차례와 측정 방법을 미리 정하기",
+    "Ray 클러스터와 아카이브 목록을 준비하기"
+   ],
+   "deliverables_completed": [
+    {
+     "task": "W1",
+     "out": "기술 문서(모델 원리 요약, 파이프라인 로드맵), 태스크 카드 템플릿, 협업 규칙 문서"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 1,
+     "kind": "learning",
+     "id": "L0101",
+     "title": "ECCV 2026 영상 생성 모델 튜토리얼 · 데이터 처리",
+     "url": "https://eccv.ecva.net/virtual/2026/3131",
+     "minutes": 60,
+     "competencies": [
+      "C01",
+      "C02",
+      "C04",
+      "C05",
+      "C06"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C01",
+       "level": "있음"
+      },
+      {
+       "cid": "C02",
+       "level": "있음"
+      },
+      {
+       "cid": "C04",
+       "level": "일부"
+      },
+      {
+       "cid": "C05",
+       "level": "일부"
+      },
+      {
+       "cid": "C06",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 기존 배정. W1 기술 문서의 파이프라인 로드맵을 쓰기 전에 데이터 처리·평가 절을 본다. 데이터 구축→학습→평가 흐름이 W2~W6 차례의 뼈대다.",
+      "자료 근거 · C01·C02·C04·C05·C06: Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
+     ],
+     "hours": 1.0
+    },
+    {
+     "sequence": 2,
+     "kind": "learning",
+     "id": "L0102",
+     "title": "What are Diffusion Models? · Lilian Weng",
+     "url": "https://lilianweng.github.io/lil-log/2021/07/11/diffusion-models.html",
+     "minutes": 60,
+     "competencies": [
+      "C01",
+      "C06"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C01",
+       "level": "있음"
+      },
+      {
+       "cid": "C06",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · W1 기술 문서의 모델 원리 절(잡음 더하기·빼기, 학습 목표)을 쓰는 데 바로 쓴다."
+     ],
+     "hours": 1.0
+    },
+    {
+     "sequence": 3,
+     "kind": "learning",
+     "id": "L0103",
+     "title": "확산 모델 입문 · Outcome School",
+     "url": "https://outcomeschool.com/blog/diffusion-models",
+     "minutes": 20,
+     "competencies": [
+      "C01"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C01",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W1 원리 절을 쓰기 전에 Stable Diffusion·DALL-E·Flux가 그림을 만드는 과정을 짧게 훑는다. 긴 글 앞의 입문이다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 4,
+     "kind": "learning",
+     "id": "L0104",
+     "title": "Stanford CME296 확산·대형 비전 모델 · 첫 강의",
+     "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rNdy8rt2rZ4T2xM0OjADnfu",
+     "minutes": 60,
+     "competencies": [
+      "C01",
+      "C06"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C01",
+       "level": "있음"
+      },
+      {
+       "cid": "C06",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · W1 원리 절에 flow matching(Goku 의 rectified flow) 설명을 더하려고 첫 강의를 본다."
+     ],
+     "hours": 1.0
+    },
+    {
+     "sequence": 5,
+     "kind": "learning",
+     "id": "L0105",
+     "title": "ML·MLOps 코드 프로파일링",
+     "url": "https://github.com/microsoft/code-with-engineering-playbook/blob/main/docs/ml-and-ai-projects/profiling-ml-and-mlops-code.md",
+     "minutes": 30,
+     "competencies": [
+      "C02",
+      "C04",
+      "C05"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C02",
+       "level": "일부"
+      },
+      {
+       "cid": "C04",
+       "level": "있음"
+      },
+      {
+       "cid": "C05",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 기존 배정. W2 산출물인 병목 프로파일링 결과의 측정 방법을 구현 전에 정한다. 처리 시간이 데이터 양 때문인지 구현 탓인지 가르는 법을 다룬다.",
+      "자료 근거 · C02: Data Science projects, especially the ones that involve Deep Learning techniques, usually are resource intensive. One model training iteration might be multiple hours long.; C04: minor bugs and suboptimal implementation of some functional pieces; C05: large data volumes processing genuinely takes time, minor bugs and suboptimal implementation of some functional pieces"
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 6,
+     "kind": "learning",
+     "id": "L0106",
+     "title": "NeurIPS 2024 기반 모델 데이터 선택 튜토리얼",
+     "url": "https://neurips.cc/virtual/2024/tutorial/99530",
+     "minutes": 60,
+     "competencies": [
+      "C08",
+      "C16"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C08",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W2 다단계 필터의 차례(규칙 기반 → 모델 기반)를 정하는 근거다. 싼 검사를 앞에, 비싼 검사를 뒤에 두는 까닭을 다룬다."
+     ],
+     "hours": 1.0
+    },
+    {
+     "sequence": 7,
+     "kind": "learning",
+     "id": "L0107",
+     "title": "Ray Datasets 배치 추론 실습",
+     "url": "https://github.com/ray-project/ray-educational-materials/blob/main/Computer_vision_workloads/Semantic_segmentation/Batch_inference_with_Ray_Datasets.ipynb",
+     "minutes": 40,
+     "competencies": [
+      "C29",
+      "C05"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C29",
+       "level": "일부"
+      },
+      {
+       "cid": "C05",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W2 추출을 Ray 위에서 나눠 돌리는 틀(데이터를 조각으로 나눠 GPU 배치 처리)을 구현 직전에 따라 해 본다."
+     ],
+     "hours": 0.6667
+    },
+    {
+     "sequence": 8,
+     "kind": "learning",
+     "id": "L0108",
+     "title": "근접 중복 이미지 찾기 · Keras 예제",
+     "url": "https://github.com/keras-team/keras-io/blob/master/examples/vision/near_dup_search.py",
+     "minutes": 30,
+     "competencies": [
+      "C08"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C08",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W2 CLIP 임베딩 중복 제거와 같은 방식(임베딩 + 근사 이웃 찾기)을 작은 예제로 먼저 돌려 본다."
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 9,
+     "kind": "project",
+     "id": "W1",
+     "title": "프로젝트 설계 및 기술 기반 정리",
+     "minutes": 720,
+     "competencies": [
+      "C01",
+      "C02",
+      "C06",
+      "C24",
+      "C25",
+      "C26"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "기술 문서(모델 원리 요약, 파이프라인 로드맵), 태스크 카드 템플릿, 협업 규칙 문서",
+     "covers": [
+      {
+       "cid": "C01",
+       "level": "있음"
+      },
+      {
+       "cid": "C02",
+       "level": "있음"
+      },
+      {
+       "cid": "C06",
+       "level": "있음"
+      },
+      {
+       "cid": "C24",
+       "level": "있음"
+      },
+      {
+       "cid": "C25",
+       "level": "있음"
+      },
+      {
+       "cid": "C26",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · Goku → C06; Goku → C02; mega-data-factory → C01, C02; 더한 역량 C01, C02, C24, C25, C26"
+     ],
+     "hours": 12.0,
+     "ends_week": 1
+    },
+    {
+     "sequence": 10,
+     "kind": "project",
+     "id": "W2",
+     "title": "원시 데이터 추출 및 다단계 품질 필터링 파이프라인",
+     "minutes": 40,
+     "competencies": [
+      "C03",
+      "C04",
+      "C05",
+      "C07",
+      "C08",
+      "C16",
+      "C29"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C03",
+       "level": "있음"
+      },
+      {
+       "cid": "C04",
+       "level": "있음"
+      },
+      {
+       "cid": "C05",
+       "level": "있음"
+      },
+      {
+       "cid": "C07",
+       "level": "있음"
+      },
+      {
+       "cid": "C08",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C29",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · mega-data-factory → C03, C04, C05, C29; mega-data-factory → C07, C16; mega-data-factory → C08; mega-data-factory → C05"
+     ],
+     "hours": 0.6667,
+     "ends_week": 4
+    }
+   ]
+  },
+  {
+   "week": 2,
+   "capacity_minutes": 1680,
+   "used_minutes": 760,
+   "learning_minutes": 0,
+   "implementation_minutes": 760,
+   "goal": "Ray 위에서 공개 이미지·비디오 아카이브(CC12M, WebVid 서브셋)의 원시 데이터를 추출하고, URL·해상도 필터 단계를 구현한다.",
+   "method": "아카이브를 조각으로 나눠 Ray 작업자에 나눠 주고, URL 필터와 해상도 필터를 차례로 붙인 뒤, 단계마다 통과율과 처리 시간을 측정 표에 적는다.",
+   "reason": "1주차에 정한 필터 차례와 측정 방법대로 W2 구현에 한 주를 다 쓴다. 싼 검사인 URL·해상도 필터를 먼저 붙여 뒤 단계로 가는 양을 줄인다.",
+   "goal_steps": [
+    "Ray 위에서 공개 이미지·비디오 아카이브(CC12M, WebVid 서브셋)의 원시 데이터를 추출하기",
+    "URL·해상도 필터 단계를 구현하기"
+   ],
+   "method_steps": [
+    "아카이브를 조각으로 나눠 Ray 작업자에 나눠 주기",
+    "URL 필터와 해상도 필터를 차례로 붙이기",
+    "단계마다 통과율과 처리 시간을 측정 표에 적기"
+   ],
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 11,
+     "kind": "project",
+     "id": "W2",
+     "title": "원시 데이터 추출 및 다단계 품질 필터링 파이프라인",
+     "minutes": 760,
+     "competencies": [
+      "C03",
+      "C04",
+      "C05",
+      "C07",
+      "C08",
+      "C16",
+      "C29"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C03",
+       "level": "있음"
+      },
+      {
+       "cid": "C04",
+       "level": "있음"
+      },
+      {
+       "cid": "C05",
+       "level": "있음"
+      },
+      {
+       "cid": "C07",
+       "level": "있음"
+      },
+      {
+       "cid": "C08",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C29",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · mega-data-factory → C03, C04, C05, C29; mega-data-factory → C07, C16; mega-data-factory → C08; mega-data-factory → C05"
+     ],
+     "hours": 12.6667,
+     "ends_week": 4
+    }
+   ]
+  },
+  {
+   "week": 3,
+   "capacity_minutes": 1680,
+   "used_minutes": 760,
+   "learning_minutes": 0,
+   "implementation_minutes": 760,
+   "goal": "CLIP 임베딩 기반 중복 제거와 미적 점수 필터를 구현하고, Rust 가속 연산자를 적용해 연산·I/O 병목을 잰다.",
+   "method": "중복 제거와 미적 점수 필터를 붙이고, 가장 느린 단계에 Rust 가속 연산자를 적용한 뒤, 적용 전후 처리량을 같은 표본으로 비교한다.",
+   "reason": "새 자료 없이 W2 구현에 한 주를 다 쓴다. 비싼 단계가 붙는 주라 병목 측정을 이 단계에 맞춘다.",
+   "goal_steps": [
+    "CLIP 임베딩 기반 중복 제거와 미적 점수 필터를 구현하기",
+    "Rust 가속 연산자를 적용해 연산·I/O 병목을 잰기"
+   ],
+   "method_steps": [
+    "중복 제거와 미적 점수 필터를 붙이기",
+    "가장 느린 단계에 Rust 가속 연산자를 적용하기",
+    "적용 전후 처리량을 같은 표본으로 비교하기"
+   ],
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 12,
+     "kind": "project",
+     "id": "W2",
+     "title": "원시 데이터 추출 및 다단계 품질 필터링 파이프라인",
+     "minutes": 760,
+     "competencies": [
+      "C03",
+      "C04",
+      "C05",
+      "C07",
+      "C08",
+      "C16",
+      "C29"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C03",
+       "level": "있음"
+      },
+      {
+       "cid": "C04",
+       "level": "있음"
+      },
+      {
+       "cid": "C05",
+       "level": "있음"
+      },
+      {
+       "cid": "C07",
+       "level": "있음"
+      },
+      {
+       "cid": "C08",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C29",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · mega-data-factory → C03, C04, C05, C29; mega-data-factory → C07, C16; mega-data-factory → C08; mega-data-factory → C05"
+     ],
+     "hours": 12.6667,
+     "ends_week": 4
+    }
+   ]
+  },
+  {
+   "week": 4,
+   "capacity_minutes": 1680,
+   "used_minutes": 860,
+   "learning_minutes": 100,
+   "implementation_minutes": 760,
+   "goal": "10만 샘플 이상의 정제 데이터셋과 단계별 통과율·병목 프로파일링 리포트로 W2를 마치고, VLM 캡션 어노테이션(W3)을 시작한다.",
+   "method": "VLM 구조 글과 영상 캡션 노트북으로 캡션 생성 흐름을 확인하고, LLM-as-a-Judge 글로 판정 프롬프트의 치우침과 보정 방법을 정리한 뒤, W2 정제 데이터셋을 확정하고 LLaVA 또는 InternVL로 캡션 생성 시험을 돌린다.",
+   "reason": "캡션·Judge 프롬프트를 짜기 전에 VLM 입력 구조와 판정 치우침을 알아야 프롬프트 기준이 서므로 W3가 시작하는 이 주에 세 자료를 먼저 읽고, W3가 W2 정제 데이터셋을 입력으로 쓰므로 W2 남은 구현을 W3 착수보다 앞에 둔다.",
+   "goal_steps": [
+    "10만 샘플 이상의 정제 데이터셋과 단계별 통과율·병목 프로파일링 리포트로 W2를 마치기",
+    "VLM 캡션 어노테이션(W3)을 시작하기"
+   ],
+   "method_steps": [
+    "VLM 구조 글과 영상 캡션 노트북으로 캡션 생성 흐름을 확인하기",
+    "LLM-as-a-Judge 글로 판정 프롬프트의 치우침과 보정 방법을 정리하기",
+    "W2 정제 데이터셋을 확정하고 LLaVA 또는 InternVL로 캡션 생성 시험을 돌린기"
+   ],
+   "deliverables_completed": [
+    {
+     "task": "W2",
+     "out": "정제된 이미지·비디오 데이터셋(≥10만 샘플), 필터링 단계별 통과율 리포트, 병목 프로파일링 결과"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 13,
+     "kind": "learning",
+     "id": "L0401",
+     "title": "VLM 동작 방식 · Outcome School",
+     "url": "https://outcomeschool.com/blog/vision-language-model-vlm",
+     "minutes": 30,
+     "competencies": [
+      "C09"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C09",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W3 캡션 프롬프트를 짜기 전에 이미지가 언어 모델에 들어가는 방식(프로젝터, 교차 어텐션)을 확인한다."
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 14,
+     "kind": "learning",
+     "id": "L0402",
+     "title": "LLM as a Judge · Outcome School",
+     "url": "https://outcomeschool.com/blog/llm-as-a-judge",
+     "minutes": 30,
+     "competencies": [
+      "C17"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C17",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · W3 품질 Judge 프롬프트의 알려진 치우침(위치·길이 편향)과 보정 방법을 프롬프트 설계 전에 정리한다."
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 15,
+     "kind": "learning",
+     "id": "L0403",
+     "title": "Gemini 영상 캡션 · 멀티모달 데이터 큐레이션",
+     "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/use-cases/multimodal-data-curation/captioning.ipynb",
+     "minutes": 40,
+     "competencies": [
+      "C09",
+      "C18"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C09",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W3 대규모 캡션 어노테이션과 같은 일(데이터 큐레이션용 영상 캡션)을 노트북으로 한 번 따라 해 캡션 형식을 정한다."
+     ],
+     "hours": 0.6667
+    },
+    {
+     "sequence": 16,
+     "kind": "project",
+     "id": "W2",
+     "title": "원시 데이터 추출 및 다단계 품질 필터링 파이프라인",
+     "minutes": 600,
+     "competencies": [
+      "C03",
+      "C04",
+      "C05",
+      "C07",
+      "C08",
+      "C16",
+      "C29"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "정제된 이미지·비디오 데이터셋(≥10만 샘플), 필터링 단계별 통과율 리포트, 병목 프로파일링 결과",
+     "covers": [
+      {
+       "cid": "C03",
+       "level": "있음"
+      },
+      {
+       "cid": "C04",
+       "level": "있음"
+      },
+      {
+       "cid": "C05",
+       "level": "있음"
+      },
+      {
+       "cid": "C07",
+       "level": "있음"
+      },
+      {
+       "cid": "C08",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C29",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · mega-data-factory → C03, C04, C05, C29; mega-data-factory → C07, C16; mega-data-factory → C08; mega-data-factory → C05"
+     ],
+     "hours": 10.0,
+     "ends_week": 4
+    },
+    {
+     "sequence": 17,
+     "kind": "project",
+     "id": "W3",
+     "title": "VLM 기반 대규모 어노테이션 및 프롬프트 튜닝",
+     "minutes": 160,
+     "competencies": [
+      "C09",
+      "C17",
+      "C18"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C09",
+       "level": "있음"
+      },
+      {
+       "cid": "C17",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · dingo → C09, C17, C18; dingo → C09, C18"
+     ],
+     "hours": 2.6667,
+     "ends_week": 6
+    }
+   ]
+  },
+  {
+   "week": 5,
+   "capacity_minutes": 1680,
+   "used_minutes": 760,
+   "learning_minutes": 0,
+   "implementation_minutes": 760,
+   "goal": "Dingo 프롬프트 설계 패턴을 참고해 품질 Judge 프롬프트와 도메인별 캡셔닝 프롬프트를 설계·튜닝한다.",
+   "method": "Judge 프롬프트와 캡셔닝 프롬프트를 버전별 파일로 두고, 같은 표본에서 버전마다 캡션 품질 점수 분포를 비교한 뒤, 점수가 낮은 범주부터 프롬프트를 고친다.",
+   "reason": "새 자료 없이 W3 구현에 한 주를 다 쓴다. 버전별 비교 리포트가 W3 산출물이라 표본을 고정해 두고 판을 바꾼다.",
+   "goal_steps": [
+    "Dingo 프롬프트 설계 패턴을 참고해 품질 Judge 프롬프트와 도메인별 캡셔닝 프롬프트를 설계·튜닝하기"
+   ],
+   "method_steps": [
+    "Judge 프롬프트와 캡셔닝 프롬프트를 버전별 파일로 두기",
+    "같은 표본에서 버전마다 캡션 품질 점수 분포를 비교하기",
+    "점수가 낮은 범주부터 프롬프트를 고친기"
+   ],
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 18,
+     "kind": "project",
+     "id": "W3",
+     "title": "VLM 기반 대규모 어노테이션 및 프롬프트 튜닝",
+     "minutes": 760,
+     "competencies": [
+      "C09",
+      "C17",
+      "C18"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C09",
+       "level": "있음"
+      },
+      {
+       "cid": "C17",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · dingo → C09, C17, C18; dingo → C09, C18"
+     ],
+     "hours": 12.6667,
+     "ends_week": 6
+    }
+   ]
+  },
+  {
+   "week": 6,
+   "capacity_minutes": 1680,
+   "used_minutes": 860,
+   "learning_minutes": 100,
+   "implementation_minutes": 760,
+   "goal": "어노테이션 데이터셋과 프롬프트 버전별 비교 리포트로 W3를 마치고, Blender Python API 합성 데이터 파이프라인(W4)을 시작한다.",
+   "method": "BlenderProc 레슨으로 렌더러로 합성 학습 데이터를 만드는 흐름을 익히고, Isaac Sim·Unreal Learning Agents 자료로 다른 3D 도구의 장면 생성 방식을 견준 뒤, 합성 데이터 한계 글로 실제 데이터와의 차이를 점검할 항목을 정한 다음 Blender 장면 자동 생성 스크립트를 쓴다.",
+   "reason": "세 자료는 ③에서 고른 3D 도구 자료라 W4가 시작하는 이 주에 몰아 읽어야 렌더러와 메타데이터 범위를 정할 수 있고, 합성 데이터 한계 글은 W2 데이터셋에 합산할 때 무엇을 볼지 정하려고 함께 두며, W3를 먼저 마쳐 합산할 데이터셋을 확정한다.",
+   "goal_steps": [
+    "어노테이션 데이터셋과 프롬프트 버전별 비교 리포트로 W3를 마치기",
+    "Blender Python API 합성 데이터 파이프라인(W4)을 시작하기"
+   ],
+   "method_steps": [
+    "BlenderProc 레슨으로 렌더러로 합성 학습 데이터를 만드는 흐름을 익히기",
+    "Isaac Sim·Unreal Learning Agents 자료로 다른 3D 도구의 장면 생성 방식을 견주기",
+    "합성 데이터 한계 글로 실제 데이터와의 차이를 점검할 항목을 정한 다음 Blender 장면 자동 생성 스크립트를 쓴기"
+   ],
+   "deliverables_completed": [
+    {
+     "task": "W3",
+     "out": "어노테이션이 완료된 데이터셋, Judge·캡셔닝 프롬프트 버전별 비교 리포트"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 19,
+     "kind": "learning",
+     "id": "L0601",
+     "title": "3D 렌더러로 합성 데이터 만들기 · BlenderProc",
+     "url": "https://github.com/huggingface/computer-vision-course/blob/main/chapters/en/unit10/blenderProc.mdx",
+     "minutes": 30,
+     "competencies": [
+      "C21"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C21",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · 기존 배정. W4 Blender 파이프라인을 짜기 전에 렌더러로 합성 학습 데이터를 만드는 흐름을 본다.",
+      "자료 근거 · C21: Physically Based Renderers (PBR) such as Blender Cycles or Unity help to create images that are super realistic"
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 20,
+     "kind": "learning",
+     "id": "L0602",
+     "title": "Isaac Sim 저장소",
+     "url": "https://github.com/isaac-sim/IsaacSim",
+     "minutes": 20,
+     "competencies": [
+      "C19",
+      "C20"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C19",
+       "level": "있음"
+      },
+      {
+       "cid": "C20",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · 기존 배정. 우대 역량 Isaac Sim·Omniverse는 프로젝트가 다루지 않는다. W4 렌더러를 고를 때 견줄 도구로 저장소 설명과 예제 구성을 본다.",
+      "자료 근거 · C19·C20: NVIDIA Isaac Sim is a simulation platform built on NVIDIA Omniverse, designed to develop, test, train, and deploy AI-powered robots in realistic virtual environments."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 21,
+     "kind": "learning",
+     "id": "L0603",
+     "title": "Unreal Learning Agents 입문",
+     "url": "https://github.com/huggingface/deep-rl-class/blob/main/units/en/unitbonus3/learning-agents.mdx",
+     "minutes": 30,
+     "competencies": [
+      "C02",
+      "C22"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C02",
+       "level": "일부"
+      },
+      {
+       "cid": "C22",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · 기존 배정. 우대 역량 Unreal Engine은 W4 작업이 일부만 다룬다. Unreal에서 학습 데이터를 만드는 방식을 W4 착수 전에 본다.",
+      "자료 근거 · C02: train AI characters using machine learning (ML) in Unreal; C22: Learning Agents is an Unreal Engine (UE) plugin that allows you to train AI characters using machine learning (ML) in Unreal"
+     ],
+     "hours": 0.5
+    },
+    {
+     "sequence": 22,
+     "kind": "learning",
+     "id": "L0604",
+     "title": "합성 데이터의 한계와 기회 · HF CV 코스",
+     "url": "https://github.com/huggingface/computer-vision-course/blob/main/chapters/en/unit10/challenges.mdx",
+     "minutes": 20,
+     "competencies": [
+      "C11",
+      "C12"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C11",
+       "level": "일부"
+      },
+      {
+       "cid": "C12",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W4 합성 이미지를 W2 데이터셋에 합산하기 전에 실제 데이터와의 차이를 점검할 항목을 정한다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 23,
+     "kind": "project",
+     "id": "W3",
+     "title": "VLM 기반 대규모 어노테이션 및 프롬프트 튜닝",
+     "minutes": 520,
+     "competencies": [
+      "C09",
+      "C17",
+      "C18"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "어노테이션이 완료된 데이터셋, Judge·캡셔닝 프롬프트 버전별 비교 리포트",
+     "covers": [
+      {
+       "cid": "C09",
+       "level": "있음"
+      },
+      {
+       "cid": "C17",
+       "level": "있음"
+      },
+      {
+       "cid": "C18",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · dingo → C09, C17, C18; dingo → C09, C18"
+     ],
+     "hours": 8.6667,
+     "ends_week": 6
+    },
+    {
+     "sequence": 24,
+     "kind": "project",
+     "id": "W4",
+     "title": "Blender 기반 합성 데이터 생성 파이프라인",
+     "minutes": 240,
+     "competencies": [
+      "C11",
+      "C12",
+      "C16",
+      "C21",
+      "C22"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C11",
+       "level": "있음"
+      },
+      {
+       "cid": "C12",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C21",
+       "level": "있음"
+      },
+      {
+       "cid": "C22",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "작업 근거 · UrbanScene3D → C11, C22; UrbanScene3D → C12; UrbanScene3D → C16"
+     ],
+     "hours": 4.0,
+     "ends_week": 8
+    }
+   ]
+  },
+  {
+   "week": 7,
+   "capacity_minutes": 1680,
+   "used_minutes": 760,
+   "learning_minutes": 0,
+   "implementation_minutes": 760,
+   "goal": "UrbanScene3D 메타데이터 스키마를 참고해 깊이 맵·2D/3D 바운딩박스·법선 맵·인스턴스 레이블을 자동 추출·정제한다.",
+   "method": "장면마다 렌더와 메타데이터를 함께 저장하고, 가려지거나 화면 밖으로 나간 물체의 레이블을 걸러 정제 규칙을 문서로 남긴 뒤, 실내·실외 장면을 나눠 렌더 양을 늘린다.",
+   "reason": "새 자료 없이 W4 구현에 한 주를 다 쓴다. 메타데이터 정제 규칙을 렌더 양을 늘리기 전에 정해야 다시 렌더하지 않는다.",
+   "goal_steps": [
+    "UrbanScene3D 메타데이터 스키마를 참고해 깊이 맵·2D/3D 바운딩박스·법선 맵·인스턴스 레이블을 자동 추출·정제하기"
+   ],
+   "method_steps": [
+    "장면마다 렌더와 메타데이터를 함께 저장하기",
+    "가려지거나 화면 밖으로 나간 물체의 레이블을 걸러 정제 규칙을 문서로 남기기",
+    "실내·실외 장면을 나눠 렌더 양을 늘린기"
+   ],
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 25,
+     "kind": "project",
+     "id": "W4",
+     "title": "Blender 기반 합성 데이터 생성 파이프라인",
+     "minutes": 760,
+     "competencies": [
+      "C11",
+      "C12",
+      "C16",
+      "C21",
+      "C22"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C11",
+       "level": "있음"
+      },
+      {
+       "cid": "C12",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C21",
+       "level": "있음"
+      },
+      {
+       "cid": "C22",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "작업 근거 · UrbanScene3D → C11, C22; UrbanScene3D → C12; UrbanScene3D → C16"
+     ],
+     "hours": 12.6667,
+     "ends_week": 8
+    }
+   ]
+  },
+  {
+   "week": 8,
+   "capacity_minutes": 1680,
+   "used_minutes": 840,
+   "learning_minutes": 80,
+   "implementation_minutes": 760,
+   "goal": "합성 이미지 1만 장 이상과 메타데이터 스키마 문서로 W4를 마치고, 체크포인트 자동 평가 파이프라인(W5)을 시작한다.",
+   "method": "Diffusers 평가 노트북으로 CLIP 점수·FID 계산을 따라 해 보고, CLIP 레슨으로 글과 그림의 일치 점수 원리를 확인한 뒤, 합성 데이터를 W2 데이터셋에 합산하고 평가 스크립트의 지표 계산부를 만든다.",
+   "reason": "W5 평가 파이프라인의 지표가 FID·CLIP 점수라 계산법을 구현 전에 익혀야 하므로 W5가 시작하는 이 주에 두 자료를 두고, W4를 먼저 마쳐 평가할 데이터 구성을 고정한다.",
+   "goal_steps": [
+    "합성 이미지 1만 장 이상과 메타데이터 스키마 문서로 W4를 마치기",
+    "체크포인트 자동 평가 파이프라인(W5)을 시작하기"
+   ],
+   "method_steps": [
+    "Diffusers 평가 노트북으로 CLIP 점수·FID 계산을 따라 해 보기",
+    "CLIP 레슨으로 글과 그림의 일치 점수 원리를 확인하기",
+    "합성 데이터를 W2 데이터셋에 합산하고 평가 스크립트의 지표 계산부를 만든기"
+   ],
+   "deliverables_completed": [
+    {
+     "task": "W4",
+     "out": "합성 이미지·메타데이터 데이터셋(≥1만 샘플), 파이프라인 코드, 메타데이터 스키마 문서"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 26,
+     "kind": "learning",
+     "id": "L0801",
+     "title": "확산 모델 평가 · Diffusers 노트북",
+     "url": "https://github.com/huggingface/notebooks/blob/main/diffusers/evaluation.ipynb",
+     "minutes": 60,
+     "competencies": [
+      "C13",
+      "C14",
+      "C15"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C13",
+       "level": "일부"
+      },
+      {
+       "cid": "C14",
+       "level": "일부"
+      },
+      {
+       "cid": "C15",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W5 평가 파이프라인의 지표(CLIP 점수, FID)를 계산하는 코드를 구현 직전에 따라 해 본다."
+     ],
+     "hours": 1.0
+    },
+    {
+     "sequence": 27,
+     "kind": "learning",
+     "id": "L0802",
+     "title": "CLIP 원리 · HF CV 코스",
+     "url": "https://github.com/huggingface/computer-vision-course/blob/main/chapters/en/unit4/multimodal-models/clip-and-relatives/clip.mdx",
+     "minutes": 20,
+     "competencies": [
+      "C15"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C15",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W5 CLIP 점수가 글과 그림의 일치를 어떻게 재는지 확인한다. 다축 지표 대시보드에서 이 점수를 읽는 근거다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 28,
+     "kind": "project",
+     "id": "W4",
+     "title": "Blender 기반 합성 데이터 생성 파이프라인",
+     "minutes": 680,
+     "competencies": [
+      "C11",
+      "C12",
+      "C16",
+      "C21",
+      "C22"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "합성 이미지·메타데이터 데이터셋(≥1만 샘플), 파이프라인 코드, 메타데이터 스키마 문서",
+     "covers": [
+      {
+       "cid": "C11",
+       "level": "있음"
+      },
+      {
+       "cid": "C12",
+       "level": "있음"
+      },
+      {
+       "cid": "C16",
+       "level": "있음"
+      },
+      {
+       "cid": "C21",
+       "level": "있음"
+      },
+      {
+       "cid": "C22",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "작업 근거 · UrbanScene3D → C11, C22; UrbanScene3D → C12; UrbanScene3D → C16"
+     ],
+     "hours": 11.3333,
+     "ends_week": 8
+    },
+    {
+     "sequence": 29,
+     "kind": "project",
+     "id": "W5",
+     "title": "벤치마크 구현 및 자동 평가 파이프라인",
+     "minutes": 80,
+     "competencies": [
+      "C13",
+      "C14",
+      "C15"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C13",
+       "level": "있음"
+      },
+      {
+       "cid": "C14",
+       "level": "있음"
+      },
+      {
+       "cid": "C15",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · Goku → C13; Goku → C13, C15; dingo → C14, C15; mega-data-factory → C15; 더한 역량 C21"
+     ],
+     "hours": 1.3333,
+     "ends_week": 10
+    }
+   ]
+  },
+  {
+   "week": 9,
+   "capacity_minutes": 1680,
+   "used_minutes": 760,
+   "learning_minutes": 0,
+   "implementation_minutes": 760,
+   "goal": "GenEval·DPG-Bench 스타일 신규 벤치마크를 구현하고, 체크포인트별 FID·CLIP 점수·미적 점수·VBench 지표를 자동으로 잰다.",
+   "method": "개수·위치·색 같은 축별 프롬프트 세트를 만들고, 체크포인트가 저장되면 평가 스크립트가 돌게 묶은 뒤, 지표를 한 표로 모은다.",
+   "reason": "새 자료 없이 W5 구현에 한 주를 다 쓴다. 벤치마크와 자동 측정이 다음 주 대시보드의 입력이라 먼저 끝낸다.",
+   "goal_steps": [
+    "GenEval·DPG-Bench 스타일 신규 벤치마크를 구현하기",
+    "체크포인트별 FID·CLIP 점수·미적 점수·VBench 지표를 자동으로 잰기"
+   ],
+   "method_steps": [
+    "개수·위치·색 같은 축별 프롬프트 세트를 만들기",
+    "체크포인트가 저장되면 평가 스크립트가 돌게 묶기",
+    "지표를 한 표로 모은기"
+   ],
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 30,
+     "kind": "project",
+     "id": "W5",
+     "title": "벤치마크 구현 및 자동 평가 파이프라인",
+     "minutes": 760,
+     "competencies": [
+      "C13",
+      "C14",
+      "C15"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C13",
+       "level": "있음"
+      },
+      {
+       "cid": "C14",
+       "level": "있음"
+      },
+      {
+       "cid": "C15",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · Goku → C13; Goku → C13, C15; dingo → C14, C15; mega-data-factory → C15; 더한 역량 C21"
+     ],
+     "hours": 12.6667,
+     "ends_week": 10
+    }
+   ]
+  },
+  {
+   "week": 10,
+   "capacity_minutes": 1680,
+   "used_minutes": 845,
+   "learning_minutes": 85,
+   "implementation_minutes": 760,
+   "goal": "다축 지표 비교 대시보드(HTML 리포트)로 W5를 마치고, 데이터 레시피와 성능 지표의 관계를 분석하는 W6를 시작한다.",
+   "method": "데이터 순환 튜토리얼로 평가 결과를 다음 데이터 구성에 되먹이는 흐름을 확인하고, A/B 결과 해석 글 두 편으로 우연한 차이와 표본 부족을 가르는 기준을 정한 뒤, W5 대시보드에서 필터 임계값·합성 비율·캡션 기준별 지표 변화를 정리한다.",
+   "reason": "W6는 W5 평가 결과를 읽어 레시피를 고치는 일이라 결과를 되먹이는 흐름과 차이가 진짜인지 가르는 기준을 착수 전에 읽고, W5 대시보드를 먼저 마쳐 W6 분석의 입력으로 쓴다.",
+   "goal_steps": [
+    "다축 지표 비교 대시보드(HTML 리포트)로 W5를 마치기",
+    "데이터 레시피와 성능 지표의 관계를 분석하는 W6를 시작하기"
+   ],
+   "method_steps": [
+    "데이터 순환 튜토리얼로 평가 결과를 다음 데이터 구성에 되먹이는 흐름을 확인하기",
+    "A/B 결과 해석 글 두 편으로 우연한 차이와 표본 부족을 가르는 기준을 정하기",
+    "W5 대시보드에서 필터 임계값·합성 비율·캡션 기준별 지표 변화를 정리하기"
+   ],
+   "deliverables_completed": [
+    {
+     "task": "W5",
+     "out": "벤치마크 코드, 자동 평가 스크립트, 다축 지표 대시보드"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 31,
+     "kind": "learning",
+     "id": "L1001",
+     "title": "CVPR 2025 기반 모델 데이터 순환 튜토리얼",
+     "url": "https://cvpr.thecvf.com/virtual/2025/tutorial/35914",
+     "minutes": 45,
+     "competencies": [
+      "C10",
+      "C28"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C10",
+       "level": "일부"
+      },
+      {
+       "cid": "C28",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W6 작업은 W5 평가 결과를 다음 데이터 구성에 되먹이는 일이다. 데이터 순환 구조를 착수 전에 본다."
+     ],
+     "hours": 0.75
+    },
+    {
+     "sequence": 32,
+     "kind": "learning",
+     "id": "L1002",
+     "title": "A/B 결과 해석 · 거짓 양성과 유의성",
+     "url": "https://netflixtechblog.com/interpreting-a-b-test-results-false-positives-and-statistical-significance-c1522d0db27a",
+     "minutes": 20,
+     "competencies": [
+      "C28"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C28",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W6 레시피별 점수 차이가 우연인지 가르는 기준(거짓 양성, 유의성)을 실험 해석 메모를 쓰기 전에 정한다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 33,
+     "kind": "learning",
+     "id": "L1003",
+     "title": "A/B 결과 해석 · 거짓 음성과 검정력",
+     "url": "https://netflixtechblog.com/interpreting-a-b-test-results-false-negatives-and-power-6943995cf3a8",
+     "minutes": 20,
+     "competencies": [
+      "C28"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C28",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W6 작업에서 차이가 안 보일 때 표본이 모자란 것인지 확인하는 기준(검정력)을 함께 본다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 34,
+     "kind": "project",
+     "id": "W5",
+     "title": "벤치마크 구현 및 자동 평가 파이프라인",
+     "minutes": 600,
+     "competencies": [
+      "C13",
+      "C14",
+      "C15"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "벤치마크 코드, 자동 평가 스크립트, 다축 지표 대시보드",
+     "covers": [
+      {
+       "cid": "C13",
+       "level": "있음"
+      },
+      {
+       "cid": "C14",
+       "level": "있음"
+      },
+      {
+       "cid": "C15",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · Goku → C13; Goku → C13, C15; dingo → C14, C15; mega-data-factory → C15; 더한 역량 C21"
+     ],
+     "hours": 10.0,
+     "ends_week": 10
+    },
+    {
+     "sequence": 35,
+     "kind": "project",
+     "id": "W6",
+     "title": "데이터 레시피 개선 및 성능 정량 분석",
+     "minutes": 160,
+     "competencies": [
+      "C10",
+      "C27",
+      "C28"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C10",
+       "level": "있음"
+      },
+      {
+       "cid": "C27",
+       "level": "있음"
+      },
+      {
+       "cid": "C28",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · dingo → C28; Goku → C28; 더한 역량 C10, C27"
+     ],
+     "hours": 2.6667,
+     "ends_week": 12
+    }
+   ]
+  },
+  {
+   "week": 11,
+   "capacity_minutes": 1680,
+   "used_minutes": 760,
+   "learning_minutes": 0,
+   "implementation_minutes": 760,
+   "goal": "필터 임계값·합성 데이터 비율·캡션 품질 기준을 바꾼 레시피 개선안을 만들고, 개선된 레시피로 W2·W3를 다시 돌린다.",
+   "method": "지표 변화가 큰 축부터 해석 메모를 쓰고, 메모의 다음 방향을 레시피 개선안으로 옮긴 뒤, 필터·캡션 단계를 다시 실행한다.",
+   "reason": "새 자료 없이 W6 구현에 한 주를 다 쓴다. 실험 해석 메모 3회 이상이 W6 산출물이라 실험마다 메모를 남긴다.",
+   "goal_steps": [
+    "필터 임계값·합성 데이터 비율·캡션 품질 기준을 바꾼 레시피 개선안을 만들기",
+    "개선된 레시피로 W2·W3를 다시 돌린기"
+   ],
+   "method_steps": [
+    "지표 변화가 큰 축부터 해석 메모를 쓰기",
+    "메모의 다음 방향을 레시피 개선안으로 옮기기",
+    "필터·캡션 단계를 다시 실행하기"
+   ],
+   "deliverables_completed": [],
+   "activities": [
+    {
+     "sequence": 36,
+     "kind": "project",
+     "id": "W6",
+     "title": "데이터 레시피 개선 및 성능 정량 분석",
+     "minutes": 760,
+     "competencies": [
+      "C10",
+      "C27",
+      "C28"
+     ],
+     "completed_in_this_chunk": false,
+     "out": "",
+     "covers": [
+      {
+       "cid": "C10",
+       "level": "있음"
+      },
+      {
+       "cid": "C27",
+       "level": "있음"
+      },
+      {
+       "cid": "C28",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · dingo → C28; Goku → C28; 더한 역량 C10, C27"
+     ],
+     "hours": 12.6667,
+     "ends_week": 12
+    }
+   ]
+  },
+  {
+   "week": 12,
+   "capacity_minutes": 1680,
+   "used_minutes": 820,
+   "learning_minutes": 60,
+   "implementation_minutes": 760,
+   "goal": "성능 변화 비교 리포트로 W6를 마치고, 최종 정제 데이터셋과 평가 코드를 HuggingFace Hub에 공개해 데이터셋 카드·README를 완성한다.",
+   "method": "Hub 공유 문서와 데이터셋·모델 카드 문서로 공개 절차와 카드 항목을 정리하고, 고치기 전후 지표를 같은 벤치마크로 비교해 W6 리포트를 마친 뒤, 데이터셋 저장소를 만들어 메타데이터와 함께 올리고 카드와 README를 쓴다.",
+   "reason": "고르게 놓으면 W6가 12주차까지 이어지고 W7은 W6 최종 레시피의 결과를 공개하는 일이라 마지막 주에 두며, 공유 문서는 ③에서 고른 자료라 공개 직전에 읽는다.",
+   "goal_steps": [
+    "성능 변화 비교 리포트로 W6를 마치기",
+    "최종 정제 데이터셋과 평가 코드를 HuggingFace Hub에 공개해 데이터셋 카드·README를 완성하기"
+   ],
+   "method_steps": [
+    "Hub 공유 문서와 데이터셋·모델 카드 문서로 공개 절차와 카드 항목을 정리하기",
+    "고치기 전후 지표를 같은 벤치마크로 비교해 W6 리포트를 마치기",
+    "데이터셋 저장소를 만들어 메타데이터와 함께 올리고 카드와 README를 쓴기"
+   ],
+   "deliverables_completed": [
+    {
+     "task": "W6",
+     "out": "실험 해석 메모(≥3회), 개선된 데이터 레시피 문서, 성능 변화 비교 리포트"
+    },
+    {
+     "task": "W7",
+     "out": "HuggingFace Hub 데이터셋 저장소, 데이터셋 카드, README"
+    }
+   ],
+   "activities": [
+    {
+     "sequence": 37,
+     "kind": "learning",
+     "id": "L1201",
+     "title": "모델 공유 · Transformers 문서",
+     "url": "https://github.com/huggingface/transformers/blob/main/docs/source/en/model_sharing.md",
+     "minutes": 20,
+     "competencies": [
+      "C23"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C23",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · 기존 배정. W7 Hub 공개 절차(저장소 만들기, 올리기)를 공개 직전에 확인한다.",
+      "자료 근거 · C23: The Hugging Face Hub is a platform for sharing, discovering, and consuming models of all different types and sizes."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 38,
+     "kind": "learning",
+     "id": "L1202",
+     "title": "데이터셋 카드 만들기 · HF Datasets",
+     "url": "https://github.com/huggingface/datasets/blob/main/docs/source/dataset_card.mdx",
+     "minutes": 20,
+     "competencies": [
+      "C23"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C23",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "배정 근거 · W7 산출물인 데이터셋 카드의 항목(출처, 사용 범위, 한계)을 공개 전에 정한다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 39,
+     "kind": "learning",
+     "id": "L1203",
+     "title": "모델 카드 만들기 · HF 코스",
+     "url": "https://github.com/huggingface/course/blob/main/chapters/en/chapter4/4.mdx",
+     "minutes": 20,
+     "competencies": [
+      "C23"
+     ],
+     "completed_in_this_chunk": true,
+     "covers": [
+      {
+       "cid": "C23",
+       "level": "일부"
+      }
+     ],
+     "why": [
+      "배정 근거 · W7 평가 파이프라인 README에 쓸 항목을 데이터셋 카드와 같이 정리한다."
+     ],
+     "hours": 0.3333
+    },
+    {
+     "sequence": 40,
+     "kind": "project",
+     "id": "W6",
+     "title": "데이터 레시피 개선 및 성능 정량 분석",
+     "minutes": 280,
+     "competencies": [
+      "C10",
+      "C27",
+      "C28"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "실험 해석 메모(≥3회), 개선된 데이터 레시피 문서, 성능 변화 비교 리포트",
+     "covers": [
+      {
+       "cid": "C10",
+       "level": "있음"
+      },
+      {
+       "cid": "C27",
+       "level": "있음"
+      },
+      {
+       "cid": "C28",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · dingo → C28; Goku → C28; 더한 역량 C10, C27"
+     ],
+     "hours": 4.6667,
+     "ends_week": 12
+    },
+    {
+     "sequence": 41,
+     "kind": "project",
+     "id": "W7",
+     "title": "HuggingFace 공개 및 문서화",
+     "minutes": 480,
+     "competencies": [
+      "C23"
+     ],
+     "completed_in_this_chunk": true,
+     "out": "HuggingFace Hub 데이터셋 저장소, 데이터셋 카드, README",
+     "covers": [
+      {
+       "cid": "C23",
+       "level": "있음"
+      }
+     ],
+     "why": [
+      "작업 근거 · mega-data-factory → C23"
+     ],
+     "hours": 8.0,
+     "ends_week": 12
+    }
+   ]
+  }
+ ]
+}

@@ -9,7 +9,7 @@ POST /api/run          {text | html | url, title?, speed?, stop?, step?, budget?
                        step: "project" 면 역량 → 프로젝트 찾기(2단계), "materials" 면 교육자료 찾기(3단계),
                        "weeks" 면 12주 계획 짜기(4단계), "report" 면 정리 리포트(5단계). text 는 1단계 원문의 문장들
                        budget 은 공부 시간 안의 열쇠 ("84"·"168"·"252", 없으면 "84"). 4·5단계만 읽는다.
-                       주차 계획 md 가 있는 예시(aws_fde)의 "report" 는 한 주 공부 시간 ("7"·"14"·"28", 없으면 "28").
+                       주차 계획 md 가 있는 예시(aws_fde, naver_ml_intern)의 "report" 는 한 주 공부 시간 ("7"·"14"·"28", 없으면 "14").
                        몸통은 JSON 객체 하나, 2MB 까지. 넘으면 413, 객체가 아니면 400.
 
 예시와 같은 공고면 저장된 결과를 다시 튼다(돈이 들지 않는다). 다른 공고는 --live 일 때만 끝까지 돈다.

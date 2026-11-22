@@ -1,7 +1,7 @@
 """정리 리포트(⑥): 발표 자료와 같은 모양(1920×1080, 먹색 글, 공고 인용은 노란 형광펜)의 면접 대비 슬라이드 여러 장. 모델·API 호출 없이 저장본만 읽는다.
   cd code && PYTHONPATH=. ../기용/.venv/bin/python demo/design/build_report_deck.py <예시 이름>
 공부 시간 세 안(84·168·252)마다 demo/data/<예시>.report.<시간>.<쪽>.png (화면용), .pptx (받기용, 쪽 그림을 한 장씩), .json (바닥 줄 불렛에 쓸 값).
-주차 계획 md 가 있는 예시(aws_fde)는 그 대신 ④ 의 한 주 공부 시간 계획마다 (report.14·report.28; 보류한 7 은 리포트가 없다):
+주차 계획 md 가 있는 예시(aws_fde, naver_ml_intern)는 그 대신 ④ 의 한 주 공부 시간 계획마다 (report.14·report.28; 보류한 7 은 리포트가 없다):
 말할 프로젝트 일의 주는 그 계획에서 그 작업이 놓인 주, 미룬 작업은 '미룬 일', 미리 공부할 것은 그 계획의 교육자료 가운데 그 문장의 역량을 다루는 것.
 .json 의 rows 에 37줄 모두의 작업·주·공부 자료를 남긴다 (tests/test_demo.py 가 계획 파일과 맞는지 본다).
 만드는 길: HTML → Chrome 머리 없이 PDF → pdftoppm 쪽 그림 → python-pptx (uv 로 그때 불러 쓴다). 발표 pptx 를 만든 길과 같다.
@@ -131,12 +131,13 @@ def plan_study(row, plan, names, pk):
 
 
 def plan_rows(report, plan, names):
-    """37줄 모두: 줄의 작업마다 그 계획의 주 (미룬 작업은 held), 공부 자료 하나. 어느 쪽도 아닌 작업은 계획이 틀린 것이라 멈춘다"""
+    """줄 모두: 줄의 작업마다 그 계획의 주 (미룬 작업은 held), 공부 자료 하나. 어느 쪽도 아닌 작업은 계획이 틀린 것이라 멈춘다.
+    줄의 작업은 plan_packages (계획과 같은 번호, 네이버), 없으면 packages (AWS 는 응용 번호가 곧 계획 번호다)"""
     at, held = placed(plan), {h["id"] for h in plan["held"]}
     out = []
     for r in report["rows"]:
         pk = []
-        for p in r["packages"]:
+        for p in r.get("plan_packages", r["packages"]):
             if p["id"] not in at and p["id"] not in held:
                 raise SystemExit(f"{p['id']} 가 {plan['source']} 에 놓이지도 미뤄지지도 않았다")
             pk.append({"id": p["id"], "name": p["name"], "weeks": sorted(set(at.get(p["id"], []))), "held": p["id"] in held})
@@ -335,11 +336,11 @@ def chrome(*args):
 
 
 def build(case):
-    for old in DATA.glob(f"{case}.report.*"):      # 지난 판(LaTeX 한 장, 쪽 수가 다른 그림)을 지운다. report.json 은 원본이라 둔다
-        if old.name != f"{case}.report.json" and ".all." not in old.name:      # 전체 리포트(.all.)는 build_report_all.py 가 따로 만든다
-            old.unlink()
     plans = {f"{d['constraints']['hours_per_week']:g}": d for d in plans_case(case)}      # 주차 계획 md 예시는 계획마다, 아니면 공부 시간 안마다
     for budget in plans or BUDGETS:
+        for old in DATA.glob(f"{case}.report.{budget}.*"):      # 이번에 다시 만드는 안의 지난 판만 지운다 (쪽 수가 다른 그림). 다른 안의 파일은 둔다 (네이버 84·168·252 는 11/22 부터 화면이 안 쓴다)
+            if ".all." not in old.name:      # 전체 리포트(.all.)는 build_report_all.py 가 따로 만든다
+                old.unlink()
         p = plan_page(case, plans[budget]) if plans else page(case, budget)
         doc, total = deck_html(p)
         with tempfile.TemporaryDirectory() as tmp:

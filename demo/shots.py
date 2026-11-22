@@ -36,12 +36,13 @@ EXAMPLE = f'[data-example="{CASE}"]'
 DATA = Path(__file__).resolve().parent / "data"
 PROJECT = json.loads((DATA / f"{CASE}.project.json").read_text(encoding="utf-8"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from demo.pipeline import DEFAULT_WEEK_HOURS, blocked_case, plans_case  # noqa: E402
+from demo.pipeline import DEFAULT_WEEK_HOURS, blocked_case, plans_case, saved, span_text  # noqa: E402
 
 PLANS = plans_case(CASE)      # ④ 단추에 있는 주차 계획 md (주 14·28시간). 15시간 판은 파일만 있고 단추에 없다
 BLOCKED = blocked_case(CASE)      # 계획을 보류한 시간 (주 7시간): 주 칸 없이 본문 글
 BUTTONS = sorted([f"{d['constraints']['hours_per_week']:g}" for d in PLANS] + [f"{b['hours_per_week']:g}" for b in BLOCKED], key=float)
 PLAN = next((d for d in PLANS if d["constraints"]["hours_per_week"] == DEFAULT_WEEK_HOURS), PLANS[-1] if PLANS else None)      # 기본 주 14시간: ⑤ 는 하루 공부 시간과 상관없다
+SHORT = saved(CASE, "short") or {}      # ④ 작업 짧은 이름 (패널 제목 "W2 RAG 파이프라인")
 REPORT_FACTS = lambda key: json.loads((DATA / f"{CASE}.report.{key}.json").read_text(encoding="utf-8"))
 
 # 화면에 보이는 글 줄 가운데 글자 크기 < 13px, 또는 --muted 색인 것 (짝 보기에서 다른 줄을 흐리게 하는 [data-focus] 안, 화면 읽기용 글은 뺀다)
@@ -275,7 +276,7 @@ async def peek_ok(p, d):
     await p.mouse("#weeks-doc .g-bar[data-id='W2']")
     await p.until("!" + hidden + " && document.querySelector('.peek[data-open]')")
     await asyncio.sleep(0.4)
-    assert await p.js("document.querySelector('.pk-title').textContent") == "W2 RAG 파이프라인", "④ 패널 제목"
+    assert await p.js("document.querySelector('.pk-title').textContent") == f"W2 {SHORT['W2']}", "④ 패널 제목"
     assert await p.js("location.hash") == "#w=W2" and await p.js("document.activeElement === document.querySelector('.pk-title')"), "④ 패널 주소·초점"
     assert await p.js("document.querySelector('.g-bar[data-id=W2]').getAttribute('aria-pressed')") == "true"
     secs = await p.js("[...document.querySelectorAll('.peek .pk-h')].map((x) => x.textContent)")
@@ -288,12 +289,14 @@ async def peek_ok(p, d):
     await p.shot("08b-weeks-comp")
     await p.js("document.dispatchEvent(new KeyboardEvent('keydown', {key: 'Escape'})), true")
     assert await p.js("document.querySelector('.comp-pop').hidden") and not await p.js(hidden), "④ Esc 가 역량 카드가 아니라 패널을 닫았다"
-    await p.mouse("#weeks-doc .g-head[data-id='9']")      # 다른 것을 누르면 닫지 않고 내용만
-    await p.until("document.querySelector('.pk-title').textContent === '9주차'")
-    assert not await p.js(hidden) and await p.js("location.hash") == "#week=9", "④ 주 패널로 안 바뀐다"
+    from demo.pipeline import sem_week
+    sem = min(sem_week(w["week"]) for w in d["weeks"] if sem_week(w["week"]) >= 9 and w["deliverables_completed"])      # 중간고사 뒤 산출물이 끝나는 첫 주 (AWS 9, 네이버 10)
+    await p.mouse(f"#weeks-doc .g-head[data-id='{sem}']")      # 다른 것을 누르면 닫지 않고 내용만
+    await p.until(f"document.querySelector('.pk-title').textContent === '{sem}주차'")
+    assert not await p.js(hidden) and await p.js("location.hash") == f"#week={sem}", "④ 주 패널로 안 바뀐다"
     secs = await p.js("[...document.querySelectorAll('.peek .pk-h')].map((x) => x.textContent)")
     assert secs[:3] == ["주간 목표", "방법", "이유"] and "이번 주 할 일 차례" in secs and "이번 주 끝나는 산출물" in secs, f"④ 주 패널 {secs}"
-    await p.shot("08e-peek-week9")
+    await p.shot(f"08e-peek-week{sem}")
     await p.mouse("#weeks-doc .g-mark[data-peek=m]")
     await p.until("/^#m=L/.test(location.hash)")
     secs = await p.js("[...document.querySelectorAll('.peek .pk-h')].map((x) => x.textContent)")
@@ -388,7 +391,8 @@ async def flow(p):
                 b = next(x for x in BLOCKED if f"{x['hours_per_week']:g}" == cap)
                 await p.until(f"/한 주 {cap}시간으로는 12주 계획을 보류했어요/.test(document.querySelector('#foot-weeks').textContent)", timeout=5)
                 note = await p.js("[document.querySelector('#weeks-doc .g-scroll').hidden, document.querySelector('#weeks-doc .wk-line').textContent, document.querySelector('#weeks-doc .wk-blocked')?.textContent || '', document.querySelector('#foot-weeks').textContent, document.querySelector('#weeks-doc .g-key').hidden]")
-                assert note[0] and note[4] and not note[1] and f"{b['needed_minutes'] // 60}시간" in note[2] and "11시간 40분" not in note[2] and "11시간 40분" in note[3], f"④ {cap}시간 보류 글 {note}"      # 최소 시간은 바닥 줄에만
+                least = span_text(b["min_per_week_minutes"])      # 한 주 최소 시간 (AWS 11시간 40분, 네이버 12시간 50분)
+                assert note[0] and note[4] and not note[1] and f"{b['needed_minutes'] // 60}시간" in note[2] and least not in note[2] and least in note[3], f"④ {cap}시간 보류 글 {note}"      # 최소 시간은 바닥 줄에만
                 await p.shot(f"08c-weeks-{cap}h")
                 continue
             await p.until(f"document.querySelector('#weeks-doc .wk-line').textContent.includes('주 {cap}시간이면')", timeout=5)

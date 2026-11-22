@@ -464,8 +464,8 @@ def test_weeks_text_splits_at_exams_and_stops_on_exam_only_ranges():
 
 
 def test_no_budget_param_means_84_and_bad_values_end_with_one_error():
-    for step in ("weeks", "report"):
-        assert run_step(step) == run_step(step, "84") == run_step(step, 84)      # 없으면 "84" (정수 84 도 같은 열쇠)
+    assert run_step("weeks") == run_step("weeks", "84") == run_step("weeks", 84)      # 없으면 "84" (정수 84 도 같은 열쇠)
+    assert run_step("report") == run_step("report", "14") == run_step("report", 14)      # ⑥ 은 ④ 의 한 주 공부 시간 (없으면 14)
     for bad in ("100", "", 1e9, ["84"], {"a": 1}, True):
         got = list(server.events({"step": "weeks", "text": TEXT(), "budget": bad}, live_mode=False, default_speed=0))
         assert [e["type"] for e in got] == ["error"] and got[0]["reason"] == "budget" and "하루 1·2·3시간" in got[0]["message"]
@@ -513,7 +513,7 @@ def test_demo_project_copy_matches_outputs():
     assert [r["title"] for r in copy["ranking"]] == [r["title"] for r in full["ranking"][:len(copy["ranking"])]]
 
 
-@pytest.mark.parametrize("name,key", [(NAVER, k) for k in KEYS] + [("aws_fde", k) for k in ("14", "28")])      # AWS 는 ④ 의 한 주 공부 시간 계획마다
+@pytest.mark.parametrize("name,key", [(n, k) for n in (NAVER, "aws_fde") for k in ("14", "28")])      # 두 예시 모두 ④ 의 한 주 공부 시간 계획마다 (네이버는 11/22 부터)
 def test_report_step_shows_interview_slides_for_the_chosen_budget(name, key, live_server):
     """⑥ 은 발표 자료 모양의 면접 대비 슬라이드 (design/build_report_deck.py): 표지, 질문 다섯, 프로젝트 밖에서 채울 역량. 받기는 pptx"""
     case = pipeline.example_case(name)
@@ -545,7 +545,7 @@ def test_report_files_are_served_only_by_name(live_server):
 
 
 def test_report_slides_differ_between_budgets():
-    for name, keys in ((NAVER, KEYS), ("aws_fde", ["14", "28"])):
+    for name, keys in ((NAVER, ["14", "28"]), ("aws_fde", ["14", "28"])):
         covers = {k: (pipeline.DATA / f"{name}.report.{k}.1.png").read_bytes() for k in keys}
         assert len(set(covers.values())) == len(keys)      # 표지의 공부 시간 줄이 안마다 다르다
 
@@ -651,8 +651,10 @@ def test_step_without_saved_file_says_pending_instead_of_breaking(tmp_path, monk
 
 @pytest.mark.parametrize("name", [NAVER])
 @pytest.mark.parametrize("key", KEYS)
-def test_weeks_step_shows_round_lab_curriculum_in_one_event(name, key):
-    """⑤ 는 주차 계획 md 가 없는 예시면 라운드랩 커리큘럼 생성기 결과 (사용자 11/21). 하루 1·2·3시간 = 주당 7·14·21시간. 12주를 사건 하나로 보내 화면이 한 번에 그린다"""
+def test_weeks_step_shows_round_lab_curriculum_in_one_event(name, key, monkeypatch):
+    """⑤ 는 주차 계획 md 가 없는 예시면 라운드랩 커리큘럼 생성기 결과 (사용자 11/21). 하루 1·2·3시간 = 주당 7·14·21시간. 12주를 사건 하나로 보내 화면이 한 번에 그린다.
+    네이버는 11/22 부터 계획 md 가 있어 그 파일을 안 보이게 하고 본다 (생성기 결과 파일은 그대로 둔다)"""
+    monkeypatch.setattr(pipeline, "plans_case", lambda _: [])
     case = pipeline.example_case(name)
     events = list(server.events({"step": "weeks", "text": pipeline.posting_text(case), "budget": key}, live_mode=False, default_speed=0))
     kinds = [e["type"] for e in events]
@@ -705,6 +707,43 @@ def test_weeks_step_shows_7_14_28_hour_plans_with_14_as_default():
     assert (done["cap"], done["project"], done["deliverables"]) == (14, base["summary"]["implementation_hours"], len(base["assigned"]))
 
 
+def test_naver_hand_plans_follow_the_aws_rules():
+    """네이버 12주 계획 (손으로 짬, design/naver_plan_hand.md): AWS 와 같은 단추(주 7·14·28시간, 기본 14)와 규칙.
+    작업은 응용 W1~W7, 한 사람 시간 = 팀 시간 ÷ 2 (AWS 계획의 셈), 주마다 상한 안, ③ 에서 고른 자료 6개는 두 계획 모두 '기존 배정',
+    자료 주소는 모두 팀 자료 은행 또는 ③·응용 저장본에 있는 것 (지어낸 주소가 없다). 7시간은 핵심 작업만으로도 넘쳐 보류"""
+    case = pipeline.example_case(NAVER)
+    steps = next(server.events({"step": "weeks", "text": pipeline.posting_text(case)}, live_mode=False, default_speed=0))
+    assert steps["default"] == "14" and [(p["key"], p["label"], p["source"]) for p in steps["plans"]] == [("7", "주 7시간", "blocked"), ("14", "주 14시간", "md"), ("28", "주 28시간", "md")]
+    adapt = pipeline.saved(NAVER, "adapt")
+    team = {p["id"]: p["hours"] for p in adapt["packages"]}
+    picks = {p["url"] for p in pipeline.m3_case(NAVER)["picks"]}
+    from m3_materials import pick
+    known = {r["url"] for r in pick.bank()[0]} | picks | {x["url"] for x in [adapt["base"], *adapt["complements"]]}
+    for d in pipeline.plans_case(NAVER):
+        cap = d["constraints"]["hours_per_week"] * 60
+        built = {}
+        for w in d["weeks"]:
+            assert w["used_minutes"] <= cap and w["used_minutes"] == sum(a["minutes"] for a in w["activities"])
+            kinds = [a["kind"] for a in w["activities"]]
+            assert kinds == sorted(kinds, key=lambda k: k != "learning")      # 배우기가 먼저, 만들기가 뒤
+            for a in w["activities"]:
+                assert a["minutes"] % 5 == 0
+                if a["kind"] == "project":
+                    built[a["id"]] = built.get(a["id"], 0) + a["minutes"]
+                else:
+                    assert a["url"] in known and a["covers"] and a["why"][0].startswith("배정 근거 · "), a["title"]
+        assert built == {k: h * 60 // 2 for k, h in team.items()} and d["assigned"] == list(team) and d["held"] == []
+        learning = [a for w in d["weeks"] for a in w["activities"] if a["kind"] == "learning"]
+        assert {a["url"] for a in learning if "기존 배정" in a["why"][0]} == picks and len(picks) == 6
+    lines = {p["key"]: p["line"] for p in steps["plans"]}
+    assert lines["14"] == "주 14시간이면 작업 7개가 모두 12주 안에 들어가요" == lines["28"].replace("28", "14")
+    block = pipeline.blocked_case(NAVER)
+    core = sum(h * 60 // 2 for k, h in team.items() if next(p for p in adapt["packages"] if p["id"] == k)["core"])
+    assert [(b["hours_per_week"], b["available_minutes"], b["needed_build_minutes"], b["min_per_week_minutes"]) for b in block] == [(7, 84 * 60, core, 770)]
+    assert core > 84 * 60      # 핵심 작업만으로도 84시간을 넘는다
+    assert pipeline.saved(NAVER, "short") and set(pipeline.saved(NAVER, "short")) == set(team)      # 간트차트 짧은 이름도 W1~W7
+
+
 def test_weekly_plans_name_weeks_by_semester_6_exam_2_6_exam_2():
     """사용자 11/22: 12주 계획은 학기 16주에서 중간·기말 시험 2주씩을 뺀 것 (6 + 2 + 6 + 2).
     ④ 칸 이름·끝나는 주·⑥ 의 주는 학기 주 (계획 7주 → 학기 9주), 시험 띠는 저장본 team.exams 와 같다"""
@@ -713,29 +752,35 @@ def test_weekly_plans_name_weeks_by_semester_6_exam_2_6_exam_2():
         assert team["semester_weeks"] == pipeline.SEMESTER_WEEKS
         assert [(list(e["weeks"]), e["label"]) for e in pipeline.SEMESTER_EXAMS] == [(e["weeks"], e["label"]) for e in team["exams"]]
     assert [pipeline.sem_week(k) for k in range(1, 13)] == [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14]
-    case = pipeline.example_case("aws_fde")
+    for name in ("aws_fde", NAVER):
+        semester_weeks_follow_the_plan(name)
+
+
+def semester_weeks_follow_the_plan(name):
+    case = pipeline.example_case(name)
     steps = next(server.events({"step": "weeks", "text": pipeline.posting_text(case)}, live_mode=False, default_speed=0))
     for p in steps["plans"]:
         if p["source"] == "blocked":
             continue
-        d = {x["constraints"]["hours_per_week"]: x for x in pipeline.plans_case("aws_fde")}[p["cap"]]
+        d = {x["constraints"]["hours_per_week"]: x for x in pipeline.plans_case(name)}[p["cap"]]
         assert [w["sem"] for w in p["plan"]] == [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14]
         assert p["exams"] == [{"from": 7, "to": 8, "label": "중간고사"}, {"from": 15, "to": 16, "label": "기말고사"}]
         assert p["semester"] == "한 학기 16주 = 6주 + 중간고사 2주 + 6주 + 기말고사 2주"
         ends = [(a["ends"], x["ends_week"]) for w, dw in zip(p["plan"], d["weeks"]) for a, x in zip(w["activities"], dw["activities"]) if x.get("ends_week")]
         assert ends and all(a == pipeline.sem_week(b) for a, b in ends)
-        facts = json.loads((pipeline.DATA / f"aws_fde.report.{p['key']}.json").read_text("utf-8"))
+        facts = json.loads((pipeline.DATA / f"{name}.report.{p['key']}.json").read_text("utf-8"))
         assert all(k not in (7, 8, 15, 16) and k <= 14 for r in facts["rows"] for pk in r["packages"] for k in pk["weeks"])
 
 
-def test_report_follows_the_chosen_weekly_plan():
+@pytest.mark.parametrize("name", ["aws_fde", NAVER])
+def test_report_follows_the_chosen_weekly_plan(name):
     """⑥ 은 ④ 에서 고른 한 주 공부 시간의 계획으로 (사용자 11/21): 37줄 모두, 줄의 작업마다 ⑥ 의 주 = 그 계획에서 그 작업이 놓인 주.
     미룬 작업은 주 없이 미룬 일. 공부 자료는 그 계획 파일의 교육자료. 7시간(보류)은 리포트 대신 본문 글, 하루 공부 시간 열쇠는 받지 않는다"""
-    case = pipeline.example_case("aws_fde")
-    report = pipeline.report_case("aws_fde")
-    for d in pipeline.plans_case("aws_fde"):
+    case = pipeline.example_case(name)
+    report = pipeline.report_case(name)
+    for d in pipeline.plans_case(name):
         key = f"{d['constraints']['hours_per_week']:g}"
-        facts = json.loads((pipeline.DATA / f"aws_fde.report.{key}.json").read_text("utf-8"))
+        facts = json.loads((pipeline.DATA / f"{name}.report.{key}.json").read_text("utf-8"))
         at = {}
         for w in d["weeks"]:
             for x in w["activities"]:
@@ -744,9 +789,9 @@ def test_report_follows_the_chosen_weekly_plan():
         held = {h["id"] for h in d["held"]}
         learning = {(pipeline.sem_week(w["week"]), x["title"]) for w in d["weeks"] for x in w["activities"] if x["kind"] == "learning"}
         assert facts["plan"]["hours"] == d["constraints"]["hours_per_week"] and facts["plan"]["held"] == [h["id"] for h in d["held"]]
-        assert [r["n"] for r in facts["rows"]] == [r["sentence_no"] for r in report["rows"]]      # 37줄 모두
+        assert [r["n"] for r in facts["rows"]] == [r["sentence_no"] for r in report["rows"]]      # 줄 모두 (AWS 37, 네이버 19)
         for r, src in zip(facts["rows"], report["rows"]):
-            assert [p["id"] for p in r["packages"]] == [p["id"] for p in src["packages"]]
+            assert [p["id"] for p in r["packages"]] == [p["id"] for p in src.get("plan_packages", src["packages"])]      # 네이버는 계획 번호로 이은 작업
             for p in r["packages"]:
                 assert (p["held"], set(p["weeks"])) == ((True, set()) if p["id"] in held else (False, at[p["id"]])), (key, r["n"], p)
             assert r["study"] is None or (r["study"]["week"], r["study"]["title"]) in learning, (key, r["n"])
@@ -775,8 +820,15 @@ def test_plan_steps_keep_md_words_and_split_at_clause_endings():
 
 def test_gantt_plan_view_attaches_every_learning_item_to_a_package_and_lists_packages():
     """④ 간트차트: 교육자료마다 받쳐 주는 작업(for)이 있고, 작업 묶음 표(packages)는 번호 차례, 미룬 것은 held"""
-    case = pipeline.example_case("aws_fde")
-    steps = next(e for e in pipeline.weeks(case, speed=0) if e["type"] == "steps")
+    for name in ("aws_fde", NAVER):
+        gantt_rows_ok(name)
+    steps = next(e for e in pipeline.weeks(pipeline.example_case("aws_fde"), speed=0) if e["type"] == "steps")
+    two = {a["id"]: a["for"] for w in steps["plans"][1]["plan"] for a in w["activities"] if a["kind"] == "learning"}
+    assert two["L0201"] == "W2" and two["L0303"] == "W3"      # 겹치는 역량 + 그 주의 작업
+
+
+def gantt_rows_ok(name):
+    steps = next(e for e in pipeline.weeks(pipeline.example_case(name), speed=0) if e["type"] == "steps")
     for v in steps["plans"]:
         if v["source"] != "md":
             continue
@@ -785,8 +837,6 @@ def test_gantt_plan_view_attaches_every_learning_item_to_a_package_and_lists_pac
         learning = [a for w in v["plan"] for a in w["activities"] if a["kind"] == "learning"]
         assert learning and all(a["for"] in ids and a["why"] and a["levels"] for a in learning)
         assert all(w["reason"] for w in v["plan"])
-    two = {a["id"]: a["for"] for w in steps["plans"][1]["plan"] for a in w["activities"] if a["kind"] == "learning"}
-    assert two["L0201"] == "W2" and two["L0303"] == "W3"      # 겹치는 역량 + 그 주의 작업
 
 
 def test_report_event_offers_full_pdf_only_when_the_file_exists():
