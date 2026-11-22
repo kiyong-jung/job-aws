@@ -22,6 +22,7 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
       - run: PYTHONPATH=. python -m demo.export_static site
+      - run: cp -R video site/video      # 데모 영상 쪽 (발표 15장 QR 이 가리키는 주소)
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
