@@ -5306,7 +5306,7 @@
    },
    "experience": "법률 문서 RAG 파이프라인과 프롬프트 템플릿 다섯 개를 만들고, AI 채점 평가와 에이전트 실행 기록으로 틀린 답의 원인을 찾아 고쳐 봤어요.",
    "question": {
-    "text_ko": "고객사가 RAG 기반 지식 도우미를 두고 'Claude가 너무 지어내요'라고 해요. 그 고객을 맡은 응용 엔지니어라면 처음 48시간에 무엇을 하나요?",
+    "text_ko": "고객사가 RAG 기반 지식 도우미를 두고 'Claude 답에 할루시네이션이 너무 많아요'라고 해요. 그 고객을 맡은 응용 엔지니어라면 처음 48시간에 무엇을 하나요?",
     "text_en": "An enterprise customer says “Claude hallucinates too much” in their RAG-based knowledge assistant. You're the applied engineer on the account. What happens in the first 48 hours?",
     "origin": "은행",
     "bank_id": "Qb9ee6adc92",
@@ -5317,9 +5317,9 @@
    },
    "answer_points": [
     "저희 법률 Q&A에서도 같은 말을 들어, 첫날 질문 120개로 먼저 쟀어요.",
-    "AI 채점(LLM-as-a-Judge)으로 보니 근거 없는 답이 18%였어요.",
+    "AI 채점(LLM-as-a-Judge)으로 보니 할루시네이션이 18%였어요.",
     "에이전트 실행 기록을 보니 대부분 검색이 맞는 조항을 놓친 탓이었어요.",
-    "조항 단위로 자르고 '근거 없으면 모른다고 답하기'를 넣자 6%가 됐어요.",
+    "조항 단위로 자르고 '근거 없으면 모른다고 답하기'를 넣자 할루시네이션이 6%로 줄었어요.",
     "정답률도 62%에서 81%로 올랐고, 원인부터 재야 한다고 배웠어요."
    ],
    "study_point": {
@@ -5352,11 +5352,11 @@
     },
     {
      "value": "18%",
-     "meaning": "근거 없는 답 비율 (고치기 전)"
+     "meaning": "할루시네이션 비율 (고치기 전)"
     },
     {
      "value": "6%",
-     "meaning": "고친 뒤 근거 없는 답 비율"
+     "meaning": "고친 뒤 할루시네이션 비율"
     },
     {
      "value": "62%에서 81%로",
@@ -5369,7 +5369,7 @@
      "meaning": "W2 프롬프트 템플릿 5종 이상"
     }
    ],
-   "summary": "AI 도구(평가·에이전트·RAG·프롬프트): 지어낸 답을 평가로 재고 18%를 6%로 줄이기",
+   "summary": "AI 도구(평가·에이전트·RAG·프롬프트): 할루시네이션을 평가로 재고 18%를 6%로 줄이기",
    "not_covered": []
   },
   {
