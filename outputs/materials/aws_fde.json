@@ -103,14 +103,15 @@
   },
   {
    "role": "핵심",
-   "gain": 500.0,
-   "id": "LRN624bcb0ae0",
-   "title": "Production Architecture",
-   "type": "공식 문서 튜토리얼",
-   "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
+   "gain": 501.0,
+   "id": "T796bfc88a2",
+   "title": "도구 사용 · Amazon Bedrock",
+   "type": "공식 문서",
+   "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html",
    "covers": {
     "C21": "일부",
-    "C44": "있음"
+    "C44": "있음",
+    "C57": "있음"
    }
   },
   {
@@ -128,13 +129,12 @@
   {
    "role": "보조",
    "gain": 1.5,
-   "id": "E03732779fa",
-   "title": "Module: Build a Multi-Region Serverless Application for Resilience and High Availability",
-   "type": "워크숍 랩",
-   "url": "https://github.com/aws-samples/aws-serverless-workshops/tree/master/MultiRegion",
+   "id": "Tb78dbf9fd9",
+   "title": "Circuit breaker",
+   "type": "공식 문서",
+   "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/circuit-breaker.html",
    "covers": {
-    "C57": "있음",
-    "C58": "일부"
+    "C58": "있음"
    }
   },
   {
@@ -142,7 +142,7 @@
    "gain": 1.0,
    "id": "E2a4fa23ce7",
    "title": "Learn Go with Tests",
-   "type": "글",
+   "type": "온라인 책",
    "url": "https://quii.gitbook.io/learn-go-with-tests",
    "covers": {
     "C54": "있음"
@@ -214,7 +214,7 @@
    "cid": "C58",
    "name": "분산 시스템 개념 이해",
    "priority": "나머지",
-   "level": "일부"
+   "level": "있음"
   }
  ],
  "candidates": [
@@ -576,8 +576,8 @@
    }
   },
   {
-   "id": "E03732779fa",
-   "title": "Module: Build a Multi-Region Serverless Application for Resilience and High Availability",
+   "id": "Tb78dbf9fd9",
+   "title": "Circuit breaker",
    "cells": {
     "C21": {
      "level": "없음",
@@ -615,13 +615,13 @@
      "downgraded": false
     },
     "C57": {
-     "level": "있음",
-     "quote": "you will use Amazon API Gateway, AWS Lambda, Amazon DynamoDB and a variety of other AWS services",
+     "level": "없음",
+     "quote": "",
      "downgraded": false
     },
     "C58": {
-     "level": "일부",
-     "quote": "build a Multi-Region Serverless Application for Resilience and High Availability",
+     "level": "있음",
+     "quote": "If the timeouts exceed a specified threshold, the application opens the circuit.",
      "downgraded": false
     }
    }
@@ -882,12 +882,12 @@
    }
   },
   {
-   "id": "LRN624bcb0ae0",
-   "title": "Production Architecture",
+   "id": "T796bfc88a2",
+   "title": "도구 사용 · Amazon Bedrock",
    "cells": {
     "C21": {
      "level": "일부",
-     "quote": "Best practices for building production-ready AI applications with CrewAI",
+     "quote": "The model decides when a tool is needed; your application code (or Amazon Bedrock itself, in server-side mode) executes the tool and returns the result for the model to incorporate in its final response.",
      "downgraded": false
     },
     "C43": {
@@ -897,7 +897,7 @@
     },
     "C44": {
      "level": "있음",
-     "quote": "Fast and Flexible Multi-Agent Automation Framework · concepts · Best practices for building production-ready AI applications with CrewAI",
+     "quote": "When you send a message, you also supply definitions for one or more tools that could help the model generate a response.",
      "downgraded": false
     },
     "C51": {
@@ -921,8 +921,8 @@
      "downgraded": false
     },
     "C57": {
-     "level": "없음",
-     "quote": "",
+     "level": "있음",
+     "quote": "You can use the Amazon Bedrock API to give a model access to tools that can help it generate responses for messages that you send to the model.",
      "downgraded": false
     },
     "C58": {
@@ -2770,5 +2770,11 @@
   }
  ],
  "cost_krw": 0.0,
- "rerank_units": 0
+ "rerank_units": 0,
+ "hand_fixes": [
+  "2026-11-22 손으로 고침 (사용자 결정: 데모 ③ 을 발표의 팀 판(진욱, 교육자료파트_수정.pptx)과 같게): 핵심 'Production Architecture'(crewAI, LRN624bcb0ae0) → '도구 사용 · Amazon Bedrock'(공식 문서, C44 있음 · C57 있음 · C21 일부), 보조 'Module: Build a Multi-Region Serverless Application…'(E03732779fa) → 'Circuit breaker'(AWS 처방 안내서, C58 있음). 나머지 넷(ADK · Recommended Technologies · Learn Go with Tests · Prompt Template)은 그대로",
+  "2026-11-22: 두 새 자료는 은행 세 파일(팀·진욱·보강)에 없다 (팀 판에서 옴). 후보 50개에서 나간 두 자료 자리에 넣어 숫자 흐름 14,385 → 1,000 → 50 → 6 을 그대로 둔다. id 는 'T'+주소 sha1 앞 10자. rerank.json 은 그대로",
+  "2026-11-22: 근거 구절은 공개 문서 본문에서 손으로 옮김. C44 는 팀 판이 형광펜 친 문장, C57·C21 은 같은 쪽 첫 문단·셋째 문단, C58 은 'If the timeouts exceed a specified threshold, the application opens the circuit.' (구현 절)",
+  "결과: 덮기 C58 일부 → 있음 (도구·지식 역량 9개 중 있음 6 → 7, 일부 3 → 2, 7.5 → 8). C57 은 그대로 있음 (근거가 Bedrock 문서로 바뀜)"
+ ]
 }

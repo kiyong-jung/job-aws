@@ -7,6 +7,9 @@
   "xAI",
   "Cohere"
  ],
+ "company": 5,
+ "topic": 0,
+ "made": 0,
  "uncovered": [
   "React",
   "Go"
@@ -110,14 +113,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "CrewAI Production Architecture",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 3,
-    "minutes": 20,
-    "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
-    "when": "3주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 4,
@@ -162,14 +158,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "AWS ADR 작성 절차",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 1,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
-    "when": "1주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 6,
@@ -184,14 +173,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "Evaluate your ADK agent · Vertex AI Gen AI Evaluation",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 9,
-    "minutes": 90,
-    "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
-    "when": "9주차 · 1시간 30분"
-   }
+   "study": null
   },
   {
    "n": 7,
@@ -205,14 +187,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "AWS ADR 작성 절차",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 1,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
-    "when": "1주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 8,
@@ -226,14 +201,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "AWS ADR 작성 절차",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 1,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
-    "when": "1주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 9,
@@ -247,14 +215,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "AWS ADR 작성 절차",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 1,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
-    "when": "1주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 10,
@@ -268,14 +229,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "AWS ADR 작성 절차",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 1,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
-    "when": "1주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 11,
@@ -332,14 +286,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "AWS ADR 작성 절차",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 1,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
-    "when": "1주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 13,
@@ -356,11 +303,11 @@
     }
    ],
    "study": {
-    "title": "CrewAI Production Architecture",
+    "title": "Bedrock 도구 사용 문서",
     "name": "파운데이션 모델 개념 및 활용 이해",
     "week": 3,
     "minutes": 20,
-    "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
+    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html",
     "when": "3주차 · 20분"
    }
   },
@@ -410,25 +357,17 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "Evaluate your ADK agent · Vertex AI Gen AI Evaluation",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 9,
-    "minutes": 90,
-    "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
-    "when": "9주차 · 1시간 30분"
-   }
+   "study": null
   },
   {
    "n": 16,
    "packages": [
     {
-     "id": "W4",
-     "name": "보안·가드레일·프로덕션 안정성 레이어 구현",
+     "id": "W8",
+     "name": "인시던트 트러블슈팅 및 운영 개선 실습",
      "weeks": [
-      5,
-      6,
-      9
+      13,
+      14
      ],
      "held": false
     }
@@ -446,21 +385,11 @@
    "n": 17,
    "packages": [
     {
-     "id": "W4",
-     "name": "보안·가드레일·프로덕션 안정성 레이어 구현",
+     "id": "W8",
+     "name": "인시던트 트러블슈팅 및 운영 개선 실습",
      "weeks": [
-      5,
-      6,
-      9
-     ],
-     "held": false
-    },
-    {
-     "id": "W5",
-     "name": "Eval 프레임워크 및 모니터링 구현",
-     "weeks": [
-      9,
-      10
+      13,
+      14
      ],
      "held": false
     }
@@ -529,14 +458,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "Evaluate your ADK agent · Vertex AI Gen AI Evaluation",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 9,
-    "minutes": 90,
-    "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
-    "when": "9주차 · 1시간 30분"
-   }
+   "study": null
   },
   {
    "n": 20,
@@ -551,14 +473,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "Evaluate your ADK agent · Vertex AI Gen AI Evaluation",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 9,
-    "minutes": 90,
-    "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
-    "when": "9주차 · 1시간 30분"
-   }
+   "study": null
   },
   {
    "n": 21,
@@ -573,14 +488,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "Evaluate your ADK agent · Vertex AI Gen AI Evaluation",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 9,
-    "minutes": 90,
-    "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
-    "when": "9주차 · 1시간 30분"
-   }
+   "study": null
   },
   {
    "n": 22,
@@ -595,14 +503,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "Evaluate your ADK agent · Vertex AI Gen AI Evaluation",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 9,
-    "minutes": 90,
-    "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
-    "when": "9주차 · 1시간 30분"
-   }
+   "study": null
   },
   {
    "n": 23,
@@ -618,14 +519,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "RAG 평가 지표",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 10,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-evaluation-metrics.html",
-    "when": "10주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 24,
@@ -639,16 +533,17 @@
       12
      ],
      "held": false
+    },
+    {
+     "id": "W9",
+     "name": "재사용 가능한 패턴 라이브러리 코드화",
+     "weeks": [
+      14
+     ],
+     "held": false
     }
    ],
-   "study": {
-    "title": "RAG 평가 지표",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 10,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-evaluation-metrics.html",
-    "when": "10주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 25,
@@ -664,14 +559,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "RAG 평가 지표",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 10,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-evaluation-metrics.html",
-    "when": "10주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 26,
@@ -681,6 +569,25 @@
      "name": "요구사항 분석 및 시스템 아키텍처 설계",
      "weeks": [
       1
+     ],
+     "held": false
+    },
+    {
+     "id": "W10",
+     "name": "Agile 프로세스 운영 및 협업 기록",
+     "weeks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
      ],
      "held": false
     }
@@ -706,14 +613,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "AWS ADR 작성 절차",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 1,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
-    "when": "1주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 28,
@@ -729,14 +629,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "CrewAI Production Architecture",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 3,
-    "minutes": 20,
-    "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
-    "when": "3주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 29,
@@ -803,14 +696,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "Evaluate your ADK agent · Vertex AI Gen AI Evaluation",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 9,
-    "minutes": 90,
-    "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
-    "when": "9주차 · 1시간 30분"
-   }
+   "study": null
   },
   {
    "n": 31,
@@ -835,14 +721,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "Evaluate your ADK agent · Vertex AI Gen AI Evaluation",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 9,
-    "minutes": 90,
-    "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/gemini/evaluation/evaluating_adk_agent.ipynb",
-    "when": "9주차 · 1시간 30분"
-   }
+   "study": null
   },
   {
    "n": 32,
@@ -858,14 +737,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "RAG 평가 지표",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 10,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-evaluation-metrics.html",
-    "when": "10주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 33,
@@ -879,18 +751,20 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "AWS ADR 작성 절차",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 1,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
-    "when": "1주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 34,
    "packages": [
+    {
+     "id": "W7",
+     "name": "React/TypeScript 프론트엔드 및 실시간 스트리밍 UI",
+     "weeks": [
+      12,
+      13
+     ],
+     "held": false
+    },
     {
      "id": "W2",
      "name": "Genkit 기반 RAG 파이프라인 구축",
@@ -933,14 +807,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "AWS ADR 작성 절차",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 1,
-    "minutes": 20,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/architectural-decision-records/adr-process.html",
-    "when": "1주차 · 20분"
-   }
+   "study": null
   },
   {
    "n": 36,
@@ -965,14 +832,7 @@
      "held": false
     }
    ],
-   "study": {
-    "title": "Circuit breaker 설계 · 재시도 간격과 지터",
-    "name": "그 일을 시작하는 주에 보는 자료",
-    "week": 5,
-    "minutes": 30,
-    "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/circuit-breaker.html",
-    "when": "5주차 · 30분"
-   }
+   "study": null
   },
   {
    "n": 37,
@@ -989,12 +849,12 @@
     }
    ],
    "study": {
-    "title": "Learn ECS Fargate with the AWS CDK",
+    "title": "Bedrock 도구 사용 문서",
     "name": "AWS 서비스 활용",
-    "week": 11,
-    "minutes": 40,
-    "url": "https://www.youtube.com/watch?v=DCUZkhOMhac",
-    "when": "11주차 · 40분"
+    "week": 3,
+    "minutes": 20,
+    "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html",
+    "when": "3주차 · 20분"
    }
   }
  ],

@@ -27,8 +27,8 @@ const statusOf = Object.fromEntries(ORDER.map((k) => [k, '']));      // 쪽 머�
 const doing = {};                                                   // 도는 동안 그 쪽의 지금 하는 일 (상태 줄을 잠시 덮는다)
 const feet = Object.fromEntries(ORDER.map((k) => [k, { bullets: [], actions: [] }]));
 // 쪽 제목 (발표 자료의 그 장 제목 그대로, 사용자 11/21: 발표 디자인을 그대로). 형광펜 줄로 보인다
-const TITLE = { posting: '공고 한 건에서 역량을 뽑는다', search: '바탕 프로젝트의 빈 역량은 보조 프로젝트에서 방식만 빌린다',
-  materials: '낱말로 넓게 모아, 뜻으로 다시 고른다', weeks: '프로젝트 하나와 교육자료가 12주 계획이 된다', report: '공고 문장 하나에 빅테크 면접 질문 하나' };
+const TITLE = { posting: '공고 한 건에서 역량을 뽑는다', search: '바탕 프로젝트의 빈 역량은 보조 프로젝트에서 방법만 빌린다',
+  materials: 'BM25로 넓게 모아, Cohere Rerank로 다시 고른다', weeks: '프로젝트 하나와 교육자료가 12주 계획이 된다', report: '공고 문장 하나에 면접 질문 하나' };
 // 걸음 (발표의 "걸음 ① ② ③ ④ ⑤"): 쪽마다 그 단계의 하위 일 목록과 지금 하는 일. 서버의 steps·stage 사건이 채운다
 const walks = {};      // 쪽 → {items:[{key, label}], at: 지금 걸음 번호(0부터), done}
 
@@ -232,8 +232,9 @@ function renderShot(p) {
   const box = el('div', { class: 'shot' });
   box.append(el('img', { src: png, alt: `${p.company || ''} 공고 원문 화면`, width: String(width), height: String(height) }));
   const layer = el('div', { class: 'shot-layer' });
+  const miss = el('div', { class: 'shot-miss' });      // 캡처에 자리가 없는 문장은 원문 글로 여기에 (아래 flush)
   box.append(layer);
-  shot = { layer, width, height, marks };
+  shot = { layer, width, height, marks, miss };
   return box;
 }
 function paintShot(n) {
@@ -243,9 +244,12 @@ function paintShot(n) {
   // 번호 배지는 글 칸 왼쪽 여백에 (형광펜 첫 칸 바로 왼쪽에 두면 줄 가운데서 시작하는 문장이 앞 낱말을 덮는다, 디자이너 2차 11/21).
   // 배지는 첫 칸 안에 두어 칠·켜짐 상태를 그대로 따르고, 자리만 글 칸 왼쪽 끝(모든 형광펜 가운데 가장 왼쪽)에서 28px 왼쪽으로
   shot.colX ??= Math.min(...Object.values(shot.marks).flat().map(([x]) => x));
+  // 같은 줄에서 시작하는 문장은 번호 하나로 ("3·4"): 따로 두면 배지가 겹친다. 줄은 첫 칸의 위쪽 자리로 가른다
+  shot.same ??= Object.entries(shot.marks).reduce((m, [k, v]) => (m.get(v[0][1]) ? m.get(v[0][1]).push(Number(k)) : m.set(v[0][1], [Number(k)]), m), new Map());
+  const line = shot.same.get(rs[0][1]).sort((a, b) => a - b);
   const parts = rs.map(([x, y, w, h], i) => {
     const d = el('mark', { class: 'hl shot-hl', 'data-n': n, style: `left:${pct(x, shot.width)};top:${pct(y, shot.height)};width:${pct(w, shot.width)};height:${pct(h, shot.height)}` });
-    if (!i) d.append(el('span', { class: 'badge', 'aria-hidden': 'true', text: String(n), style: `left:calc(${((shot.colX - x) / w) * 100}% - 28px)` }));
+    if (!i && line[0] === n) d.append(el('span', { class: 'badge', 'aria-hidden': 'true', text: line.join('·'), style: `left:calc(${((shot.colX - x) / w) * 100}% - 4px)` }));
     shot.layer.append(d);
     return d;
   });
@@ -261,7 +265,8 @@ export function renderPosting(p) {
   shot = null;
   if (p.shot) {      // 실제 화면: 원문 글은 칠할 곳만 숨겨 둔다 (형광펜 짝은 그림 위 칸이 맡는다)
     doc.dataset.shot = '';
-    doc.append(renderShot(p));
+    const box = renderShot(p);
+    doc.append(box, shot.miss);
   } else delete doc.dataset.shot;
   const text = p.shot ? el('div', { class: 'shot-text', hidden: true }) : doc;
   if (p.shot) doc.append(text);
@@ -304,9 +309,9 @@ export function renderPosting(p) {
   };
   const rest = el('details', { class: 'want-rest', hidden: true });
   const restSum = el('summary');
-  const restList = el('p', { class: 'want-rest-list' });
+  const restList = el('ul', { class: 'want-rest-list' });
   rest.append(restSum, restList);
-  cells = { 필수: group('필수', '자격요건'), 우대: group('우대', '우대사항'), rest, restSum, restList, restN: 0 };
+  cells = { 필수: group('필수', '자격요건'), 우대: group('우대', '사항'), rest, restSum, restList, restN: 0 };
   box.append(rest);
   $('posting-cells').replaceChildren(box);
 }
@@ -328,7 +333,7 @@ export function addCell(row) {
     cells.restN += 1;
     cells.rest.hidden = false;
     cells.restSum.textContent = `나머지 역량 ${cells.restN}개 보기`;
-    cells.restList.textContent = cells.restList.textContent ? `${cells.restList.textContent}, ${row.name}` : row.name;
+    cells.restList.append(el('li', { text: row.name }));
     return;
   }
   g.s.hidden = false;
@@ -378,6 +383,15 @@ function flush() {
     if (onShot) { store.marks.set(n, onShot[0]); now.push(...onShot); continue; }      // 실제 화면 위 칸
     const span = sentences.get(sid);
     if (!span) continue;
+    if (shot) {      // 캡처가 옛 공고라 이 문장 자리가 없다: 화면 아래에 원문 글을 칠해 보인다 (번호를 누르면 여기로)
+      const mark = sentenceMark(n, span.textContent);
+      const row = el('p', { class: 'shot-miss-row' });
+      row.append(mark, el('span', { class: 'shot-miss-note', text: `${n}번 문장은 지금 공고 화면에 없어 원문 글로 보여요` }));
+      shot.miss.append(row);
+      store.marks.set(n, mark);
+      now.push(mark);
+      continue;
+    }
     const mark = sentenceMark(n, span.textContent);
     mark.dataset.sid = sid;
     span.replaceWith(mark);
@@ -415,11 +429,13 @@ export function renderAdapted(a, { top = null } = {}) {
   hero.append(el('h3', { class: 'rs-title', text: a.title }), el('p', { class: 'rs-intro', text: a.goal }));
   const scores = el('div', { class: 'rs-scores' });
   const now = {};
-  for (const t of a.tiers) {      // "필수 역량 8개 중 바탕 5.5개 → 빌려서 8개": 앞은 1위 바탕만으로 덮은 정도, 큰 숫자는 빌린 뒤 (fill 사건마다 오른다)
+  for (const t of a.tiers) {      // "필수 역량 8개 중 바탕 프로젝트 5.5개 → 빌리거나 AI가 더해 8개": 앞은 1위 바탕만으로 덮은 정도, 큰 숫자는 응용 뒤 (fill 사건마다 오른다)
     const p = el('p', { class: 'rs-score' });
     const b = el('b', { class: 'num', text: String(t.before), 'data-after': String(t.after) });
-    p.append(el('span', { class: 'rs-score-label', text: `${t.name} 역량 ${t.total}개 중` }), el('span', { class: 'rs-score-was', text: `바탕 프로젝트 ${t.before}개 → 빌려서` }),
-      numUnit(b));
+    const same = t.before === t.after;      // 바꾼 칸이 없으면 "→" 없이 바탕만으로
+    p.append(el('span', { class: 'rs-score-label', text: `${t.name} 역량 ${t.total}개 중` }),
+      el('span', { class: 'rs-score-was', text: same ? '바탕 프로젝트만으로' : `바탕 프로젝트 ${t.before}개 → 빌리거나 AI가 더해` }), numUnit(b));
+    if (same && t.after === t.total) p.append(el('span', { class: 'rs-score-was', text: '모두' }));
     const gain = el('span', { class: 'rs-gain', 'aria-hidden': 'true' });      // 오른 만큼 (+1, +0.5) 이 그 숫자 바로 옆에 잠깐 뜬다
     p.append(gain);
     now[t.name] = { b, gain };
@@ -438,16 +454,19 @@ export function renderAdapted(a, { top = null } = {}) {
     return li;
   }));
   const jobs = el('ol', { class: 'jobs' });
-  a.jobs.forEach((j, i) => {
+  const byW = [...a.jobs].sort((x, y) => parseInt(x.id.slice(1), 10) - parseInt(y.id.slice(1), 10));      // 번호와 차례는 저장본의 묶음 번호 (W1…W10)
+  byW.forEach((j) => {
     const li = el('li', { class: 'job', 'data-core': String(j.core) });
     const head = el('p', { class: 'job-head' });
-    head.append(el('b', { class: 'num', text: `${i + 1}` }), ` ${j.name}`, el('span', { class: 'job-h num', text: ` · ${j.hours}시간` }));
-    const from = el('span', { class: 'job-from', text: j.from.map(fromName).join(' + ') });
-    li.append(head, el('p', { class: 'job-out', text: `산출물 · ${j.out}` }), from);
+    head.append(el('b', { class: 'num', text: j.id }), ` ${j.name}`, el('span', { class: 'job-h num', text: ` · ${j.hours}시간` }));
+    const from = el('span', { class: 'job-from', text: (j.from.length ? j.from.map(fromName) : ['AI가 더한 일']).join(' + ') });
+    li.append(head, from, el('p', { class: 'job-out', text: `산출물 · ${j.out}` }));
     jobs.append(li);
   });
+  const core = a.jobs.filter((j) => j.core).length;
+  const legend = el('p', { class: 'rs-half', text: `실선 핵심 작업 묶음 ${core}개 · 점선 확장 ${a.jobs.length - core}개` });
   doc.replaceChildren(...(top ? [top] : []), hero, section(`공고의 필수·우대 역량 ${a.rows.length}개를 이 프로젝트에서 이렇게 다뤄요`, list),
-    section(`만들 것 · 작업 묶음 ${a.jobs.length}개 · ${a.hours.total}시간 (팀 전체)`, jobs));
+    section(`만들 것 · 작업 묶음 ${a.jobs.length}개 · ${a.each.total}시간`, legend, jobs));
   adapt = { rows, now, queue: [] };
 }
 // fill 사건은 모아 두었다가 ③ 이 보이면 하나씩 튼다 (보이지 않는 동안 틀면 움직임이 없다)

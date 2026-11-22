@@ -2,7 +2,7 @@
  "schema_version": "jobaws.plan.blocked.v1",
  "source": "curriculum_bedrock (1).md",
  "status": "blocked",
- "reason": "핵심 프로젝트와 1순위 학습이 시간 예산을 초과했습니다",
+ "reason": "핵심 작업 묶음과 꼭 볼 자료에 필요한 시간이 12주 84시간을 넘습니다",
  "weeks": 12,
  "hours_per_week": 7,
  "available_minutes": 5040,

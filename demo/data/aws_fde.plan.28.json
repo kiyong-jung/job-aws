@@ -36,7 +36,7 @@
    "learning_minutes": 120,
    "implementation_minutes": 860,
    "goal": "가상 고객사의 비즈니스 요구사항을 정의하고, RAG + 멀티 에이전트 아키텍처 설계 문서(데이터 흐름도·컴포넌트 다이어그램·ADR 3건)를 완성한다. Agile 백로그(에픽 5개·스토리 20개)를 GitHub Projects에 등록하고 스프린트 1 계획을 수립한다.",
-   "method": "ADR 작성 절차 문서를 읽고 문서 저장소·검색 경로·REST 게이트웨이 각각에 대한 ADR 초안 양식을 잡은 뒤, Well-Architected 영상을 시청하며 데이터 흐름도와 컴포넌트 다이어그램을 안정성·비용 기준으로 검토할 체크리스트를 작성한다.",
+   "method": "ADR 작성 절차 문서를 읽고 문서 저장소·검색 경로·REST 게이트웨이 각각에 대한 ADR 초안 양식을 잡은 뒤, Well-Architected 영상을 시청하며 데이터 흐름도와 컴포넌트 다이어그램을 안정성·비용 기준으로 검토할 체크리스트를 작성하고, Recommended Technologies 문서로 TypeScript 타입·인터페이스 기준을 정리한 뒤, GitHub Projects Iteration 필드 사용법을 확인하고 에픽 5개·스토리 20개 백로그를 등록해 스프린트 1 계획을 수립한다.",
    "reason": "ADR 3건이 W1의 핵심 산출물이므로 작성 절차 학습을 가장 먼저 배치하고, TypeScript 타입 기준은 2주차 Genkit 구현 전에 확정해야 하므로 이번 주에 읽어 두며, GitHub Projects Iteration 필드는 백로그 등록 직전에 확인해야 스프린트 1 계획을 오류 없이 완성할 수 있다.",
    "goal_steps": [
     "가상 고객사의 비즈니스 요구사항을 정의하기",
@@ -45,7 +45,8 @@
    ],
    "method_steps": [
     "ADR 작성 절차 문서를 읽고 문서 저장소·검색 경로·REST 게이트웨이 각각에 대한 ADR 초안 양식을 잡기",
-    "Well-Architected 영상을 시청하며 데이터 흐름도와 컴포넌트 다이어그램을 안정성·비용 기준으로 검토할 체크리스트를 작성하기"
+    "Well-Architected 영상을 시청하며 데이터 흐름도와 컴포넌트 다이어그램을 안정성·비용 기준으로 검토할 체크리스트를 작성하고, Recommended Technologies 문서로 TypeScript 타입·인터페이스 기준을 정리하기",
+    "GitHub Projects Iteration 필드 사용법을 확인하고 에픽 5개·스토리 20개 백로그를 등록해 스프린트 1 계획을 수립하기"
    ],
    "deliverables_completed": [
     {
@@ -121,8 +122,9 @@
       }
      ],
      "why": [
-      "배정 근거 · 기존 배정. 2주차 Genkit TypeScript 설정 직전에 타입·인터페이스 기준을 잡는다.",
-      "자료 근거 · C51: React - Quick note on create-react-app - Documentation & Using older React coding patterns - Best Practices to Organize; C52: TypeScript - Guidance on types and interfaces"
+      "배정 근거 · 2주차에 Genkit을 TypeScript로 설정하기 전에 타입·인터페이스 기준을 잡는다.",
+      "자료 근거 · C51: React - Quick note on create-react-app - Documentation & Using older React coding patterns - Best Practices to Organize; C52: TypeScript - Guidance on types and interfaces",
+      "출처 · 기존 배정 (③ 교육자료 단계에서 고른 자료)"
      ],
      "hours": 0.8333
     },
@@ -144,7 +146,7 @@
       }
      ],
      "why": [
-      "배정 근거 · 에픽 5개·스토리 20개 백로그와 스프린트 1 계획을 GitHub Projects에 등록해야 한다. W10 자료지만 실제로 필요한 시점은 1주차다."
+      "배정 근거 · 에픽 5개·스토리 20개 백로그와 스프린트 1 계획을 GitHub Projects에 등록하고, 같은 보드로 W10 스프린트를 이어 간다."
      ],
      "hours": 0.1667
     },
@@ -504,17 +506,17 @@
    "used_minutes": 920,
    "learning_minutes": 60,
    "implementation_minutes": 860,
-   "goal": "RAG 파이프라인(W2)을 완성하고, 멀티 에이전트 워크플로우(W3) 구현을 착수한다. 에이전트 툴 호출 구조와 멀티 에이전트 모범 사례를 학습하여 오케스트레이터·서브 에이전트 설계에 반영한다.",
-   "method": "CrewAI Production Architecture를 읽고 멀티 에이전트 모범 사례를 메모한 뒤, Bedrock 도구 사용 문서로 '모델 요청 → 앱이 도구 실행 → 결과 반환' 왕복 흐름을 Genkit tool calling 구조와 대응시켜 정리하고, AWS AI 에이전트 영상(3:40~)으로 실행 화면을 확인한다.",
+   "goal": "RAG 파이프라인(W2)을 완성하고, 멀티 에이전트 워크플로우(W3) 구현을 착수한다. 에이전트 도구 호출 구조와 멀티 에이전트 모범 사례를 학습하여 오케스트레이터·서브 에이전트 설계에 반영한다.",
+   "method": "CrewAI Production Architecture를 읽고 멀티 에이전트 모범 사례를 메모한 뒤, Bedrock 도구 사용 문서로 '모델 요청 → 앱이 도구 실행 → 결과 반환' 왕복 흐름을 Genkit의 도구 호출 구조와 대응시켜 정리하고, AWS AI 에이전트 영상(3:40~)으로 실행 화면을 확인한다.",
    "reason": "멀티 에이전트 모범 사례와 도구 호출 문서·영상을 W3 착수 전에 묶어 학습하면 에이전트 구조 설계를 코드 작성 전에 확정할 수 있고, W2는 이번 주에 완성해야 W3 구현이 RAG 검색 결과를 서브 에이전트 입력으로 바로 활용할 수 있다.",
    "goal_steps": [
     "RAG 파이프라인(W2)을 완성하기",
     "멀티 에이전트 워크플로우(W3) 구현을 착수하기",
-    "에이전트 툴 호출 구조와 멀티 에이전트 모범 사례를 학습하여 오케스트레이터·서브 에이전트 설계에 반영하기"
+    "에이전트 도구 호출 구조와 멀티 에이전트 모범 사례를 학습하여 오케스트레이터·서브 에이전트 설계에 반영하기"
    ],
    "method_steps": [
     "CrewAI Production Architecture를 읽고 멀티 에이전트 모범 사례를 메모하기",
-    "Bedrock 도구 사용 문서로 '모델 요청 → 앱이 도구 실행 → 결과 반환' 왕복 흐름을 Genkit tool calling 구조와 대응시켜 정리하기",
+    "Bedrock 도구 사용 문서로 '모델 요청 → 앱이 도구 실행 → 결과 반환' 왕복 흐름을 Genkit의 도구 호출 구조와 대응시켜 정리하기",
     "AWS AI 에이전트 영상(3:40~)으로 실행 화면을 확인하기"
    ],
    "deliverables_completed": [
@@ -532,23 +534,18 @@
      "url": "https://github.com/crewAIInc/crewAI/blob/main/docs/edge/en/concepts/production-architecture.mdx",
      "minutes": 20,
      "competencies": [
-      "C21",
       "C44"
      ],
      "completed_in_this_chunk": true,
      "covers": [
-      {
-       "cid": "C21",
-       "level": "일부"
-      },
       {
        "cid": "C44",
        "level": "있음"
       }
      ],
      "why": [
-      "배정 근거 · 기존 배정. 멀티 에이전트 모범 사례를 W3 착수 전에 본다.",
-      "자료 근거 · C21: Best practices for building production-ready AI applications with CrewAI; C44: Fast and Flexible Multi-Agent Automation Framework · concepts · Best practices for building production-ready AI applications with CrewAI"
+      "배정 근거 · 멀티 에이전트 모범 사례를 W3 착수 전에 본다.",
+      "자료 근거 · C44: Fast and Flexible Multi-Agent Automation Framework · concepts · Best practices for building production-ready AI applications with CrewAI"
      ],
      "hours": 0.3333
     },
@@ -561,6 +558,8 @@
      "minutes": 20,
      "competencies": [
       "C44",
+      "C21",
+      "C57",
       "C18"
      ],
      "completed_in_this_chunk": true,
@@ -570,12 +569,22 @@
        "level": "있음"
       },
       {
+       "cid": "C21",
+       "level": "일부"
+      },
+      {
+       "cid": "C57",
+       "level": "있음"
+      },
+      {
        "cid": "C18",
        "level": "일부"
       }
      ],
      "why": [
-      "배정 근거 · `모델 요청 → 앱이 도구 실행 → 결과 반환` 흐름이 Genkit agentic tool calling과 같은 구조다."
+      "배정 근거 · '모델 요청 → 앱이 도구 실행 → 결과 반환' 흐름이 Genkit의 도구 호출과 같은 구조다.",
+      "자료 근거 · C21: The model decides when a tool is needed; your application code (or Amazon Bedrock itself, in server-side mode) executes the tool and returns the result for the model to incorporate in its final response.; C44: When you send a message, you also supply definitions for one or more tools that could help the model generate a response.; C57: You can use the Amazon Bedrock API to give a model access to tools that can help it generate responses for messages that you send to the model.",
+      "출처 · 기존 배정 (③ 교육자료 단계에서 고른 자료)"
      ],
      "hours": 0.3333
     },
@@ -602,7 +611,7 @@
       }
      ],
      "why": [
-      "배정 근거 · 위 문서의 왕복을 실행 화면으로 확인한다. 영상은 Strands지만 구조는 그대로 옮길 수 있다."
+      "배정 근거 · 위 문서의 왕복을 실행 화면으로 확인한다. 영상은 Strands Agents로 만들지만 같은 구조를 Genkit에 그대로 옮길 수 있다."
      ],
      "hours": 0.3333
     },
@@ -903,7 +912,7 @@
    "learning_minutes": 50,
    "implementation_minutes": 860,
    "goal": "멀티 에이전트 워크플로우(W3)를 완성하고, 보안·가드레일·프로덕션 안정성 레이어(W4) 구현을 착수한다. Circuit breaker·재시도 기준과 가드레일 설계를 학습하여 W4 구현에 즉시 반영한다.",
-   "method": "Circuit breaker 설계 문서를 읽고 상태·복구·재시도 기준을 정리하여 W4 circuit breaker 구현 설계에 반영하고, Bedrock Guardrails 데모 영상을 시청하며 입력·출력 검사 흐름을 확인한 뒤 커스텀 룰 3개와 차단 시 응답 초안을 작성한다.",
+   "method": "Circuit breaker 설계 문서를 읽고 상태·복구·재시도 기준을 정리하여 W4 circuit breaker 구현 설계에 반영하고, Bedrock Guardrails 데모 영상을 시청하며 입력·출력 검사 흐름을 확인한 뒤 직접 정한 규칙 3개와 차단 시 응답 초안을 작성한다.",
    "reason": "Circuit breaker 기준과 가드레일 흐름을 W4 착수 직전에 학습해야 설계 결정을 코드에 바로 반영할 수 있고, W3 완성과 W4 착수를 같은 주에 배치하여 에이전트 레이어 위에 보안 레이어를 연속적으로 쌓는 흐름을 유지한다.",
    "goal_steps": [
     "멀티 에이전트 워크플로우(W3)를 완성하기",
@@ -912,7 +921,7 @@
    ],
    "method_steps": [
     "Circuit breaker 설계 문서를 읽고 상태·복구·재시도 기준을 정리하여 W4 circuit breaker 구현 설계에 반영하기",
-    "Bedrock Guardrails 데모 영상을 시청하며 입력·출력 검사 흐름을 확인한 뒤 커스텀 룰 3개와 차단 시 응답 초안을 작성하기"
+    "Bedrock Guardrails 데모 영상을 시청하며 입력·출력 검사 흐름을 확인한 뒤 직접 정한 규칙 3개와 차단 시 응답 초안을 작성하기"
    ],
    "deliverables_completed": [
     {
@@ -939,7 +948,7 @@
       }
      ],
      "why": [
-      "배정 근거 · W4의 circuit breaker와 LLM 불가용 시 fallback의 상태·복구·재시도 기준이다. 함께 보는 자료 · 재시도 간격과 지터 https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/"
+      "배정 근거 · W4의 circuit breaker와, LLM을 쓸 수 없을 때 넘어가는 대체 경로의 상태·복구·재시도 기준이다. 함께 보는 자료 · 재시도 간격과 지터 https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/"
      ],
      "hours": 0.5
     },
@@ -961,7 +970,7 @@
       }
      ],
      "why": [
-      "배정 근거 · 입력·출력 검사 흐름을 보고 커스텀 룰 3개와 차단 시 응답을 설계한다."
+      "배정 근거 · 입력·출력 검사 흐름을 보고 직접 정한 규칙 3개와 차단 시 응답을 설계한다."
      ],
      "hours": 0.3333
     },
@@ -1118,7 +1127,7 @@
    "learning_minutes": 40,
    "implementation_minutes": 860,
    "goal": "Redis 응답 캐싱의 캐시 키·TTL 설계 기준을 확정하고, 보안·가드레일·프로덕션 안정성 레이어(W4)의 캐싱·모델 선택 로직을 완성하여 레이턴시 벤치마크 결과를 산출한다.",
-   "method": "ElastiCache 생성형 AI 캐싱 설계 문서를 읽고 사용자·권한별 캐시 키 설계와 TTL 기준을 결정한 뒤, ElastiCache for Redis 영상을 시청하며 캐시 적용 전후 응답 지연 비교 방법을 확인하고 before/after 벤치마크 측정 계획을 수립한다.",
+   "method": "ElastiCache 생성형 AI 캐싱 설계 문서를 읽고 사용자·권한별 캐시 키 설계와 TTL 기준을 결정한 뒤, ElastiCache for Redis 영상을 시청하며 캐시 적용 전후 응답 지연 비교 방법을 확인하고 벤치마크 측정 계획을 수립한다.",
    "reason": "캐시 키·TTL 설계와 벤치마크 방법을 Redis 캐싱 구현 직전에 학습해야 잘못된 캐시 키로 인한 보안 문제나 측정 누락 없이 W4 산출물을 완성할 수 있고, 이번 주는 W4 완성 주이므로 학습 자료를 최소화하고 구현과 벤치마크에 집중한다.",
    "goal_steps": [
     "Redis 응답 캐싱의 캐시 키·TTL 설계 기준을 확정하기",
@@ -1126,7 +1135,7 @@
    ],
    "method_steps": [
     "ElastiCache 생성형 AI 캐싱 설계 문서를 읽고 사용자·권한별 캐시 키 설계와 TTL 기준을 결정하기",
-    "ElastiCache for Redis 영상을 시청하며 캐시 적용 전후 응답 지연 비교 방법을 확인하고 before/after 벤치마크 측정 계획을 수립하기"
+    "ElastiCache for Redis 영상을 시청하며 캐시 적용 전후 응답 지연 비교 방법을 확인하고 벤치마크 측정 계획을 수립하기"
    ],
    "deliverables_completed": [],
    "activities": [
@@ -1180,7 +1189,7 @@
       }
      ],
      "why": [
-      "배정 근거 · 캐시와 응답 지연의 관계를 보고 before/after 벤치마크를 설계한다."
+      "배정 근거 · 캐시와 응답 지연의 관계를 보고 캐시 적용 전후 벤치마크를 설계한다."
      ],
      "hours": 0.3333
     },
@@ -1287,7 +1296,7 @@
    "deliverables_completed": [
     {
      "task": "W4",
-     "out": "보안 레이어 코드, 가드레일 룰 명세서, 레이턴시 벤치마크 결과(before/after 비교표)"
+     "out": "보안 레이어 코드, 가드레일 규칙 명세서, 레이턴시 벤치마크 결과(고치기 전후 비교표)"
     }
    ],
    "activities": [
@@ -1319,8 +1328,9 @@
       }
      ],
      "why": [
-      "배정 근거 · 기존 배정. Gemini 스택에 가장 가까운 평가 실습이라 Bedrock 평가 영상 대신 이것을 남겼다.",
-      "자료 근거 · C21: Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents.; C43: using Vertex AI Gen AI Evaluation provides a toolkit of quality controlled and explainable methods and metrics to evaluate any generat; C44: Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents."
+      "배정 근거 · 에이전트 평가 지표와 평가 파이프라인 구조를 노트북으로 직접 돌려 본다. W5의 LLM-as-a-Judge 평가 지표를 정하기 전에 본다.",
+      "자료 근거 · C21: Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents.; C43: using Vertex AI Gen AI Evaluation provides a toolkit of quality controlled and explainable methods and metrics to evaluate any generat; C44: Agent Development Kit (ADK in short) is a flexible and modular open source framework for developing and deploying AI agents.",
+      "출처 · 기존 배정 (③ 교육자료 단계에서 고른 자료)"
      ],
      "hours": 1.5
     },
@@ -1339,7 +1349,7 @@
       "C30"
      ],
      "completed_in_this_chunk": true,
-     "out": "보안 레이어 코드, 가드레일 룰 명세서, 레이턴시 벤치마크 결과(before/after 비교표)",
+     "out": "보안 레이어 코드, 가드레일 규칙 명세서, 레이턴시 벤치마크 결과(고치기 전후 비교표)",
      "covers": [
       {
        "cid": "C22",
@@ -2081,7 +2091,7 @@
       }
      ],
      "why": [
-      "배정 근거 · W7의 핵심인 Genkit 클라이언트 `streamFlow` 사용법이다. 기존 두 자료 목록에 없어서 새로 넣었다."
+      "배정 근거 · W7의 핵심인 Genkit 클라이언트 streamFlow 사용법이다. 스트리밍 응답을 화면에 그리는 구조를 W7 착수 전에 잡는다."
      ],
      "hours": 0.3333
     },
@@ -2409,7 +2419,7 @@
       }
      ],
      "why": [
-      "배정 근거 · 신호와 중단 조건을 먼저 정한다. 커리큘럼의 \"운영 환경 장애 주입\"은 스테이징에서만 진행한다. 함께 보는 자료 · FIS 중단 조건 https://docs.aws.amazon.com/fis/latest/userguide/stop-conditions.html"
+      "배정 근거 · 장애를 주입하기 전에 지켜볼 신호와 실험을 멈출 조건을 먼저 정한다. 함께 보는 자료 · FIS 중단 조건 https://docs.aws.amazon.com/fis/latest/userguide/stop-conditions.html"
      ],
      "hours": 0.3333
     },

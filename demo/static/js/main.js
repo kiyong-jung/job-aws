@@ -260,7 +260,7 @@ const projectHandlers = {
     }
     // ② 바닥 줄: 숫자마다 무엇을 셌는지 (디자이너 2차 11/21). "공개 프로젝트 111,753개에서 고른 1위 …" / "필수 역량 8개 모두 다뤄요 · 우대 역량 11개 중 9개 다룸, 1개 일부만"
     const [must, nice] = ctx.adapt.tiers;
-    panel.foot('search', [`공개 프로젝트 ${fmt(ctx.db)}개에서 고른 바탕 프로젝트 ${ctx.adapt.base.title}에 빈 역량을 보조 프로젝트에서 빌려 채웠어요`,
+    panel.foot('search', [`공개 프로젝트 ${fmt(ctx.db)}개에서 고른 바탕 프로젝트 ${ctx.adapt.base.title}에 빈 역량을 보조 프로젝트에서 빌리거나 AI가 더해 채웠어요`,
       `${coverText(must)} · ${coverText(nice)}`], next('materials'));
     panel.playFills();
     announce(`응용 프로젝트는 역량 ${yes + part + no}개 중 ${ev.after}개를 다뤄요`);
@@ -298,7 +298,7 @@ const materialHandlers = {
 // 묶음 하나를 덮은 정도를 개수로: "필수 역량 8개 모두 다뤄요" / "우대 역량 11개 중 9개 다룸, 1개 일부만" (0.5 셈은 화면 숫자가 말한다)
 function coverText(t) {
   if (t.yes === t.total) return `${t.name} 역량 ${t.total}개 모두 다뤄요`;
-  return `${t.name} 역량 ${t.total}개 중 ${t.yes}개 다룸` + (t.part ? `, ${t.part}개 일부만` : '');
+  return `${t.name} 역량 ${t.total}개 중 ${t.yes}개 있음` + (t.part ? `, ${t.part}개 일부` : '');
 }
 
 function weeksFoot(ev) {
@@ -308,11 +308,10 @@ function weeksFoot(ev) {
     return '계획을 보류했어요';
   }
   const inside = ev.inside_weeks < ev.weeks ? `${ev.weeks}주 중 ${ev.inside_weeks}주는 그 안에` : `${ev.weeks}주 모두 그 안에`;
-  // md 계획은 누구의 시간인지 적혀 있지 않다 (② 는 팀 전체 시간): "한 사람" 이라 하지 않고 "이 12주 계획의" 시간이라고만
-  const sum = ev.source === 'md' ? `이 12주 계획의 배우기 ${hoursText(ev.learning)} · 만들기 ${hoursText(ev.project)}`
-    : `교육자료로 배우기 ${hoursText(ev.learning)} · 프로젝트에 적용 ${hoursText(ev.project)} (한 사람)`;
-  panel.foot('weeks', [sum,
-    `한 주 ${hoursText(ev.cap)}까지 · ${inside} · 산출물 ${ev.deliverables}개`],
+  // md 계획의 시간 합계는 계획 그림 머리에 있다 (같은 숫자를 두 번 쓰지 않는다)
+  const md = ev.source === 'md';
+  panel.foot('weeks', [md ? `한 주 ${hoursText(ev.cap)}까지 · ${inside}` : `교육자료로 배우기 ${hoursText(ev.learning)} · 프로젝트에 적용 ${hoursText(ev.project)} (한 사람)`,
+    md ? `산출물 ${ev.deliverables}개` : `한 주 ${hoursText(ev.cap)}까지 · ${inside} · 산출물 ${ev.deliverables}개`],
   store.drawn.has('report') ? [] : next('report'));      // 공부 시간을 바꿔 다시 그려도(quiet) 아직 리포트가 없으면 단추는 남는다
   return inside;
 }
@@ -361,7 +360,9 @@ const reportHandlers = {
     ctx.ended = true;
     report.done(ev);
     settle(ctx, 'report');
-    panel.foot('report', ev.bullets, [...(ev.pptx ? [{ label: 'pptx 받기', href: ev.pptx, download: ev.filename }] : []), ...(ev.pdf ? [{ label: 'PDF 받기', href: ev.pdf, download: ev.pdf_filename }] : [])]);
+    // 두 단추가 다르다는 것이 글자로 보이게: pptx 는 고른 질문만, PDF 는 질문 전체. PDF 는 있을 때만
+    panel.foot('report', ev.bullets, [...(ev.pptx ? [{ label: `pptx 받기 · 질문 ${ev.questions}개`, href: ev.pptx, download: ev.filename }] : []),
+      ...(ev.pdf ? [{ label: `PDF 받기 · 질문 ${ev.all}개 전체`, href: ev.pdf, download: ev.pdf_filename }] : [])]);
     if (!ctx.quiet) announce('정리 리포트를 만들었어요');
     finishRun(ctx, 'report');
   },

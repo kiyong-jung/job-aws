@@ -1,8 +1,7 @@
-// ② 프로젝트 찾기 쪽: DB 에서 찾는 그림. 맨 위의 깔때기 띠(DB 111,753 › 낱말로 모은 후보 1,000 › 역량마다 다시 고른 후보 100 › 필수를 다 다룬 후보 1)는
-// (끝 칸은 서버의 fit: 필수를 다 다룬 후보가 없는 공고는 '필수를 가장 많이 다룬 후보')
+// ② 프로젝트 찾기 쪽: DB 에서 찾는 그림. 맨 위의 깔때기 띠(DB 111,753 → BM25 1,000 → Cohere Rerank 3.5 100 → 바탕 프로젝트 1)는
 // 사라지지 않고, 그 아래 그림이 위에서 아래로 쌓인다 (DB 점 → 후보 칸 → 1위 카드). 서버의 단계 사건(stage, judged)마다 한 번씩만 움직인다.
-//   A (search, scan): 점 하나 = 100개. 논문 덩어리와 저장소 덩어리 (둘 다 먹 60%, 덩어리마다 이름표). 낱말로 모으는 단계에서
-//      낱말로 모은 후보 1,000개(점 10개)가 파랑(--pick)으로 켜지고 나머지 점은 옅어진다 (사용자 11/19: 1,000개 고르기를 색으로)
+//   A (search, scan): 점 하나 = 100개. 논문 덩어리와 저장소 덩어리 (둘 다 먹 60%, 덩어리마다 이름표). BM25 단계에서
+//      BM25 후보 1,000개(점 10개)가 파랑(--pick)으로 켜지고 나머지 점은 옅어진다 (사용자 11/19: 1,000개 고르기를 색으로)
 //   A' (rerank): 띠가 둘째 칸으로. 파란 점 10개 가운데 다시 고른 100개(점 1개)만 남는다
 //   B (judge): 주 그림 틀(chartCard) 안에 칸 100개(20×5, 휴대폰 10×10)가 자라 나온다. 칸 r 은 순위 r 의 후보이고, 자리는 정해 둔 흩어진 자리다 (자리가 순위를 말하지 않게).
 //      판정 한 묶음(5개)이 오면 그 후보들의 칸을 점수 짙기로 채운다. 묶음이 오는 차례도 순위와 상관없다 (pipeline.judge_order)
@@ -32,10 +31,10 @@ function scatter(n) {
 
 // 깔때기 띠의 한 칸: 이름표, 숫자와 "개". 칸은 오른쪽으로 맞춘다: 이름표 끝과 숫자 끝이 같은 세로선에 서고,
 // 숫자 끝에서 › 까지의 거리가 칸마다 같다 (이름표 길이가 그 거리를 바꾸지 않는다).
-// 눈에 보이는 이름표는 어느 너비에서나 짧은 이름 (DB · 낱말로 모음 · 다시 고름 · 필수를 다 다룬 후보). 긴 이름은 화면 읽기 프로그램에만 (대화의 진행 목록이 풀어 말한다).
+// 눈에 보이는 이름표는 방법 이름만 (공개 프로젝트 · BM25 · Cohere Rerank 3.5 · 바탕 프로젝트). 긴 이름은 화면 읽기 프로그램에만.
 // 띠의 칸 너비는 장면이 바뀌어도 그대로다: 숫자 굵기는 늘 같고, 견준 수는 칸 아래 그림에 쓴다. 칸 사이 › 는 제 칸을 가진 진짜 칸이다 (sep)
 // 아직 시작하지 않은 칸은 숫자 줄을 비워 둔다 (자리는 그대로라 칸 너비가 바뀌지 않는다. 그 단계가 시작될 때 숫자가 한 번 나타난다)
-function stop(label, short, n, big = false, unit = '개', picked = false) {
+function stop(label, short, n, big = false, unit = '개', picked = false) {      // picked: BM25 후보 칸에 점 색 견본 (결과가 나오면 뗀다)
   const li = el('li', { class: 'stop', 'data-state': 'todo' });
   const name = el('span', { class: 'stop-label' });
   if (picked) name.append(el('span', { class: 'dot stop-swatch', 'data-picked': '', 'aria-hidden': 'true' }));      // 파란 점 = 낱말로 모은 후보 (DB 그림과 같은 색)
@@ -45,27 +44,27 @@ function stop(label, short, n, big = false, unit = '개', picked = false) {
   li.append(name, num);
   return { li };
 }
-const sep = () => el('li', { class: 'stop-sep', 'aria-hidden': 'true', text: '›' });
+const sep = () => el('li', { class: 'stop-sep', 'aria-hidden': 'true', text: '→' });
 
 // steps 사건: 띠와 점·칸을 한 번에 다 만들고, 뒤 사건은 속성만 바꾼다
-export function start({ db, pool, shortlist, tier, fit, names }) {
+export function start({ db, pool, shortlist, tier, names }) {
   const root = $('search-doc');
   const total = db.total;      // 서버가 센 DB 크기 (화면은 더하지 않는다)
   root.dataset.stage = 'search';
   root.setAttribute('aria-busy', 'true');
   const funnel = el('ol', { class: 'funnel', 'aria-label': '찾는 차례' });
-  const stops = [stop('모아 둔 공개 프로젝트', '공개 프로젝트', total, true), stop('낱말로 모은 후보', '낱말로 모은 후보', pool, false, '개', true),
-    stop('역량마다 다시 고른 후보', '다시 고른 후보', shortlist), stop(fit.label, fit.label, fit.n)];
+  const stops = [stop('모아 둔 공개 프로젝트', '공개 프로젝트', total, true), stop('BM25', 'BM25', pool, false, '개', true),
+    stop('Cohere Rerank 3.5', 'Cohere Rerank 3.5', shortlist), stop('바탕 프로젝트', '바탕 프로젝트', 1)];      // 끝 칸은 고른 1위 하나
   funnel.append(...stops.flatMap((x, i) => (i ? [sep(), x.li] : [x.li])));
 
   // DB 점: 논문 덩어리와 저장소 덩어리 (둘 다 먹 60%. 짙기가 아니라 자리와 이름표로 가른다: 덩어리마다 왼쪽 위 이름표, 덩어리 사이 8px)
-  const poolBox = el('div', { class: 'pool', role: 'img', 'aria-label': `논문 ${fmt(db.papers)}개와 저장소 ${fmt(db.repos)}개. 점 하나가 ${PER_DOT}개예요` });
+  const poolBox = el('div', { class: 'pool', role: 'img', 'aria-label': `논문 ${fmt(db.papers)}편과 저장소 ${fmt(db.repos)}개. 점 하나가 ${PER_DOT}개예요` });
   const dots = [];
-  for (const [kind, name, n] of [['paper', '논문', db.papers], ['repo', '저장소', db.repos]]) {
+  for (const [kind, name, n, unit] of [['paper', '논문', db.papers, '편'], ['repo', '저장소', db.repos, '개']]) {
     const part = el('div', { class: 'pool-part', 'data-kind': kind });
     const field = el('div', { class: 'field', 'aria-hidden': 'true' });
     for (let i = 0; i < Math.round(n / PER_DOT); i++) dots.push(field.appendChild(el('span', { class: 'dot', 'data-kind': kind })));
-    part.append(el('p', { class: 'pool-name num', 'aria-hidden': 'true', text: `${name} ${fmt(n)}개` }), field);
+    part.append(el('p', { class: 'pool-name num', 'aria-hidden': 'true', text: `${name} ${fmt(n)}${unit}` }), field);
     poolBox.append(part);
   }
   // 낱말로 모은 후보(pool)와 다시 고른 후보(shortlist)의 점: 정해 둔 흩어진 자리 (돌 때마다 같다). 앞 shortlist 몫은 다시 고른 뒤에도 남는다
@@ -86,11 +85,12 @@ export function start({ db, pool, shortlist, tier, fit, names }) {
   ends.append(el('span', { text: '0점' }), sample(0), sample(0.5), sample(1), el('span', { text: `${tier.total}점` }));
   keyC.append(ends);
   // 단계별 실제 후보 이름 (사용자 11/21): 낱말로 모은 1,000개 가운데 일부 → 다시 고른 100개에 남는 것만 진하게 → 위 다섯과 1위.
-  // 논문은 파란 칸, 저장소(깃헙)는 먹 테두리 칸 (색과 글 "논문"·"깃헙" 둘 다로 가른다)
+  // 논문은 파란 칸, 저장소(GitHub)는 먹 테두리 칸 (색과 글 "논문"·"GitHub" 둘 다로 가른다)
   const namesBox = el('section', { class: 'names', hidden: true });
   const chip = (x) => {
-    const c = el('span', { class: 'name-chip', 'data-kind': x.kind, 'data-short': String(x.short ?? true), title: x.title });
-    c.append(el('span', { class: 'name-kind', text: x.kind === 'paper' ? '논문' : '깃헙' }), el('span', { class: 'name-title', text: x.title }));
+    const t = x.title.replace(/`/g, '');      // 논문 제목의 여는 따옴표 표시
+    const c = el('span', { class: 'name-chip', 'data-kind': x.kind, 'data-short': String(x.short ?? true), title: t });
+    c.append(el('span', { class: 'name-kind', text: x.kind === 'paper' ? '논문' : 'GitHub' }), el('span', { class: 'name-title', text: t }));
     if (x.rank) c.dataset.rank = x.rank;
     return c;
   };
@@ -120,7 +120,7 @@ function move(at) {
 
 // 칸의 화면 읽기 이름: 견준 수 (눈에 보이는 견준 수 줄은 없다. 진행 글과 깔때기 띠가 말한다)
 function counter() {
-  s.grid.setAttribute('aria-label', `다시 고른 후보 ${fmt(s.shortlist)}개 중 ${fmt(s.n)}개를 견줘 봤어요`);
+  s.grid.setAttribute('aria-label', `Cohere Rerank 3.5로 고른 후보 ${fmt(s.shortlist)}개 중 ${fmt(s.n)}개를 견줘 봤어요`);
 }
 
 // stage 사건: search 는 장면 A, scan 은 점이 진해진다, rerank 는 범례에 점 열 개, judge 는 범례의 점 하나에서 칸이 자라고,
@@ -131,8 +131,8 @@ function showNames(key) {
   const n = s.names;
   if (!n.pool.length) return;
   n.box.hidden = false;
-  if (key === 'scan') { n.head.textContent = n.from ? `낱말로 모은 1,000개 가운데 점수가 높은 ${n.pool.length}개` : `다시 고른 100개 가운데 ${n.pool.length}개`; n.list.replaceChildren(...n.pool); }
-  if (key === 'rerank') { n.head.textContent = '뜻으로 다시 고르면 진한 것만 100개에 남아요'; n.list.dataset.cut = ''; }
+  if (key === 'scan') { n.head.textContent = n.from ? `BM25 후보 1,000개 가운데 점수가 높은 ${n.pool.length}개` : `다시 고른 100개 가운데 ${n.pool.length}개`; n.list.replaceChildren(...n.pool); }
+  if (key === 'rerank') { n.head.textContent = 'Cohere Rerank 3.5로 고르면 진한 것만 100개에 남아요'; n.list.dataset.cut = ''; }
   if (key === 'pick') { n.head.textContent = '필수를 가장 많이 다룬 차례로 위 다섯'; delete n.list.dataset.cut; n.list.replaceChildren(...n.top); }
 }
 export function stage(ev) {
@@ -195,11 +195,12 @@ export function found(ev) {
   if (!s) return;
   s.root.removeAttribute('aria-busy');
   s.stops.forEach(({ li }, i) => { li.dataset.state = i === s.stops.length - 1 ? 'end' : 'done'; });      // 다 찾았다: 끝 칸(1위)은 먹
+  s.stops[1].li.querySelector('.stop-swatch')?.remove();      // 점이 걷혔으니 점 색 견본도 뗀다
   if (!ev || ev.adapted) return;      // 응용 프로젝트가 있으면 1위 카드는 그리지 않는다 (adapt 사건에서 최종 응용 하나만, panel.renderAdapted)
   const top = ev.ranking[0], { sample, fit, tiers } = ev;
   const hero = el('section', { class: 'rs-hero' });
   const name = el('h3', { class: 'rs-title' });
-  name.append(el('span', { class: 'rs-rank', text: '1위' }), el('span', { class: 'name-kind', 'data-kind': sample.kind === '논문' ? 'paper' : 'repo', text: sample.kind === '논문' ? '논문' : '깃헙' }));
+  name.append(el('span', { class: 'rs-rank', text: '1위' }), el('span', { class: 'name-kind', 'data-kind': sample.kind === '논문' ? 'paper' : 'repo', text: sample.kind === '논문' ? '논문' : 'GitHub' }));
   const link = el('a', { href: sample.url, target: '_blank', rel: 'noopener noreferrer', text: sample.title.split(':')[0] });
   name.append(link, el('span', { class: 'rs-where num', text: sample.where }));
   hero.append(name);

@@ -36,10 +36,10 @@ EXAMPLE = f'[data-example="{CASE}"]'
 DATA = Path(__file__).resolve().parent / "data"
 PROJECT = json.loads((DATA / f"{CASE}.project.json").read_text(encoding="utf-8"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from demo.pipeline import DEFAULT_WEEK_HOURS, blocked_case, plans_case, saved, span_text  # noqa: E402
+from demo.pipeline import DEFAULT_WEEK_HOURS, PLAN_HOURS, blocked_case, plans_case, saved, span_text  # noqa: E402
 
-PLANS = plans_case(CASE)      # ④ 단추에 있는 주차 계획 md (주 14·28시간). 15시간 판은 파일만 있고 단추에 없다
-BLOCKED = blocked_case(CASE)      # 계획을 보류한 시간 (주 7시간): 주 칸 없이 본문 글
+PLANS = [d for d in plans_case(CASE) if d["constraints"]["hours_per_week"] in PLAN_HOURS]      # ④ 단추에 있는 주차 계획 md (주 14·28시간). 15시간 판은 직접 입력 칸으로만
+BLOCKED = [b for b in blocked_case(CASE) if b["hours_per_week"] in PLAN_HOURS]      # 계획을 보류한 시간 (주 7시간): 주 칸 없이 본문 글
 BUTTONS = sorted([f"{d['constraints']['hours_per_week']:g}" for d in PLANS] + [f"{b['hours_per_week']:g}" for b in BLOCKED], key=float)
 PLAN = next((d for d in PLANS if d["constraints"]["hours_per_week"] == DEFAULT_WEEK_HOURS), PLANS[-1] if PLANS else None)      # 기본 주 14시간: ⑤ 는 하루 공부 시간과 상관없다
 SHORT = saved(CASE, "short") or {}      # ④ 작업 짧은 이름 (패널 제목 "W2 RAG 파이프라인")

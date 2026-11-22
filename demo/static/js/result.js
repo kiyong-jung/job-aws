@@ -2,7 +2,7 @@
 // 쪽마다 "무엇이 나왔나"(큰 카드)와 "왜 이 공고에 맞나"(공고 문장 ↔ 결과 쪽 문장 짝)를 같은 부품으로 그린다.
 import { el, icon, play } from './icons.js';
 
-export const LEVEL = { 있음: '다룸', 일부: '일부만', 없음: '없음' };
+export const LEVEL = { 있음: '있음', 일부: '일부', 없음: '없음' };      // 발표 자료의 판정 이름
 
 export const tag = (tier) => el('span', { class: 'tag', 'data-pri': tier, text: tier });
 

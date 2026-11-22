@@ -185,8 +185,12 @@
      "quote": "UrbanScene3D contains over 128k high-resolution images covering 16 scenes"
     }
    ],
-   "added": [],
-   "why": {}
+   "added": [
+    "C21"
+   ],
+   "why": {
+    "C21": "Blender는 W4의 핵심 렌더링 도구로 사용하며, 입력 프로젝트 셀에 Blender 직접 언급이 없으므로 added로 명시한다."
+   }
   },
   {
    "id": "W5",
@@ -194,7 +198,7 @@
    "hours": 48,
    "core": true,
    "order": 2,
-   "do": "GenEval·DPG-Bench 스타일의 신규 벤치마크를 구현한다. 체크포인트별 FID, CLIP-score, 미적 점수, VBench 지표를 자동으로 측정하는 평가 파이프라인을 개발한다. 다축 지표 비교 대시보드(HTML 리포트)를 구현한다.",
+   "do": "GenEval·DPG-Bench 스타일의 신규 벤치마크를 구현한다. 공개 체크포인트별 FID, CLIP-score, 미적 점수, VBench 지표를 자동으로 측정하는 평가 파이프라인을 개발한다. 다축 지표 비교 대시보드(HTML 리포트)를 구현한다.",
    "out": "벤치마크 코드, 자동 평가 스크립트, 다축 지표 대시보드",
    "sources": [
     {
@@ -228,12 +232,8 @@
      "quote": "Pipeline Run Reports This space contains interactive HTML reports for pipeline runs, showcasing metrics, visualizations, and performance statistics"
     }
    ],
-   "added": [
-    "C21"
-   ],
-   "why": {
-    "C21": "Blender는 W4의 핵심 렌더링 도구로 사용하며, 입력 프로젝트 셀에 Blender 직접 언급이 없으므로 added로 명시한다."
-   }
+   "added": [],
+   "why": {}
   },
   {
    "id": "W6",
@@ -270,12 +270,12 @@
   },
   {
    "id": "W7",
-   "name": "HuggingFace 공개 및 문서화",
+   "name": "Hugging Face 공개 및 문서화",
    "hours": 16,
    "core": false,
    "order": 3,
-   "do": "최종 정제 데이터셋(메타데이터 포함)과 평가 파이프라인 코드를 HuggingFace Hub에 공개한다. 데이터셋 카드와 모델 카드를 작성한다.",
-   "out": "HuggingFace Hub 데이터셋 저장소, 데이터셋 카드, README",
+   "do": "최종 정제 데이터셋(메타데이터 포함)과 평가 파이프라인 코드를 Hugging Face Hub에 공개한다. 데이터셋 카드와 README를 작성한다.",
+   "out": "Hugging Face Hub 데이터셋 저장소, 데이터셋 카드, README",
    "sources": [
     {
      "project": "duoan/mega-data-factory",
@@ -364,7 +364,7 @@
     "W2"
    ],
    "expect": "있음",
-   "note": "W2에서 공개 이미지·비디오 아카이브(CC, HuggingFace)에서 원시 데이터를 추출한다."
+   "note": "W2에서 공개 이미지·비디오 아카이브(CC, Hugging Face)에서 원시 데이터를 추출한다."
   },
   {
    "id": "C08",
@@ -394,7 +394,7 @@
     "W6"
    ],
    "expect": "있음",
-   "note": "W6에서 소규모 파인튜닝 결과를 분석해 데이터 레시피(필터 임계값, 비율)를 개선한다. C10 출처는 베이스 파이프라인의 ablation 구조에서 도출하며 added로 명시한다."
+   "note": "W6에서 W5 평가 결과를 분석해 데이터 레시피(필터 임계값, 비율)를 개선한다. C10 출처는 베이스 파이프라인의 ablation 구조에서 도출하며 added로 명시한다."
   },
   {
    "id": "C11",
@@ -434,7 +434,7 @@
     "W5"
    ],
    "expect": "있음",
-   "note": "W5에서 체크포인트별 자동 평가 파이프라인을 구현한다."
+   "note": "W5에서 공개 체크포인트별 자동 평가 파이프라인을 구현한다."
   },
   {
    "id": "C15",
@@ -521,7 +521,7 @@
     "W7"
    ],
    "expect": "있음",
-   "note": "W7에서 최종 데이터셋과 평가 결과를 HuggingFace Hub에 공개한다."
+   "note": "W7에서 최종 데이터셋과 평가 결과를 Hugging Face Hub에 공개한다."
   },
   {
    "id": "C24",

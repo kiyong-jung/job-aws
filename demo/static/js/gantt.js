@@ -51,7 +51,7 @@ export function model(p) {
 }
 
 export const label = (m, r) => (m.md ? `${r.id} ${r.short || r.name}` : r.short || r.name);
-// 기존 배정 = 교육자료 단계(③)가 이미 고른 자료, 그 밖은 이 작업에 맞춰 더한 자료
+// 기존 배정 = 교육자료 단계(③)가 이미 고른 자료, 그 밖은 작업 묶음마다 붙인 자료
 export const picked = (a) => (a.why || []).some((t) => t.includes('기존 배정'));
 
 const level = (h, cap) => Math.min(LEVELS, Math.max(1, Math.ceil((h / cap) * LEVELS)));
@@ -62,22 +62,30 @@ function button(cls, aria, data, kids = []) {
   return b;
 }
 
-// 막대 하나: 첫 주~끝 주를 한 단추로, 안은 주마다 칸 (시간이 없는 주는 이어 주는 선)
-function bar(m, r, i) {
-  const n = r.last - r.first + 1;
-  const b = button('g-bar', `${label(m, r)} · ${r.first}주차부터 ${r.last}주차까지 · ${hoursText(r.total)} · 자세히 보기`, { 'data-peek': 'w', 'data-id': r.id });
-  b.style.gridColumn = `${r.first + 1} / span ${n}`;
-  b.style.gridRow = String(i + 2);
-  const cells = el('span', { class: 'g-cells', 'aria-hidden': 'true' });
-  cells.style.gridTemplateColumns = `repeat(${n}, minmax(0, 1fr))`;
-  for (let w = r.first; w <= r.last; w++) {
-    const h = r.hours.get(w);
-    const c = el('span', { class: 'g-cell', 'data-w': w, ...(h ? { 'data-lv': level(h, m.p.cap), title: `${w}주차 · ${hoursText(h)}` } : { 'data-gap': '' }) });
-    if (w === r.done) c.append(el('span', { class: 'g-done' }));
-    cells.append(c);
-  }
-  b.append(cells);
-  return b;
+// 막대: 첫 주~끝 주, 안은 주마다 칸 (시간이 없는 주는 이어 주는 선). 시험 주는 건너뛴다: 시험 띠 위로 선이 지나지 않게 막대를 그 앞뒤로 끊어 단추를 따로 둔다
+function bar(m, r, i, exam) {
+  const weeks = [];
+  for (let w = r.first; w <= r.last; w++) if (!exam.has(w)) weeks.push(w);
+  const runs = weeks.reduce((all, w) => (all.length && all.at(-1).at(-1) === w - 1 ? all.at(-1).push(w) : all.push([w]), all), []);
+  return runs.flatMap((run) => {
+    const has = run.filter((w) => r.hours.has(w));      // 막대 끝은 시간이 있는 주 (끝에 이어 주는 선만 남지 않게)
+    if (!has.length) return [];
+    const [lo, hi] = [has[0], has.at(-1)], n = hi - lo + 1;
+    const b = button('g-bar', `${label(m, r)} · ${r.first}주차부터 ${r.last}주차까지 · ${hoursText(r.total)} · 자세히 보기`, { 'data-peek': 'w', 'data-id': r.id });
+    if (lo !== r.first) { b.tabIndex = -1; b.setAttribute('aria-hidden', 'true'); }      // 같은 묶음의 앞 막대가 이미 읽힌다
+    b.style.gridColumn = `${lo + 1} / span ${n}`;
+    b.style.gridRow = String(i + 2);
+    const cells = el('span', { class: 'g-cells', 'aria-hidden': 'true' });
+    cells.style.gridTemplateColumns = `repeat(${n}, minmax(0, 1fr))`;
+    for (let w = lo; w <= hi; w++) {
+      const h = r.hours.get(w);
+      const c = el('span', { class: 'g-cell', 'data-w': w, ...(h ? { 'data-lv': level(h, m.p.cap), title: `${w}주차 · ${hoursText(h)}` } : { 'data-gap': '' }) });
+      if (w === r.done) c.append(el('span', { class: 'g-done' }));
+      cells.append(c);
+    }
+    b.append(cells);
+    return [b];
+  });
 }
 
 // 교육자료 동그라미: 그 작업 줄, 공부한 주 칸 아래. 한 칸에 여럿이면 가로로 (겹쳐 놓는다)
@@ -86,7 +94,7 @@ function marks(m, r, i, w, list) {
   box.style.gridColumn = String(w + 1);
   box.style.gridRow = String(i + 2);
   for (const a of list) {
-    box.append(button('g-mark', `교육자료 · ${a.title} · ${hoursText(a.hours)} · ${picked(a) ? '교육자료 단계에서 고른 자료' : '작업에 맞춰 더한 자료'} · 자세히 보기`,
+    box.append(button('g-mark', `교육자료 · ${a.title} · ${hoursText(a.hours)} · ${picked(a) ? '③에서 고른 자료' : '작업 묶음마다 붙인 자료'} · 자세히 보기`,
       { 'data-peek': 'm', 'data-id': a.id, 'data-picked': picked(a) ? '' : null }));
   }
   return box;
@@ -103,7 +111,7 @@ export function legend() {
   const dot = (picked_) => el('span', { class: 'g-mark g-key-mark', 'aria-hidden': 'true', 'data-picked': picked_ ? '' : null });
   const shades = el('span', { class: 'g-key-shades', 'aria-hidden': 'true' });
   for (let k = 1; k <= LEVELS; k++) shades.append(el('i', { 'data-lv': k }));
-  box.append(key('교육자료 단계에서 고른 자료', dot(true)), key('작업에 맞춰 더한 자료', dot(false)), key('진할수록 그 주에 많이 해요', shades),
+  box.append(key('③에서 고른 자료', dot(true)), key('작업 묶음마다 붙인 자료', dot(false)), key('진할수록 그 주에 많이 해요', shades),
     key('끝나는 주', el('span', { class: 'g-done g-key-done', 'aria-hidden': 'true' })));
   return box;
 }
@@ -143,7 +151,7 @@ export function chart(m, exams = []) {
     if (m.md) name.append(el('span', { class: 'g-id', text: r.id }));
     name.append(el('span', { class: 'g-name', text: r.short || r.name }));
     grid.append(line, name);
-    if (r.last) grid.append(bar(m, r, i));
+    if (r.last) grid.append(...bar(m, r, i, exam));
     const byWeek = new Map();
     for (const a of r.mats) byWeek.set(a.sem, [...(byWeek.get(a.sem) ?? []), a]);
     for (const [w, list] of byWeek) grid.append(marks(m, r, i, w, list));

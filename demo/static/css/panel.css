@@ -639,8 +639,12 @@ ul.legend[hidden] { display: none; }
   transform-origin: left center; transform: scaleX(0); transition: transform var(--t-paint) var(--ease-in); }
 .shot-hl[data-painted] { transform: none; }
 .shot-hl[data-lit] { background: var(--hl-strong); }
-.shot-hl .badge { position: absolute; top: 50%; transform: translateY(-50%); opacity: 1; mix-blend-mode: normal; }      /* 가로 자리는 panel.js 가 글 칸 왼쪽 여백에 (낱말을 덮지 않게) */
+.shot-hl .badge { position: absolute; top: 50%; transform: translate(-100%, -50%); white-space: nowrap; opacity: 1; mix-blend-mode: normal; }      /* 가로 자리는 panel.js 가 글 칸 왼쪽 여백에 (낱말을 덮지 않게) */
 .shot-text[hidden] { display: none; }
+.shot-miss:empty { display: none; }
+.shot-miss { margin-top: var(--s3); }
+.shot-miss-row { margin: 0 0 var(--s2); font-size: var(--fs-doc); line-height: 1.6; }
+.shot-miss-note { display: block; margin-top: 2px; font-weight: 600; }
 
 /* ⑤ 12주 계획 (커리큘럼 생성기): 막대 = 교육자료로 배우기(주황) + 프로젝트에 적용(먹), 한도 점선. 아래 주마다 한 줄 흐름 */
 .cbars { position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s2); align-items: end; height: 236px; padding-top: 16px; }
@@ -708,11 +712,10 @@ ul.legend[hidden] { display: none; }
 .jobs { display: flex; flex-direction: column; gap: var(--s2); margin: 0; padding: 0; list-style: none; }
 .job { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s1) var(--s3); padding: var(--s4) var(--s5); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); }
 .job-head { margin: 0; font-size: var(--fs-head); font-weight: 600; }
-.job-head > b { display: inline-grid; place-items: center; width: 24px; height: 24px; margin-right: 4px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: var(--fs-label); }
+.job-head > b { display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; margin-right: 4px; border-radius: 12px; background: var(--ink); color: var(--paper); font-size: var(--fs-label); }
 .job-h { font-weight: 600; }
-.job-out { grid-column: 1; margin: 0; max-width: var(--measure); font-size: var(--fs-body); line-height: 1.6; }
-.job-from { grid-column: 2; grid-row: 1 / span 2; align-self: center; padding: 0 8px; border-radius: var(--r-chip); background: var(--sunk); font-size: var(--fs-label); font-weight: 600; line-height: 22px; }
-@media (max-width: 1023.98px) { .job-from { grid-column: 1; grid-row: auto; justify-self: start; } }
+.job-out { grid-column: 1; grid-row: 3; margin: 0; max-width: var(--measure); font-size: var(--fs-body); line-height: 1.6; }
+.job-from { grid-column: 1; grid-row: 2; justify-self: start; padding: 0 8px; border-radius: var(--r-chip); background: var(--sunk); font-size: var(--fs-label); font-weight: 600; line-height: 22px; }
 .job[data-core="false"] { border-style: dashed; }
 
 /* ① 이 공고가 원하는 역량 (오른쪽 칸) */
@@ -730,7 +733,7 @@ ul.legend[hidden] { display: none; }
 .want-name { font-size: var(--fs-body); font-weight: 600; }
 .want-q { margin: 0 0 var(--s1) var(--s2); padding-left: var(--s2); border-left: 3px solid var(--hl-strong); font-size: var(--fs-doc); line-height: 1.6; }
 .want-rest summary { cursor: pointer; font-size: var(--fs-body); font-weight: 600; }
-.want-rest-list { margin: var(--s2) 0 0; max-width: var(--measure); font-size: var(--fs-doc); line-height: 1.6; }
+.want-rest-list { margin: var(--s2) 0 0; padding: 0; list-style: none; max-width: var(--measure); font-size: var(--fs-doc); line-height: 1.6; }
 .posting-board { grid-template-columns: minmax(0, 1fr) minmax(320px, 40%); }
 
 /* ④ 고른 교육자료 카드 */
@@ -757,9 +760,18 @@ ul.legend[hidden] { display: none; }
 .plan-name { font-size: var(--fs-body); font-weight: 600; }
 .plan-pick .budget-opt { flex: 0 0 auto; }
 .plan-pick { display: flex; gap: var(--s1); flex: 0 0 auto; min-width: 0; padding: var(--s1); background: var(--sunk); border-radius: var(--r-card); }
+/* 직접 입력: 단추 옆 정수 칸. 단추 틀과 같은 sunk 바탕·44px, 글은 본문 크기 먹색 */
+.plan-own { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); font-size: var(--fs-body); color: var(--ink); }
+.plan-own-label { font-weight: 600; }
+.plan-own-input { box-sizing: border-box; width: 72px; height: var(--control); padding: 0 var(--s3); border: 0; border-radius: var(--r-chip); background: var(--sunk); color: var(--ink); font: inherit; text-align: center; }
+.plan-own-input[data-on] { background: var(--surface); box-shadow: inset 0 0 0 2px var(--ink); font-weight: 600; }
+.plan-own-input[data-bad] { box-shadow: inset 0 0 0 2px var(--ink); }
+.plan-own-input:focus-visible, .plan-own-go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.plan-own-go { height: var(--control); padding: 0 var(--s4); border: 0; border-radius: var(--r-chip); background: var(--sunk); color: var(--ink); font: inherit; font-weight: 500; cursor: pointer; }
+.plan-own-msg { flex: 1 0 100%; order: 9; margin: 0; font-size: var(--fs-body); line-height: 1.6; color: var(--ink); }
+.plan-own-msg[hidden] { display: none; }
 .wk-line { margin: 0; max-width: none; font-size: var(--fs-body); line-height: 1.6; }      /* 고른 시간이면 분량이 어떻게 되는지 해요체 한 줄 */
 .wk-line:empty { display: none; }
-.wk-card[data-plans] > .chart-head { display: none; }      /* 합계는 바닥 줄이 말한다 (같은 숫자를 두 번 쓰지 않는다) */
 .wk-card.chart-card { padding: 0; border: 0; background: none; }      /* ④ 는 주 칸이 상자다 (상자 두 겹까지) */
 /* 계획을 보류한 시간 (주 7시간): 주 칸 대신 본문 글. 오류가 아니라 결과라 빨강을 쓰지 않는다 */
 .wk-blocked { max-width: 760px; padding: var(--s4); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); }
@@ -798,7 +810,7 @@ ul.legend[hidden] { display: none; }
 
 /* 바닥 줄: 쪽 위에 떠 있고, 아래로 굴리면 숨고 위로 굴리면 다시 나온다 (사용자 11/21). 쪽 글은 바닥 줄 높이만큼 아래를 비운다 */
 .page { position: relative; }
-.foot { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; transition: transform var(--t-panel) var(--ease), opacity var(--t-panel) var(--ease); }
+.foot { position: absolute; left: 0; right: 0; bottom: 0; z-index: 5; transition: transform var(--t-panel) var(--ease), opacity var(--t-panel) var(--ease); }      /* 간트의 고정 이름 칸(.g-label z 4)보다 위: 긴 계획에서 이름 칸이 바닥 줄 글을 덮지 않게 */
 .page[data-foot-away] .foot { transform: translateY(100%); opacity: 0; pointer-events: none; }
 .page > .doc { padding-bottom: 150px; }
 .rep-rows { display: flex; flex-direction: column; gap: 6px; font-size: var(--fs-body); line-height: 1.55; }
@@ -828,6 +840,7 @@ ul.legend[hidden] { display: none; }
   .plan-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }      /* 휴대폰: 이름표와 모두 펼치기를 한 줄에, 시간 단추는 그 아래 (첫 칸이 위로) */
   .plan-row > .plan-name { grid-column: 1; grid-row: 1; }
   .plan-row > .plan-pick { grid-column: 1 / -1; grid-row: 2; justify-self: start; }
+  .plan-row > .plan-own, .plan-row > .plan-own-msg { grid-column: 1 / -1; }
   .job { grid-template-columns: minmax(0, 1fr); padding: var(--s4); }
 }
 
@@ -855,7 +868,7 @@ ul.legend[hidden] { display: none; }
 .gantt { min-width: 880px; }
 .g-grid { --g-label: 176px; position: relative; display: grid; grid-template-columns: var(--g-label) repeat(16, minmax(44px, 1fr)); grid-template-rows: 36px; grid-auto-rows: 40px; }
 .g-line { grid-column: 1 / -1; border-bottom: 1px solid var(--line); pointer-events: none; }
-.g-exam { z-index: 0; display: grid; place-items: center; border-radius: 6px; background: var(--sunk); font-size: var(--fs-body); font-weight: 600; color: var(--ink); pointer-events: none; }
+.g-exam { z-index: 0; display: grid; place-items: start center; padding-top: 44px; border-radius: 6px; background: var(--sunk); font-size: var(--fs-body); font-weight: 600; color: var(--ink); pointer-events: none; }
 .g-corner { position: sticky; left: 0; z-index: 4; grid-row: 1; grid-column: 1; display: flex; align-items: center; padding-left: var(--s2); background: var(--surface); font-size: var(--fs-label); font-weight: 600; }
 .g-head { z-index: 1; display: grid; place-items: center; height: 32px; align-self: center; margin-inline: 2px; border-radius: var(--r-chip); font-size: var(--fs-body); font-weight: 500; font-variant-numeric: tabular-nums; }
 button.g-head:hover { background: var(--sunk); }

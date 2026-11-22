@@ -27,14 +27,14 @@
    "name": "이미지·비디오 생성 모델 동작 원리 이해",
    "type": "지식",
    "priority": "필수",
-   "level": "있음"
+   "level": "일부"
   },
   {
    "cid": "C02",
    "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
    "type": "지식",
    "priority": "필수",
-   "level": "있음"
+   "level": "일부"
   },
   {
    "cid": "C04",
@@ -83,7 +83,7 @@
    "name": "Unreal Engine",
    "type": "도구",
    "priority": "우대",
-   "level": "있음"
+   "level": "일부"
   },
   {
    "cid": "C23",
@@ -102,12 +102,12 @@
    "covers": [
     {
      "cid": "C01",
-     "level": "있음",
+     "level": "일부",
      "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
     },
     {
      "cid": "C02",
-     "level": "있음",
+     "level": "일부",
      "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies"
     },
     {
@@ -141,7 +141,7 @@
     {
      "cid": "C04",
      "level": "있음",
-     "quote": "minor bugs and suboptimal implementation of some functional pieces"
+     "quote": "Profiling can be used to identify performance bottlenecks and see which functions are the costliest in the application code."
     },
     {
      "cid": "C05",
@@ -152,7 +152,7 @@
   },
   {
    "role": "보조",
-   "title": "isaac-sim/IsaacSim",
+   "title": "Isaac Sim 저장소",
    "type": "저장소",
    "url": "https://github.com/isaac-sim/IsaacSim",
    "covers": [
@@ -175,21 +175,16 @@
    "url": "https://github.com/huggingface/deep-rl-class/blob/main/units/en/unitbonus3/learning-agents.mdx",
    "covers": [
     {
-     "cid": "C02",
-     "level": "일부",
-     "quote": "train AI characters using machine learning (ML) in Unreal"
-    },
-    {
      "cid": "C22",
-     "level": "있음",
+     "level": "일부",
      "quote": "Learning Agents is an Unreal Engine (UE) plugin that allows you to train AI characters using machine learning (ML) in Unreal"
     }
    ]
   },
   {
    "role": "보조",
-   "title": "Sharing",
-   "type": "공식 문서 튜토리얼",
+   "title": "모델 공유 · Transformers 문서",
+   "type": "공식 문서",
    "url": "https://github.com/huggingface/transformers/blob/main/docs/source/en/model_sharing.md",
    "covers": [
     {

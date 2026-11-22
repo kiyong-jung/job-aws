@@ -26,8 +26,8 @@ const lines = (items) => {
 };
 // 산출물은 쉼표로 나누되 괄호 안 쉼표는 지킨다
 const splitOut = (t) => (t || '').split(/,\s*(?![^()]*\))/).map((x) => x.trim()).filter(Boolean);
-// 할 일 글은 문장마다 한 줄 (문장 끝 '다.' 뒤 공백에서)
-const splitDo = (t) => (t || '').split(/(?<=다\.)\s+/).map((x) => x.trim()).filter(Boolean);
+// 할 일 글은 문장마다 한 줄 (마침표·물음표 뒤 공백에서. '다.' 로 끝나지 않는 문장도 가른다)
+const splitDo = (t) => (t || '').split(/(?<=[.!?])\s+/).map((x) => x.trim()).filter(Boolean);
 const note = (t) => t.replace(/^(배정 근거|작업 근거) · /, '');
 
 // 글 속 주소는 링크로 (배정 근거의 "함께 보는 자료 · 이름 https://…")
@@ -128,7 +128,7 @@ export function createPeek({ comps = {}, popover, host = document.body } = {}) {
     const md = m.p.source === 'md';
     kids.push(sec('주간 목표', lines(md && w.goal_steps?.length ? w.goal_steps : goalsOf(w.activities))));
     kids.push(sec('방법', lines(md && w.method_steps?.length ? w.method_steps : todosOf(w.activities))));
-    if (w.reason) kids.push(sec('이유', el('p', { class: 'pk-text', text: w.reason })));
+    if (w.reason) kids.push(sec('이유', el('p', { class: 'pk-text', text: w.reason.replace(/학습 (\d+)건/g, '배우기 $1건') })));      // 발표 자료는 "배우기"
     const ul = el('ul', { class: 'pk-mats' });
     for (const a of w.activities) {
       if (a.kind === 'learning') { ul.append(matItem({ ...a, sem: n }, false)); continue; }
@@ -148,20 +148,20 @@ export function createPeek({ comps = {}, popover, host = document.body } = {}) {
   // ── 교육자료 ──
   function material(a) {
     title.textContent = a.title;
-    const kids = [el('p', { class: 'pk-sub', text: `${a.sem}주차 · ${hoursText(a.hours)} · ${picked(a) ? '교육자료 단계에서 고른 자료' : '작업에 맞춰 더한 자료'}` })];
+    const kids = [el('p', { class: 'pk-sub', text: `${a.sem}주차 · ${hoursText(a.hours)} · ${picked(a) ? '③에서 고른 자료' : '작업 묶음마다 붙인 자료'}` })];
     const l = link(a);
     if (l) kids.push(l);
     const r = m.byId.get(a.for);
     if (r) {
       const b = el('button', { type: 'button', class: 'pk-mat-btn pk-for', 'data-go': 'w', 'data-id': r.id });
-      b.append(el('span', { class: 'pk-mat-name', text: `붙은 작업 · ${label(m, r)}` }));
+      b.append(el('span', { class: 'pk-mat-name', text: `붙은 작업 묶음 · ${label(m, r)}` }));
       kids.push(b);
     }
     const lv = Object.entries(a.levels || {}).filter(([cid]) => comps[cid]);
     if (lv.length) {
       const box = el('p', { class: 'wk-comps' });
       lv.sort(([x], [y]) => (TIER[comps[x].tier] ?? 3) - (TIER[comps[y].tier] ?? 3)).forEach(([cid, level]) => box.append(compChip(cid, ` · ${level}`)));
-      kids.push(sec('다루는 역량', box));
+      kids.push(sec('다루는 역량', el('p', { class: 'pk-text', text: '있음은 이 자료가 그 역량을 가르친다는 뜻, 일부는 한 부분만 가르친다는 뜻이에요' }), box));
     }
     const why = note((a.why || [])[0] ?? '');
     if (why) kids.push(sec('배정 근거', linked(why.replace(' 함께 보는 자료 · ', '\n함께 보는 자료 · '))));

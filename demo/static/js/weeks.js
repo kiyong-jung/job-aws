@@ -41,8 +41,11 @@ function popover(root, comps) {
     pop.scrollTop = 0;
     const foot = btn.closest('.page')?.querySelector('.foot:not([hidden])');
     const floor = Math.min(innerHeight, foot && !btn.closest('.page').hasAttribute('data-foot-away') ? foot.getBoundingClientRect().top : innerHeight);
-    const w = pop.offsetWidth, h = pop.offsetHeight, pad = 16;
-    const left = Math.min(Math.max(pad, r.left), innerWidth - w - pad);
+    const pad = 16, side = btn.closest('.peek')?.getBoundingClientRect();      // 옆 패널 안의 칩이면 카드도 그 패널 안에 (패널보다 넓으면 줄인다)
+    pop.style.width = side && innerWidth > 599 ? `${Math.min(480, side.width - 2 * pad)}px` : '';
+    const w = pop.offsetWidth, h = pop.offsetHeight;
+    const lo = side ? side.left + pad : pad, hi = (side ? side.right : innerWidth) - pad;
+    const left = Math.min(Math.max(lo, r.left), hi - w);
     const below = r.bottom + 8 + h <= floor - pad;
     pop.style.left = `${left}px`;
     pop.style.top = `${below ? r.bottom + 8 : Math.max(pad, Math.min(r.top - h - 8, floor - pad - h))}px`;
@@ -95,10 +98,10 @@ function popover(root, comps) {
 }
 
 // 한 주 공부 시간 고르기 (예시 공고의 주차 계획 md 가 둘 이상일 때: 주 7·14·28시간, 7 은 보류 안내). 진짜 라디오라 화살표 키로도 바뀐다
-function planPick(plans, key, change) {
+function planPick(plans, key, change, custom) {
   const row = el('div', { class: 'plan-row' });
   const group = el('div', { class: 'plan-pick', role: 'radiogroup', 'aria-label': '한 주 공부 시간' });
-  for (const p of plans) {
+  for (const p of plans.filter((x) => x.preset !== false)) {      // 단추는 주 7·14·28시간, 그 밖의 저장본(15)은 직접 입력 칸으로만
     const label = el('label', { class: 'budget-opt' });
     const input = el('input', { type: 'radio', name: 'week-plan', value: p.key });
     input.checked = p.key === key;
@@ -107,7 +110,39 @@ function planPick(plans, key, change) {
     group.append(label);
   }
   row.append(el('span', { class: 'plan-name', text: '한 주 공부 시간' }), group);
+  if (custom) row.append(...ownHours(plans, key, change, custom, group));
   return row;
+}
+
+// 직접 입력: 정수 하나를 받아 저장된 계획이 있으면 단추처럼 보이고, 없으면 한 줄 글. 글은 서버 값 (custom), 규칙은 pipeline.pick_hours 와 같다
+function ownHours(plans, key, change, custom, group) {
+  const form = el('form', { class: 'plan-own', novalidate: '' });
+  const input = el('input', { id: 'plan-own-input', class: 'plan-own-input', type: 'text', inputmode: 'numeric', autocomplete: 'off', 'aria-describedby': 'plan-own-msg' });
+  const msg = el('p', { id: 'plan-own-msg', class: 'plan-own-msg', role: 'status', hidden: '' });
+  form.append(el('label', { class: 'plan-own-label', for: 'plan-own-input', text: '직접 입력' }), input, el('span', { class: 'plan-own-unit', text: '시간' }),
+    el('button', { type: 'submit', class: 'plan-own-go', text: '보기' }));
+  const say = (t) => { msg.textContent = t; msg.hidden = !t; input.toggleAttribute('data-bad', Boolean(t)); input.setAttribute('aria-invalid', String(Boolean(t))); };
+  const sync = (k) => {      // 단추로 고르면 칸을 비우고, 단추에 없는 시간(15)을 골랐으면 그 숫자가 칸에 남아 어느 계획인지 보인다
+    const preset = plans.find((p) => p.key === k)?.preset !== false;
+    input.value = preset ? '' : k;
+    input.toggleAttribute('data-on', !preset);
+    say('');
+    for (const r of group.querySelectorAll('input')) r.checked = r.value === k;
+  };
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const raw = input.value.trim();
+    const n = Number(raw);
+    if (!/^\d+$/.test(raw) || n < custom.min || n > custom.max) return say(custom.bad);
+    const k = String(n);
+    if (!plans.some((p) => p.key === k)) return say(custom.miss);
+    sync(k);
+    change(k);
+  });
+  input.addEventListener('input', () => say(''));
+  group.addEventListener('change', (e) => sync(e.target.value));
+  sync(key);
+  return [form, msg];      // 글은 줄 맨 아래 따로 (나와도 칸이 줄을 옮기지 않게)
 }
 
 function fillFact(fact, p) {
@@ -116,10 +151,13 @@ function fillFact(fact, p) {
   if (p.source === 'blocked') { fact.append(p.blocked.title); return; }
   // 생성기 계획(하루 1·2·3시간): 배우기·만들기 합은 바닥 줄이 말하니 (S9) 머리 줄은 오른쪽 하루 공부 시간 고르기의 이름만
   if (p.source === 'generator') { fact.append('하루 공부 시간'); return; }
-  if (md) fact.append(`총 ${hoursText(p.total)} · `);
+  if (md) {      // 12주 합계는 계획에서 센 값 (배우기 + 만들기)
+    fact.append(`12주 합계 ${hoursText(p.total)} = `, el('span', { class: 'g-kind', 'data-kind': 'learning', text: '배우기' }), ` ${hoursText(p.learning)} + `,
+      el('span', { class: 'g-kind', 'data-kind': 'project', text: '만들기' }), ` ${hoursText(p.project)}`);
+    return;
+  }
   fact.append(el('span', { class: 'g-kind', 'data-kind': 'learning', text: '배우기' }), ` 교육자료 ${hoursText(p.learning)}  `,
-    el('span', { class: 'g-kind', 'data-kind': 'project', text: '만들기' }), ` 프로젝트 ${hoursText(p.project)}`,
-    md ? ` · 한 주 상한 ${hoursText(p.cap)}` : ` · 한 사람, 한 주 ${short(p.cap)}시간`);
+    el('span', { class: 'g-kind', 'data-kind': 'project', text: '만들기' }), ` 프로젝트 ${hoursText(p.project)}`, ` · 한 사람, 한 주 ${short(p.cap)}시간`);
 }
 
 // 계획을 보류한 시간(주 7시간): 주 칸 대신 본문 글 (오류가 아니라 그 시간으로는 짜지 않았다는 결과). 글은 서버 값.
@@ -140,7 +178,7 @@ export const summary = () => current;
 // 고른 한 주 공부 시간의 열쇠 ("14"). ⑥ 리포트가 이 안으로 그린다 (main.js)
 export const planKey = () => chosen;
 
-export function start({ plans = [], comps = {}, default: first, ...one }) {
+export function start({ plans = [], comps = {}, custom = null, default: first, ...one }) {
   s?.drop?.();
   const all = plans.length ? plans : [{ ...one }];
   if (!all.some((p) => p.key === chosen)) chosen = first ?? all[0].key;
@@ -170,9 +208,8 @@ export function start({ plans = [], comps = {}, default: first, ...one }) {
     peek.use(m, page);
     return g;
   };
-  const row = all.length > 1 ? planPick(all, chosen, (k) => { show(k); onPick(current, k); }) : el('div', { class: 'plan-row' });
+  const row = all.length > 1 ? planPick(all, chosen, (k) => { show(k); onPick(current, k); }, custom) : el('div', { class: 'plan-row' });
   const card = chartCard(fact, [row, line, key, scroll, note], { cls: 'wk-card', aside: true });
-  if (plans.length) card.dataset.plans = '';      // 계획 고르기가 있으면 합계 줄은 바닥 줄이 말한다
   root.replaceChildren(card);
   const g = show(chosen);
   s = { root, drop: () => peek.destroy() };

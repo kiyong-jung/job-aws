@@ -103,8 +103,8 @@
    "type": "학회 튜토리얼",
    "url": "https://eccv.ecva.net/virtual/2026/3131",
    "covers": {
-    "C01": "있음",
-    "C02": "있음",
+    "C01": "일부",
+    "C02": "일부",
     "C04": "일부",
     "C05": "일부",
     "C06": "일부"
@@ -127,13 +127,14 @@
    "role": "보조",
    "gain": 2.0,
    "id": "ADD76a0f43d",
-   "title": "isaac-sim/IsaacSim",
+   "title": "Isaac Sim 저장소",
    "type": "저장소",
    "url": "https://github.com/isaac-sim/IsaacSim",
    "covers": {
     "C19": "있음",
     "C20": "있음"
-   }
+   },
+   "bank_title": "isaac-sim/IsaacSim"
   },
   {
    "role": "보조",
@@ -143,20 +144,20 @@
    "type": "강의 레슨",
    "url": "https://github.com/huggingface/deep-rl-class/blob/main/units/en/unitbonus3/learning-agents.mdx",
    "covers": {
-    "C02": "일부",
-    "C22": "있음"
+    "C22": "일부"
    }
   },
   {
    "role": "보조",
    "gain": 1.0,
    "id": "LRNc710a7cb9f",
-   "title": "Sharing",
-   "type": "공식 문서 튜토리얼",
+   "title": "모델 공유 · Transformers 문서",
+   "type": "공식 문서",
    "url": "https://github.com/huggingface/transformers/blob/main/docs/source/en/model_sharing.md",
    "covers": {
     "C23": "있음"
-   }
+   },
+   "bank_title": "Sharing"
   },
   {
    "role": "보조",
@@ -175,13 +176,13 @@
    "cid": "C01",
    "name": "이미지·비디오 생성 모델 동작 원리 이해",
    "priority": "필수",
-   "level": "있음"
+   "level": "일부"
   },
   {
    "cid": "C02",
    "name": "ML 개발 사이클(데이터 구축→학습→평가) 이해",
    "priority": "필수",
-   "level": "있음"
+   "level": "일부"
   },
   {
    "cid": "C04",
@@ -223,7 +224,7 @@
    "cid": "C22",
    "name": "Unreal Engine",
    "priority": "우대",
-   "level": "있음"
+   "level": "일부"
   },
   {
    "cid": "C23",
@@ -235,7 +236,7 @@
  "candidates": [
   {
    "id": "ADD76a0f43d",
-   "title": "isaac-sim/IsaacSim",
+   "title": "Isaac Sim 저장소",
    "cells": {
     "C01": {
      "level": "없음",
@@ -287,7 +288,8 @@
      "quote": "",
      "downgraded": false
     }
-   }
+   },
+   "bank_title": "isaac-sim/IsaacSim"
   },
   {
    "id": "ADDbc9b7af3",
@@ -627,7 +629,7 @@
   },
   {
    "id": "LRNc710a7cb9f",
-   "title": "Sharing",
+   "title": "모델 공유 · Transformers 문서",
    "cells": {
     "C01": {
      "level": "없음",
@@ -679,7 +681,8 @@
      "quote": "The Hugging Face Hub is a platform for sharing, discovering, and consuming models of all different types and sizes.",
      "downgraded": false
     }
-   }
+   },
+   "bank_title": "Sharing"
   },
   {
    "id": "M80198383c9",
@@ -921,7 +924,7 @@
     },
     "C04": {
      "level": "있음",
-     "quote": "minor bugs and suboptimal implementation of some functional pieces",
+     "quote": "Profiling can be used to identify performance bottlenecks and see which functions are the costliest in the application code.",
      "downgraded": false
     },
     "C05": {
@@ -2422,14 +2425,14 @@
    "title": "[ECCV 2026] Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
    "cells": {
     "C01": {
-     "level": "있음",
+     "level": "일부",
      "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
-     "downgraded": false
+     "downgraded": true
     },
     "C02": {
-     "level": "있음",
+     "level": "일부",
      "quote": "Building Large Video Generation Models: Data Processing, Architectural Insights, Optimization Methods and Evaluation Strategies",
-     "downgraded": false
+     "downgraded": true
     },
     "C04": {
      "level": "일부",
@@ -2595,9 +2598,9 @@
      "downgraded": false
     },
     "C02": {
-     "level": "일부",
-     "quote": "train AI characters using machine learning (ML) in Unreal",
-     "downgraded": false
+     "level": "없음",
+     "quote": "",
+     "downgraded": true
     },
     "C04": {
      "level": "없음",
@@ -2630,9 +2633,9 @@
      "downgraded": false
     },
     "C22": {
-     "level": "있음",
+     "level": "일부",
      "quote": "Learning Agents is an Unreal Engine (UE) plugin that allows you to train AI characters using machine learning (ML) in Unreal",
-     "downgraded": false
+     "downgraded": true
     },
     "C23": {
      "level": "없음",
@@ -3035,5 +3038,12 @@
   }
  ],
  "cost_krw": 555.6,
- "rerank_units": 50
+ "rerank_units": 50,
+ "hand_fixes": [
+  "2026-11-22 손으로 고침 (데모 리뷰): ECCV 튜토리얼(Ma54431942a)의 근거가 제목뿐이라 C01·C02 를 있음 → 일부 (튜토리얼 쪽에 본문 글이 없다)",
+  "2026-11-22: 프로파일링 글(LRN83d11fce37) C04 근거 구절을 'Profiling can be used to identify performance bottlenecks…' 로 (본문 둘째 문단)",
+  "2026-11-22: Unreal Learning Agents(E4eff9553b5)는 렌더링이 아니라 에이전트 학습 플러그인이라 C22 있음 → 일부, C02 연결을 뺌",
+  "2026-11-22: 화면 이름을 ④⑤ 와 맞춤: 'Sharing' → '모델 공유 · Transformers 문서' (종류 '공식 문서 튜토리얼' → '공식 문서'), 'isaac-sim/IsaacSim' → 'Isaac Sim 저장소'. 은행 제목은 bank_title",
+  "결과: 덮기 C01·C02·C22 가 있음 → 일부 (도구·지식 역량 10개 중 있음 7 → 4, 일부 3 → 6). 고른 자료 6개는 그대로"
+ ]
 }

@@ -56,13 +56,16 @@ HANGUL = 0xAC00
 
 
 def _drop_n(syllable):
-    """받침 ㄴ 을 뗀다: 한 → 하, 킨 → 키"""
+    """받침 ㄴ 을 뗀다: 한 → 하, 킨 → 키. ㄹ 탈락 동사는 ㄹ 을 되살린다: 든 → 들 (만든다 → 만들기)"""
+    if syllable == "든":
+        return "들"
     c = ord(syllable) - HANGUL
     return chr(ord(syllable) - 4) if 0 <= c < 11172 and c % 28 == 4 else None
 
 
 def ending(clause):
-    """'…양식을 잡고' → '…양식을 잡기', '…점검한 뒤' → '…점검하기', '…수립한다.' → '…수립하기'"""
+    """'…양식을 잡고' → '…양식을 잡기', '…점검한 뒤' → '…점검하기', '…수립한다.' → '…수립하기',
+    '…쓴다.' → '…쓰기', '…만든다.' → '…만들기' (받침 ㄴ + 다 는 받침을 떼야 한다. 11/22 네이버 '쓴기·만든기')"""
     t = clause.strip().rstrip(".")
     for tail in (" 뒤", " 다음", " 후"):
         if t.endswith(tail):
@@ -74,6 +77,8 @@ def ending(clause):
     for tail in ("하고", "하며", "하여", "한다"):
         if t.endswith(tail):
             return t[: -len(tail)] + "하기"
+    if len(t) > 1 and t.endswith("다") and not t.endswith("는다") and _drop_n(t[-2]):
+        return t[:-2] + _drop_n(t[-2]) + "기"
     for tail in ("고", "며", "는다", "다"):
         if t.endswith(tail):
             return t[: -len(tail)] + "기"

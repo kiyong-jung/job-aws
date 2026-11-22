@@ -10,7 +10,7 @@ const $ = (id) => document.getElementById(id);
 let s = null;
 
 
-// 숫자 흐름 (발표 27쪽): 교육자료 은행 → BM25 → Cohere Rerank → AI 판정. 걸음마다 그 칸이 주황으로 켜진다 (② 깔때기와 같은 칸 모양)
+// 숫자 흐름 (발표 27쪽): 교육자료 → BM25 → Cohere Rerank 3.5 → AI 판정. 걸음마다 그 칸이 주황으로 켜진다 (② 깔때기와 같은 칸 모양)
 const FLOW_AT = { targets: 0, search: 1, judge: 2, pick: 3 };
 function flow(funnel) {
   const ol = el('ol', { class: 'funnel flow', 'aria-label': '교육자료를 고르는 차례' });
