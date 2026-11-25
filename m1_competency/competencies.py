@@ -15,7 +15,7 @@ _SECTION = [("우대", re.compile(r"우대|더\s*좋아|더\s*잘\s*맞|있으�
             ("미션", re.compile(r"미션|주요\s*업무|담당\s*업무|직무\s*소개|하는\s*일|업무\s*내용|함께\s*할\s*(업무|일)|합류하면|이런\s*일을|책임지게\s*될|"
                               r"responsibilit|what you.?ll do|what you will do|about the role|job description", re.I)),
             # 요건 뒤에 오는 근무 조건, 전형 절차, 복지 같은 절. 이 머리줄이 나오면 다시 배경으로 돌린다
-            ("소개", re.compile(r"근무\s*(형태|환경|조건|지|시간)|모집\s*절차|전형\s*(절차|안내)|채용\s*(절차|과정)|합류\s*여정|이렇게\s*합류|"
+            ("소개", re.compile(r"근무\s*(형태|환경|조건|지|시간)|모집\s*절차|전형\s*(절차|안내|과정)|채용\s*(절차|과정)|합류\s*여정|이렇게\s*합류|"
                               r"참고\s*(해|사항)|꼭\s*확인|복지|복리\s*후생|기타\s*안내|안내\s*사항|유의\s*사항|제출\s*서류|혜택|이력서는|기타\s*사항|개발\s*환경|지원\s*안내|hiring process|benefits|perks|values\s*:|supporting your|"
                               r"additional information|who we are|about (us|the team)", re.I))]
 NOT_TRAINABLE = re.compile(
@@ -24,6 +24,7 @@ NOT_TRAINABLE = re.compile(
     re.I)
 
 
+_PAPERWORK = re.compile(r"이력서|자기\s*소개서|경력\s*기술서|포트폴리오|필요\s*서류|고용\s*형태|근무지|처우")
 _BULLET = re.compile(r"^(?:[-•·*]|[□▷▪◦ㆍ]|[①-⑳]|\d{1,2}[.)])\s*")
 _DECOR = re.compile(r"^[\s※\[【<〈《◆■●▶▣#\d.)]+|[\s\]】>〉》:]+$")
 
@@ -36,12 +37,16 @@ def sections(text):
         m = _BULLET.match(s)
         bare = _DECOR.sub("", s)
         head = next((name for name, rx in _SECTION if rx.search(bare)), None) if bare and len(s) <= 80 else None
+        if head and _PAPERWORK.search(bare):      # '포트폴리오 (필수)' 같은 제출 서류·근무 조건 줄은 요건 머리줄이 아니다
+            head = "소개"
         if m and (s[0] in "-•·*" or not (head and len(bare) <= 30)):
             body = s[m.end():].replace("**", "").lstrip("-•·* ").strip()      # 굵은 글 표시는 여는 쪽과 닫는 쪽을 함께 뗀다
             if body:      # 기호만 있는 빈 불릿은 버린다
                 out.append((cur, body))
-        elif head and not (s.startswith("※") and len(bare) > 20):   # 긴 ※ 안내 문장은 머리줄이 아니다 (그 속 '우대' 같은 낱말에 구역이 바뀌지 않게)
+        elif head and len(bare) <= 50 and not (s.startswith("※") and len(bare) > 20):   # 긴 ※ 안내 문장은 머리줄이 아니다 (그 속 '우대' 같은 낱말에 구역이 바뀌지 않게)
             cur = head
+        elif cur != "소개" and len(bare) >= 8 and not s.startswith("["):      # 웹에서 붙여넣으면 글머리 기호가 사라진다: 요건 머리줄 아래의 맨 줄도 요건으로 읽는다
+            out.append((cur, s.replace("**", "").strip()))
         elif s.startswith("[") and len(s) <= 80:      # 낱말을 모르는 [머리줄] 뒤는 요건으로 치지 않는다 (제출 서류, 복지 같은 절)
             cur = "소개"
     return out
